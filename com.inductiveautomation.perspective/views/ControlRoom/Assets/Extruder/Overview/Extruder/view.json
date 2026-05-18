@@ -1639,8 +1639,7 @@
                   "viewPath": "Library/SharedTemplates/TabElement"
                 },
                 "Gereedschap",
-                "Trending",
-                "Alarmen"
+                "Trending"
               ]
             },
             "type": "ia.container.tab"
