@@ -1638,8 +1638,7 @@
                   },
                   "viewPath": "Library/SharedTemplates/TabElement"
                 },
-                "Gereedschap",
-                "Trending"
+                "Gereedschap"
               ]
             },
             "type": "ia.container.tab"
