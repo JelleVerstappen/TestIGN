@@ -1,0 +1,399 @@
+{
+  "custom": {},
+  "params": {
+    "Setpoint": 20,
+    "Value": 10
+  },
+  "propConfig": {
+    "params.Setpoint": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.Value": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 400,
+      "width": 400
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "SiloV2"
+        },
+        "position": {
+          "height": 1,
+          "width": 1
+        },
+        "props": {
+          "elements": [
+            {
+              "name": "defs",
+              "type": "defs"
+            },
+            {
+              "elements": [
+                {
+                  "elements": [
+                    {
+                      "elements": [
+                        {
+                          "elements": [
+                            {
+                              "elements": [
+                                {
+                                  "d": "M 13.75 148.26 L 80.25 148.26 L 80.25 158.26 L 13.75 158.26 L 13.75 148.26 Z",
+                                  "fill": {
+                                    "paint": "#ffffff"
+                                  },
+                                  "name": "path",
+                                  "stroke": {
+                                    "paint": "transparent"
+                                  },
+                                  "transform": "rotate(90,47,153.26)",
+                                  "type": "path"
+                                },
+                                {
+                                  "d": "M 13.75 148.26 L 13.75 158.26 L 13.75 158.26 L 80.25 158.26 L 80.25 148.26 L 13.75 148.26",
+                                  "fill": {
+                                    "paint": "transparent"
+                                  },
+                                  "name": "path",
+                                  "stroke": {
+                                    "paint": "transparent"
+                                  },
+                                  "transform": "rotate(90,47,153.26)",
+                                  "type": "path"
+                                },
+                                {
+                                  "d": "M 13.75 148.26 L 80.25 148.26 L 80.25 158.26 L 13.75 158.26 L 13.75 148.26 Z",
+                                  "fill": {
+                                    "paint": "transparent"
+                                  },
+                                  "name": "path",
+                                  "stroke": {
+                                    "miterlimit": "10",
+                                    "paint": "#000000"
+                                  },
+                                  "transform": "rotate(90,47,153.26)",
+                                  "type": "path"
+                                }
+                              ],
+                              "name": "group",
+                              "type": "group"
+                            }
+                          ],
+                          "name": "group",
+                          "type": "group"
+                        },
+                        {
+                          "elements": [
+                            {
+                              "elements": [
+                                {
+                                  "d": "M 79.02 148.51 L 145.01 148.51 L 145.01 158.51 L 79.02 158.51 L 79.02 148.51 Z",
+                                  "fill": {
+                                    "paint": "#ffffff"
+                                  },
+                                  "name": "path",
+                                  "stroke": {
+                                    "paint": "transparent"
+                                  },
+                                  "transform": "rotate(90,112.01,153.51)",
+                                  "type": "path"
+                                },
+                                {
+                                  "d": "M 79.02 148.51 L 79.02 158.51 L 79.02 158.51 L 145.01 158.51 L 145.01 148.51 L 79.02 148.51",
+                                  "fill": {
+                                    "paint": "transparent"
+                                  },
+                                  "name": "path",
+                                  "stroke": {
+                                    "paint": "transparent"
+                                  },
+                                  "transform": "rotate(90,112.01,153.51)",
+                                  "type": "path"
+                                },
+                                {
+                                  "d": "M 79.02 148.51 L 145.01 148.51 L 145.01 158.51 L 79.02 158.51 L 79.02 148.51 Z",
+                                  "fill": {
+                                    "paint": "transparent"
+                                  },
+                                  "name": "path",
+                                  "stroke": {
+                                    "miterlimit": "10",
+                                    "paint": "#000000"
+                                  },
+                                  "transform": "rotate(90,112.01,153.51)",
+                                  "type": "path"
+                                }
+                              ],
+                              "name": "group",
+                              "type": "group"
+                            }
+                          ],
+                          "name": "group",
+                          "type": "group"
+                        },
+                        {
+                          "elements": [
+                            {
+                              "elements": [
+                                {
+                                  "d": "M -0.37 187 L 159.63 187",
+                                  "fill": {
+                                    "paint": "transparent"
+                                  },
+                                  "name": "path",
+                                  "stroke": {
+                                    "miterlimit": "10",
+                                    "paint": "#000000"
+                                  },
+                                  "type": "path"
+                                }
+                              ],
+                              "name": "group",
+                              "type": "group"
+                            }
+                          ],
+                          "name": "group",
+                          "type": "group"
+                        },
+                        {
+                          "elements": [
+                            {
+                              "elements": [
+                                {
+                                  "d": "M 72 60 L 87 60 L 117 90 L 117 130 L 87 160 L 72 160 L 42 130 L 42 90 Z",
+                                  "fill": {
+                                    "paint": "#ffffff"
+                                  },
+                                  "name": "path",
+                                  "stroke": {
+                                    "miterlimit": "10",
+                                    "paint": "#000000"
+                                  },
+                                  "type": "path"
+                                }
+                              ],
+                              "name": "group",
+                              "type": "group"
+                            }
+                          ],
+                          "name": "group",
+                          "type": "group"
+                        },
+                        {
+                          "elements": [
+                            {
+                              "elements": [
+                                {
+                                  "fill": {
+                                    "paint": "#ffffff"
+                                  },
+                                  "height": "75.25",
+                                  "name": "rect",
+                                  "stroke": {
+                                    "paint": "#000000"
+                                  },
+                                  "transform": "rotate(90,79.63,70)",
+                                  "type": "rect",
+                                  "width": "120",
+                                  "x": "19.63",
+                                  "y": "32.38"
+                                }
+                              ],
+                              "name": "group",
+                              "type": "group"
+                            }
+                          ],
+                          "name": "group",
+                          "type": "group"
+                        },
+                        {
+                          "elements": [
+                            {
+                              "elements": [
+                                {
+                                  "fill": {
+                                    "paint": "#ffffff"
+                                  },
+                                  "height": "3",
+                                  "name": "rect",
+                                  "stroke": {
+                                    "paint": "#000000"
+                                  },
+                                  "type": "rect",
+                                  "width": "20",
+                                  "x": "69",
+                                  "y": "6.5"
+                                }
+                              ],
+                              "name": "group",
+                              "type": "group"
+                            }
+                          ],
+                          "name": "group",
+                          "type": "group"
+                        },
+                        {
+                          "elements": [
+                            {
+                              "elements": [
+                                {
+                                  "d": "M 64.13 6.5 L 95.13 6.5",
+                                  "fill": {
+                                    "paint": "transparent"
+                                  },
+                                  "name": "path",
+                                  "stroke": {
+                                    "miterlimit": "10",
+                                    "paint": "#000000"
+                                  },
+                                  "type": "path"
+                                }
+                              ],
+                              "name": "group",
+                              "type": "group"
+                            }
+                          ],
+                          "name": "group",
+                          "type": "group"
+                        }
+                      ],
+                      "name": "group",
+                      "type": "group"
+                    }
+                  ],
+                  "name": "group",
+                  "type": "group"
+                }
+              ],
+              "name": "group",
+              "type": "group"
+            }
+          ],
+          "style": {
+            "background": " transparent",
+            "backgroundColor": " transparent",
+            "colorScheme": " light dark"
+          },
+          "viewBox": "-0.5 -0.5 161 193"
+        },
+        "type": "ia.shapes.svg"
+      },
+      {
+        "meta": {
+          "name": "Progress"
+        },
+        "position": {
+          "height": 0.3825,
+          "rotate": {
+            "angle": "270deg"
+          },
+          "width": 0.615,
+          "x": 0.1915,
+          "y": 0.1761
+        },
+        "propConfig": {
+          "props.value": {
+            "binding": {
+              "config": {
+                "path": "view.params.Value"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "track": {
+            "style": {
+              "borderBottomLeftRadius": 0,
+              "borderBottomRightRadius": 0,
+              "borderTopLeftRadius": 0,
+              "borderTopRightRadius": 0
+            }
+          }
+        },
+        "type": "ia.display.progress"
+      },
+      {
+        "meta": {
+          "name": "SiloValue"
+        },
+        "position": {
+          "height": 0.04,
+          "width": 0.0625,
+          "x": 0.4672,
+          "y": 0.345
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "expression": "{view.params.Value} + \u0027%\u0027"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "textStyle": {
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Setpoint"
+        },
+        "position": {
+          "width": 0.3875,
+          "x": 0.305,
+          "y": 0.06
+        },
+        "propConfig": {
+          "position.height": {
+            "binding": {
+              "config": {
+                "path": "view.params.Setpoint"
+              },
+              "transforms": [
+                {
+                  "code": "\tif value is None or value \u003d\u003d 0:\n\t\tself.meta.visible \u003d False\n\t\treturn 0\n\t\n\tsetpoint \u003d value\n\tbaseValue \u003d 0.615\n\tresult \u003d ((100 - setpoint) / 100.0) * baseValue\n\tself.meta.visible \u003d True\n\treturn result",
+                  "type": "script"
+                }
+              ],
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "borderBottomColor": "black",
+            "borderBottomStyle": "dashed",
+            "borderBottomWidth": 3,
+            "borderLeftStyle": "none",
+            "borderRightStyle": "none",
+            "borderTopStyle": "none"
+          }
+        },
+        "type": "ia.display.label"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "aspectRatio": "4:4",
+      "mode": "percent"
+    },
+    "type": "ia.container.coord"
+  }
+}

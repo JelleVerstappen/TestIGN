@@ -1,0 +1,91 @@
+{
+  "custom": {
+    "filters": {}
+  },
+  "propConfig": {
+    "custom.filters.endDate": {
+      "binding": {
+        "config": {
+          "expression": "addSeconds(addDays(setTime(now(0),7,0,0),1),-1)"
+        },
+        "type": "expr"
+      }
+    },
+    "custom.filters.startDate": {
+      "binding": {
+        "config": {
+          "expression": "setTime(now(0),7,0,0)"
+        },
+        "type": "expr"
+      }
+    },
+    "custom.security": {
+      "access": "PRIVATE"
+    },
+    "props.auth": {
+      "access": "PRIVATE",
+      "persistent": false
+    },
+    "props.device.accelerometer": {
+      "access": "SYSTEM",
+      "persistent": false
+    },
+    "props.device.identifier": {
+      "access": "SYSTEM",
+      "persistent": false
+    },
+    "props.device.timezone": {
+      "access": "SYSTEM",
+      "persistent": false
+    },
+    "props.device.type": {
+      "access": "SYSTEM",
+      "persistent": false
+    },
+    "props.device.userAgent": {
+      "access": "SYSTEM",
+      "persistent": false
+    },
+    "props.gateway": {
+      "access": "SYSTEM",
+      "persistent": false
+    },
+    "props.geolocation.data": {
+      "access": "SYSTEM",
+      "persistent": false
+    },
+    "props.geolocation.permissionGranted": {
+      "access": "SYSTEM",
+      "persistent": false
+    },
+    "props.host": {
+      "access": "SYSTEM",
+      "persistent": false
+    },
+    "props.id": {
+      "access": "SYSTEM",
+      "persistent": false
+    },
+    "props.lastActivity": {
+      "access": "SYSTEM",
+      "persistent": false
+    },
+    "props.locale": {
+      "binding": {
+        "config": {
+          "expression": "\u0027nl-NL\u0027"
+        },
+        "type": "expr"
+      }
+    }
+  },
+  "props": {
+    "address": "127.0.0.1",
+    "appBar": {
+      "togglePosition": "hidden"
+    },
+    "device": {},
+    "geolocation": {},
+    "timeZoneId": "Europe/Amsterdam"
+  }
+}

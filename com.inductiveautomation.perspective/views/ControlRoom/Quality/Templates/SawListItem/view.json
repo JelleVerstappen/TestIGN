@@ -1,0 +1,194 @@
+{
+  "custom": {},
+  "params": {
+    "amount": "value",
+    "length": "value",
+    "unit": "value"
+  },
+  "propConfig": {
+    "params.amount": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.length": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.unit": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 70,
+      "width": 260
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Label"
+        },
+        "position": {
+          "basis": "70px",
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "expression": "{view.params.amount} + \u0027 st\u0027"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "borderRightColor": "--prim",
+            "borderRightStyle": "solid",
+            "borderRightWidth": 1,
+            "classes": "ATA/Components/Labels/TextLarge"
+          },
+          "textStyle": {
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "basis": "50px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "expression": "{view.params.length} + \u0027 \u0027 + {view.params.unit}"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "ATA/Components/Labels/TextLarge"
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Icon"
+            },
+            "position": {
+              "basis": "45px",
+              "shrink": 0
+            },
+            "props": {
+              "color": "--prim",
+              "path": "bootstrap-icons/arrows-angle-expand",
+              "style": {
+                "marginTop": -15,
+                "overflow": "hidden",
+                "transform": "rotate(45deg)",
+                "width": "45px"
+              }
+            },
+            "type": "ia.display.icon"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer"
+        },
+        "position": {
+          "basis": "85px",
+          "shrink": 0
+        },
+        "props": {
+          "alignItems": "center",
+          "direction": "column",
+          "justify": "center",
+          "style": {
+            "overflow": "hidden"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "basis": "50%"
+            },
+            "props": {
+              "style": {
+                "classes": "ATA/Components/Labels/TextLarge"
+              },
+              "text": "Gedaan?",
+              "textStyle": {
+                "textAlign": "center"
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Checkbox"
+            },
+            "position": {
+              "basis": "50%"
+            },
+            "props": {
+              "checkedIcon": {
+                "path": "bootstrap-icons/check-square-fill"
+              },
+              "style": {
+                "marginTop": -2
+              },
+              "text": "",
+              "uncheckedIcon": {
+                "path": "bootstrap-icons/square"
+              }
+            },
+            "type": "ia.input.checkbox"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer_0"
+        },
+        "position": {
+          "basis": "90px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "column"
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "style": {
+        "backgroundColor": "var(--color1)",
+        "borderColor": "var(--sec)",
+        "borderWidth": "2px",
+        "classes": "ATA/Background/CardSecondary"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

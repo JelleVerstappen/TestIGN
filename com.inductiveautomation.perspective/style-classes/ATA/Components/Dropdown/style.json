@@ -1,0 +1,17 @@
+{
+  "base": {
+    "style": {
+      "borderColor": "var(--color2)",
+      "borderStyle": "solid",
+      "borderWidth": "0.2px",
+      "borderTopLeftRadius": "5px",
+      "borderTopRightRadius": "5px",
+      "borderBottomLeftRadius": "5px",
+      "borderBottomRightRadius": "5px",
+      "color": "var(--text)",
+      "fontSize": "14px",
+      "fontWeight": "lighter",
+      "textAlign": "left"
+    }
+  }
+}

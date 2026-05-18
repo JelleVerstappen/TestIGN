@@ -1,0 +1,283 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "width": 600
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Header"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "params": {
+            "closeDockID": "ActivityFeedDock",
+            "closeIcon": true,
+            "title": "Opmerking toevoegen"
+          },
+          "path": "Library/SharedTemplates/HeaderForDock",
+          "style": {
+            "textTransform": "capitalize"
+          },
+          "useDefaultViewHeight": true
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "EmbeddedView"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "props": {
+              "params": {
+                "enabled": true,
+                "key": "Lijn",
+                "marginRight": 45,
+                "multiSelect": false,
+                "options": [
+                  {
+                    "label": "E07",
+                    "value": 1
+                  },
+                  {
+                    "label": "E21",
+                    "value": 2
+                  }
+                ],
+                "placeholder": "Select...",
+                "showClearIcon": true,
+                "value": 1
+              },
+              "path": "Library/SharedTemplates/Input/Dropdown",
+              "useDefaultViewHeight": true
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "EmbeddedView_2"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.params.value": {
+                "binding": {
+                  "config": {
+                    "expression": "true"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "enabled": true,
+                "engUnits": "",
+                "format": "0,0.##",
+                "key": "Artikel nodig",
+                "maxValue": 10000000,
+                "minValue": 0,
+                "placeholder": "Select...",
+                "unitVisable": true
+              },
+              "path": "Library/SharedTemplates/Input/Checkbox",
+              "useDefaultViewHeight": true
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "EmbeddedView_1"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "position.display": {
+                "binding": {
+                  "config": {
+                    "path": "../EmbeddedView_2.props.params.value"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "enabled": true,
+                "engUnits": "",
+                "format": "0,0.##",
+                "key": "Artikel",
+                "maxValue": 10000000,
+                "minValue": 0,
+                "placeholder": "Select...",
+                "rejected": "True",
+                "unitVisable": true,
+                "value": 123
+              },
+              "path": "Library/SharedTemplates/Input/Number",
+              "useDefaultViewHeight": true
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "EmbeddedView_0"
+            },
+            "position": {
+              "basis": "300px",
+              "shrink": 0
+            },
+            "props": {
+              "params": {
+                "enabled": true,
+                "key": "Opmerking",
+                "marginRight": 45,
+                "placeholder": "Typ hier een opmerking",
+                "value": "Testcomment"
+              },
+              "path": "Library/SharedTemplates/Input/String (TextArea)"
+            },
+            "type": "ia.display.view"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer"
+        },
+        "position": {
+          "basis": "200px",
+          "grow": 1
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "padding": "10px"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "id": "{/root/Header.props.params.closeDockID}",
+                    "type": "open"
+                  },
+                  "scope": "C",
+                  "type": "dock"
+                }
+              }
+            },
+            "meta": {
+              "name": "Button_5"
+            },
+            "position": {
+              "basis": "80px",
+              "shrink": 0
+            },
+            "props": {
+              "image": {
+                "icon": {
+                  "path": "material/cancel"
+                }
+              },
+              "style": {
+                "classes": "ATA/Components/Buttons/Sec",
+                "marginLeft": 15
+              },
+              "text": ""
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": [
+                  {
+                    "config": {
+                      "script": "\tlineID \u003d self.parent.parent.getChild(\"FlexContainer\").getChild(\"EmbeddedView\").props.params.value\n\tarticle \u003d self.parent.parent.getChild(\"FlexContainer\").getChild(\"EmbeddedView_1\").props.params.value\n\tcomment \u003d self.parent.parent.getChild(\"FlexContainer\").getChild(\"EmbeddedView_0\").props.params.value\n\tarticleRequired \u003d self.parent.parent.getChild(\"FlexContainer\").getChild(\"EmbeddedView_2\").props.params.value\n\tusername \u003d self.session.props.auth.user.userName\n\t\n\tif articleRequired \u003d\u003d False:\n\t\tarticle \u003d None\n\t\n\tinsertQuery \u003d \u0027\u0027\u0027insert into \n\t\t\t\t\t\tAFComments\n\t\t\t\t\t\t([LineID]\n\t\t\t\t\t\t,[Comment]\n\t\t\t\t\t\t,[CreatedBy]\n\t\t\t\t\t\t,[CreationDate]\n\t\t\t\t\t\t,[StatusID]\n\t\t\t\t\t\t,[Article])\n\t\t\t\t\tvalues\n\t\t\t\t\t\t(?\n\t\t\t\t\t\t,?\n\t\t\t\t\t\t,?\n\t\t\t\t\t\t,?\n\t\t\t\t\t\t,?\n\t\t\t\t\t\t,?)\u0027\u0027\u0027\n\tinsertArgs \u003d [lineID, comment, username, system.date.now(), 1, article]\n\tsystem.db.runPrepUpdate(insertQuery, insertArgs, database \u003d \u0027NLSTWDYK_DB_PROD\u0027)\n\t\n\tself.parent.parent.getChild(\"FlexContainer\").getChild(\"EmbeddedView\").props.params.value \u003d None\n\tself.parent.parent.getChild(\"FlexContainer\").getChild(\"EmbeddedView_1\").props.params.value \u003d None\n\tself.parent.parent.getChild(\"FlexContainer\").getChild(\"EmbeddedView_0\").props.params.value \u003d None\n\tself.parent.parent.getChild(\"FlexContainer\").getChild(\"EmbeddedView_2\").props.params.value \u003d False\n\t\n\tsystem.perspective.sendMessage(\u0027refreshActivityFeed\u0027)\n\t\n\tsystem.perspective.closeDock(self.parent.parent.getChild(\"Header\").props.params.closeDockID)"
+                    },
+                    "scope": "G",
+                    "type": "script"
+                  },
+                  {
+                    "config": {
+                      "id": "{/root/Header.props.params.closeDockID}",
+                      "type": "open"
+                    },
+                    "enabled": false,
+                    "scope": "C",
+                    "type": "dock"
+                  }
+                ]
+              }
+            },
+            "meta": {
+              "name": "Button_1"
+            },
+            "position": {
+              "basis": "80px",
+              "shrink": 0
+            },
+            "props": {
+              "image": {
+                "icon": {
+                  "path": "material/save_alt"
+                }
+              },
+              "style": {
+                "classes": "ATA/Components/Buttons/CTA",
+                "marginLeft": 15
+              },
+              "text": ""
+            },
+            "type": "ia.input.button"
+          }
+        ],
+        "meta": {
+          "name": "Footer"
+        },
+        "position": {
+          "basis": "45px",
+          "shrink": 0
+        },
+        "props": {
+          "justify": "flex-end",
+          "style": {
+            "backgroundColor": "--backgroundSecondary",
+            "borderTopLeftRadius": 5,
+            "borderTopRightRadius": 5,
+            "padding": 7,
+            "zIndex": 1
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "backgroundColor": "#FFFFFF",
+        "opacity": 1
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

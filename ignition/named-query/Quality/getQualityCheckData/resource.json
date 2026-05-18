@@ -1,0 +1,60 @@
+{
+  "scope": "DG",
+  "version": 2,
+  "restricted": false,
+  "overridable": true,
+  "files": [
+    "query.sql"
+  ],
+  "attributes": {
+    "useMaxReturnSize": false,
+    "autoBatchEnabled": false,
+    "fallbackValue": "",
+    "maxReturnSize": 100,
+    "cacheUnit": "SEC",
+    "type": "Query",
+    "enabled": true,
+    "cacheAmount": 1,
+    "cacheEnabled": false,
+    "database": "NLSTWDYK_DB_PROD",
+    "fallbackEnabled": false,
+    "lastModificationSignature": "a8754fa394b3ea7d62f25ad59e1f0f19c5fa30bed1c4024fdbadbfad6fb9124d",
+    "permissions": [
+      {
+        "zone": "",
+        "role": ""
+      }
+    ],
+    "lastModification": {
+      "actor": "AT",
+      "timestamp": "2025-11-11T14:35:51Z"
+    },
+    "parameters": [
+      {
+        "type": "Parameter",
+        "identifier": "startDate",
+        "sqlType": 8
+      },
+      {
+        "type": "Parameter",
+        "identifier": "endDate",
+        "sqlType": 8
+      },
+      {
+        "type": "Parameter",
+        "identifier": "inspector",
+        "sqlType": 7
+      },
+      {
+        "type": "Parameter",
+        "identifier": "articleID",
+        "sqlType": 3
+      },
+      {
+        "type": "Parameter",
+        "identifier": "LineID",
+        "sqlType": 3
+      }
+    ]
+  }
+}

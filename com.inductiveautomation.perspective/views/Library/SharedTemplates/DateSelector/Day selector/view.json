@@ -1,0 +1,232 @@
+{
+  "custom": {},
+  "params": {
+    "date": {
+      "$": [
+        "ts",
+        192,
+        1709732518988
+      ],
+      "$ts": 1709732518988
+    },
+    "endDate": {
+      "$": [
+        "ts",
+        192,
+        1709732593610
+      ],
+      "$ts": 1709791199000
+    },
+    "startDate": {
+      "$": [
+        "ts",
+        192,
+        1709732593609
+      ],
+      "$ts": 1709704800000
+    }
+  },
+  "propConfig": {
+    "params.date": {
+      "paramDirection": "inout",
+      "persistent": true
+    },
+    "params.endDate": {
+      "binding": {
+        "config": {
+          "expression": "addSeconds(addDays({view.params.startDate},1),-1)"
+        },
+        "type": "expr"
+      },
+      "paramDirection": "output",
+      "persistent": true
+    },
+    "params.startDate": {
+      "binding": {
+        "config": {
+          "expression": "Addhours(midnight({view.params.date}),7)"
+        },
+        "type": "expr"
+      },
+      "paramDirection": "output",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 40,
+      "width": 250
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Label"
+        },
+        "position": {
+          "basis": "45px",
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "expression": "translate(\u0027Day\u0027)+\": \""
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "classes": "Text/Default",
+            "marginLeft": "10px"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "events": {
+          "component": {
+            "onActionPerformed": {
+              "config": {
+                "script": "\tdate \u003d self.getSibling(\"DateTimeInput\").props.value\n\tnewDate \u003d system.date.addDays(date,-1)\n\tself.getSibling(\"DateTimeInput\").props.value \u003d newDate"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "Button"
+        },
+        "position": {
+          "basis": "34px",
+          "shrink": 0
+        },
+        "props": {
+          "image": {
+            "height": 34,
+            "icon": {
+              "color": "--primary",
+              "path": "material/chevron_left"
+            },
+            "width": 34
+          },
+          "style": {
+            "backgroundColor": "#FFFFFF00",
+            "borderStyle": "none",
+            "marginBottom": "3px",
+            "marginTop": "3px",
+            "outlineStyle": "none"
+          },
+          "text": ""
+        },
+        "type": "ia.input.button"
+      },
+      {
+        "meta": {
+          "name": "DateTimeInput"
+        },
+        "position": {
+          "basis": "170px"
+        },
+        "propConfig": {
+          "props.maxDate": {
+            "binding": {
+              "config": {
+                "expression": "todate(dateformat(now(0), \"YYYY\") + \"-12-31 00:00:00\")"
+              },
+              "type": "expr"
+            }
+          },
+          "props.value": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "path": "view.params.date"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "format": "DD-MM",
+          "formattedValue": "06-03",
+          "minDate": {
+            "$": [
+              "ts",
+              0,
+              1709733016409
+            ],
+            "$ts": 1704063600000
+          },
+          "pickerType": "date",
+          "style": {
+            "borderColor": "--gray",
+            "borderStyle": "none",
+            "borderWidth": 1,
+            "margin": "5px",
+            "outlineStyle": "none"
+          }
+        },
+        "type": "ia.input.date-time-input"
+      },
+      {
+        "events": {
+          "component": {
+            "onActionPerformed": {
+              "config": {
+                "script": "\tdate \u003d self.getSibling(\"DateTimeInput\").props.value\n\tnewDate \u003d system.date.addDays(date,1)\n\tself.getSibling(\"DateTimeInput\").props.value \u003d newDate"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "Button_0"
+        },
+        "position": {
+          "basis": "34px",
+          "shrink": 0
+        },
+        "props": {
+          "image": {
+            "height": 34,
+            "icon": {
+              "color": "--primary",
+              "path": "material/chevron_right"
+            },
+            "width": 34
+          },
+          "style": {
+            "backgroundColor": "#FFFFFF00",
+            "borderStyle": "none",
+            "marginBottom": "3px",
+            "marginRight": "10px",
+            "marginTop": "3px",
+            "outlineStyle": "none"
+          },
+          "text": ""
+        },
+        "type": "ia.input.button"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "style": {
+        "backgroundColor": "--background",
+        "borderBottomLeftRadius": "10px",
+        "borderBottomRightRadius": "10px",
+        "borderTopLeftRadius": "10px",
+        "borderTopRightRadius": "10px",
+        "overflow": "visible"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

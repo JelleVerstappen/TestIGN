@@ -1,0 +1,350 @@
+{
+  "custom": {},
+  "params": {
+    "Enddate": {
+      "$": [
+        "ts",
+        201,
+        1751869544606
+      ],
+      "$ts": 1751869544606
+    },
+    "Line": -1,
+    "Startdate": {
+      "$": [
+        "ts",
+        201,
+        1751869544606
+      ],
+      "$ts": 1750055144606
+    }
+  },
+  "propConfig": {
+    "params.Enddate": {
+      "paramDirection": "inout",
+      "persistent": true
+    },
+    "params.Line": {
+      "paramDirection": "inout",
+      "persistent": true
+    },
+    "params.Startdate": {
+      "paramDirection": "inout",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "width": 600
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Header"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "params": {
+            "closeDockID": "ActivityFeedFilters",
+            "closeIcon": true,
+            "title": "Filters"
+          },
+          "path": "Library/SharedTemplates/HeaderForDock",
+          "style": {
+            "textTransform": "capitalize"
+          },
+          "useDefaultViewHeight": true
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "EmbeddedView"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.params.value": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.Startdate"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "CancelIconVisable": true,
+                "enabled": true,
+                "format": "DD-MM-YYYY",
+                "key": "Start datum"
+              },
+              "path": "Library/SharedTemplates/Input/Date",
+              "useDefaultViewHeight": true
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "StartTime"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.params.value": {
+                "binding": {
+                  "config": {
+                    "expression": "dateFormat({view.params.Startdate}, \u0027HH:mm:ss\u0027)"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "enabled": true,
+                "format": "hh:mm:ss",
+                "key": "Start tijd",
+                "showFormat": true
+              },
+              "path": "Library/SharedTemplates/Input/Time",
+              "useDefaultViewHeight": true
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "EmbeddedView_0"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.params.value": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.Enddate"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "CancelIconVisable": true,
+                "enabled": true,
+                "format": "DD-MM-YYYY",
+                "key": "Eind datum"
+              },
+              "path": "Library/SharedTemplates/Input/Date",
+              "style": {
+                "marginTop": 20
+              },
+              "useDefaultViewHeight": true
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "EndTime"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.params.value": {
+                "binding": {
+                  "config": {
+                    "expression": "dateFormat({view.params.Enddate}, \u0027HH:mm:ss\u0027)"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "enabled": true,
+                "format": "hh:mm:ss",
+                "key": "Eind tijd ",
+                "showFormat": true
+              },
+              "path": "Library/SharedTemplates/Input/Time",
+              "useDefaultViewHeight": true
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "EmbeddedView_1"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.params.options": {
+                "binding": {
+                  "config": {
+                    "queryPath": "getLinesDropdown"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\treturn system.dataset.addRow(value, [-1, \u0027Geen lijn\u0027])",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "query"
+                }
+              },
+              "props.params.value": {
+                "binding": {
+                  "config": {
+                    "expression": "{view.params.Line}"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "enabled": true,
+                "key": "Lijn",
+                "marginRight": 0,
+                "multiSelect": false,
+                "placeholder": "Select...",
+                "showClearIcon": true
+              },
+              "path": "Library/SharedTemplates/Input/Dropdown",
+              "style": {
+                "marginTop": 20
+              },
+              "useDefaultViewHeight": true
+            },
+            "type": "ia.display.view"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer"
+        },
+        "position": {
+          "basis": "200px",
+          "grow": 1
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "padding": "10px"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "id": "ActivityFeedFilters",
+                    "type": "open"
+                  },
+                  "scope": "C",
+                  "type": "dock"
+                }
+              }
+            },
+            "meta": {
+              "name": "Button_5"
+            },
+            "position": {
+              "basis": "80px",
+              "shrink": 0
+            },
+            "props": {
+              "image": {
+                "icon": {
+                  "path": "material/cancel"
+                }
+              },
+              "style": {
+                "classes": "ATA/Components/Buttons/Sec",
+                "marginLeft": 15
+              },
+              "text": ""
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "script": "\tlineID \u003d self.parent.parent.getChild(\"FlexContainer\").getChild(\"EmbeddedView_1\").props.params.value\n\tstartDate \u003d self.parent.parent.getChild(\"FlexContainer\").getChild(\"EmbeddedView\").props.params.value\n\tstartTime \u003d self.parent.parent.getChild(\"FlexContainer\").getChild(\"StartTime\").props.params.value\n\tendDate \u003d self.parent.parent.getChild(\"FlexContainer\").getChild(\"EmbeddedView_0\").props.params.value\n\tendTime \u003d self.parent.parent.getChild(\"FlexContainer\").getChild(\"EndTime\").props.params.value\n\t\n\tstartDate \u003d system.date.setTime(startDate, int(startTime.split(\u0027:\u0027)[0]), int(startTime.split(\u0027:\u0027)[1]), int(startTime.split(\u0027:\u0027)[2]))\n\tendDate \u003d system.date.setTime(endDate, int(endTime.split(\u0027:\u0027)[0]), int(endTime.split(\u0027:\u0027)[1]), int(endTime.split(\u0027:\u0027)[2]))\n\t\n\tsystem.perspective.sendMessage(\u0027ApplyFiltersAF\u0027, payload \u003d {\u0027LineID\u0027: lineID, \u0027Startdate\u0027: startDate, \u0027endDate\u0027: endDate})\n\tsystem.perspective.closeDock(self.parent.parent.getChild(\"Header\").props.params.closeDockID)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "Button_6"
+            },
+            "position": {
+              "basis": "80px",
+              "shrink": 0
+            },
+            "props": {
+              "image": {
+                "icon": {
+                  "path": "material/check"
+                }
+              },
+              "style": {
+                "classes": "ATA/Components/Buttons/CTA",
+                "marginLeft": 15
+              },
+              "text": ""
+            },
+            "type": "ia.input.button"
+          }
+        ],
+        "meta": {
+          "name": "Footer"
+        },
+        "position": {
+          "basis": "45px",
+          "shrink": 0
+        },
+        "props": {
+          "justify": "flex-end",
+          "style": {
+            "backgroundColor": "--backgroundSecondary",
+            "borderTopLeftRadius": 5,
+            "borderTopRightRadius": 5,
+            "padding": 7,
+            "zIndex": 1
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "backgroundColor": "#FFFFFF"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

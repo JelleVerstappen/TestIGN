@@ -1,0 +1,10 @@
+{
+  "base": {
+    "style": {
+      "color": "var(--prim)",
+      "fontSize": "24px",
+      "fontWeight": "bolder",
+      "paddingLeft": "30px"
+    }
+  }
+}

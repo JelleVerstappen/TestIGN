@@ -1,0 +1,640 @@
+{
+  "custom": {
+    "expand": false
+  },
+  "params": {
+    "ID": 20,
+    "data": {
+      "Article": 123,
+      "Comment": "Testcomment",
+      "CommentID": 20,
+      "CreatedBy": "AT",
+      "CreationDate": "2025-10-27T12:24:28",
+      "LineID": 2,
+      "Status": "Open",
+      "StatusID": 1,
+      "lineName": "Lijn 24"
+    },
+    "replyData": null
+  },
+  "propConfig": {
+    "custom.expand": {
+      "binding": {
+        "config": {
+          "expression": "False"
+        },
+        "type": "expr"
+      },
+      "persistent": true
+    },
+    "params.ID": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.data": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.replyData": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "width": 924
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Icon"
+            },
+            "position": {
+              "basis": "30px"
+            },
+            "props": {
+              "color": "var(--prim)",
+              "path": "material/comment"
+            },
+            "type": "ia.display.icon"
+          },
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "basis": "140px"
+            },
+            "props": {
+              "style": {
+                "marginLeft": 15
+              },
+              "text": "Opmerking",
+              "textStyle": {
+                "classes": "ATA/Components/Labels/TextNormal",
+                "color": "var(--textSec)",
+                "fontWeight": "bold"
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Label_1"
+            },
+            "position": {
+              "basis": "150px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "expression": "{view.params.data.lineName} + \r\nif({view.params.data.Article} !\u003d -1 ,\u0027 | Art.\u0027 + {view.params.data.Article},\r\n\u0027\u0027) "
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "marginLeft": 20,
+                "marginRight": "auto"
+              },
+              "textStyle": {
+                "classes": "ATA/Components/Labels/TextNormal",
+                "color": "var(--textSec)",
+                "fontWeight": "bold"
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Label_2"
+            },
+            "position": {
+              "basis": "150px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "expression": "\u0027Status: \u0027 + {view.params.data.Status}"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "textStyle": {
+                "classes": "ATA/Components/Labels/TextNormal",
+                "color": "var(--textSec)",
+                "fontWeight": "bold"
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Label_0"
+            },
+            "position": {
+              "basis": "200px"
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "struct": {
+                      "createdBy": "{view.params.data.CreatedBy}",
+                      "creationDate": "{view.params.data.CreationDate}"
+                    },
+                    "waitOnAll": true
+                  },
+                  "transforms": [
+                    {
+                      "code": "\tdateObj \u003d system.date.parse(value[\u0027creationDate\u0027].replace(\u0027T\u0027, \u0027 \u0027))\n\ttry:\n\t\treturn \u0027Van: \u0027 + value[\u0027createdBy\u0027] + \u0027 \u0027 + str(system.date.format(dateObj, \u0027YYYY-MM-dd HH:mm\u0027))\n\texcept:\n\t\treturn \u0027Van: \u0027 + \u0027unknown\u0027 + \u0027 \u0027 + str(system.date.format(dateObj, \u0027YYYY-MM-dd HH:mm\u0027))",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "expr-struct"
+                }
+              }
+            },
+            "props": {
+              "textStyle": {
+                "classes": "ATA/Components/Labels/TextSmall",
+                "color": "var(--text)",
+                "textAlign": "right"
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "TopFlex"
+        },
+        "position": {
+          "basis": "30px"
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Label"
+                },
+                "position": {
+                  "basis": "20px",
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "Opmerking",
+                  "textStyle": {
+                    "classes": "ATA/Components/Labels/TextNormal",
+                    "color": "var(--text)"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "Label_0"
+                },
+                "position": {
+                  "basis": "20px",
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "view.params.data.Comment"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "textStyle": {
+                    "classes": "ATA/Components/Labels/TextNormal",
+                    "color": "var(--textSec)",
+                    "fontWeight": "bold"
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "CommentFlex"
+            },
+            "position": {
+              "basis": "200px",
+              "grow": 1
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "marginLeft": 45
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Label"
+                },
+                "position": {
+                  "basis": "20px",
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "Laatste reactie",
+                  "textStyle": {
+                    "classes": "ATA/Components/Labels/TextNormal",
+                    "color": "var(--text)"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "Label_0"
+                },
+                "position": {
+                  "basis": "20px",
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "view.params.replyData"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\tif value is None:\n\t\treturn \u0027Nog geen reacties\u0027\n\tlastIndex \u003d len(value) - 1\n\treturn value[lastIndex][\u0027Comment\u0027]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "textStyle": {
+                    "classes": "ATA/Components/Labels/TextNormal",
+                    "color": "var(--textSec)",
+                    "fontWeight": "bold"
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "CommentFlex_0"
+            },
+            "position": {
+              "basis": "200px",
+              "grow": 1
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "marginLeft": 45
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Label"
+                },
+                "position": {
+                  "basis": "20px"
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "view.params.replyData"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\tif value is None:\n\t\treturn 0\n\treturn len(value)",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "textStyle": {
+                    "color": "var(--textThr)",
+                    "textAlign": "center"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "Icon"
+                },
+                "position": {
+                  "basis": "20px",
+                  "grow": 1,
+                  "shrink": 0
+                },
+                "props": {
+                  "color": "var(--color1)",
+                  "path": "material/reply"
+                },
+                "type": "ia.display.icon"
+              }
+            ],
+            "events": {
+              "dom": {
+                "onClick": {
+                  "config": {
+                    "script": "\tcurrentState \u003d self.view.custom.expand\n\t\n\tif currentState:\n\t\tnewState \u003d False\n\telse:\n\t\tnewState \u003d True\n\t\n\tself.view.custom.expand \u003d newState"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "FlexContainer"
+            },
+            "position": {
+              "basis": "50px",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "backgroundColor": "var(--prim)",
+                "borderBottomLeftRadius": 20,
+                "borderBottomRightRadius": 20,
+                "borderTopLeftRadius": 20,
+                "borderTopRightRadius": 20,
+                "cursor": "pointer"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "BottomFlex"
+        },
+        "position": {
+          "basis": "41px",
+          "shrink": 0
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "meta": {
+          "name": "ReplyFlex"
+        },
+        "propConfig": {
+          "position.display": {
+            "binding": {
+              "config": {
+                "path": "view.custom.expand"
+              },
+              "type": "property"
+            }
+          },
+          "props.instances": {
+            "binding": {
+              "config": {
+                "path": "view.params.replyData"
+              },
+              "transforms": [
+                {
+                  "code": "\tinstances \u003d [{\u0027data\u0027: value[i]} for i in range(len(value))]\n\treturn instances",
+                  "type": "script"
+                }
+              ],
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "direction": "column",
+          "elementStyle": {
+            "marginTop": 5
+          },
+          "path": "ControlRoom/ActivityFeed/Embedded/ReplyEntry",
+          "style": {
+            "borderTopColor": "#25507C",
+            "borderTopStyle": "solid",
+            "borderTopWidth": 1,
+            "marginTop": 15
+          },
+          "useDefaultViewWidth": false
+        },
+        "type": "ia.display.flex-repeater"
+      },
+      {
+        "meta": {
+          "name": "TextArea"
+        },
+        "position": {
+          "basis": "60px"
+        },
+        "propConfig": {
+          "position.display": {
+            "binding": {
+              "config": {
+                "path": "view.custom.expand"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "deferUpdates": false,
+          "placeholder": "Reply here...",
+          "style": {
+            "marginTop": 15
+          }
+        },
+        "type": "ia.input.text-area"
+      },
+      {
+        "children": [
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "id": "ChangeCommentStatusDock",
+                    "type": "open",
+                    "viewParams": {
+                      "commentID": "{view.params.data.CommentID}",
+                      "lineID": "{view.params.data.LineID}",
+                      "status": "{view.params.data.Status}"
+                    }
+                  },
+                  "scope": "C",
+                  "type": "dock"
+                }
+              }
+            },
+            "meta": {
+              "name": "Button_0"
+            },
+            "position": {
+              "basis": "50px"
+            },
+            "props": {
+              "image": {
+                "icon": {
+                  "path": "material/next_plan"
+                }
+              },
+              "style": {
+                "classes": "ATA/Components/Buttons/Sec"
+              },
+              "text": ""
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "events": {
+              "component": {
+                "onFileReceived": {
+                  "config": {
+                    "script": "\tuser \u003d self.session.props.auth.user.userName\n\tdatetime \u003d system.date.now()\n\tcomment \u003d self.parent.parent.getChild(\"TextArea\").props.text\n\tparentCommentID \u003d self.view.params.data.CommentID\n\tline \u003d self.view.params.data.LineID\n\tfileData \u003d event.file.getBytes()\n\t\n\tinsertQuery \u003d \u0027\u0027\u0027insert into AFComments \n\t\t\t\t\t\t(LineID, Comment, CreatedBy, CreationDate, ParentCommentID, imageBlob)\n\t\t\t\t\t\tvalues\n\t\t\t\t\t\t(?, ?, ?, ?, ?, ?)\u0027\u0027\u0027\n\targs \u003d [line, comment, user, datetime, parentCommentID, fileData]\n\tsystem.db.runPrepUpdate(insertQuery, args, database \u003d \u0027NLSTWDYK_DB_PROD\u0027)\n\t\n\tself.parent.parent.getChild(\"TextArea\").props.text \u003d \u0027\u0027\n\tself.clearUploads()\n\tsystem.perspective.sendMessage(\u0027refreshComments\u0027)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "FileUpload",
+              "tooltip": {
+                "enabled": true
+              }
+            },
+            "position": {
+              "basis": "150px"
+            },
+            "propConfig": {
+              "props.style.backgroundColor": {
+                "binding": {
+                  "config": {
+                    "expression": "if({.../TextArea.props.text} \u003d \u0027\u0027, \u0027#808080\u0027, \u0027\u0027)"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.style.pointerEvents": {
+                "binding": {
+                  "config": {
+                    "expression": "if({.../TextArea.props.text} \u003d \u0027\u0027, \u0027none\u0027, \u0027auto\u0027)"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "",
+                "marginLeft": "auto",
+                "marginRight": 15
+              }
+            },
+            "type": "ia.input.fileupload"
+          },
+          {
+            "events": {
+              "dom": {
+                "onClick": {
+                  "config": {
+                    "script": "\tuser \u003d self.session.props.auth.user.userName\n\tdatetime \u003d system.date.now()\n\tcomment \u003d self.parent.parent.getChild(\"TextArea\").props.text\n\tparentCommentID \u003d self.view.params.data.CommentID\n\tline \u003d self.view.params.data.LineID\n\t\n\tinsertQuery \u003d \u0027\u0027\u0027insert into AFComments \n\t\t\t\t\t\t(LineID, Comment, CreatedBy, CreationDate, ParentCommentID)\n\t\t\t\t\t\tvalues\n\t\t\t\t\t\t(?, ?, ?, ?, ?)\u0027\u0027\u0027\n\targs \u003d [line, comment, user, datetime, parentCommentID]\n\tsystem.db.runPrepUpdate(insertQuery, args, database \u003d \u0027NLSTWDYK_DB_PROD\u0027)\n\t\n\tself.parent.parent.getChild(\"TextArea\").props.text \u003d \u0027\u0027\n\tsystem.perspective.sendMessage(\u0027refreshComments\u0027)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "Button"
+            },
+            "props": {
+              "image": {
+                "icon": {
+                  "path": "material/add_comment"
+                }
+              },
+              "style": {
+                "classes": "ATA/Components/Buttons/Prim",
+                "width": "50px"
+              },
+              "text": ""
+            },
+            "type": "ia.input.button"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer"
+        },
+        "position": {
+          "basis": "35px"
+        },
+        "propConfig": {
+          "position.display": {
+            "binding": {
+              "config": {
+                "path": "view.custom.expand"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "marginTop": 5
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "backgroundColor": "--color1",
+        "borderBottomLeftRadius": 5,
+        "borderBottomRightRadius": 5,
+        "borderColor": "var(--sec)",
+        "borderStyle": "solid",
+        "borderTopLeftRadius": 5,
+        "borderTopRightRadius": 5,
+        "borderWidth": 1,
+        "padding": 5
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

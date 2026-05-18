@@ -1,0 +1,242 @@
+{
+  "custom": {},
+  "params": {
+    "transportType": 1
+  },
+  "propConfig": {
+    "params.transportType": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 192,
+      "width": 252
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "SeaInvestIcon_4"
+        },
+        "position": {
+          "height": 0.9948,
+          "width": 0.996
+        },
+        "props": {
+          "elements": [
+            {
+              "name": "defs",
+              "type": "defs"
+            },
+            {
+              "elements": [
+                {
+                  "elements": [
+                    {
+                      "elements": [
+                        {
+                          "elements": [
+                            {
+                              "elements": [
+                                {
+                                  "d": "M 0 0 L 80 0 L 80 100 L 40 130 L 0 100 Z",
+                                  "fill": {
+                                    "paint": "#ffffff"
+                                  },
+                                  "name": "path",
+                                  "stroke": {
+                                    "miterlimit": "10",
+                                    "paint": "#000000"
+                                  },
+                                  "type": "path"
+                                }
+                              ],
+                              "name": "group",
+                              "type": "group"
+                            }
+                          ],
+                          "name": "group",
+                          "type": "group"
+                        },
+                        {
+                          "elements": [
+                            {
+                              "elements": [
+                                {
+                                  "d": "M 30 130 L 230 130 L 230 140 L 30 140 L 30 130 Z",
+                                  "fill": {
+                                    "paint": "#ffffff"
+                                  },
+                                  "name": "path",
+                                  "stroke": {
+                                    "paint": "transparent"
+                                  },
+                                  "type": "path"
+                                },
+                                {
+                                  "d": "M 30 130 L 30 140 L 30 140 L 230 140 L 230 130 L 30 130",
+                                  "fill": {
+                                    "paint": "transparent"
+                                  },
+                                  "name": "path",
+                                  "stroke": {
+                                    "paint": "transparent"
+                                  },
+                                  "type": "path"
+                                },
+                                {
+                                  "d": "M 30 130 L 230 130 L 230 140 L 30 140 L 30 130 Z",
+                                  "fill": {
+                                    "paint": "transparent"
+                                  },
+                                  "name": "path",
+                                  "stroke": {
+                                    "miterlimit": "10",
+                                    "paint": "#000000"
+                                  },
+                                  "type": "path"
+                                }
+                              ],
+                              "name": "group",
+                              "type": "group"
+                            }
+                          ],
+                          "name": "group",
+                          "type": "group"
+                        },
+                        {
+                          "elements": [
+                            {
+                              "elements": [
+                                {
+                                  "d": "M 210 140 L 250 140 L 250 178.46 L 230 190 L 210 178.46 Z",
+                                  "fill": {
+                                    "paint": "#ffffff"
+                                  },
+                                  "name": "path",
+                                  "stroke": {
+                                    "miterlimit": "10",
+                                    "paint": "#000000"
+                                  },
+                                  "type": "path"
+                                }
+                              ],
+                              "name": "group",
+                              "type": "group"
+                            }
+                          ],
+                          "name": "group",
+                          "type": "group"
+                        }
+                      ],
+                      "name": "group",
+                      "type": "group"
+                    }
+                  ],
+                  "name": "group",
+                  "type": "group"
+                }
+              ],
+              "name": "group",
+              "type": "group"
+            }
+          ],
+          "style": {
+            "background": " transparent",
+            "backgroundColor": " transparent",
+            "colorScheme": " light dark"
+          },
+          "viewBox": "-0.5 -0.5 251 191"
+        },
+        "type": "ia.shapes.svg"
+      },
+      {
+        "meta": {
+          "name": "EmbeddedView"
+        },
+        "position": {
+          "height": 0.0856,
+          "width": 0.0091,
+          "x": 0.3883,
+          "y": 0.1938
+        },
+        "propConfig": {
+          "props.params.engUnits": {
+            "binding": {
+              "config": {
+                "expression": "if({view.params.transportType} \u003d1, \u0027bar\u0027, \u0027A\u0027)"
+              },
+              "type": "expr"
+            }
+          },
+          "props.params.key": {
+            "binding": {
+              "config": {
+                "expression": "if({view.params.transportType} \u003d1, \u0027Vacuümpomp vacuum\u0027, \u0027Schroefmotor stroom\u0027)"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "enabled": false,
+            "format": "0,0.##",
+            "maxValue": 10000000,
+            "minValue": 0,
+            "placeholder": "",
+            "rejected": "True",
+            "unitVisable": true,
+            "value": 515
+          },
+          "path": "Library/SharedTemplates/Input/Number",
+          "style": {
+            "max-height": "50px",
+            "max-width": "250px",
+            "min-height": "50px",
+            "min-width": "150px"
+          },
+          "useDefaultViewHeight": true
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "EmbeddedView_0"
+        },
+        "position": {
+          "height": 0.276,
+          "width": 0.3294,
+          "x": 0.4126,
+          "y": 0.4374
+        },
+        "props": {
+          "params": {
+            "checkBoxLeft": true,
+            "checkIcon": "bootstrap-icons/check-square-fill",
+            "enabled": false,
+            "key": "Geen flow",
+            "textPosition": "start",
+            "uncheckColor": "",
+            "uncheckIcon": "bootstrap-icons/square",
+            "value": false
+          },
+          "path": "Library/SharedTemplates/Input/Checkbox",
+          "useDefaultViewHeight": true
+        },
+        "type": "ia.display.view"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "aspectRatio": "252:192",
+      "mode": "percent"
+    },
+    "type": "ia.container.coord"
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "height": 170,
+      "width": 450
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "EmbeddedView"
+        },
+        "propConfig": {
+          "props.params.options": {
+            "binding": {
+              "config": {
+                "queryPath": "getLinesDropdown"
+              },
+              "type": "query"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "enabled": true,
+            "key": "Lijn",
+            "marginRight": 45,
+            "multiSelect": false,
+            "placeholder": "Select...",
+            "showClearIcon": true,
+            "value": null
+          },
+          "path": "Library/SharedTemplates/Input/Dropdown",
+          "useDefaultViewHeight": true
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "EmbeddedView_0"
+        },
+        "propConfig": {
+          "props.params.options": {
+            "binding": {
+              "config": {
+                "parameters": {
+                  "LineID": "{../EmbeddedView.props.params.value}"
+                },
+                "queryPath": "getArticlesDropdown"
+              },
+              "type": "query"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "enabled": true,
+            "key": "Artikel",
+            "marginRight": 45,
+            "multiSelect": false,
+            "placeholder": "Select...",
+            "showClearIcon": true,
+            "value": null
+          },
+          "path": "Library/SharedTemplates/Input/Dropdown",
+          "useDefaultViewHeight": true
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "events": {
+          "component": {
+            "onActionPerformed": {
+              "config": {
+                "script": "\tlineID \u003d self.getSibling(\"EmbeddedView\").props.params.value\n\tarticleID \u003d self.getSibling(\"EmbeddedView_0\").props.params.value\n\t\n\tarticleDropdown \u003d self.getSibling(\"EmbeddedView_0\").props.params.options\n\tarticleNumber \u003d None\n\t\n\tfor row in range(articleDropdown.getRowCount()):\n\t\tif articleDropdown.getValueAt(row, \u0027value\u0027) \u003d\u003d articleID:\n\t\t\tarticleNumber \u003d articleDropdown.getValueAt(row, \u0027label\u0027)\n\t\t\tbreak\n\t\n\tdyka.processList.loadProcessList(articleNumber, lineID)\n\tsystem.perspective.closePopup(\u0027loadProcessList\u0027)"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "Button"
+        },
+        "position": {
+          "basis": "34px"
+        },
+        "props": {
+          "style": {
+            "marginLeft": "auto",
+            "marginRight": "auto",
+            "marginTop": 25,
+            "width": "100px"
+          },
+          "text": "Inladen"
+        },
+        "type": "ia.input.button"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

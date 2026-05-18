@@ -1,0 +1,1699 @@
+{
+  "custom": {},
+  "params": {
+    "Line": "E07"
+  },
+  "propConfig": {
+    "params.Line": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "width": 1134
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "View"
+                        },
+                        "position": {
+                          "grow": 1
+                        },
+                        "propConfig": {
+                          "props.params.startPath": {
+                            "binding": {
+                              "config": {
+                                "expression": "\"[NLSTWDYK]Dyka/STW/EXT/\"+{view.params.Line}+\"/EXT/MEXT\""
+                              },
+                              "type": "expr"
+                            }
+                          }
+                        },
+                        "props": {
+                          "path": "ControlRoom/Assets/Extruder/Overview/Templates/TemplateRepeater2",
+                          "style": {
+                            "height": "150px"
+                          }
+                        },
+                        "type": "ia.display.view"
+                      }
+                    ],
+                    "meta": {
+                      "name": "Extruder"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "props": {
+                      "direction": "column"
+                    },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "FlexRepeater_0"
+                        },
+                        "position": {
+                          "grow": 1
+                        },
+                        "propConfig": {
+                          "props.instances[0].startPath": {
+                            "binding": {
+                              "config": {
+                                "expression": "\"[NLSTWDYK]Dyka/STW/EXT/\"+{view.params.Line}+\"/EXT/MEXT/Screen/ProcessValues/LineSpeed\""
+                              },
+                              "type": "expr"
+                            }
+                          },
+                          "props.instances[1].startPath": {
+                            "binding": {
+                              "config": {
+                                "expression": "\"[NLSTWDYK]Dyka/STW/EXT/\"+{view.params.Line}+\"/EXT/MEXT/Screen/ProcessValues/Throughput\""
+                              },
+                              "type": "expr"
+                            }
+                          },
+                          "props.instances[2].startPath": {
+                            "binding": {
+                              "config": {
+                                "expression": "\"[NLSTWDYK]Dyka/STW/EXT/\"+{view.params.Line}+\"/EXT/MEXT/Screen/ProcessValues/MeterWeight\""
+                              },
+                              "type": "expr"
+                            }
+                          }
+                        },
+                        "props": {
+                          "elementPosition": {
+                            "basis": "auto",
+                            "grow": 0
+                          },
+                          "instances": [
+                            {
+                              "ParamName": "Lijnsnelheid",
+                              "instancePosition": {},
+                              "instanceStyle": {
+                                "classes": ""
+                              }
+                            },
+                            {
+                              "ParamName": "Lijndosering",
+                              "instancePosition": {},
+                              "instanceStyle": {
+                                "classes": ""
+                              }
+                            },
+                            {
+                              "ParamName": "Metergewicht",
+                              "instancePosition": {},
+                              "instanceStyle": {
+                                "classes": ""
+                              }
+                            }
+                          ],
+                          "justify": "space-around",
+                          "path": "Library/SharedTemplates/ParameterData",
+                          "style": {
+                            "classes": "ATA/Background/CardSecondary",
+                            "marginLeft": 5
+                          },
+                          "useDefaultViewHeight": false
+                        },
+                        "type": "ia.display.flex-repeater"
+                      },
+                      {
+                        "meta": {
+                          "name": "FlexRepeater"
+                        },
+                        "position": {
+                          "grow": 1
+                        },
+                        "propConfig": {
+                          "props.instances[0].startPath": {
+                            "binding": {
+                              "config": {
+                                "expression": "\"[NLSTWDYK]Dyka/STW/EXT/\"+{view.params.Line}+\"/EXT/MEXT/Screen/ProcessValues/MassTemperature\""
+                              },
+                              "type": "expr"
+                            }
+                          },
+                          "props.instances[1].startPath": {
+                            "binding": {
+                              "config": {
+                                "expression": "\"[NLSTWDYK]Dyka/STW/EXT/\"+{view.params.Line}+\"/EXT/MEXT/Screen/ProcessValues/MassPressure\""
+                              },
+                              "type": "expr"
+                            }
+                          },
+                          "props.instances[2].startPath": {
+                            "binding": {
+                              "config": {
+                                "expression": "\"[NLSTWDYK]Dyka/STW/EXT/\"+{view.params.Line}+\"/EXT/MEXT/Screen/ProcessValues/Load\""
+                              },
+                              "type": "expr"
+                            }
+                          },
+                          "props.instances[3].startPath": {
+                            "binding": {
+                              "config": {
+                                "expression": "\"[NLSTWDYK]Dyka/STW/EXT/\"+{view.params.Line}+\"/EXT/MEXT/Screen/ProcessValues/Speed\""
+                              },
+                              "type": "expr"
+                            }
+                          },
+                          "props.instances[4].startPath": {
+                            "binding": {
+                              "config": {
+                                "expression": "\"[NLSTWDYK]Dyka/STW/EXT/\"+{view.params.Line}+\"/EXT/MEXT/Screen/ProcessValues/Vacuum\""
+                              },
+                              "type": "expr"
+                            }
+                          }
+                        },
+                        "props": {
+                          "elementPosition": {
+                            "basis": "auto",
+                            "grow": 0
+                          },
+                          "instances": [
+                            {
+                              "ParamName": "Massatemperatuur",
+                              "instancePosition": {},
+                              "instanceStyle": {
+                                "classes": ""
+                              }
+                            },
+                            {
+                              "ParamName": "Massadruk",
+                              "instancePosition": {},
+                              "instanceStyle": {
+                                "classes": ""
+                              }
+                            },
+                            {
+                              "ParamName": "Schroefbelasting",
+                              "instancePosition": {},
+                              "instanceStyle": {
+                                "classes": ""
+                              }
+                            },
+                            {
+                              "ParamName": "Schroeftoerental",
+                              "instancePosition": {},
+                              "instanceStyle": {
+                                "classes": ""
+                              }
+                            },
+                            {
+                              "ParamName": "Vacuüm",
+                              "instancePosition": {},
+                              "instanceStyle": {
+                                "classes": ""
+                              }
+                            }
+                          ],
+                          "justify": "space-around",
+                          "path": "Library/SharedTemplates/ParameterData",
+                          "style": {
+                            "classes": "ATA/Background/CardSecondary"
+                          },
+                          "useDefaultViewHeight": false
+                        },
+                        "type": "ia.display.flex-repeater"
+                      }
+                    ],
+                    "meta": {
+                      "name": "Statuses"
+                    },
+                    "position": {
+                      "basis": "190px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "justify": "space-around"
+                    },
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "meta": {
+                  "name": "MEXT"
+                },
+                "props": {
+                  "direction": "column"
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "View"
+                        },
+                        "position": {
+                          "grow": 1
+                        },
+                        "propConfig": {
+                          "props.params.startPath": {
+                            "binding": {
+                              "config": {
+                                "expression": "\"[NLSTWDYK]Dyka/STW/EXT/\"+{view.params.Line}+\"/EXT/CEXT01\""
+                              },
+                              "type": "expr"
+                            }
+                          }
+                        },
+                        "props": {
+                          "path": "ControlRoom/Assets/Extruder/Overview/Templates/TemplateRepeater2",
+                          "style": {
+                            "height": "150px"
+                          }
+                        },
+                        "type": "ia.display.view"
+                      }
+                    ],
+                    "meta": {
+                      "name": "Extruder"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "props": {
+                      "direction": "column"
+                    },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "FlexRepeater_0"
+                        },
+                        "position": {
+                          "grow": 1
+                        },
+                        "propConfig": {
+                          "props.instances[0].startPath": {
+                            "binding": {
+                              "config": {
+                                "expression": "\"[NLSTWDYK]Dyka/STW/EXT/\"+{view.params.Line}+\"/EXT/CEXT01/Screen/ProcessValues/LineSpeed\""
+                              },
+                              "type": "expr"
+                            }
+                          },
+                          "props.instances[1].startPath": {
+                            "binding": {
+                              "config": {
+                                "expression": "\"[NLSTWDYK]Dyka/STW/EXT/\"+{view.params.Line}+\"/EXT/CEXT01/Screen/ProcessValues/Throughput\""
+                              },
+                              "type": "expr"
+                            }
+                          },
+                          "props.instances[2].startPath": {
+                            "binding": {
+                              "config": {
+                                "expression": "\"[NLSTWDYK]Dyka/STW/EXT/\"+{view.params.Line}+\"/EXT/CEXT01/Screen/ProcessValues/MeterWeight\""
+                              },
+                              "type": "expr"
+                            }
+                          }
+                        },
+                        "props": {
+                          "elementPosition": {
+                            "basis": "auto",
+                            "grow": 0
+                          },
+                          "instances": [
+                            {
+                              "ParamName": "Lijnsnelheid",
+                              "instancePosition": {},
+                              "instanceStyle": {
+                                "classes": ""
+                              }
+                            },
+                            {
+                              "ParamName": "Lijndosering",
+                              "instancePosition": {},
+                              "instanceStyle": {
+                                "classes": ""
+                              }
+                            },
+                            {
+                              "ParamName": "Metergewicht",
+                              "instancePosition": {},
+                              "instanceStyle": {
+                                "classes": ""
+                              }
+                            }
+                          ],
+                          "justify": "space-around",
+                          "path": "Library/SharedTemplates/ParameterData",
+                          "style": {
+                            "classes": "ATA/Background/CardSecondary",
+                            "marginLeft": 5
+                          },
+                          "useDefaultViewHeight": false
+                        },
+                        "type": "ia.display.flex-repeater"
+                      },
+                      {
+                        "meta": {
+                          "name": "FlexRepeater"
+                        },
+                        "position": {
+                          "grow": 1
+                        },
+                        "propConfig": {
+                          "props.instances[0].startPath": {
+                            "binding": {
+                              "config": {
+                                "expression": "\"[NLSTWDYK]Dyka/STW/EXT/\"+{view.params.Line}+\"/EXT/CEXT01/Screen/ProcessValues/MassTemperature\""
+                              },
+                              "type": "expr"
+                            }
+                          },
+                          "props.instances[1].startPath": {
+                            "binding": {
+                              "config": {
+                                "expression": "\"[NLSTWDYK]Dyka/STW/EXT/\"+{view.params.Line}+\"/EXT/CEXT01/Screen/ProcessValues/MassPressure\""
+                              },
+                              "type": "expr"
+                            }
+                          },
+                          "props.instances[2].startPath": {
+                            "binding": {
+                              "config": {
+                                "expression": "\"[NLSTWDYK]Dyka/STW/EXT/\"+{view.params.Line}+\"/EXT/CEXT01/Screen/ProcessValues/Load\""
+                              },
+                              "type": "expr"
+                            }
+                          },
+                          "props.instances[3].startPath": {
+                            "binding": {
+                              "config": {
+                                "expression": "\"[NLSTWDYK]Dyka/STW/EXT/\"+{view.params.Line}+\"/EXT/CEXT01/Screen/ProcessValues/Speed\""
+                              },
+                              "type": "expr"
+                            }
+                          },
+                          "props.instances[4].startPath": {
+                            "binding": {
+                              "config": {
+                                "expression": "\"[NLSTWDYK]Dyka/STW/EXT/\"+{view.params.Line}+\"/EXT/CEXT01/Screen/ProcessValues/Vacuum\""
+                              },
+                              "type": "expr"
+                            }
+                          }
+                        },
+                        "props": {
+                          "elementPosition": {
+                            "basis": "auto",
+                            "grow": 0
+                          },
+                          "instances": [
+                            {
+                              "ParamName": "Massatemperatuur",
+                              "instancePosition": {},
+                              "instanceStyle": {
+                                "classes": ""
+                              }
+                            },
+                            {
+                              "ParamName": "Massadruk",
+                              "instancePosition": {},
+                              "instanceStyle": {
+                                "classes": ""
+                              }
+                            },
+                            {
+                              "ParamName": "Schroefbelasting",
+                              "instancePosition": {},
+                              "instanceStyle": {
+                                "classes": ""
+                              }
+                            },
+                            {
+                              "ParamName": "Schroeftoerental",
+                              "instancePosition": {},
+                              "instanceStyle": {
+                                "classes": ""
+                              }
+                            },
+                            {
+                              "ParamName": "Vacuüm",
+                              "instancePosition": {},
+                              "instanceStyle": {
+                                "classes": ""
+                              }
+                            }
+                          ],
+                          "justify": "space-around",
+                          "path": "Library/SharedTemplates/ParameterData",
+                          "style": {
+                            "classes": "ATA/Background/CardSecondary"
+                          },
+                          "useDefaultViewHeight": false
+                        },
+                        "type": "ia.display.flex-repeater"
+                      }
+                    ],
+                    "meta": {
+                      "name": "Statuses"
+                    },
+                    "position": {
+                      "basis": "190px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "justify": "space-around"
+                    },
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "meta": {
+                  "name": "CEXT01"
+                },
+                "position": {
+                  "tabIndex": 1
+                },
+                "props": {
+                  "direction": "column"
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "View"
+                        },
+                        "position": {
+                          "grow": 1
+                        },
+                        "propConfig": {
+                          "props.params.startPath": {
+                            "binding": {
+                              "config": {
+                                "expression": "\"[NLSTWDYK]Dyka/STW/EXT/\"+{view.params.Line}+\"/EXT/CEXT02\""
+                              },
+                              "type": "expr"
+                            }
+                          }
+                        },
+                        "props": {
+                          "path": "ControlRoom/Assets/Extruder/Overview/Templates/TemplateRepeater2",
+                          "style": {
+                            "height": "150px"
+                          }
+                        },
+                        "type": "ia.display.view"
+                      }
+                    ],
+                    "meta": {
+                      "name": "Extruder"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "props": {
+                      "direction": "column"
+                    },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "FlexRepeater_0"
+                        },
+                        "position": {
+                          "grow": 1
+                        },
+                        "propConfig": {
+                          "props.instances[0].startPath": {
+                            "binding": {
+                              "config": {
+                                "expression": "\"[NLSTWDYK]Dyka/STW/EXT/\"+{view.params.Line}+\"/EXT/CEXT02/Screen/ProcessValues/LineSpeed\""
+                              },
+                              "type": "expr"
+                            }
+                          },
+                          "props.instances[1].startPath": {
+                            "binding": {
+                              "config": {
+                                "expression": "\"[NLSTWDYK]Dyka/STW/EXT/\"+{view.params.Line}+\"/EXT/CEXT02/Screen/ProcessValues/Throughput\""
+                              },
+                              "type": "expr"
+                            }
+                          },
+                          "props.instances[2].startPath": {
+                            "binding": {
+                              "config": {
+                                "expression": "\"[NLSTWDYK]Dyka/STW/EXT/\"+{view.params.Line}+\"/EXT/CEXT02/Screen/ProcessValues/MeterWeight\""
+                              },
+                              "type": "expr"
+                            }
+                          }
+                        },
+                        "props": {
+                          "elementPosition": {
+                            "basis": "auto",
+                            "grow": 0
+                          },
+                          "instances": [
+                            {
+                              "ParamName": "Lijnsnelheid",
+                              "instancePosition": {},
+                              "instanceStyle": {
+                                "classes": ""
+                              }
+                            },
+                            {
+                              "ParamName": "Lijndosering",
+                              "instancePosition": {},
+                              "instanceStyle": {
+                                "classes": ""
+                              }
+                            },
+                            {
+                              "ParamName": "Metergewicht",
+                              "instancePosition": {},
+                              "instanceStyle": {
+                                "classes": ""
+                              }
+                            }
+                          ],
+                          "justify": "space-around",
+                          "path": "Library/SharedTemplates/ParameterData",
+                          "style": {
+                            "classes": "ATA/Background/CardSecondary",
+                            "marginLeft": 5
+                          },
+                          "useDefaultViewHeight": false
+                        },
+                        "type": "ia.display.flex-repeater"
+                      },
+                      {
+                        "meta": {
+                          "name": "FlexRepeater"
+                        },
+                        "position": {
+                          "grow": 1
+                        },
+                        "propConfig": {
+                          "props.instances[0].startPath": {
+                            "binding": {
+                              "config": {
+                                "expression": "\"[NLSTWDYK]Dyka/STW/EXT/\"+{view.params.Line}+\"/EXT/CEXT02/Screen/ProcessValues/MassTemperature\""
+                              },
+                              "type": "expr"
+                            }
+                          },
+                          "props.instances[1].startPath": {
+                            "binding": {
+                              "config": {
+                                "expression": "\"[NLSTWDYK]Dyka/STW/EXT/\"+{view.params.Line}+\"/EXT/CEXT02/Screen/ProcessValues/MassPressure\""
+                              },
+                              "type": "expr"
+                            }
+                          },
+                          "props.instances[2].startPath": {
+                            "binding": {
+                              "config": {
+                                "expression": "\"[NLSTWDYK]Dyka/STW/EXT/\"+{view.params.Line}+\"/EXT/CEXT02/Screen/ProcessValues/Load\""
+                              },
+                              "type": "expr"
+                            }
+                          },
+                          "props.instances[3].startPath": {
+                            "binding": {
+                              "config": {
+                                "expression": "\"[NLSTWDYK]Dyka/STW/EXT/\"+{view.params.Line}+\"/EXT/CEXT02/Screen/ProcessValues/Speed\""
+                              },
+                              "type": "expr"
+                            }
+                          },
+                          "props.instances[4].startPath": {
+                            "binding": {
+                              "config": {
+                                "expression": "\"[NLSTWDYK]Dyka/STW/EXT/\"+{view.params.Line}+\"/EXT/CEXT02/Screen/ProcessValues/Vacuum\""
+                              },
+                              "type": "expr"
+                            }
+                          }
+                        },
+                        "props": {
+                          "elementPosition": {
+                            "basis": "auto",
+                            "grow": 0
+                          },
+                          "instances": [
+                            {
+                              "ParamName": "Massatemperatuur",
+                              "instancePosition": {},
+                              "instanceStyle": {
+                                "classes": ""
+                              }
+                            },
+                            {
+                              "ParamName": "Massadruk",
+                              "instancePosition": {},
+                              "instanceStyle": {
+                                "classes": ""
+                              }
+                            },
+                            {
+                              "ParamName": "Schroefbelasting",
+                              "instancePosition": {},
+                              "instanceStyle": {
+                                "classes": ""
+                              }
+                            },
+                            {
+                              "ParamName": "Schroeftoerental",
+                              "instancePosition": {},
+                              "instanceStyle": {
+                                "classes": ""
+                              }
+                            },
+                            {
+                              "ParamName": "Vacuüm",
+                              "instancePosition": {},
+                              "instanceStyle": {
+                                "classes": ""
+                              }
+                            }
+                          ],
+                          "justify": "space-around",
+                          "path": "Library/SharedTemplates/ParameterData",
+                          "style": {
+                            "classes": "ATA/Background/CardSecondary"
+                          },
+                          "useDefaultViewHeight": false
+                        },
+                        "type": "ia.display.flex-repeater"
+                      }
+                    ],
+                    "meta": {
+                      "name": "Statuses"
+                    },
+                    "position": {
+                      "basis": "190px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "justify": "space-around"
+                    },
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "meta": {
+                  "name": "CEXT02"
+                },
+                "position": {
+                  "tabIndex": 2
+                },
+                "props": {
+                  "direction": "column"
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "FlexRepeater_1"
+                        },
+                        "position": {
+                          "grow": 1
+                        },
+                        "propConfig": {
+                          "props.instances": {
+                            "binding": {
+                              "config": {
+                                "path": "view.params.Line"
+                              },
+                              "transforms": [
+                                {
+                                  "code": "\tprovider \u003d \u0027NLSTWDYK\u0027\n\tlimit \u003d 100\n\t\n\tquery \u003d {\n\t  \"options\": {\n\t    \"includeUdtMembers\": True,\n\t    \"includeUdtDefinitions\": False\n\t  },\n\t  \"condition\": {\n\t    \"path\": \"Dyka/STW/EXT/\"+value+\"/Assets/MEXT/Screen/ProcessValues/Dies/Zone*/Temperature/ActualValue\",\n\t    \"attributes\": {\n\t      \"values\": [],\n\t      \"requireAll\": True\n\t    },\n\t    \"properties\": {\n\t      \"op\": \"Or\",\n\t      \"conditions\": [\n\t        {\n\t          \"op\": \"And\",\n\t          \"conditions\": [\n\t            {\n\t              \"prop\": \"enabled\",\n\t              \"comp\": \"Equal\",\n\t              \"value\": \"true\"\n\t            }\n\t          ]\n\t        }\n\t      ]\n\t    }\n\t  },\n\t  \"returnProperties\": [\n\t    \"tagType\",\n\t    \"quality\"\n\t  ]\n\t}\n\t\n\t# Limited to 100 rows. Use continuationPoint functionality to continue from last result, \n\t# or remove limit for full results.\n\tresults \u003d system.tag.query(provider, query, limit)\n\tsortedResults \u003d sorted(results)\n\t\n\tinstances \u003d []\n\tfor result in sortedResults:\n\t\tinstance \u003d {\n\t\t  \t\t\"startPath\": \u0027/\u0027.join(str(result[\u0027fullPath\u0027]).split(\u0027/\u0027)[:-2]),\n\t\t  \t\t\"zoneNr\": \"%02d\" % (sortedResults.index(result) + 1)\n\t\t\t}\n\t\tinstances.append(instance)\n\treturn instances",
+                                  "type": "script"
+                                }
+                              ],
+                              "type": "property"
+                            }
+                          }
+                        },
+                        "props": {
+                          "alignContent": "center",
+                          "direction": "row-reverse",
+                          "elementPosition": {
+                            "basis": "",
+                            "grow": 0,
+                            "shrink": 0
+                          },
+                          "elementStyle": {
+                            "margin": 5
+                          },
+                          "justify": "center",
+                          "path": "ControlRoom/Assets/Extruder/Overview/Templates/ExtruderPart_Zone_Simple",
+                          "wrap": "wrap"
+                        },
+                        "type": "ia.display.flex-repeater"
+                      }
+                    ],
+                    "meta": {
+                      "name": "FlexContainer"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "props": {
+                      "alignItems": "center",
+                      "direction": "column",
+                      "justify": "center"
+                    },
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "meta": {
+                  "name": "Tools"
+                },
+                "position": {
+                  "tabIndex": 3
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "meta": {
+                  "name": "PowerChart"
+                },
+                "position": {
+                  "tabIndex": 4
+                },
+                "propConfig": {
+                  "props.config.tagBrowserStartPath": {
+                    "binding": {
+                      "config": {
+                        "expression": "\u0027histprov:NLSTWDYK_DB_HIST:/drv:nlstwapp11ot:NLSTWDYK:/tag:DYKA/STW/EXT/\u0027+{view.params.Line}+\u0027/EXT/\u0027"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "config": {
+                    "measureOfTime": "minutes",
+                    "rangeEndDate": {
+                      "$": [
+                        "ts",
+                        0,
+                        1772436223308
+                      ],
+                      "$ts": 1772436217285
+                    },
+                    "rangeStartDate": {
+                      "$": [
+                        "ts",
+                        0,
+                        1772436223308
+                      ],
+                      "$ts": 1772434423285
+                    },
+                    "unitOfTime": 30,
+                    "visibility": {
+                      "showTagBrowser": true
+                    }
+                  },
+                  "interaction": {
+                    "chartZoomLevel": 1,
+                    "rangeZoomLevel": 1
+                  },
+                  "pens": [
+                    {
+                      "axis": "",
+                      "data": {
+                        "aggregateMode": "default",
+                        "source": "histprov:NLSTWDYK_DB_HIST:/drv:nlstwapp11ot:default:/tag:Extrusie/Line7/Extruder/massadruk/actual value"
+                      },
+                      "display": {
+                        "breakLine": true,
+                        "interpolation": "curveLinear",
+                        "radius": 3,
+                        "styles": {
+                          "highlighted": {
+                            "fill": {
+                              "color": "#63BEA2",
+                              "opacity": 1
+                            },
+                            "stroke": {
+                              "color": "#63BEA2",
+                              "dashArray": 0,
+                              "opacity": 1,
+                              "width": 1
+                            }
+                          },
+                          "muted": {
+                            "fill": {
+                              "color": "#63BEA2",
+                              "opacity": 0.4
+                            },
+                            "stroke": {
+                              "color": "#63BEA2",
+                              "dashArray": 0,
+                              "opacity": 0.4,
+                              "width": 1
+                            }
+                          },
+                          "normal": {
+                            "fill": {
+                              "color": "#63BEA2",
+                              "opacity": 0.8
+                            },
+                            "stroke": {
+                              "color": "#63BEA2",
+                              "dashArray": 0,
+                              "opacity": 0.8,
+                              "width": 1
+                            }
+                          },
+                          "selected": {
+                            "fill": {
+                              "color": "#63BEA2",
+                              "opacity": 1
+                            },
+                            "stroke": {
+                              "color": "#63BEA2",
+                              "dashArray": 0,
+                              "opacity": 1,
+                              "width": 1
+                            }
+                          }
+                        },
+                        "type": "line"
+                      },
+                      "enabled": true,
+                      "name": "actual value",
+                      "plot": 0,
+                      "selectable": true,
+                      "visible": true
+                    },
+                    {
+                      "axis": "",
+                      "data": {
+                        "aggregateMode": "default",
+                        "source": "histprov:NLSTWDYK_DB_HIST:/drv:nlstwapp11ot:default:/tag:Extrusie/Line7/Extruder/massadruk/high high alarm"
+                      },
+                      "display": {
+                        "breakLine": true,
+                        "interpolation": "curveLinear",
+                        "radius": 3,
+                        "styles": {
+                          "highlighted": {
+                            "fill": {
+                              "color": "#FC8D62",
+                              "opacity": 1
+                            },
+                            "stroke": {
+                              "color": "#FC8D62",
+                              "dashArray": 0,
+                              "opacity": 1,
+                              "width": 1
+                            }
+                          },
+                          "muted": {
+                            "fill": {
+                              "color": "#FC8D62",
+                              "opacity": 0.4
+                            },
+                            "stroke": {
+                              "color": "#FC8D62",
+                              "dashArray": 0,
+                              "opacity": 0.4,
+                              "width": 1
+                            }
+                          },
+                          "normal": {
+                            "fill": {
+                              "color": "#FC8D62",
+                              "opacity": 0.8
+                            },
+                            "stroke": {
+                              "color": "#FC8D62",
+                              "dashArray": 0,
+                              "opacity": 0.8,
+                              "width": 1
+                            }
+                          },
+                          "selected": {
+                            "fill": {
+                              "color": "#FC8D62",
+                              "opacity": 1
+                            },
+                            "stroke": {
+                              "color": "#FC8D62",
+                              "dashArray": 0,
+                              "opacity": 1,
+                              "width": 1
+                            }
+                          }
+                        },
+                        "type": "line"
+                      },
+                      "enabled": true,
+                      "name": "high high alarm",
+                      "plot": 0,
+                      "selectable": true,
+                      "visible": true
+                    },
+                    {
+                      "axis": "",
+                      "data": {
+                        "aggregateMode": "default",
+                        "source": "histprov:NLSTWDYK_DB_HIST:/drv:nlstwapp11ot:default:/tag:Extrusie/Line7/Extruder/massadruk/high warning"
+                      },
+                      "display": {
+                        "breakLine": true,
+                        "interpolation": "curveLinear",
+                        "radius": 3,
+                        "styles": {
+                          "highlighted": {
+                            "fill": {
+                              "color": "#8DA0CB",
+                              "opacity": 1
+                            },
+                            "stroke": {
+                              "color": "#8DA0CB",
+                              "dashArray": 0,
+                              "opacity": 1,
+                              "width": 1
+                            }
+                          },
+                          "muted": {
+                            "fill": {
+                              "color": "#8DA0CB",
+                              "opacity": 0.4
+                            },
+                            "stroke": {
+                              "color": "#8DA0CB",
+                              "dashArray": 0,
+                              "opacity": 0.4,
+                              "width": 1
+                            }
+                          },
+                          "normal": {
+                            "fill": {
+                              "color": "#8DA0CB",
+                              "opacity": 0.8
+                            },
+                            "stroke": {
+                              "color": "#8DA0CB",
+                              "dashArray": 0,
+                              "opacity": 0.8,
+                              "width": 1
+                            }
+                          },
+                          "selected": {
+                            "fill": {
+                              "color": "#8DA0CB",
+                              "opacity": 1
+                            },
+                            "stroke": {
+                              "color": "#8DA0CB",
+                              "dashArray": 0,
+                              "opacity": 1,
+                              "width": 1
+                            }
+                          }
+                        },
+                        "type": "line"
+                      },
+                      "enabled": true,
+                      "name": "high warning",
+                      "plot": 0,
+                      "selectable": true,
+                      "visible": true
+                    },
+                    {
+                      "axis": "",
+                      "data": {
+                        "aggregateMode": "default",
+                        "source": "histprov:NLSTWDYK_DB_HIST:/drv:nlstwapp11ot:default:/tag:Extrusie/Line7/Extruder/massadruk/low low alarm"
+                      },
+                      "display": {
+                        "breakLine": true,
+                        "interpolation": "curveLinear",
+                        "radius": 3,
+                        "styles": {
+                          "highlighted": {
+                            "fill": {
+                              "color": "#E78AC3",
+                              "opacity": 1
+                            },
+                            "stroke": {
+                              "color": "#E78AC3",
+                              "dashArray": 0,
+                              "opacity": 1,
+                              "width": 1
+                            }
+                          },
+                          "muted": {
+                            "fill": {
+                              "color": "#E78AC3",
+                              "opacity": 0.4
+                            },
+                            "stroke": {
+                              "color": "#E78AC3",
+                              "dashArray": 0,
+                              "opacity": 0.4,
+                              "width": 1
+                            }
+                          },
+                          "normal": {
+                            "fill": {
+                              "color": "#E78AC3",
+                              "opacity": 0.8
+                            },
+                            "stroke": {
+                              "color": "#E78AC3",
+                              "dashArray": 0,
+                              "opacity": 0.8,
+                              "width": 1
+                            }
+                          },
+                          "selected": {
+                            "fill": {
+                              "color": "#E78AC3",
+                              "opacity": 1
+                            },
+                            "stroke": {
+                              "color": "#E78AC3",
+                              "dashArray": 0,
+                              "opacity": 1,
+                              "width": 1
+                            }
+                          }
+                        },
+                        "type": "line"
+                      },
+                      "enabled": true,
+                      "name": "low low alarm",
+                      "plot": 0,
+                      "selectable": true,
+                      "visible": true
+                    },
+                    {
+                      "axis": "",
+                      "data": {
+                        "aggregateMode": "default",
+                        "source": "histprov:NLSTWDYK_DB_HIST:/drv:nlstwapp11ot:default:/tag:Extrusie/Line7/Extruder/massadruk/low warning"
+                      },
+                      "display": {
+                        "breakLine": true,
+                        "interpolation": "curveLinear",
+                        "radius": 3,
+                        "styles": {
+                          "highlighted": {
+                            "fill": {
+                              "color": "#A6D854",
+                              "opacity": 1
+                            },
+                            "stroke": {
+                              "color": "#A6D854",
+                              "dashArray": 0,
+                              "opacity": 1,
+                              "width": 1
+                            }
+                          },
+                          "muted": {
+                            "fill": {
+                              "color": "#A6D854",
+                              "opacity": 0.4
+                            },
+                            "stroke": {
+                              "color": "#A6D854",
+                              "dashArray": 0,
+                              "opacity": 0.4,
+                              "width": 1
+                            }
+                          },
+                          "normal": {
+                            "fill": {
+                              "color": "#A6D854",
+                              "opacity": 0.8
+                            },
+                            "stroke": {
+                              "color": "#A6D854",
+                              "dashArray": 0,
+                              "opacity": 0.8,
+                              "width": 1
+                            }
+                          },
+                          "selected": {
+                            "fill": {
+                              "color": "#A6D854",
+                              "opacity": 1
+                            },
+                            "stroke": {
+                              "color": "#A6D854",
+                              "dashArray": 0,
+                              "opacity": 1,
+                              "width": 1
+                            }
+                          }
+                        },
+                        "type": "line"
+                      },
+                      "enabled": true,
+                      "name": "low warning",
+                      "plot": 0,
+                      "selectable": true,
+                      "visible": true
+                    },
+                    {
+                      "axis": "",
+                      "data": {
+                        "aggregateMode": "default",
+                        "source": "histprov:NLSTWDYK_DB_HIST:/drv:nlstwapp11ot:default:/tag:Extrusie/Line7/Extruder/massadruk/setpoint"
+                      },
+                      "display": {
+                        "breakLine": true,
+                        "interpolation": "curveLinear",
+                        "radius": 3,
+                        "styles": {
+                          "highlighted": {
+                            "fill": {
+                              "color": "#FFD930",
+                              "opacity": 1
+                            },
+                            "stroke": {
+                              "color": "#FFD930",
+                              "dashArray": 0,
+                              "opacity": 1,
+                              "width": 1
+                            }
+                          },
+                          "muted": {
+                            "fill": {
+                              "color": "#FFD930",
+                              "opacity": 0.4
+                            },
+                            "stroke": {
+                              "color": "#FFD930",
+                              "dashArray": 0,
+                              "opacity": 0.4,
+                              "width": 1
+                            }
+                          },
+                          "normal": {
+                            "fill": {
+                              "color": "#FFD930",
+                              "opacity": 0.8
+                            },
+                            "stroke": {
+                              "color": "#FFD930",
+                              "dashArray": 0,
+                              "opacity": 0.8,
+                              "width": 1
+                            }
+                          },
+                          "selected": {
+                            "fill": {
+                              "color": "#FFD930",
+                              "opacity": 1
+                            },
+                            "stroke": {
+                              "color": "#FFD930",
+                              "dashArray": 0,
+                              "opacity": 1,
+                              "width": 1
+                            }
+                          }
+                        },
+                        "type": "line"
+                      },
+                      "enabled": true,
+                      "name": "setpoint",
+                      "plot": 0,
+                      "selectable": true,
+                      "visible": true
+                    }
+                  ]
+                },
+                "type": "ia.chart.powerchart"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "AlarmStatusTable"
+                    },
+                    "propConfig": {
+                      "props.filters.active.conditions.displayPath": {
+                        "binding": {
+                          "config": {
+                            "path": "parent.custom.filter"
+                          },
+                          "type": "property"
+                        }
+                      },
+                      "props.filters.shelved.conditions.displayPath": {
+                        "binding": {
+                          "config": {
+                            "path": "parent.custom.filter"
+                          },
+                          "type": "property"
+                        }
+                      }
+                    },
+                    "props": {
+                      "columns": {
+                        "active": {
+                          "name": {
+                            "enabled": false
+                          },
+                          "source": {
+                            "enabled": false
+                          },
+                          "state": {
+                            "enabled": false
+                          }
+                        }
+                      },
+                      "enableDetails": false,
+                      "filters": {
+                        "active": {
+                          "conditions": {},
+                          "priorities": {
+                            "critical": false,
+                            "high": false,
+                            "low": false,
+                            "medium": false
+                          },
+                          "states": {
+                            "activeAcked": false,
+                            "clearUnacked": false
+                          }
+                        },
+                        "shelved": {
+                          "conditions": {
+                            "provider": "",
+                            "source": ""
+                          }
+                        }
+                      },
+                      "pager": {
+                        "enabled": false,
+                        "initialOption": 100
+                      },
+                      "responsive": {
+                        "enabled": true
+                      },
+                      "rowStyles": {
+                        "activeAcked": {
+                          "priorities": {
+                            "high": {
+                              "backgroundColor": "",
+                              "classes": "ATA/AlarmRows/High/ActiveAcked"
+                            },
+                            "medium": {
+                              "backgroundColor": "",
+                              "classes": "ATA/AlarmRows/Medium/ActiveAcked",
+                              "color": ""
+                            }
+                          }
+                        },
+                        "activeUnacked": {
+                          "priorities": {
+                            "high": {
+                              "backgroundColor": "",
+                              "classes": "ATA/AlarmRows/High/ActiveUnacked"
+                            },
+                            "medium": {
+                              "backgroundColor": "",
+                              "classes": "ATA/AlarmRows/Medium/ActiveUnacked",
+                              "color": ""
+                            }
+                          }
+                        },
+                        "clearUnacked": {
+                          "priorities": {
+                            "high": {
+                              "backgroundColor": "",
+                              "classes": "ATA/AlarmRows/High/ClearedUnacked"
+                            },
+                            "medium": {
+                              "backgroundColor": "",
+                              "classes": "ATA/AlarmRows/Medium/ClearedUnacked",
+                              "color": ""
+                            }
+                          }
+                        }
+                      },
+                      "toolbar": {
+                        "enableConfiguration": false,
+                        "enableFilter": false,
+                        "enableFilterResults": false,
+                        "enablePreFilters": false
+                      }
+                    },
+                    "type": "ia.display.alarmstatustable"
+                  },
+                  {
+                    "meta": {
+                      "name": "Dyka_TH"
+                    },
+                    "position": {
+                      "tabIndex": 1
+                    },
+                    "propConfig": {
+                      "props.filter.conditions.displayPath": {
+                        "binding": {
+                          "config": {
+                            "path": "parent.custom.filter"
+                          },
+                          "type": "property"
+                        }
+                      }
+                    },
+                    "props": {
+                      "columns": {
+                        "displayPath": {
+                          "enabled": true,
+                          "order": 1
+                        },
+                        "eventId": {
+                          "enabled": false
+                        },
+                        "eventTime": {
+                          "sort": "descending"
+                        },
+                        "name": {
+                          "enabled": true
+                        },
+                        "source": {
+                          "enabled": false
+                        }
+                      },
+                      "dateRange": {
+                        "realtime": {
+                          "interval": 24
+                        }
+                      },
+                      "enableDetails": false,
+                      "filter": {
+                        "conditions": {}
+                      },
+                      "name": "Dyka_TH",
+                      "pager": {
+                        "enabled": false,
+                        "initialOption": 100,
+                        "shelvedPage": 1
+                      },
+                      "rowStyles": {
+                        "acked": {
+                          "priorities": {
+                            "high": {
+                              "backgroundColor": "",
+                              "classes": "ATA/AlarmRows/High/ActiveAcked"
+                            },
+                            "medium": {
+                              "backgroundColor": "",
+                              "classes": "ATA/AlarmRows/Medium/ActiveAcked",
+                              "color": ""
+                            }
+                          }
+                        },
+                        "active": {
+                          "priorities": {
+                            "high": {
+                              "backgroundColor": "",
+                              "classes": "ATA/AlarmRows/High/ActiveUnacked"
+                            },
+                            "medium": {
+                              "backgroundColor": "",
+                              "classes": "ATA/AlarmRows/Medium/ActiveUnacked",
+                              "color": ""
+                            }
+                          }
+                        },
+                        "cleared": {
+                          "priorities": {
+                            "high": {
+                              "backgroundColor": "",
+                              "classes": "ATA/AlarmRows/High/ClearedUnacked"
+                            },
+                            "medium": {
+                              "backgroundColor": "",
+                              "classes": "ATA/AlarmRows/Medium/ClearedUnacked",
+                              "color": ""
+                            }
+                          }
+                        }
+                      },
+                      "toolbar": {
+                        "enabled": false
+                      }
+                    },
+                    "type": "ia.display.alarmjournaltable"
+                  },
+                  {
+                    "meta": {
+                      "name": "Analysis"
+                    },
+                    "position": {
+                      "tabIndex": 2
+                    },
+                    "propConfig": {
+                      "props.params.filter": {
+                        "binding": {
+                          "config": {
+                            "path": "parent.custom.filter"
+                          },
+                          "type": "property"
+                        }
+                      }
+                    },
+                    "props": {
+                      "path": "Library/Alarms/Templates/Alarm Analysis"
+                    },
+                    "type": "ia.display.view"
+                  }
+                ],
+                "meta": {
+                  "name": "AlarmTabContainer"
+                },
+                "position": {
+                  "tabIndex": 5
+                },
+                "propConfig": {
+                  "custom.filter": {
+                    "binding": {
+                      "config": {
+                        "expression": "\"*Dyka/STW/EXT/\"+{view.params.Line}+\"/EXT*\""
+                      },
+                      "type": "expr"
+                    }
+                  },
+                  "props.currentTabIndex": {
+                    "binding": {
+                      "config": {
+                        "expression": "0"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "contentStyle": {
+                    "backgroundColor": "--backgroundSecondary"
+                  },
+                  "menuStyle": {
+                    "backgroundColor": ""
+                  },
+                  "menuType": "modern",
+                  "tabSize": {
+                    "width": 120
+                  },
+                  "tabs": [
+                    {
+                      "disabled": false,
+                      "text": "Active"
+                    },
+                    {
+                      "disabled": false,
+                      "text": "History"
+                    },
+                    "Analyse"
+                  ]
+                },
+                "type": "ia.container.tab"
+              }
+            ],
+            "meta": {
+              "name": "TabContainer"
+            },
+            "position": {
+              "grow": 1
+            },
+            "propConfig": {
+              "props.currentTabIndex": {
+                "binding": {
+                  "config": {
+                    "expression": "0"
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              },
+              "props.tabs[0].viewParams.isActive": {
+                "binding": {
+                  "config": {
+                    "expression": "{this.props.currentTabIndex} \u003d 0"
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              },
+              "props.tabs[0].viewParams.isDisabled": {
+                "binding": {
+                  "config": {
+                    "path": "this.props.tabs[0].disabled"
+                  },
+                  "enabled": false,
+                  "type": "property"
+                }
+              },
+              "props.tabs[0].viewParams.tagPath": {
+                "binding": {
+                  "config": {
+                    "expression": "\"[NLSTWDYK]Dyka/STW/EXT/\"+{view.params.Line}+\"/EXT/MEXT\""
+                  },
+                  "type": "expr"
+                },
+                "persistent": true
+              }
+            },
+            "props": {
+              "contentStyle": {
+                "backgroundColor": "--backgroundSecondary"
+              },
+              "menuStyle": {
+                "backgroundColor": ""
+              },
+              "menuType": "modern",
+              "style": {
+                "classes": "ATA/Background/CardSecondary"
+              },
+              "tabSize": {
+                "width": 120
+              },
+              "tabs": [
+                {
+                  "viewParams": {
+                    "isActive": true,
+                    "isDisabled": false,
+                    "selected": false,
+                    "tabText": "Extruder",
+                    "tagPath": "[NLSTWDYK]Dyka/STW/EXT/E07/EXT/MEXT"
+                  },
+                  "viewPath": "Library/SharedTemplates/TabElement"
+                },
+                {
+                  "disabled": true,
+                  "viewParams": {
+                    "isActive": false,
+                    "isDisabled": true,
+                    "selected": false,
+                    "tabText": "Co-extruder 1",
+                    "tagPath": "[NLSTWDYK]Dyka/STW/EXT/E07/EXT/CEXT01"
+                  },
+                  "viewPath": "Library/SharedTemplates/TabElement"
+                },
+                {
+                  "disabled": true,
+                  "viewParams": {
+                    "isActive": false,
+                    "isDisabled": true,
+                    "selected": false,
+                    "tabText": "Co-extruder 2",
+                    "tagPath": "[NLSTWDYK]Dyka/STW/EXT/E07/EXT/CEXT02"
+                  },
+                  "viewPath": "Library/SharedTemplates/TabElement"
+                },
+                "Gereedschap",
+                "Trending",
+                "Alarmen"
+              ]
+            },
+            "type": "ia.container.tab"
+          }
+        ],
+        "meta": {
+          "name": "Content"
+        },
+        "position": {
+          "basis": "200px",
+          "grow": 1
+        },
+        "props": {
+          "style": {
+            "classes": "ATA/Background/Root"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "meta": {
+          "name": "EmbeddedView"
+        },
+        "position": {
+          "basis": "65px",
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.params.line": {
+            "binding": {
+              "config": {
+                "path": "view.params.Line"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "filter": "",
+            "popupMarginRight": 1
+          },
+          "path": "Library/SharedDocked/Alarms/AlarmBar"
+        },
+        "type": "ia.display.view"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

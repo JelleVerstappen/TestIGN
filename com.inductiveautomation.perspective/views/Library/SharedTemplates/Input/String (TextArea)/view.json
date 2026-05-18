@@ -1,0 +1,135 @@
+{
+  "custom": {},
+  "params": {
+    "enabled": true,
+    "key": "value",
+    "marginRight": 45,
+    "placeholder": "",
+    "value": ""
+  },
+  "propConfig": {
+    "params.enabled": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.key": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.marginRight": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.placeholder": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.value": {
+      "paramDirection": "inout",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 200,
+      "width": 454
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Label"
+        },
+        "position": {
+          "basis": "22px",
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "view.params.key"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "classes": "ATA/Components/Labels/TextNormal"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "TextArea"
+        },
+        "position": {
+          "basis": "160px",
+          "grow": 1
+        },
+        "propConfig": {
+          "props.enabled": {
+            "binding": {
+              "config": {
+                "path": "view.params.enabled"
+              },
+              "type": "property"
+            }
+          },
+          "props.placeholder": {
+            "binding": {
+              "config": {
+                "expression": "translate({view.params.placeholder})"
+              },
+              "type": "expr"
+            }
+          },
+          "props.style.marginRight": {
+            "binding": {
+              "config": {
+                "path": "view.params.marginRight"
+              },
+              "type": "property"
+            }
+          },
+          "props.text": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "path": "view.params.value"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "borderBottomLeftRadius": 5,
+            "borderBottomRightRadius": 5,
+            "borderTopLeftRadius": 5,
+            "borderTopRightRadius": 5,
+            "classes": "ATA/Components/Labels/TextNormal",
+            "marginBottom": 5,
+            "marginLeft": 5
+          }
+        },
+        "type": "ia.input.text-area"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "backgroundColor": "#FFFFFF00",
+        "overflow": "hidden",
+        "paddingLeft": 5
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

@@ -1,0 +1,557 @@
+{
+  "custom": {
+    "dataInDataset": {
+      "$": [
+        "ds",
+        192,
+        1718620058186
+      ],
+      "$columns": [
+        {
+          "data": [
+            1,
+            7,
+            8,
+            3,
+            9
+          ],
+          "name": "DowntimeReasonID",
+          "type": "Integer"
+        },
+        {
+          "data": [
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "name": "Active",
+          "type": "Boolean"
+        },
+        {
+          "data": [
+            true,
+            false,
+            true,
+            false,
+            true
+          ],
+          "name": "Allowed",
+          "type": "Boolean"
+        },
+        {
+          "data": [
+            "S1",
+            "0",
+            "test1",
+            "S5",
+            "test 1 f"
+          ],
+          "name": "Code",
+          "type": "String"
+        },
+        {
+          "data": [
+            false,
+            true,
+            true,
+            true,
+            true
+          ],
+          "name": "CommentRequired",
+          "type": "Boolean"
+        },
+        {
+          "data": [
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "name": "Planned",
+          "type": "Boolean"
+        },
+        {
+          "data": [
+            "Machine defect",
+            "",
+            "test1",
+            "Edit test2",
+            "test1f"
+          ],
+          "name": "Description",
+          "type": "String"
+        },
+        {
+          "data": [
+            "22-02-2024 11:40",
+            "22-02-2024 16:33",
+            "26-02-2024 13:13",
+            "22-02-2024 13:22",
+            "05-03-2024 16:25"
+          ],
+          "name": "Created",
+          "type": "String"
+        },
+        {
+          "data": [
+            "05-03-2024 15:52",
+            "22-02-2024 16:33",
+            "26-02-2024 13:15",
+            "22-02-2024 14:24",
+            "05-03-2024 16:25"
+          ],
+          "name": "Modified",
+          "type": "String"
+        },
+        {
+          "data": [
+            "Unknown",
+            "Unknown",
+            "Unknown",
+            "Unknown",
+            "Unknown"
+          ],
+          "name": "ModifiedBy",
+          "type": "String"
+        },
+        {
+          "data": [
+            1,
+            3,
+            7,
+            8,
+            9
+          ],
+          "name": "Sequence",
+          "type": "Integer"
+        },
+        {
+          "data": [
+            1,
+            7,
+            8,
+            3,
+            9
+          ],
+          "name": "SequenceID",
+          "type": "Integer"
+        }
+      ]
+    },
+    "nextSequence": 9,
+    "previousSequence": 7,
+    "sequence": 8,
+    "sequenceID": 3
+  },
+  "params": {
+    "IDColumn": "DowntimeReasonID",
+    "changed": true,
+    "dataIn": {
+      "$": [
+        "ds",
+        192,
+        1709717603271
+      ],
+      "$columns": [
+        {
+          "data": [
+            1,
+            7,
+            8,
+            3,
+            9
+          ],
+          "name": "DowntimeReasonID",
+          "type": "Integer"
+        },
+        {
+          "data": [
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "name": "Active",
+          "type": "Boolean"
+        },
+        {
+          "data": [
+            true,
+            false,
+            true,
+            false,
+            true
+          ],
+          "name": "Allowed",
+          "type": "Boolean"
+        },
+        {
+          "data": [
+            "S1",
+            "0",
+            "test1",
+            "S5",
+            "test 1 f"
+          ],
+          "name": "Code",
+          "type": "String"
+        },
+        {
+          "data": [
+            false,
+            true,
+            true,
+            true,
+            true
+          ],
+          "name": "CommentRequired",
+          "type": "Boolean"
+        },
+        {
+          "data": [
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "name": "Planned",
+          "type": "Boolean"
+        },
+        {
+          "data": [
+            "Machine defect",
+            "",
+            "test1",
+            "Edit test2",
+            "test1f"
+          ],
+          "name": "Description",
+          "type": "String"
+        },
+        {
+          "data": [
+            "22-02-2024 11:40",
+            "22-02-2024 16:33",
+            "26-02-2024 13:13",
+            "22-02-2024 13:22",
+            "05-03-2024 16:25"
+          ],
+          "name": "Created",
+          "type": "String"
+        },
+        {
+          "data": [
+            "05-03-2024 15:52",
+            "22-02-2024 16:33",
+            "26-02-2024 13:15",
+            "22-02-2024 14:24",
+            "05-03-2024 16:25"
+          ],
+          "name": "Modified",
+          "type": "String"
+        },
+        {
+          "data": [
+            "Unknown",
+            "Unknown",
+            "Unknown",
+            "Unknown",
+            "Unknown"
+          ],
+          "name": "ModifiedBy",
+          "type": "String"
+        },
+        {
+          "data": [
+            1,
+            3,
+            7,
+            8,
+            9
+          ],
+          "name": "Sequence",
+          "type": "Integer"
+        },
+        {
+          "data": [
+            1,
+            7,
+            8,
+            3,
+            9
+          ],
+          "name": "SequenceID",
+          "type": "Integer"
+        }
+      ]
+    },
+    "messageHandlerRefresh": "refresh",
+    "saved": false,
+    "selectedRow": 3,
+    "sequenceColumn": "Sequence",
+    "sequenceColumnDB": "Sequence",
+    "tableName": "DowntimeReasons"
+  },
+  "propConfig": {
+    "custom.dataInDataset": {
+      "binding": {
+        "config": {
+          "path": "view.params.dataIn"
+        },
+        "transforms": [
+          {
+            "code": "\tif ata.typecheck.dataset(value) \u003d\u003d False:\n\t\treturn ata.datasets.datasetFromJSON(value)\n\telse:\n\t\treturn value\n\t",
+            "type": "script"
+          }
+        ],
+        "type": "property"
+      },
+      "persistent": true
+    },
+    "custom.nextSequence": {
+      "binding": {
+        "config": {
+          "expression": "if({view.params.selectedRow} \u003d -1,\r\n   -1, // this is the fail case\r\n  if(len({view.custom.dataInDataset}) \u003d {view.params.selectedRow}+1,\r\n  \t-1,\r\n   {view.custom.dataInDataset}[{view.params.selectedRow}+1, \r\n    {view.params.sequenceColumn}]))\r\n"
+        },
+        "type": "expr"
+      },
+      "persistent": true
+    },
+    "custom.previousSequence": {
+      "binding": {
+        "config": {
+          "expression": "if({view.params.selectedRow} \u003d -1,\r\n   -1, // this is the fail case\r\n  if({view.params.selectedRow}-1 \u003d -1,\r\n  \t-1,\r\n   {view.custom.dataInDataset}[{view.params.selectedRow}-1, \r\n    {view.params.sequenceColumn}]))\r\n"
+        },
+        "type": "expr"
+      },
+      "persistent": true
+    },
+    "custom.sequence": {
+      "binding": {
+        "config": {
+          "expression": "if({view.params.selectedRow} \u003d -1,\r\n   -1, // this is the fail case\r\n   {view.custom.dataInDataset}[{view.params.selectedRow}, \r\n    {view.params.sequenceColumn}])\r\n"
+        },
+        "type": "expr"
+      },
+      "persistent": true
+    },
+    "custom.sequenceID": {
+      "binding": {
+        "config": {
+          "expression": "if({view.params.selectedRow} \u003d -1,\r\n   -1, // this is the fail case\r\n   {view.custom.dataInDataset}[{view.params.selectedRow}, \r\n    \u0027SequenceID\u0027])\r\n"
+        },
+        "type": "expr"
+      },
+      "persistent": true
+    },
+    "params.IDColumn": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.changed": {
+      "paramDirection": "inout",
+      "persistent": true
+    },
+    "params.dataIn": {
+      "paramDirection": "inout",
+      "persistent": true
+    },
+    "params.messageHandlerRefresh": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.saved": {
+      "paramDirection": "inout",
+      "persistent": true
+    },
+    "params.selectedRow": {
+      "paramDirection": "inout",
+      "persistent": true
+    },
+    "params.sequenceColumn": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.sequenceColumnDB": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.tableName": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "width": 30
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "events": {
+          "dom": {
+            "onClick": {
+              "config": {
+                "script": "\tsequence \u003d self.view.custom.sequence\n\tpreviousSequence \u003d self.view.custom.previousSequence\n\tsequenceID \u003d self.view.custom.sequenceID\n\tsequenceColumn \u003d self.view.params.sequenceColumn\n\tdata \u003d self.view.custom.dataInDataset\n\t\n\tif previousSequence !\u003d -1:\n\t\tfor row in range(data.rowCount):\n\t\t\tcurrentSequence \u003d data.getValueAt(row,sequenceColumn)\n\t\t\tif currentSequence \u003d\u003d previousSequence and data.getValueAt(row,\u0027sequenceID\u0027) !\u003d sequenceID:\n\t\t\t\tdata \u003d system.dataset.setValue(data, row, sequenceColumn, sequence)\n\t\t\tif currentSequence \u003d\u003d sequence and data.getValueAt(row,\u0027sequenceID\u0027) \u003d\u003d sequenceID:\n\t\t\t\tdata \u003d system.dataset.setValue(data, row, sequenceColumn, previousSequence)\n\t\tnewData \u003d system.dataset.sort(data, sequenceColumn)\n\t\t\n\t\tself.view.custom.dataInDataset \u003d newData\n\t\tif ata.typecheck.dataset(self.view.params.dataIn) \u003d\u003d False:\n\t\t\tself.view.params.dataIn \u003d ata.datasets.datasetToList(newData)\n\t\telse:\n\t\t\tself.view.params.dataIn \u003d newData\n\t\tself.view.params.selectedRow \u003d self.view.params.selectedRow - 1\n\t\tself.view.params.changed \u003d True\n"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "UP"
+        },
+        "position": {
+          "basis": "50px"
+        },
+        "propConfig": {
+          "meta.visible": {
+            "binding": {
+              "config": {
+                "expression": "if ({view.params.selectedRow} \u003d -1 || isnull({view.params.selectedRow}),0,{view.custom.previousSequence} !\u003d -1)"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "color": "grey",
+          "path": "material/arrow_upward",
+          "style": {
+            "cursor": "pointer",
+            "marginTop": 60
+          }
+        },
+        "type": "ia.display.icon"
+      },
+      {
+        "events": {
+          "dom": {
+            "onClick": {
+              "config": {
+                "script": "\tsequence \u003d self.view.custom.sequence\n\tnextSequence \u003d self.view.custom.nextSequence\n\tsequenceID \u003d self.view.custom.sequenceID\n\tsequenceColumn \u003d self.view.params.sequenceColumn\n\tdata \u003d self.view.custom.dataInDataset\n\t\n\tif nextSequence !\u003d -1:\n\t\tfor row in range(data.rowCount):\n\t\t\tcurrentSequence \u003d data.getValueAt(row,sequenceColumn)\n\t\t\tif currentSequence \u003d\u003d nextSequence and data.getValueAt(row,\u0027sequenceID\u0027) !\u003d sequenceID:\n\t\t\t\tdata \u003d system.dataset.setValue(data, row, sequenceColumn, sequence)\n\t\t\tif currentSequence \u003d\u003d sequence and data.getValueAt(row,\u0027sequenceID\u0027) \u003d\u003d sequenceID:\n\t\t\t\tdata \u003d system.dataset.setValue(data, row, sequenceColumn, nextSequence)\n\t\tnewData \u003d system.dataset.sort(data, sequenceColumn)\n\t\t\n\t\tself.view.custom.dataInDataset \u003d newData\n\t\tif ata.typecheck.dataset(self.view.params.dataIn) \u003d\u003d False:\n\t\t\tself.view.params.dataIn \u003d ata.datasets.datasetToList(newData)\n\t\telse:\n\t\t\tself.view.params.dataIn \u003d newData\n\t\tself.view.params.selectedRow \u003d self.view.params.selectedRow + 1\n\t\tself.view.params.changed \u003d True\n\t\t\t"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "DOWN"
+        },
+        "position": {
+          "basis": "50px"
+        },
+        "propConfig": {
+          "meta.visible": {
+            "binding": {
+              "config": {
+                "expression": "if ({view.params.selectedRow} \u003d -1 || isnull({view.params.selectedRow}),0,{view.custom.nextSequence} !\u003d -1)"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "color": "grey",
+          "path": "material/arrow_downward",
+          "style": {
+            "cursor": "pointer",
+            "marginTop": 10
+          }
+        },
+        "type": "ia.display.icon"
+      },
+      {
+        "events": {
+          "dom": {
+            "onClick": {
+              "config": {
+                "script": "\ttableName \u003d self.view.params.tableName\n\tIDColumn \u003d self.view.params.IDColumn\n\tmessageHandlerRefresh \u003d self.view.params.messageHandlerRefresh\n\tsequenceColumn \u003d self.view.params.sequenceColumn\n\tsequenceColumnDB \u003d self.view.params.sequenceColumnDB\n\tdata \u003d self.view.custom.dataInDataset\n\tfor row in range(data.rowCount):\n\t\tsequence \u003d data.getValueAt(row,sequenceColumn)\n\t\tif sequence !\u003d None:\n\t\t\tsequenceID \u003d data.getValueAt(row,\u0027sequenceID\u0027)\n\t\t\tdataTypeColumn \u003d str(data.getColumnType(data.getColumnIndex(\u0027sequenceID\u0027)))\n\t\t\tif dataTypeColumn \u003d\u003d \"\u003ctype \u0027java.lang.String\u0027\u003e\":\n\t\t\t\tquery \u003d \"Update \"+tableName+\" Set \"+sequenceColumnDB+\" \u003d \"+str(sequence)+\" Where \"+IDColumn+\" \u003d \u0027\"+str(sequenceID)+\"\u0027\"\n\t\t\telse:\n\t\t\t\tquery \u003d \u0027Update \u0027+tableName+\u0027 Set \u0027+sequenceColumnDB+\u0027 \u003d \u0027+str(sequence)+\u0027 Where \u0027+IDColumn+\u0027 \u003d \u0027+str(sequenceID)\n\t\t\tsystem.db.runPrepUpdate(query)\n\t\t\tsystem.perspective.print(query)\n\tself.view.params.changed \u003d False\n\tself.view.params.saved \u003d True\n\t\n\tsystem.perspective.sendMessage(messageHandlerRefresh)\n\t\n\t\n\t\t"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "SAVE"
+        },
+        "position": {
+          "basis": "50px"
+        },
+        "propConfig": {
+          "meta.visible": {
+            "binding": {
+              "config": {
+                "path": "view.params.changed"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "color": "grey",
+          "path": "material/save",
+          "style": {
+            "cursor": "pointer",
+            "marginTop": 10
+          }
+        },
+        "type": "ia.display.icon"
+      },
+      {
+        "events": {
+          "dom": {
+            "onClick": {
+              "config": {
+                "script": "\tsystem.perspective.sendMessage(self.view.params.messageHandlerRefresh)\n\tself.view.params.changed \u003d False\n"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "CANCEL"
+        },
+        "position": {
+          "basis": "50px"
+        },
+        "propConfig": {
+          "meta.visible": {
+            "binding": {
+              "config": {
+                "path": "view.params.changed"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "color": "grey",
+          "path": "material/replay",
+          "style": {
+            "cursor": "pointer",
+            "marginTop": 10
+          }
+        },
+        "type": "ia.display.icon"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

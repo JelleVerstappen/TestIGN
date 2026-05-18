@@ -1,0 +1,366 @@
+{
+  "custom": {},
+  "params": {
+    "data": {
+      "Created": 1698936483070,
+      "DepartmentID": 1,
+      "Description": "Grinding",
+      "Modified": null,
+      "ModifiedBy": null
+    },
+    "function": "new",
+    "functionInformation": {
+      "columnDisplayName": "Department",
+      "columnID": "DepartmentID",
+      "displayName": "Departments",
+      "tableName": "Departments"
+    }
+  },
+  "propConfig": {
+    "params.data": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.function": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.functionInformation": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 687,
+      "width": 600
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Header"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.params.titel": {
+            "binding": {
+              "config": {
+                "expression": "{view.params.function} + \" \" + {view.params.functionInformation.columnDisplayName}"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "closeDockID": "masterData"
+          },
+          "path": "SharedTemplates/HeaderForDock",
+          "style": {
+            "textTransform": "capitalize"
+          },
+          "useDefaultViewHeight": true
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Description"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.params.placeholder": {
+                "binding": {
+                  "config": {
+                    "expression": "\"Enter a description for the \"+tostr({view.params.functionInformation.columnDisplayName})"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.params.value": {
+                "binding": {
+                  "config": {
+                    "bidirectional": true,
+                    "path": "view.params.data.Description"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "key": "Description"
+              },
+              "path": "SharedTemplates/Input/String",
+              "useDefaultViewHeight": true
+            },
+            "type": "ia.display.view"
+          }
+        ],
+        "meta": {
+          "name": "General"
+        },
+        "position": {
+          "basis": "200px",
+          "grow": 1
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "padding": 20,
+            "paddingBottom": 0,
+            "paddingRight": 0
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "id": "{/root/Header.props.params.closeDockID}",
+                    "type": "close"
+                  },
+                  "scope": "C",
+                  "type": "dock"
+                }
+              }
+            },
+            "meta": {
+              "name": "Cancel"
+            },
+            "position": {
+              "basis": "125px",
+              "shrink": 0
+            },
+            "props": {
+              "style": {
+                "classes": "ATA/Components/Buttons/Sec",
+                "marginLeft": "auto",
+                "marginRight": "16px"
+              },
+              "text": "Cancel"
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "script": "\t### Declare safety parameters\n\terrors \u003d []\n\tlogger \u003d system.util.getLogger(\u0027General\u0027)\n\t\n\t### Declare parameters\n\tfunction \u003d self.view.params.function\n\tmodifiedBy \u003d self.session.props.auth.user.userName if self.session.props.auth.authenticated else \"Unknown\"\n\tfunctionInformation \u003d self.view.params.functionInformation\n\tcolumnID \u003d functionInformation[\"columnID\"]\n\ttableName \u003d functionInformation[\"tableName\"]\n\tdata \u003d self.view.params.data\n\tID \u003d int(data[columnID])\n\t\n\tdescription \u003d self.parent.parent.getChild(\"General\").getChild(\"Description\").props.params.value\n\n\t### Check if all required fields are filled in\n\tif function not in [\u0027new\u0027,\u0027edit\u0027]:\n\t\terrors.append(system.util.translate(\"Something went wrong opening the screen, please try again.\"))\n\n\tif function \u003d\u003d \u0027edit\u0027 and ID \u003c 1:\n\t\terrors.append(system.util.translate(\"Something went wrong opening the screen, please try again.\"))\n\t\n\t### Check for duplicate description.\n\tidToCheck \u003d ID if function in [\u0027new\u0027,\u0027edit\u0027] else -1\n\tif len(description.strip()) \u003d\u003d 0:\n\t\terrors.append(system.util.translate(\"Please enter a description.\"))\n\telse:\n\t\tquery \u003d \"select count(*) from {tableName} where Active \u003d 1 and replace(description,\u0027 \u0027,\u0027\u0027) \u003d replace(?,\u0027 \u0027,\u0027\u0027) and {columnID} !\u003d ?\".format(tableName\u003dtableName,columnID\u003dcolumnID)\n\t\targs \u003d [description, idToCheck]\n\t\tnotUnique \u003d system.db.runScalarPrepQuery(query, args)\n\t\tif notUnique \u003e 0:\n\t\t\terrors.append(\"The description you entered is a duplicate.\")\t\n\t\t\t\n\t### Continue with code if error is false\n\tif not errors:\n\t\t### Try the following code\n\t\ttry:\n\t\t\t### Creating or duplicating\n\t\t\tif function in [\u0027new\u0027]:\n\t\t\t\t### Insert the new\n\t\t\t\tquery \u003d \"Insert into {tableName} (Description,Modified,ModifiedBy) values (?,GETDATE(),?)\".format(tableName\u003dtableName)\n\t\t\t\targs \u003d [description,modifiedBy]\n\t\t\t\tresult \u003d system.db.runPrepUpdate(query,args,getKey\u003d1)\n\n\t\t\t\t### Check insert query result\n\t\t\t\tif result \u003c 1:\n\t\t\t\t\traise Exception(\u0027Problem while inserting data into table: {}.\u0027.format(tableName))\n\t\t\t\telse:\t\n\t\t\t\t\tlogger.info(\u0027Create new entry in table {} successful.\u0027.format(tableName))\n\t\t\t\t\t\n####################################################################################################################################\t\t\t\n\t\t\t### Editing a project\n\t\t\telif function in [\u0027edit\u0027]:\n\t\t\t\t### Update the project\n\t\t\t\tquery \u003d \"Update {tableName} set Description \u003d ?, Modified \u003d GETDATE(), ModifiedBy \u003d ? where {columnID} \u003d ?\".format(tableName\u003dtableName,columnID\u003dcolumnID)\n\t\t\t\targs \u003d [description,modifiedBy,ID]\n\t\t\t\tresult \u003d system.db.runPrepUpdate(query,args)\n\n\t\t\t\t### Check insert query result\n\t\t\t\tif result !\u003d 1:\n\t\t\t\t\traise Exception(\u0027Problem while updating data in table: {}.\u0027.format(tableName))\n\t\t\t\telse:\t\n\t\t\t\t\tlogger.info(\u0027Editing the entry in table {} successful.\u0027.format(tableName))\n\t\t\t\t\t\t\t\t\n\t\t### When something fails, continue with the exception, e\n\t\texcept Exception, e:\n\t\t\tlogger.info(str(e))\n\t\t\terrors.add(\"Error saving, please try again. \"+str(e))\n\t\t\t\n\t# if error is true show the error message.\n\tif errors:\n\t\ttimeout \u003d 20\n\t\terrors \u003d ata.function.uniqueList(errors)\n\t\terrorStr \u003d \"\u003cbr\u003e\".join(errors)\n\t\tlogger.error(errorStr)\t\n\t\tscreenID\u003dself.parent.parent.getChild(\"Toast Handler\").custom.screenID\n\t\tata.toast.handler.toasts.toastNotification(message\u003d\"Click open to see errors.\", timeout\u003dtimeout, sendTo\u003dself.session.props.id, backgroundColor\u003d\"--warning\", content\u003derrorStr,screenID\u003dscreenID)\n\telse:\n\t\t### Close the screen and refresh the overview\n\t\tsystem.perspective.sendMessage(\"refresh\", payload\u003d{}, scope\u003d\"session\")\n\t\tsystem.perspective.closeDock(self.parent.parent.getChild(\"Header\").props.params.closeDockID)\t\t\n\t\t"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "Save"
+            },
+            "position": {
+              "basis": "125px",
+              "shrink": 0
+            },
+            "props": {
+              "style": {
+                "classes": "ATA/Components/Buttons/CTA"
+              },
+              "text": "Save"
+            },
+            "type": "ia.input.button"
+          }
+        ],
+        "meta": {
+          "name": "Footer"
+        },
+        "position": {
+          "basis": "66px",
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "backgroundColor": "--white",
+            "classes": "ATA/Background/RootDock",
+            "padding": 16,
+            "paddingRight": 45
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "custom": {
+          "animation": {
+            "name": "",
+            "value": {}
+          },
+          "location": "bottom-left",
+          "messageType": "Library/Toast/Message/Basic"
+        },
+        "meta": {
+          "name": "Toast Handler"
+        },
+        "position": {
+          "grow": 1
+        },
+        "propConfig": {
+          "custom.animation.name": {
+            "onChange": {
+              "enabled": null,
+              "script": "\tself.setAnimation(currentValue.value)"
+            }
+          },
+          "custom.location": {
+            "onChange": {
+              "enabled": null,
+              "script": "\tself.setLocation(currentValue.value)"
+            }
+          },
+          "custom.messageType": {
+            "onChange": {
+              "enabled": null,
+              "script": "\tself.setViewPath(currentValue.value)"
+            }
+          },
+          "custom.screenID": {
+            "binding": {
+              "config": {
+                "expression": "now(0)"
+              },
+              "transforms": [
+                {
+                  "code": "\timport uuid \n\treturn str(uuid.uuid1())\n\t",
+                  "type": "script"
+                }
+              ],
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "alignItems": "center",
+          "direction": "column",
+          "elementPosition": {
+            "basis": "auto",
+            "grow": 0,
+            "shrink": 0
+          },
+          "elementStyle": {
+            "marginTop": "5px"
+          },
+          "justify": "center",
+          "loading": {
+            "order": "with-parent"
+          },
+          "path": "Library/Toast/Message/Basic",
+          "style": {
+            "bottom": 5,
+            "left": 5,
+            "overflow": "visible",
+            "position": "absolute",
+            "zIndex": -1
+          },
+          "useDefaultViewHeight": false,
+          "useDefaultViewWidth": false
+        },
+        "scripts": {
+          "customMethods": [
+            {
+              "name": "setLocation",
+              "params": [
+                "location"
+              ],
+              "script": "\t# Set props.style with the css properties from exchange.toast.util Locations class\n\tself.props.style \u003d ata.toast.handler.configure.getLocation(location)"
+            },
+            {
+              "name": "setViewPath",
+              "params": [
+                "path"
+              ],
+              "script": "\t# Set props.path with the viewPath for these toast messages\n\tself.props.path \u003d path"
+            },
+            {
+              "name": "configureToast",
+              "params": [
+                "toast"
+              ],
+              "script": "\t# Configures the incoming toast message\n\tif bool(dict(self.custom.animation.value)):\n\t\ttoast.update({\u0027instanceStyle\u0027: self.custom.animation.value[\u0027enter\u0027]})\n\treturn toast"
+            },
+            {
+              "name": "getToastIndex",
+              "params": [
+                "toastID"
+              ],
+              "script": "\t# Get the index of the toast from the instances if exists else None\n\t_index \u003d None\n\tfor index, toast in enumerate(self.props.instances):\n\t\tif toast[\u0027toastID\u0027] \u003d\u003d toastID:\n\t\t\t_index \u003d index\n\t\t\tbreak;\n\treturn _index"
+            },
+            {
+              "name": "setAnimation",
+              "params": [
+                "name"
+              ],
+              "script": "\t# Set instance[.].instanceStyle with the css animation\n\tself.custom.animation.value \u003d ata.toast.handler.configure.getAnimation(name)"
+            },
+            {
+              "name": "clearToasts",
+              "params": [],
+              "script": "\t# Clear out all toasts in the handler\n\tself.props.instances \u003d []"
+            },
+            {
+              "name": "removeToast",
+              "params": [
+                "index"
+              ],
+              "script": "\t# Removes the specific toast from the instances by index\n\ttry:\n\t\tdel self.props.instances[index]\n\texcept:\n\t\tsystem.perspective.print(\u0027Toast Handler could not clear toast, index ({}) does not exist.\u0027.format(index))"
+            }
+          ],
+          "extensionFunctions": null,
+          "messageHandlers": [
+            {
+              "messageType": "toast-add",
+              "pageScope": true,
+              "script": "\tscreenID \u003d payload.get(\u0027screenID\u0027,None)\n\tif screenID \u003d\u003d None or screenID \u003d\u003d self.custom.screenID:\n\t\t# Add payload (Message view params) to the flex repeater instance and set props.style zIndex\n\t\tself.props.style.zIndex \u003d 1\n\t\ttoast \u003d self.configureToast(payload)\n\t\ttry:\n\t\t\terrorMessage \u003d payload[\"content\"].split(\"\u003cbr\u003e\")\n\t\t\tself.setViewPath(\"Library/Toast/Message/Basic\")\n\t\t\tif len(errorMessage) \u003c\u003d 1 and len(errorMessage[0]) \u003c\u003d 65:\n\t\t\t    toast[\"message\"] \u003d payload[\"content\"]\n\t\t\t    toast[\"content\"] \u003d None\n\t\t\telse:\n\t\t\t    self.setViewPath(\"Library/Toast/Message/Expanding\")\n\t\texcept:\n\t\t\tpass\n\t\tself.props.instances.append(toast)",
+              "sessionScope": true,
+              "viewScope": false
+            },
+            {
+              "messageType": "toast-close",
+              "pageScope": true,
+              "script": "\tfrom ata.toast.handler import toasts\n\t# Check for the incoming toast id in the props.instances and get the index of the instance\n\tindex \u003d self.getToastIndex(payload.get(\u0027toastID\u0027))\n\t\n\t# If index exists either apply exit style or remove from instances\n\tif index !\u003d None:\n\t\tif bool(dict(self.custom.animation.value)):\n\t\t\ttoastID \u003d self.props.instances[index][\u0027toastID\u0027]\n\t\t\twaitTime \u003d int(self.custom.animation.value[\u0027exit\u0027][\u0027animation-duration\u0027].replace(\u0027s\u0027, \u0027\u0027))\n\t\t\ttoasts.toastClearOut(toastID, waitTime)\n\t\t\tself.props.instances[index][\u0027instanceStyle\u0027] \u003d self.custom.animation.value[\u0027exit\u0027]\n\t\telse:\n\t\t\tself.removeToast(index)\n\t\t\n\t# Reset the props.style zIndex to -1 (hidden behind everything else)\n\tif not bool(self.props.instances): \n\t\tself.props.style.zIndex \u003d -1",
+              "sessionScope": true,
+              "viewScope": false
+            },
+            {
+              "messageType": "toast-clear",
+              "pageScope": true,
+              "script": "\t# Check for the incoming toast id in the props.instances and get the index of the instance\n\tindex \u003d self.getToastIndex(payload.get(\u0027toastID\u0027))\n\t\n\t# Remove toast message from instances if exists\n\tif index !\u003d None:\n\t\tself.removeToast(index)",
+              "sessionScope": true,
+              "viewScope": false
+            }
+          ]
+        },
+        "type": "ia.display.flex-repeater"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "classes": "ATA/Background/Root"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

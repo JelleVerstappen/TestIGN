@@ -1,0 +1,20 @@
+{
+  "base": {
+    "style": {
+      "borderTopLeftRadius": "5px",
+      "borderTopRightRadius": "5px",
+      "borderBottomLeftRadius": "5px",
+      "borderBottomRightRadius": "5px",
+      "color": "var(--text)",
+      "fontWeight": "lighter"
+    }
+  },
+  "variants": [
+    {
+      "pseudo": "disabled",
+      "style": {
+        "backgroundColor": "var(--corporateIdentity2)"
+      }
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "scope": "DG",
+  "version": 2,
+  "restricted": false,
+  "overridable": true,
+  "files": [
+    "query.sql"
+  ],
+  "attributes": {
+    "useMaxReturnSize": false,
+    "autoBatchEnabled": false,
+    "fallbackValue": "",
+    "maxReturnSize": 100,
+    "cacheUnit": "SEC",
+    "type": "Query",
+    "enabled": true,
+    "cacheAmount": 1,
+    "cacheEnabled": false,
+    "database": "",
+    "fallbackEnabled": false,
+    "lastModificationSignature": "723cef920e247a001144cc38268e484c5bd09cfee2e2ae9e667520b643e44b53",
+    "permissions": [
+      {
+        "zone": "",
+        "role": ""
+      }
+    ],
+    "lastModification": {
+      "actor": "AT",
+      "timestamp": "2025-06-20T12:27:12Z"
+    },
+    "parameters": [
+      {
+        "type": "Parameter",
+        "identifier": "startDate",
+        "sqlType": 8
+      },
+      {
+        "type": "Parameter",
+        "identifier": "endDate",
+        "sqlType": 8
+      },
+      {
+        "type": "Parameter",
+        "identifier": "active",
+        "sqlType": 6
+      },
+      {
+        "type": "Parameter",
+        "identifier": "clear",
+        "sqlType": 6
+      },
+      {
+        "type": "Parameter",
+        "identifier": "ack",
+        "sqlType": 6
+      },
+      {
+        "type": "Parameter",
+        "identifier": "limit",
+        "sqlType": 2
+      },
+      {
+        "type": "Parameter",
+        "identifier": "minPriority",
+        "sqlType": 2
+      },
+      {
+        "type": "Parameter",
+        "identifier": "maxPriority",
+        "sqlType": 2
+      }
+    ]
+  }
+}

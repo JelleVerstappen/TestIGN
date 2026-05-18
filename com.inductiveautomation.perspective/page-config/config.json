@@ -1,0 +1,363 @@
+{
+  "pages": {
+    "/": {
+      "title": "Startscherm",
+      "viewPath": "ControlRoom/Home/Overview"
+    },
+    "/Aflegger": {
+      "title": "",
+      "viewPath": "ControlRoom/DeleteLater/Aflegger"
+    },
+    "/ControlRoom/ActivityFeed/ActivityFeed": {
+      "docks": {
+        "right": [
+          {
+            "anchor": "fixed",
+            "autoBreakpoint": 480,
+            "content": "cover",
+            "handle": "hide",
+            "iconUrl": "",
+            "id": "ActivityFeedDock",
+            "modal": false,
+            "resizable": false,
+            "show": "onDemand",
+            "size": 550,
+            "viewParams": {},
+            "viewPath": "ControlRoom/ActivityFeed/Docked/ActivityFeedDock"
+          },
+          {
+            "anchor": "fixed",
+            "autoBreakpoint": 480,
+            "content": "cover",
+            "handle": "hide",
+            "iconUrl": "",
+            "id": "ChangeCommentStatusDock",
+            "modal": false,
+            "resizable": false,
+            "show": "onDemand",
+            "size": 550,
+            "viewParams": {},
+            "viewPath": "ControlRoom/ActivityFeed/Docked/ChangeCommentStatusDock"
+          },
+          {
+            "anchor": "fixed",
+            "autoBreakpoint": 480,
+            "content": "cover",
+            "handle": "hide",
+            "iconUrl": "",
+            "id": "ActivityFeedFilters",
+            "modal": false,
+            "resizable": false,
+            "show": "onDemand",
+            "size": 550,
+            "viewParams": {},
+            "viewPath": "ControlRoom/ActivityFeed/Docked/Filters"
+          }
+        ]
+      },
+      "title": "Activiteitenoverzicht",
+      "viewPath": "ControlRoom/ActivityFeed/ActivityFeed"
+    },
+    "/ControlRoom/Alarms/AlarmManagement": {
+      "docks": {
+        "right": [
+          {
+            "anchor": "fixed",
+            "autoBreakpoint": 480,
+            "content": "cover",
+            "handle": "hide",
+            "iconUrl": "",
+            "id": "AlarmManagement",
+            "modal": false,
+            "resizable": false,
+            "show": "onDemand",
+            "size": 550,
+            "viewParams": {},
+            "viewPath": "ControlRoom/Alarms/Docked/AlarmManagement"
+          },
+          {
+            "anchor": "fixed",
+            "autoBreakpoint": 480,
+            "content": "cover",
+            "handle": "hide",
+            "iconUrl": "",
+            "id": "AlarmManagementFilters",
+            "modal": false,
+            "resizable": false,
+            "show": "onDemand",
+            "size": 550,
+            "viewParams": {},
+            "viewPath": "ControlRoom/Alarms/Docked/Filters"
+          }
+        ]
+      },
+      "title": "Alarmen",
+      "viewPath": "ControlRoom/Alarms/AlarmManagement"
+    },
+    "/ControlRoom/Articles/Management/ArticleManagement": {
+      "docks": {
+        "right": [
+          {
+            "anchor": "fixed",
+            "autoBreakpoint": 480,
+            "content": "cover",
+            "handle": "hide",
+            "iconUrl": "",
+            "id": "ParameterDock",
+            "modal": false,
+            "resizable": false,
+            "show": "onDemand",
+            "size": 550,
+            "viewParams": {},
+            "viewPath": "ControlRoom/Articles/Docked/ParameterDock"
+          },
+          {
+            "anchor": "fixed",
+            "autoBreakpoint": 480,
+            "content": "cover",
+            "handle": "hide",
+            "iconUrl": "",
+            "id": "EditTreeDock",
+            "modal": false,
+            "resizable": false,
+            "show": "onDemand",
+            "size": 550,
+            "viewParams": {},
+            "viewPath": "ControlRoom/Articles/Docked/TreeDock"
+          },
+          {
+            "anchor": "fixed",
+            "autoBreakpoint": 480,
+            "content": "cover",
+            "handle": "hide",
+            "iconUrl": "",
+            "id": "ArticleDock",
+            "modal": false,
+            "resizable": false,
+            "show": "onDemand",
+            "size": 550,
+            "viewParams": {},
+            "viewPath": "ControlRoom/Articles/Docked/ArticleDock"
+          },
+          {
+            "anchor": "fixed",
+            "autoBreakpoint": 480,
+            "content": "cover",
+            "handle": "hide",
+            "iconUrl": "",
+            "id": "ArticleFilters",
+            "modal": false,
+            "resizable": false,
+            "show": "onDemand",
+            "size": 550,
+            "viewParams": {},
+            "viewPath": "ControlRoom/Articles/Docked/ArticleFilters"
+          },
+          {
+            "anchor": "fixed",
+            "autoBreakpoint": 480,
+            "content": "cover",
+            "handle": "hide",
+            "iconUrl": "",
+            "id": "ParameterFilters",
+            "modal": false,
+            "resizable": false,
+            "show": "onDemand",
+            "size": 550,
+            "viewParams": {},
+            "viewPath": "ControlRoom/Articles/Docked/ParameterFilters"
+          }
+        ]
+      },
+      "title": "Artikel management",
+      "viewPath": "ControlRoom/Articles/Management/ArticleManagement"
+    },
+    "/ControlRoom/Assets/CuttingUnit/CuttingUnit/:Line": {
+      "title": "Afkortunit",
+      "viewPath": "ControlRoom/Assets/CuttingUnit/Overview/CuttingUnit"
+    },
+    "/ControlRoom/Assets/Extruder/Overview/Extruder/:Line": {
+      "docks": {
+        "bottom": [
+          {
+            "anchor": "fixed",
+            "autoBreakpoint": 480,
+            "content": "cover",
+            "handle": "hide",
+            "iconUrl": "",
+            "id": "ProcList",
+            "modal": false,
+            "resizable": false,
+            "show": "onDemand",
+            "size": 650,
+            "viewParams": {},
+            "viewPath": "ControlRoom/Articles/ArticleProcessList/ArticleProcessList"
+          }
+        ]
+      },
+      "title": "Extruder",
+      "viewPath": "ControlRoom/Assets/Extruder/Overview/Extruder"
+    },
+    "/ControlRoom/Assets/HaulOff/Overview/HaulOff/:Line": {
+      "title": "Trekbank",
+      "viewPath": "ControlRoom/Assets/HaulOff/Overview/HaulOff"
+    },
+    "/ControlRoom/Assets/Printer/Overview/Printer/:Line": {
+      "title": "Printer",
+      "viewPath": "ControlRoom/Assets/Printer/Overview/Printer"
+    },
+    "/ControlRoom/Assets/RawMaterialTransport/Overview/RawMaterialTransport/:Line": {
+      "title": "Grondstof transport",
+      "viewPath": "ControlRoom/Assets/RawMaterialTransport/Overview/RawMaterialTransport"
+    },
+    "/ControlRoom/Assets/Silo/Overview/Silo/:Line": {
+      "title": "Silo\u0027s",
+      "viewPath": "ControlRoom/Assets/Silo/Overview/Silo"
+    },
+    "/ControlRoom/Assets/VacuumAndCooling/Overview/VacuumAndCooling/:Line": {
+      "title": "Vacuüm en koeling",
+      "viewPath": "ControlRoom/Assets/VacuumAndCooling/Overview/VacuumAndCoolingV3"
+    },
+    "/ControlRoom/Image/:Title/:CommentID": {
+      "title": "",
+      "viewPath": "ControlRoom/ActivityFeed/Image"
+    },
+    "/ControlRoom/Quality/Quality/:Line": {
+      "docks": {
+        "right": [
+          {
+            "anchor": "fixed",
+            "autoBreakpoint": 480,
+            "content": "cover",
+            "handle": "hide",
+            "iconUrl": "",
+            "id": "QualityDock",
+            "modal": false,
+            "resizable": false,
+            "show": "onDemand",
+            "size": 550,
+            "viewParams": {},
+            "viewPath": "ControlRoom/Quality/Docked/QualityDock"
+          },
+          {
+            "anchor": "fixed",
+            "autoBreakpoint": 480,
+            "content": "cover",
+            "handle": "hide",
+            "iconUrl": "",
+            "id": "QualityFilters",
+            "modal": false,
+            "resizable": false,
+            "show": "onDemand",
+            "size": 550,
+            "viewParams": {},
+            "viewPath": "ControlRoom/Quality/Docked/Filters"
+          },
+          {
+            "anchor": "fixed",
+            "autoBreakpoint": 480,
+            "content": "cover",
+            "handle": "hide",
+            "iconUrl": "",
+            "id": "SawListDock",
+            "modal": false,
+            "resizable": false,
+            "show": "onDemand",
+            "size": 550,
+            "viewParams": {},
+            "viewPath": "ControlRoom/Quality/Docked/SawListDock"
+          }
+        ]
+      },
+      "title": "Kwaliteit",
+      "viewPath": "ControlRoom/Quality/Quality"
+    },
+    "/ControlRoom/StartupProcedures/Management": {
+      "docks": {
+        "right": [
+          {
+            "anchor": "fixed",
+            "autoBreakpoint": 480,
+            "content": "cover",
+            "handle": "hide",
+            "iconUrl": "",
+            "id": "StepsDock",
+            "modal": false,
+            "resizable": false,
+            "show": "onDemand",
+            "size": 550,
+            "viewParams": {},
+            "viewPath": "ControlRoom/StartupProcedure/Docked/StepDock"
+          },
+          {
+            "anchor": "fixed",
+            "autoBreakpoint": 480,
+            "content": "cover",
+            "handle": "hide",
+            "iconUrl": "",
+            "id": "ProcedureDock",
+            "modal": false,
+            "resizable": false,
+            "show": "onDemand",
+            "size": 450,
+            "viewParams": {},
+            "viewPath": "ControlRoom/StartupProcedure/Docked/ProcedureDock"
+          }
+        ]
+      },
+      "title": "Opstartprocedures",
+      "viewPath": "ControlRoom/StartupProcedure/ProcedureOverview"
+    },
+    "/ControlRoom/StartupProcedures/Procedure/:lineID": {
+      "title": "Opstartprocedure",
+      "viewPath": "ControlRoom/StartupProcedure/startProcedure"
+    },
+    "/Trompbank": {
+      "title": "",
+      "viewPath": "ControlRoom/DeleteLater/Trompbank"
+    },
+    "/Wanddiktescanner": {
+      "title": "",
+      "viewPath": "ControlRoom/DeleteLater/Wanddiktescanner"
+    },
+    "/test": {
+      "title": "",
+      "viewPath": "ControlRoom/Home/Overview 23012026ko"
+    }
+  },
+  "sharedDocks": {
+    "cornerPriority": "top-bottom",
+    "left": [
+      {
+        "anchor": "fixed",
+        "autoBreakpoint": 480,
+        "content": "cover",
+        "handle": "hide",
+        "iconUrl": "",
+        "id": "SideNav",
+        "modal": true,
+        "resizable": false,
+        "show": "onDemand",
+        "size": 275,
+        "viewParams": {},
+        "viewPath": "Library/SharedDocked/SideNav"
+      }
+    ],
+    "top": [
+      {
+        "anchor": "fixed",
+        "autoBreakpoint": 480,
+        "content": "push",
+        "handle": "hide",
+        "iconUrl": "",
+        "id": "",
+        "modal": false,
+        "resizable": false,
+        "show": "visible",
+        "size": 41,
+        "viewParams": {},
+        "viewPath": "Library/SharedDocked/Headers/FullHeader"
+      }
+    ]
+  }
+}

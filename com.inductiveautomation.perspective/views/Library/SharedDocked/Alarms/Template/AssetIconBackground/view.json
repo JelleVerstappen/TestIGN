@@ -1,0 +1,313 @@
+{
+  "custom": {
+    "AssetCode": "FOR/WTS",
+    "inside": "--prim",
+    "outside": "white"
+  },
+  "params": {
+    "Asset": "PipeThicknessScanner",
+    "Enabled": true,
+    "Line": "E07"
+  },
+  "propConfig": {
+    "custom.AssetCode": {
+      "binding": {
+        "config": {
+          "path": "view.params.Asset"
+        },
+        "transforms": [
+          {
+            "fallback": "",
+            "inputType": "scalar",
+            "mappings": [
+              {
+                "input": "Silo",
+                "output": "MST"
+              },
+              {
+                "input": "RawMaterialTransport",
+                "output": "MHL"
+              },
+              {
+                "input": "Extruder",
+                "output": "EXT"
+              },
+              {
+                "input": "VacuumAndCooling",
+                "output": "FOR/VAC"
+              },
+              {
+                "input": "Printer",
+                "output": "PRN"
+              },
+              {
+                "input": "HaulOff",
+                "output": "HAUL"
+              },
+              {
+                "input": "CuttingUnit",
+                "output": "CUT"
+              },
+              {
+                "input": "FormingMachine",
+                "output": "FRM"
+              },
+              {
+                "input": "PipeThicknessScanner",
+                "output": "FOR/WTS"
+              },
+              {
+                "input": "PipeStacker",
+                "output": "PST"
+              },
+              {
+                "input": "Quality",
+                "output": "QUAL"
+              }
+            ],
+            "outputType": "scalar",
+            "type": "map"
+          }
+        ],
+        "type": "property"
+      },
+      "persistent": true
+    },
+    "custom.inside": {
+      "binding": {
+        "config": {
+          "path": "page.props.path"
+        },
+        "transforms": [
+          {
+            "code": "\tif self.params.Enabled \u003d\u003d False:\n\t\trVal \u003d \"--disabled\"\n\telif self.params.Asset in value:\n\t\trVal \u003d \"--prim\"\n\telse:\n\t\trVal \u003d \"--sec\"\n\t\n\treturn rVal",
+            "type": "script"
+          }
+        ],
+        "type": "property"
+      },
+      "persistent": true
+    },
+    "custom.outside": {
+      "binding": {
+        "config": {
+          "path": "page.props.path"
+        },
+        "transforms": [
+          {
+            "code": "\tif self.params.Enabled \u003d\u003d False:\n\t\trVal \u003d \"--disabled\"\n\telif self.params.Asset in value:\n\t\trVal \u003d \"white\"\n\telse:\n\t\trVal \u003d \"--sec\"\n\t\n\treturn rVal",
+            "type": "script"
+          }
+        ],
+        "type": "property"
+      },
+      "persistent": true
+    },
+    "params.Asset": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.Enabled": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.Line": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {},
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Outside"
+        },
+        "position": {
+          "height": "90%",
+          "width": "90%",
+          "x": "5%",
+          "y": "5%"
+        },
+        "propConfig": {
+          "props.style.backgroundColor": {
+            "binding": {
+              "config": {
+                "path": "view.custom.outside"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "direction": "column",
+          "justify": "center",
+          "style": {
+            "clip-path": "polygon(\n  100% 50%, /* inkeping rechts midden */\n  90% 0%,   /* rechterboven hoek */\n  0% 0%,    /* linkerboven hoek */\n  10% 50%,  /* inkeping links midden */\n  0% 100%,  /* linkeronder hoek */\n  90% 100%  /* rechteronder hoek */\n)\n"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "meta": {
+          "name": "Inside"
+        },
+        "position": {
+          "height": "80%",
+          "width": "84%",
+          "x": "8%",
+          "y": "10%"
+        },
+        "propConfig": {
+          "props.style.backgroundColor": {
+            "binding": {
+              "config": {
+                "path": "view.custom.inside"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "clip-path": "polygon(\n  100% 50%, /* inkeping rechts midden */\n  90% 0%,   /* rechterboven hoek */\n  0% 0%,    /* linkerboven hoek */\n  10% 50%,  /* inkeping links midden */\n  0% 100%,  /* linkeronder hoek */\n  90% 100%  /* rechteronder hoek */\n)\n"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "meta": {
+          "name": "Icon"
+        },
+        "position": {
+          "height": "84%",
+          "width": "84%",
+          "x": "8%",
+          "y": "8%"
+        },
+        "propConfig": {
+          "props.path": {
+            "binding": {
+              "config": {
+                "expression": "\"dyka/\"+Case(\r\n\t{view.params.Asset},\r\n\t\"RawMaterialTransport\", \"RawMaterialTranssport\",\r\n\t\"PipeThicknessScanner\", \"TubeThicknessScanner\",\r\n\t\"CuttingUnit\", \"Saw\",\r\n\t\"HaulOff\", \"PullBench\",\r\n\t{view.params.Asset}\r\n\r\n)"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "color": "--textThr"
+        },
+        "type": "ia.display.icon"
+      },
+      {
+        "meta": {
+          "name": "SmallIcon"
+        },
+        "position": {
+          "height": "23px",
+          "width": "23px",
+          "x": "8.5%",
+          "y": "1%"
+        },
+        "propConfig": {
+          "props.path": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "indirect",
+                "references": {
+                  "AssetCode": "{view.custom.AssetCode}",
+                  "Line": "{view.params.Line}"
+                },
+                "tagPath": "[NLSTWDYK]Dyka/STW/EXT/{Line}/{AssetCode}/Alarms/Count/IconPath"
+              },
+              "overlayOptOut": true,
+              "type": "tag"
+            },
+            "persistent": true
+          }
+        },
+        "props": {
+          "path": null
+        },
+        "type": "ia.display.icon"
+      }
+    ],
+    "events": {
+      "dom": {
+        "onClick": {
+          "config": {
+            "script": "\tif self.view.params.Enabled \u003d\u003d True:\n\t\tto \u003d self.view.params.Asset\n\t\tline \u003d self.view.params.Line\n\t\tsystem.perspective.navigate(dyka.config.navigate(to, line))"
+          },
+          "scope": "G",
+          "type": "script"
+        }
+      }
+    },
+    "meta": {
+      "name": "root"
+    },
+    "propConfig": {
+      "props.style.classes": {
+        "binding": {
+          "config": {
+            "path": "view.params.Enabled"
+          },
+          "transforms": [
+            {
+              "fallback": "",
+              "inputType": "scalar",
+              "mappings": [
+                {
+                  "input": true,
+                  "output": "form-icon-button"
+                },
+                {
+                  "input": false,
+                  "output": ""
+                }
+              ],
+              "outputType": "scalar",
+              "type": "map"
+            }
+          ],
+          "type": "property"
+        }
+      },
+      "props.style.cursor": {
+        "binding": {
+          "config": {
+            "path": "view.params.Enabled"
+          },
+          "transforms": [
+            {
+              "fallback": "",
+              "inputType": "scalar",
+              "mappings": [
+                {
+                  "input": true,
+                  "output": "form-icon-button"
+                },
+                {
+                  "input": false,
+                  "output": "not-allowed"
+                }
+              ],
+              "outputType": "scalar",
+              "type": "map"
+            }
+          ],
+          "type": "property"
+        }
+      }
+    },
+    "props": {
+      "style": {
+        "marginRight": "5px",
+        "overflow": "hidden"
+      }
+    },
+    "type": "ia.container.coord"
+  }
+}

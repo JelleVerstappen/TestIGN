@@ -1,0 +1,473 @@
+{
+  "custom": {
+    "maxID": "value"
+  },
+  "params": {
+    "data": {
+      "BPAmount": 1,
+      "BPLength": 1,
+      "DCAmount": 1,
+      "DCLength": 1,
+      "Description": "None",
+      "HitsAmount": 1,
+      "HitsLength": 1,
+      "ShrinkAmount": 1,
+      "ShrinkLength": 1
+    },
+    "newEntry": true,
+    "sawListID": 1
+  },
+  "propConfig": {
+    "custom.maxID": {
+      "persistent": true
+    },
+    "params.data": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.newEntry": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.sawListID": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "width": 600
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Header"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.params.title": {
+            "binding": {
+              "config": {
+                "expression": "if({view.params.newEntry} \u003d 1, \u0027Toevoegen zaaglijst\u0027,\t\u0027Aanpassen zaaglijst\u0027)"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "closeDockID": "SawListDock",
+            "closeIcon": true
+          },
+          "path": "Library/SharedTemplates/HeaderForDock",
+          "style": {
+            "textTransform": "capitalize"
+          },
+          "useDefaultViewHeight": true
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "TubeType"
+            },
+            "propConfig": {
+              "props.params.value": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.data.Description"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "enabled": true,
+                "key": "Buis type",
+                "margingRight": 55,
+                "placeholder": "typ hier..."
+              },
+              "path": "Library/SharedTemplates/Input/String",
+              "useDefaultViewHeight": true
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "BPAmount"
+            },
+            "propConfig": {
+              "props.params.value": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.data.BPAmount"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "enabled": true,
+                "engUnits": "stuks",
+                "format": "0,0.##",
+                "key": "Barstdruk aantal",
+                "maxValue": 10000000,
+                "minValue": 0,
+                "placeholder": "",
+                "unitVisable": true
+              },
+              "path": "Library/SharedTemplates/Input/Number",
+              "style": {
+                "marginTop": 20
+              },
+              "useDefaultViewHeight": true
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "BPLength"
+            },
+            "propConfig": {
+              "props.params.value": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.data.BPLength"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "enabled": true,
+                "engUnits": "cm",
+                "format": "0,0.##",
+                "key": "Barstdruk lengte",
+                "maxValue": 10000000,
+                "minValue": 0,
+                "placeholder": "",
+                "unitVisable": true
+              },
+              "path": "Library/SharedTemplates/Input/Number",
+              "useDefaultViewHeight": true
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "ShrinkAmount"
+            },
+            "propConfig": {
+              "props.params.value": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.data.ShrinkAmount"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "enabled": true,
+                "engUnits": "stuks",
+                "format": "0,0.##",
+                "key": "Krimp aantal",
+                "maxValue": 10000000,
+                "minValue": 0,
+                "placeholder": "",
+                "unitVisable": true
+              },
+              "path": "Library/SharedTemplates/Input/Number",
+              "style": {
+                "marginTop": 20
+              },
+              "useDefaultViewHeight": true
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "ShrinkLength"
+            },
+            "propConfig": {
+              "props.params.value": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.data.ShrinkLength"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "enabled": true,
+                "engUnits": "cm",
+                "format": "0,0.##",
+                "key": "Krimp lengte",
+                "maxValue": 10000000,
+                "minValue": 0,
+                "placeholder": "",
+                "unitVisable": true
+              },
+              "path": "Library/SharedTemplates/Input/Number",
+              "useDefaultViewHeight": true
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "DCAmount"
+            },
+            "propConfig": {
+              "props.params.value": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.data.DCAmount"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "enabled": true,
+                "engUnits": "stuks",
+                "format": "0,0.##",
+                "key": "Dichloormethaan aantal",
+                "maxValue": 10000000,
+                "minValue": 0,
+                "placeholder": "",
+                "unitVisable": true
+              },
+              "path": "Library/SharedTemplates/Input/Number",
+              "style": {
+                "marginTop": 20
+              },
+              "useDefaultViewHeight": true
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "DCLength"
+            },
+            "propConfig": {
+              "props.params.value": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.data.DCLength"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "enabled": true,
+                "engUnits": "cm",
+                "format": "0,0.##",
+                "key": "Dichloormethaan lengte",
+                "maxValue": 10000000,
+                "minValue": 0,
+                "placeholder": "",
+                "rejected": "True",
+                "unitVisable": true
+              },
+              "path": "Library/SharedTemplates/Input/Number",
+              "useDefaultViewHeight": true
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "HitsAmount"
+            },
+            "propConfig": {
+              "props.params.value": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.data.HitsAmount"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "enabled": true,
+                "engUnits": "stuks",
+                "format": "0,0.##",
+                "key": "Slagproef aantal",
+                "maxValue": 10000000,
+                "minValue": 0,
+                "placeholder": "",
+                "unitVisable": true
+              },
+              "path": "Library/SharedTemplates/Input/Number",
+              "style": {
+                "marginTop": 20
+              },
+              "useDefaultViewHeight": true
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "HitsLength"
+            },
+            "propConfig": {
+              "props.params.value": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.data.HitsLength"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "enabled": true,
+                "engUnits": "cm",
+                "format": "0,0.##",
+                "key": "Slagproef lengte",
+                "maxValue": 10000000,
+                "minValue": 0,
+                "placeholder": "",
+                "unitVisable": true
+              },
+              "path": "Library/SharedTemplates/Input/Number",
+              "useDefaultViewHeight": true
+            },
+            "type": "ia.display.view"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer"
+        },
+        "position": {
+          "grow": 1
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "overflow": "scroll",
+            "padding": 10
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "id": "{/root/Header.props.params.closeDockID}",
+                    "type": "close"
+                  },
+                  "scope": "C",
+                  "type": "dock"
+                }
+              }
+            },
+            "meta": {
+              "name": "Button_5"
+            },
+            "position": {
+              "basis": "80px",
+              "shrink": 0
+            },
+            "props": {
+              "image": {
+                "icon": {
+                  "path": "material/cancel"
+                }
+              },
+              "style": {
+                "classes": "ATA/Components/Buttons/Sec",
+                "marginLeft": 15
+              },
+              "text": ""
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "script": "\tnewEntry \u003d self.view.params.newEntry\n\tsawListID \u003d self.view.params.sawListID\n\t\n\tdescription \u003d self.parent.parent.getChild(\"FlexContainer\").getChild(\"TubeType\").props.params.value\n\tBPAmount \u003d self.parent.parent.getChild(\"FlexContainer\").getChild(\"BPAmount\").props.params.value\n\tBPLength \u003d self.parent.parent.getChild(\"FlexContainer\").getChild(\"BPLength\").props.params.value\n\tShrinkAmount \u003d self.parent.parent.getChild(\"FlexContainer\").getChild(\"ShrinkAmount\").props.params.value\n\tShrinkLength \u003d self.parent.parent.getChild(\"FlexContainer\").getChild(\"ShrinkLength\").props.params.value\n\tDCAmount \u003d self.parent.parent.getChild(\"FlexContainer\").getChild(\"DCAmount\").props.params.value\n\tDCLength \u003d self.parent.parent.getChild(\"FlexContainer\").getChild(\"DCLength\").props.params.value\n\tHitsAmount \u003d self.parent.parent.getChild(\"FlexContainer\").getChild(\"HitsAmount\").props.params.value\n\tHitsLength \u003d self.parent.parent.getChild(\"FlexContainer\").getChild(\"HitsLength\").props.params.value\n\t\n\tjsonStruct \u003d {\n\t\t\t\t\"BurstPressure\": {\"Amount\": BPAmount, \"Length\": BPLength},\n\t\t\t\t\"Shrink\": {\"Amount\": ShrinkAmount, \"Length\": ShrinkLength},\n\t\t\t\t\"Dichloormethane\": {\"Amount\": DCAmount, \"Length\": DCLength},\n\t\t\t\t\"Hits\": {\"Amount\": HitsAmount, \"Length\": HitsLength}\n\t\t\t}\n\tjsonString \u003d system.util.jsonEncode(jsonStruct)\n\t\n\tif newEntry:\n\t\tinsertQuery \u003d \u0027\u0027\u0027DECLARE @json nvarchar(max) \u003d (SELECT config FROM QASawList WHERE active \u003d 1); \n\t\t\t\t\t\tDECLARE @key  nvarchar(100) \u003d ?;\n\t\t\t\t\t\tDECLARE @edited nvarchar(max) \u003d ?;\n\t\t\t\t\t\t\n\t\t\t\t\t\tDECLARE @nextId int;\n\t\t\t\t\t\t\n\t\t\t\t\t\tSELECT @nextId \u003d\n\t\t\t\t\t\t    ISNULL(MAX(TRY_CAST(j.id AS int)), 0) + 1\n\t\t\t\t\t\tFROM OPENJSON(@json)\n\t\t\t\t\t\tWITH (id int \u0027$.id\u0027) AS j;\n\t\t\t\t\t\t\n\t\t\t\t\t\tDECLARE @newObject nvarchar(max) \u003d\n\t\t\t\t\t\t    N\u0027{\"id\":\u0027 + CAST(@nextId as nvarchar(20)) +\n\t\t\t\t\t\t    N\u0027,\"data\":\u0027 + @edited + N\u0027}\u0027;\n\t\t\t\t\t\t\n\t\t\t\t\t\tSET @json \u003d JSON_MODIFY(\n\t\t\t\t\t\t    @json,\n\t\t\t\t\t\t    \u0027$.\"\u0027 + STRING_ESCAPE(@key, \u0027json\u0027) + \u0027\"\u0027,\n\t\t\t\t\t\t    JSON_QUERY(@newObject)\n\t\t\t\t\t\t);\n\t\t\t\t\t\t\n\t\t\t\t\t\tUPDATE QASawList\n\t\t\t\t\t\tSET config \u003d @json\u0027\u0027\u0027\n\t\tinsertArgs \u003d [description, jsonString]\n\t\tsystem.db.runPrepUpdate(insertQuery, insertArgs, database \u003d \u0027NLSTWDYK_DB_PROD\u0027)\n\t\n\telse:\n\t\tupdateQuery \u003d \u0027\u0027\u0027DECLARE @json nvarchar(max) \u003d (select config from QASawList where active \u003d 1);\n\t\t\t\t\t\tDECLARE @key  nvarchar(100) \u003d ?;\n\t\t\t\t\t\t\n\t\t\t\t\t\tDECLARE @edited nvarchar(max) \u003d ?;\n\t\t\t\t\t\t\n\t\t\t\t\t\tSET @json \u003d JSON_MODIFY(@json, \u0027$.\"\u0027 + STRING_ESCAPE(@key, \u0027json\u0027) + \u0027\".data\u0027, JSON_QUERY(@edited));\n\t\t\t\t\t\t\n\t\t\t\t\t\tupdate QASawList\n\t\t\t\t\t\t    set config \u003d @json\n\t\t\t\t\t\twhere\n\t\t\t\t\t\t    active \u003d 1;\u0027\u0027\u0027\n\t\tupdateArgs \u003d [description, jsonString]\n\t\tsystem.db.runPrepUpdate(updateQuery, updateArgs, database \u003d \u0027NLSTWDYK_DB_PROD\u0027)\n\t\t\n\tsystem.perspective.sendMessage(\u0027refreshSawList\u0027)\n\tsystem.perspective.closeDock(self.parent.parent.getChild(\"Header\").props.params.closeDockID)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "Button_1"
+            },
+            "position": {
+              "basis": "80px",
+              "shrink": 0
+            },
+            "props": {
+              "image": {
+                "icon": {
+                  "path": "material/save_alt"
+                }
+              },
+              "style": {
+                "classes": "ATA/Components/Buttons/CTA",
+                "marginLeft": 15
+              },
+              "text": ""
+            },
+            "type": "ia.input.button"
+          }
+        ],
+        "meta": {
+          "name": "Footer"
+        },
+        "position": {
+          "basis": "45px",
+          "shrink": 0
+        },
+        "props": {
+          "justify": "flex-end",
+          "style": {
+            "backgroundColor": "--backgroundSecondary",
+            "borderTopLeftRadius": 5,
+            "borderTopRightRadius": 5,
+            "padding": 7,
+            "zIndex": 1
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "backgroundColor": "#FFFFFF",
+        "opacity": 1
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

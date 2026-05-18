@@ -1,0 +1,172 @@
+{
+  "custom": {},
+  "params": {
+    "enabled": true,
+    "key": "value",
+    "key1": "value",
+    "maxValue": 1,
+    "minValue": 0,
+    "value": 0
+  },
+  "propConfig": {
+    "params.enabled": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.key": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.key1": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.maxValue": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.minValue": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.value": {
+      "paramDirection": "inout",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 50,
+      "width": 454
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.key"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "ATA/Components/Labels/TextNormal"
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Label_0"
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.key1"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "ATA/Components/Labels/TextNormal"
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer_0"
+        },
+        "position": {
+          "basis": "15px",
+          "shrink": 0
+        },
+        "props": {
+          "justify": "space-between",
+          "style": {
+            "overflow": "hidden"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "meta": {
+          "name": "Slider"
+        },
+        "position": {
+          "basis": "100px"
+        },
+        "propConfig": {
+          "props.enabled": {
+            "binding": {
+              "config": {
+                "path": "view.params.enabled"
+              },
+              "type": "property"
+            }
+          },
+          "props.max": {
+            "binding": {
+              "config": {
+                "path": "view.params.maxValue"
+              },
+              "type": "property"
+            }
+          },
+          "props.min": {
+            "binding": {
+              "config": {
+                "path": "view.params.minValue"
+              },
+              "type": "property"
+            }
+          },
+          "props.value": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "path": "view.params.value"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "classes": "ATA/Components/Slider",
+            "marginBottom": 5,
+            "marginLeft": 15,
+            "marginRight": 15
+          }
+        },
+        "type": "ia.input.slider"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "backgroundColor": "#FFFFFF00",
+        "overflow": "hidden",
+        "paddingLeft": 5,
+        "paddingRight": 5
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

@@ -1,0 +1,4031 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "height": 1119,
+      "width": 1616
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "Label"
+                    },
+                    "position": {
+                      "basis": "34px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "style": {
+                        "borderBottomColor": "--sec",
+                        "borderBottomStyle": "solid",
+                        "borderBottomWidth": 1,
+                        "classes": "ATA/Components/Labels/TextCardTitle"
+                      },
+                      "text": "Artikel boom",
+                      "textStyle": {
+                        "textAlign": "center"
+                      }
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "events": {
+                      "component": {
+                        "onItemClicked": {
+                          "config": {
+                            "script": "\tselectionData \u003d self.props.selectionData[0].value\n\t\n\tselectionJSON \u003d {\n\t\t\t  \"NodeID\": selectionData.get(\u0027NodeID\u0027),\n\t\t\t  \"ParameterValueID\": selectionData.get(\u0027ParameterValueID\u0027),\n\t\t\t  \"HighAlarm\": selectionData.get(\u0027HighAlarm\u0027),\n\t\t\t  \"HighWarning\": selectionData.get(\u0027HighWarning\u0027),\n\t\t\t  \"ParamValue\": selectionData.get(\u0027ParamValue\u0027),\n\t\t\t  \"LowAlarm\": selectionData.get(\u0027LowAlarm\u0027),\n\t\t\t  \"LowWarning\": selectionData.get(\u0027LowWarning\u0027),\n\t\t\t  \"ParameterID\": selectionData.get(\u0027ParameterID\u0027),\n\t\t\t  \"ParamName\": selectionData.get(\u0027ParamName\u0027),\n\t\t\t  \"FolderParentID\" : selectionData.get(\u0027ParentID\u0027)\n\t\t\t}\n\t\n\tself.view.getChild(\"root\").custom.selectedTreeData \u003d selectionJSON"
+                          },
+                          "scope": "G",
+                          "type": "script"
+                        }
+                      }
+                    },
+                    "meta": {
+                      "name": "Tree_0"
+                    },
+                    "propConfig": {
+                      "custom.isFolder": {
+                        "binding": {
+                          "config": {
+                            "path": "this.props.selectionData"
+                          },
+                          "transforms": [
+                            {
+                              "code": "\tif value \u003d\u003d []:\n\t\treturn None\n\telse:\n\t\tif value[0].value.get(\u0027ParameterID\u0027) is not None:\n\t\t\treturn False\n\t\treturn True",
+                              "type": "script"
+                            }
+                          ],
+                          "type": "property"
+                        }
+                      },
+                      "props.items": {
+                        "binding": {
+                          "config": {
+                            "queryPath": "Article/ArticleManagement/GetTreeArticles",
+                            "returnFormat": "json"
+                          },
+                          "transforms": [
+                            {
+                              "code": "\tdata \u003d value\n\timport json\n\t\t# Stap 2: Bouw een dictionary van alle nodes\n\tnodes \u003d {}\n\tfor row in data:\n\t\tnodeID \u003d row[\"RecipeElementID\"]\n\t\tparentID \u003d row[\"ParentID\"]\n\t\tparams \u003d []\n\t\tif row[\"ParametersJSON\"]:\n\t\t\t\n\t\t\tparams \u003d json.loads(row[\"ParametersJSON\"])\n\t\t\n\t\t# Elke node: basisstructuur\n\t\tnodes[nodeID] \u003d {\n\t\t\t\"expanded\": False,\n\t\t\t\"data\": {\"NodeID\": nodeID, \"ParentID\": parentID},\n\t\t\t\"label\": row[\"Description\"],\n\t\t\t\"items\": [],  # kinderen komen hier\n\t\t\t\"params\": params\n\t\t}\n\n\t# Stap 3: Bouw de boomstructuur d.m.v. parent-child relatie\n\troot_nodes \u003d []\n\tfor row in data:\n\t\tnodeID \u003d row[\"RecipeElementID\"]\n\t\tparentID \u003d row[\"ParentID\"]\n\t\tnode \u003d nodes[nodeID]\n\t\t\n\t\tarticleNumber \u003d row[\u0027ArticleNumber\u0027] \n\t\t\n\t\tif articleNumber is not None:\n\t\t\tnode[\"items\"].append({\n\t\t\t\t\"expanded\": False,\n\t\t\t\t\"data\": {\n\t\t\t\t\t\"articleID\": row[\"ArticleID\"],\n\t\t\t\t\t\"NodeID\": nodeID,\n\t\t\t\t},\n\t\t\t\t\"label\": \u0027Artikel \u0027 + str(articleNumber),\n\t\t\t\t\"icon\": {\"path\": \"bootstrap-icons/card-list\"},\n\t\t\t\t\"items\": []\n\t\t\t})\n\t\t\t\n\t\t# Parameters toevoegen als child items\n\t\tfor p in node[\"params\"]:\n\t\t\tnode[\"items\"].append({\n\t\t\t\t\"expanded\": False,\n\t\t\t\t\"data\": {\n\t\t\t\t\t\"ParamValue\": p[\"Value\"],\n\t\t\t\t\t\"ParamName\": p[\"Description\"],\n\t\t\t\t\t\"HighAlarm\": p[\"HighAlarm\"],\n\t\t\t\t\t\"HighWarning\": p[\"HighWarning\"],\n\t\t\t\t\t\"LowWarning\": p[\"LowWarning\"],\n\t\t\t\t\t\"LowAlarm\": p[\"LowAlarm\"],\n\t\t\t\t\t\"NodeID\": nodeID,\n\t\t\t\t\t\"ParameterID\": p[\"ProcessParameterID\"],\n\t\t\t\t\t\"ParameterValueID\": p[\"ProcessParameterValueID\"]\n\t\t\t\t},\n\t\t\t\t\"label\": p[\"Description\"] + \u0027 \u003d \u0027 + str(p[\"Value\"]) + \u0027 \u0027 + p[\u0027Unit\u0027],\n\t\t\t\t\"icon\": {\"path\": \"material/stop\"},\n\t\t\t\t\"items\": []\n\t\t\t})\n\n\t\t# Verwijder tijdelijke params\n\t\tdel node[\"params\"]\n\n\t\tif parentID is None:\n\t\t\troot_nodes.append(node)\n\t\telse:\n\t\t\tnodes[parentID][\"items\"].append(node)\n\t\n\tselectionPath \u003d self.props.selection[0]\n\tselectionList \u003d selectionPath.split(\u0027/\u0027)\n\t\n\tfirstLoop \u003d True\n\tif len(selectionList) \u003e 0 and selectionPath !\u003d \u0027\u0027:\n\t\tfor selected in selectionList:\n\t\t\tif firstLoop \u003d\u003d True:\n\t\t\t\troot_nodes[int(selected)][\u0027expanded\u0027] \u003d True\n\t\t\t\tLoopedData \u003d root_nodes[int(selected)][\u0027items\u0027]\n\t\t\t\n\t\t\telse:\n\t\t\t\ttry:\n\t\t\t\t\tLoopedData \u003d LoopedData[int(selected)]\n\t\t\t\texcept:\n\t\t\t\t\ttry:\n\t\t\t\t\t\tLoopedData \u003d LoopedData[0]\n\t\t\t\t\texcept:\n\t\t\t\t\t\tcontinue\n\t\t\t\tLoopedData[\u0027expanded\u0027] \u003d True\n\t\t\t\tLoopedData \u003d LoopedData[\u0027items\u0027]\n\t\t\t\t\n\t\t\tfirstLoop \u003d False\n\t\n\t# Stap 4: Return de boom \n\treturn root_nodes",
+                              "type": "script"
+                            }
+                          ],
+                          "type": "query"
+                        }
+                      }
+                    },
+                    "props": {
+                      "appearance": {
+                        "defaultNodeIcons": {
+                          "collapsed": {
+                            "path": "material/folder"
+                          },
+                          "empty": {
+                            "path": "material/create_new_folder"
+                          },
+                          "expanded": {
+                            "path": "material/folder_open"
+                          }
+                        },
+                        "expandIcons": {
+                          "collapsed": {
+                            "path": "material/arrow_right"
+                          },
+                          "expanded": {
+                            "path": "material/arrow_drop_down"
+                          }
+                        }
+                      },
+                      "selection": [
+                        ""
+                      ],
+                      "selectionData": [
+                        {
+                          "itemPath": "",
+                          "value": {}
+                        }
+                      ]
+                    },
+                    "type": "ia.display.tree"
+                  },
+                  {
+                    "children": [
+                      {
+                        "events": {
+                          "component": {
+                            "onActionPerformed": {
+                              "config": {
+                                "script": "\tselectedLevel \u003d self.parent.parent.getChild(\"Tree_0\").props.selectionData[0].value.NodeID\n\tusername \u003d self.session.props.auth.user.userName\n\tisFolder \u003d self.parent.parent.getChild(\"Tree_0\").custom.isFolder\n\t\n\tif isFolder \u003d\u003d True:\n\t\tsystem.db.runNamedQuery(\u0027Article/ArticleManagement/deleteLevelsAndParams\u0027, parameters \u003d {\u0027rootID\u0027: selectedLevel, \u0027modifiedBy\u0027: username})\n\telse:\n\t\tselectedParameterID \u003d self.view.getChild(\"root\").custom.selectedTreeData.ParameterValueID\n\t\n\t\tdeleteQuery \u003d \u0027\u0027\u0027update\n\t\t\t\t\t\t\tProcessParameterValues \n\t\t\t\t\t\tset\n\t\t\t\t\t\t\tactive \u003d 0\n\t\t\t\t\t\twhere\n\t\t\t\t\t\t\tProcessParameterValueID \u003d ?\n\t\t\t\t\t\t\u0027\u0027\u0027\n\t\tdeleteArgs \u003d [selectedParameterID]\n\t\tsystem.db.runPrepUpdate(deleteQuery, deleteArgs, database \u003d \u0027NLSTWDYK_DB_PROD\u0027)\n\t\n\tsystem.perspective.sendMessage(\u0027refreshArticleManagement\u0027)\n\tself.props.value \u003d 0"
+                              },
+                              "scope": "G",
+                              "type": "script"
+                            }
+                          }
+                        },
+                        "meta": {
+                          "name": "OneShotButton"
+                        },
+                        "position": {
+                          "basis": "80px",
+                          "shrink": 0
+                        },
+                        "propConfig": {
+                          "props.enabled": {
+                            "binding": {
+                              "config": {
+                                "expression": "!len({.../Tree_0.props.selection[0]}) \u003d 0"
+                              },
+                              "type": "expr"
+                            }
+                          }
+                        },
+                        "props": {
+                          "confirm": {
+                            "enabled": true,
+                            "text": "Weet je het zeker?"
+                          },
+                          "readyState": {
+                            "icon": {
+                              "path": "material/delete",
+                              "style": {
+                                "height": "24px",
+                                "width": "2rem"
+                              }
+                            },
+                            "text": ""
+                          },
+                          "style": {
+                            "classes": "ATA/Components/Buttons/Sec"
+                          },
+                          "writingState": {
+                            "icon": {
+                              "path": "material/hourglass_empty",
+                              "style": {
+                                "height": "24px",
+                                "width": "2rem"
+                              }
+                            },
+                            "text": "Writing..."
+                          }
+                        },
+                        "type": "ia.input.oneshotbutton"
+                      },
+                      {
+                        "events": {
+                          "component": {
+                            "onActionPerformed": {
+                              "config": {
+                                "script": "\tselectedNodeID \u003d self.view.getChild(\"root\").custom.selectedTreeData.NodeID\n\tlevelNameQuery \u003d \u0027select description from recipeelements where recipeelementID \u003d ?\u0027\n\targs \u003d [selectedNodeID]\n\tlevelName \u003d system.db.runScalarPrepQuery(levelNameQuery, args, database \u003d \u0027NLSTWDYK_DB_PROD\u0027)\n\t\n\tsystem.perspective.openDock(\u0027EditTreeDock\u0027, params \u003d {\u0027selectedNodeID\u0027: selectedNodeID, \u0027upperLevelName\u0027: None, \u0027function\u0027: \u0027edit\u0027, \u0027levelName\u0027: levelName})"
+                              },
+                              "scope": "G",
+                              "type": "script"
+                            }
+                          }
+                        },
+                        "meta": {
+                          "name": "Button"
+                        },
+                        "position": {
+                          "basis": "80px",
+                          "shrink": 0
+                        },
+                        "propConfig": {
+                          "props.enabled": {
+                            "binding": {
+                              "config": {
+                                "expression": "!len({.../Tree_0.props.selection[0]}) \u003d 0"
+                              },
+                              "type": "expr"
+                            }
+                          }
+                        },
+                        "props": {
+                          "image": {
+                            "icon": {
+                              "path": "material/edit"
+                            }
+                          },
+                          "style": {
+                            "classes": "ATA/Components/Buttons/Prim",
+                            "marginLeft": 15
+                          },
+                          "text": ""
+                        },
+                        "type": "ia.input.button"
+                      },
+                      {
+                        "events": {
+                          "component": {
+                            "onActionPerformed": {
+                              "config": {
+                                "script": "\tselectedNodeID \u003d self.view.getChild(\"root\").custom.selectedTreeData.NodeID\n\t\n\tnodeDescriptionQuery \u003d \u0027select description from recipeelements where recipeelementID \u003d ?\u0027\n\targs \u003d [selectedNodeID]\n\tnodeDescription \u003d system.db.runScalarPrepQuery(nodeDescriptionQuery, args, database \u003d \u0027NLSTWDYK_DB_PROD\u0027)\n\t\n\tsystem.perspective.openDock(\u0027EditTreeDock\u0027, params \u003d {\u0027selectedNodeID\u0027: selectedNodeID, \u0027upperLevelName\u0027: nodeDescription, \u0027function\u0027: \u0027add\u0027, \u0027levelName\u0027: None})"
+                              },
+                              "scope": "G",
+                              "type": "script"
+                            }
+                          }
+                        },
+                        "meta": {
+                          "name": "Button_0"
+                        },
+                        "position": {
+                          "basis": "80px",
+                          "shrink": 0
+                        },
+                        "props": {
+                          "image": {
+                            "icon": {
+                              "path": "material/add"
+                            }
+                          },
+                          "style": {
+                            "classes": "ATA/Components/Buttons/CTA",
+                            "marginLeft": 15
+                          },
+                          "text": ""
+                        },
+                        "type": "ia.input.button"
+                      }
+                    ],
+                    "meta": {
+                      "name": "FlexContainer"
+                    },
+                    "position": {
+                      "basis": "45px"
+                    },
+                    "props": {
+                      "justify": "flex-end",
+                      "style": {
+                        "marginBottom": 5,
+                        "marginRight": 5
+                      }
+                    },
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "meta": {
+                  "name": "ArticleTreeFlex"
+                },
+                "position": {
+                  "basis": "600px"
+                },
+                "props": {
+                  "direction": "column",
+                  "style": {
+                    "classes": "ATA/Background/CardSecondary"
+                  }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "Label"
+                        },
+                        "position": {
+                          "basis": "32px",
+                          "grow": 1,
+                          "shrink": 0
+                        },
+                        "props": {
+                          "style": {
+                            "borderBottomColor": "var(--sec)",
+                            "borderBottomStyle": "solid",
+                            "borderBottomWidth": 1,
+                            "classes": "ATA/Components/Labels/TextCardTitle"
+                          },
+                          "text": "Niveau",
+                          "textStyle": {
+                            "textAlign": "center"
+                          }
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "Label_0"
+                        },
+                        "position": {
+                          "basis": "32px",
+                          "grow": 1,
+                          "shrink": 0
+                        },
+                        "props": {
+                          "style": {
+                            "borderBottomColor": "var(--sec)",
+                            "borderBottomStyle": "solid",
+                            "borderBottomWidth": 1,
+                            "classes": "ATA/Components/Labels/TextCardTitle"
+                          },
+                          "text": "Parameter",
+                          "textStyle": {
+                            "textAlign": "center"
+                          }
+                        },
+                        "type": "ia.display.label"
+                      }
+                    ],
+                    "meta": {
+                      "name": "HeaderFlex"
+                    },
+                    "position": {
+                      "basis": "34px",
+                      "shrink": 0
+                    },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "meta": {
+                                  "name": "Dropdown"
+                                },
+                                "position": {
+                                  "shrink": 0
+                                },
+                                "propConfig": {
+                                  "props.params.enabled": {
+                                    "binding": {
+                                      "config": {
+                                        "path": "....../ArticleTreeFlex/Tree_0.custom.isFolder"
+                                      },
+                                      "transforms": [
+                                        {
+                                          "code": "\treturn False if value is None else value and self.view.getChild(\"root\").custom.selectedTreeData.NodeID is not None",
+                                          "type": "script"
+                                        }
+                                      ],
+                                      "type": "property"
+                                    }
+                                  },
+                                  "props.params.options": {
+                                    "binding": {
+                                      "config": {
+                                        "parameters": {
+                                          "recipeElementID": "{/root.custom.selectedTreeData.NodeID}"
+                                        },
+                                        "queryPath": "Article/ArticleManagement/getAvailableParamsPerLevel",
+                                        "returnFormat": "json"
+                                      },
+                                      "type": "query"
+                                    },
+                                    "onChange": {
+                                      "enabled": null,
+                                      "script": "\tself.props.params.value \u003d None"
+                                    }
+                                  },
+                                  "props.params.value": {
+                                    "onChange": {
+                                      "enabled": null,
+                                      "script": "\tif previousValue is not None and currentValue.value !\u003d previousValue.value:\n\t\tselectQuery \u003d \u0027\u0027\u0027\n\t\t\t\t\tSELECT \n\t\t\t\t\t    (\n\t\t\t\t\t        SELECT\n\t\t\t\t\t            ProcessParameterID,\n\t\t\t\t\t            AssetID,\n\t\t\t\t\t            Description,\n\t\t\t\t\t            DefaultValue,\n\t\t\t\t\t            DefaultHigh,\n\t\t\t\t\t            DefaultLow,\n\t\t\t\t\t            DefaultHighHigh,\n\t\t\t\t\t            DefaultLowLow,\n\t\t\t\t\t            Unit\n\t\t\t\t\t        FROM ProcessParameters\n\t\t\t\t\t        WHERE ProcessParameterID \u003d ?\n\t\t\t\t\t        FOR JSON PATH, WITHOUT_ARRAY_WRAPPER\n\t\t\t\t\t    ) AS json;\n\t\t\t\t\t\u0027\u0027\u0027\n\t\t\n\t\tdata \u003d system.db.runScalarPrepQuery(selectQuery, [currentValue.value], database \u003d \u0027NLSTWDYK_DB_PROD\u0027)\n\t\tdata \u003d system.util.jsonDecode(data)\n\t\t\n\t\tif data is None:\n\t\t\tdata \u003d {\n\t\t\t\t  \"DefaultValue\": None,\n\t\t\t\t  \"DefaultLowLow\": None,\n\t\t\t\t  \"Description\": None,\n\t\t\t\t  \"DefaultLow\": None,\n\t\t\t\t  \"DefaultHighHigh\": None,\n\t\t\t\t  \"DefaultHigh\": None,\n\t\t\t\t  \"ProcessParameterID\": None,\n\t\t\t\t  \"AssetID\": None\n\t\t\t\t}\n\t\tself.view.getChild(\"root\").custom.newParamData \u003d data"
+                                    }
+                                  }
+                                },
+                                "props": {
+                                  "params": {
+                                    "key": "Parameter toevoegen",
+                                    "marginRight": 45,
+                                    "multiSelect": false,
+                                    "placeholder": "Selecteer parameter...",
+                                    "showClearIcon": true,
+                                    "value": null
+                                  },
+                                  "path": "Library/SharedTemplates/Input/Dropdown",
+                                  "useDefaultViewHeight": true
+                                },
+                                "type": "ia.display.view"
+                              }
+                            ],
+                            "meta": {
+                              "name": "FlexContainer"
+                            },
+                            "position": {
+                              "basis": "350px",
+                              "grow": 1
+                            },
+                            "props": {
+                              "direction": "column"
+                            },
+                            "type": "ia.container.flex"
+                          },
+                          {
+                            "children": [
+                              {
+                                "meta": {
+                                  "name": "KeyValuePair"
+                                },
+                                "position": {
+                                  "shrink": 0
+                                },
+                                "propConfig": {
+                                  "props.params.value": {
+                                    "binding": {
+                                      "config": {
+                                        "expression": "if(isnull({/root.custom.selectedTreeData.ParamName}) \u003d True, {/root.custom.newParamData.Description}, {/root.custom.selectedTreeData.ParamName})"
+                                      },
+                                      "transforms": [
+                                        {
+                                          "code": "\tif value is None:\n\t\treturn \u0027Selecteer een parameter.\u0027\n\treturn value",
+                                          "type": "script"
+                                        }
+                                      ],
+                                      "type": "expr"
+                                    }
+                                  }
+                                },
+                                "props": {
+                                  "params": {
+                                    "key": "Proces parameter",
+                                    "margingRight": 45
+                                  },
+                                  "path": "Library/SharedTemplates/KeyValuePairs/KeyValuePair",
+                                  "useDefaultViewHeight": true
+                                },
+                                "type": "ia.display.view"
+                              },
+                              {
+                                "meta": {
+                                  "name": "HighAlarm"
+                                },
+                                "position": {
+                                  "shrink": 0
+                                },
+                                "propConfig": {
+                                  "props.params.enabled": {
+                                    "binding": {
+                                      "config": {
+                                        "expression": "if(isnull({/root.custom.selectedTreeData.ParameterValueID}) \u0026\u0026 isnull({/root.custom.newParamData.ProcessParameterID}),\r\n\tFalse,\r\n\tTrue)"
+                                      },
+                                      "type": "expr"
+                                    }
+                                  },
+                                  "props.params.value": {
+                                    "binding": {
+                                      "config": {
+                                        "expression": "if(isnull({/root.custom.selectedTreeData.HighAlarm}) \u003d True, {/root.custom.newParamData.DefaultHighHigh}, {/root.custom.selectedTreeData.HighAlarm})"
+                                      },
+                                      "type": "expr"
+                                    }
+                                  }
+                                },
+                                "props": {
+                                  "params": {
+                                    "engUnits": "",
+                                    "format": "0,0.##",
+                                    "key": "Hoog hoog alarm",
+                                    "maxValue": 10000000,
+                                    "minValue": 0,
+                                    "placeholder": "",
+                                    "rejected": "True",
+                                    "unitVisable": true
+                                  },
+                                  "path": "Library/SharedTemplates/Input/Number",
+                                  "useDefaultViewHeight": true
+                                },
+                                "type": "ia.display.view"
+                              },
+                              {
+                                "meta": {
+                                  "name": "HighWarn"
+                                },
+                                "position": {
+                                  "shrink": 0
+                                },
+                                "propConfig": {
+                                  "props.params.enabled": {
+                                    "binding": {
+                                      "config": {
+                                        "expression": "if(isnull({/root.custom.selectedTreeData.ParameterValueID}) \u0026\u0026 isnull({/root.custom.newParamData.ProcessParameterID}),\r\n\tFalse,\r\n\tTrue)"
+                                      },
+                                      "type": "expr"
+                                    }
+                                  },
+                                  "props.params.value": {
+                                    "binding": {
+                                      "config": {
+                                        "expression": "if(isnull({/root.custom.selectedTreeData.HighWarning}) \u003d True, {/root.custom.newParamData.DefaultHigh}, {/root.custom.selectedTreeData.HighWarning})"
+                                      },
+                                      "type": "expr"
+                                    }
+                                  }
+                                },
+                                "props": {
+                                  "params": {
+                                    "engUnits": "",
+                                    "format": "0,0.##",
+                                    "key": "Hoog alarm",
+                                    "maxValue": 10000000,
+                                    "minValue": 0,
+                                    "placeholder": "",
+                                    "rejected": "True",
+                                    "unitVisable": true
+                                  },
+                                  "path": "Library/SharedTemplates/Input/Number",
+                                  "useDefaultViewHeight": true
+                                },
+                                "type": "ia.display.view"
+                              },
+                              {
+                                "meta": {
+                                  "name": "Setpoint"
+                                },
+                                "position": {
+                                  "shrink": 0
+                                },
+                                "propConfig": {
+                                  "props.params.enabled": {
+                                    "binding": {
+                                      "config": {
+                                        "expression": "if(isnull({/root.custom.selectedTreeData.ParameterValueID}) \u0026\u0026 isnull({/root.custom.newParamData.ProcessParameterID}),\r\n\tFalse,\r\n\tTrue)"
+                                      },
+                                      "type": "expr"
+                                    }
+                                  },
+                                  "props.params.value": {
+                                    "binding": {
+                                      "config": {
+                                        "expression": "if(isnull({/root.custom.selectedTreeData.ParamValue}) \u003d True, {/root.custom.newParamData.DefaultValue}, {/root.custom.selectedTreeData.ParamValue})"
+                                      },
+                                      "type": "expr"
+                                    }
+                                  }
+                                },
+                                "props": {
+                                  "params": {
+                                    "engUnits": "",
+                                    "format": "0,0.##",
+                                    "key": "Ingestelde waarde",
+                                    "maxValue": 10000000,
+                                    "minValue": 0,
+                                    "placeholder": "",
+                                    "rejected": "True",
+                                    "unitVisable": true
+                                  },
+                                  "path": "Library/SharedTemplates/Input/Number",
+                                  "useDefaultViewHeight": true
+                                },
+                                "type": "ia.display.view"
+                              },
+                              {
+                                "meta": {
+                                  "name": "LowWarn"
+                                },
+                                "position": {
+                                  "shrink": 0
+                                },
+                                "propConfig": {
+                                  "props.params.enabled": {
+                                    "binding": {
+                                      "config": {
+                                        "expression": "if(isnull({/root.custom.selectedTreeData.ParameterValueID}) \u0026\u0026 isnull({/root.custom.newParamData.ProcessParameterID}),\r\n\tFalse,\r\n\tTrue)"
+                                      },
+                                      "type": "expr"
+                                    }
+                                  },
+                                  "props.params.value": {
+                                    "binding": {
+                                      "config": {
+                                        "expression": "if(isnull({/root.custom.selectedTreeData.LowWarning}) \u003d True, {/root.custom.newParamData.DefaultLow}, {/root.custom.selectedTreeData.LowWarning})"
+                                      },
+                                      "type": "expr"
+                                    }
+                                  }
+                                },
+                                "props": {
+                                  "params": {
+                                    "engUnits": "",
+                                    "format": "0,0.##",
+                                    "key": "Laag alarm",
+                                    "maxValue": 10000000,
+                                    "minValue": 0,
+                                    "placeholder": "",
+                                    "rejected": "True",
+                                    "unitVisable": true
+                                  },
+                                  "path": "Library/SharedTemplates/Input/Number",
+                                  "useDefaultViewHeight": true
+                                },
+                                "type": "ia.display.view"
+                              },
+                              {
+                                "meta": {
+                                  "name": "LowAlarm"
+                                },
+                                "position": {
+                                  "shrink": 0
+                                },
+                                "propConfig": {
+                                  "props.params.enabled": {
+                                    "binding": {
+                                      "config": {
+                                        "expression": "if(isnull({/root.custom.selectedTreeData.ParameterValueID}) \u0026\u0026 isnull({/root.custom.newParamData.ProcessParameterID}),\r\n\tFalse,\r\n\tTrue)"
+                                      },
+                                      "type": "expr"
+                                    }
+                                  },
+                                  "props.params.value": {
+                                    "binding": {
+                                      "config": {
+                                        "expression": "if(isnull({/root.custom.selectedTreeData.LowAlarm}) \u003d True, {/root.custom.newParamData.DefaultLowLow}, {/root.custom.selectedTreeData.LowAlarm})"
+                                      },
+                                      "type": "expr"
+                                    }
+                                  }
+                                },
+                                "props": {
+                                  "params": {
+                                    "engUnits": "",
+                                    "format": "0,0.##",
+                                    "key": "Laag laag alarm",
+                                    "maxValue": 10000000,
+                                    "minValue": 0,
+                                    "placeholder": "",
+                                    "rejected": "True",
+                                    "unitVisable": true
+                                  },
+                                  "path": "Library/SharedTemplates/Input/Number",
+                                  "useDefaultViewHeight": true
+                                },
+                                "type": "ia.display.view"
+                              }
+                            ],
+                            "meta": {
+                              "name": "FlexContainer_0"
+                            },
+                            "position": {
+                              "basis": "350px",
+                              "grow": 1
+                            },
+                            "props": {
+                              "direction": "column"
+                            },
+                            "type": "ia.container.flex"
+                          }
+                        ],
+                        "meta": {
+                          "name": "FlexContainer"
+                        },
+                        "position": {
+                          "shrink": 0
+                        },
+                        "props": {
+                          "style": {
+                            "padding": 2,
+                            "paddingBottom": 20
+                          }
+                        },
+                        "type": "ia.container.flex"
+                      },
+                      {
+                        "children": [
+                          {
+                            "meta": {
+                              "name": "FlexContainer"
+                            },
+                            "position": {
+                              "basis": "50%"
+                            },
+                            "type": "ia.container.flex"
+                          },
+                          {
+                            "events": {
+                              "component": {
+                                "onActionPerformed": {
+                                  "config": {
+                                    "id": "ActivityFeedFilters",
+                                    "type": "open"
+                                  },
+                                  "scope": "C",
+                                  "type": "dock"
+                                }
+                              }
+                            },
+                            "meta": {
+                              "name": "Button_4"
+                            },
+                            "position": {
+                              "basis": "80px",
+                              "display": false,
+                              "shrink": 0
+                            },
+                            "props": {
+                              "image": {
+                                "icon": {
+                                  "path": "material/refresh"
+                                }
+                              },
+                              "style": {
+                                "classes": "ATA/Components/Buttons/Sec",
+                                "marginLeft": 15
+                              },
+                              "text": ""
+                            },
+                            "type": "ia.input.button"
+                          },
+                          {
+                            "events": {
+                              "component": {
+                                "onActionPerformed": {
+                                  "config": {
+                                    "script": "\tselectedTreeData \u003d self.view.getChild(\"root\").custom.selectedTreeData\n\tnewParamData \u003d self.view.getChild(\"root\").custom.newParamData\n\t\n\tinputHighAlarm \u003d self.parent.parent.getChild(\"FlexContainer\").getChild(\"FlexContainer_0\").getChild(\"HighAlarm\").props.params.value\n\tinputHighWarn \u003d self.parent.parent.getChild(\"FlexContainer\").getChild(\"FlexContainer_0\").getChild(\"HighWarn\").props.params.value\n\tinputSetpoint \u003d self.parent.parent.getChild(\"FlexContainer\").getChild(\"FlexContainer_0\").getChild(\"Setpoint\").props.params.value\n\tinputLowWarn \u003d self.parent.parent.getChild(\"FlexContainer\").getChild(\"FlexContainer_0\").getChild(\"LowWarn\").props.params.value\n\tinputLowAlarm \u003d self.parent.parent.getChild(\"FlexContainer\").getChild(\"FlexContainer_0\").getChild(\"LowAlarm\").props.params.value\n\tusername \u003d self.session.props.auth.user.userName\n\t\n\t# for existing param, update values\n\tif selectedTreeData.ParameterValueID is not None:\n\t\tselectedID \u003d selectedTreeData.ParameterValueID\n\t\t\n\t\tupdateQuery \u003d \u0027\u0027\u0027update \n\t\t\t\t\t\t\tProcessParameterValues\n\t\t\t\t\t\tset\n\t\t\t\t\t\t\t[HighHigh] \u003d ?,\n\t\t\t\t\t\t\t[High] \u003d ?,\n\t\t\t\t\t\t\t[Value] \u003d ?,\n\t\t\t\t\t\t\t[Low] \u003d ?,\n\t\t\t\t\t\t\t[LowLow] \u003d ?,\n\t\t\t\t\t\t\t[Modified] \u003d getDate(),\n\t\t\t\t\t\t\t[ModifiedBy] \u003d ?\n\t\t\t\t\t\twhere\n\t\t\t\t\t\t\t[ProcessParameterValueID] \u003d ?\u0027\u0027\u0027\n\t\tupdateArgs \u003d [inputHighAlarm, inputHighWarn, inputSetpoint, inputLowWarn, inputLowAlarm, username, selectedID]\n\t\tsystem.db.runPrepUpdate(updateQuery, updateArgs, database \u003d \u0027NLSTWDYK_DB_PROD\u0027)\n\t\n\tif selectedTreeData.NodeID is not None and newParamData.ProcessParameterID is not None:\n\t\tselectedNodeID \u003d selectedTreeData.NodeID\n\t\tprocessParameterID \u003d newParamData.ProcessParameterID\n\t\t\n\t\tinsertQuery \u003d \u0027\u0027\u0027insert into ProcessParameterValues\n\t\t\t\t\t\t\t([RecipeElementID]\n\t\t\t\t\t\t\t,[ProcessParameterID]\n\t\t\t\t\t\t\t,[Value]\n\t\t\t\t\t\t\t,[High]\n\t\t\t\t\t\t\t,[Low]\n\t\t\t\t\t\t\t,[HighHigh]\n\t\t\t\t\t\t\t,[LowLow]\n\t\t\t\t\t\t\t,[ModifiedBy]\n\t\t\t\t\t\t\t,[Created])\n\t\t\t\t\t\tvalues\n\t\t\t\t\t\t\t(?\n\t\t\t\t\t\t\t,?\n\t\t\t\t\t\t\t,?\n\t\t\t\t\t\t\t,?\n\t\t\t\t\t\t\t,?\n\t\t\t\t\t\t\t,?\n\t\t\t\t\t\t\t,?\n\t\t\t\t\t\t\t,?\n\t\t\t\t\t\t\t,getdate())\u0027\u0027\u0027\n\t\tinsertArgs \u003d [selectedNodeID, processParameterID, inputSetpoint, inputHighWarn, inputLowWarn, inputHighAlarm, inputLowAlarm, username]\n\t\tsystem.db.runPrepUpdate(insertQuery, insertArgs, database \u003d \u0027NLSTWDYK_DB_PROD\u0027)\n\t\n\tsystem.perspective.sendMessage(\u0027refreshArticleManagement\u0027)"
+                                  },
+                                  "scope": "G",
+                                  "type": "script"
+                                }
+                              }
+                            },
+                            "meta": {
+                              "name": "Button_1"
+                            },
+                            "position": {
+                              "basis": "80px",
+                              "shrink": 0
+                            },
+                            "props": {
+                              "image": {
+                                "icon": {
+                                  "path": "material/save_alt"
+                                }
+                              },
+                              "style": {
+                                "classes": "ATA/Components/Buttons/CTA",
+                                "marginLeft": "auto"
+                              },
+                              "text": ""
+                            },
+                            "type": "ia.input.button"
+                          }
+                        ],
+                        "meta": {
+                          "name": "FlexContainer_0"
+                        },
+                        "position": {
+                          "basis": "45px",
+                          "shrink": 0
+                        },
+                        "props": {
+                          "justify": "flex-end",
+                          "style": {
+                            "backgroundColor": "--backgroundSecondary",
+                            "borderTopLeftRadius": 5,
+                            "borderTopRightRadius": 5,
+                            "padding": 7,
+                            "zIndex": 1
+                          }
+                        },
+                        "type": "ia.container.flex"
+                      }
+                    ],
+                    "meta": {
+                      "name": "Middle"
+                    },
+                    "position": {
+                      "shrink": 0
+                    },
+                    "props": {
+                      "direction": "column"
+                    },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "meta": {
+                      "name": "Label_0"
+                    },
+                    "position": {
+                      "basis": "34px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "style": {
+                        "borderBottomColor": "var(--sec)",
+                        "borderBottomStyle": "solid",
+                        "borderBottomWidth": 1,
+                        "classes": "ATA/Components/Labels/TextCardTitle"
+                      },
+                      "text": "Proceslijst geselecteerd niveau",
+                      "textStyle": {
+                        "textAlign": "center"
+                      }
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "Table"
+                        },
+                        "position": {
+                          "basis": "400px",
+                          "grow": 1
+                        },
+                        "propConfig": {
+                          "props.data": {
+                            "binding": {
+                              "config": {
+                                "parameters": {
+                                  "targetNodeID": "{/root.custom.selectedTreeData.NodeID}"
+                                },
+                                "queryPath": "Article/ArticleManagement/GetAllParamsAtLevel"
+                              },
+                              "type": "query"
+                            }
+                          }
+                        },
+                        "props": {
+                          "columns": [
+                            {
+                              "align": "center",
+                              "boolean": "checkbox",
+                              "dateFormat": "MM/DD/YYYY",
+                              "editable": false,
+                              "field": "ParamDesc",
+                              "filter": {
+                                "boolean": {
+                                  "condition": ""
+                                },
+                                "date": {
+                                  "condition": "",
+                                  "value": ""
+                                },
+                                "enabled": false,
+                                "number": {
+                                  "condition": "",
+                                  "value": ""
+                                },
+                                "string": {
+                                  "condition": "",
+                                  "value": ""
+                                },
+                                "visible": "on-hover"
+                              },
+                              "footer": {
+                                "align": "center",
+                                "justify": "left",
+                                "style": {
+                                  "classes": ""
+                                },
+                                "title": ""
+                              },
+                              "header": {
+                                "align": "center",
+                                "justify": "left",
+                                "style": {
+                                  "classes": ""
+                                },
+                                "title": "Parameter"
+                              },
+                              "justify": "auto",
+                              "nullFormat": {
+                                "includeNullStrings": false,
+                                "nullFormatValue": "",
+                                "strict": false
+                              },
+                              "number": "value",
+                              "numberFormat": "0,0.##",
+                              "progressBar": {
+                                "bar": {
+                                  "color": "",
+                                  "style": {
+                                    "classes": ""
+                                  }
+                                },
+                                "max": 100,
+                                "min": 0,
+                                "track": {
+                                  "color": "",
+                                  "style": {
+                                    "classes": ""
+                                  }
+                                },
+                                "value": {
+                                  "enabled": true,
+                                  "format": "0,0.##",
+                                  "justify": "center",
+                                  "style": {
+                                    "classes": ""
+                                  }
+                                }
+                              },
+                              "render": "auto",
+                              "resizable": true,
+                              "sort": "none",
+                              "sortable": true,
+                              "strictWidth": false,
+                              "style": {
+                                "classes": ""
+                              },
+                              "toggleSwitch": {
+                                "color": {
+                                  "selected": "",
+                                  "unselected": ""
+                                }
+                              },
+                              "viewParams": {},
+                              "viewPath": "",
+                              "visible": true,
+                              "width": ""
+                            },
+                            {
+                              "align": "center",
+                              "boolean": "checkbox",
+                              "dateFormat": "MM/DD/YYYY",
+                              "editable": false,
+                              "field": "AssetDesc",
+                              "filter": {
+                                "boolean": {
+                                  "condition": ""
+                                },
+                                "date": {
+                                  "condition": "",
+                                  "value": ""
+                                },
+                                "enabled": false,
+                                "number": {
+                                  "condition": "",
+                                  "value": ""
+                                },
+                                "string": {
+                                  "condition": "",
+                                  "value": ""
+                                },
+                                "visible": "on-hover"
+                              },
+                              "footer": {
+                                "align": "center",
+                                "justify": "left",
+                                "style": {
+                                  "classes": ""
+                                },
+                                "title": ""
+                              },
+                              "header": {
+                                "align": "center",
+                                "justify": "left",
+                                "style": {
+                                  "classes": ""
+                                },
+                                "title": "Onderdeel"
+                              },
+                              "justify": "auto",
+                              "nullFormat": {
+                                "includeNullStrings": false,
+                                "nullFormatValue": "",
+                                "strict": false
+                              },
+                              "number": "value",
+                              "numberFormat": "0,0.##",
+                              "progressBar": {
+                                "bar": {
+                                  "color": "",
+                                  "style": {
+                                    "classes": ""
+                                  }
+                                },
+                                "max": 100,
+                                "min": 0,
+                                "track": {
+                                  "color": "",
+                                  "style": {
+                                    "classes": ""
+                                  }
+                                },
+                                "value": {
+                                  "enabled": true,
+                                  "format": "0,0.##",
+                                  "justify": "center",
+                                  "style": {
+                                    "classes": ""
+                                  }
+                                }
+                              },
+                              "render": "auto",
+                              "resizable": true,
+                              "sort": "none",
+                              "sortable": true,
+                              "strictWidth": false,
+                              "style": {
+                                "classes": ""
+                              },
+                              "toggleSwitch": {
+                                "color": {
+                                  "selected": "",
+                                  "unselected": ""
+                                }
+                              },
+                              "viewParams": {},
+                              "viewPath": "",
+                              "visible": true,
+                              "width": ""
+                            },
+                            {
+                              "align": "center",
+                              "boolean": "checkbox",
+                              "dateFormat": "MM/DD/YYYY",
+                              "editable": false,
+                              "field": "Value",
+                              "filter": {
+                                "boolean": {
+                                  "condition": ""
+                                },
+                                "date": {
+                                  "condition": "",
+                                  "value": ""
+                                },
+                                "enabled": false,
+                                "number": {
+                                  "condition": "",
+                                  "value": ""
+                                },
+                                "string": {
+                                  "condition": "",
+                                  "value": ""
+                                },
+                                "visible": "on-hover"
+                              },
+                              "footer": {
+                                "align": "center",
+                                "justify": "left",
+                                "style": {
+                                  "classes": ""
+                                },
+                                "title": ""
+                              },
+                              "header": {
+                                "align": "center",
+                                "justify": "left",
+                                "style": {
+                                  "classes": ""
+                                },
+                                "title": "Set waarde"
+                              },
+                              "justify": "auto",
+                              "nullFormat": {
+                                "includeNullStrings": false,
+                                "nullFormatValue": "",
+                                "strict": false
+                              },
+                              "number": "value",
+                              "numberFormat": "0,0.##",
+                              "progressBar": {
+                                "bar": {
+                                  "color": "",
+                                  "style": {
+                                    "classes": ""
+                                  }
+                                },
+                                "max": 100,
+                                "min": 0,
+                                "track": {
+                                  "color": "",
+                                  "style": {
+                                    "classes": ""
+                                  }
+                                },
+                                "value": {
+                                  "enabled": true,
+                                  "format": "0,0.##",
+                                  "justify": "center",
+                                  "style": {
+                                    "classes": ""
+                                  }
+                                }
+                              },
+                              "render": "auto",
+                              "resizable": true,
+                              "sort": "none",
+                              "sortable": true,
+                              "strictWidth": false,
+                              "style": {
+                                "classes": ""
+                              },
+                              "toggleSwitch": {
+                                "color": {
+                                  "selected": "",
+                                  "unselected": ""
+                                }
+                              },
+                              "viewParams": {},
+                              "viewPath": "",
+                              "visible": true,
+                              "width": ""
+                            },
+                            {
+                              "align": "center",
+                              "boolean": "checkbox",
+                              "dateFormat": "MM/DD/YYYY",
+                              "editable": false,
+                              "field": "Unit",
+                              "filter": {
+                                "boolean": {
+                                  "condition": ""
+                                },
+                                "date": {
+                                  "condition": "",
+                                  "value": ""
+                                },
+                                "enabled": false,
+                                "number": {
+                                  "condition": "",
+                                  "value": ""
+                                },
+                                "string": {
+                                  "condition": "",
+                                  "value": ""
+                                },
+                                "visible": "on-hover"
+                              },
+                              "footer": {
+                                "align": "center",
+                                "justify": "left",
+                                "style": {
+                                  "classes": ""
+                                },
+                                "title": ""
+                              },
+                              "header": {
+                                "align": "center",
+                                "justify": "left",
+                                "style": {
+                                  "classes": ""
+                                },
+                                "title": "Eenheid"
+                              },
+                              "justify": "auto",
+                              "nullFormat": {
+                                "includeNullStrings": false,
+                                "nullFormatValue": "",
+                                "strict": false
+                              },
+                              "number": "value",
+                              "numberFormat": "0,0.##",
+                              "progressBar": {
+                                "bar": {
+                                  "color": "",
+                                  "style": {
+                                    "classes": ""
+                                  }
+                                },
+                                "max": 100,
+                                "min": 0,
+                                "track": {
+                                  "color": "",
+                                  "style": {
+                                    "classes": ""
+                                  }
+                                },
+                                "value": {
+                                  "enabled": true,
+                                  "format": "0,0.##",
+                                  "justify": "center",
+                                  "style": {
+                                    "classes": ""
+                                  }
+                                }
+                              },
+                              "render": "auto",
+                              "resizable": true,
+                              "sort": "none",
+                              "sortable": true,
+                              "strictWidth": false,
+                              "style": {
+                                "classes": ""
+                              },
+                              "toggleSwitch": {
+                                "color": {
+                                  "selected": "",
+                                  "unselected": ""
+                                }
+                              },
+                              "viewParams": {},
+                              "viewPath": "",
+                              "visible": true,
+                              "width": ""
+                            },
+                            {
+                              "align": "center",
+                              "boolean": "checkbox",
+                              "dateFormat": "MM/DD/YYYY",
+                              "editable": false,
+                              "field": "NodeName",
+                              "filter": {
+                                "boolean": {
+                                  "condition": ""
+                                },
+                                "date": {
+                                  "condition": "",
+                                  "value": ""
+                                },
+                                "enabled": false,
+                                "number": {
+                                  "condition": "",
+                                  "value": ""
+                                },
+                                "string": {
+                                  "condition": "",
+                                  "value": ""
+                                },
+                                "visible": "on-hover"
+                              },
+                              "footer": {
+                                "align": "center",
+                                "justify": "left",
+                                "style": {
+                                  "classes": ""
+                                },
+                                "title": ""
+                              },
+                              "header": {
+                                "align": "center",
+                                "justify": "left",
+                                "style": {
+                                  "classes": ""
+                                },
+                                "title": "Level"
+                              },
+                              "justify": "auto",
+                              "nullFormat": {
+                                "includeNullStrings": false,
+                                "nullFormatValue": "",
+                                "strict": false
+                              },
+                              "number": "value",
+                              "numberFormat": "0,0.##",
+                              "progressBar": {
+                                "bar": {
+                                  "color": "",
+                                  "style": {
+                                    "classes": ""
+                                  }
+                                },
+                                "max": 100,
+                                "min": 0,
+                                "track": {
+                                  "color": "",
+                                  "style": {
+                                    "classes": ""
+                                  }
+                                },
+                                "value": {
+                                  "enabled": true,
+                                  "format": "0,0.##",
+                                  "justify": "center",
+                                  "style": {
+                                    "classes": ""
+                                  }
+                                }
+                              },
+                              "render": "auto",
+                              "resizable": true,
+                              "sort": "none",
+                              "sortable": true,
+                              "strictWidth": false,
+                              "style": {
+                                "classes": ""
+                              },
+                              "toggleSwitch": {
+                                "color": {
+                                  "selected": "",
+                                  "unselected": ""
+                                }
+                              },
+                              "viewParams": {},
+                              "viewPath": "",
+                              "visible": true,
+                              "width": ""
+                            }
+                          ],
+                          "pager": {
+                            "activeOption": 300,
+                            "bottom": false,
+                            "options": [
+                              100,
+                              200,
+                              300,
+                              400,
+                              500
+                            ]
+                          }
+                        },
+                        "type": "ia.display.table"
+                      }
+                    ],
+                    "meta": {
+                      "name": "Bottom"
+                    },
+                    "position": {
+                      "basis": "400px",
+                      "grow": 1
+                    },
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "meta": {
+                  "name": "RightFlex"
+                },
+                "position": {
+                  "basis": "500px",
+                  "grow": 1,
+                  "shrink": 0
+                },
+                "props": {
+                  "direction": "column",
+                  "style": {
+                    "classes": "ATA/Background/CardSecondary"
+                  }
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "FlexContainer"
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "events": {
+                      "component": {
+                        "onActionPerformed": {
+                          "config": {
+                            "id": "ParameterFilters",
+                            "type": "open",
+                            "viewParams": {
+                              "assetID": "{/root/TabContainer/FlexContainer_0.custom.assetID}",
+                              "lineID": "{/root/TabContainer/FlexContainer_0.custom.lineID}"
+                            }
+                          },
+                          "scope": "C",
+                          "type": "dock"
+                        }
+                      }
+                    },
+                    "meta": {
+                      "name": "Filter"
+                    },
+                    "position": {
+                      "basis": "80px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "image": {
+                        "icon": {
+                          "path": "material/filter_alt"
+                        }
+                      },
+                      "style": {
+                        "classes": "ATA/Components/Buttons/Sec",
+                        "marginLeft": "auto",
+                        "marginRight": 15
+                      },
+                      "text": ""
+                    },
+                    "type": "ia.input.button"
+                  },
+                  {
+                    "events": {
+                      "component": {
+                        "onActionPerformed": {
+                          "config": {
+                            "script": "\tselectedID \u003d self.parent.parent.getChild(\"Table\").props.selection.data[0].ProcessParameterID\n\t\n\tdeleteQuery \u003d \u0027\u0027\u0027update ProcessParameters set active \u003d 0 where processparameterID \u003d ?\u0027\u0027\u0027\n\tdeleteArgs \u003d [selectedID]\n\t\n\tsystem.db.runPrepUpdate(deleteQuery, deleteArgs, database \u003d \u0027NLSTWDYK_DB_PROD\u0027)\n\t\n\tself.props.value \u003d 0\n\tsystem.perspective.sendMessage(\u0027refreshParameters\u0027)"
+                          },
+                          "scope": "G",
+                          "type": "script"
+                        }
+                      }
+                    },
+                    "meta": {
+                      "name": "OneShotButton"
+                    },
+                    "position": {
+                      "basis": "80px",
+                      "shrink": 0
+                    },
+                    "propConfig": {
+                      "props.enabled": {
+                        "binding": {
+                          "config": {
+                            "expression": "!isnull({.../Table.props.selection.selectedRow})"
+                          },
+                          "type": "expr"
+                        }
+                      }
+                    },
+                    "props": {
+                      "confirm": {
+                        "enabled": true,
+                        "text": "Weet je het zeker?"
+                      },
+                      "readyState": {
+                        "icon": {
+                          "path": "material/delete",
+                          "style": {
+                            "height": "24px",
+                            "width": "2rem"
+                          }
+                        },
+                        "text": ""
+                      },
+                      "style": {
+                        "classes": "ATA/Components/Buttons/Sec"
+                      },
+                      "writingState": {
+                        "icon": {
+                          "path": "material/hourglass_empty",
+                          "style": {
+                            "height": "24px",
+                            "width": "2rem"
+                          }
+                        },
+                        "text": "Writing..."
+                      }
+                    },
+                    "type": "ia.input.oneshotbutton"
+                  },
+                  {
+                    "events": {
+                      "component": {
+                        "onActionPerformed": {
+                          "config": {
+                            "script": "\tselectionData \u003d self.parent.parent.getChild(\"Table\").props.selection.data[0]\n\t\n\tdataJSON \u003d {\"parameterName\": selectionData.Description,\n\t\t\t\"assetID\": selectionData.AssetID,\n\t\t\t\"unit\": selectionData.Unit,\n\t\t\t\"defaultSetpoint\": selectionData.DefaultValue,\n\t\t\t\"defaultLowLow\": selectionData.DefaultLowLow,\n\t\t\t\"defaultLow\": selectionData.DefaultLow,\n\t\t\t\"defaultHigh\": selectionData.DefaultHigh,\n\t\t\t\"defaultHighHigh\": selectionData.DefaultHighHigh,\n\t\t\t\"parameterID\": selectionData.ProcessParameterID,\n\t\t\t\"lineID\": selectionData.lineID,\n\t\t\t\"tagPath\": selectionData.tagPath}\n\t\n\tsystem.perspective.openDock(\u0027ParameterDock\u0027, params \u003d {\u0027data\u0027: dataJSON})\n\t"
+                          },
+                          "scope": "G",
+                          "type": "script"
+                        }
+                      }
+                    },
+                    "meta": {
+                      "name": "Edit"
+                    },
+                    "position": {
+                      "basis": "80px",
+                      "shrink": 0
+                    },
+                    "propConfig": {
+                      "props.enabled": {
+                        "binding": {
+                          "config": {
+                            "expression": "!isnull({.../Table.props.selection.selectedRow})"
+                          },
+                          "type": "expr"
+                        }
+                      }
+                    },
+                    "props": {
+                      "image": {
+                        "icon": {
+                          "path": "material/edit"
+                        }
+                      },
+                      "style": {
+                        "classes": "ATA/Components/Buttons/Prim",
+                        "marginLeft": 15
+                      },
+                      "text": ""
+                    },
+                    "type": "ia.input.button"
+                  },
+                  {
+                    "custom": {
+                      "data": {
+                        "assetID": null,
+                        "defaultHigh": null,
+                        "defaultHighHigh": null,
+                        "defaultLow": null,
+                        "defaultLowLow": null,
+                        "defaultSetpoint": null,
+                        "lineID": null,
+                        "parameterID": null,
+                        "parameterName": null,
+                        "tagPath": null,
+                        "unit": null
+                      }
+                    },
+                    "events": {
+                      "component": {
+                        "onActionPerformed": {
+                          "config": {
+                            "id": "ParameterDock",
+                            "type": "open",
+                            "viewParams": {
+                              "data": "{/root/TabContainer/FlexContainer_0/FlexContainer/Add.custom.data}"
+                            }
+                          },
+                          "scope": "C",
+                          "type": "dock"
+                        }
+                      }
+                    },
+                    "meta": {
+                      "name": "Add"
+                    },
+                    "position": {
+                      "basis": "80px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "image": {
+                        "icon": {
+                          "path": "material/add"
+                        }
+                      },
+                      "style": {
+                        "classes": "ATA/Components/Buttons/CTA",
+                        "marginLeft": 15
+                      },
+                      "text": ""
+                    },
+                    "type": "ia.input.button"
+                  }
+                ],
+                "meta": {
+                  "name": "FlexContainer"
+                },
+                "position": {
+                  "basis": "45px",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "backgroundColor": "--backgroundSecondary",
+                    "borderTopLeftRadius": 5,
+                    "borderTopRightRadius": 5,
+                    "padding": 7,
+                    "zIndex": 1
+                  }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "meta": {
+                  "name": "Table"
+                },
+                "position": {
+                  "basis": "400px",
+                  "grow": 1
+                },
+                "propConfig": {
+                  "props.data": {
+                    "binding": {
+                      "config": {
+                        "parameters": {
+                          "assetID": "{parent.custom.assetID}",
+                          "lineID": "{parent.custom.lineID}"
+                        },
+                        "queryPath": "Article/Parameters/GetAllActiveParams"
+                      },
+                      "type": "query"
+                    }
+                  }
+                },
+                "props": {
+                  "columns": [
+                    {
+                      "align": "center",
+                      "boolean": "checkbox",
+                      "dateFormat": "MM/DD/YYYY",
+                      "editable": false,
+                      "field": "lineName",
+                      "filter": {
+                        "boolean": {
+                          "condition": ""
+                        },
+                        "date": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "enabled": false,
+                        "number": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "string": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "visible": "on-hover"
+                      },
+                      "footer": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": ""
+                      },
+                      "header": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": "Lijn"
+                      },
+                      "justify": "auto",
+                      "nullFormat": {
+                        "includeNullStrings": false,
+                        "nullFormatValue": "",
+                        "strict": false
+                      },
+                      "number": "value",
+                      "numberFormat": "0,0.##",
+                      "progressBar": {
+                        "bar": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "max": 100,
+                        "min": 0,
+                        "track": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "value": {
+                          "enabled": true,
+                          "format": "0,0.##",
+                          "justify": "center",
+                          "style": {
+                            "classes": ""
+                          }
+                        }
+                      },
+                      "render": "auto",
+                      "resizable": true,
+                      "sort": "none",
+                      "sortable": true,
+                      "strictWidth": false,
+                      "style": {
+                        "classes": ""
+                      },
+                      "toggleSwitch": {
+                        "color": {
+                          "selected": "",
+                          "unselected": ""
+                        }
+                      },
+                      "viewParams": {},
+                      "viewPath": "",
+                      "visible": true,
+                      "width": ""
+                    },
+                    {
+                      "align": "center",
+                      "boolean": "checkbox",
+                      "dateFormat": "MM/DD/YYYY",
+                      "editable": false,
+                      "field": "assetName",
+                      "filter": {
+                        "boolean": {
+                          "condition": ""
+                        },
+                        "date": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "enabled": false,
+                        "number": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "string": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "visible": "on-hover"
+                      },
+                      "footer": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": ""
+                      },
+                      "header": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": "Lijn onderdeel"
+                      },
+                      "justify": "auto",
+                      "nullFormat": {
+                        "includeNullStrings": false,
+                        "nullFormatValue": "",
+                        "strict": false
+                      },
+                      "number": "value",
+                      "numberFormat": "0,0.##",
+                      "progressBar": {
+                        "bar": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "max": 100,
+                        "min": 0,
+                        "track": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "value": {
+                          "enabled": true,
+                          "format": "0,0.##",
+                          "justify": "center",
+                          "style": {
+                            "classes": ""
+                          }
+                        }
+                      },
+                      "render": "auto",
+                      "resizable": true,
+                      "sort": "none",
+                      "sortable": true,
+                      "strictWidth": false,
+                      "style": {
+                        "classes": ""
+                      },
+                      "toggleSwitch": {
+                        "color": {
+                          "selected": "",
+                          "unselected": ""
+                        }
+                      },
+                      "viewParams": {},
+                      "viewPath": "",
+                      "visible": true,
+                      "width": ""
+                    },
+                    {
+                      "align": "center",
+                      "boolean": "checkbox",
+                      "dateFormat": "MM/DD/YYYY",
+                      "editable": false,
+                      "field": "Description",
+                      "filter": {
+                        "boolean": {
+                          "condition": ""
+                        },
+                        "date": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "enabled": false,
+                        "number": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "string": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "visible": "on-hover"
+                      },
+                      "footer": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": ""
+                      },
+                      "header": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": "Parameter naam"
+                      },
+                      "justify": "auto",
+                      "nullFormat": {
+                        "includeNullStrings": false,
+                        "nullFormatValue": "",
+                        "strict": false
+                      },
+                      "number": "value",
+                      "numberFormat": "0,0.##",
+                      "progressBar": {
+                        "bar": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "max": 100,
+                        "min": 0,
+                        "track": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "value": {
+                          "enabled": true,
+                          "format": "0,0.##",
+                          "justify": "center",
+                          "style": {
+                            "classes": ""
+                          }
+                        }
+                      },
+                      "render": "auto",
+                      "resizable": true,
+                      "sort": "none",
+                      "sortable": true,
+                      "strictWidth": false,
+                      "style": {
+                        "classes": ""
+                      },
+                      "toggleSwitch": {
+                        "color": {
+                          "selected": "",
+                          "unselected": ""
+                        }
+                      },
+                      "viewParams": {},
+                      "viewPath": "",
+                      "visible": true,
+                      "width": ""
+                    },
+                    {
+                      "align": "center",
+                      "boolean": "checkbox",
+                      "dateFormat": "MM/DD/YYYY",
+                      "editable": false,
+                      "field": "DefaultValue",
+                      "filter": {
+                        "boolean": {
+                          "condition": ""
+                        },
+                        "date": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "enabled": false,
+                        "number": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "string": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "visible": "on-hover"
+                      },
+                      "footer": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": ""
+                      },
+                      "header": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": "Standard ingestelde waarde"
+                      },
+                      "justify": "auto",
+                      "nullFormat": {
+                        "includeNullStrings": false,
+                        "nullFormatValue": "",
+                        "strict": false
+                      },
+                      "number": "value",
+                      "numberFormat": "0,0.##",
+                      "progressBar": {
+                        "bar": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "max": 100,
+                        "min": 0,
+                        "track": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "value": {
+                          "enabled": true,
+                          "format": "0,0.##",
+                          "justify": "center",
+                          "style": {
+                            "classes": ""
+                          }
+                        }
+                      },
+                      "render": "auto",
+                      "resizable": true,
+                      "sort": "none",
+                      "sortable": true,
+                      "strictWidth": false,
+                      "style": {
+                        "classes": ""
+                      },
+                      "toggleSwitch": {
+                        "color": {
+                          "selected": "",
+                          "unselected": ""
+                        }
+                      },
+                      "viewParams": {},
+                      "viewPath": "",
+                      "visible": true,
+                      "width": ""
+                    },
+                    {
+                      "align": "center",
+                      "boolean": "checkbox",
+                      "dateFormat": "MM/DD/YYYY",
+                      "editable": false,
+                      "field": "DefaultLowLow",
+                      "filter": {
+                        "boolean": {
+                          "condition": ""
+                        },
+                        "date": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "enabled": false,
+                        "number": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "string": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "visible": "on-hover"
+                      },
+                      "footer": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": ""
+                      },
+                      "header": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": "Standaard laag laag"
+                      },
+                      "justify": "auto",
+                      "nullFormat": {
+                        "includeNullStrings": false,
+                        "nullFormatValue": "",
+                        "strict": false
+                      },
+                      "number": "value",
+                      "numberFormat": "0,0.##",
+                      "progressBar": {
+                        "bar": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "max": 100,
+                        "min": 0,
+                        "track": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "value": {
+                          "enabled": true,
+                          "format": "0,0.##",
+                          "justify": "center",
+                          "style": {
+                            "classes": ""
+                          }
+                        }
+                      },
+                      "render": "auto",
+                      "resizable": true,
+                      "sort": "none",
+                      "sortable": true,
+                      "strictWidth": false,
+                      "style": {
+                        "classes": ""
+                      },
+                      "toggleSwitch": {
+                        "color": {
+                          "selected": "",
+                          "unselected": ""
+                        }
+                      },
+                      "viewParams": {},
+                      "viewPath": "",
+                      "visible": true,
+                      "width": ""
+                    },
+                    {
+                      "align": "center",
+                      "boolean": "checkbox",
+                      "dateFormat": "MM/DD/YYYY",
+                      "editable": false,
+                      "field": "DefaultLow",
+                      "filter": {
+                        "boolean": {
+                          "condition": ""
+                        },
+                        "date": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "enabled": false,
+                        "number": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "string": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "visible": "on-hover"
+                      },
+                      "footer": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": ""
+                      },
+                      "header": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": "Standaard laag"
+                      },
+                      "justify": "auto",
+                      "nullFormat": {
+                        "includeNullStrings": false,
+                        "nullFormatValue": "",
+                        "strict": false
+                      },
+                      "number": "value",
+                      "numberFormat": "0,0.##",
+                      "progressBar": {
+                        "bar": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "max": 100,
+                        "min": 0,
+                        "track": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "value": {
+                          "enabled": true,
+                          "format": "0,0.##",
+                          "justify": "center",
+                          "style": {
+                            "classes": ""
+                          }
+                        }
+                      },
+                      "render": "auto",
+                      "resizable": true,
+                      "sort": "none",
+                      "sortable": true,
+                      "strictWidth": false,
+                      "style": {
+                        "classes": ""
+                      },
+                      "toggleSwitch": {
+                        "color": {
+                          "selected": "",
+                          "unselected": ""
+                        }
+                      },
+                      "viewParams": {},
+                      "viewPath": "",
+                      "visible": true,
+                      "width": ""
+                    },
+                    {
+                      "align": "center",
+                      "boolean": "checkbox",
+                      "dateFormat": "MM/DD/YYYY",
+                      "editable": false,
+                      "field": "DefaultHigh",
+                      "filter": {
+                        "boolean": {
+                          "condition": ""
+                        },
+                        "date": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "enabled": false,
+                        "number": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "string": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "visible": "on-hover"
+                      },
+                      "footer": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": ""
+                      },
+                      "header": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": "Standaard hoog"
+                      },
+                      "justify": "auto",
+                      "nullFormat": {
+                        "includeNullStrings": false,
+                        "nullFormatValue": "",
+                        "strict": false
+                      },
+                      "number": "value",
+                      "numberFormat": "0,0.##",
+                      "progressBar": {
+                        "bar": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "max": 100,
+                        "min": 0,
+                        "track": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "value": {
+                          "enabled": true,
+                          "format": "0,0.##",
+                          "justify": "center",
+                          "style": {
+                            "classes": ""
+                          }
+                        }
+                      },
+                      "render": "auto",
+                      "resizable": true,
+                      "sort": "none",
+                      "sortable": true,
+                      "strictWidth": false,
+                      "style": {
+                        "classes": ""
+                      },
+                      "toggleSwitch": {
+                        "color": {
+                          "selected": "",
+                          "unselected": ""
+                        }
+                      },
+                      "viewParams": {},
+                      "viewPath": "",
+                      "visible": true,
+                      "width": ""
+                    },
+                    {
+                      "align": "center",
+                      "boolean": "checkbox",
+                      "dateFormat": "MM/DD/YYYY",
+                      "editable": false,
+                      "field": "DefaultHighHigh",
+                      "filter": {
+                        "boolean": {
+                          "condition": ""
+                        },
+                        "date": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "enabled": false,
+                        "number": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "string": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "visible": "on-hover"
+                      },
+                      "footer": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": ""
+                      },
+                      "header": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": "Standaard hoog hoog"
+                      },
+                      "justify": "auto",
+                      "nullFormat": {
+                        "includeNullStrings": false,
+                        "nullFormatValue": "",
+                        "strict": false
+                      },
+                      "number": "value",
+                      "numberFormat": "0,0.##",
+                      "progressBar": {
+                        "bar": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "max": 100,
+                        "min": 0,
+                        "track": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "value": {
+                          "enabled": true,
+                          "format": "0,0.##",
+                          "justify": "center",
+                          "style": {
+                            "classes": ""
+                          }
+                        }
+                      },
+                      "render": "auto",
+                      "resizable": true,
+                      "sort": "none",
+                      "sortable": true,
+                      "strictWidth": false,
+                      "style": {
+                        "classes": ""
+                      },
+                      "toggleSwitch": {
+                        "color": {
+                          "selected": "",
+                          "unselected": ""
+                        }
+                      },
+                      "viewParams": {},
+                      "viewPath": "",
+                      "visible": true,
+                      "width": ""
+                    },
+                    {
+                      "align": "center",
+                      "boolean": "checkbox",
+                      "dateFormat": "MM/DD/YYYY",
+                      "editable": false,
+                      "field": "Unit",
+                      "filter": {
+                        "boolean": {
+                          "condition": ""
+                        },
+                        "date": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "enabled": false,
+                        "number": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "string": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "visible": "on-hover"
+                      },
+                      "footer": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": ""
+                      },
+                      "header": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": "Eenheid"
+                      },
+                      "justify": "auto",
+                      "nullFormat": {
+                        "includeNullStrings": false,
+                        "nullFormatValue": "",
+                        "strict": false
+                      },
+                      "number": "value",
+                      "numberFormat": "0,0.##",
+                      "progressBar": {
+                        "bar": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "max": 100,
+                        "min": 0,
+                        "track": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "value": {
+                          "enabled": true,
+                          "format": "0,0.##",
+                          "justify": "center",
+                          "style": {
+                            "classes": ""
+                          }
+                        }
+                      },
+                      "render": "auto",
+                      "resizable": true,
+                      "sort": "none",
+                      "sortable": true,
+                      "strictWidth": false,
+                      "style": {
+                        "classes": ""
+                      },
+                      "toggleSwitch": {
+                        "color": {
+                          "selected": "",
+                          "unselected": ""
+                        }
+                      },
+                      "viewParams": {},
+                      "viewPath": "",
+                      "visible": true,
+                      "width": ""
+                    },
+                    {
+                      "align": "center",
+                      "boolean": "checkbox",
+                      "dateFormat": "DD-MM-YYYY HH:mm:ss",
+                      "editable": false,
+                      "field": "created",
+                      "filter": {
+                        "boolean": {
+                          "condition": ""
+                        },
+                        "date": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "enabled": false,
+                        "number": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "string": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "visible": "on-hover"
+                      },
+                      "footer": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": ""
+                      },
+                      "header": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": "Aangemaakt"
+                      },
+                      "justify": "auto",
+                      "nullFormat": {
+                        "includeNullStrings": false,
+                        "nullFormatValue": "",
+                        "strict": false
+                      },
+                      "number": "value",
+                      "numberFormat": "0,0.##",
+                      "progressBar": {
+                        "bar": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "max": 100,
+                        "min": 0,
+                        "track": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "value": {
+                          "enabled": true,
+                          "format": "0,0.##",
+                          "justify": "center",
+                          "style": {
+                            "classes": ""
+                          }
+                        }
+                      },
+                      "render": "auto",
+                      "resizable": true,
+                      "sort": "none",
+                      "sortable": true,
+                      "strictWidth": false,
+                      "style": {
+                        "classes": ""
+                      },
+                      "toggleSwitch": {
+                        "color": {
+                          "selected": "",
+                          "unselected": ""
+                        }
+                      },
+                      "viewParams": {},
+                      "viewPath": "",
+                      "visible": true,
+                      "width": ""
+                    },
+                    {
+                      "align": "center",
+                      "boolean": "checkbox",
+                      "dateFormat": "DD-MM-YYYY HH:mm:ss",
+                      "editable": false,
+                      "field": "Modified",
+                      "filter": {
+                        "boolean": {
+                          "condition": ""
+                        },
+                        "date": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "enabled": false,
+                        "number": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "string": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "visible": "on-hover"
+                      },
+                      "footer": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": ""
+                      },
+                      "header": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": "Laatst aangepast"
+                      },
+                      "justify": "auto",
+                      "nullFormat": {
+                        "includeNullStrings": false,
+                        "nullFormatValue": "",
+                        "strict": false
+                      },
+                      "number": "value",
+                      "numberFormat": "0,0.##",
+                      "progressBar": {
+                        "bar": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "max": 100,
+                        "min": 0,
+                        "track": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "value": {
+                          "enabled": true,
+                          "format": "0,0.##",
+                          "justify": "center",
+                          "style": {
+                            "classes": ""
+                          }
+                        }
+                      },
+                      "render": "auto",
+                      "resizable": true,
+                      "sort": "none",
+                      "sortable": true,
+                      "strictWidth": false,
+                      "style": {
+                        "classes": ""
+                      },
+                      "toggleSwitch": {
+                        "color": {
+                          "selected": "",
+                          "unselected": ""
+                        }
+                      },
+                      "viewParams": {},
+                      "viewPath": "",
+                      "visible": true,
+                      "width": ""
+                    },
+                    {
+                      "align": "center",
+                      "boolean": "checkbox",
+                      "dateFormat": "MM/DD/YYYY",
+                      "editable": false,
+                      "field": "ProcessParameterID",
+                      "filter": {
+                        "boolean": {
+                          "condition": ""
+                        },
+                        "date": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "enabled": false,
+                        "number": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "string": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "visible": "on-hover"
+                      },
+                      "footer": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": ""
+                      },
+                      "header": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": ""
+                      },
+                      "justify": "auto",
+                      "nullFormat": {
+                        "includeNullStrings": false,
+                        "nullFormatValue": "",
+                        "strict": false
+                      },
+                      "number": "value",
+                      "numberFormat": "0,0.##",
+                      "progressBar": {
+                        "bar": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "max": 100,
+                        "min": 0,
+                        "track": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "value": {
+                          "enabled": true,
+                          "format": "0,0.##",
+                          "justify": "center",
+                          "style": {
+                            "classes": ""
+                          }
+                        }
+                      },
+                      "render": "auto",
+                      "resizable": true,
+                      "sort": "none",
+                      "sortable": true,
+                      "strictWidth": false,
+                      "style": {
+                        "classes": ""
+                      },
+                      "toggleSwitch": {
+                        "color": {
+                          "selected": "",
+                          "unselected": ""
+                        }
+                      },
+                      "viewParams": {},
+                      "viewPath": "",
+                      "visible": false,
+                      "width": ""
+                    },
+                    {
+                      "align": "center",
+                      "boolean": "checkbox",
+                      "dateFormat": "MM/DD/YYYY",
+                      "editable": false,
+                      "field": "lineID",
+                      "filter": {
+                        "boolean": {
+                          "condition": ""
+                        },
+                        "date": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "enabled": false,
+                        "number": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "string": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "visible": "on-hover"
+                      },
+                      "footer": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": ""
+                      },
+                      "header": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": ""
+                      },
+                      "justify": "auto",
+                      "nullFormat": {
+                        "includeNullStrings": false,
+                        "nullFormatValue": "",
+                        "strict": false
+                      },
+                      "number": "value",
+                      "numberFormat": "0,0.##",
+                      "progressBar": {
+                        "bar": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "max": 100,
+                        "min": 0,
+                        "track": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "value": {
+                          "enabled": true,
+                          "format": "0,0.##",
+                          "justify": "center",
+                          "style": {
+                            "classes": ""
+                          }
+                        }
+                      },
+                      "render": "auto",
+                      "resizable": true,
+                      "sort": "none",
+                      "sortable": true,
+                      "strictWidth": false,
+                      "style": {
+                        "classes": ""
+                      },
+                      "toggleSwitch": {
+                        "color": {
+                          "selected": "",
+                          "unselected": ""
+                        }
+                      },
+                      "viewParams": {},
+                      "viewPath": "",
+                      "visible": false,
+                      "width": ""
+                    },
+                    {
+                      "align": "center",
+                      "boolean": "checkbox",
+                      "dateFormat": "MM/DD/YYYY",
+                      "editable": false,
+                      "field": "AssetID",
+                      "filter": {
+                        "boolean": {
+                          "condition": ""
+                        },
+                        "date": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "enabled": false,
+                        "number": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "string": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "visible": "on-hover"
+                      },
+                      "footer": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": ""
+                      },
+                      "header": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": ""
+                      },
+                      "justify": "auto",
+                      "nullFormat": {
+                        "includeNullStrings": false,
+                        "nullFormatValue": "",
+                        "strict": false
+                      },
+                      "number": "value",
+                      "numberFormat": "0,0.##",
+                      "progressBar": {
+                        "bar": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "max": 100,
+                        "min": 0,
+                        "track": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "value": {
+                          "enabled": true,
+                          "format": "0,0.##",
+                          "justify": "center",
+                          "style": {
+                            "classes": ""
+                          }
+                        }
+                      },
+                      "render": "auto",
+                      "resizable": true,
+                      "sort": "none",
+                      "sortable": true,
+                      "strictWidth": false,
+                      "style": {
+                        "classes": ""
+                      },
+                      "toggleSwitch": {
+                        "color": {
+                          "selected": "",
+                          "unselected": ""
+                        }
+                      },
+                      "viewParams": {},
+                      "viewPath": "",
+                      "visible": false,
+                      "width": ""
+                    },
+                    {
+                      "align": "center",
+                      "boolean": "checkbox",
+                      "dateFormat": "MM/DD/YYYY",
+                      "editable": false,
+                      "field": "tagPath",
+                      "filter": {
+                        "boolean": {
+                          "condition": ""
+                        },
+                        "date": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "enabled": false,
+                        "number": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "string": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "visible": "on-hover"
+                      },
+                      "footer": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": ""
+                      },
+                      "header": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": ""
+                      },
+                      "justify": "auto",
+                      "nullFormat": {
+                        "includeNullStrings": false,
+                        "nullFormatValue": "",
+                        "strict": false
+                      },
+                      "number": "value",
+                      "numberFormat": "0,0.##",
+                      "progressBar": {
+                        "bar": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "max": 100,
+                        "min": 0,
+                        "track": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "value": {
+                          "enabled": true,
+                          "format": "0,0.##",
+                          "justify": "center",
+                          "style": {
+                            "classes": ""
+                          }
+                        }
+                      },
+                      "render": "auto",
+                      "resizable": true,
+                      "sort": "none",
+                      "sortable": true,
+                      "strictWidth": false,
+                      "style": {
+                        "classes": ""
+                      },
+                      "toggleSwitch": {
+                        "color": {
+                          "selected": "",
+                          "unselected": ""
+                        }
+                      },
+                      "viewParams": {},
+                      "viewPath": "",
+                      "visible": false,
+                      "width": ""
+                    }
+                  ],
+                  "filter": {
+                    "enabled": true
+                  },
+                  "pager": {
+                    "activeOption": 50
+                  },
+                  "selection": {
+                    "data": [
+                      {
+                        "AssetID": 3,
+                        "DefaultHigh": 330,
+                        "DefaultHighHigh": 340,
+                        "DefaultLow": 310,
+                        "DefaultLowLow": 290,
+                        "DefaultValue": 320,
+                        "Description": "Opbrengst",
+                        "Modified": 1769077683330,
+                        "ProcessParameterID": 14,
+                        "Unit": "kg/uur",
+                        "assetName": "Extruder",
+                        "created": 1764684699570,
+                        "lineID": 1,
+                        "lineName": "E07",
+                        "tagPath": "Dyka/STW/EXT/E07/Assets/MEXT/ProcessValues/Throughput"
+                      }
+                    ],
+                    "selectedColumn": "Description",
+                    "selectedRow": 8
+                  }
+                },
+                "type": "ia.display.table"
+              }
+            ],
+            "meta": {
+              "name": "FlexContainer_0"
+            },
+            "position": {
+              "tabIndex": 1
+            },
+            "propConfig": {
+              "custom.assetID": {
+                "binding": {
+                  "config": {
+                    "expression": "-1"
+                  },
+                  "type": "expr"
+                }
+              },
+              "custom.lineID": {
+                "binding": {
+                  "config": {
+                    "expression": "-1"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "direction": "column"
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "events": {
+                      "component": {
+                        "onActionPerformed": {
+                          "config": {
+                            "draggable": true,
+                            "id": "loadProcessList",
+                            "modal": false,
+                            "overlayDismiss": false,
+                            "resizable": true,
+                            "showCloseIcon": true,
+                            "type": "open",
+                            "viewPath": "ControlRoom/Articles/Popups/LoadProcessList",
+                            "viewportBound": false
+                          },
+                          "scope": "C",
+                          "type": "popup"
+                        }
+                      }
+                    },
+                    "meta": {
+                      "name": "LoadList"
+                    },
+                    "position": {
+                      "basis": "120px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "ATA/Components/Buttons/Sec",
+                        "marginRight": 15
+                      },
+                      "text": "Laad proceslijst"
+                    },
+                    "type": "ia.input.button"
+                  },
+                  {
+                    "events": {
+                      "component": {
+                        "onActionPerformed": {
+                          "config": {
+                            "id": "ArticleFilters",
+                            "type": "open",
+                            "viewParams": {
+                              "lineID": "{/root/TabContainer/FlexContainer_1.custom.lineID}"
+                            }
+                          },
+                          "scope": "C",
+                          "type": "dock"
+                        }
+                      }
+                    },
+                    "meta": {
+                      "name": "Filter"
+                    },
+                    "position": {
+                      "basis": "80px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "image": {
+                        "icon": {
+                          "path": "material/filter_alt"
+                        }
+                      },
+                      "style": {
+                        "classes": "ATA/Components/Buttons/Sec",
+                        "marginLeft": "auto",
+                        "marginRight": 15
+                      },
+                      "text": ""
+                    },
+                    "type": "ia.input.button"
+                  },
+                  {
+                    "events": {
+                      "component": {
+                        "onActionPerformed": {
+                          "config": {
+                            "script": "\tselectedRow \u003d self.parent.parent.getChild(\"Table\").props.selection.data[0]\n\tarticleID \u003d selectedRow.ArticleID\n\t\n\tdeleteQuery \u003d \u0027\u0027\u0027update Articles set active \u003d 0 where ArticleID \u003d ?\u0027\u0027\u0027\n\tdeleteArgs \u003d [articleID]\n\t\n\tsystem.db.runPrepUpdate(deleteQuery, deleteArgs, database \u003d \u0027NLSTWDYK_DB_PROD\u0027)\n\t\n\tsystem.perspective.sendMessage(\u0027refreshArticles\u0027)\n\tsystem.perspective.sendMessage(\u0027refreshArticleManagement\u0027)\n\t\n\tself.props.value \u003d 0"
+                          },
+                          "scope": "G",
+                          "type": "script"
+                        }
+                      }
+                    },
+                    "meta": {
+                      "name": "OneShotButton"
+                    },
+                    "position": {
+                      "basis": "80px",
+                      "shrink": 0
+                    },
+                    "propConfig": {
+                      "props.enabled": {
+                        "binding": {
+                          "config": {
+                            "expression": "!isnull({.../Table.props.selection.selectedRow})"
+                          },
+                          "type": "expr"
+                        }
+                      }
+                    },
+                    "props": {
+                      "confirm": {
+                        "enabled": true,
+                        "text": "Weet je het zeker?"
+                      },
+                      "readyState": {
+                        "icon": {
+                          "path": "material/delete",
+                          "style": {
+                            "height": "24px",
+                            "width": "2rem"
+                          }
+                        },
+                        "text": ""
+                      },
+                      "style": {
+                        "classes": "ATA/Components/Buttons/Sec"
+                      },
+                      "writingState": {
+                        "icon": {
+                          "path": "material/hourglass_empty",
+                          "style": {
+                            "height": "24px",
+                            "width": "2rem"
+                          }
+                        },
+                        "text": "Writing..."
+                      }
+                    },
+                    "type": "ia.input.oneshotbutton"
+                  },
+                  {
+                    "events": {
+                      "component": {
+                        "onActionPerformed": {
+                          "config": {
+                            "script": "\tselectionData \u003d self.parent.parent.getChild(\"Table\").props.selection.data[0]\n\t\n\tdataJSON \u003d {\n\t\t\t  \"ArticleNumber\": selectionData.ArticleNumber,\n\t\t\t  \"ArticleDescription\": selectionData.ArticleDescription,\n\t\t\t  \"NodeID\": selectionData.LinkedNodeID,\n\t\t\t  \"ArticleID\": selectionData.ArticleID,\n\t\t\t  \"LineID\": selectionData.LineID\n\t\t\t}\n\t\n\tsystem.perspective.openDock(\u0027ArticleDock\u0027, params \u003d {\u0027data\u0027: dataJSON, \u0027edit\u0027: 1})"
+                          },
+                          "scope": "G",
+                          "type": "script"
+                        }
+                      }
+                    },
+                    "meta": {
+                      "name": "Edit"
+                    },
+                    "position": {
+                      "basis": "80px",
+                      "shrink": 0
+                    },
+                    "propConfig": {
+                      "props.enabled": {
+                        "binding": {
+                          "config": {
+                            "expression": "!isnull({.../Table.props.selection.selectedRow})"
+                          },
+                          "type": "expr"
+                        }
+                      }
+                    },
+                    "props": {
+                      "image": {
+                        "icon": {
+                          "path": "material/edit"
+                        }
+                      },
+                      "style": {
+                        "classes": "ATA/Components/Buttons/Prim",
+                        "marginLeft": 15
+                      },
+                      "text": ""
+                    },
+                    "type": "ia.input.button"
+                  },
+                  {
+                    "custom": {
+                      "data": {
+                        "ArticleDescription": null,
+                        "ArticleID": null,
+                        "ArticleNumber": null,
+                        "LineID": null,
+                        "NodeID": null
+                      }
+                    },
+                    "events": {
+                      "component": {
+                        "onActionPerformed": {
+                          "config": {
+                            "id": "ArticleDock",
+                            "type": "open",
+                            "viewParams": {
+                              "data": "{/root/TabContainer/FlexContainer_1/FlexContainer/Add.custom.data}",
+                              "edit": "0"
+                            }
+                          },
+                          "scope": "C",
+                          "type": "dock"
+                        }
+                      }
+                    },
+                    "meta": {
+                      "name": "Add"
+                    },
+                    "position": {
+                      "basis": "80px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "image": {
+                        "icon": {
+                          "path": "material/add"
+                        }
+                      },
+                      "style": {
+                        "classes": "ATA/Components/Buttons/CTA",
+                        "marginLeft": 15
+                      },
+                      "text": ""
+                    },
+                    "type": "ia.input.button"
+                  }
+                ],
+                "meta": {
+                  "name": "FlexContainer"
+                },
+                "position": {
+                  "basis": "45px",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "backgroundColor": "--backgroundSecondary",
+                    "borderTopLeftRadius": 5,
+                    "borderTopRightRadius": 5,
+                    "padding": 7,
+                    "zIndex": 1
+                  }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "meta": {
+                  "name": "Table"
+                },
+                "position": {
+                  "basis": "400px",
+                  "grow": 1
+                },
+                "propConfig": {
+                  "props.data": {
+                    "binding": {
+                      "config": {
+                        "parameters": {
+                          "LineID": "{parent.custom.lineID}"
+                        },
+                        "queryPath": "Article/ArticleManagement/getAllArticles"
+                      },
+                      "type": "query"
+                    }
+                  }
+                },
+                "props": {
+                  "columns": [
+                    {
+                      "align": "center",
+                      "boolean": "checkbox",
+                      "dateFormat": "MM/DD/YYYY",
+                      "editable": false,
+                      "field": "ArticleID",
+                      "filter": {
+                        "boolean": {
+                          "condition": ""
+                        },
+                        "date": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "enabled": false,
+                        "number": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "string": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "visible": "on-hover"
+                      },
+                      "footer": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": ""
+                      },
+                      "header": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": "Lijn"
+                      },
+                      "justify": "auto",
+                      "nullFormat": {
+                        "includeNullStrings": false,
+                        "nullFormatValue": "",
+                        "strict": false
+                      },
+                      "number": "value",
+                      "numberFormat": "0,0.##",
+                      "progressBar": {
+                        "bar": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "max": 100,
+                        "min": 0,
+                        "track": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "value": {
+                          "enabled": true,
+                          "format": "0,0.##",
+                          "justify": "center",
+                          "style": {
+                            "classes": ""
+                          }
+                        }
+                      },
+                      "render": "auto",
+                      "resizable": true,
+                      "sort": "none",
+                      "sortable": true,
+                      "strictWidth": false,
+                      "style": {
+                        "classes": ""
+                      },
+                      "toggleSwitch": {
+                        "color": {
+                          "selected": "",
+                          "unselected": ""
+                        }
+                      },
+                      "viewParams": {},
+                      "viewPath": "",
+                      "visible": false,
+                      "width": ""
+                    },
+                    {
+                      "align": "center",
+                      "boolean": "checkbox",
+                      "dateFormat": "MM/DD/YYYY",
+                      "editable": false,
+                      "field": "ArticleNumber",
+                      "filter": {
+                        "boolean": {
+                          "condition": ""
+                        },
+                        "date": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "enabled": false,
+                        "number": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "string": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "visible": "on-hover"
+                      },
+                      "footer": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": ""
+                      },
+                      "header": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": "Artikelnummer"
+                      },
+                      "justify": "auto",
+                      "nullFormat": {
+                        "includeNullStrings": false,
+                        "nullFormatValue": "",
+                        "strict": false
+                      },
+                      "number": "value",
+                      "numberFormat": "0,0.##",
+                      "progressBar": {
+                        "bar": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "max": 100,
+                        "min": 0,
+                        "track": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "value": {
+                          "enabled": true,
+                          "format": "0,0.##",
+                          "justify": "center",
+                          "style": {
+                            "classes": ""
+                          }
+                        }
+                      },
+                      "render": "string",
+                      "resizable": true,
+                      "sort": "none",
+                      "sortable": true,
+                      "strictWidth": false,
+                      "style": {
+                        "classes": ""
+                      },
+                      "toggleSwitch": {
+                        "color": {
+                          "selected": "",
+                          "unselected": ""
+                        }
+                      },
+                      "viewParams": {},
+                      "viewPath": "",
+                      "visible": true,
+                      "width": ""
+                    },
+                    {
+                      "align": "center",
+                      "boolean": "checkbox",
+                      "dateFormat": "MM/DD/YYYY",
+                      "editable": false,
+                      "field": "ArticleDescription",
+                      "filter": {
+                        "boolean": {
+                          "condition": ""
+                        },
+                        "date": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "enabled": false,
+                        "number": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "string": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "visible": "on-hover"
+                      },
+                      "footer": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": ""
+                      },
+                      "header": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": "Artikel beschrijving"
+                      },
+                      "justify": "auto",
+                      "nullFormat": {
+                        "includeNullStrings": false,
+                        "nullFormatValue": "",
+                        "strict": false
+                      },
+                      "number": "value",
+                      "numberFormat": "0,0.##",
+                      "progressBar": {
+                        "bar": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "max": 100,
+                        "min": 0,
+                        "track": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "value": {
+                          "enabled": true,
+                          "format": "0,0.##",
+                          "justify": "center",
+                          "style": {
+                            "classes": ""
+                          }
+                        }
+                      },
+                      "render": "auto",
+                      "resizable": true,
+                      "sort": "none",
+                      "sortable": true,
+                      "strictWidth": false,
+                      "style": {
+                        "classes": ""
+                      },
+                      "toggleSwitch": {
+                        "color": {
+                          "selected": "",
+                          "unselected": ""
+                        }
+                      },
+                      "viewParams": {},
+                      "viewPath": "",
+                      "visible": true,
+                      "width": ""
+                    },
+                    {
+                      "align": "center",
+                      "boolean": "checkbox",
+                      "dateFormat": "MM/DD/YYYY",
+                      "editable": false,
+                      "field": "LinkedNodeID",
+                      "filter": {
+                        "boolean": {
+                          "condition": ""
+                        },
+                        "date": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "enabled": false,
+                        "number": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "string": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "visible": "on-hover"
+                      },
+                      "footer": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": ""
+                      },
+                      "header": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": ""
+                      },
+                      "justify": "auto",
+                      "nullFormat": {
+                        "includeNullStrings": false,
+                        "nullFormatValue": "",
+                        "strict": false
+                      },
+                      "number": "value",
+                      "numberFormat": "0,0.##",
+                      "progressBar": {
+                        "bar": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "max": 100,
+                        "min": 0,
+                        "track": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "value": {
+                          "enabled": true,
+                          "format": "0,0.##",
+                          "justify": "center",
+                          "style": {
+                            "classes": ""
+                          }
+                        }
+                      },
+                      "render": "auto",
+                      "resizable": true,
+                      "sort": "none",
+                      "sortable": true,
+                      "strictWidth": false,
+                      "style": {
+                        "classes": ""
+                      },
+                      "toggleSwitch": {
+                        "color": {
+                          "selected": "",
+                          "unselected": ""
+                        }
+                      },
+                      "viewParams": {},
+                      "viewPath": "",
+                      "visible": false,
+                      "width": ""
+                    },
+                    {
+                      "align": "center",
+                      "boolean": "checkbox",
+                      "dateFormat": "MM/DD/YYYY",
+                      "editable": false,
+                      "field": "LineID",
+                      "filter": {
+                        "boolean": {
+                          "condition": ""
+                        },
+                        "date": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "enabled": false,
+                        "number": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "string": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "visible": "on-hover"
+                      },
+                      "footer": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": ""
+                      },
+                      "header": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": ""
+                      },
+                      "justify": "auto",
+                      "nullFormat": {
+                        "includeNullStrings": false,
+                        "nullFormatValue": "",
+                        "strict": false
+                      },
+                      "number": "value",
+                      "numberFormat": "0,0.##",
+                      "progressBar": {
+                        "bar": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "max": 100,
+                        "min": 0,
+                        "track": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "value": {
+                          "enabled": true,
+                          "format": "0,0.##",
+                          "justify": "center",
+                          "style": {
+                            "classes": ""
+                          }
+                        }
+                      },
+                      "render": "auto",
+                      "resizable": true,
+                      "sort": "none",
+                      "sortable": true,
+                      "strictWidth": false,
+                      "style": {
+                        "classes": ""
+                      },
+                      "toggleSwitch": {
+                        "color": {
+                          "selected": "",
+                          "unselected": ""
+                        }
+                      },
+                      "viewParams": {},
+                      "viewPath": "",
+                      "visible": false,
+                      "width": ""
+                    },
+                    {
+                      "align": "center",
+                      "boolean": "checkbox",
+                      "dateFormat": "MM/DD/YYYY",
+                      "editable": false,
+                      "field": "LineDesc",
+                      "filter": {
+                        "boolean": {
+                          "condition": ""
+                        },
+                        "date": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "enabled": false,
+                        "number": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "string": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "visible": "on-hover"
+                      },
+                      "footer": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": ""
+                      },
+                      "header": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": "Lijn"
+                      },
+                      "justify": "auto",
+                      "nullFormat": {
+                        "includeNullStrings": false,
+                        "nullFormatValue": "",
+                        "strict": false
+                      },
+                      "number": "value",
+                      "numberFormat": "0,0.##",
+                      "progressBar": {
+                        "bar": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "max": 100,
+                        "min": 0,
+                        "track": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "value": {
+                          "enabled": true,
+                          "format": "0,0.##",
+                          "justify": "center",
+                          "style": {
+                            "classes": ""
+                          }
+                        }
+                      },
+                      "render": "auto",
+                      "resizable": true,
+                      "sort": "none",
+                      "sortable": true,
+                      "strictWidth": false,
+                      "style": {
+                        "classes": ""
+                      },
+                      "toggleSwitch": {
+                        "color": {
+                          "selected": "",
+                          "unselected": ""
+                        }
+                      },
+                      "viewParams": {},
+                      "viewPath": "",
+                      "visible": true,
+                      "width": ""
+                    }
+                  ],
+                  "filter": {
+                    "enabled": true
+                  },
+                  "pager": {
+                    "activeOption": 50
+                  },
+                  "rows": {
+                    "height": "30px",
+                    "subview": {
+                      "enabled": true,
+                      "viewParams": {
+                        "LineID": "LineID",
+                        "articleNumber": "articleNumber"
+                      },
+                      "viewPath": "ControlRoom/Articles/Embedded/ArticleInfo"
+                    }
+                  }
+                },
+                "type": "ia.display.table"
+              }
+            ],
+            "meta": {
+              "name": "FlexContainer_1"
+            },
+            "position": {
+              "tabIndex": 2
+            },
+            "propConfig": {
+              "custom.lineID": {
+                "binding": {
+                  "config": {
+                    "expression": "-1"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "direction": "column"
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "TabContainer"
+        },
+        "position": {
+          "basis": "300px",
+          "grow": 1
+        },
+        "propConfig": {
+          "props.currentTabIndex": {
+            "binding": {
+              "config": {
+                "expression": "0"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "contentStyle": {
+            "backgroundColor": "--backgroundSecondary",
+            "classes": "ATA/Background/Root"
+          },
+          "menuType": "modern",
+          "style": {
+            "classes": "ATA/Background/CardSecondary"
+          },
+          "tabSize": {
+            "width": 125
+          },
+          "tabs": [
+            "Artikelbeheer",
+            "Parameters",
+            "Artikelen"
+          ]
+        },
+        "type": "ia.container.tab"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "propConfig": {
+      "custom.newParamData": {
+        "binding": {
+          "config": {
+            "path": ""
+          },
+          "transforms": [
+            {
+              "code": "\tjson \u003d {\n\t\t  \"DefaultValue\": None,\n\t\t  \"DefaultLowLow\": None,\n\t\t  \"Description\": None,\n\t\t  \"DefaultLow\": None,\n\t\t  \"DefaultHighHigh\": None,\n\t\t  \"DefaultHigh\": None,\n\t\t  \"ProcessParameterID\": None,\n\t\t  \"AssetID\": None\n\t\t}\n\t\n\treturn json",
+              "type": "script"
+            }
+          ],
+          "type": "property"
+        }
+      },
+      "custom.selectedTreeData": {
+        "binding": {
+          "config": {
+            "path": ""
+          },
+          "transforms": [
+            {
+              "code": "\tjson \u003d {\n\t\t  \"ParameterValueID\": None,\n\t\t  \"HighAlarm\": None,\n\t\t  \"HighWarning\": None,\n\t\t  \"NodeID\": None,\n\t\t  \"ParamValue\": None,\n\t\t  \"LowAlarm\": None,\n\t\t  \"LowWarning\": None,\n\t\t  \"ParameterID\": None,\n\t\t  \"ParamName\": None\n\t\t}\n\t\n\treturn json",
+              "type": "script"
+            }
+          ],
+          "type": "property"
+        }
+      }
+    },
+    "props": {
+      "style": {
+        "classes": "ATA/Background/Root",
+        "overflow": "visible"
+      }
+    },
+    "scripts": {
+      "customMethods": [],
+      "extensionFunctions": null,
+      "messageHandlers": [
+        {
+          "messageType": "refreshArticleManagement",
+          "pageScope": true,
+          "script": "\t# implement your handler here\n\tself.getChild(\"TabContainer\").getChild(\"FlexContainer\").getChild(\"ArticleTreeFlex\").getChild(\"Tree_0\").refreshBinding(\u0027props.items\u0027)\n\tself.getChild(\"TabContainer\").getChild(\"FlexContainer\").getChild(\"RightFlex\").getChild(\"Middle\").getChild(\"FlexContainer\").getChild(\"FlexContainer\").getChild(\"Dropdown\").refreshBinding(\u0027props.params.options\u0027)",
+          "sessionScope": true,
+          "viewScope": true
+        },
+        {
+          "messageType": "refreshParameters",
+          "pageScope": true,
+          "script": "\t# implement your handler here\n\tself.getChild(\"TabContainer\").getChild(\"FlexContainer_0\").getChild(\"Table\").refreshBinding(\u0027props.data\u0027)",
+          "sessionScope": true,
+          "viewScope": true
+        },
+        {
+          "messageType": "refreshArticles",
+          "pageScope": true,
+          "script": "\tself.getChild(\"TabContainer\").getChild(\"FlexContainer_1\").getChild(\"Table\").refreshBinding(\u0027props.data\u0027)",
+          "sessionScope": true,
+          "viewScope": true
+        },
+        {
+          "messageType": "applyFiltersArticles",
+          "pageScope": true,
+          "script": "\tself.getChild(\"TabContainer\").getChild(\"FlexContainer_1\").custom.lineID \u003d payload[\u0027lineID\u0027]",
+          "sessionScope": true,
+          "viewScope": true
+        },
+        {
+          "messageType": "applyFiltersParameters",
+          "pageScope": true,
+          "script": "\t# implement your handler here\n\tself.getChild(\"TabContainer\").getChild(\"FlexContainer_0\").custom.lineID \u003d payload[\u0027lineID\u0027]\n\tself.getChild(\"TabContainer\").getChild(\"FlexContainer_0\").custom.assetID \u003d payload[\u0027assetID\u0027]",
+          "sessionScope": true,
+          "viewScope": true
+        }
+      ]
+    },
+    "type": "ia.container.flex"
+  }
+}

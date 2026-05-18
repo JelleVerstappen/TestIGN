@@ -1,0 +1,291 @@
+{
+  "custom": {},
+  "params": {
+    "page": "value"
+  },
+  "propConfig": {
+    "params.page": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 250,
+      "width": 250
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Number"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "params": {
+            "enabled": false,
+            "engUnits": "RPM",
+            "format": "0,0.##",
+            "key": "Snelheid",
+            "maxValue": 10000000,
+            "minValue": 0,
+            "placeholder": "",
+            "unitVisable": true,
+            "value": 10.2
+          },
+          "path": "Library/SharedTemplates/InputHorizontal/Number",
+          "style": {
+            "marginTop": 2
+          },
+          "useDefaultViewHeight": true
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Number_3"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "params": {
+            "enabled": false,
+            "engUnits": "%",
+            "format": "0,0.##",
+            "key": "Setpoint 1",
+            "maxValue": 10000000,
+            "minValue": 0,
+            "placeholder": "",
+            "unitVisable": true,
+            "value": 90
+          },
+          "path": "Library/SharedTemplates/InputHorizontal/Number",
+          "style": {
+            "marginTop": 2
+          },
+          "useDefaultViewHeight": true
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Number_0"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "params": {
+            "enabled": false,
+            "engUnits": "L",
+            "format": "0,0.##",
+            "key": "Actual value 1",
+            "maxValue": 10000000,
+            "minValue": 0,
+            "placeholder": "",
+            "unitVisable": true,
+            "value": 5
+          },
+          "path": "Library/SharedTemplates/InputHorizontal/Number",
+          "style": {
+            "marginTop": 2
+          },
+          "useDefaultViewHeight": true
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Number_1"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "params": {
+            "enabled": false,
+            "engUnits": "Kg/m",
+            "format": "0,0.##",
+            "key": "Actual value 2",
+            "maxValue": 10000000,
+            "minValue": 0,
+            "placeholder": "",
+            "unitVisable": true,
+            "value": 2
+          },
+          "path": "Library/SharedTemplates/InputHorizontal/Number",
+          "style": {
+            "marginTop": 2
+          },
+          "useDefaultViewHeight": true
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Number_2"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "params": {
+            "enabled": false,
+            "engUnits": "m2",
+            "format": "0,0.##",
+            "key": "Actual value 3",
+            "maxValue": 10000000,
+            "minValue": 0,
+            "placeholder": "",
+            "unitVisable": true,
+            "value": 46.85
+          },
+          "path": "Library/SharedTemplates/InputHorizontal/Number",
+          "style": {
+            "marginTop": 2
+          },
+          "useDefaultViewHeight": true
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Number_4"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "params": {
+            "enabled": false,
+            "engUnits": "%",
+            "format": "0,0.##",
+            "key": "Actual value 4",
+            "maxValue": 10000000,
+            "minValue": 0,
+            "placeholder": "",
+            "unitVisable": true,
+            "value": 99.9
+          },
+          "path": "Library/SharedTemplates/InputHorizontal/Number",
+          "style": {
+            "marginTop": 2
+          },
+          "useDefaultViewHeight": true
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Number_5"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "params": {
+            "enabled": false,
+            "engUnits": "%",
+            "format": "0,0.##",
+            "key": "Actual value 5",
+            "maxValue": 10000000,
+            "minValue": 0,
+            "placeholder": "",
+            "unitVisable": true,
+            "value": 98.6
+          },
+          "path": "Library/SharedTemplates/InputHorizontal/Number",
+          "style": {
+            "marginTop": 2
+          },
+          "useDefaultViewHeight": true
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "children": [
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "script": "\tsystem.perspective.sendMessage(\u0027ClosePopup\u0027, payload\u003d{\u0027ID\u0027:\u0027\u0027})"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "Button"
+            },
+            "position": {
+              "basis": "34px",
+              "grow": 1,
+              "shrink": 0
+            },
+            "props": {
+              "style": {
+                "classes": "ATA/Components/Buttons/Prim",
+                "margin": 5
+              },
+              "text": "Close"
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "script": "\tsystem.perspective.navigate(page\u003dself.view.params.page)\n#\tsystem.perspective.openPopup(\u0027NewWindowPopup\u0027, \u0027ControlRoom/Home/Popups/NewWindowPopup\u0027)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "Button_0"
+            },
+            "position": {
+              "basis": "34px",
+              "grow": 1,
+              "shrink": 0
+            },
+            "props": {
+              "style": {
+                "classes": "ATA/Components/Buttons/CTA",
+                "margin": 5
+              },
+              "text": "Open"
+            },
+            "type": "ia.input.button"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer_7"
+        },
+        "position": {
+          "basis": "38px"
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "classes": "ATA/Background/Root",
+        "overflow": "visible"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

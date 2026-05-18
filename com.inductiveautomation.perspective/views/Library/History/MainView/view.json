@@ -1,0 +1,1139 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "height": 558,
+      "width": 1059
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Label"
+                },
+                "position": {
+                  "basis": "50px",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "backgroundColor": "#F4F4F4",
+                    "fontSize": 14,
+                    "paddingLeft": "5px"
+                  },
+                  "text": "Save trend as"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "PrivatePublic"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "props.enabled": {
+                    "binding": {
+                      "config": {
+                        "path": "session.props.auth.user.roles"
+                      },
+                      "transforms": [
+                        {
+                          "code": "#\tif \"Administrator\" in self.session.props.auth.user.roles:\n#\t\treturn True\n#\telse:\n#\t\treturn False\n\treturn True",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  },
+                  "props.index": {
+                    "persistent": true
+                  }
+                },
+                "props": {
+                  "index": 1,
+                  "radios": [
+                    {
+                      "selected": false,
+                      "text": "Shared",
+                      "value": 0
+                    },
+                    {
+                      "selected": true,
+                      "text": "Private",
+                      "value": 1
+                    }
+                  ],
+                  "selectedIcon": {
+                    "color": {
+                      "enabled": "--primary"
+                    }
+                  },
+                  "style": {
+                    "fontSize": 12,
+                    "marginLeft": "-5px"
+                  },
+                  "value": 1
+                },
+                "type": "ia.input.radio-group"
+              },
+              {
+                "events": {
+                  "dom": {
+                    "onClick": {
+                      "config": {
+                        "script": "\tself.getSibling(\"Table\").props.selection.selectedColumn \u003d None\n\tself.getSibling(\"Table\").props.selection.selectedRow \u003d None"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "name": "TrendName"
+                },
+                "position": {
+                  "basis": "32px"
+                },
+                "props": {
+                  "placeholder": "Trend name...",
+                  "style": {
+                    "borderTopLeftRadius": "4px",
+                    "borderTopRightRadius": "4px",
+                    "marginLeft": "5px",
+                    "marginRight": "5px"
+                  },
+                  "value": null
+                },
+                "type": "ia.input.text-field"
+              },
+              {
+                "events": {
+                  "component": {
+                    "onRowClick": {
+                      "config": {
+                        "script": "\tselectedColumn \u003d self.props.selection.selectedColumn\n\tselectedRow \u003d self.props.selection.selectedRow\n\tTrendChartName \u003d event.value.TrendChartName\n\t\n\tself.getSibling(\"TrendName\").props.text \u003d TrendChartName"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "name": "Table"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "propConfig": {
+                  "props.data": {
+                    "binding": {
+                      "config": {
+                        "parameters": {
+                          "TrendChartIsPrivate": "{../PrivatePublic.props.value}",
+                          "UserID": "{session.props.auth.user.id}"
+                        },
+                        "queryPath": "TrendCharts/GetCustomTrends"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturnSet \u003d system.dataset.filterColumns(value, [\"TrendChartName\"])\n\treturn returnSet",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "query"
+                    }
+                  }
+                },
+                "props": {
+                  "cells": {
+                    "style": {
+                      "backgroundColor": "#FFFFFF"
+                    }
+                  },
+                  "columns": [
+                    {
+                      "align": "center",
+                      "boolean": "checkbox",
+                      "dateFormat": "MM/DD/YYYY",
+                      "editable": false,
+                      "field": "TrendChartName",
+                      "footer": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": ""
+                      },
+                      "header": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": ""
+                      },
+                      "justify": "auto",
+                      "number": "value",
+                      "numberFormat": "0,0.##",
+                      "progressBar": {
+                        "bar": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "max": 100,
+                        "min": 0,
+                        "track": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "value": {
+                          "enabled": true,
+                          "format": "0,0.##",
+                          "justify": "center",
+                          "style": {
+                            "classes": ""
+                          }
+                        }
+                      },
+                      "render": "string",
+                      "resizable": true,
+                      "sort": "none",
+                      "sortable": true,
+                      "strictWidth": false,
+                      "style": {
+                        "classes": ""
+                      },
+                      "toggleSwitch": {
+                        "color": {
+                          "selected": "",
+                          "unselected": ""
+                        }
+                      },
+                      "viewParams": {},
+                      "viewPath": "",
+                      "visible": true,
+                      "width": ""
+                    }
+                  ],
+                  "enableHeader": false,
+                  "pager": {
+                    "bottom": false
+                  },
+                  "rows": {
+                    "style": {
+                      "backgroundColor": "#FFFFFF"
+                    }
+                  },
+                  "style": {
+                    "backgroundColor": "#FFFFFF",
+                    "border": "solid 1px #A1A1A1",
+                    "borderStyle": "none",
+                    "borderTop": "none 0px",
+                    "marginLeft": "5px",
+                    "marginRight": "5px",
+                    "marginTop": "0px"
+                  }
+                },
+                "type": "ia.display.table"
+              },
+              {
+                "children": [
+                  {
+                    "custom": {
+                      "title": "Save File"
+                    },
+                    "events": {
+                      "component": {
+                        "onActionPerformed": {
+                          "config": {
+                            "script": "\tself.view.getChild(\"root\").saveDbTrendChart()"
+                          },
+                          "scope": "G",
+                          "type": "script"
+                        }
+                      }
+                    },
+                    "meta": {
+                      "name": "Save"
+                    },
+                    "position": {
+                      "basis": "50%",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "image": {
+                        "icon": {
+                          "color": "#5E5E5E",
+                          "path": "material/save"
+                        },
+                        "width": 23
+                      },
+                      "primary": false,
+                      "style": {
+                        "backgroundColor": "#FFFFFF",
+                        "borderBottomLeftRadius": "4px",
+                        "borderBottomRightRadius": "0px",
+                        "borderRight": "none",
+                        "borderTopLeftRadius": "4px",
+                        "borderTopRightRadius": "0px"
+                      },
+                      "text": "Save"
+                    },
+                    "type": "ia.input.button"
+                  },
+                  {
+                    "custom": {
+                      "title": "Save File"
+                    },
+                    "events": {
+                      "component": {
+                        "onActionPerformed": {
+                          "config": {
+                            "script": "\tself.parent.parent.getChild(\"TrendName\").props.value \u003d None\n\tself.parent.parent.parent.parent.getChild(\"FlexTrendSelector\").custom.ShowSaveOptions \u003d False"
+                          },
+                          "scope": "G",
+                          "type": "script"
+                        }
+                      }
+                    },
+                    "meta": {
+                      "name": "Cancel"
+                    },
+                    "position": {
+                      "basis": "50%"
+                    },
+                    "props": {
+                      "image": {
+                        "icon": {
+                          "color": "#5E5E5E",
+                          "path": "material/cancel"
+                        },
+                        "width": 23
+                      },
+                      "primary": false,
+                      "style": {
+                        "backgroundColor": "#FFFFFF",
+                        "borderBottomLeftRadius": "0px",
+                        "borderBottomRightRadius": "5px",
+                        "borderTopLeftRadius": "0px",
+                        "borderTopRightRadius": "5px"
+                      },
+                      "text": "Cancel"
+                    },
+                    "type": "ia.input.button"
+                  }
+                ],
+                "meta": {
+                  "name": "Buttons"
+                },
+                "position": {
+                  "basis": "40px",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "margin": "5px"
+                  }
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "SaveOptions"
+            },
+            "position": {
+              "grow": 1,
+              "shrink": 0
+            },
+            "propConfig": {
+              "position.display": {
+                "binding": {
+                  "config": {
+                    "path": "parent.custom.ShowSaveOptions"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "direction": "column"
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "events": {
+                      "component": {
+                        "onActionPerformed": {
+                          "config": {
+                            "script": "\tself.view.getChild(\"root\").clearTableSelection()"
+                          },
+                          "scope": "G",
+                          "type": "script"
+                        }
+                      }
+                    },
+                    "meta": {
+                      "name": "PrivatePublic"
+                    },
+                    "position": {
+                      "shrink": 0
+                    },
+                    "props": {
+                      "index": 1,
+                      "radios": [
+                        {
+                          "selected": false,
+                          "text": "Shared",
+                          "value": 0
+                        },
+                        {
+                          "selected": true,
+                          "text": "Private",
+                          "value": 1
+                        }
+                      ],
+                      "selectedIcon": {
+                        "color": {
+                          "enabled": "--primary"
+                        }
+                      },
+                      "style": {
+                        "fontSize": 12,
+                        "margin": "2px"
+                      },
+                      "value": 1
+                    },
+                    "type": "ia.input.radio-group"
+                  },
+                  {
+                    "children": [
+                      {
+                        "custom": {
+                          "title": "Save File"
+                        },
+                        "events": {
+                          "component": {
+                            "onActionPerformed": {
+                              "config": {
+                                "script": "\tself.view.getChild(\"root\").clearTrendChart()"
+                              },
+                              "scope": "G",
+                              "type": "script"
+                            }
+                          }
+                        },
+                        "meta": {
+                          "name": "New"
+                        },
+                        "position": {
+                          "basis": "40px",
+                          "shrink": 0
+                        },
+                        "props": {
+                          "image": {
+                            "icon": {
+                              "color": "#5E5E5E",
+                              "path": "material/layers_clear"
+                            }
+                          },
+                          "primary": false,
+                          "style": {
+                            "backgroundColor": "#FFFFFF",
+                            "borderBottomLeftRadius": "4px",
+                            "borderBottomRightRadius": "0px",
+                            "borderTopLeftRadius": "4px",
+                            "borderTopRightRadius": "0px"
+                          },
+                          "text": ""
+                        },
+                        "type": "ia.input.button"
+                      },
+                      {
+                        "custom": {
+                          "title": "Save File"
+                        },
+                        "events": {
+                          "component": {
+                            "onActionPerformed": {
+                              "config": {
+                                "script": "\tself.parent.parent.parent.parent.parent.getChild(\"FlexTrendSelector\").custom.ShowSaveOptions \u003d True"
+                              },
+                              "scope": "G",
+                              "type": "script"
+                            }
+                          }
+                        },
+                        "meta": {
+                          "name": "Save"
+                        },
+                        "position": {
+                          "basis": "40px",
+                          "shrink": 0
+                        },
+                        "props": {
+                          "image": {
+                            "icon": {
+                              "color": "#5E5E5E",
+                              "path": "material/save"
+                            }
+                          },
+                          "primary": false,
+                          "style": {
+                            "backgroundColor": "#FFFFFF",
+                            "borderBottomLeftRadius": 0,
+                            "borderBottomRightRadius": "4px",
+                            "borderLeft": "none",
+                            "borderTopLeftRadius": 0,
+                            "borderTopRightRadius": "4px"
+                          },
+                          "text": ""
+                        },
+                        "type": "ia.input.button"
+                      }
+                    ],
+                    "meta": {
+                      "name": "Buttons"
+                    },
+                    "position": {
+                      "basis": "85px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "justify": "flex-end",
+                      "style": {
+                        "padding": "5px"
+                      }
+                    },
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "meta": {
+                  "name": "Head"
+                },
+                "position": {
+                  "basis": "50px",
+                  "shrink": 0
+                },
+                "props": {
+                  "justify": "space-between",
+                  "style": {
+                    "borderWidth": 1
+                  }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "events": {
+                  "component": {
+                    "onRowClick": {
+                      "config": {
+                        "script": "\tselectedColumn \u003d self.props.selection.selectedColumn\n\tselectedRow \u003d self.props.selection.selectedRow\n\tTrendChartName \u003d event.value.TrendChartName\n\t\n\tself.parent.parent.getChild(\"SaveOptions\").getChild(\"TrendName\").props.text \u003d TrendChartName\n\t\n\t# Toggle selected of a charts when clicked on checkbox cell\n\tif selectedColumn \u003d\u003d \"Selected\":\n\t\tdataset \u003d self.props.data\n\t\t\n\t\tcurrentValue \u003d event.value.Selected\n\t\tnewValue \u003d True\n\t\tif currentValue:\n\t\t\tnewValue \u003d False\n\t\t\t\n\t\teditedDataSet \u003d system.dataset.setValue(dataset, selectedRow, \"Selected\", newValue)\n\t\t\n\t\tself.props.data \u003d editedDataSet\n\t# load a chart when clicked on name cell\n\telif selectedColumn \u003d\u003d \"TrendChartName\":\t\t\n\t\tTrendChartID \u003d int(event.value.TrendChartID)\n\t\tself.view.getChild(\"root\").loadFromDb(TrendChartID)"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "name": "Table"
+                },
+                "position": {
+                  "basis": "400px",
+                  "grow": 1
+                },
+                "propConfig": {
+                  "props.columns[0].visible": {
+                    "binding": {
+                      "config": {
+                        "path": "../../Head/PrivatePublic.props.value"
+                      },
+                      "transforms": [
+                        {
+                          "code": "#\tif int(value) \u003d\u003d 0 and \"Administrator\" not in self.session.props.auth.user.roles:\n#\t\treturn False\n#\telse:\n#\t\treturn True\n\treturn True",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  },
+                  "props.data": {
+                    "binding": {
+                      "config": {
+                        "parameters": {
+                          "TrendChartIsPrivate": "{../Head/PrivatePublic.props.value}",
+                          "UserID": "{session.props.auth.user.id}"
+                        },
+                        "queryPath": "TrendCharts/GetCustomTrends",
+                        "returnFormat": "dataset"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\tTableData \u003d value\n\t\n\tif value:\n\t\trowCount \u003d value.getRowCount()\n\t\t\n#\t\theaders \u003d system.dataset.getColumnHeaders()\n#\t\theaders.insert(0, \"Selected\")\n\t\t\n\t\temptyBoolColumn \u003d []\n\t\tfor i in range(rowCount):\n\t\t\temptyBoolColumn.append(0)\n\t\t\n\t\tTableData \u003d system.dataset.addColumn(value, 0, emptyBoolColumn, \"Selected\", bool)\n\t\t\n\t\t\n\treturn TableData",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "query"
+                    }
+                  }
+                },
+                "props": {
+                  "cells": {
+                    "style": {
+                      "backgroundColor": "#FFFFFF"
+                    }
+                  },
+                  "columns": [
+                    {
+                      "align": "center",
+                      "boolean": "checkbox",
+                      "dateFormat": "MM/DD/YYYY",
+                      "editable": true,
+                      "field": "Selected",
+                      "footer": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": ""
+                      },
+                      "header": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": ""
+                      },
+                      "justify": "auto",
+                      "number": "value",
+                      "numberFormat": "0,0.##",
+                      "progressBar": {
+                        "bar": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "max": 100,
+                        "min": 0,
+                        "track": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "value": {
+                          "enabled": true,
+                          "format": "0,0.##",
+                          "justify": "center",
+                          "style": {
+                            "classes": ""
+                          }
+                        }
+                      },
+                      "render": "boolean",
+                      "resizable": false,
+                      "sort": "none",
+                      "sortable": false,
+                      "strictWidth": true,
+                      "style": {
+                        "classes": ""
+                      },
+                      "toggleSwitch": {
+                        "color": {
+                          "selected": "",
+                          "unselected": ""
+                        }
+                      },
+                      "viewParams": {},
+                      "viewPath": "",
+                      "width": 30
+                    },
+                    {
+                      "align": "center",
+                      "boolean": "checkbox",
+                      "dateFormat": "MM/DD/YYYY",
+                      "editable": false,
+                      "field": "TrendChartName",
+                      "footer": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": ""
+                      },
+                      "header": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": ""
+                      },
+                      "justify": "auto",
+                      "number": "value",
+                      "numberFormat": "0,0.##",
+                      "progressBar": {
+                        "bar": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "max": 100,
+                        "min": 0,
+                        "track": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "value": {
+                          "enabled": true,
+                          "format": "0,0.##",
+                          "justify": "center",
+                          "style": {
+                            "classes": ""
+                          }
+                        }
+                      },
+                      "render": "string",
+                      "resizable": true,
+                      "sort": "none",
+                      "sortable": true,
+                      "strictWidth": false,
+                      "style": {
+                        "classes": ""
+                      },
+                      "toggleSwitch": {
+                        "color": {
+                          "selected": "",
+                          "unselected": ""
+                        }
+                      },
+                      "viewParams": {},
+                      "viewPath": "",
+                      "visible": true,
+                      "width": ""
+                    },
+                    {
+                      "align": "center",
+                      "boolean": "checkbox",
+                      "dateFormat": "MM/DD/YYYY",
+                      "editable": false,
+                      "field": "TrendChartID",
+                      "footer": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": ""
+                      },
+                      "header": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": ""
+                      },
+                      "justify": "auto",
+                      "number": "value",
+                      "numberFormat": "none",
+                      "progressBar": {
+                        "bar": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "max": 100,
+                        "min": 0,
+                        "track": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "value": {
+                          "enabled": true,
+                          "format": "0,0.##",
+                          "justify": "center",
+                          "style": {
+                            "classes": ""
+                          }
+                        }
+                      },
+                      "render": "number",
+                      "resizable": true,
+                      "sort": "none",
+                      "sortable": true,
+                      "strictWidth": false,
+                      "style": {
+                        "classes": ""
+                      },
+                      "toggleSwitch": {
+                        "color": {
+                          "selected": "",
+                          "unselected": ""
+                        }
+                      },
+                      "viewParams": {},
+                      "viewPath": "",
+                      "visible": false,
+                      "width": ""
+                    }
+                  ],
+                  "enableHeader": false,
+                  "pager": {
+                    "bottom": false
+                  },
+                  "rows": {
+                    "style": {
+                      "backgroundColor": "#FFFFFF",
+                      "cursor": "pointer"
+                    }
+                  },
+                  "style": {
+                    "backgroundColor": "#FFFFFF",
+                    "borderBottomColor": "#A1A1A1",
+                    "borderBottomStyle": "solid",
+                    "borderBottomWidth": 1,
+                    "borderLeftColor": "#A1A1A1",
+                    "borderLeftStyle": "none",
+                    "borderRightColor": "#A1A1A1",
+                    "borderRightStyle": "none",
+                    "borderTopColor": "#A1A1A1",
+                    "borderTopStyle": "solid",
+                    "borderTopWidth": 1
+                  }
+                },
+                "type": "ia.display.table"
+              },
+              {
+                "children": [
+                  {
+                    "events": {
+                      "component": {
+                        "onActionPerformed": {
+                          "config": {
+                            "script": "\tself.view.getChild(\"root\").deactiveSelectedTrendCharts()\n\tself.props.value \u003d 0\n\t\t\t"
+                          },
+                          "scope": "G",
+                          "type": "script"
+                        }
+                      }
+                    },
+                    "meta": {
+                      "name": "OneShotButton"
+                    },
+                    "position": {
+                      "basis": "40px",
+                      "grow": 1,
+                      "shrink": 0
+                    },
+                    "props": {
+                      "confirm": {
+                        "enabled": true
+                      },
+                      "primary": false,
+                      "readyState": {
+                        "icon": {
+                          "color": "#5E5E5E",
+                          "path": "material/delete",
+                          "style": {
+                            "height": "24px",
+                            "width": "2rem"
+                          }
+                        },
+                        "style": {
+                          "color": "#5E5E5E",
+                          "margin": "5px"
+                        },
+                        "text": "Remove selected"
+                      },
+                      "style": {
+                        "margin": "5px"
+                      },
+                      "writingState": {
+                        "icon": {
+                          "path": "material/hourglass_empty",
+                          "style": {
+                            "height": "24px",
+                            "width": "2rem"
+                          }
+                        },
+                        "style": {
+                          "color": "#5E5E5E",
+                          "margin": "5px"
+                        },
+                        "text": "Removing..."
+                      }
+                    },
+                    "type": "ia.input.oneshotbutton"
+                  }
+                ],
+                "meta": {
+                  "name": "FlexEditSelected"
+                },
+                "position": {
+                  "basis": "50px"
+                },
+                "propConfig": {
+                  "position.display": {
+                    "binding": {
+                      "config": {
+                        "path": "../Table.props.data"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\troles \u003d self.session.props.auth.user.roles\n\t#### 0 \u003d Shared\n\tif self.parent.getChild(\"Head\").getChild(\"PrivatePublic\").props.value \u003d\u003d 0:\n\t\tif roles !\u003d None:\n\t\t\tif \u0027Administrator\u0027 not in roles:\n\t\t\t\treturn False\t\n\t\t\telse:\n\t\t\t\tfor row in range(value.getRowCount()):\n\t\t\t\t\tif value.getValueAt(row, \"Selected\"):\n\t\t\t\t\t\treturn True\n\telif self.parent.getChild(\"Head\").getChild(\"PrivatePublic\").props.value \u003d\u003d 1:\n\t\t#### 1 \u003d Private\n\t\tfor row in range(value.getRowCount()):\n\t\t\tif value.getValueAt(row, \"Selected\"):\n\t\t\t\treturn True\n\t\n\treturn False",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "borderTop": "solid 1px #A1A1A1"
+                  }
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "MainTrendUI"
+            },
+            "position": {
+              "basis": "500px",
+              "grow": 1
+            },
+            "propConfig": {
+              "position.display": {
+                "binding": {
+                  "config": {
+                    "expression": "!{parent.custom.ShowSaveOptions}"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "borderColor": "#A1A1A1",
+                "borderStyle": "solid",
+                "borderWidth": 1
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "custom": {
+          "ShowSaveOptions": false
+        },
+        "meta": {
+          "name": "FlexTrendSelector"
+        },
+        "position": {
+          "basis": "300px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "backgroundColor": "#FFFFFF",
+            "marginRight": "10px"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "meta": {
+          "name": "PowerChart"
+        },
+        "position": {
+          "basis": "800px",
+          "grow": 1
+        },
+        "props": {
+          "config": {
+            "dateFormat": "DD-MM-YYYY",
+            "timeFormat": "HH:mm"
+          },
+          "interaction": {
+            "annotation": {
+              "infoBox": {
+                "dateFormat": "DD-MM-YYYY",
+                "timeFormat": "HH:mm",
+                "width": 250
+              }
+            },
+            "xTrace": {
+              "infoBox": {
+                "dateFormat": "DD-MM-YYYY",
+                "timeFormat": "HH:mm",
+                "width": 100
+              }
+            }
+          },
+          "style": {
+            "backgroundColor": "#FFFFFF"
+          },
+          "timeAxis": {
+            "tickCount": 5
+          }
+        },
+        "type": "ia.chart.powerchart"
+      }
+    ],
+    "events": {
+      "system": {
+        "onStartup": {
+          "config": {
+            "script": "\tself.clearTrendChart()"
+          },
+          "scope": "G",
+          "type": "script"
+        }
+      }
+    },
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "style": {
+        "classes": "ATA/Background/Root"
+      }
+    },
+    "scripts": {
+      "customMethods": [
+        {
+          "name": "getConfigJson",
+          "params": [],
+          "script": "\tconfig \u003d {}\n\tpowerChart \u003d self.getChild(\"PowerChart\")\n\n\t# added a deepcopy utility that includes an option to convert Date to Instant format string\n\tconfig[\u0027config\u0027] \u003d self.view.rootContainer.propertyDeepcopy(powerChart.props.config, True)\n\tconfig[\u0027axes\u0027] \u003d self.view.rootContainer.propertyDeepcopy(powerChart.props.axes, True)\n\tconfig[\u0027pens\u0027] \u003d self.view.rootContainer.propertyDeepcopy(powerChart.props.pens, True)\n\tconfig[\u0027plots\u0027] \u003d self.view.rootContainer.propertyDeepcopy(powerChart.props.plots, True)\n\tconfig[\u0027title\u0027] \u003d self.view.rootContainer.propertyDeepcopy(powerChart.props.title, True)\n\tconfig[\u0027timeAxis\u0027] \u003d self.view.rootContainer.propertyDeepcopy(powerChart.props.timeAxis, True)\n\tconfig[\u0027interaction\u0027] \u003d self.view.rootContainer.propertyDeepcopy(powerChart.props.interaction, True)\n\tconfig[\u0027dataColumns\u0027] \u003d self.view.rootContainer.propertyDeepcopy(powerChart.props.dataColumns, True)\n\tconfig[\u0027legend\u0027] \u003d self.view.rootContainer.propertyDeepcopy(powerChart.props.legend, True)\n\n\t# this method easily converts the perspective property trees into json\n\t# using str() of the property itself can include various parts that are not json compatible\n\tif config:\n\t\tfrom com.inductiveautomation.ignition.common import TypeUtilities\n\t\treturn str(TypeUtilities.pyToGson(config))\n\treturn \u0027{}\u0027"
+        },
+        {
+          "name": "propertyDeepcopy",
+          "params": [
+            "property",
+            "convertDates\u003dFalse"
+          ],
+          "script": "\t# implement your method here\n\timport collections\n\tfrom java.util import Date\n\t\n\tdef copyProperties(node):\n\t\t# perspective arrays and python lists (but not strings)\n\t\tif \u0027PropertyTreeScriptWrapper$ArrayWrapper\u0027 in str(type(node)) or \\\n\t\t(isinstance(node, collections.Sequence) and not isinstance(node, basestring)):\n\t\t\tnodeCopy \u003d []\n\t\t\tfor i in node:\n\t\t\t\tnodeCopy.append(copyProperties(i))\n\t\t\treturn nodeCopy\n\t\t# perspective objects and python dictionaries\n\t\telif \u0027PropertyTreeScriptWrapper$ObjectWrapper\u0027 in str(type(node)) or isinstance(node, collections.Mapping):\n\t\t\tnodeCopy \u003d {}\n\t\t\tfor k in node:\n\t\t\t\tnodeCopy[k] \u003d copyProperties(node[k])\n\t\t\treturn nodeCopy\n\t\t# single value, with optional date conversion\n\t\telse:\n\t\t\tif convertDates and isinstance(node, Date):\n\t\t\t\treturn self.view.rootContainer.dateToInstant(node)\n\t\t\treturn node\n\t\t\t\n\treturn copyProperties(property)"
+        },
+        {
+          "name": "dateToInstant",
+          "params": [
+            "date"
+          ],
+          "script": "\t# implement your method here\t\n\treturn str(date.toInstant())\n\t"
+        },
+        {
+          "name": "loadFromDb",
+          "params": [
+            "TrendChartID"
+          ],
+          "script": "\tresult \u003d system.db.runNamedQuery(\"TrendCharts/GetTrendChartConfig\", {\"TrendChartID\": TrendChartID})\n\tif result:\n\t\tself.view.rootContainer.loadFromFile(result)"
+        },
+        {
+          "name": "loadFromFile",
+          "params": [
+            "TrendChartConfigJson"
+          ],
+          "script": "\t# save files are split into two sections -\n\t#  the configured plots (pens/axes/plots) and the overall display settings (legends/columns)\n\tif TrendChartConfigJson:\n\t\tconfig \u003d system.util.jsonDecode(TrendChartConfigJson)\n\t\tconfig \u003d self.view.rootContainer.propertyTreeRestoreDate(config)\n\n\t\tpowerChart \u003d self.getChild(\"PowerChart\")\n\t\tif \u0027config\u0027 in config:\n\t\t\tpowerChart.props.config \u003d config[\u0027config\u0027]\n\t\tif \u0027axes\u0027 in config:\n\t\t\tpowerChart.props.axes \u003d config[\u0027axes\u0027]\n\t\tif \u0027pens\u0027 in config:\n\t\t\tpowerChart.props.pens \u003d config[\u0027pens\u0027]\n\t\tif \u0027plots\u0027 in config:\n\t\t\tpowerChart.props.plots \u003d config[\u0027plots\u0027]\n\t\tif \u0027title\u0027 in config:\n\t\t\tpowerChart.props.title \u003d config[\u0027title\u0027]\n\t\tif \u0027timeAxis\u0027 in config:\n\t\t\tpowerChart.props.timeAxis \u003d config[\u0027timeAxis\u0027]\n\t\tif \u0027interaction\u0027 in config:\n\t\t\t# range brushes are not currently writable through the property tree\n\t\t\tconfig[\u0027interaction\u0027][\u0027rangeBrush\u0027][\u0027values\u0027] \u003d []\n\t\t\tpowerChart.props.interaction \u003d config[\u0027interaction\u0027]\n\t\tif \u0027dataColumns\u0027 in config:\n\t\t\tpowerChart.props.dataColumns \u003d config[\u0027dataColumns\u0027]\n\t\tif \u0027legend\u0027 in config:\n\t\t\tpowerChart.props.legend \u003d config[\u0027legend\u0027]\n"
+        },
+        {
+          "name": "propertyTreeRestoreDate",
+          "params": [
+            "propertyTree"
+          ],
+          "script": "\t# creates a new copy of the given property tree, replacing Instant formatted strings with java.util.Date\n\timport collections\n\t\n\tdef convertProperties(node):\n\t\t# perspective arrays and python lists (but not strings)\n\t\tif \u0027PropertyTreeScriptWrapper$ArrayWrapper\u0027 in str(type(node)) or \\\n\t\t(isinstance(node, collections.Sequence) and not isinstance(node, basestring)):\n\t\t\tnodeCopy \u003d []\n\t\t\tfor i in node:\n\t\t\t\tnodeCopy.append(convertProperties(i))\n\t\t\treturn nodeCopy\n\t\t# perspective objects and python dictionaries\n\t\telif \u0027PropertyTreeScriptWrapper$ObjectWrapper\u0027 in str(type(node)) or isinstance(node, collections.Mapping):\n\t\t\tnodeCopy \u003d {}\n\t\t\tfor k in node:\n\t\t\t\tnodeCopy[k] \u003d convertProperties(node[k])\n\t\t\treturn nodeCopy\n\t\t# single value\n\t\telse:\n\t\t\t# this will attempt to convert the string back into Date, otherwise just returns the value\n\t\t\tif isinstance(node, basestring):\n\t\t\t\ttry:\n\t\t\t\t\treturn self.view.rootContainer.dateFromInstant(node)\n\t\t\t\texcept:\n\t\t\t\t\treturn node\n\t\t\treturn node\n\t\t\t\n\treturn convertProperties(propertyTree)"
+        },
+        {
+          "name": "updateDbTrendChart",
+          "params": [
+            "TrendChartID"
+          ],
+          "script": "\t# params\n\tTrendChartConfig \u003d str(self.getConfigJson())\n\tUserID \u003d int(self.session.props.auth.user.id)\n\t\n\t# update\n\tparams \u003d {\"TrendChartID\": TrendChartID, \"TrendChartConfig\": TrendChartConfig, \"UserID\": UserID}\n\tsystem.db.runNamedQuery(\"TrendCharts/UpdateCustomTrend\", params)\n\t"
+        },
+        {
+          "name": "newDbTrendChart",
+          "params": [],
+          "script": "\t# implement your method here\n\tTrendChartConfig \u003d str(self.getConfigJson())\n\tTrendChartName \u003d self.getChild(\"FlexTrendSelector\").getChild(\"SaveOptions\").getChild(\"TrendName\").props.text\n\tTrendChartIsPrivate \u003d True\n\tUserID \u003d self.session.props.auth.user.id\n\t\n\t# Administrator can create shared charts\n\tif \u0027Administrator\u0027 in self.session.props.auth.user.roles:\n\t\tTrendChartIsPrivate \u003d self.getChild(\"FlexTrendSelector\").getChild(\"SaveOptions\").getChild(\"PrivatePublic\").props.value\n\t\t\n\tparams \u003d {\"TrendChartName\": TrendChartName, \"TrendChartConfig\": TrendChartConfig, \"TrendChartIsPrivate\": TrendChartIsPrivate, \"UserID\": UserID}\n\tTrendChartID \u003d system.db.runNamedQuery(\"TrendCharts/NewCustomTrend\", parameters \u003d params, getKey\u003d1)\t\n\treturn TrendChartID\n\t\t\n\t\t\n\t"
+        },
+        {
+          "name": "saveDbTrendChart",
+          "params": [],
+          "script": "\t# location of \u0027confirm overwrite\u0027 popup\n\tOverwritePopupLocation \u003d \u0027Library/History/Popup/overwrite_trend_chart\u0027\n\t\n\t# parameters\n\tTrendChartName \u003d str(self.getChild(\"FlexTrendSelector\").getChild(\"SaveOptions\").getChild(\"TrendName\").props.text)\n\tUserID \u003d int(self.session.props.auth.user.id)\n\tTrendChartIsPrivate \u003d True # Charts are private by default \n\t\n\t# Administrator can save shared charts\n#\tif \u0027Administrator\u0027 in self.session.props.auth.user.roles:\n\tTrendChartIsPrivate \u003d int(self.getChild(\"FlexTrendSelector\").getChild(\"SaveOptions\").getChild(\"PrivatePublic\").props.value)\t\n\t\t\n\t# Check if name exist in DB\n\tparams \u003d {\"TrendChartName\": TrendChartName, \"TrendChartIsPrivate\": TrendChartIsPrivate, \"UserID\": UserID}\n\tTrendChartID \u003d int(system.db.runNamedQuery(\"TrendCharts/CheckForCustomTrendName\", params))\n\t\t\n\t# name already exists\n\tif TrendChartID !\u003d -1:\n\t\tif \u0027Administrator\u0027 in self.session.props.auth.user.roles:\n\t\t\t# Popup to ask for overwrite, confirmation will send \u0027TrendChartOverwriteConfirmed\u0027 message\n\t\t\tsystem.perspective.openPopup(\u0027TrendChartConfirmOverwrite\u0027, \n\t\t\t\t\t\t\t\t\t\tOverwritePopupLocation, \n\t\t\t\t\t\t\t\t\t\tparams \u003d {\"TrendChartID\": TrendChartID},\n\t\t\t\t\t\t\t\t\t\ttitle \u003d \"A trend chart with this name exists\",\n\t\t\t\t\t\t\t\t\t\tmodal \u003d True)\n\t\telse:\t\t\t\n\t\t\tsystem.perspective.sendMessage(\"alertMessage\",{\"text\":\"Trend already exists. Need admin rights to override.\",\"bgColor\":\"--error\",\"color\":\"--textAlternative\"},scope\u003d\"session\")\n\t# name does not exist \t\t\t\t\t\t\t\t\n\telse: \n\t\t# Insert new chart into DB\t\n\t\tTrendChartID \u003d self.newDbTrendChart()\n\t\tself.getChild(\"FlexTrendSelector\").getChild(\"MainTrendUI\").getChild(\"Table\").refreshBinding(\"props.data\")\n\t\tself.getChild(\"FlexTrendSelector\").getChild(\"SaveOptions\").getChild(\"Table\").refreshBinding(\"props.data\")\n\t\tself.getChild(\"FlexTrendSelector\").custom.ShowSaveOptions \u003d False\t\n\t\tself.clearSaveOptions\n\t\tself.selectTrendChart(TrendChartID)\n\t\t\n\tif TrendChartIsPrivate \u003d\u003d 1:\n\t\tself.getChild(\"FlexTrendSelector\").getChild(\"MainTrendUI\").getChild(\"Head\").getChild(\"PrivatePublic\").props.value \u003d 1\n\telse:\n\t\tself.getChild(\"FlexTrendSelector\").getChild(\"MainTrendUI\").getChild(\"Head\").getChild(\"PrivatePublic\").props.value \u003d 0\n\t\t\n\tself.clearTableSelection()\n\t"
+        },
+        {
+          "name": "clearTrendChart",
+          "params": [],
+          "script": "\temptyTrendChart \u003d \u0027\u0027\u0027\n\t\t{\n\t\t\t\"config\":\n\t\t\t{\n\t\t\t  \"tagBrowserStartPath\": \"\",\n\t\t\t  \"mode\": \"realtime\",\n\t\t\t  \"refreshRate\": 1000,\n\t\t\t  \"pointCount\": 300,\n\t\t\t  \"unitOfTime\": 8,\n\t\t\t  \"measureOfTime\": \"hours\",\n\t\t\t  \"startDate\": null,\n\t\t\t  \"endDate\": null,\n\t\t\t  \"rangeStartDate\": null,\n\t\t\t  \"rangeEndDate\": null,\n\t\t\t  \"dateFormat\": \"DD-MM-YYYY\",\n\t\t\t  \"timeFormat\": \"HH:mm\",\n\t\t\t  \"rangeSelectorPen\": \"\",\n\t\t\t  \"responsiveDesignWidth\": 750,\n\t\t\t  \"visibility\": {\n\t\t\t    \"showTagBrowser\": false,\n\t\t\t    \"showDateRangeSelector\": true,\n\t\t\t    \"showPenControlDisplay\": true,\n\t\t\t    \"buttons\": {\n\t\t\t      \"showTagBrowserButton\": true,\n\t\t\t      \"showPanZoomButton\": true,\n\t\t\t      \"showXTraceButton\": true,\n\t\t\t      \"showRangeBrushButton\": true,\n\t\t\t      \"showAnnotationButton\": true,\n\t\t\t      \"showFullscreenButton\": true,\n\t\t\t      \"showSettingsButton\": true,\n\t\t\t      \"showMoreButton\": true\n\t\t\t    }\n\t\t\t  },\n\t\t\t  \"export\": {\n\t\t\t    \"dateFormat\": \"None\",\n\t\t\t    \"timeFormat\": \"x\"\n\t\t\t  }\n\t\t\t},\n\t\t\t\"dataColumns\":\n\t\t\t{\n\t\t\t\t\"rangeSelection\":\n\t\t\t\t{\n\t\t\t\t\t\"average\":true,\n\t\t\t\t\t\"last\":true,\n\t\t\t\t\t\"delta\":true,\n\t\t\t\t\t\"sum\":true,\n\t\t\t\t\t\"median\":true,\n\t\t\t\t\t\"lcl\":true,\n\t\t\t\t\t\"maximum\":true,\n\t\t\t\t\t\"minimum\":true,\n\t\t\t\t\t\"first\":true,\n\t\t\t\t\t\"standardDeviation\":true,\n\t\t\t\t\t\"ucl\":true\n\t\t\t\t},\n\t\t\t\t\"penControl\":\n\t\t\t\t{\n\t\t\t\t\t\"average\":true,\n\t\t\t\t\t\"axis\":true,\n\t\t\t\t\t\"plot\":true,\n\t\t\t\t\t\"xTrace\":true,\n\t\t\t\t\t\"maximum\":true,\n\t\t\t\t\t\"minimum\":true,\n\t\t\t\t\t\"currentValue\":true\n\t\t\t\t}\n\t\t\t},\n\t\t\t\"legend\":{\"visible\":false},\n\t\t\t\"axes\":[],\n\t\t\t\"timeAxis\":\n\t\t\t{\n\t\t\t\t\"visible\":true,\"color\":\"#757A7F\",\n\t\t\t\t\"tick\":\n\t\t\t\t{\n\t\t\t\t\t\"color\":\"#757A7F\",\n\t\t\t\t\t\"label\":\n\t\t\t\t\t{\n\t\t\t\t\t\t\"format\":\"Auto\",\"angled\":false,\n\t\t\t\t\t\t\"style\":{\"classes\":\"\"},\n\t\t\t\t\t\t\"font\":{\"color\":\"#757A7F\",\"size\":10}\n\t\t\t\t\t},\n\t\t\t\t\t\"style\":{\"classes\":\"\"}\n\t\t\t\t},\n\t\t\t\t\"tickCount\":5,\n\t\t\t\t\"style\":{\"classes\":\"\"},\n\t\t\t\t\"height\":35\n\t\t\t},\n\t\t\t\"title\":\n\t\t\t{\n\t\t\t\t\"visible\":false,\n\t\t\t\t\"style\":{\"classes\":\"\"},\n\t\t\t\t\"text\":\"\",\n\t\t\t\t\"font\":{\"color\":\"#222222\",\"size\":12}\n\t\t\t},\n\t\t\t\"pens\":[],\n\t\t\t\"plots\":\n\t\t\t[\n\t\t\t\t{\"color\":\"#FFFFFF\",\"relativeWeight\":1,\"style\":{\"classes\":\"\"},\"markers\":[]}\n\t\t\t],\n\t\t\t\"interaction\":\n\t\t\t{\n\t\t\t\t\"annotation\":\n\t\t\t\t{\n\t\t\t\t\t\"line\":\n\t\t\t\t\t{\n\t\t\t\t\t\t\"visible\":true,\n\t\t\t\t\t\t\"color\":\"#757A7F\",\n\t\t\t\t\t\t\"width\":1,\n\t\t\t\t\t\t\"style\":{\"classes\":\"\"},\n\t\t\t\t\t\t\"opacity\":0.9,\n\t\t\t\t\t\t\"dashArray\":0},\n\t\t\t\t\t\t\"dot\":\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\"visible\":true,\n\t\t\t\t\t\t\t\"color\":\"#757A7F\",\n\t\t\t\t\t\t\t\"style\":{\"classes\":\"\"},\n\t\t\t\t\t\t\t\"radius\":3,\"opacity\":1\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"infoBox\":\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\"visible\":true,\n\t\t\t\t\t\t\t\"dateFormat\":\"DD-MM-YYYY\",\n\t\t\t\t\t\t\t\"showTime\":true,\n\t\t\t\t\t\t\t\"icon\":\n\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\t\"fill\":{\"color\":\"#929597\",\"opacity\":1},\n\t\t\t\t\t\t\t\t\"stroke\":{\"color\":\"#929597\",\"width\":0,\"opacity\":0,\"dashArray\":0},\n\t\t\t\t\t\t\t\t\"style\":{\"classes\":\"\"}\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\"fill\":{\"color\":\"#FAFAFB\",\"opacity\":0.9},\n\t\t\t\t\t\t\t\"stroke\":{\"color\":\"#757A7F\",\"width\":1,\"opacity\":0.9,\"dashArray\":0},\n\t\t\t\t\t\t\t\"timeFormat\":\"HH:mm\",\"width\":250,\"style\":{\"classes\":\"\"}\n\t\t\t\t\t\t}\n\t\t\t\t\t},\n\t\t\t\t\t\"rangeBrush\":\n\t\t\t\t\t{\n\t\t\t\t\t\t\"values\":[],\n\t\t\t\t\t\t\"active\":{\"color\":\"#0C7BB3\",\"style\":{\"classes\":\"\"},\n\t\t\t\t\t\t\"opacity\":0.3\n\t\t\t\t\t},\n\t\t\t\t\t\"inactive\":{\"color\":\"#757A7F\",\"style\":{\"classes\":\"\"},\n\t\t\t\t\t\"opacity\":0.3\n\t\t\t\t}\n\t\t\t},\n\t\t\t\"mode\":\"panAndZoom\",\n\t\t\t\"fullscreen\":false,\n\t\t\t\"xTrace\":\n\t\t\t\t{\n\t\t\t\t\t\"line\":\n\t\t\t\t\t{\n\t\t\t\t\t\t\"visible\":true,\n\t\t\t\t\t\t\"color\":\"#757A7F\",\n\t\t\t\t\t\t\"width\":1,\n\t\t\t\t\t\t\"style\":{\"classes\":\"\"},\n\t\t\t\t\t\t\"opacity\":0.5,\n\t\t\t\t\t\t\"dashArray\":0\n\t\t\t\t\t},\n\t\t\t\t\t\"values\":[],\n\t\t\t\t\t\"infoBox\":\n\t\t\t\t\t{\n\t\t\t\t\t\t\"visible\":true,\n\t\t\t\t\t\t\"dateFormat\":\"DD-MM-YYYY\",\n\t\t\t\t\t\t\"dataFormat\":\"0,0.##\",\n\t\t\t\t\t\t\"showTime\":true,\n\t\t\t\t\t\t\"fill\":{\"color\":\"#FAFAFB\",\"opacity\":0.9},\n\t\t\t\t\t\t\"stroke\":{\"color\":\"#757A7F\",\"width\":1,\"opacity\":0.9,\"dashArray\":0},\n\t\t\t\t\t\t\"timeFormat\":\"HH:mm\",\n\t\t\t\t\t\t\"width\":100,\n\t\t\t\t\t\t\"style\":{\"classes\":\"\"}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\t\u0027\u0027\u0027\n\tself.view.getChild(\"root\").loadFromFile(emptyTrendChart)\n\t\n\tself.clearSaveOptions()\n\tself.clearTableSelection()"
+        },
+        {
+          "name": "deactiveSelectedTrendCharts",
+          "params": [],
+          "script": "\t# params\n\tTrendChartsTableData \u003d self.getChild(\"FlexTrendSelector\").getChild(\"MainTrendUI\").getChild(\"Table\").props.data\n\tUserID \u003d int(self.session.props.auth.user.id)\n\t\n\tfor row in range(TrendChartsTableData.getRowCount()):\n\t\tif TrendChartsTableData.getValueAt(row, \"Selected\"):\n\t\t\tTrendChartID \u003d TrendChartsTableData.getValueAt(row, \"TrendChartID\")\n\t\t\t\n\t\t\tparams \u003d {\"TrendChartID\": TrendChartID, \"UserID\": UserID}\n\t\t\tsystem.db.runNamedQuery(\"TrendCharts/DeactivateCustomTrend\", params)\n\t\t\t\n\tself.getChild(\"FlexTrendSelector\").getChild(\"MainTrendUI\").getChild(\"Table\").refreshBinding(\"props.data\")\t\n\t\n\tself.clearTableSelection()"
+        },
+        {
+          "name": "clearTableSelection",
+          "params": [],
+          "script": "\t# implement your method here\n\tself.getChild(\"FlexTrendSelector\").getChild(\"MainTrendUI\").getChild(\"Table\").props.selection.selectedColumn \u003d None\n\tself.getChild(\"FlexTrendSelector\").getChild(\"MainTrendUI\").getChild(\"Table\").props.selection.selectedRow \u003d None"
+        },
+        {
+          "name": "clearSaveOptions",
+          "params": [],
+          "script": "\tself.getChild(\"FlexTrendSelector\").getChild(\"SaveOptions\").getChild(\"TrendName\").props.text \u003d \"\"\n\tself.getChild(\"FlexTrendSelector\").getChild(\"SaveOptions\").getChild(\"Table\").props.selection.selectedColumn \u003d None\n\tself.getChild(\"FlexTrendSelector\").getChild(\"SaveOptions\").getChild(\"Table\").props.selection.selectedRow \u003d None"
+        },
+        {
+          "name": "selectTrendChart",
+          "params": [
+            "TrendChartID"
+          ],
+          "script": "\t# implement your method here\n\tTrendCharts \u003d self.getChild(\"FlexTrendSelector\").getChild(\"MainTrendUI\").getChild(\"Table\").props.data\n\t\n\tSelectedRow \u003d -1\n\tTrendName \u003d \"\"\n\tfor row in range(TrendCharts.getRowCount()):\n\t\tif TrendCharts.getValueAt(row, \"TrendChartID\") \u003d\u003d TrendChartID:\n\t\t\tSelectedRow \u003d row\n\t\t\tTrendName \u003d TrendCharts.getValueAt(row, \"TrendChartName\")\n\t\t\t\n\t\t\t\n\tif SelectedRow \u003e -1:\n\t\tself.getChild(\"FlexTrendSelector\").getChild(\"MainTrendUI\").getChild(\"Table\").props.selection.selectedColumn \u003d \"TrendChartName\"\n\t\tself.getChild(\"FlexTrendSelector\").getChild(\"MainTrendUI\").getChild(\"Table\").props.selection.selectedRow \u003d SelectedRow\n\t\tself.getChild(\"FlexTrendSelector\").getChild(\"MainTrendUI\").getChild(\"Table\").props.selection.data \u003d [{\"TrendChartName\": TrendName}]"
+        },
+        {
+          "name": "dateFromInstant",
+          "params": [
+            "instant"
+          ],
+          "script": "\t# using this to convert a string in Instant form back to java.util.Date for certain props\n\tfrom java.util import Date\n\tfrom java.time import Instant\n\tif isinstance(instant, basestring):\n\t\treturn Date.from(Instant.parse(instant))\n\treturn Date.from(instant)"
+        }
+      ],
+      "extensionFunctions": null,
+      "messageHandlers": [
+        {
+          "messageType": "TrendChartOverwriteConfirmed",
+          "pageScope": true,
+          "script": "\t# implement your handler here\n\tTrendChartID \u003d int(payload[\"TrendChartID\"])\n\tself.updateDbTrendChart(TrendChartID)\n\t\t\t\t\n\tself.getChild(\"FlexTrendSelector\").custom.ShowSaveOptions \u003d False\n\tself.clearSaveOptions()\n\tself.clearTableSelection()\n\tself.selectTrendChart(TrendChartID)",
+          "sessionScope": true,
+          "viewScope": true
+        }
+      ]
+    },
+    "type": "ia.container.flex"
+  }
+}

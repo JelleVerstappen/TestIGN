@@ -1,0 +1,40 @@
+{
+  "scope": "DG",
+  "version": 2,
+  "restricted": false,
+  "overridable": true,
+  "files": [
+    "query.sql"
+  ],
+  "attributes": {
+    "useMaxReturnSize": false,
+    "autoBatchEnabled": false,
+    "fallbackValue": "",
+    "maxReturnSize": 100,
+    "cacheUnit": "SEC",
+    "type": "Query",
+    "enabled": true,
+    "cacheAmount": 1,
+    "cacheEnabled": false,
+    "database": "NLSTWDYK_DB_PROD",
+    "fallbackEnabled": false,
+    "lastModificationSignature": "8413d0dca37374381bd6c25a4ffdd8406f1f55b50c184240f60c970d15fd323d",
+    "permissions": [
+      {
+        "zone": "",
+        "role": ""
+      }
+    ],
+    "lastModification": {
+      "actor": "AT",
+      "timestamp": "2026-03-02T10:59:38Z"
+    },
+    "parameters": [
+      {
+        "type": "Parameter",
+        "identifier": "LineID",
+        "sqlType": 3
+      }
+    ]
+  }
+}

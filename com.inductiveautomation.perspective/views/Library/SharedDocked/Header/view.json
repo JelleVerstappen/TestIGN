@@ -1,0 +1,102 @@
+{
+  "custom": {
+    "navigationDataTagPath": "[default]system/Navigation/Navigation data"
+  },
+  "params": {
+    "selectedLine": "value"
+  },
+  "propConfig": {
+    "custom.navigationDataTagPath": {
+      "binding": {
+        "config": {
+          "expression": "False"
+        },
+        "transforms": [
+          {
+            "code": "\treturn \"[{0}]system/Navigation/Navigation data\".format(ata.config.defaultTagProvider)",
+            "type": "script"
+          }
+        ],
+        "type": "expr"
+      },
+      "persistent": true
+    },
+    "params.selectedLine": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 64,
+      "width": 1142
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "custom": {
+          "forceFullMenu": true
+        },
+        "meta": {
+          "name": "EmbeddedView"
+        },
+        "position": {
+          "basis": "320px",
+          "grow": 1
+        },
+        "propConfig": {
+          "props.params.navigationDataTagPath": {
+            "binding": {
+              "config": {
+                "path": "view.custom.navigationDataTagPath"
+              },
+              "type": "property"
+            }
+          },
+          "props.path": {
+            "binding": {
+              "config": {
+                "expression": "IF({page.props.dimensions.viewport.width} \u003e 600 || {this.custom.forceFullMenu},\r\n\t\"Library/SharedDocked/Headers/FullHeader\",\r\n\t\"Library/SharedDocked/Headers/MobileHeader\"\r\n)"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "overflow": "hidden"
+          }
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "NumericEntryField"
+        },
+        "position": {
+          "basis": "0px",
+          "shrink": 0
+        },
+        "props": {
+          "locale": "nl-NL",
+          "style": {
+            "borderStyle": "none"
+          },
+          "value": 0.1
+        },
+        "type": "ia.input.numeric-entry-field"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "overflow": "visible"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "base": {
+    "style": {
+      "borderStyle": "none",
+      "color": "var(--textThr)",
+      "fontWeight": "lighter"
+    }
+  },
+  "variants": [
+    {
+      "pseudo": "disabled",
+      "style": {}
+    }
+  ]
+}

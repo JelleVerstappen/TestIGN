@@ -1,0 +1,229 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "height": 419,
+      "width": 707
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Label"
+        },
+        "position": {
+          "basis": "32px"
+        },
+        "props": {
+          "style": {
+            "classes": "ATA/Components/Labels/TextLarge"
+          },
+          "text": "Dosering Lijn 7",
+          "textStyle": {
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "FlexRepeater"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "props": {
+              "direction": "column",
+              "instances": [
+                {
+                  "enabled": true,
+                  "engUnits": "kg/u",
+                  "format": "0,0.##",
+                  "instancePosition": {},
+                  "instanceStyle": {
+                    "classes": ""
+                  },
+                  "key": "Dosering 1 (krijt)",
+                  "maxValue": 10000000,
+                  "minValue": 0,
+                  "placeholder": "",
+                  "rejected": "True",
+                  "unitVisable": true,
+                  "value": 40
+                },
+                {
+                  "enabled": true,
+                  "engUnits": "kg/u",
+                  "format": "0,0.##",
+                  "instancePosition": {},
+                  "instanceStyle": {
+                    "classes": ""
+                  },
+                  "key": "Dosering 2 (reciclaat)",
+                  "maxValue": 10000000,
+                  "minValue": 0,
+                  "placeholder": "",
+                  "rejected": "True",
+                  "unitVisable": true,
+                  "value": 20
+                },
+                {
+                  "enabled": true,
+                  "engUnits": "kg/u",
+                  "format": "0,0.##",
+                  "instancePosition": {},
+                  "instanceStyle": {
+                    "classes": ""
+                  },
+                  "key": "Dosering 3 (rood-bruin)",
+                  "maxValue": 10000000,
+                  "minValue": 0,
+                  "placeholder": "",
+                  "rejected": "True",
+                  "unitVisable": true,
+                  "value": 12
+                },
+                {
+                  "enabled": true,
+                  "engUnits": "kg/u",
+                  "format": "0,0.##",
+                  "instancePosition": {},
+                  "instanceStyle": {
+                    "classes": ""
+                  },
+                  "key": "Dosering 4 (blauw)",
+                  "maxValue": 10000000,
+                  "minValue": 0,
+                  "placeholder": "",
+                  "rejected": "True",
+                  "unitVisable": true,
+                  "value": 7
+                },
+                {
+                  "enabled": true,
+                  "engUnits": "kg/u",
+                  "format": "0,0.##",
+                  "instancePosition": {},
+                  "instanceStyle": {
+                    "classes": ""
+                  },
+                  "key": "Dosering 5 (grijs)",
+                  "maxValue": 10000000,
+                  "minValue": 0,
+                  "placeholder": "",
+                  "rejected": "True",
+                  "unitVisable": true,
+                  "value": 18
+                }
+              ],
+              "path": "Library/SharedTemplates/Input/Number",
+              "useDefaultViewWidth": false
+            },
+            "type": "ia.display.flex-repeater"
+          },
+          {
+            "meta": {
+              "name": "PieChart"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "colors": [
+                "#3366CC",
+                "#EC4B3D",
+                "#4FC86C",
+                "#00A9C6",
+                "#E69300"
+              ],
+              "data": [
+                {
+                  "count": 40,
+                  "flavor": "Krijt"
+                },
+                {
+                  "count": 20,
+                  "flavor": "Reciclaat"
+                },
+                {
+                  "count": 18,
+                  "flavor": "Grijs"
+                },
+                {
+                  "count": 7,
+                  "flavor": "Blauw"
+                },
+                {
+                  "count": 12,
+                  "flavor": "Roodbruin"
+                }
+              ],
+              "labels": {
+                "align": false
+              },
+              "legend": {
+                "icon": {
+                  "enabled": false
+                }
+              },
+              "showLegend": false,
+              "style": {
+                "classes": "ATA/Components/Labels/TextNormal"
+              }
+            },
+            "type": "ia.chart.pie"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer"
+        },
+        "position": {
+          "basis": "313px",
+          "grow": 1
+        },
+        "props": {
+          "style": {
+            "overflow": "hidden"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "meta": {
+          "name": "EmbeddedView"
+        },
+        "props": {
+          "params": {
+            "enabled": true,
+            "engUnits": "(kg/u)",
+            "format": "0,0.##",
+            "key": "Totale dosering",
+            "maxValue": 10000000,
+            "minValue": 0,
+            "placeholder": "",
+            "rejected": "True",
+            "unitVisable": true,
+            "value": 97
+          },
+          "path": "Library/SharedTemplates/Input/Number",
+          "useDefaultViewHeight": true
+        },
+        "type": "ia.display.view"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "classes": "ATA/Background/Card"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

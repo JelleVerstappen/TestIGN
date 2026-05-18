@@ -1,0 +1,55 @@
+{
+  "scope": "DG",
+  "version": 2,
+  "restricted": false,
+  "overridable": true,
+  "files": [
+    "query.sql"
+  ],
+  "attributes": {
+    "useMaxReturnSize": false,
+    "autoBatchEnabled": false,
+    "fallbackValue": "",
+    "maxReturnSize": 100,
+    "cacheUnit": "SEC",
+    "type": "Query",
+    "enabled": true,
+    "cacheAmount": 1,
+    "cacheEnabled": false,
+    "database": "NLSTWDYK_DB_HIST",
+    "fallbackEnabled": false,
+    "lastModificationSignature": "b44087cb1a78394acb406c3a7f738a1bba72260931932c4e2193d6bd470deb48",
+    "permissions": [
+      {
+        "zone": "",
+        "role": ""
+      }
+    ],
+    "lastModification": {
+      "actor": "AT",
+      "timestamp": "2026-02-23T11:12:54Z"
+    },
+    "parameters": [
+      {
+        "type": "Parameter",
+        "identifier": "startDate",
+        "sqlType": 8
+      },
+      {
+        "type": "Parameter",
+        "identifier": "endDate",
+        "sqlType": 8
+      },
+      {
+        "type": "Parameter",
+        "identifier": "limit",
+        "sqlType": 2
+      },
+      {
+        "type": "Parameter",
+        "identifier": "filter",
+        "sqlType": 7
+      }
+    ]
+  }
+}

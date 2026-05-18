@@ -1,0 +1,40 @@
+{
+  "scope": "DG",
+  "version": 2,
+  "restricted": false,
+  "overridable": true,
+  "files": [
+    "query.sql"
+  ],
+  "attributes": {
+    "useMaxReturnSize": false,
+    "autoBatchEnabled": false,
+    "fallbackValue": "",
+    "maxReturnSize": 100,
+    "cacheUnit": "SEC",
+    "type": "Query",
+    "enabled": true,
+    "cacheAmount": 1,
+    "cacheEnabled": false,
+    "database": "NLSTWDYK_DB_PROD",
+    "fallbackEnabled": false,
+    "lastModificationSignature": "4920dc11bebdc53b9c1c9ec62e99ecddefdd4daddb222a3ac982a3eb2d1c4c73",
+    "permissions": [
+      {
+        "zone": "",
+        "role": ""
+      }
+    ],
+    "lastModification": {
+      "actor": "AT",
+      "timestamp": "2026-01-26T10:26:15Z"
+    },
+    "parameters": [
+      {
+        "type": "Parameter",
+        "identifier": "ProcedureID",
+        "sqlType": 3
+      }
+    ]
+  }
+}

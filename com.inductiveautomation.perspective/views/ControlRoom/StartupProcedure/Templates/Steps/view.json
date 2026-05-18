@@ -1,0 +1,276 @@
+{
+  "custom": {
+    "stepData": "value"
+  },
+  "params": {
+    "endTime": "value",
+    "flowID": "value",
+    "name": "value",
+    "selected": "value",
+    "startTime": "value",
+    "status": "TO DO",
+    "stepID": "value",
+    "user": "value"
+  },
+  "propConfig": {
+    "custom.stepData": {
+      "persistent": true
+    },
+    "params.endTime": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.flowID": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.name": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.selected": {
+      "onChange": {
+        "enabled": null,
+        "script": "\tif currentValue.value \u003d\u003d True:\n\t\tbusyStatus \u003d 2\n\t\tusername \u003d self.session.props.auth.user.userName\n\t\tstepID \u003d self.params.stepID\n\t\tflowID \u003d self.params.flowID\n\t\t\n\t\tupdateQuery \u003d \u0027\u0027\u0027update\n\t\t\t\t\t\t\tSPStepLogging\n\t\t\t\t\t\tset\n\t\t\t\t\t\t\tStarted \u003d getdate(),\n\t\t\t\t\t\t\tCompletedBy \u003d ?,\n\t\t\t\t\t\t\tStatus \u003d ?\n\t\t\t\t\t\twhere\n\t\t\t\t\t\t\tStepID \u003d ?\n\t\t\t\t\t\t\tand\n\t\t\t\t\t\t\tFlowID \u003d ?\u0027\u0027\u0027\n\t\tupdateArgs \u003d [username, busyStatus, stepID, flowID]\n\t\t\n\t\t# Only update if status is not already done\n\t\tif self.params.status !\u003d \u0027Klaar\u0027:\n\t\t\tsystem.db.runPrepUpdate(updateQuery, updateArgs, database \u003d \u0027NLSTWDYK_DB_PROD\u0027)\n\t\t\n\t\tsystem.perspective.sendMessage(\u0027selectStep\u0027, {\u0027StepID\u0027: stepID})\n\t\tsystem.perspective.sendMessage(\u0027refreshStepsFlex\u0027)"
+      },
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.startTime": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.status": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.stepID": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.user": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 110,
+      "width": 350
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "basis": "50px",
+              "grow": 1
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.name"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "ATA/Components/Labels/TextNormal",
+                "fontSize": 18
+              },
+              "textStyle": {
+                "fontWeight": "bold"
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Label_0"
+            },
+            "position": {
+              "basis": "50px"
+            },
+            "propConfig": {
+              "props.style.backgroundColor": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.status"
+                  },
+                  "transforms": [
+                    {
+                      "fallback": "#000000",
+                      "inputType": "scalar",
+                      "mappings": [
+                        {
+                          "input": "TO DO",
+                          "output": "#FFBF00"
+                        },
+                        {
+                          "input": "Bezig",
+                          "output": "#ADD8E6"
+                        },
+                        {
+                          "input": "Klaar",
+                          "output": "#8EDE8E"
+                        }
+                      ],
+                      "outputType": "scalar",
+                      "type": "map"
+                    }
+                  ],
+                  "type": "property"
+                }
+              },
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.status"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "borderBottomLeftRadius": 5,
+                "borderBottomRightRadius": 5,
+                "borderStyle": "none",
+                "borderTopLeftRadius": 5,
+                "borderTopRightRadius": 5,
+                "marginBottom": 2,
+                "marginTop": 2
+              },
+              "textStyle": {
+                "classes": "ATA/Components/Labels/TextNormal",
+                "textAlign": "center"
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer"
+        },
+        "position": {
+          "basis": "30px"
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "meta": {
+          "name": "Label"
+        },
+        "position": {
+          "basis": "32px"
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "expression": "\u0027Uitgevoerd door: \u0027 + {view.params.user}"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "classes": "ATA/Components/Labels/TextNormal"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_0"
+        },
+        "position": {
+          "basis": "32px"
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "expression": "{view.params.startTime} + \u0027 - \u0027 + {view.params.endTime}"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "classes": "ATA/Components/Labels/TextNormal",
+            "marginTop": "auto",
+            "textAlign": "right"
+          }
+        },
+        "type": "ia.display.label"
+      }
+    ],
+    "events": {
+      "dom": {
+        "onClick": {
+          "config": {
+            "script": "#\tsystem.perspective.sendMessage(\u0027selectStep\u0027, {\u0027StepID\u0027: self.view.params.stepID})\n\tself.view.params.selected \u003d True"
+          },
+          "scope": "G",
+          "type": "script"
+        }
+      }
+    },
+    "meta": {
+      "name": "root"
+    },
+    "propConfig": {
+      "props.style.backgroundColor": {
+        "binding": {
+          "config": {
+            "expression": "if({view.params.selected} \u003d True, \u0027\u0027, \u0027--backgroundSecondary\u0027)"
+          },
+          "type": "expr"
+        }
+      },
+      "props.style.borderStyle": {
+        "binding": {
+          "config": {
+            "expression": "if({view.params.selected} \u003d True, \u0027solid\u0027, \u0027none\u0027)"
+          },
+          "type": "expr"
+        }
+      }
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "borderColor": "--sec",
+        "borderWidth": "3px",
+        "classes": "ATA/Background/CardSecondary",
+        "cursor": "pointer",
+        "padding": 5
+      }
+    },
+    "scripts": {
+      "customMethods": [],
+      "extensionFunctions": null,
+      "messageHandlers": [
+        {
+          "messageType": "selectStep",
+          "pageScope": true,
+          "script": "\t# implement your handler here\n\tif self.view.params.stepID !\u003d payload[\u0027StepID\u0027]:\n\t\tself.view.params.selected \u003d False\n\telse:\n\t\tself.view.params.selected \u003d True",
+          "sessionScope": true,
+          "viewScope": true
+        }
+      ]
+    },
+    "type": "ia.container.flex"
+  }
+}

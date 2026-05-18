@@ -1,0 +1,45 @@
+{
+  "scope": "DG",
+  "version": 2,
+  "restricted": false,
+  "overridable": true,
+  "files": [
+    "query.sql"
+  ],
+  "attributes": {
+    "useMaxReturnSize": false,
+    "autoBatchEnabled": false,
+    "fallbackValue": "",
+    "maxReturnSize": 100,
+    "cacheUnit": "SEC",
+    "type": "UpdateQuery",
+    "enabled": true,
+    "cacheAmount": 1,
+    "cacheEnabled": false,
+    "database": "NLSTWDYK_DB_PROD",
+    "fallbackEnabled": false,
+    "lastModificationSignature": "b3beae1b93f6d50652c19398ac8eb3e6ec41b82cb7ba988ba931f2beff3da232",
+    "permissions": [
+      {
+        "zone": "",
+        "role": ""
+      }
+    ],
+    "lastModification": {
+      "actor": "AT",
+      "timestamp": "2025-11-10T08:47:01Z"
+    },
+    "parameters": [
+      {
+        "type": "Parameter",
+        "identifier": "modifiedBy",
+        "sqlType": 7
+      },
+      {
+        "type": "Parameter",
+        "identifier": "rootID",
+        "sqlType": 3
+      }
+    ]
+  }
+}

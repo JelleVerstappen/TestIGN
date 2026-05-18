@@ -1,0 +1,179 @@
+{
+  "custom": {},
+  "params": {
+    "Color": "--white",
+    "Description": "E24",
+    "Target": "value",
+    "TextColor": "--textAlt",
+    "borderStyle": "none"
+  },
+  "propConfig": {
+    "params.Color": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.Description": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.Target": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.TextColor": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.borderStyle": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 192,
+      "width": 226
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "events": {
+          "component": {
+            "onActionPerformed": {
+              "config": {
+                "script": "\tsystem.perspective.openPopup(\u0027NewWindowPopup\u0027, view\u003d\u0027ControlRoom/Home/Popups/NewWindowPopup\u0027)"
+              },
+              "enabled": false,
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "ButtonSilo"
+        },
+        "position": {
+          "display": false,
+          "grow": 1
+        },
+        "propConfig": {
+          "props.style.backgroundColor": {
+            "binding": {
+              "config": {
+                "path": "view.params.Color"
+              },
+              "type": "property"
+            }
+          },
+          "props.style.borderStyle": {
+            "binding": {
+              "config": {
+                "path": "view.params.borderStyle"
+              },
+              "type": "property"
+            }
+          },
+          "props.style.cursor": {
+            "binding": {
+              "config": {
+                "path": "this.props.style.borderStyle"
+              },
+              "transforms": [
+                {
+                  "code": "\treturn \u0027pointer\u0027 if value \u003d\u003d \u0027solid\u0027 else \u0027auto\u0027",
+                  "type": "script"
+                }
+              ],
+              "type": "property"
+            }
+          },
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "view.params.Description"
+              },
+              "type": "property"
+            }
+          },
+          "props.textStyle.color": {
+            "binding": {
+              "config": {
+                "path": "view.params.TextColor"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "borderWidth": "2.px",
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.input.button"
+      },
+      {
+        "meta": {
+          "name": "Label"
+        },
+        "position": {
+          "basis": "32px",
+          "grow": 1
+        },
+        "propConfig": {
+          "props.style.backgroundColor": {
+            "binding": {
+              "config": {
+                "path": "view.params.Color"
+              },
+              "type": "property"
+            }
+          },
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "view.params.Description"
+              },
+              "type": "property"
+            }
+          },
+          "props.textStyle.color": {
+            "binding": {
+              "config": {
+                "path": "view.params.TextColor"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "borderBottomLeftRadius": 4,
+            "borderBottomRightRadius": 4,
+            "borderStyle": "none",
+            "borderTopLeftRadius": 4,
+            "borderTopRightRadius": 4,
+            "borderWidth": "2.px",
+            "cursor": "auto",
+            "textAlign": "center"
+          },
+          "textStyle": {
+            "fontWeight": "bold"
+          }
+        },
+        "type": "ia.display.label"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "aspectRatio": 1
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

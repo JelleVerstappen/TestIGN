@@ -1,0 +1,211 @@
+{
+  "custom": {},
+  "params": {
+    "act": 0,
+    "indicator": 0,
+    "proc": 0,
+    "set": 0,
+    "tempZone": 1
+  },
+  "propConfig": {
+    "params.act": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.indicator": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.proc": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.set": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.tempZone": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 139,
+      "width": 93
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "MovingAnalogIndicator"
+        },
+        "position": {
+          "height": 106,
+          "width": 31,
+          "x": 61.5024,
+          "y": 29.749
+        },
+        "propConfig": {
+          "props.desiredHigh": {
+            "binding": {
+              "config": {
+                "expression": "{view.params.set} + 10"
+              },
+              "type": "expr"
+            }
+          },
+          "props.desiredLow": {
+            "binding": {
+              "config": {
+                "expression": "{view.params.set} - 10"
+              },
+              "type": "expr"
+            }
+          },
+          "props.processValue": {
+            "binding": {
+              "config": {
+                "path": "view.params.act"
+              },
+              "type": "property"
+            }
+          },
+          "props.setpointValue": {
+            "binding": {
+              "config": {
+                "path": "view.params.set"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "highAlarm": null,
+          "highHighAlarm": null,
+          "highInterlock": null,
+          "lowAlarm": null,
+          "lowInterlock": null,
+          "lowLowAlarm": null,
+          "maxValue": 200,
+          "minValue": 100,
+          "style": {
+            "marginRight": "-10px"
+          }
+        },
+        "type": "ia.display.moving-analog-indicator"
+      },
+      {
+        "meta": {
+          "name": "Label_1"
+        },
+        "position": {
+          "height": 31,
+          "width": 60,
+          "x": 1.50241,
+          "y": 106.259
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "expression": "round({view.params.proc},2)"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "textStyle": {
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "NumericEntryField"
+        },
+        "position": {
+          "height": 32,
+          "width": 61,
+          "x": 0.502407,
+          "y": 69.739
+        },
+        "propConfig": {
+          "props.value": {
+            "binding": {
+              "config": {
+                "path": "view.params.set"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "align": "center"
+        },
+        "type": "ia.input.numeric-entry-field"
+      },
+      {
+        "meta": {
+          "name": "Label"
+        },
+        "position": {
+          "height": 30,
+          "width": 60,
+          "x": 1.50241,
+          "y": 33.259
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "expression": "round({view.params.act},0)"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "textStyle": {
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_0"
+        },
+        "position": {
+          "height": 32,
+          "width": 91,
+          "x": 1.5
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "view.params.tempZone"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "textStyle": {
+            "fontWeight": "bold",
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "type": "ia.container.coord"
+  }
+}

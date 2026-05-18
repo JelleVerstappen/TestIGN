@@ -1,0 +1,216 @@
+{
+  "custom": {
+    "Alarms": null,
+    "NavigateTo": "",
+    "Warnings": null
+  },
+  "params": {
+    "Line": "",
+    "Nav": ""
+  },
+  "propConfig": {
+    "custom.Alarms": {
+      "binding": {
+        "config": {
+          "fallbackDelay": 2.5,
+          "mode": "indirect",
+          "references": {
+            "Line": "{view.params.Line}",
+            "Nav": "{view.params.Nav}"
+          },
+          "tagPath": "[NLSTWDYK]Dyka/STW/EXT/{Line}/{Nav}/Alarms/Count/Alarm"
+        },
+        "type": "tag"
+      },
+      "persistent": true
+    },
+    "custom.NavigateTo": {
+      "binding": {
+        "config": {
+          "path": "view.params.Nav"
+        },
+        "transforms": [
+          {
+            "fallback": "",
+            "inputType": "scalar",
+            "mappings": [
+              {
+                "input": "MST",
+                "output": "Silo"
+              },
+              {
+                "input": "MHL",
+                "output": "RawMaterialTransport"
+              },
+              {
+                "input": "EXT",
+                "output": "Extruder"
+              },
+              {
+                "input": "FOR/VAC",
+                "output": "VacuumAndCooling"
+              },
+              {
+                "input": "PRN",
+                "output": "Printer"
+              },
+              {
+                "input": "HAUL",
+                "output": "HaulOff"
+              },
+              {
+                "input": "CUT",
+                "output": "CuttingUnit"
+              },
+              {
+                "input": "FRM",
+                "output": "FormingMachine"
+              },
+              {
+                "input": "FOR/WTS",
+                "output": "PipeThicknessScanner"
+              },
+              {
+                "input": "PST",
+                "output": "PipeStacker"
+              },
+              {
+                "input": "QUAL",
+                "output": "Quality"
+              }
+            ],
+            "outputType": "scalar",
+            "type": "map"
+          }
+        ],
+        "type": "property"
+      },
+      "persistent": true
+    },
+    "custom.Warnings": {
+      "binding": {
+        "config": {
+          "fallbackDelay": 2.5,
+          "mode": "indirect",
+          "references": {
+            "Line": "{view.params.Line}",
+            "Nav": "{view.params.Nav}"
+          },
+          "tagPath": "[NLSTWDYK]Dyka/STW/EXT/{Line}/{Nav}/Alarms/Count/Warning"
+        },
+        "type": "tag"
+      },
+      "persistent": true
+    },
+    "params.Line": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.Nav": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 197,
+      "width": 327
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "events": {
+          "component": {
+            "onActionPerformed": {
+              "config": {
+                "script": "\tto \u003d self.view.custom.NavigateTo\n\tline \u003d self.view.params.Line\n\t\n\tsystem.perspective.navigate(page\u003ddyka.config.navigate(to, line))"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "ButtonSilo"
+        },
+        "position": {
+          "basis": "100%",
+          "shrink": 0
+        },
+        "propConfig": {
+          "position.display": {
+            "persistent": true
+          },
+          "props.style.backgroundColor": {
+            "binding": {
+              "config": {
+                "expression": "if({view.custom.Alarms} \u003d 0, if({view.custom.Warnings} \u003d 0, \"white\", \"var(--warning)\"), \"var(--alarm)\")"
+              },
+              "type": "expr"
+            },
+            "persistent": true
+          },
+          "props.text": {
+            "binding": {
+              "config": {
+                "expression": "if({view.custom.Alarms} \u003d 0, if({view.custom.Warnings} \u003d 0, \"\", {view.custom.Warnings}), {view.custom.Alarms})"
+              },
+              "type": "expr"
+            },
+            "persistent": true
+          }
+        },
+        "props": {
+          "primary": false,
+          "style": {
+            "backgroundColor": "var(--alarm)",
+            "borderStyle": "solid",
+            "borderWidth": "2.px",
+            "textAlign": "center"
+          },
+          "text": null,
+          "textStyle": {
+            "color": "black"
+          }
+        },
+        "type": "ia.input.button"
+      }
+    ],
+    "meta": {
+      "name": "root",
+      "visible": false
+    },
+    "propConfig": {
+      "meta.visible": {
+        "binding": {
+          "config": {
+            "expression": "!isNull({view.custom.Alarms}) \u0026\u0026 !isNull({view.custom.Warnings}) "
+          },
+          "type": "expr"
+        },
+        "persistent": true
+      }
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "overflow": "visible"
+      }
+    },
+    "scripts": {
+      "customMethods": [],
+      "extensionFunctions": null,
+      "messageHandlers": [
+        {
+          "messageType": "ClosePopup",
+          "pageScope": true,
+          "script": "\tif payload[\u0027ID\u0027] !\u003d self.view.custom.ID:\n\t\t\tself.getChild(\"TestPopup\").position.display \u003d False",
+          "sessionScope": false,
+          "viewScope": false
+        }
+      ]
+    },
+    "type": "ia.container.flex"
+  }
+}

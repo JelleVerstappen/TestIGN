@@ -1,0 +1,296 @@
+{
+  "custom": {
+    "checkOK": true,
+    "loggedValue": 120,
+    "tagValue": 186
+  },
+  "params": {
+    "checkType": 3,
+    "checkValue": 120,
+    "completed": true,
+    "flowID": 6,
+    "name": "value",
+    "operand": "\u003d\u003d",
+    "subStepID": 11,
+    "tagPath": "[NLSTWDYK]Dyka/STW/EXT/E07/Assets/MEXT/ProcessValues/Zones/Zone01/Temperature"
+  },
+  "propConfig": {
+    "custom.checkOK": {
+      "binding": {
+        "config": {
+          "struct": {
+            "checkType": "{view.params.checkType}",
+            "checkValue": "{view.params.checkValue}",
+            "inputValue": "if({view.params.checkType} \u003d 1, {/root/CheckBoxFlex/ToggleSwitch.props.selected}, {/root/MeasurementFlex/NumericEntryField.props.value})",
+            "operand": "{view.params.operand}"
+          },
+          "waitOnAll": true
+        },
+        "transforms": [
+          {
+            "code": "\tcheckType \u003d value[\u0027checkType\u0027]\n\toperand \u003d value[\u0027operand\u0027]\n\tcheckValue \u003d value[\u0027checkValue\u0027]\n\tinputValue \u003d value[\u0027inputValue\u0027]\n\t\n\tif checkType \u003d\u003d 1:\n\t\treturn inputValue\n\telse:\n\t\treturn eval(str(inputValue) + operand + str(checkValue))",
+            "type": "script"
+          }
+        ],
+        "type": "expr-struct"
+      },
+      "persistent": true
+    },
+    "custom.loggedValue": {
+      "binding": {
+        "config": {
+          "struct": {
+            "flowID": "{view.params.flowID}",
+            "subStepID": "{view.params.subStepID}"
+          },
+          "waitOnAll": true
+        },
+        "transforms": [
+          {
+            "code": "\tflowID \u003d value[\u0027flowID\u0027]\n\tsubStepID \u003d value[\u0027subStepID\u0027]\n\t\n\tquery \u003d \u0027\u0027\u0027select \n\t\t\t\t\tresult\n\t\t\t\tfrom\n\t\t\t\t\tSPSubStepLogging\n\t\t\t\twhere\n\t\t\t\t\tflowID \u003d ?\n\t\t\t\t\tand\n\t\t\t\t\tSubStepID \u003d ?\u0027\u0027\u0027\n\targs \u003d [flowID, subStepID]\n\t\n\treturn system.db.runScalarPrepQuery(query, args, database \u003d \u0027NLSTWDYK_DB_PROD\u0027)",
+            "type": "script"
+          }
+        ],
+        "type": "expr-struct"
+      },
+      "persistent": true
+    },
+    "custom.tagValue": {
+      "binding": {
+        "config": {
+          "fallbackDelay": 2.5,
+          "mode": "indirect",
+          "references": {
+            "tagPath": "{view.params.tagPath}"
+          },
+          "tagPath": "{tagPath}/ActualValue"
+        },
+        "type": "tag"
+      },
+      "persistent": true
+    },
+    "params.checkType": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.checkValue": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.completed": {
+      "binding": {
+        "config": {
+          "path": "view.custom.checkOK"
+        },
+        "type": "property"
+      },
+      "onChange": {
+        "enabled": null,
+        "script": "\tif self.params.checkType \u003d\u003d 2:\n\t\treturn\n\t\n\tif previousValue is not None and previousValue.value !\u003d currentValue.value:\n\t\tflowID \u003d self.params.flowID\n\t\tsubStepID \u003d self.params.subStepID\n\t\tupdateQuery \u003d \u0027\u0027\u0027update \n\t\t\t\t\t\t\tSPSubStepLogging\n\t\t\t\t\t\tset\n\t\t\t\t\t\t\tCompleted \u003d ?\n\t\t\t\t\t\twhere\n\t\t\t\t\t\t\tFlowID \u003d ?\n\t\t\t\t\t\t\tand\n\t\t\t\t\t\t\tSubStepID \u003d ?\u0027\u0027\u0027\n\t\tupdateArgs \u003d [currentValue.value, flowID, subStepID]\n\t\tsystem.db.runPrepUpdate(updateQuery, updateArgs, database \u003d \u0027NLSTWDYK_DB_PROD\u0027)"
+      },
+      "paramDirection": "inout",
+      "persistent": true
+    },
+    "params.flowID": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.name": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.operand": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.subStepID": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.tagPath": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 90,
+      "width": 300
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "basis": "50px",
+              "grow": 1
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.name"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "ATA/Components/Labels/TextNormal"
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "ToggleSwitch"
+            },
+            "propConfig": {
+              "props.selected": {
+                "onChange": {
+                  "enabled": null,
+                  "script": "\tif origin !\u003d \u0027Binding\u0027:\n\t\tflowID \u003d self.view.params.flowID\n\t\tsubStepID \u003d self.view.params.subStepID\n\t\t\n\t\tquery \u003d \u0027\u0027\u0027update \n\t\t\t\t\t\tSPSubStepLogging\n\t\t\t\t\tset\n\t\t\t\t\t\tresult \u003d ?\n\t\t\t\t\twhere\n\t\t\t\t\t\tFlowID \u003d ?\n\t\t\t\t\t\tand\n\t\t\t\t\t\tSubStepID \u003d ?\u0027\u0027\u0027\n\t\targs \u003d [currentValue.value, flowID, subStepID]\n\t\tsystem.db.runPrepUpdate(query, args, database \u003d \u0027NLSTWDYK_DB_PROD\u0027)"
+                }
+              }
+            },
+            "props": {
+              "label": {
+                "position": "left"
+              },
+              "selected": true
+            },
+            "type": "ia.input.toggle-switch"
+          }
+        ],
+        "meta": {
+          "name": "CheckBoxFlex"
+        },
+        "position": {
+          "basis": "200px"
+        },
+        "propConfig": {
+          "position.display": {
+            "binding": {
+              "config": {
+                "expression": "{view.params.checkType} \u003d 1"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "basis": "50px",
+              "grow": 1
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.name"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "ATA/Components/Labels/TextNormal"
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "NumericEntryField"
+            },
+            "position": {
+              "basis": "100px"
+            },
+            "propConfig": {
+              "props.enabled": {
+                "binding": {
+                  "config": {
+                    "expression": "{view.params.checkType} \u003d 3"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.value": {
+                "binding": {
+                  "config": {
+                    "expression": "if({view.params.checkType} \u003d 2, {view.custom.tagValue}, {view.custom.loggedValue})"
+                  },
+                  "type": "expr"
+                },
+                "onChange": {
+                  "enabled": null,
+                  "script": "\tif origin !\u003d \u0027Binding\u0027:\n\t\tflowID \u003d self.view.params.flowID\n\t\tsubStepID \u003d self.view.params.subStepID\n\t\t\n\t\tupdateQuery \u003d \u0027\u0027\u0027update \n\t\t\t\t\t\t\tSPSubStepLogging\n\t\t\t\t\t\tset\n\t\t\t\t\t\t\tresult \u003d ?\n\t\t\t\t\t\twhere\n\t\t\t\t\t\t\tSubStepID \u003d ?\n\t\t\t\t\t\t\tand\n\t\t\t\t\t\t\tFlowID \u003d ?\u0027\u0027\u0027\n\t\tupdateArgs \u003d [currentValue.value, subStepID, flowID]\n\t\tsystem.db.runPrepUpdate(updateQuery, updateArgs, database \u003d \u0027NLSTWDYK_DB_PROD\u0027)"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "height": "45px"
+              }
+            },
+            "type": "ia.input.numeric-entry-field"
+          }
+        ],
+        "meta": {
+          "name": "MeasurementFlex"
+        },
+        "position": {
+          "basis": "200px"
+        },
+        "propConfig": {
+          "position.display": {
+            "binding": {
+              "config": {
+                "expression": "{view.params.checkType} \u003d 2 || {view.params.checkType} \u003d 3 "
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "propConfig": {
+      "props.style.borderStyle": {
+        "binding": {
+          "config": {
+            "expression": "if({view.params.completed} \u003d True, \u0027solid\u0027, \u0027none\u0027)"
+          },
+          "type": "expr"
+        }
+      }
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "borderColor": "#00D900",
+        "borderWidth": 1,
+        "classes": "ATA/Background/CardSecondary",
+        "padding": 5
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

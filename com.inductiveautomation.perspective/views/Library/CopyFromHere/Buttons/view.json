@@ -1,0 +1,346 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {},
+  "root": {
+    "children": [
+      {
+        "events": {
+          "component": {
+            "onActionPerformed": {
+              "config": {
+                "id": "ActivityFeedDock",
+                "type": "open"
+              },
+              "scope": "C",
+              "type": "dock"
+            }
+          }
+        },
+        "meta": {
+          "name": "Button_1"
+        },
+        "position": {
+          "height": 34,
+          "shrink": 0,
+          "width": 80,
+          "x": 321,
+          "y": 337
+        },
+        "props": {
+          "image": {
+            "icon": {
+              "path": "material/save_alt"
+            }
+          },
+          "style": {
+            "classes": "ATA/Components/Buttons/CTA",
+            "marginLeft": 15
+          },
+          "text": ""
+        },
+        "type": "ia.input.button"
+      },
+      {
+        "events": {
+          "component": {
+            "onActionPerformed": {
+              "config": {
+                "id": "ActivityFeedFilters",
+                "type": "open"
+              },
+              "scope": "C",
+              "type": "dock"
+            }
+          }
+        },
+        "meta": {
+          "name": "Button_3"
+        },
+        "position": {
+          "height": 34,
+          "shrink": 0,
+          "width": 80,
+          "x": 161,
+          "y": 337
+        },
+        "props": {
+          "image": {
+            "icon": {
+              "path": "material/delete"
+            }
+          },
+          "style": {
+            "classes": "ATA/Components/Buttons/Sec",
+            "marginLeft": 15
+          },
+          "text": ""
+        },
+        "type": "ia.input.button"
+      },
+      {
+        "events": {
+          "component": {
+            "onActionPerformed": {
+              "config": {
+                "id": "ActivityFeedDock",
+                "type": "open"
+              },
+              "scope": "C",
+              "type": "dock"
+            }
+          }
+        },
+        "meta": {
+          "name": "Button_0"
+        },
+        "position": {
+          "height": 34,
+          "shrink": 0,
+          "width": 80,
+          "x": 281,
+          "y": 413
+        },
+        "props": {
+          "image": {
+            "icon": {
+              "path": "material/add"
+            }
+          },
+          "style": {
+            "classes": "ATA/Components/Buttons/CTA",
+            "marginLeft": 15
+          },
+          "text": ""
+        },
+        "type": "ia.input.button"
+      },
+      {
+        "events": {
+          "component": {
+            "onActionPerformed": {
+              "config": {
+                "id": "ActivityFeedFilters",
+                "type": "open"
+              },
+              "scope": "C",
+              "type": "dock"
+            }
+          }
+        },
+        "meta": {
+          "name": "Button_4"
+        },
+        "position": {
+          "height": 34,
+          "shrink": 0,
+          "width": 80,
+          "x": 421,
+          "y": 272
+        },
+        "props": {
+          "image": {
+            "icon": {
+              "path": "material/refresh"
+            }
+          },
+          "style": {
+            "classes": "ATA/Components/Buttons/Sec",
+            "marginLeft": 15
+          },
+          "text": ""
+        },
+        "type": "ia.input.button"
+      },
+      {
+        "events": {
+          "component": {
+            "onActionPerformed": {
+              "config": {
+                "id": "ActivityFeedFilters",
+                "type": "open"
+              },
+              "scope": "C",
+              "type": "dock"
+            }
+          }
+        },
+        "meta": {
+          "name": "Button"
+        },
+        "position": {
+          "height": 34,
+          "shrink": 0,
+          "width": 80,
+          "x": 199,
+          "y": 186
+        },
+        "props": {
+          "image": {
+            "icon": {
+              "path": "material/filter_alt"
+            }
+          },
+          "style": {
+            "classes": "ATA/Components/Buttons/Sec",
+            "marginLeft": "auto"
+          },
+          "text": ""
+        },
+        "type": "ia.input.button"
+      },
+      {
+        "events": {
+          "component": {
+            "onActionPerformed": {
+              "config": {
+                "id": "ActivityFeedFilters",
+                "type": "open"
+              },
+              "scope": "C",
+              "type": "dock"
+            }
+          }
+        },
+        "meta": {
+          "name": "Button_2"
+        },
+        "position": {
+          "height": 34,
+          "shrink": 0,
+          "width": 80,
+          "x": 381,
+          "y": 186
+        },
+        "props": {
+          "image": {
+            "icon": {
+              "path": "material/edit"
+            }
+          },
+          "style": {
+            "classes": "ATA/Components/Buttons/Prim",
+            "marginLeft": 15
+          },
+          "text": ""
+        },
+        "type": "ia.input.button"
+      },
+      {
+        "events": {
+          "component": {
+            "onActionPerformed": {
+              "config": {
+                "id": "ActivityFeedFilters",
+                "type": "open"
+              },
+              "scope": "C",
+              "type": "dock"
+            }
+          }
+        },
+        "meta": {
+          "name": "Button_5"
+        },
+        "position": {
+          "height": 34,
+          "shrink": 0,
+          "width": 80,
+          "x": 224,
+          "y": 262
+        },
+        "props": {
+          "image": {
+            "icon": {
+              "path": "material/cancel"
+            }
+          },
+          "style": {
+            "classes": "ATA/Components/Buttons/Sec",
+            "marginLeft": 15
+          },
+          "text": ""
+        },
+        "type": "ia.input.button"
+      },
+      {
+        "events": {
+          "component": {
+            "onActionPerformed": {
+              "config": {
+                "id": "ActivityFeedDock",
+                "type": "open"
+              },
+              "scope": "C",
+              "type": "dock"
+            }
+          }
+        },
+        "meta": {
+          "name": "Button_6"
+        },
+        "position": {
+          "height": 34,
+          "shrink": 0,
+          "width": 80,
+          "x": 443,
+          "y": 396
+        },
+        "props": {
+          "image": {
+            "icon": {
+              "path": "material/check"
+            }
+          },
+          "style": {
+            "classes": "ATA/Components/Buttons/CTA",
+            "marginLeft": 15
+          },
+          "text": ""
+        },
+        "type": "ia.input.button"
+      },
+      {
+        "events": {
+          "component": {
+            "onActionPerformed": {
+              "config": {
+                "id": "ActivityFeedDock",
+                "type": "open"
+              },
+              "scope": "C",
+              "type": "dock"
+            }
+          }
+        },
+        "meta": {
+          "name": "Button_7"
+        },
+        "position": {
+          "height": 34,
+          "shrink": 0,
+          "width": 80,
+          "x": 421,
+          "y": 566
+        },
+        "props": {
+          "image": {
+            "icon": {
+              "path": "material/featured_play_list"
+            }
+          },
+          "style": {
+            "classes": "ATA/Components/Buttons/Sec",
+            "marginLeft": 15
+          },
+          "text": ""
+        },
+        "type": "ia.input.button"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "type": "ia.container.coord"
+  }
+}

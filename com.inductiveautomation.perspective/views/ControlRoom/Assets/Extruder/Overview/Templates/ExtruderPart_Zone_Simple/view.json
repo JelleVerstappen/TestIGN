@@ -1,0 +1,577 @@
+{
+  "custom": {
+    "highHighAlarmActive": false,
+    "highWarningActive": false,
+    "lowLowAlarmActive": false,
+    "lowWarningActive": false
+  },
+  "params": {
+    "blowerVisible": false,
+    "colorBorder": "--error",
+    "startPath": "[NLSTWDYK]Dyka/STW/EXT/E07/Assets/MEXT/Screen/ProcessValues/Zones/Zone01",
+    "unit": "°C",
+    "zoneNr": "01"
+  },
+  "propConfig": {
+    "custom.highAlarmActive": {
+      "binding": {
+        "config": {
+          "fallbackDelay": 2.5,
+          "mode": "indirect",
+          "references": {
+            "startPath": "{view.params.startPath}"
+          },
+          "tagPath": "{startPath}/Temperature/Alarm/HighWarningActive"
+        },
+        "type": "tag"
+      }
+    },
+    "custom.highHighAlarmActive": {
+      "binding": {
+        "config": {
+          "fallbackDelay": 2.5,
+          "mode": "indirect",
+          "references": {
+            "startPath": "{view.params.startPath}"
+          },
+          "tagPath": "{startPath}/Temperature/Alarm/HighHighAlarmActive"
+        },
+        "type": "tag"
+      },
+      "persistent": true
+    },
+    "custom.highWarningActive": {
+      "binding": {
+        "config": {
+          "fallbackDelay": 2.5,
+          "mode": "indirect",
+          "references": {
+            "startPath": "{view.params.startPath}"
+          },
+          "tagPath": "{startPath}/Temperature/Alarm/HighWarningActive"
+        },
+        "type": "tag"
+      },
+      "persistent": true
+    },
+    "custom.lowLowAlarmActive": {
+      "binding": {
+        "config": {
+          "fallbackDelay": 2.5,
+          "mode": "indirect",
+          "references": {
+            "startPath": "{view.params.startPath}"
+          },
+          "tagPath": "{startPath}/Temperature/Alarm/LowLowAlarmActive"
+        },
+        "type": "tag"
+      },
+      "persistent": true
+    },
+    "custom.lowWarningActive": {
+      "binding": {
+        "config": {
+          "fallbackDelay": 2.5,
+          "mode": "indirect",
+          "references": {
+            "startPath": "{view.params.startPath}"
+          },
+          "tagPath": "{startPath}/Temperature/Alarm/LowWarningActive"
+        },
+        "type": "tag"
+      },
+      "persistent": true
+    },
+    "params.blowerVisible": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.colorBorder": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.startPath": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.unit": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.zoneNr": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 100,
+      "width": 79
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Label_0"
+        },
+        "position": {
+          "basis": "15%",
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "expression": "\u0027Z \u0027+{view.params.zoneNr}"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "classes": "ATA/Components/Labels/TextSmall"
+          },
+          "textStyle": {
+            "fontSize": "0.9vw",
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_1"
+        },
+        "position": {
+          "basis": "20%",
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "view.params.unit"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "classes": "ATA/Components/Labels/TextSmall",
+            "paddingBottom": "5%"
+          },
+          "textStyle": {
+            "fontSize": "0.9vw",
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label_1"
+            },
+            "position": {
+              "basis": "30%",
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "startPath": "{view.params.startPath}"
+                    },
+                    "tagPath": "{startPath}/Temperature/Setpoint"
+                  },
+                  "type": "tag"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "ATA/Components/Labels/TextSmall"
+              },
+              "textStyle": {
+                "fontSize": "0.9vw",
+                "textAlign": "center"
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "FlexContainer"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "position.basis": {
+                "binding": {
+                  "config": {
+                    "path": "this.props.style.backgroundColor"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\treturn \u002720%\u0027 if value \u003d\u003d \u0027--warning\u0027 or value \u003d\u003d \u0027--alarm\u0027 else \u00277%\u0027",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "property"
+                }
+              },
+              "props.style.backgroundColor": {
+                "binding": {
+                  "config": {
+                    "expression": "if(\r\n\t{view.custom.highHighAlarmActive} || {view.custom.lowLowAlarmActive},\r\n\t\u0027--error\u0027,\r\n\tif({view.custom.highWarningActive} || {view.custom.lowWarningActive},\r\n\t\u0027--warning\u0027,\r\n\t\u0027--running\u0027))"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "marginTop": "auto"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "meta": {
+              "name": "Label_2"
+            },
+            "position": {
+              "basis": "50%",
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "startPath": "{view.params.startPath}"
+                    },
+                    "tagPath": "{startPath}/Temperature/ActualValue"
+                  },
+                  "type": "tag"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "ATA/Components/Labels/TextSmall",
+                "zIndex": 1
+              },
+              "textStyle": {
+                "fontSize": "1.2vw",
+                "fontWeight": "bold",
+                "textAlign": "center"
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer"
+        },
+        "position": {
+          "basis": "65%",
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.style.borderColor": {
+            "binding": {
+              "config": {
+                "path": "view.params.colorBorder"
+              },
+              "enabled": false,
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "borderBottomLeftRadius": 3,
+            "borderBottomRightRadius": 3,
+            "borderStyle": "solid",
+            "borderTopLeftRadius": 3,
+            "borderTopRightRadius": 3,
+            "borderWidth": 0,
+            "classes": "ATA/Background/CardSecondary",
+            "margin": 0,
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "meta": {
+          "name": "Simple blower_0"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "propConfig": {
+          "meta.visible": {
+            "binding": {
+              "config": {
+                "path": "view.params.blowerVisible"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "elements": [
+            {
+              "name": "symbol",
+              "type": "symbol"
+            },
+            {
+              "elements": [
+                {
+                  "elements": [
+                    {
+                      "name": "stop",
+                      "offset": "0.01",
+                      "stopColor": "#595959",
+                      "style": {
+                        "stopColor": "#595959"
+                      },
+                      "type": "stop"
+                    },
+                    {
+                      "name": "stop",
+                      "offset": "0.51",
+                      "stopColor": "#E0E0E0",
+                      "style": {
+                        "stopColor": "#E0E0E0"
+                      },
+                      "type": "stop"
+                    },
+                    {
+                      "name": "stop",
+                      "offset": "1",
+                      "stopColor": "#595959",
+                      "style": {
+                        "stopColor": "#595959"
+                      },
+                      "type": "stop"
+                    }
+                  ],
+                  "gradientUnits": "userSpaceOnUse",
+                  "id": "SVGID_1_",
+                  "name": "SVGID_1_",
+                  "type": "linearGradient",
+                  "x1": "75.625",
+                  "x2": "75.625",
+                  "y1": "28.126",
+                  "y2": "0"
+                },
+                {
+                  "fill": {
+                    "url": "url(#SVGID_1_)"
+                  },
+                  "height": "28.126",
+                  "name": "rect",
+                  "stroke": {
+                    "paint": "#4C4C4C",
+                    "width": "0.25"
+                  },
+                  "type": "rect",
+                  "width": "73.75",
+                  "x": "38.75"
+                }
+              ],
+              "id": "Group_Port",
+              "name": "Group_Port",
+              "type": "group"
+            },
+            {
+              "elements": [
+                {
+                  "cx": "42.3979",
+                  "cy": "42.481",
+                  "elements": [
+                    {
+                      "name": "stop",
+                      "offset": "0.01",
+                      "stopColor": "#595959",
+                      "style": {
+                        "stopColor": "#595959"
+                      },
+                      "type": "stop"
+                    },
+                    {
+                      "name": "stop",
+                      "offset": "0.31",
+                      "stopColor": "#5B5B5B",
+                      "style": {
+                        "stopColor": "#5B5B5B"
+                      },
+                      "type": "stop"
+                    },
+                    {
+                      "name": "stop",
+                      "offset": "0.43",
+                      "stopColor": "#626262",
+                      "style": {
+                        "stopColor": "#626262"
+                      },
+                      "type": "stop"
+                    },
+                    {
+                      "name": "stop",
+                      "offset": "0.5",
+                      "stopColor": "#6D6D6D",
+                      "style": {
+                        "stopColor": "#6D6D6D"
+                      },
+                      "type": "stop"
+                    },
+                    {
+                      "name": "stop",
+                      "offset": "0.57",
+                      "stopColor": "#7E7E7E",
+                      "style": {
+                        "stopColor": "#7E7E7E"
+                      },
+                      "type": "stop"
+                    },
+                    {
+                      "name": "stop",
+                      "offset": "0.62",
+                      "stopColor": "#949494",
+                      "style": {
+                        "stopColor": "#949494"
+                      },
+                      "type": "stop"
+                    },
+                    {
+                      "name": "stop",
+                      "offset": "0.67",
+                      "stopColor": "#ACACAC",
+                      "style": {
+                        "stopColor": "#ACACAC"
+                      },
+                      "type": "stop"
+                    },
+                    {
+                      "name": "stop",
+                      "offset": "0.73",
+                      "stopColor": "#B1B1B1",
+                      "style": {
+                        "stopColor": "#B1B1B1"
+                      },
+                      "type": "stop"
+                    },
+                    {
+                      "name": "stop",
+                      "offset": "0.79",
+                      "stopColor": "#BEBEBE",
+                      "style": {
+                        "stopColor": "#BEBEBE"
+                      },
+                      "type": "stop"
+                    },
+                    {
+                      "name": "stop",
+                      "offset": "0.79",
+                      "stopColor": "#BFBFBF",
+                      "style": {
+                        "stopColor": "#BFBFBF"
+                      },
+                      "type": "stop"
+                    },
+                    {
+                      "name": "stop",
+                      "offset": "1",
+                      "stopColor": "#595959",
+                      "style": {
+                        "stopColor": "#595959"
+                      },
+                      "type": "stop"
+                    }
+                  ],
+                  "gradientUnits": "userSpaceOnUse",
+                  "id": "SVGID_2_",
+                  "name": "SVGID_2_",
+                  "r": "42.4395",
+                  "type": "radialGradient"
+                },
+                {
+                  "cx": "42.398",
+                  "cy": "42.481",
+                  "fill": {
+                    "url": "url(#SVGID_2_)"
+                  },
+                  "name": "ellipse",
+                  "rx": "42.398",
+                  "ry": "42.481",
+                  "type": "ellipse"
+                }
+              ],
+              "id": "Group_Blower",
+              "name": "Group_Blower",
+              "type": "group"
+            }
+          ],
+          "style": {
+            "height": "50%",
+            "marginLeft": "10%",
+            "marginTop": "2%",
+            "transform": "rotate(270deg)",
+            "width": "80%",
+            "zIndex": 0
+          },
+          "viewBox": "0 0 112.5 84.377"
+        },
+        "type": "ia.shapes.svg"
+      }
+    ],
+    "events": {
+      "dom": {
+        "onClick": {
+          "config": {
+            "draggable": true,
+            "id": "dataPopup",
+            "modal": false,
+            "overlayDismiss": false,
+            "resizable": true,
+            "showCloseIcon": true,
+            "type": "open",
+            "viewParams": {
+              "parameterName": "Temperatuur Zone {view.params.zoneNr}",
+              "startPath": "{view.params.startPath}/Temperature"
+            },
+            "viewPath": "ControlRoom/Assets/Popups/DataPopup",
+            "viewportBound": false
+          },
+          "scope": "C",
+          "type": "popup"
+        }
+      }
+    },
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "overflow": "visible"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

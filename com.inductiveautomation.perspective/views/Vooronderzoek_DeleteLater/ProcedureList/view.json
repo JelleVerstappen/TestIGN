@@ -1,0 +1,704 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "width": 336
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Label_22"
+        },
+        "position": {
+          "height": 70,
+          "width": 280,
+          "x": 27,
+          "y": 543
+        },
+        "props": {
+          "style": {
+            "backgroundColor": "#fff",
+            "borderBottomLeftRadius": 3,
+            "borderBottomRightRadius": 3,
+            "borderTopLeftRadius": 3,
+            "borderTopRightRadius": 3
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_26"
+        },
+        "position": {
+          "height": 20,
+          "width": 40,
+          "x": 262,
+          "y": 548
+        },
+        "props": {
+          "style": {
+            "backgroundColor": "#FFB000",
+            "borderBottomLeftRadius": 5,
+            "borderBottomRightRadius": 5,
+            "borderTopLeftRadius": 5,
+            "borderTopRightRadius": 5
+          },
+          "text": "Pending",
+          "textStyle": {
+            "color": "",
+            "fontSize": 9,
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_24"
+        },
+        "position": {
+          "height": 26,
+          "width": 228,
+          "x": 32.49,
+          "y": 563
+        },
+        "props": {
+          "text": "Niet uitgevoerd",
+          "textStyle": {
+            "color": "#696363",
+            "fontSize": 10,
+            "fontWeight": "normal"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_27"
+        },
+        "position": {
+          "height": 70,
+          "width": 280,
+          "x": 26,
+          "y": 462
+        },
+        "props": {
+          "style": {
+            "backgroundColor": "#fff",
+            "borderBottomLeftRadius": 3,
+            "borderBottomRightRadius": 3,
+            "borderTopLeftRadius": 3,
+            "borderTopRightRadius": 3
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_29"
+        },
+        "position": {
+          "height": 26,
+          "width": 228,
+          "x": 31.49,
+          "y": 482
+        },
+        "props": {
+          "text": "Niet uitgevoerd",
+          "textStyle": {
+            "color": "#696363",
+            "fontSize": 10,
+            "fontWeight": "normal"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_30"
+        },
+        "position": {
+          "height": 20,
+          "width": 225,
+          "x": 30.99,
+          "y": 467
+        },
+        "props": {
+          "text": "Vervolg doortrekken",
+          "textStyle": {
+            "fontSize": 15,
+            "fontWeight": "bold"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_31"
+        },
+        "position": {
+          "height": 20,
+          "width": 40,
+          "x": 261,
+          "y": 467
+        },
+        "props": {
+          "style": {
+            "backgroundColor": "#FFB000",
+            "borderBottomLeftRadius": 5,
+            "borderBottomRightRadius": 5,
+            "borderTopLeftRadius": 5,
+            "borderTopRightRadius": 5
+          },
+          "text": "Pending",
+          "textStyle": {
+            "color": "",
+            "fontSize": 9,
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_12"
+        },
+        "position": {
+          "height": 70,
+          "width": 280,
+          "x": 26,
+          "y": 382
+        },
+        "props": {
+          "style": {
+            "backgroundColor": "#fff",
+            "borderBottomLeftRadius": 3,
+            "borderBottomRightRadius": 3,
+            "borderTopLeftRadius": 3,
+            "borderTopRightRadius": 3
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_14"
+        },
+        "position": {
+          "height": 26,
+          "width": 228,
+          "x": 31.49,
+          "y": 402
+        },
+        "props": {
+          "text": "Niet uitgevoerd",
+          "textStyle": {
+            "color": "#696363",
+            "fontSize": 10,
+            "fontWeight": "normal"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_16"
+        },
+        "position": {
+          "height": 20,
+          "width": 40,
+          "x": 261,
+          "y": 387
+        },
+        "props": {
+          "style": {
+            "backgroundColor": "#FFB000",
+            "borderBottomLeftRadius": 5,
+            "borderBottomRightRadius": 5,
+            "borderTopLeftRadius": 5,
+            "borderTopRightRadius": 5
+          },
+          "text": "Pending",
+          "textStyle": {
+            "color": "",
+            "fontSize": 9,
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_15"
+        },
+        "position": {
+          "height": 20,
+          "width": 135,
+          "x": 30.99,
+          "y": 387
+        },
+        "props": {
+          "text": "Doortrekken",
+          "textStyle": {
+            "fontSize": 15,
+            "fontWeight": "bold"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_17"
+        },
+        "position": {
+          "height": 70,
+          "width": 280,
+          "x": 25,
+          "y": 301
+        },
+        "props": {
+          "style": {
+            "backgroundColor": "#fff",
+            "borderBottomLeftRadius": 3,
+            "borderBottomRightRadius": 3,
+            "borderColor": "#447BB3",
+            "borderStyle": "solid",
+            "borderTopLeftRadius": 3,
+            "borderTopRightRadius": 3,
+            "borderWidth": 1
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_18"
+        },
+        "position": {
+          "height": 26,
+          "width": 114,
+          "x": 186.47,
+          "y": 345
+        },
+        "props": {
+          "style": {
+            "textAlign": "right"
+          },
+          "text": "Gestart om 13:49",
+          "textStyle": {
+            "color": "#696363",
+            "fontSize": 10,
+            "fontWeight": "normal"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_25"
+        },
+        "position": {
+          "height": 20,
+          "width": 135,
+          "x": 31.99,
+          "y": 548
+        },
+        "props": {
+          "text": "Opruim",
+          "textStyle": {
+            "fontSize": 15,
+            "fontWeight": "bold"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_19"
+        },
+        "position": {
+          "height": 26,
+          "width": 228,
+          "x": 30.49,
+          "y": 321
+        },
+        "props": {
+          "text": "Wordt uitgevoerd door: Stef",
+          "textStyle": {
+            "color": "#696363",
+            "fontSize": 10,
+            "fontWeight": "normal"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_20"
+        },
+        "position": {
+          "height": 20,
+          "width": 225,
+          "x": 29.99,
+          "y": 306
+        },
+        "props": {
+          "text": "Voorbereiding trekstok",
+          "textStyle": {
+            "fontSize": 15,
+            "fontWeight": "bold"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_21"
+        },
+        "position": {
+          "height": 20,
+          "width": 40,
+          "x": 260,
+          "y": 306
+        },
+        "props": {
+          "style": {
+            "backgroundColor": "#447BB3",
+            "borderBottomLeftRadius": 5,
+            "borderBottomRightRadius": 5,
+            "borderTopLeftRadius": 5,
+            "borderTopRightRadius": 5
+          },
+          "text": "WOP",
+          "textStyle": {
+            "color": "#ffffff",
+            "fontSize": 9,
+            "fontWeight": "bold",
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_7"
+        },
+        "position": {
+          "height": 70,
+          "width": 280,
+          "x": 24,
+          "y": 221
+        },
+        "props": {
+          "style": {
+            "backgroundColor": "#fff",
+            "borderBottomLeftRadius": 3,
+            "borderBottomRightRadius": 3,
+            "borderTopLeftRadius": 3,
+            "borderTopRightRadius": 3
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_8"
+        },
+        "position": {
+          "height": 26,
+          "width": 61,
+          "x": 238.47,
+          "y": 265
+        },
+        "props": {
+          "style": {
+            "textAlign": "right"
+          },
+          "text": "12:15",
+          "textStyle": {
+            "color": "#696363",
+            "fontSize": 10,
+            "fontWeight": "normal"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_9"
+        },
+        "position": {
+          "height": 26,
+          "width": 228,
+          "x": 29.49,
+          "y": 241
+        },
+        "props": {
+          "text": "Uitgevoerd door: Werny",
+          "textStyle": {
+            "color": "#696363",
+            "fontSize": 10,
+            "fontWeight": "normal"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_10"
+        },
+        "position": {
+          "height": 20,
+          "width": 225,
+          "x": 28.99,
+          "y": 226
+        },
+        "props": {
+          "text": "Materiaal uit spuitkop",
+          "textStyle": {
+            "fontSize": 15,
+            "fontWeight": "bold"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_11"
+        },
+        "position": {
+          "height": 20,
+          "width": 40,
+          "x": 259,
+          "y": 226
+        },
+        "props": {
+          "style": {
+            "backgroundColor": "#6DCE68",
+            "borderBottomLeftRadius": 5,
+            "borderBottomRightRadius": 5,
+            "borderTopLeftRadius": 5,
+            "borderTopRightRadius": 5
+          },
+          "text": "Done",
+          "textStyle": {
+            "color": "#FFFFFF",
+            "fontSize": 9,
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_2"
+        },
+        "position": {
+          "height": 70,
+          "width": 280,
+          "x": 23,
+          "y": 140
+        },
+        "props": {
+          "style": {
+            "backgroundColor": "#fff",
+            "borderBottomLeftRadius": 3,
+            "borderBottomRightRadius": 3,
+            "borderTopLeftRadius": 3,
+            "borderTopRightRadius": 3
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_6"
+        },
+        "position": {
+          "height": 26,
+          "width": 61,
+          "x": 237.47,
+          "y": 184
+        },
+        "props": {
+          "style": {
+            "textAlign": "right"
+          },
+          "text": "11:49",
+          "textStyle": {
+            "color": "#696363",
+            "fontSize": 10,
+            "fontWeight": "normal"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_5"
+        },
+        "position": {
+          "height": 26,
+          "width": 228,
+          "x": 28.49,
+          "y": 160
+        },
+        "props": {
+          "text": "Uitgevoerd door: Mark",
+          "textStyle": {
+            "color": "#696363",
+            "fontSize": 10,
+            "fontWeight": "normal"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_3"
+        },
+        "position": {
+          "height": 20,
+          "width": 135,
+          "x": 27.99,
+          "y": 145
+        },
+        "props": {
+          "text": "Order instellen",
+          "textStyle": {
+            "fontSize": 15,
+            "fontWeight": "bold"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_4"
+        },
+        "position": {
+          "height": 20,
+          "width": 40,
+          "x": 258,
+          "y": 145
+        },
+        "props": {
+          "style": {
+            "backgroundColor": "#6DCE68",
+            "borderBottomLeftRadius": 5,
+            "borderBottomRightRadius": 5,
+            "borderTopLeftRadius": 5,
+            "borderTopRightRadius": 5
+          },
+          "text": "Done",
+          "textStyle": {
+            "color": "#FFFFFF",
+            "fontSize": 9,
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Progress"
+        },
+        "position": {
+          "height": 25,
+          "width": 275,
+          "x": 23,
+          "y": 85
+        },
+        "props": {
+          "bar": {
+            "color": "#447BB3"
+          },
+          "value": 35
+        },
+        "type": "ia.display.progress"
+      },
+      {
+        "meta": {
+          "name": "Label_1"
+        },
+        "position": {
+          "height": 32,
+          "width": 50,
+          "x": 88,
+          "y": 81.5
+        },
+        "props": {
+          "text": "35%",
+          "textStyle": {
+            "color": "#ffffff",
+            "fontWeight": "bold"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_0"
+        },
+        "position": {
+          "height": 32,
+          "width": 277,
+          "x": 25,
+          "y": 45
+        },
+        "props": {
+          "text": "Lijn E21",
+          "textStyle": {
+            "fontSize": 15
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label"
+        },
+        "position": {
+          "height": 32,
+          "width": 277,
+          "x": 25,
+          "y": 20
+        },
+        "props": {
+          "text": "Opstart procedure checklijst",
+          "textStyle": {
+            "fontSize": 20
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_13"
+        },
+        "position": {
+          "height": 7,
+          "width": 307,
+          "x": 8.99,
+          "y": 113
+        },
+        "props": {
+          "style": {
+            "borderBottomColor": "#447BB3",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": 1
+          }
+        },
+        "type": "ia.display.label"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "type": "ia.container.coord"
+  }
+}

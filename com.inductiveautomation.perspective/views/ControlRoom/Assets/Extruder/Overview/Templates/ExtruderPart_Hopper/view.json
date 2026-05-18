@@ -1,0 +1,155 @@
+{
+  "custom": {},
+  "params": {
+    "actualTemp": 180,
+    "blowerVisible": false,
+    "colorBorder": "--error",
+    "setpointTemp": 80,
+    "text1": "value",
+    "text2": "value"
+  },
+  "propConfig": {
+    "params.actualTemp": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.blowerVisible": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.colorBorder": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.setpointTemp": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.text1": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.text2": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 64,
+      "width": 79
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Label_1"
+        },
+        "position": {
+          "basis": "35%",
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "view.params.text2"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "classes": "ATA/Components/Labels/TextSmall",
+            "paddingBottom": "5%"
+          },
+          "textStyle": {
+            "fontSize": "0.85vw",
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Hopper"
+            },
+            "position": {
+              "basis": "320px"
+            },
+            "props": {
+              "path": "ControlRoom/Assets/Extruder/Overview/Templates/Hopper"
+            },
+            "type": "ia.display.view"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer"
+        },
+        "position": {
+          "basis": "65%",
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.style.borderColor": {
+            "binding": {
+              "config": {
+                "path": "view.params.colorBorder"
+              },
+              "enabled": false,
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "backgroundColor": "transparent",
+            "borderBottomLeftRadius": 3,
+            "borderBottomRightRadius": 3,
+            "borderStyle": "solid",
+            "borderTopLeftRadius": 3,
+            "borderTopRightRadius": 3,
+            "borderWidth": 0,
+            "margin": 0,
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "events": {
+      "dom": {
+        "onClick": {
+          "config": {
+            "draggable": true,
+            "id": "frgW7eLr",
+            "modal": false,
+            "overlayDismiss": false,
+            "resizable": true,
+            "showCloseIcon": true,
+            "type": "open",
+            "viewPath": "ControlRoom/Assets/Extruder/Popups/DoseringPopup",
+            "viewportBound": false
+          },
+          "scope": "C",
+          "type": "popup"
+        }
+      }
+    },
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "overflow": "visible"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

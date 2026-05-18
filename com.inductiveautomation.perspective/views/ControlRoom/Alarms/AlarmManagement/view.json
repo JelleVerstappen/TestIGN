@@ -1,0 +1,3893 @@
+{
+  "custom": {},
+  "params": {},
+  "permissions": {
+    "securityLevels": [],
+    "type": "AnyOf"
+  },
+  "props": {
+    "defaultSize": {
+      "height": 887,
+      "width": 1906
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "id": "AlarmManagementFilters",
+                    "type": "open",
+                    "viewParams": {
+                      "Asset": "",
+                      "Level": "",
+                      "Line": "{/root.custom.Line}"
+                    }
+                  },
+                  "scope": "C",
+                  "type": "dock"
+                }
+              }
+            },
+            "meta": {
+              "name": "Filter"
+            },
+            "position": {
+              "basis": "80px",
+              "shrink": 0
+            },
+            "props": {
+              "image": {
+                "icon": {
+                  "path": "material/filter_alt"
+                }
+              },
+              "style": {
+                "classes": "ATA/Components/Buttons/Sec"
+              },
+              "text": ""
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "script": "\tsystem.perspective.openDock(\u0027AlarmManagement\u0027)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "Edit"
+            },
+            "position": {
+              "basis": "80px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.enabled": {
+                "binding": {
+                  "config": {
+                    "expression": "{.../Table.props.selection.selectedRow} !\u003d Null"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "image": {
+                "icon": {
+                  "path": "material/edit"
+                }
+              },
+              "style": {
+                "classes": "ATA/Components/Buttons/Prim",
+                "marginLeft": 15
+              },
+              "text": ""
+            },
+            "type": "ia.input.button"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer"
+        },
+        "position": {
+          "basis": "45px",
+          "shrink": 0
+        },
+        "props": {
+          "justify": "flex-end",
+          "style": {
+            "backgroundColor": "--backgroundSecondary",
+            "borderTopLeftRadius": 5,
+            "borderTopRightRadius": 5,
+            "padding": 7,
+            "zIndex": 1
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "events": {
+          "component": {
+            "onRowClick": {
+              "config": {
+                "script": "\tdata \u003d self.props.data\n\tcolumn \u003d self.props.selection.selectedColumn\n\trow \u003d self.props.selection.selectedRow\n\tvalue \u003d self.props.data[row][column] \n\tif value:\n\t\tnewval \u003d 0\n\telse:\n\t\tnewval \u003d 1\n\n\tif column not in (\u0027Address\u0027,\u0027Description\u0027,\u0027Level\u0027,\u0027Line\u0027,\u0027SMS\u0027):\n\t\tself.props.data[row][column] \u003d newval"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "Table"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0
+        },
+        "props": {
+          "cells": {
+            "style": {
+              "height": "auto"
+            }
+          },
+          "columns": [
+            {
+              "align": "center",
+              "boolean": "checkbox",
+              "dateFormat": "MM/DD/YYYY",
+              "editable": false,
+              "field": "Line",
+              "filter": {
+                "boolean": {
+                  "condition": ""
+                },
+                "date": {
+                  "condition": "",
+                  "value": ""
+                },
+                "enabled": false,
+                "number": {
+                  "condition": "",
+                  "value": ""
+                },
+                "string": {
+                  "condition": "",
+                  "value": ""
+                },
+                "visible": "on-hover"
+              },
+              "footer": {
+                "align": "center",
+                "justify": "left",
+                "style": {
+                  "classes": ""
+                },
+                "title": ""
+              },
+              "header": {
+                "align": "center",
+                "justify": "left",
+                "style": {
+                  "classes": ""
+                },
+                "title": "Lijn"
+              },
+              "justify": "auto",
+              "nullFormat": {
+                "includeNullStrings": false,
+                "nullFormatValue": "",
+                "strict": false
+              },
+              "number": "value",
+              "numberFormat": "0,0.##",
+              "progressBar": {
+                "bar": {
+                  "color": "",
+                  "style": {
+                    "classes": ""
+                  }
+                },
+                "max": 100,
+                "min": 0,
+                "track": {
+                  "color": "",
+                  "style": {
+                    "classes": ""
+                  }
+                },
+                "value": {
+                  "enabled": true,
+                  "format": "0,0.##",
+                  "justify": "center",
+                  "style": {
+                    "classes": ""
+                  }
+                }
+              },
+              "render": "auto",
+              "resizable": true,
+              "sort": "none",
+              "sortable": true,
+              "strictWidth": true,
+              "style": {
+                "classes": ""
+              },
+              "toggleSwitch": {
+                "color": {
+                  "selected": "",
+                  "unselected": ""
+                }
+              },
+              "viewParams": {},
+              "viewPath": "",
+              "visible": true,
+              "width": 90
+            },
+            {
+              "align": "center",
+              "boolean": "checkbox",
+              "dateFormat": "MM/DD/YYYY",
+              "editable": false,
+              "field": "LineComponent",
+              "filter": {
+                "boolean": {
+                  "condition": ""
+                },
+                "date": {
+                  "condition": "",
+                  "value": ""
+                },
+                "enabled": false,
+                "number": {
+                  "condition": "",
+                  "value": ""
+                },
+                "string": {
+                  "condition": "",
+                  "value": ""
+                },
+                "visible": "on-hover"
+              },
+              "footer": {
+                "align": "center",
+                "justify": "left",
+                "style": {
+                  "classes": ""
+                },
+                "title": ""
+              },
+              "header": {
+                "align": "center",
+                "justify": "left",
+                "style": {
+                  "classes": ""
+                },
+                "title": "Lijnonderdeel"
+              },
+              "justify": "auto",
+              "nullFormat": {
+                "includeNullStrings": false,
+                "nullFormatValue": "",
+                "strict": false
+              },
+              "number": "value",
+              "numberFormat": "0,0.##",
+              "progressBar": {
+                "bar": {
+                  "color": "",
+                  "style": {
+                    "classes": ""
+                  }
+                },
+                "max": 100,
+                "min": 0,
+                "track": {
+                  "color": "",
+                  "style": {
+                    "classes": ""
+                  }
+                },
+                "value": {
+                  "enabled": true,
+                  "format": "0,0.##",
+                  "justify": "center",
+                  "style": {
+                    "classes": ""
+                  }
+                }
+              },
+              "render": "auto",
+              "resizable": true,
+              "sort": "none",
+              "sortable": true,
+              "strictWidth": true,
+              "style": {
+                "classes": ""
+              },
+              "toggleSwitch": {
+                "color": {
+                  "selected": "",
+                  "unselected": ""
+                }
+              },
+              "viewParams": {},
+              "viewPath": "",
+              "visible": true,
+              "width": 150
+            },
+            {
+              "align": "center",
+              "boolean": "checkbox",
+              "dateFormat": "MM/DD/YYYY",
+              "editable": false,
+              "field": "Asset",
+              "filter": {
+                "boolean": {
+                  "condition": ""
+                },
+                "date": {
+                  "condition": "",
+                  "value": ""
+                },
+                "enabled": false,
+                "number": {
+                  "condition": "",
+                  "value": ""
+                },
+                "string": {
+                  "condition": "",
+                  "value": ""
+                },
+                "visible": "on-hover"
+              },
+              "footer": {
+                "align": "center",
+                "justify": "left",
+                "style": {
+                  "classes": ""
+                },
+                "title": ""
+              },
+              "header": {
+                "align": "center",
+                "justify": "left",
+                "style": {
+                  "classes": ""
+                },
+                "title": "Asset"
+              },
+              "justify": "auto",
+              "nullFormat": {
+                "includeNullStrings": false,
+                "nullFormatValue": "",
+                "strict": false
+              },
+              "number": "value",
+              "numberFormat": "0,0.##",
+              "progressBar": {
+                "bar": {
+                  "color": "",
+                  "style": {
+                    "classes": ""
+                  }
+                },
+                "max": 100,
+                "min": 0,
+                "track": {
+                  "color": "",
+                  "style": {
+                    "classes": ""
+                  }
+                },
+                "value": {
+                  "enabled": true,
+                  "format": "0,0.##",
+                  "justify": "center",
+                  "style": {
+                    "classes": ""
+                  }
+                }
+              },
+              "render": "auto",
+              "resizable": true,
+              "sort": "none",
+              "sortable": true,
+              "strictWidth": false,
+              "style": {
+                "classes": ""
+              },
+              "toggleSwitch": {
+                "color": {
+                  "selected": "",
+                  "unselected": ""
+                }
+              },
+              "viewParams": {},
+              "viewPath": "",
+              "visible": true,
+              "width": 50
+            },
+            {
+              "align": "center",
+              "boolean": "checkbox",
+              "dateFormat": "MM/DD/YYYY",
+              "editable": false,
+              "field": "Description",
+              "filter": {
+                "boolean": {
+                  "condition": ""
+                },
+                "date": {
+                  "condition": "",
+                  "value": ""
+                },
+                "enabled": false,
+                "number": {
+                  "condition": "",
+                  "value": ""
+                },
+                "string": {
+                  "condition": "",
+                  "value": ""
+                },
+                "visible": "on-hover"
+              },
+              "footer": {
+                "align": "center",
+                "justify": "left",
+                "style": {
+                  "classes": ""
+                },
+                "title": ""
+              },
+              "header": {
+                "align": "center",
+                "justify": "left",
+                "style": {
+                  "classes": ""
+                },
+                "title": "Beschrijving"
+              },
+              "justify": "auto",
+              "nullFormat": {
+                "includeNullStrings": false,
+                "nullFormatValue": "",
+                "strict": false
+              },
+              "number": "value",
+              "numberFormat": "0,0.##",
+              "progressBar": {
+                "bar": {
+                  "color": "",
+                  "style": {
+                    "classes": ""
+                  }
+                },
+                "max": 100,
+                "min": 0,
+                "track": {
+                  "color": "",
+                  "style": {
+                    "classes": ""
+                  }
+                },
+                "value": {
+                  "enabled": true,
+                  "format": "0,0.##",
+                  "justify": "center",
+                  "style": {
+                    "classes": ""
+                  }
+                }
+              },
+              "render": "auto",
+              "resizable": true,
+              "sort": "none",
+              "sortable": true,
+              "strictWidth": false,
+              "style": {
+                "classes": ""
+              },
+              "toggleSwitch": {
+                "color": {
+                  "selected": "",
+                  "unselected": ""
+                }
+              },
+              "viewParams": {},
+              "viewPath": "",
+              "visible": true,
+              "width": 250
+            },
+            {
+              "align": "center",
+              "boolean": "checkbox",
+              "dateFormat": "MM/DD/YYYY",
+              "editable": false,
+              "field": "Level",
+              "filter": {
+                "boolean": {
+                  "condition": ""
+                },
+                "date": {
+                  "condition": "",
+                  "value": ""
+                },
+                "enabled": false,
+                "number": {
+                  "condition": "",
+                  "value": ""
+                },
+                "string": {
+                  "condition": "",
+                  "value": ""
+                },
+                "visible": "on-hover"
+              },
+              "footer": {
+                "align": "center",
+                "justify": "left",
+                "style": {
+                  "classes": ""
+                },
+                "title": ""
+              },
+              "header": {
+                "align": "center",
+                "justify": "left",
+                "style": {
+                  "classes": ""
+                },
+                "title": "Niveau"
+              },
+              "justify": "auto",
+              "nullFormat": {
+                "includeNullStrings": false,
+                "nullFormatValue": "",
+                "strict": false
+              },
+              "number": "value",
+              "numberFormat": "0,0.##",
+              "progressBar": {
+                "bar": {
+                  "color": "",
+                  "style": {
+                    "classes": ""
+                  }
+                },
+                "max": 100,
+                "min": 0,
+                "track": {
+                  "color": "",
+                  "style": {
+                    "classes": ""
+                  }
+                },
+                "value": {
+                  "enabled": true,
+                  "format": "0,0.##",
+                  "justify": "center",
+                  "style": {
+                    "classes": ""
+                  }
+                }
+              },
+              "render": "auto",
+              "resizable": true,
+              "sort": "none",
+              "sortable": true,
+              "strictWidth": false,
+              "style": {
+                "classes": ""
+              },
+              "toggleSwitch": {
+                "color": {
+                  "selected": "",
+                  "unselected": ""
+                }
+              },
+              "viewParams": {},
+              "viewPath": "",
+              "visible": true,
+              "width": ""
+            },
+            {
+              "align": "center",
+              "boolean": "checkbox",
+              "dateFormat": "MM/DD/YYYY",
+              "editable": true,
+              "field": "Active",
+              "filter": {
+                "boolean": {
+                  "condition": ""
+                },
+                "date": {
+                  "condition": "",
+                  "value": ""
+                },
+                "enabled": false,
+                "number": {
+                  "condition": "",
+                  "value": ""
+                },
+                "string": {
+                  "condition": "",
+                  "value": ""
+                },
+                "visible": "on-hover"
+              },
+              "footer": {
+                "align": "center",
+                "justify": "left",
+                "style": {
+                  "classes": ""
+                },
+                "title": ""
+              },
+              "header": {
+                "align": "center",
+                "justify": "left",
+                "style": {
+                  "classes": ""
+                },
+                "title": "Actief"
+              },
+              "justify": "auto",
+              "nullFormat": {
+                "includeNullStrings": false,
+                "nullFormatValue": "",
+                "strict": false
+              },
+              "number": "value",
+              "numberFormat": "0,0.##",
+              "progressBar": {
+                "bar": {
+                  "color": "",
+                  "style": {
+                    "classes": ""
+                  }
+                },
+                "max": 100,
+                "min": 0,
+                "track": {
+                  "color": "",
+                  "style": {
+                    "classes": ""
+                  }
+                },
+                "value": {
+                  "enabled": true,
+                  "format": "0,0.##",
+                  "justify": "center",
+                  "style": {
+                    "classes": ""
+                  }
+                }
+              },
+              "render": "boolean",
+              "resizable": true,
+              "sort": "none",
+              "sortable": true,
+              "strictWidth": false,
+              "style": {
+                "classes": ""
+              },
+              "toggleSwitch": {
+                "color": {
+                  "selected": "",
+                  "unselected": ""
+                }
+              },
+              "viewParams": {},
+              "viewPath": "",
+              "visible": true,
+              "width": ""
+            },
+            {
+              "align": "center",
+              "boolean": "checkbox",
+              "dateFormat": "MM/DD/YYYY",
+              "editable": true,
+              "field": "StatusNoOrder",
+              "filter": {
+                "boolean": {
+                  "condition": ""
+                },
+                "date": {
+                  "condition": "",
+                  "value": ""
+                },
+                "enabled": false,
+                "number": {
+                  "condition": "",
+                  "value": ""
+                },
+                "string": {
+                  "condition": "",
+                  "value": ""
+                },
+                "visible": "on-hover"
+              },
+              "footer": {
+                "align": "center",
+                "justify": "left",
+                "style": {
+                  "classes": ""
+                },
+                "title": ""
+              },
+              "header": {
+                "align": "center",
+                "justify": "left",
+                "style": {
+                  "classes": ""
+                },
+                "title": "Geen order"
+              },
+              "justify": "auto",
+              "nullFormat": {
+                "includeNullStrings": false,
+                "nullFormatValue": "",
+                "strict": false
+              },
+              "number": "value",
+              "numberFormat": "0,0.##",
+              "progressBar": {
+                "bar": {
+                  "color": "",
+                  "style": {
+                    "classes": ""
+                  }
+                },
+                "max": 100,
+                "min": 0,
+                "track": {
+                  "color": "",
+                  "style": {
+                    "classes": ""
+                  }
+                },
+                "value": {
+                  "enabled": true,
+                  "format": "0,0.##",
+                  "justify": "center",
+                  "style": {
+                    "classes": ""
+                  }
+                }
+              },
+              "render": "boolean",
+              "resizable": true,
+              "sort": "none",
+              "sortable": true,
+              "strictWidth": false,
+              "style": {
+                "classes": ""
+              },
+              "toggleSwitch": {
+                "color": {
+                  "selected": "",
+                  "unselected": ""
+                }
+              },
+              "viewParams": {},
+              "viewPath": "",
+              "visible": true,
+              "width": ""
+            },
+            {
+              "align": "center",
+              "boolean": "checkbox",
+              "dateFormat": "MM/DD/YYYY",
+              "editable": true,
+              "field": "StatusOpwarmen",
+              "filter": {
+                "boolean": {
+                  "condition": ""
+                },
+                "date": {
+                  "condition": "",
+                  "value": ""
+                },
+                "enabled": false,
+                "number": {
+                  "condition": "",
+                  "value": ""
+                },
+                "string": {
+                  "condition": "",
+                  "value": ""
+                },
+                "visible": "on-hover"
+              },
+              "footer": {
+                "align": "center",
+                "justify": "left",
+                "style": {
+                  "classes": ""
+                },
+                "title": ""
+              },
+              "header": {
+                "align": "center",
+                "justify": "left",
+                "style": {
+                  "classes": ""
+                },
+                "title": "Opwarmen"
+              },
+              "justify": "auto",
+              "nullFormat": {
+                "includeNullStrings": false,
+                "nullFormatValue": "",
+                "strict": false
+              },
+              "number": "value",
+              "numberFormat": "0,0.##",
+              "progressBar": {
+                "bar": {
+                  "color": "",
+                  "style": {
+                    "classes": ""
+                  }
+                },
+                "max": 100,
+                "min": 0,
+                "track": {
+                  "color": "",
+                  "style": {
+                    "classes": ""
+                  }
+                },
+                "value": {
+                  "enabled": true,
+                  "format": "0,0.##",
+                  "justify": "center",
+                  "style": {
+                    "classes": ""
+                  }
+                }
+              },
+              "render": "boolean",
+              "resizable": true,
+              "sort": "none",
+              "sortable": true,
+              "strictWidth": false,
+              "style": {
+                "classes": ""
+              },
+              "toggleSwitch": {
+                "color": {
+                  "selected": "",
+                  "unselected": ""
+                }
+              },
+              "viewParams": {},
+              "viewPath": "",
+              "visible": true,
+              "width": ""
+            },
+            {
+              "align": "center",
+              "boolean": "checkbox",
+              "dateFormat": "MM/DD/YYYY",
+              "editable": true,
+              "field": "StatusStarten",
+              "filter": {
+                "boolean": {
+                  "condition": ""
+                },
+                "date": {
+                  "condition": "",
+                  "value": ""
+                },
+                "enabled": false,
+                "number": {
+                  "condition": "",
+                  "value": ""
+                },
+                "string": {
+                  "condition": "",
+                  "value": ""
+                },
+                "visible": "on-hover"
+              },
+              "footer": {
+                "align": "center",
+                "justify": "left",
+                "style": {
+                  "classes": ""
+                },
+                "title": ""
+              },
+              "header": {
+                "align": "center",
+                "justify": "left",
+                "style": {
+                  "classes": ""
+                },
+                "title": "Starten"
+              },
+              "justify": "auto",
+              "nullFormat": {
+                "includeNullStrings": false,
+                "nullFormatValue": "",
+                "strict": false
+              },
+              "number": "value",
+              "numberFormat": "0,0.##",
+              "progressBar": {
+                "bar": {
+                  "color": "",
+                  "style": {
+                    "classes": ""
+                  }
+                },
+                "max": 100,
+                "min": 0,
+                "track": {
+                  "color": "",
+                  "style": {
+                    "classes": ""
+                  }
+                },
+                "value": {
+                  "enabled": true,
+                  "format": "0,0.##",
+                  "justify": "center",
+                  "style": {
+                    "classes": ""
+                  }
+                }
+              },
+              "render": "boolean",
+              "resizable": true,
+              "sort": "none",
+              "sortable": true,
+              "strictWidth": false,
+              "style": {
+                "classes": ""
+              },
+              "toggleSwitch": {
+                "color": {
+                  "selected": "",
+                  "unselected": ""
+                }
+              },
+              "viewParams": {},
+              "viewPath": "",
+              "visible": true,
+              "width": ""
+            },
+            {
+              "align": "center",
+              "boolean": "checkbox",
+              "dateFormat": "MM/DD/YYYY",
+              "editable": true,
+              "field": "StatusProductionReady",
+              "filter": {
+                "boolean": {
+                  "condition": ""
+                },
+                "date": {
+                  "condition": "",
+                  "value": ""
+                },
+                "enabled": false,
+                "number": {
+                  "condition": "",
+                  "value": ""
+                },
+                "string": {
+                  "condition": "",
+                  "value": ""
+                },
+                "visible": "on-hover"
+              },
+              "footer": {
+                "align": "center",
+                "justify": "left",
+                "style": {
+                  "classes": ""
+                },
+                "title": ""
+              },
+              "header": {
+                "align": "center",
+                "justify": "left",
+                "style": {
+                  "classes": ""
+                },
+                "title": "Productie vrij"
+              },
+              "justify": "auto",
+              "nullFormat": {
+                "includeNullStrings": false,
+                "nullFormatValue": "",
+                "strict": false
+              },
+              "number": "value",
+              "numberFormat": "0,0.##",
+              "progressBar": {
+                "bar": {
+                  "color": "",
+                  "style": {
+                    "classes": ""
+                  }
+                },
+                "max": 100,
+                "min": 0,
+                "track": {
+                  "color": "",
+                  "style": {
+                    "classes": ""
+                  }
+                },
+                "value": {
+                  "enabled": true,
+                  "format": "0,0.##",
+                  "justify": "center",
+                  "style": {
+                    "classes": ""
+                  }
+                }
+              },
+              "render": "boolean",
+              "resizable": true,
+              "sort": "none",
+              "sortable": true,
+              "strictWidth": false,
+              "style": {
+                "classes": ""
+              },
+              "toggleSwitch": {
+                "color": {
+                  "selected": "",
+                  "unselected": ""
+                }
+              },
+              "viewParams": {},
+              "viewPath": "",
+              "visible": true,
+              "width": ""
+            },
+            {
+              "align": "center",
+              "boolean": "checkbox",
+              "dateFormat": "MM/DD/YYYY",
+              "editable": true,
+              "field": "StatusBuildingWhileInProduction",
+              "filter": {
+                "boolean": {
+                  "condition": ""
+                },
+                "date": {
+                  "condition": "",
+                  "value": ""
+                },
+                "enabled": false,
+                "number": {
+                  "condition": "",
+                  "value": ""
+                },
+                "string": {
+                  "condition": "",
+                  "value": ""
+                },
+                "visible": "on-hover"
+              },
+              "footer": {
+                "align": "center",
+                "justify": "left",
+                "style": {
+                  "classes": ""
+                },
+                "title": ""
+              },
+              "header": {
+                "align": "center",
+                "justify": "left",
+                "style": {
+                  "classes": ""
+                },
+                "title": "Omstelling in productie"
+              },
+              "justify": "auto",
+              "nullFormat": {
+                "includeNullStrings": false,
+                "nullFormatValue": "",
+                "strict": false
+              },
+              "number": "value",
+              "numberFormat": "0,0.##",
+              "progressBar": {
+                "bar": {
+                  "color": "",
+                  "style": {
+                    "classes": ""
+                  }
+                },
+                "max": 100,
+                "min": 0,
+                "track": {
+                  "color": "",
+                  "style": {
+                    "classes": ""
+                  }
+                },
+                "value": {
+                  "enabled": true,
+                  "format": "0,0.##",
+                  "justify": "center",
+                  "style": {
+                    "classes": ""
+                  }
+                }
+              },
+              "render": "boolean",
+              "resizable": true,
+              "sort": "none",
+              "sortable": true,
+              "strictWidth": false,
+              "style": {
+                "classes": ""
+              },
+              "toggleSwitch": {
+                "color": {
+                  "selected": "",
+                  "unselected": ""
+                }
+              },
+              "viewParams": {},
+              "viewPath": "",
+              "visible": true,
+              "width": ""
+            },
+            {
+              "align": "center",
+              "boolean": "checkbox",
+              "dateFormat": "MM/DD/YYYY",
+              "editable": true,
+              "field": "StatusStop",
+              "filter": {
+                "boolean": {
+                  "condition": ""
+                },
+                "date": {
+                  "condition": "",
+                  "value": ""
+                },
+                "enabled": false,
+                "number": {
+                  "condition": "",
+                  "value": ""
+                },
+                "string": {
+                  "condition": "",
+                  "value": ""
+                },
+                "visible": "on-hover"
+              },
+              "footer": {
+                "align": "center",
+                "justify": "left",
+                "style": {
+                  "classes": ""
+                },
+                "title": ""
+              },
+              "header": {
+                "align": "center",
+                "justify": "left",
+                "style": {
+                  "classes": ""
+                },
+                "title": "Stop"
+              },
+              "justify": "auto",
+              "nullFormat": {
+                "includeNullStrings": false,
+                "nullFormatValue": "",
+                "strict": false
+              },
+              "number": "value",
+              "numberFormat": "0,0.##",
+              "progressBar": {
+                "bar": {
+                  "color": "",
+                  "style": {
+                    "classes": ""
+                  }
+                },
+                "max": 100,
+                "min": 0,
+                "track": {
+                  "color": "",
+                  "style": {
+                    "classes": ""
+                  }
+                },
+                "value": {
+                  "enabled": true,
+                  "format": "0,0.##",
+                  "justify": "center",
+                  "style": {
+                    "classes": ""
+                  }
+                }
+              },
+              "render": "boolean",
+              "resizable": true,
+              "sort": "none",
+              "sortable": true,
+              "strictWidth": false,
+              "style": {
+                "classes": ""
+              },
+              "toggleSwitch": {
+                "color": {
+                  "selected": "",
+                  "unselected": ""
+                }
+              },
+              "viewParams": {},
+              "viewPath": "",
+              "visible": true,
+              "width": ""
+            },
+            {
+              "align": "center",
+              "boolean": "checkbox",
+              "dateFormat": "MM/DD/YYYY",
+              "editable": true,
+              "field": "StatusBuildingAfterStop",
+              "filter": {
+                "boolean": {
+                  "condition": ""
+                },
+                "date": {
+                  "condition": "",
+                  "value": ""
+                },
+                "enabled": false,
+                "number": {
+                  "condition": "",
+                  "value": ""
+                },
+                "string": {
+                  "condition": "",
+                  "value": ""
+                },
+                "visible": "on-hover"
+              },
+              "footer": {
+                "align": "center",
+                "justify": "left",
+                "style": {
+                  "classes": ""
+                },
+                "title": ""
+              },
+              "header": {
+                "align": "center",
+                "justify": "left",
+                "style": {
+                  "classes": ""
+                },
+                "title": "Omstelling na stop"
+              },
+              "justify": "auto",
+              "nullFormat": {
+                "includeNullStrings": false,
+                "nullFormatValue": "",
+                "strict": false
+              },
+              "number": "value",
+              "numberFormat": "0,0.##",
+              "progressBar": {
+                "bar": {
+                  "color": "",
+                  "style": {
+                    "classes": ""
+                  }
+                },
+                "max": 100,
+                "min": 0,
+                "track": {
+                  "color": "",
+                  "style": {
+                    "classes": ""
+                  }
+                },
+                "value": {
+                  "enabled": true,
+                  "format": "0,0.##",
+                  "justify": "center",
+                  "style": {
+                    "classes": ""
+                  }
+                }
+              },
+              "render": "boolean",
+              "resizable": true,
+              "sort": "none",
+              "sortable": true,
+              "strictWidth": false,
+              "style": {
+                "classes": ""
+              },
+              "toggleSwitch": {
+                "color": {
+                  "selected": "",
+                  "unselected": ""
+                }
+              },
+              "viewParams": {},
+              "viewPath": "",
+              "visible": true,
+              "width": ""
+            },
+            {
+              "align": "center",
+              "boolean": "checkbox",
+              "dateFormat": "MM/DD/YYYY",
+              "editable": true,
+              "field": "StatusMaintenance",
+              "filter": {
+                "boolean": {
+                  "condition": ""
+                },
+                "date": {
+                  "condition": "",
+                  "value": ""
+                },
+                "enabled": false,
+                "number": {
+                  "condition": "",
+                  "value": ""
+                },
+                "string": {
+                  "condition": "",
+                  "value": ""
+                },
+                "visible": "on-hover"
+              },
+              "footer": {
+                "align": "center",
+                "justify": "left",
+                "style": {
+                  "classes": ""
+                },
+                "title": ""
+              },
+              "header": {
+                "align": "center",
+                "justify": "left",
+                "style": {
+                  "classes": ""
+                },
+                "title": "Onderhoud"
+              },
+              "justify": "auto",
+              "nullFormat": {
+                "includeNullStrings": false,
+                "nullFormatValue": "",
+                "strict": false
+              },
+              "number": "value",
+              "numberFormat": "0,0.##",
+              "progressBar": {
+                "bar": {
+                  "color": "",
+                  "style": {
+                    "classes": ""
+                  }
+                },
+                "max": 100,
+                "min": 0,
+                "track": {
+                  "color": "",
+                  "style": {
+                    "classes": ""
+                  }
+                },
+                "value": {
+                  "enabled": true,
+                  "format": "0,0.##",
+                  "justify": "center",
+                  "style": {
+                    "classes": ""
+                  }
+                }
+              },
+              "render": "boolean",
+              "resizable": true,
+              "sort": "none",
+              "sortable": true,
+              "strictWidth": false,
+              "style": {
+                "classes": ""
+              },
+              "toggleSwitch": {
+                "color": {
+                  "selected": "",
+                  "unselected": ""
+                }
+              },
+              "viewParams": {},
+              "viewPath": "",
+              "visible": true,
+              "width": ""
+            },
+            {
+              "align": "center",
+              "boolean": "checkbox",
+              "dateFormat": "MM/DD/YYYY",
+              "editable": true,
+              "field": "StatusTesting",
+              "filter": {
+                "boolean": {
+                  "condition": ""
+                },
+                "date": {
+                  "condition": "",
+                  "value": ""
+                },
+                "enabled": false,
+                "number": {
+                  "condition": "",
+                  "value": ""
+                },
+                "string": {
+                  "condition": "",
+                  "value": ""
+                },
+                "visible": "on-hover"
+              },
+              "footer": {
+                "align": "center",
+                "justify": "left",
+                "style": {
+                  "classes": ""
+                },
+                "title": ""
+              },
+              "header": {
+                "align": "center",
+                "justify": "left",
+                "style": {
+                  "classes": ""
+                },
+                "title": "Testen"
+              },
+              "justify": "auto",
+              "nullFormat": {
+                "includeNullStrings": false,
+                "nullFormatValue": "",
+                "strict": false
+              },
+              "number": "value",
+              "numberFormat": "0,0.##",
+              "progressBar": {
+                "bar": {
+                  "color": "",
+                  "style": {
+                    "classes": ""
+                  }
+                },
+                "max": 100,
+                "min": 0,
+                "track": {
+                  "color": "",
+                  "style": {
+                    "classes": ""
+                  }
+                },
+                "value": {
+                  "enabled": true,
+                  "format": "0,0.##",
+                  "justify": "center",
+                  "style": {
+                    "classes": ""
+                  }
+                }
+              },
+              "render": "boolean",
+              "resizable": true,
+              "sort": "none",
+              "sortable": true,
+              "strictWidth": false,
+              "style": {
+                "classes": ""
+              },
+              "toggleSwitch": {
+                "color": {
+                  "selected": "",
+                  "unselected": ""
+                }
+              },
+              "viewParams": {},
+              "viewPath": "",
+              "visible": true,
+              "width": ""
+            }
+          ],
+          "data": {
+            "$": [
+              "ds",
+              192,
+              1772099902869
+            ],
+            "$columns": [
+              {
+                "data": [
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07",
+                  "E07"
+                ],
+                "name": "Line",
+                "type": "String"
+              },
+              {
+                "data": [
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder",
+                  "Extruder"
+                ],
+                "name": "LineComponent",
+                "type": "String"
+              },
+              {
+                "data": [
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT",
+                  "MEXT"
+                ],
+                "name": "Asset",
+                "type": "String"
+              },
+              {
+                "data": [
+                  "Dies zone 1 - Temperatuur - High High",
+                  "Dies zone 1 - Temperatuur - High",
+                  "Dies zone 1 - Temperatuur - Low",
+                  "Dies zone 1 - Temperatuur - Low Low",
+                  "Dies zone 2 - Temperatuur - High High",
+                  "Dies zone 2 - Temperatuur - High",
+                  "Dies zone 2 - Temperatuur - Low",
+                  "Dies zone 2 - Temperatuur - Low Low",
+                  "Dies zone 3 - Temperatuur - High High",
+                  "Dies zone 3 - Temperatuur - High",
+                  "Dies zone 3 - Temperatuur - Low",
+                  "Dies zone 3 - Temperatuur - Low Low",
+                  "Dies zone 4 - Temperatuur - High High",
+                  "Dies zone 4 - Temperatuur - High",
+                  "Dies zone 4 - Temperatuur - Low",
+                  "Dies zone 4 - Temperatuur - Low Low",
+                  "Feeder 1 - Target - High High",
+                  "Feeder 1 - Target - High",
+                  "Feeder 1 - Target - Low",
+                  "Feeder 1 - Target - Low Low",
+                  "Feeder 1 - Throughput - High High",
+                  "Feeder 1 - Throughput - High",
+                  "Feeder 1 - Throughput - Low",
+                  "Feeder 1 - Throughput - Low Low",
+                  "Feeder 2 - Target - High High",
+                  "Feeder 2 - Target - High",
+                  "Feeder 2 - Target - Low",
+                  "Feeder 2 - Target - Low Low",
+                  "Feeder 2 - Throughput - High High",
+                  "Feeder 2 - Throughput - High",
+                  "Feeder 2 - Throughput - Low",
+                  "Feeder 2 - Throughput - Low Low",
+                  "Feeder 3 - Target - High High",
+                  "Feeder 3 - Target - High",
+                  "Feeder 3 - Target - Low",
+                  "Feeder 3 - Target - Low Low",
+                  "Feeder 3 - Throughput - High High",
+                  "Feeder 3 - Throughput - High",
+                  "Feeder 3 - Throughput - Low",
+                  "Feeder 3 - Throughput - Low Low",
+                  "Feeder 4 - Target - High High",
+                  "Feeder 4 - Target - High",
+                  "Feeder 4 - Target - Low",
+                  "Feeder 4 - Target - Low Low",
+                  "Feeder 4 - Throughput - High High",
+                  "Feeder 4 - Throughput - High",
+                  "Feeder 4 - Throughput - Low",
+                  "Feeder 4 - Throughput - Low Low",
+                  "Feeder 5 - Target - High High",
+                  "Feeder 5 - Target - High",
+                  "Feeder 5 - Target - Low",
+                  "Feeder 5 - Target - Low Low",
+                  "Feeder 5 - Throughput - High High",
+                  "Feeder 5 - Throughput - High",
+                  "Feeder 5 - Throughput - Low",
+                  "Feeder 5 - Throughput - Low Low",
+                  "Feeder 6 - Target - High High",
+                  "Feeder 6 - Target - High",
+                  "Feeder 6 - Target - Low",
+                  "Feeder 6 - Target - Low Low",
+                  "Feeder 6 - Throughput - High High",
+                  "Feeder 6 - Throughput - High",
+                  "Feeder 6 - Throughput - Low",
+                  "Feeder 6 - Throughput - Low Low",
+                  "Zone zone 1 - Temperatuur - High High",
+                  "Zone zone 1 - Temperatuur - High",
+                  "Zone zone 1 - Temperatuur - Low",
+                  "Zone zone 1 - Temperatuur - Low Low",
+                  "Zone zone 2 - Temperatuur - High High",
+                  "Zone zone 2 - Temperatuur - High",
+                  "Zone zone 2 - Temperatuur - Low",
+                  "Zone zone 2 - Temperatuur - Low Low",
+                  "Zone zone 3 - Temperatuur - High High",
+                  "Zone zone 3 - Temperatuur - High",
+                  "Zone zone 3 - Temperatuur - Low",
+                  "Zone zone 3 - Temperatuur - Low Low",
+                  "Zone zone 4 - Temperatuur - High High",
+                  "Zone zone 4 - Temperatuur - High",
+                  "Zone zone 4 - Temperatuur - Low",
+                  "Zone zone 4 - Temperatuur - Low Low",
+                  "Zone zone 5 - Temperatuur - High High",
+                  "Zone zone 5 - Temperatuur - High",
+                  "Zone zone 5 - Temperatuur - Low",
+                  "Zone zone 5 - Temperatuur - Low Low",
+                  "Zone zone 6 - Temperatuur - High High",
+                  "Zone zone 6 - Temperatuur - High",
+                  "Zone zone 6 - Temperatuur - Low",
+                  "Zone zone 6 - Temperatuur - Low Low",
+                  "Zone zone 7 - Temperatuur - High High",
+                  "Zone zone 7 - Temperatuur - High",
+                  "Zone zone 7 - Temperatuur - Low",
+                  "Zone zone 7 - Temperatuur - Low Low",
+                  "Zone zone 8 - Temperatuur - High High",
+                  "Zone zone 8 - Temperatuur - High",
+                  "Zone zone 8 - Temperatuur - Low",
+                  "Zone zone 8 - Temperatuur - Low Low",
+                  "Zone zone 9 - Temperatuur - High High",
+                  "Zone zone 9 - Temperatuur - High",
+                  "Zone zone 9 - Temperatuur - Low",
+                  "Zone zone 9 - Temperatuur - Low Low",
+                  "Zone zone 10 - Temperatuur - High High",
+                  "Zone zone 10 - Temperatuur - High",
+                  "Zone zone 10 - Temperatuur - Low",
+                  "Zone zone 10 - Temperatuur - Low Low",
+                  "Zone zone 11 - Temperatuur - High High",
+                  "Zone zone 11 - Temperatuur - High",
+                  "Zone zone 11 - Temperatuur - Low",
+                  "Zone zone 11 - Temperatuur - Low Low",
+                  "Zone zone 12 - Temperatuur - High High",
+                  "Zone zone 12 - Temperatuur - High",
+                  "Zone zone 12 - Temperatuur - Low",
+                  "Zone zone 12 - Temperatuur - Low Low",
+                  "Zone zone 13 - Temperatuur - High High",
+                  "Zone zone 13 - Temperatuur - High",
+                  "Zone zone 13 - Temperatuur - Low",
+                  "Zone zone 13 - Temperatuur - Low Low",
+                  "Lijnsnelheid - High High",
+                  "Lijnsnelheid - High",
+                  "Lijnsnelheid - Low",
+                  "Lijnsnelheid - Low Low",
+                  "Lading - High High",
+                  "Lading - High",
+                  "Lading - Low",
+                  "Lading - Low Low",
+                  "Massadruk - High High",
+                  "Massadruk - High",
+                  "Massadruk - Low",
+                  "Massadruk - Low Low",
+                  "Massatemperatuur - High High",
+                  "Massatemperatuur - High",
+                  "Massatemperatuur - Low",
+                  "Massatemperatuur - Low Low",
+                  "Metergewicht - High High",
+                  "Metergewicht - High",
+                  "Metergewicht - Low",
+                  "Metergewicht - Low Low",
+                  "Snelheid - High High",
+                  "Snelheid - High",
+                  "Snelheid - Low",
+                  "Snelheid - Low Low",
+                  "Throughput - High High",
+                  "Throughput - High",
+                  "Throughput - Low",
+                  "Throughput - Low Low",
+                  "Vacuum - High High",
+                  "Vacuum - High",
+                  "Vacuum - Low",
+                  "Vacuum - Low Low"
+                ],
+                "name": "Description",
+                "type": "String"
+              },
+              {
+                "data": [
+                  "Alarm",
+                  "Warning",
+                  "Warning",
+                  "Alarm",
+                  "Alarm",
+                  "Warning",
+                  "Warning",
+                  "Alarm",
+                  "Alarm",
+                  "Warning",
+                  "Warning",
+                  "Alarm",
+                  "Alarm",
+                  "Warning",
+                  "Warning",
+                  "Alarm",
+                  "Alarm",
+                  "Warning",
+                  "Warning",
+                  "Alarm",
+                  "Alarm",
+                  "Warning",
+                  "Warning",
+                  "Alarm",
+                  "Alarm",
+                  "Warning",
+                  "Warning",
+                  "Alarm",
+                  "Alarm",
+                  "Warning",
+                  "Warning",
+                  "Alarm",
+                  "Alarm",
+                  "Warning",
+                  "Warning",
+                  "Alarm",
+                  "Alarm",
+                  "Warning",
+                  "Warning",
+                  "Alarm",
+                  "Alarm",
+                  "Warning",
+                  "Warning",
+                  "Alarm",
+                  "Alarm",
+                  "Warning",
+                  "Warning",
+                  "Alarm",
+                  "Alarm",
+                  "Warning",
+                  "Warning",
+                  "Alarm",
+                  "Alarm",
+                  "Warning",
+                  "Warning",
+                  "Alarm",
+                  "Alarm",
+                  "Warning",
+                  "Warning",
+                  "Alarm",
+                  "Alarm",
+                  "Warning",
+                  "Warning",
+                  "Alarm",
+                  "Alarm",
+                  "Warning",
+                  "Warning",
+                  "Alarm",
+                  "Alarm",
+                  "Warning",
+                  "Warning",
+                  "Alarm",
+                  "Alarm",
+                  "Warning",
+                  "Warning",
+                  "Alarm",
+                  "Alarm",
+                  "Warning",
+                  "Warning",
+                  "Alarm",
+                  "Alarm",
+                  "Warning",
+                  "Warning",
+                  "Alarm",
+                  "Alarm",
+                  "Warning",
+                  "Warning",
+                  "Alarm",
+                  "Alarm",
+                  "Warning",
+                  "Warning",
+                  "Alarm",
+                  "Alarm",
+                  "Warning",
+                  "Warning",
+                  "Alarm",
+                  "Alarm",
+                  "Warning",
+                  "Warning",
+                  "Alarm",
+                  "Alarm",
+                  "Warning",
+                  "Warning",
+                  "Alarm",
+                  "Alarm",
+                  "Warning",
+                  "Warning",
+                  "Alarm",
+                  "Alarm",
+                  "Warning",
+                  "Warning",
+                  "Alarm",
+                  "Alarm",
+                  "Warning",
+                  "Warning",
+                  "Alarm",
+                  "Alarm",
+                  "Alarm",
+                  "Alarm",
+                  "Alarm",
+                  "Alarm",
+                  "Alarm",
+                  "Alarm",
+                  "Alarm",
+                  "Alarm",
+                  "Alarm",
+                  "Alarm",
+                  "Alarm",
+                  "Alarm",
+                  "Alarm",
+                  "Alarm",
+                  "Alarm",
+                  "Alarm",
+                  "Alarm",
+                  "Alarm",
+                  "Alarm",
+                  "Alarm",
+                  "Alarm",
+                  "Alarm",
+                  "Alarm",
+                  "Alarm",
+                  "Alarm",
+                  "Alarm",
+                  "Alarm",
+                  "Alarm",
+                  "Alarm",
+                  "Alarm",
+                  "Alarm"
+                ],
+                "name": "Level",
+                "type": "String"
+              },
+              {
+                "data": [
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true
+                ],
+                "name": "Active",
+                "type": "Boolean"
+              },
+              {
+                "data": [
+                  false,
+                  false,
+                  true,
+                  false,
+                  false,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  false,
+                  true,
+                  true,
+                  false,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  false,
+                  true,
+                  true,
+                  true,
+                  false,
+                  true,
+                  false,
+                  true,
+                  false,
+                  true,
+                  true,
+                  false,
+                  false,
+                  false,
+                  true,
+                  false,
+                  true,
+                  false,
+                  false,
+                  false,
+                  true,
+                  true,
+                  false,
+                  true,
+                  false,
+                  true,
+                  true,
+                  true,
+                  false,
+                  true,
+                  true,
+                  false,
+                  true,
+                  false,
+                  true,
+                  true,
+                  false,
+                  true,
+                  false,
+                  false,
+                  true,
+                  false,
+                  false,
+                  true,
+                  true,
+                  false,
+                  false,
+                  true,
+                  true,
+                  false,
+                  false,
+                  true,
+                  false,
+                  true,
+                  false,
+                  false,
+                  false,
+                  false,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  false,
+                  true,
+                  false,
+                  true,
+                  true,
+                  false,
+                  true,
+                  true,
+                  true,
+                  false,
+                  false,
+                  false,
+                  true,
+                  false,
+                  false,
+                  false,
+                  true,
+                  true,
+                  false,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  false,
+                  true,
+                  true,
+                  true,
+                  true,
+                  false,
+                  false,
+                  true,
+                  true,
+                  false,
+                  false,
+                  true,
+                  true,
+                  false,
+                  false,
+                  true,
+                  false,
+                  false,
+                  true,
+                  false,
+                  false,
+                  true,
+                  false,
+                  false,
+                  false,
+                  false,
+                  false,
+                  false,
+                  false,
+                  false,
+                  false,
+                  true,
+                  true,
+                  true,
+                  false,
+                  true,
+                  true,
+                  false,
+                  true,
+                  false
+                ],
+                "name": "StatusBuildingAfterStop",
+                "type": "Boolean"
+              },
+              {
+                "data": [
+                  false,
+                  false,
+                  true,
+                  true,
+                  true,
+                  false,
+                  false,
+                  true,
+                  false,
+                  true,
+                  true,
+                  false,
+                  false,
+                  false,
+                  true,
+                  false,
+                  false,
+                  true,
+                  false,
+                  true,
+                  false,
+                  true,
+                  true,
+                  false,
+                  true,
+                  false,
+                  true,
+                  true,
+                  false,
+                  false,
+                  true,
+                  true,
+                  true,
+                  true,
+                  false,
+                  true,
+                  false,
+                  true,
+                  false,
+                  false,
+                  false,
+                  false,
+                  true,
+                  false,
+                  false,
+                  true,
+                  true,
+                  true,
+                  false,
+                  true,
+                  true,
+                  false,
+                  false,
+                  false,
+                  false,
+                  true,
+                  false,
+                  false,
+                  false,
+                  true,
+                  false,
+                  false,
+                  true,
+                  false,
+                  true,
+                  false,
+                  false,
+                  true,
+                  false,
+                  true,
+                  true,
+                  false,
+                  false,
+                  true,
+                  true,
+                  true,
+                  false,
+                  true,
+                  false,
+                  true,
+                  true,
+                  false,
+                  false,
+                  true,
+                  true,
+                  true,
+                  false,
+                  true,
+                  false,
+                  true,
+                  false,
+                  true,
+                  false,
+                  false,
+                  false,
+                  true,
+                  false,
+                  false,
+                  false,
+                  true,
+                  true,
+                  false,
+                  false,
+                  true,
+                  false,
+                  true,
+                  true,
+                  true,
+                  false,
+                  false,
+                  false,
+                  true,
+                  false,
+                  false,
+                  false,
+                  true,
+                  false,
+                  false,
+                  true,
+                  true,
+                  true,
+                  false,
+                  false,
+                  true,
+                  true,
+                  false,
+                  true,
+                  false,
+                  false,
+                  true,
+                  true,
+                  false,
+                  false,
+                  false,
+                  false,
+                  false,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  false,
+                  true,
+                  false,
+                  false,
+                  false,
+                  false,
+                  true
+                ],
+                "name": "StatusBuildingWhileInProduction",
+                "type": "Boolean"
+              },
+              {
+                "data": [
+                  true,
+                  true,
+                  true,
+                  false,
+                  true,
+                  true,
+                  true,
+                  false,
+                  true,
+                  true,
+                  false,
+                  true,
+                  false,
+                  false,
+                  true,
+                  true,
+                  false,
+                  true,
+                  false,
+                  true,
+                  false,
+                  false,
+                  true,
+                  true,
+                  false,
+                  false,
+                  true,
+                  false,
+                  false,
+                  false,
+                  false,
+                  false,
+                  true,
+                  true,
+                  true,
+                  false,
+                  false,
+                  false,
+                  false,
+                  false,
+                  true,
+                  true,
+                  false,
+                  false,
+                  false,
+                  true,
+                  false,
+                  false,
+                  true,
+                  false,
+                  false,
+                  false,
+                  true,
+                  false,
+                  false,
+                  true,
+                  false,
+                  false,
+                  false,
+                  false,
+                  false,
+                  true,
+                  false,
+                  false,
+                  false,
+                  true,
+                  true,
+                  false,
+                  false,
+                  true,
+                  true,
+                  false,
+                  false,
+                  true,
+                  false,
+                  false,
+                  false,
+                  true,
+                  true,
+                  true,
+                  false,
+                  false,
+                  false,
+                  true,
+                  true,
+                  false,
+                  true,
+                  true,
+                  true,
+                  false,
+                  true,
+                  false,
+                  false,
+                  false,
+                  false,
+                  false,
+                  true,
+                  true,
+                  true,
+                  true,
+                  false,
+                  false,
+                  true,
+                  false,
+                  true,
+                  false,
+                  true,
+                  false,
+                  true,
+                  true,
+                  true,
+                  false,
+                  true,
+                  false,
+                  false,
+                  true,
+                  false,
+                  false,
+                  true,
+                  false,
+                  false,
+                  false,
+                  false,
+                  false,
+                  true,
+                  false,
+                  false,
+                  true,
+                  false,
+                  true,
+                  true,
+                  true,
+                  true,
+                  false,
+                  true,
+                  false,
+                  true,
+                  true,
+                  true,
+                  false,
+                  false,
+                  true,
+                  false,
+                  true,
+                  true,
+                  false,
+                  false,
+                  false
+                ],
+                "name": "StatusMaintenance",
+                "type": "Boolean"
+              },
+              {
+                "data": [
+                  false,
+                  false,
+                  true,
+                  false,
+                  true,
+                  true,
+                  true,
+                  false,
+                  false,
+                  true,
+                  true,
+                  false,
+                  false,
+                  true,
+                  false,
+                  false,
+                  true,
+                  true,
+                  false,
+                  true,
+                  false,
+                  false,
+                  false,
+                  true,
+                  true,
+                  false,
+                  false,
+                  true,
+                  true,
+                  false,
+                  true,
+                  false,
+                  false,
+                  true,
+                  true,
+                  false,
+                  false,
+                  false,
+                  false,
+                  true,
+                  true,
+                  true,
+                  false,
+                  false,
+                  true,
+                  true,
+                  false,
+                  false,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  false,
+                  false,
+                  true,
+                  true,
+                  true,
+                  false,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  false,
+                  false,
+                  true,
+                  false,
+                  false,
+                  false,
+                  true,
+                  true,
+                  false,
+                  false,
+                  true,
+                  false,
+                  true,
+                  false,
+                  false,
+                  true,
+                  false,
+                  true,
+                  false,
+                  false,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  false,
+                  false,
+                  true,
+                  true,
+                  false,
+                  false,
+                  false,
+                  false,
+                  false,
+                  true,
+                  false,
+                  false,
+                  true,
+                  false,
+                  true,
+                  false,
+                  false,
+                  false,
+                  false,
+                  false,
+                  false,
+                  false,
+                  false,
+                  false,
+                  true,
+                  true,
+                  true,
+                  false,
+                  true,
+                  false,
+                  false,
+                  false,
+                  false,
+                  false,
+                  false,
+                  true,
+                  false,
+                  true,
+                  true,
+                  true,
+                  false,
+                  false,
+                  true,
+                  false,
+                  true,
+                  true,
+                  true,
+                  false,
+                  true,
+                  true,
+                  false,
+                  false,
+                  false,
+                  true,
+                  true
+                ],
+                "name": "StatusNoOrder",
+                "type": "Boolean"
+              },
+              {
+                "data": [
+                  false,
+                  false,
+                  true,
+                  false,
+                  false,
+                  false,
+                  false,
+                  false,
+                  true,
+                  true,
+                  false,
+                  false,
+                  false,
+                  false,
+                  false,
+                  false,
+                  false,
+                  true,
+                  false,
+                  true,
+                  false,
+                  true,
+                  false,
+                  false,
+                  true,
+                  true,
+                  true,
+                  true,
+                  false,
+                  false,
+                  false,
+                  false,
+                  true,
+                  false,
+                  true,
+                  false,
+                  true,
+                  true,
+                  false,
+                  false,
+                  false,
+                  false,
+                  true,
+                  true,
+                  false,
+                  true,
+                  false,
+                  false,
+                  false,
+                  true,
+                  true,
+                  true,
+                  false,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  false,
+                  true,
+                  false,
+                  false,
+                  true,
+                  true,
+                  false,
+                  true,
+                  true,
+                  true,
+                  false,
+                  false,
+                  false,
+                  false,
+                  false,
+                  true,
+                  false,
+                  true,
+                  false,
+                  true,
+                  true,
+                  true,
+                  false,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  false,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  false,
+                  false,
+                  false,
+                  false,
+                  false,
+                  false,
+                  false,
+                  false,
+                  true,
+                  false,
+                  true,
+                  true,
+                  true,
+                  false,
+                  true,
+                  true,
+                  true,
+                  false,
+                  true,
+                  true,
+                  false,
+                  false,
+                  false,
+                  true,
+                  false,
+                  false,
+                  false,
+                  true,
+                  false,
+                  false,
+                  false,
+                  false,
+                  true,
+                  true,
+                  true,
+                  false,
+                  false,
+                  false,
+                  false,
+                  true,
+                  false,
+                  false,
+                  false,
+                  true,
+                  true,
+                  false,
+                  true,
+                  false,
+                  false,
+                  true,
+                  false,
+                  true,
+                  false,
+                  false,
+                  true,
+                  false
+                ],
+                "name": "StatusOpwarmen",
+                "type": "Boolean"
+              },
+              {
+                "data": [
+                  true,
+                  true,
+                  false,
+                  true,
+                  true,
+                  false,
+                  true,
+                  false,
+                  true,
+                  false,
+                  true,
+                  true,
+                  true,
+                  true,
+                  false,
+                  false,
+                  true,
+                  false,
+                  true,
+                  true,
+                  false,
+                  true,
+                  true,
+                  false,
+                  false,
+                  false,
+                  false,
+                  true,
+                  true,
+                  false,
+                  false,
+                  true,
+                  true,
+                  true,
+                  false,
+                  true,
+                  false,
+                  true,
+                  true,
+                  true,
+                  false,
+                  true,
+                  true,
+                  false,
+                  false,
+                  false,
+                  false,
+                  true,
+                  true,
+                  false,
+                  true,
+                  false,
+                  false,
+                  true,
+                  false,
+                  true,
+                  false,
+                  false,
+                  false,
+                  false,
+                  true,
+                  true,
+                  false,
+                  true,
+                  true,
+                  false,
+                  false,
+                  false,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  false,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  false,
+                  false,
+                  true,
+                  false,
+                  false,
+                  false,
+                  true,
+                  true,
+                  false,
+                  true,
+                  false,
+                  true,
+                  false,
+                  true,
+                  false,
+                  true,
+                  false,
+                  true,
+                  false,
+                  true,
+                  true,
+                  false,
+                  false,
+                  false,
+                  false,
+                  false,
+                  true,
+                  true,
+                  true,
+                  false,
+                  true,
+                  false,
+                  false,
+                  true,
+                  true,
+                  true,
+                  true,
+                  false,
+                  true,
+                  true,
+                  true,
+                  false,
+                  true,
+                  false,
+                  false,
+                  true,
+                  false,
+                  true,
+                  false,
+                  true,
+                  true,
+                  false,
+                  true,
+                  true,
+                  true,
+                  true,
+                  false,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  false,
+                  false,
+                  true,
+                  true,
+                  true
+                ],
+                "name": "StatusProductionReady",
+                "type": "Boolean"
+              },
+              {
+                "data": [
+                  true,
+                  false,
+                  false,
+                  false,
+                  false,
+                  true,
+                  false,
+                  true,
+                  true,
+                  false,
+                  false,
+                  false,
+                  false,
+                  true,
+                  true,
+                  false,
+                  true,
+                  false,
+                  false,
+                  true,
+                  true,
+                  true,
+                  false,
+                  true,
+                  false,
+                  true,
+                  true,
+                  false,
+                  false,
+                  false,
+                  false,
+                  true,
+                  true,
+                  true,
+                  true,
+                  false,
+                  false,
+                  true,
+                  false,
+                  true,
+                  false,
+                  true,
+                  true,
+                  true,
+                  false,
+                  false,
+                  true,
+                  true,
+                  true,
+                  true,
+                  false,
+                  true,
+                  false,
+                  false,
+                  true,
+                  true,
+                  true,
+                  false,
+                  false,
+                  true,
+                  false,
+                  true,
+                  true,
+                  false,
+                  true,
+                  true,
+                  true,
+                  false,
+                  false,
+                  false,
+                  false,
+                  true,
+                  false,
+                  true,
+                  true,
+                  true,
+                  true,
+                  false,
+                  false,
+                  true,
+                  true,
+                  true,
+                  true,
+                  false,
+                  true,
+                  true,
+                  false,
+                  false,
+                  true,
+                  true,
+                  false,
+                  false,
+                  false,
+                  false,
+                  true,
+                  false,
+                  false,
+                  true,
+                  false,
+                  false,
+                  false,
+                  true,
+                  true,
+                  false,
+                  true,
+                  true,
+                  false,
+                  true,
+                  false,
+                  true,
+                  true,
+                  false,
+                  true,
+                  false,
+                  true,
+                  false,
+                  true,
+                  false,
+                  false,
+                  false,
+                  false,
+                  true,
+                  false,
+                  false,
+                  true,
+                  true,
+                  true,
+                  true,
+                  false,
+                  false,
+                  true,
+                  false,
+                  true,
+                  false,
+                  false,
+                  true,
+                  false,
+                  true,
+                  true,
+                  true,
+                  false,
+                  true,
+                  false,
+                  false,
+                  true,
+                  true,
+                  false,
+                  true
+                ],
+                "name": "StatusStarten",
+                "type": "Boolean"
+              },
+              {
+                "data": [
+                  true,
+                  true,
+                  true,
+                  true,
+                  false,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  false,
+                  false,
+                  true,
+                  false,
+                  true,
+                  false,
+                  true,
+                  true,
+                  true,
+                  false,
+                  true,
+                  true,
+                  false,
+                  false,
+                  false,
+                  false,
+                  true,
+                  true,
+                  false,
+                  false,
+                  true,
+                  true,
+                  false,
+                  false,
+                  true,
+                  true,
+                  false,
+                  true,
+                  true,
+                  true,
+                  true,
+                  false,
+                  true,
+                  true,
+                  false,
+                  true,
+                  false,
+                  true,
+                  true,
+                  true,
+                  false,
+                  true,
+                  true,
+                  false,
+                  false,
+                  false,
+                  false,
+                  true,
+                  true,
+                  true,
+                  true,
+                  false,
+                  true,
+                  true,
+                  false,
+                  true,
+                  true,
+                  false,
+                  false,
+                  true,
+                  true,
+                  false,
+                  false,
+                  true,
+                  true,
+                  true,
+                  false,
+                  false,
+                  false,
+                  true,
+                  true,
+                  true,
+                  false,
+                  false,
+                  false,
+                  false,
+                  true,
+                  true,
+                  false,
+                  true,
+                  true,
+                  false,
+                  true,
+                  false,
+                  false,
+                  true,
+                  true,
+                  false,
+                  true,
+                  true,
+                  true,
+                  true,
+                  false,
+                  true,
+                  false,
+                  false,
+                  false,
+                  false,
+                  false,
+                  false,
+                  false,
+                  false,
+                  false,
+                  false,
+                  false,
+                  true,
+                  false,
+                  false,
+                  true,
+                  true,
+                  false,
+                  false,
+                  true,
+                  true,
+                  true,
+                  true,
+                  false,
+                  true,
+                  false,
+                  true,
+                  true,
+                  false,
+                  false,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  false,
+                  true,
+                  false,
+                  false,
+                  true,
+                  false,
+                  true,
+                  false,
+                  false,
+                  true
+                ],
+                "name": "StatusStop",
+                "type": "Boolean"
+              },
+              {
+                "data": [
+                  true,
+                  false,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  false,
+                  true,
+                  true,
+                  true,
+                  false,
+                  false,
+                  true,
+                  false,
+                  true,
+                  true,
+                  false,
+                  true,
+                  true,
+                  true,
+                  true,
+                  false,
+                  false,
+                  true,
+                  false,
+                  false,
+                  true,
+                  false,
+                  true,
+                  false,
+                  true,
+                  false,
+                  false,
+                  false,
+                  false,
+                  true,
+                  true,
+                  false,
+                  true,
+                  false,
+                  true,
+                  true,
+                  false,
+                  false,
+                  true,
+                  false,
+                  false,
+                  true,
+                  true,
+                  false,
+                  true,
+                  false,
+                  true,
+                  false,
+                  false,
+                  false,
+                  true,
+                  false,
+                  false,
+                  true,
+                  true,
+                  true,
+                  false,
+                  false,
+                  true,
+                  false,
+                  false,
+                  true,
+                  false,
+                  true,
+                  true,
+                  true,
+                  false,
+                  false,
+                  false,
+                  false,
+                  false,
+                  false,
+                  true,
+                  true,
+                  true,
+                  false,
+                  true,
+                  true,
+                  true,
+                  false,
+                  true,
+                  false,
+                  false,
+                  true,
+                  true,
+                  false,
+                  false,
+                  false,
+                  false,
+                  false,
+                  true,
+                  false,
+                  true,
+                  true,
+                  true,
+                  false,
+                  false,
+                  false,
+                  true,
+                  false,
+                  false,
+                  false,
+                  false,
+                  false,
+                  true,
+                  false,
+                  true,
+                  true,
+                  true,
+                  false,
+                  true,
+                  false,
+                  false,
+                  true,
+                  false,
+                  false,
+                  false,
+                  true,
+                  true,
+                  true,
+                  true,
+                  false,
+                  true,
+                  true,
+                  false,
+                  true,
+                  false,
+                  false,
+                  false,
+                  true,
+                  true,
+                  false,
+                  true,
+                  false,
+                  true,
+                  true,
+                  true,
+                  true
+                ],
+                "name": "StatusTesting",
+                "type": "Boolean"
+              }
+            ]
+          },
+          "filter": {
+            "enabled": true
+          },
+          "pager": {
+            "activeOption": 150,
+            "options": [
+              50,
+              100,
+              150,
+              200,
+              250
+            ]
+          },
+          "style": {
+            "backgroundColor": "--backgroundSecondary",
+            "borderBottomLeftRadius": 5,
+            "borderBottomRightRadius": 5,
+            "marginTop": 0,
+            "padding": 5
+          }
+        },
+        "scripts": {
+          "customMethods": [],
+          "extensionFunctions": null,
+          "messageHandlers": [
+            {
+              "messageType": "Refresh",
+              "pageScope": true,
+              "script": "\tself.refreshBinding(\u0027props.data\u0027)",
+              "sessionScope": true,
+              "viewScope": true
+            }
+          ]
+        },
+        "type": "ia.display.table"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "classes": "ATA/Background/Root"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

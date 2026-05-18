@@ -1,0 +1,1133 @@
+{
+  "custom": {},
+  "params": {},
+  "permissions": {
+    "securityLevels": [],
+    "type": "AnyOf"
+  },
+  "props": {
+    "defaultSize": {
+      "height": 965,
+      "width": 1976
+    },
+    "loading": {
+      "mode": "blocking"
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Parts"
+                },
+                "position": {
+                  "basis": "9%",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "classes": "ATA/Background/Card ATA/Components/Labels/TextNormal",
+                    "fontWeight": "bolder",
+                    "marginRight": 5
+                  },
+                  "text": "Onderdeel",
+                  "textStyle": {
+                    "fontSize": "0.95vw",
+                    "textAlign": "center"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "Lines"
+                },
+                "position": {
+                  "basis": "5%",
+                  "grow": 1,
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "classes": "ATA/Background/Card ATA/Components/Labels/TextNormal",
+                    "fontWeight": "bolder"
+                  },
+                  "text": "Lijnen",
+                  "textStyle": {
+                    "fontSize": "0.95vw",
+                    "textAlign": "center"
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "Header"
+            },
+            "position": {
+              "basis": "4%",
+              "shrink": 0
+            },
+            "props": {
+              "style": {
+                "backgroundColor": ""
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "Spacing",
+                      "visible": false
+                    },
+                    "position": {
+                      "basis": "45px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "ATA/Components/Labels/TextNormal"
+                      },
+                      "text": "Label"
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "children": [
+                      {
+                        "events": {
+                          "component": {
+                            "onActionPerformed": {
+                              "config": {
+                                "script": "\tsystem.perspective.openPopup(\u0027NewWindowPopup\u0027, view\u003d\u0027ControlRoom/Home/Popups/NewWindowPopup\u0027)"
+                              },
+                              "enabled": false,
+                              "scope": "G",
+                              "type": "script"
+                            }
+                          }
+                        },
+                        "meta": {
+                          "name": "ButtonSilo"
+                        },
+                        "props": {
+                          "style": {
+                            "classes": "ATA/Components/Buttons/Sec ATA/Components/Labels/TextNormal",
+                            "color": "--text",
+                            "fontSize": "0.95vw",
+                            "height": "60px",
+                            "marginBottom": 5,
+                            "marginTop": 5,
+                            "textAlign": "center",
+                            "width": "100%"
+                          },
+                          "text": "Silo"
+                        },
+                        "type": "ia.input.button"
+                      },
+                      {
+                        "events": {
+                          "component": {
+                            "onActionPerformed": {
+                              "config": {
+                                "script": "\tsystem.perspective.openPopup(\u0027NewWindowPopup\u0027, view\u003d\u0027ControlRoom/Home/Popups/NewWindowPopup\u0027)"
+                              },
+                              "enabled": false,
+                              "scope": "G",
+                              "type": "script"
+                            }
+                          }
+                        },
+                        "meta": {
+                          "name": "ButtonGrondstoftransport"
+                        },
+                        "props": {
+                          "style": {
+                            "classes": "ATA/Components/Buttons/Sec ATA/Components/Labels/TextNormal",
+                            "color": "--text",
+                            "fontSize": "0.95vw",
+                            "height": "60px",
+                            "marginBottom": 5,
+                            "marginTop": 5,
+                            "textAlign": "center",
+                            "width": "100%"
+                          },
+                          "text": "Grondstoftransport"
+                        },
+                        "type": "ia.input.button"
+                      },
+                      {
+                        "events": {
+                          "component": {
+                            "onActionPerformed": {
+                              "config": {
+                                "script": "\tsystem.perspective.openPopup(\u0027NewWindowPopup\u0027, view\u003d\u0027ControlRoom/Home/Popups/NewWindowPopup\u0027)"
+                              },
+                              "enabled": false,
+                              "scope": "G",
+                              "type": "script"
+                            }
+                          }
+                        },
+                        "meta": {
+                          "name": "ButtonExtruder"
+                        },
+                        "props": {
+                          "style": {
+                            "classes": "ATA/Components/Buttons/Sec ATA/Components/Labels/TextNormal",
+                            "color": "--text",
+                            "fontSize": "0.95vw",
+                            "height": "60px",
+                            "marginBottom": 5,
+                            "marginTop": 5,
+                            "textAlign": "center",
+                            "width": "100%"
+                          },
+                          "text": "Extruder"
+                        },
+                        "type": "ia.input.button"
+                      },
+                      {
+                        "events": {
+                          "component": {
+                            "onActionPerformed": {
+                              "config": {
+                                "script": "\tsystem.perspective.openPopup(\u0027NewWindowPopup\u0027, view\u003d\u0027ControlRoom/Home/Popups/NewWindowPopup\u0027)"
+                              },
+                              "enabled": false,
+                              "scope": "G",
+                              "type": "script"
+                            }
+                          }
+                        },
+                        "meta": {
+                          "name": "ButtonVacuümEnkoeling"
+                        },
+                        "props": {
+                          "style": {
+                            "classes": "ATA/Components/Buttons/Sec ATA/Components/Labels/TextNormal",
+                            "color": "--text",
+                            "fontSize": "0.95vw",
+                            "height": "60px",
+                            "marginBottom": 5,
+                            "marginTop": 5,
+                            "textAlign": "center",
+                            "width": "100%"
+                          },
+                          "text": "Vacuüm + koeling"
+                        },
+                        "type": "ia.input.button"
+                      },
+                      {
+                        "events": {
+                          "component": {
+                            "onActionPerformed": {
+                              "config": {
+                                "script": "\tsystem.perspective.openPopup(\u0027NewWindowPopup\u0027, view\u003d\u0027ControlRoom/Home/Popups/NewWindowPopup\u0027)"
+                              },
+                              "enabled": false,
+                              "scope": "G",
+                              "type": "script"
+                            }
+                          }
+                        },
+                        "meta": {
+                          "name": "ButtonWanddiktescanner"
+                        },
+                        "props": {
+                          "style": {
+                            "classes": "ATA/Components/Buttons/Sec ATA/Components/Labels/TextNormal",
+                            "color": "--text",
+                            "fontSize": "0.95vw",
+                            "height": "60px",
+                            "marginBottom": 5,
+                            "marginTop": 5,
+                            "textAlign": "center",
+                            "width": "100%"
+                          },
+                          "text": "Wanddiktescanner"
+                        },
+                        "type": "ia.input.button"
+                      },
+                      {
+                        "events": {
+                          "component": {
+                            "onActionPerformed": {
+                              "config": {
+                                "script": "\tsystem.perspective.openPopup(\u0027NewWindowPopup\u0027, view\u003d\u0027ControlRoom/Home/Popups/NewWindowPopup\u0027)"
+                              },
+                              "enabled": false,
+                              "scope": "G",
+                              "type": "script"
+                            }
+                          }
+                        },
+                        "meta": {
+                          "name": "ButtonPrinter"
+                        },
+                        "props": {
+                          "style": {
+                            "classes": "ATA/Components/Buttons/Sec ATA/Components/Labels/TextNormal",
+                            "color": "--text",
+                            "fontSize": "0.95vw",
+                            "height": "60px",
+                            "marginBottom": 5,
+                            "marginTop": 5,
+                            "textAlign": "center",
+                            "width": "100%"
+                          },
+                          "text": "Printer"
+                        },
+                        "type": "ia.input.button"
+                      },
+                      {
+                        "events": {
+                          "component": {
+                            "onActionPerformed": {
+                              "config": {
+                                "script": "\tsystem.perspective.openPopup(\u0027NewWindowPopup\u0027, view\u003d\u0027ControlRoom/Home/Popups/NewWindowPopup\u0027)"
+                              },
+                              "enabled": false,
+                              "scope": "G",
+                              "type": "script"
+                            }
+                          }
+                        },
+                        "meta": {
+                          "name": "ButtonTrekbank"
+                        },
+                        "props": {
+                          "style": {
+                            "classes": "ATA/Components/Buttons/Sec ATA/Components/Labels/TextNormal",
+                            "color": "--text",
+                            "fontSize": "0.95vw",
+                            "height": "60px",
+                            "marginBottom": 5,
+                            "marginTop": 5,
+                            "textAlign": "center",
+                            "width": "100%"
+                          },
+                          "text": "Trekbank"
+                        },
+                        "type": "ia.input.button"
+                      },
+                      {
+                        "events": {
+                          "component": {
+                            "onActionPerformed": {
+                              "config": {
+                                "script": "\tsystem.perspective.openPopup(\u0027NewWindowPopup\u0027, view\u003d\u0027ControlRoom/Home/Popups/NewWindowPopup\u0027)"
+                              },
+                              "enabled": false,
+                              "scope": "G",
+                              "type": "script"
+                            }
+                          }
+                        },
+                        "meta": {
+                          "name": "ButtonAfkortunit"
+                        },
+                        "props": {
+                          "style": {
+                            "classes": "ATA/Components/Buttons/Sec ATA/Components/Labels/TextNormal",
+                            "color": "--text",
+                            "fontSize": "0.95vw",
+                            "height": "60px",
+                            "marginBottom": 5,
+                            "marginTop": 5,
+                            "textAlign": "center",
+                            "width": "100%"
+                          },
+                          "text": "Afkortunit"
+                        },
+                        "type": "ia.input.button"
+                      },
+                      {
+                        "events": {
+                          "component": {
+                            "onActionPerformed": {
+                              "config": {
+                                "script": "\tsystem.perspective.openPopup(\u0027NewWindowPopup\u0027, view\u003d\u0027ControlRoom/Home/Popups/NewWindowPopup\u0027)"
+                              },
+                              "enabled": false,
+                              "scope": "G",
+                              "type": "script"
+                            }
+                          }
+                        },
+                        "meta": {
+                          "name": "ButtonTrompbank"
+                        },
+                        "props": {
+                          "style": {
+                            "classes": "ATA/Components/Buttons/Sec ATA/Components/Labels/TextNormal",
+                            "color": "--text",
+                            "fontSize": "0.95vw",
+                            "height": "60px",
+                            "marginBottom": 5,
+                            "marginTop": 5,
+                            "textAlign": "center",
+                            "width": "100%"
+                          },
+                          "text": "Trompbank"
+                        },
+                        "type": "ia.input.button"
+                      },
+                      {
+                        "events": {
+                          "component": {
+                            "onActionPerformed": {
+                              "config": {
+                                "script": "\tsystem.perspective.openPopup(\u0027NewWindowPopup\u0027, view\u003d\u0027ControlRoom/Home/Popups/NewWindowPopup\u0027)"
+                              },
+                              "enabled": false,
+                              "scope": "G",
+                              "type": "script"
+                            }
+                          }
+                        },
+                        "meta": {
+                          "name": "ButtonAflegger"
+                        },
+                        "props": {
+                          "style": {
+                            "classes": "ATA/Components/Buttons/Sec ATA/Components/Labels/TextNormal",
+                            "color": "--text",
+                            "fontSize": "0.95vw",
+                            "height": "60px",
+                            "marginBottom": 5,
+                            "marginTop": 5,
+                            "textAlign": "center",
+                            "width": "100%"
+                          },
+                          "text": "Aflegger"
+                        },
+                        "type": "ia.input.button"
+                      },
+                      {
+                        "events": {
+                          "component": {
+                            "onActionPerformed": {
+                              "config": {
+                                "script": "\tsystem.perspective.openPopup(\u0027NewWindowPopup\u0027, view\u003d\u0027ControlRoom/Home/Popups/NewWindowPopup\u0027)"
+                              },
+                              "enabled": false,
+                              "scope": "G",
+                              "type": "script"
+                            }
+                          }
+                        },
+                        "meta": {
+                          "name": "ButtonKwaliteit"
+                        },
+                        "props": {
+                          "style": {
+                            "classes": "ATA/Components/Buttons/Sec ATA/Components/Labels/TextNormal",
+                            "color": "--text",
+                            "fontSize": "0.95vw",
+                            "height": "60px",
+                            "marginBottom": 5,
+                            "marginTop": 5,
+                            "textAlign": "center",
+                            "width": "100%"
+                          },
+                          "text": "Kwaliteit"
+                        },
+                        "type": "ia.input.button"
+                      }
+                    ],
+                    "meta": {
+                      "name": "Navigation"
+                    },
+                    "position": {
+                      "basis": "200px",
+                      "grow": 1
+                    },
+                    "props": {
+                      "direction": "column",
+                      "justify": "space-between"
+                    },
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "meta": {
+                  "name": "Parts"
+                },
+                "position": {
+                  "basis": "9%",
+                  "shrink": 0
+                },
+                "props": {
+                  "direction": "column",
+                  "style": {
+                    "marginRight": 5,
+                    "paddingBottom": 13
+                  }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "Line25"
+                    },
+                    "position": {
+                      "shrink": 0
+                    },
+                    "props": {
+                      "params": {
+                        "Line": "E25"
+                      },
+                      "path": "ControlRoom/Home/Templates/OverviewLine"
+                    },
+                    "type": "ia.display.view"
+                  },
+                  {
+                    "meta": {
+                      "name": "Line24"
+                    },
+                    "position": {
+                      "shrink": 0
+                    },
+                    "props": {
+                      "params": {
+                        "Line": "E24"
+                      },
+                      "path": "ControlRoom/Home/Templates/OverviewLine"
+                    },
+                    "type": "ia.display.view"
+                  },
+                  {
+                    "meta": {
+                      "name": "Line23"
+                    },
+                    "position": {
+                      "shrink": 0
+                    },
+                    "props": {
+                      "params": {
+                        "Line": "E23"
+                      },
+                      "path": "ControlRoom/Home/Templates/OverviewLine"
+                    },
+                    "type": "ia.display.view"
+                  },
+                  {
+                    "meta": {
+                      "name": "Line18"
+                    },
+                    "position": {
+                      "shrink": 0
+                    },
+                    "props": {
+                      "params": {
+                        "Line": "E18"
+                      },
+                      "path": "ControlRoom/Home/Templates/OverviewLine"
+                    },
+                    "type": "ia.display.view"
+                  },
+                  {
+                    "meta": {
+                      "name": "Line21"
+                    },
+                    "position": {
+                      "shrink": 0
+                    },
+                    "props": {
+                      "params": {
+                        "Line": "E21"
+                      },
+                      "path": "ControlRoom/Home/Templates/OverviewLine"
+                    },
+                    "type": "ia.display.view"
+                  },
+                  {
+                    "meta": {
+                      "name": "Line20"
+                    },
+                    "position": {
+                      "shrink": 0
+                    },
+                    "props": {
+                      "params": {
+                        "Line": "E20"
+                      },
+                      "path": "ControlRoom/Home/Templates/OverviewLine"
+                    },
+                    "type": "ia.display.view"
+                  },
+                  {
+                    "meta": {
+                      "name": "Line19"
+                    },
+                    "position": {
+                      "shrink": 0
+                    },
+                    "props": {
+                      "params": {
+                        "Line": "E19"
+                      },
+                      "path": "ControlRoom/Home/Templates/OverviewLine"
+                    },
+                    "type": "ia.display.view"
+                  },
+                  {
+                    "meta": {
+                      "name": "Line26"
+                    },
+                    "position": {
+                      "shrink": 0
+                    },
+                    "props": {
+                      "params": {
+                        "Line": "E26"
+                      },
+                      "path": "ControlRoom/Home/Templates/OverviewLine"
+                    },
+                    "type": "ia.display.view"
+                  },
+                  {
+                    "meta": {
+                      "name": "Line14"
+                    },
+                    "position": {
+                      "shrink": 0
+                    },
+                    "props": {
+                      "params": {
+                        "Line": "E14"
+                      },
+                      "path": "ControlRoom/Home/Templates/OverviewLine"
+                    },
+                    "type": "ia.display.view"
+                  },
+                  {
+                    "meta": {
+                      "name": "Line28"
+                    },
+                    "position": {
+                      "shrink": 0
+                    },
+                    "props": {
+                      "params": {
+                        "Line": "E28"
+                      },
+                      "path": "ControlRoom/Home/Templates/OverviewLine"
+                    },
+                    "type": "ia.display.view"
+                  },
+                  {
+                    "meta": {
+                      "name": "Line13"
+                    },
+                    "position": {
+                      "shrink": 0
+                    },
+                    "props": {
+                      "params": {
+                        "Line": "E13"
+                      },
+                      "path": "ControlRoom/Home/Templates/OverviewLine"
+                    },
+                    "type": "ia.display.view"
+                  },
+                  {
+                    "meta": {
+                      "name": "Line02"
+                    },
+                    "position": {
+                      "shrink": 0
+                    },
+                    "props": {
+                      "params": {
+                        "Line": "E02"
+                      },
+                      "path": "ControlRoom/Home/Templates/OverviewLine"
+                    },
+                    "type": "ia.display.view"
+                  },
+                  {
+                    "meta": {
+                      "name": "Line11"
+                    },
+                    "position": {
+                      "shrink": 0
+                    },
+                    "props": {
+                      "params": {
+                        "Line": "E11"
+                      },
+                      "path": "ControlRoom/Home/Templates/OverviewLine"
+                    },
+                    "type": "ia.display.view"
+                  },
+                  {
+                    "meta": {
+                      "name": "Line09"
+                    },
+                    "position": {
+                      "shrink": 0
+                    },
+                    "props": {
+                      "params": {
+                        "Line": "E09"
+                      },
+                      "path": "ControlRoom/Home/Templates/OverviewLine"
+                    },
+                    "type": "ia.display.view"
+                  },
+                  {
+                    "meta": {
+                      "name": "Line16"
+                    },
+                    "position": {
+                      "shrink": 0
+                    },
+                    "props": {
+                      "params": {
+                        "Line": "E16"
+                      },
+                      "path": "ControlRoom/Home/Templates/OverviewLine"
+                    },
+                    "type": "ia.display.view"
+                  },
+                  {
+                    "meta": {
+                      "name": "Line08"
+                    },
+                    "position": {
+                      "shrink": 0
+                    },
+                    "props": {
+                      "params": {
+                        "Line": "E08"
+                      },
+                      "path": "ControlRoom/Home/Templates/OverviewLine"
+                    },
+                    "type": "ia.display.view"
+                  },
+                  {
+                    "meta": {
+                      "name": "Line07"
+                    },
+                    "position": {
+                      "shrink": 0
+                    },
+                    "props": {
+                      "params": {
+                        "Line": "E07"
+                      },
+                      "path": "ControlRoom/Home/Templates/OverviewLine"
+                    },
+                    "type": "ia.display.view"
+                  },
+                  {
+                    "meta": {
+                      "name": "Line17"
+                    },
+                    "position": {
+                      "shrink": 0
+                    },
+                    "props": {
+                      "params": {
+                        "Line": "E17"
+                      },
+                      "path": "ControlRoom/Home/Templates/OverviewLine"
+                    },
+                    "type": "ia.display.view"
+                  },
+                  {
+                    "meta": {
+                      "name": "Line01"
+                    },
+                    "position": {
+                      "shrink": 0
+                    },
+                    "props": {
+                      "params": {
+                        "Line": "E01"
+                      },
+                      "path": "ControlRoom/Home/Templates/OverviewLine"
+                    },
+                    "type": "ia.display.view"
+                  },
+                  {
+                    "meta": {
+                      "name": "Line03"
+                    },
+                    "position": {
+                      "shrink": 0
+                    },
+                    "props": {
+                      "params": {
+                        "Line": "E03"
+                      },
+                      "path": "ControlRoom/Home/Templates/OverviewLine"
+                    },
+                    "type": "ia.display.view"
+                  },
+                  {
+                    "meta": {
+                      "name": "Line12"
+                    },
+                    "position": {
+                      "shrink": 0
+                    },
+                    "props": {
+                      "params": {
+                        "Line": "E12"
+                      },
+                      "path": "ControlRoom/Home/Templates/OverviewLine"
+                    },
+                    "type": "ia.display.view"
+                  },
+                  {
+                    "meta": {
+                      "name": "Line04"
+                    },
+                    "position": {
+                      "shrink": 0
+                    },
+                    "props": {
+                      "params": {
+                        "Line": "E04"
+                      },
+                      "path": "ControlRoom/Home/Templates/OverviewLine"
+                    },
+                    "type": "ia.display.view"
+                  }
+                ],
+                "meta": {
+                  "name": "Lines"
+                },
+                "position": {
+                  "display": false,
+                  "grow": 1
+                },
+                "props": {
+                  "justify": "space-between",
+                  "style": {
+                    "marginLeft": 5,
+                    "marginRight": 5,
+                    "overflowX": "scroll",
+                    "overflowY": "hidden"
+                  }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "meta": {
+                  "name": "FlexRepeater"
+                },
+                "position": {
+                  "basis": "320px",
+                  "grow": 1
+                },
+                "props": {
+                  "elementPosition": {
+                    "basis": "60px",
+                    "shrink": 0
+                  },
+                  "elementStyle": {
+                    "marginLeft": 3,
+                    "marginRight": 3,
+                    "paddingLeft": 5,
+                    "paddingRight": 5
+                  },
+                  "instances": [
+                    {
+                      "Line": "E25"
+                    },
+                    {
+                      "Line": "E24"
+                    },
+                    {
+                      "Line": "E23"
+                    },
+                    {
+                      "Line": "E18"
+                    },
+                    {
+                      "Line": "E21"
+                    },
+                    {
+                      "Line": "E20"
+                    },
+                    {
+                      "Line": "E19"
+                    },
+                    {
+                      "Line": "E26"
+                    },
+                    {
+                      "Line": "E14"
+                    },
+                    {
+                      "Line": "E28"
+                    },
+                    {
+                      "Line": "E13"
+                    },
+                    {
+                      "Line": "E02"
+                    },
+                    {
+                      "Line": "E11"
+                    },
+                    {
+                      "Line": "E09"
+                    },
+                    {
+                      "Line": "E16"
+                    },
+                    {
+                      "Line": "E08"
+                    },
+                    {
+                      "Line": "E07"
+                    },
+                    {
+                      "Line": "E17"
+                    },
+                    {
+                      "Line": "E01"
+                    },
+                    {
+                      "Line": "E03"
+                    },
+                    {
+                      "Line": "E12"
+                    },
+                    {
+                      "Line": "E04"
+                    }
+                  ],
+                  "path": "ControlRoom/Home/Templates/OverviewLine",
+                  "style": {
+                    "overflow": "visible"
+                  },
+                  "useDefaultViewHeight": false,
+                  "useDefaultViewWidth": false
+                },
+                "type": "ia.display.flex-repeater"
+              }
+            ],
+            "custom": {
+              "key": "value"
+            },
+            "meta": {
+              "name": "Table"
+            },
+            "position": {
+              "basis": "35px",
+              "grow": 1,
+              "shrink": 0
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "Content"
+        },
+        "position": {
+          "basis": "200px",
+          "grow": 1
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "classes": "ATA/Background/Root",
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "meta": {
+          "name": "AlarmBar"
+        },
+        "position": {
+          "basis": "30px",
+          "shrink": 0
+        },
+        "props": {
+          "params": {
+            "filter": "",
+            "popupMarginRight": 1
+          },
+          "path": "Library/SharedDocked/Alarms/AlarmBarSmall"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "custom": {
+          "animation": {
+            "name": "",
+            "value": {}
+          },
+          "location": "bottom-left",
+          "messageType": "Library/Toast/Message/Basic"
+        },
+        "meta": {
+          "name": "Toast Handler"
+        },
+        "position": {
+          "grow": 1
+        },
+        "propConfig": {
+          "custom.animation.name": {
+            "onChange": {
+              "enabled": null,
+              "script": "\tself.setAnimation(currentValue.value)"
+            }
+          },
+          "custom.location": {
+            "onChange": {
+              "enabled": null,
+              "script": "\tself.setLocation(currentValue.value)"
+            }
+          },
+          "custom.messageType": {
+            "onChange": {
+              "enabled": null,
+              "script": "\tself.setViewPath(currentValue.value)"
+            }
+          },
+          "custom.screenID": {
+            "binding": {
+              "config": {
+                "expression": "now(0)"
+              },
+              "transforms": [
+                {
+                  "code": "\timport uuid \n\treturn str(uuid.uuid1())\n\t",
+                  "type": "script"
+                }
+              ],
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "alignItems": "center",
+          "direction": "column",
+          "elementPosition": {
+            "basis": "auto",
+            "grow": 0,
+            "shrink": 0
+          },
+          "elementStyle": {
+            "marginTop": "5px"
+          },
+          "justify": "center",
+          "loading": {
+            "order": "with-parent"
+          },
+          "path": "Library/Toast/Message/Basic",
+          "style": {
+            "bottom": 5,
+            "left": 5,
+            "overflow": "visible",
+            "position": "absolute",
+            "zIndex": -1
+          },
+          "useDefaultViewHeight": false,
+          "useDefaultViewWidth": false
+        },
+        "scripts": {
+          "customMethods": [
+            {
+              "name": "setLocation",
+              "params": [
+                "location"
+              ],
+              "script": "\t# Set props.style with the css properties from exchange.toast.util Locations class\n\tself.props.style \u003d ata.toast.handler.configure.getLocation(location)"
+            },
+            {
+              "name": "setViewPath",
+              "params": [
+                "path"
+              ],
+              "script": "\t# Set props.path with the viewPath for these toast messages\n\tself.props.path \u003d path"
+            },
+            {
+              "name": "configureToast",
+              "params": [
+                "toast"
+              ],
+              "script": "\t# Configures the incoming toast message\n\tif bool(dict(self.custom.animation.value)):\n\t\ttoast.update({\u0027instanceStyle\u0027: self.custom.animation.value[\u0027enter\u0027]})\n\treturn toast"
+            },
+            {
+              "name": "getToastIndex",
+              "params": [
+                "toastID"
+              ],
+              "script": "\t# Get the index of the toast from the instances if exists else None\n\t_index \u003d None\n\tfor index, toast in enumerate(self.props.instances):\n\t\tif toast[\u0027toastID\u0027] \u003d\u003d toastID:\n\t\t\t_index \u003d index\n\t\t\tbreak;\n\treturn _index"
+            },
+            {
+              "name": "setAnimation",
+              "params": [
+                "name"
+              ],
+              "script": "\t# Set instance[.].instanceStyle with the css animation\n\tself.custom.animation.value \u003d ata.toast.handler.configure.getAnimation(name)"
+            },
+            {
+              "name": "clearToasts",
+              "params": [],
+              "script": "\t# Clear out all toasts in the handler\n\tself.props.instances \u003d []"
+            },
+            {
+              "name": "removeToast",
+              "params": [
+                "index"
+              ],
+              "script": "\t# Removes the specific toast from the instances by index\n\ttry:\n\t\tdel self.props.instances[index]\n\texcept:\n\t\tsystem.perspective.print(\u0027Toast Handler could not clear toast, index ({}) does not exist.\u0027.format(index))"
+            }
+          ],
+          "extensionFunctions": null,
+          "messageHandlers": [
+            {
+              "messageType": "toast-add",
+              "pageScope": true,
+              "script": "\tscreenID \u003d payload.get(\u0027screenID\u0027,None)\n\tif screenID \u003d\u003d None or screenID \u003d\u003d self.custom.screenID:\n\t\t# Add payload (Message view params) to the flex repeater instance and set props.style zIndex\n\t\tself.props.style.zIndex \u003d 1\n\t\ttoast \u003d self.configureToast(payload)\n\t\ttry:\n\t\t\terrorMessage \u003d payload[\"content\"].split(\"\u003cbr\u003e\")\n\t\t\tself.setViewPath(\"Library/Toast/Message/Basic\")\n\t\t\tif len(errorMessage) \u003c\u003d 1 and len(errorMessage[0]) \u003c\u003d 75:\n\t\t\t    toast[\"message\"] \u003d payload[\"content\"]\n\t\t\t    toast[\"content\"] \u003d None\n\t\t\telse:\n\t\t\t    self.setViewPath(\"Library/Toast/Message/Expanding\")\n\t\texcept:\n\t\t\tpass\n\t\tself.props.instances.append(toast)",
+              "sessionScope": true,
+              "viewScope": false
+            },
+            {
+              "messageType": "toast-close",
+              "pageScope": true,
+              "script": "\tfrom ata.toast.handler import toasts\n\t# Check for the incoming toast id in the props.instances and get the index of the instance\n\tindex \u003d self.getToastIndex(payload.get(\u0027toastID\u0027))\n\t\n\t# If index exists either apply exit style or remove from instances\n\tif index !\u003d None:\n\t\tif bool(dict(self.custom.animation.value)):\n\t\t\ttoastID \u003d self.props.instances[index][\u0027toastID\u0027]\n\t\t\twaitTime \u003d int(self.custom.animation.value[\u0027exit\u0027][\u0027animation-duration\u0027].replace(\u0027s\u0027, \u0027\u0027))\n\t\t\ttoasts.toastClearOut(toastID, waitTime)\n\t\t\tself.props.instances[index][\u0027instanceStyle\u0027] \u003d self.custom.animation.value[\u0027exit\u0027]\n\t\telse:\n\t\t\tself.removeToast(index)\n\t\t\n\t# Reset the props.style zIndex to -1 (hidden behind everything else)\n\tif not bool(self.props.instances): \n\t\tself.props.style.zIndex \u003d -1",
+              "sessionScope": true,
+              "viewScope": false
+            },
+            {
+              "messageType": "toast-clear",
+              "pageScope": true,
+              "script": "\t# Check for the incoming toast id in the props.instances and get the index of the instance\n\tindex \u003d self.getToastIndex(payload.get(\u0027toastID\u0027))\n\t\n\t# Remove toast message from instances if exists\n\tif index !\u003d None:\n\t\tself.removeToast(index)",
+              "sessionScope": true,
+              "viewScope": false
+            }
+          ]
+        },
+        "type": "ia.display.flex-repeater"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

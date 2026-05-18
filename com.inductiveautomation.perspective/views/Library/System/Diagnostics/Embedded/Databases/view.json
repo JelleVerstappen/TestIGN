@@ -1,0 +1,56 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "width": 265
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "FlexRepeater"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.instances": {
+            "binding": {
+              "config": {
+                "expression": "now(0)"
+              },
+              "transforms": [
+                {
+                  "code": "\tinstances \u003d []\n\tres \u003d system.tag.browse(path\u003d\"[System]Gateway/Database\")\n\tfor result in res.getResults():\n\t\tname \u003d result[\"name\"]\n\t\tif name not in [\u0027Logitime\u0027]:\n\t\t\tinstances.append({\"database\":name})\n\treturn instances",
+                  "type": "script"
+                }
+              ],
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "direction": "column",
+          "elementPosition": {
+            "basis": "auto",
+            "grow": 0,
+            "shrink": 0
+          },
+          "path": "Library/System/Diagnostics/Embedded/Database",
+          "useDefaultViewHeight": false,
+          "useDefaultViewWidth": false
+        },
+        "type": "ia.display.flex-repeater"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

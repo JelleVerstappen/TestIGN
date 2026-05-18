@@ -1,0 +1,462 @@
+{
+  "custom": {
+    "menuTreeActive": "Main"
+  },
+  "params": {},
+  "propConfig": {
+    "custom.menuTreeActive": {
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "width": 275
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Main"
+        },
+        "propConfig": {
+          "position.display": {
+            "persistent": true
+          },
+          "props.style.width": {
+            "binding": {
+              "config": {
+                "expression": "if({view.custom.menuTreeActive} \u003d \"Main\", \"100%\", \"0%\")"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "backPath": "",
+            "menuButtons": [
+              {
+                "alarmPath": "",
+                "menuPath": "",
+                "navIcon": "material/home",
+                "navPath": "/",
+                "text": "Startscherm"
+              },
+              {
+                "alarmPath": "",
+                "menuPath": "",
+                "navIcon": "material/feedback",
+                "navPath": "/ControlRoom/ActivityFeed/ActivityFeed",
+                "text": "Activiteitenoverzicht"
+              },
+              {
+                "alarmPath": "",
+                "menuPath": "Settings",
+                "navIcon": "material/settings",
+                "navPath": "",
+                "text": "Instellingen"
+              },
+              {
+                "alarmPath": "[NLSTWDYK]Dyka/STW/EXT/E07/Alarms/Count/IconPath",
+                "menuPath": "E07",
+                "navIcon": "dyka/Line",
+                "navPath": "",
+                "text": "Lijn E07"
+              },
+              {
+                "alarmPath": "[NLSTWDYK]Dyka/STW/EXT/E24/Alarms/Count/IconPath",
+                "menuPath": "E24",
+                "navIcon": "dyka/Line",
+                "navPath": "",
+                "text": "Lijn E24"
+              }
+            ]
+          },
+          "path": "Library/SharedDocked/Templates/MenuTreePart",
+          "style": {
+            "transition": "width 0.3s"
+          }
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "E07"
+        },
+        "propConfig": {
+          "position.display": {
+            "persistent": true
+          },
+          "props.style.width": {
+            "binding": {
+              "config": {
+                "expression": "if({view.custom.menuTreeActive} \u003d \"E07\", \"100%\", \"0%\")"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "backPath": "Main",
+            "menuButtons": [
+              {
+                "alarmPath": "",
+                "enabled": true,
+                "menuPath": "",
+                "navIcon": "material/home",
+                "navPath": "/",
+                "text": "Startscherm"
+              },
+              {
+                "alarmPath": "",
+                "enabled": true,
+                "menuPath": "",
+                "navIcon": "material/feedback",
+                "navPath": "/ControlRoom/ActivityFeed/ActivityFeed",
+                "text": "Activiteitenoverzicht"
+              },
+              {
+                "alarmPath": "",
+                "enabled": true,
+                "menuPath": "Settings",
+                "navIcon": "material/settings",
+                "navPath": "",
+                "text": "Instellingen"
+              },
+              {
+                "alarmPath": "[NLSTWDYK]Dyka/STW/EXT/E07/Assets/SIL/Alarms/Count/IconPath",
+                "enabled": true,
+                "menuPath": "",
+                "navIcon": "dyka/Silo",
+                "navPath": "/ControlRoom/Assets/Silo/Overview/Silo/E07",
+                "text": "Silo"
+              },
+              {
+                "alarmPath": "[NLSTWDYK]Dyka/STW/EXT/E07/Assets/RAW/Alarms/Count/IconPath",
+                "enabled": true,
+                "menuPath": "",
+                "navIcon": "dyka/RawMaterialTranssport",
+                "navPath": "/ControlRoom/Assets/RawMaterialTransport/Overview/RawMaterialTransport/E07",
+                "text": "Grondstoftransport"
+              },
+              {
+                "alarmPath": "[NLSTWDYK]Dyka/STW/EXT/E07/Assets/MEXT/Alarms/Count/IconPath",
+                "enabled": true,
+                "menuPath": "",
+                "navIcon": "dyka/Extruder",
+                "navPath": "/ControlRoom/Assets/Extruder/Overview/Extruder/E07",
+                "text": "Extruder"
+              },
+              {
+                "alarmPath": "[NLSTWDYK]Dyka/STW/EXT/E07/Assets/VAC/Alarms/Count/IconPath",
+                "enabled": true,
+                "menuPath": "",
+                "navIcon": "dyka/VacuumAndCooling",
+                "navPath": "/ControlRoom/Assets/VacuumAndCooling/Overview/VacuumAndCooling/E07",
+                "text": "Vacuum en koeling"
+              },
+              {
+                "alarmPath": "",
+                "enabled": false,
+                "menuPath": "",
+                "navIcon": "dyka/TubeThicknessScanner",
+                "navPath": "",
+                "text": "Wanddiktescanner"
+              },
+              {
+                "alarmPath": "",
+                "enabled": true,
+                "menuPath": "",
+                "navIcon": "dyka/Printer",
+                "navPath": "/ControlRoom/Assets/Printer/Overview/Printer/E07",
+                "text": "Printer"
+              },
+              {
+                "alarmPath": "[NLSTWDYK]Dyka/STW/EXT/E07/Assets/HAUL/Alarms/Count/IconPath",
+                "enabled": true,
+                "menuPath": "",
+                "navIcon": "dyka/PullBench",
+                "navPath": "/ControlRoom/Assets/HaulOff/Overview/HaulOff/E07",
+                "text": "Trekbank"
+              },
+              {
+                "alarmPath": "[NLSTWDYK]Dyka/STW/EXT/E07/Assets/CUT/Alarms/Count/IconPath",
+                "enabled": true,
+                "menuPath": "",
+                "navIcon": "dyka/Saw",
+                "navPath": "/ControlRoom/Assets/CuttingUnit/CuttingUnit/E07",
+                "text": "Afkortunit"
+              },
+              {
+                "alarmPath": "",
+                "enabled": false,
+                "menuPath": "",
+                "navIcon": "dyka/FormingMachine",
+                "navPath": "",
+                "text": "Trompbank"
+              },
+              {
+                "alarmPath": "",
+                "enabled": false,
+                "menuPath": "",
+                "navIcon": "dyka/Tubes",
+                "navPath": "",
+                "text": "Aflegger"
+              },
+              {
+                "alarmPath": "",
+                "enabled": true,
+                "menuPath": "",
+                "navIcon": "dyka/Quality",
+                "navPath": "/ControlRoom/Quality/Quality/E07",
+                "text": "Kwaliteit"
+              },
+              {
+                "alarmPath": "",
+                "enabled": true,
+                "menuPath": "",
+                "navIcon": "bootstrap-icons/ui-checks",
+                "navPath": "/ControlRoom/StartupProcedures/Procedure/1",
+                "text": "Opstart procedures"
+              }
+            ]
+          },
+          "path": "Library/SharedDocked/Templates/MenuTreePart",
+          "style": {
+            "transition": "width 0.3s"
+          }
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "E24"
+        },
+        "propConfig": {
+          "position.display": {
+            "persistent": true
+          },
+          "props.style.width": {
+            "binding": {
+              "config": {
+                "expression": "if({view.custom.menuTreeActive} \u003d \"E24\", \"100%\", \"0%\")"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "backPath": "Main",
+            "menuButtons": [
+              {
+                "alarmPath": "",
+                "enabled": true,
+                "menuPath": "",
+                "navIcon": "material/home",
+                "navPath": "/",
+                "text": "Startscherm"
+              },
+              {
+                "alarmPath": "",
+                "enabled": true,
+                "menuPath": "",
+                "navIcon": "material/feedback",
+                "navPath": "/ControlRoom/ActivityFeed/ActivityFeed",
+                "text": "Activiteitenoverzicht"
+              },
+              {
+                "alarmPath": "",
+                "enabled": true,
+                "menuPath": "Settings",
+                "navIcon": "material/settings",
+                "navPath": "",
+                "text": "Instellingen"
+              },
+              {
+                "alarmPath": "[NLSTWDYK]Dyka/STW/EXT/E24/Assets/SIL/Alarms/Count/IconPath",
+                "enabled": true,
+                "menuPath": "",
+                "navIcon": "dyka/Silo",
+                "navPath": "/ControlRoom/Assets/Silo/Overview/Silo/E24",
+                "text": "Silo"
+              },
+              {
+                "alarmPath": "[NLSTWDYK]Dyka/STW/EXT/E24/Assets/RAW/Alarms/Count/IconPath",
+                "enabled": true,
+                "menuPath": "",
+                "navIcon": "dyka/RawMaterialTranssport",
+                "navPath": "/ControlRoom/Assets/RawMaterialTransport/Overview/RawMaterialTransport/E24",
+                "text": "Grondstoftransport"
+              },
+              {
+                "alarmPath": "[NLSTWDYK]Dyka/STW/EXT/E24/Assets/MEXT/Alarms/Count/IconPath",
+                "enabled": true,
+                "menuPath": "",
+                "navIcon": "dyka/Extruder",
+                "navPath": "/ControlRoom/Assets/Extruder/Overview/Extruder/E24",
+                "text": "Extruder"
+              },
+              {
+                "alarmPath": "[NLSTWDYK]Dyka/STW/EXT/E24/Assets/VAC/Alarms/Count/IconPath",
+                "enabled": true,
+                "menuPath": "",
+                "navIcon": "dyka/VacuumAndCooling",
+                "navPath": "/ControlRoom/Assets/VacuumAndCooling/Overview/VacuumAndCooling/E24",
+                "text": "Vacuum en koeling"
+              },
+              {
+                "alarmPath": "",
+                "enabled": false,
+                "menuPath": "",
+                "navIcon": "dyka/TubeThicknessScanner",
+                "navPath": "",
+                "text": "Wanddiktescanner"
+              },
+              {
+                "alarmPath": "",
+                "enabled": true,
+                "menuPath": "",
+                "navIcon": "dyka/Printer",
+                "navPath": "/ControlRoom/Assets/Printer/Overview/Printer/E24",
+                "text": "Printer"
+              },
+              {
+                "alarmPath": "[NLSTWDYK]Dyka/STW/EXT/E24/Assets/HAUL/Alarms/Count/IconPath",
+                "enabled": true,
+                "menuPath": "",
+                "navIcon": "dyka/PullBench",
+                "navPath": "/ControlRoom/Assets/HaulOff/Overview/HaulOff/E24",
+                "text": "Trekbank"
+              },
+              {
+                "alarmPath": "[NLSTWDYK]Dyka/STW/EXT/E24/Assets/CUT/Alarms/Count/IconPath",
+                "enabled": true,
+                "menuPath": "",
+                "navIcon": "dyka/Saw",
+                "navPath": "/ControlRoom/Assets/CuttingUnit/CuttingUnit/E24",
+                "text": "Afkortunit"
+              },
+              {
+                "alarmPath": "",
+                "enabled": false,
+                "menuPath": "",
+                "navIcon": "dyka/FormingMachine",
+                "navPath": "",
+                "text": "Trompbank"
+              },
+              {
+                "alarmPath": "",
+                "enabled": false,
+                "menuPath": "",
+                "navIcon": "dyka/Tubes",
+                "navPath": "",
+                "text": "Aflegger"
+              },
+              {
+                "alarmPath": "",
+                "enabled": true,
+                "menuPath": "",
+                "navIcon": "dyka/Quality",
+                "navPath": "/ControlRoom/Quality/Quality/E24",
+                "text": "Kwaliteit"
+              },
+              {
+                "alarmPath": "",
+                "enabled": true,
+                "menuPath": "",
+                "navIcon": "bootstrap-icons/ui-checks",
+                "navPath": "/ControlRoom/StartupProcedures/Procedure/1",
+                "text": "Opstart procedures"
+              }
+            ]
+          },
+          "path": "Library/SharedDocked/Templates/MenuTreePart",
+          "style": {
+            "transition": "width 0.3s"
+          }
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Settings"
+        },
+        "propConfig": {
+          "position.display": {
+            "persistent": true
+          },
+          "props.style.width": {
+            "binding": {
+              "config": {
+                "expression": "if({view.custom.menuTreeActive} \u003d \"Settings\", \"100%\", \"0%\")"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "backPath": "Main",
+            "menuButtons": [
+              {
+                "alarmPath": "",
+                "menuPath": "",
+                "navIcon": "bootstrap-icons/box-seam",
+                "navPath": "/ControlRoom/Articles/Management/ArticleManagement",
+                "text": "Artikelen"
+              },
+              {
+                "alarmPath": "",
+                "menuPath": "",
+                "navIcon": "bootstrap-icons/ui-checks",
+                "navPath": "/ControlRoom/StartupProcedures/Management",
+                "text": "Opstart procedures"
+              },
+              {
+                "alarmPath": "",
+                "menuPath": "",
+                "navIcon": "material/warning",
+                "navPath": "/ControlRoom/Alarms/AlarmManagement",
+                "text": "Alarmen"
+              }
+            ]
+          },
+          "path": "Library/SharedDocked/Templates/MenuTreePart",
+          "style": {
+            "transition": "width 0.3s"
+          }
+        },
+        "type": "ia.display.view"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "style": {
+        "backgroundColor": "--backgroundSecondary",
+        "classes": "ATA/Background/RootDock",
+        "overflow": "visible",
+        "paddingBottom": 0,
+        "paddingTop": 2
+      }
+    },
+    "scripts": {
+      "customMethods": [],
+      "extensionFunctions": null,
+      "messageHandlers": [
+        {
+          "messageType": "alterMenu",
+          "pageScope": true,
+          "script": "##### Set the menu tree to the desired level\n#\t# Declare variables from payload\n\tmenu \u003d payload[\"menu\"]\n\t\n#\t# Set menu tree level\n\tif menu is not None:\n\t\tself.view.custom.menuTreeActive \u003d menu",
+          "sessionScope": false,
+          "viewScope": true
+        }
+      ]
+    },
+    "type": "ia.container.flex"
+  }
+}

@@ -1,0 +1,980 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "height": 702,
+      "width": 1567
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Button"
+        },
+        "position": {
+          "height": 48,
+          "width": 141,
+          "x": 20,
+          "y": 82
+        },
+        "props": {
+          "image": {
+            "style": {
+              "borderColor": "#6988FF",
+              "borderStyle": "solid",
+              "borderWidth": 3
+            }
+          },
+          "primary": false,
+          "style": {
+            "borderColor": "#447bb3",
+            "borderStyle": "solid",
+            "borderWidth": 1
+          },
+          "text": "Silo",
+          "textStyle": {
+            "fontSize": 13
+          }
+        },
+        "type": "ia.input.button"
+      },
+      {
+        "meta": {
+          "name": "EmbeddedView"
+        },
+        "position": {
+          "height": 639,
+          "width": 60,
+          "x": 177,
+          "y": 46
+        },
+        "props": {
+          "params": {
+            "eight": 1,
+            "eleven": 1,
+            "four": 1,
+            "one": 1,
+            "seven": 1,
+            "six": 1,
+            "ten": 1,
+            "three": 1,
+            "title": "E25",
+            "two": 1
+          },
+          "path": "dashboardColumn"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "EmbeddedView_0"
+        },
+        "position": {
+          "height": 651,
+          "width": 60,
+          "x": 237,
+          "y": 45.99
+        },
+        "props": {
+          "params": {
+            "eight": 1,
+            "eleven": 1,
+            "four": 1,
+            "nine": 2,
+            "one": 1,
+            "seven": 1,
+            "six": 1,
+            "ten": 1,
+            "three": 1,
+            "title": "E24",
+            "two": 1
+          },
+          "path": "dashboardColumn"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "EmbeddedView_1"
+        },
+        "position": {
+          "height": 638,
+          "width": 60,
+          "x": 297,
+          "y": 45.98
+        },
+        "props": {
+          "params": {
+            "title": "E23"
+          },
+          "path": "dashboardColumn"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "EmbeddedView_2"
+        },
+        "position": {
+          "height": 636,
+          "width": 60,
+          "x": 357,
+          "y": 45.98
+        },
+        "props": {
+          "params": {
+            "title": "E18"
+          },
+          "path": "dashboardColumn"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "EmbeddedView_3"
+        },
+        "position": {
+          "height": 640,
+          "width": 60,
+          "x": 417,
+          "y": 45.98
+        },
+        "props": {
+          "params": {
+            "title": "E21"
+          },
+          "path": "dashboardColumn"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "EmbeddedView_4"
+        },
+        "position": {
+          "height": 640,
+          "width": 60,
+          "x": 477,
+          "y": 45.98
+        },
+        "props": {
+          "params": {
+            "eight": 1,
+            "eleven": 2,
+            "five": 1,
+            "four": 1,
+            "one": 1,
+            "seven": 1,
+            "six": 1,
+            "ten": 1,
+            "three": 1,
+            "title": "E20",
+            "two": 1
+          },
+          "path": "dashboardColumn"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "EmbeddedView_5"
+        },
+        "position": {
+          "height": 642,
+          "width": 60,
+          "x": 536,
+          "y": 46
+        },
+        "props": {
+          "params": {
+            "title": "E19"
+          },
+          "path": "dashboardColumn"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "EmbeddedView_6"
+        },
+        "position": {
+          "height": 642,
+          "width": 60,
+          "x": 596,
+          "y": 45.99
+        },
+        "props": {
+          "params": {
+            "title": "E26"
+          },
+          "path": "dashboardColumn"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "EmbeddedView_7"
+        },
+        "position": {
+          "height": 643,
+          "width": 60,
+          "x": 656,
+          "y": 45.98
+        },
+        "props": {
+          "params": {
+            "eight": 1,
+            "eleven": 3,
+            "four": 1,
+            "nine": 1,
+            "one": 1,
+            "seven": 1,
+            "six": 1,
+            "ten": 1,
+            "three": 3,
+            "title": "E14",
+            "two": 1
+          },
+          "path": "dashboardColumn"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "EmbeddedView_8"
+        },
+        "position": {
+          "height": 643,
+          "width": 60,
+          "x": 716,
+          "y": 45.98
+        },
+        "props": {
+          "params": {
+            "title": "E28"
+          },
+          "path": "dashboardColumn"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "EmbeddedView_9"
+        },
+        "position": {
+          "height": 639,
+          "width": 60,
+          "x": 776,
+          "y": 45.98
+        },
+        "props": {
+          "params": {
+            "title": "E13"
+          },
+          "path": "dashboardColumn"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "EmbeddedView_10"
+        },
+        "position": {
+          "height": 643,
+          "width": 60,
+          "x": 836,
+          "y": 45.98
+        },
+        "props": {
+          "params": {
+            "title": "E02"
+          },
+          "path": "dashboardColumn"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "EmbeddedView_11"
+        },
+        "position": {
+          "height": 643,
+          "width": 60,
+          "x": 1435,
+          "y": 45.98
+        },
+        "props": {
+          "params": {
+            "title": "E12"
+          },
+          "path": "dashboardColumn"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "EmbeddedView_12"
+        },
+        "position": {
+          "height": 643,
+          "width": 60,
+          "x": 1375,
+          "y": 45.98
+        },
+        "props": {
+          "params": {
+            "eleven": 1,
+            "one": 1,
+            "three": 1,
+            "title": "E03",
+            "two": 1
+          },
+          "path": "dashboardColumn"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "EmbeddedView_13"
+        },
+        "position": {
+          "height": 643,
+          "width": 60,
+          "x": 1315,
+          "y": 45.98
+        },
+        "props": {
+          "params": {
+            "title": "E01"
+          },
+          "path": "dashboardColumn"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "EmbeddedView_14"
+        },
+        "position": {
+          "height": 643,
+          "width": 60,
+          "x": 1255,
+          "y": 45.98
+        },
+        "props": {
+          "params": {
+            "title": "E17"
+          },
+          "path": "dashboardColumn"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "EmbeddedView_15"
+        },
+        "position": {
+          "height": 643,
+          "width": 60,
+          "x": 1195,
+          "y": 45.99
+        },
+        "props": {
+          "params": {
+            "eight": 1,
+            "eleven": 1,
+            "four": 1,
+            "one": 1,
+            "seven": 1,
+            "six": 1,
+            "ten": 1,
+            "three": 3,
+            "title": "E07",
+            "two": 1
+          },
+          "path": "dashboardColumn"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "EmbeddedView_16"
+        },
+        "position": {
+          "height": 643,
+          "width": 60,
+          "x": 1135,
+          "y": 46
+        },
+        "props": {
+          "params": {
+            "title": "E06"
+          },
+          "path": "dashboardColumn"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "EmbeddedView_17"
+        },
+        "position": {
+          "height": 643,
+          "width": 60,
+          "x": 1076,
+          "y": 45.98
+        },
+        "props": {
+          "params": {
+            "title": "E08"
+          },
+          "path": "dashboardColumn"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "EmbeddedView_18"
+        },
+        "position": {
+          "height": 643,
+          "width": 60,
+          "x": 1016,
+          "y": 45.98
+        },
+        "props": {
+          "params": {
+            "title": "E16"
+          },
+          "path": "dashboardColumn"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "EmbeddedView_19"
+        },
+        "position": {
+          "height": 643,
+          "width": 60,
+          "x": 956,
+          "y": 45.98
+        },
+        "props": {
+          "params": {
+            "title": "E09"
+          },
+          "path": "dashboardColumn"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "EmbeddedView_20"
+        },
+        "position": {
+          "height": 643,
+          "width": 60,
+          "x": 896,
+          "y": 45.98
+        },
+        "props": {
+          "params": {
+            "eight": 1,
+            "eleven": 1,
+            "four": 1,
+            "one": 1,
+            "seven": 1,
+            "six": 1,
+            "ten": 1,
+            "three": 1,
+            "title": "E11",
+            "two": 1
+          },
+          "path": "dashboardColumn"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "EmbeddedView_21"
+        },
+        "position": {
+          "height": 643,
+          "width": 60,
+          "x": 1495,
+          "y": 45.98
+        },
+        "props": {
+          "params": {
+            "title": "E04"
+          },
+          "path": "dashboardColumn"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Button_0"
+        },
+        "position": {
+          "height": 48,
+          "width": 141,
+          "x": 19.5,
+          "y": 137
+        },
+        "props": {
+          "image": {
+            "style": {
+              "borderColor": "#6988FF",
+              "borderStyle": "solid",
+              "borderWidth": 3
+            }
+          },
+          "primary": false,
+          "style": {
+            "borderColor": "#447bb3",
+            "borderStyle": "solid",
+            "borderWidth": 1
+          },
+          "text": "Grondstoftransport",
+          "textStyle": {
+            "fontSize": 13
+          }
+        },
+        "type": "ia.input.button"
+      },
+      {
+        "meta": {
+          "name": "Button_1"
+        },
+        "position": {
+          "height": 49,
+          "width": 141,
+          "x": 20,
+          "y": 191
+        },
+        "props": {
+          "image": {
+            "style": {
+              "borderColor": "#6988FF",
+              "borderStyle": "solid",
+              "borderWidth": 3
+            }
+          },
+          "primary": false,
+          "style": {
+            "borderColor": "#447bb3",
+            "borderStyle": "solid",
+            "borderWidth": 1
+          },
+          "text": "Extruder",
+          "textStyle": {
+            "fontSize": 13
+          }
+        },
+        "type": "ia.input.button"
+      },
+      {
+        "meta": {
+          "name": "Button_2"
+        },
+        "position": {
+          "height": 49,
+          "width": 141,
+          "x": 19.5,
+          "y": 246
+        },
+        "props": {
+          "image": {
+            "style": {
+              "borderColor": "#6988FF",
+              "borderStyle": "solid",
+              "borderWidth": 3
+            }
+          },
+          "primary": false,
+          "style": {
+            "borderColor": "#447bb3",
+            "borderStyle": "solid",
+            "borderWidth": 1
+          },
+          "text": "Vacuüm + koeling",
+          "textStyle": {
+            "fontSize": 13
+          }
+        },
+        "type": "ia.input.button"
+      },
+      {
+        "meta": {
+          "name": "Button_3"
+        },
+        "position": {
+          "height": 49,
+          "width": 141,
+          "x": 19.5,
+          "y": 465
+        },
+        "props": {
+          "image": {
+            "style": {
+              "borderColor": "#6988FF",
+              "borderStyle": "solid",
+              "borderWidth": 3
+            }
+          },
+          "primary": false,
+          "style": {
+            "borderColor": "#0066FF",
+            "borderStyle": "solid",
+            "borderWidth": 3
+          },
+          "text": "Silo",
+          "textStyle": {
+            "fontSize": 15
+          }
+        },
+        "type": "ia.input.button"
+      },
+      {
+        "meta": {
+          "name": "Button_4"
+        },
+        "position": {
+          "height": 49,
+          "width": 141,
+          "x": 20,
+          "y": 410
+        },
+        "props": {
+          "image": {
+            "style": {
+              "borderColor": "#6988FF",
+              "borderStyle": "solid",
+              "borderWidth": 3
+            }
+          },
+          "primary": false,
+          "style": {
+            "borderColor": "#0066FF",
+            "borderStyle": "solid",
+            "borderWidth": 3
+          },
+          "text": "Silo",
+          "textStyle": {
+            "fontSize": 15
+          }
+        },
+        "type": "ia.input.button"
+      },
+      {
+        "meta": {
+          "name": "Button_5"
+        },
+        "position": {
+          "height": 48,
+          "width": 141,
+          "x": 19.5,
+          "y": 356
+        },
+        "props": {
+          "image": {
+            "style": {
+              "borderColor": "#6988FF",
+              "borderStyle": "solid",
+              "borderWidth": 3
+            }
+          },
+          "primary": false,
+          "style": {
+            "borderColor": "#447bb3",
+            "borderStyle": "solid",
+            "borderWidth": 1
+          },
+          "text": "Printer",
+          "textStyle": {
+            "fontSize": 13
+          }
+        },
+        "type": "ia.input.button"
+      },
+      {
+        "meta": {
+          "name": "Button_6"
+        },
+        "position": {
+          "height": 48,
+          "width": 141,
+          "x": 20,
+          "y": 301
+        },
+        "props": {
+          "image": {
+            "style": {
+              "borderColor": "#6988FF",
+              "borderStyle": "solid",
+              "borderWidth": 3
+            }
+          },
+          "primary": false,
+          "style": {
+            "borderColor": "#447bb3",
+            "borderStyle": "solid",
+            "borderWidth": 1
+          },
+          "text": "Wanddiktescanner",
+          "textStyle": {
+            "fontSize": 13
+          }
+        },
+        "type": "ia.input.button"
+      },
+      {
+        "meta": {
+          "name": "Button_7"
+        },
+        "position": {
+          "height": 49,
+          "width": 141,
+          "x": 19.5,
+          "y": 465
+        },
+        "props": {
+          "image": {
+            "style": {
+              "borderColor": "#6988FF",
+              "borderStyle": "solid",
+              "borderWidth": 3
+            }
+          },
+          "primary": false,
+          "style": {
+            "borderColor": "#447bb3",
+            "borderStyle": "solid",
+            "borderWidth": 1
+          },
+          "text": "Afkortunit",
+          "textStyle": {
+            "fontSize": 13
+          }
+        },
+        "type": "ia.input.button"
+      },
+      {
+        "meta": {
+          "name": "Button_8"
+        },
+        "position": {
+          "height": 49,
+          "width": 141,
+          "x": 20,
+          "y": 410
+        },
+        "props": {
+          "image": {
+            "style": {
+              "borderColor": "#6988FF",
+              "borderStyle": "solid",
+              "borderWidth": 3
+            }
+          },
+          "primary": false,
+          "style": {
+            "borderColor": "#447bb3",
+            "borderStyle": "solid",
+            "borderWidth": 1
+          },
+          "text": "Trekbank",
+          "textStyle": {
+            "fontSize": 13
+          }
+        },
+        "type": "ia.input.button"
+      },
+      {
+        "meta": {
+          "name": "Button_9"
+        },
+        "position": {
+          "height": 49,
+          "width": 141,
+          "x": 19.5,
+          "y": 632
+        },
+        "props": {
+          "image": {
+            "style": {
+              "borderColor": "#6988FF",
+              "borderStyle": "solid",
+              "borderWidth": 3
+            }
+          },
+          "primary": false,
+          "style": {
+            "borderColor": "#447bb3",
+            "borderStyle": "solid",
+            "borderWidth": 1
+          },
+          "text": "Kwaliteit",
+          "textStyle": {
+            "fontSize": 15
+          }
+        },
+        "type": "ia.input.button"
+      },
+      {
+        "meta": {
+          "name": "Button_10"
+        },
+        "position": {
+          "height": 49,
+          "width": 141,
+          "x": 19.5,
+          "y": 577
+        },
+        "props": {
+          "image": {
+            "style": {
+              "borderColor": "#6988FF",
+              "borderStyle": "solid",
+              "borderWidth": 3
+            }
+          },
+          "primary": false,
+          "style": {
+            "borderColor": "#447bb3",
+            "borderStyle": "solid",
+            "borderWidth": 1
+          },
+          "text": "Aflegger",
+          "textStyle": {
+            "fontSize": 13
+          }
+        },
+        "type": "ia.input.button"
+      },
+      {
+        "meta": {
+          "name": "Button_11"
+        },
+        "position": {
+          "height": 30,
+          "width": 141,
+          "x": 19.9642,
+          "y": 11.482
+        },
+        "props": {
+          "image": {
+            "style": {
+              "borderBottomLeftRadius": 2,
+              "borderBottomRightRadius": 2,
+              "borderColor": "#6988FF",
+              "borderStyle": "solid",
+              "borderTopLeftRadius": 2,
+              "borderTopRightRadius": 2,
+              "borderWidth": 3
+            }
+          },
+          "primary": false,
+          "style": {
+            "backgroundColor": "#447BB31C",
+            "borderBottomLeftRadius": 0,
+            "borderBottomRightRadius": 0,
+            "borderColor": "#447bb3",
+            "borderStyle": "solid",
+            "borderTopLeftRadius": 0,
+            "borderTopRightRadius": 0,
+            "borderWidth": 1
+          },
+          "text": "Onderdeel",
+          "textStyle": {
+            "fontSize": 10
+          }
+        },
+        "type": "ia.input.button"
+      },
+      {
+        "meta": {
+          "name": "Button_12"
+        },
+        "position": {
+          "height": 49,
+          "width": 141,
+          "x": 20,
+          "y": 521
+        },
+        "props": {
+          "image": {
+            "style": {
+              "borderColor": "#6988FF",
+              "borderStyle": "solid",
+              "borderWidth": 3
+            }
+          },
+          "primary": false,
+          "style": {
+            "borderColor": "#447bb3",
+            "borderStyle": "solid",
+            "borderWidth": 1
+          },
+          "text": "Trompbank",
+          "textStyle": {
+            "fontSize": 13
+          }
+        },
+        "type": "ia.input.button"
+      },
+      {
+        "meta": {
+          "name": "Button_13"
+        },
+        "position": {
+          "height": 30,
+          "width": 1367,
+          "x": 182.46,
+          "y": 11.43
+        },
+        "props": {
+          "image": {
+            "style": {
+              "borderBottomLeftRadius": 2,
+              "borderBottomRightRadius": 2,
+              "borderColor": "#6988FF",
+              "borderStyle": "solid",
+              "borderTopLeftRadius": 2,
+              "borderTopRightRadius": 2,
+              "borderWidth": 3
+            }
+          },
+          "primary": false,
+          "style": {
+            "backgroundColor": "#447BB31C",
+            "borderBottomLeftRadius": 0,
+            "borderBottomRightRadius": 0,
+            "borderColor": "#447bb3",
+            "borderStyle": "solid",
+            "borderTopLeftRadius": 0,
+            "borderTopRightRadius": 0,
+            "borderWidth": 1
+          },
+          "text": "Lijnen",
+          "textStyle": {
+            "fontSize": 10
+          }
+        },
+        "type": "ia.input.button"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "position": {
+      "x": 0,
+      "y": 28
+    },
+    "type": "ia.container.coord"
+  }
+}

@@ -1,0 +1,664 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "width": 1094
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "id": "ActivityFeedFilters",
+                    "type": "open",
+                    "viewParams": {
+                      "Enddate": "{/root.custom.Enddate}",
+                      "Line": "{/root.custom.Line}",
+                      "Startdate": "{/root.custom.Startdate}"
+                    }
+                  },
+                  "scope": "C",
+                  "type": "dock"
+                }
+              }
+            },
+            "meta": {
+              "name": "Button"
+            },
+            "position": {
+              "basis": "80px",
+              "shrink": 0
+            },
+            "props": {
+              "image": {
+                "icon": {
+                  "path": "material/filter_alt"
+                }
+              },
+              "style": {
+                "classes": "ATA/Components/Buttons/Sec",
+                "marginLeft": "auto"
+              },
+              "text": ""
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "id": "ActivityFeedDock",
+                    "type": "open"
+                  },
+                  "scope": "C",
+                  "type": "dock"
+                }
+              }
+            },
+            "meta": {
+              "name": "Button_0"
+            },
+            "position": {
+              "basis": "80px",
+              "shrink": 0
+            },
+            "props": {
+              "image": {
+                "icon": {
+                  "path": "material/add"
+                }
+              },
+              "style": {
+                "classes": "ATA/Components/Buttons/CTA",
+                "marginLeft": 15
+              },
+              "text": ""
+            },
+            "type": "ia.input.button"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer"
+        },
+        "position": {
+          "basis": "45px",
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "backgroundColor": "--backgroundSecondary",
+            "borderTopLeftRadius": 5,
+            "borderTopRightRadius": 5,
+            "padding": 7,
+            "zIndex": 1
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "FlexRepeater"
+            },
+            "propConfig": {
+              "props.instances": {
+                "binding": {
+                  "config": {
+                    "parameters": {
+                      "activityType": "\u0027All\u0027",
+                      "commentStatus": "-1",
+                      "endDate": "{/root.custom.Enddate}",
+                      "line": "{/root.custom.Line}",
+                      "startDate": "{/root.custom.Startdate}",
+                      "username": "\u0027-1\u0027"
+                    },
+                    "queryPath": "ActivityFeed/GetActivityFeed"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\tinstances \u003d [{\u0027data\u0027: system.util.jsonDecode(value.getValueAt(row, \u0027data\u0027)), \u0027view\u0027: value.getValueAt(row, \u0027view\u0027), \u0027replyData\u0027: system.util.jsonDecode(value.getValueAt(row, \u0027replies\u0027))} for row in range(value.getRowCount())]\n\treturn instances",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "query"
+                }
+              }
+            },
+            "props": {
+              "direction": "column",
+              "elementPosition": {
+                "basis": "auto"
+              },
+              "elementStyle": {
+                "marginTop": 5
+              },
+              "path": "ControlRoom/ActivityFeed/Embedded/ActivityFeedEntry",
+              "useDefaultViewWidth": false
+            },
+            "type": "ia.display.flex-repeater"
+          },
+          {
+            "meta": {
+              "name": "FlexRepeater_0"
+            },
+            "position": {
+              "tabIndex": 2
+            },
+            "propConfig": {
+              "props.instances": {
+                "binding": {
+                  "config": {
+                    "parameters": {
+                      "activityType": "\u0027Quality\u0027",
+                      "commentStatus": "-1",
+                      "endDate": "{/root.custom.Enddate}",
+                      "line": "{/root.custom.Line}",
+                      "startDate": "{/root.custom.Startdate}",
+                      "username": "{session.props.auth.user.userName}"
+                    },
+                    "queryPath": "ActivityFeed/GetActivityFeed"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\tinstances \u003d [{\u0027data\u0027: system.util.jsonDecode(value.getValueAt(row, \u0027data\u0027)), \u0027view\u0027: value.getValueAt(row, \u0027view\u0027)} for row in range(value.getRowCount())]\n\treturn instances",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "query"
+                }
+              }
+            },
+            "props": {
+              "direction": "column",
+              "elementPosition": {
+                "basis": "auto"
+              },
+              "elementStyle": {
+                "marginTop": 5
+              },
+              "path": "ControlRoom/ActivityFeed/Embedded/ActivityFeedEntry",
+              "useDefaultViewWidth": false
+            },
+            "type": "ia.display.flex-repeater"
+          },
+          {
+            "meta": {
+              "name": "FlexRepeater_1"
+            },
+            "position": {
+              "tabIndex": 3
+            },
+            "propConfig": {
+              "props.instances": {
+                "binding": {
+                  "config": {
+                    "parameters": {
+                      "activityType": "\u0027Progress\u0027",
+                      "commentStatus": "-1",
+                      "endDate": "{/root.custom.Enddate}",
+                      "line": "{/root.custom.Line}",
+                      "startDate": "{/root.custom.Startdate}",
+                      "username": "{session.props.auth.user.userName}"
+                    },
+                    "queryPath": "ActivityFeed/GetActivityFeed"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\tinstances \u003d [{\u0027data\u0027: system.util.jsonDecode(value.getValueAt(row, \u0027data\u0027)), \u0027view\u0027: value.getValueAt(row, \u0027view\u0027)} for row in range(value.getRowCount())]\n\treturn instances",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "query"
+                }
+              }
+            },
+            "props": {
+              "direction": "column",
+              "elementPosition": {
+                "basis": "auto"
+              },
+              "elementStyle": {
+                "marginTop": 5
+              },
+              "path": "ControlRoom/ActivityFeed/Embedded/ActivityFeedEntry",
+              "useDefaultViewWidth": false
+            },
+            "type": "ia.display.flex-repeater"
+          },
+          {
+            "meta": {
+              "name": "FlexRepeater_2"
+            },
+            "position": {
+              "tabIndex": 4
+            },
+            "propConfig": {
+              "props.instances": {
+                "binding": {
+                  "config": {
+                    "parameters": {
+                      "activityType": "\u0027Settings\u0027",
+                      "commentStatus": "-1",
+                      "endDate": "{/root.custom.Enddate}",
+                      "line": "{/root.custom.Line}",
+                      "startDate": "{/root.custom.Startdate}",
+                      "username": "{session.props.auth.user.userName}"
+                    },
+                    "queryPath": "ActivityFeed/GetActivityFeed"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\tinstances \u003d [{\u0027data\u0027: system.util.jsonDecode(value.getValueAt(row, \u0027data\u0027)), \u0027view\u0027: value.getValueAt(row, \u0027view\u0027)} for row in range(value.getRowCount())]\n\treturn instances",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "query"
+                }
+              }
+            },
+            "props": {
+              "direction": "column",
+              "elementPosition": {
+                "basis": "auto"
+              },
+              "elementStyle": {
+                "marginTop": 5
+              },
+              "path": "ControlRoom/ActivityFeed/Embedded/ActivityFeedEntry",
+              "useDefaultViewWidth": false
+            },
+            "type": "ia.display.flex-repeater"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "FlexRepeater"
+                },
+                "propConfig": {
+                  "props.instances": {
+                    "binding": {
+                      "config": {
+                        "parameters": {
+                          "activityType": "\u0027Comments\u0027",
+                          "commentStatus": "-1",
+                          "endDate": "{/root.custom.Enddate}",
+                          "line": "{/root.custom.Line}",
+                          "startDate": "{/root.custom.Startdate}",
+                          "username": "\u0027-1\u0027"
+                        },
+                        "queryPath": "ActivityFeed/GetActivityFeed"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\tinstances \u003d [{\u0027data\u0027: system.util.jsonDecode(value.getValueAt(row, \u0027data\u0027)), \u0027view\u0027: value.getValueAt(row, \u0027view\u0027), \u0027replyData\u0027:system.util.jsonDecode( value.getValueAt(row, \u0027replies\u0027))} for row in range(value.getRowCount())]\n\treturn instances",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "query"
+                    }
+                  }
+                },
+                "props": {
+                  "direction": "column",
+                  "elementPosition": {
+                    "basis": "auto"
+                  },
+                  "elementStyle": {
+                    "marginTop": 5
+                  },
+                  "path": "ControlRoom/ActivityFeed/Embedded/ActivityFeedEntry",
+                  "useDefaultViewWidth": false
+                },
+                "type": "ia.display.flex-repeater"
+              },
+              {
+                "meta": {
+                  "name": "FlexRepeater_0"
+                },
+                "position": {
+                  "tabIndex": 2
+                },
+                "propConfig": {
+                  "props.instances": {
+                    "binding": {
+                      "config": {
+                        "parameters": {
+                          "activityType": "\u0027Comments\u0027",
+                          "commentStatus": "1",
+                          "endDate": "{/root.custom.Enddate}",
+                          "line": "{/root.custom.Line}",
+                          "startDate": "{/root.custom.Startdate}",
+                          "username": "\u0027-1\u0027"
+                        },
+                        "queryPath": "ActivityFeed/GetActivityFeed"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\tinstances \u003d [{\u0027data\u0027: system.util.jsonDecode(value.getValueAt(row, \u0027data\u0027)), \u0027view\u0027: value.getValueAt(row, \u0027view\u0027), \u0027replyData\u0027:system.util.jsonDecode( value.getValueAt(row, \u0027replies\u0027))} for row in range(value.getRowCount())]\n\treturn instances",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "query"
+                    }
+                  }
+                },
+                "props": {
+                  "direction": "column",
+                  "elementPosition": {
+                    "basis": "auto"
+                  },
+                  "elementStyle": {
+                    "marginTop": 5
+                  },
+                  "path": "ControlRoom/ActivityFeed/Embedded/ActivityFeedEntry",
+                  "useDefaultViewWidth": false
+                },
+                "type": "ia.display.flex-repeater"
+              },
+              {
+                "meta": {
+                  "name": "FlexRepeater_1"
+                },
+                "position": {
+                  "tabIndex": 3
+                },
+                "propConfig": {
+                  "props.instances": {
+                    "binding": {
+                      "config": {
+                        "parameters": {
+                          "activityType": "\u0027Comments\u0027",
+                          "commentStatus": "2",
+                          "endDate": "{/root.custom.Enddate}",
+                          "line": "{/root.custom.Line}",
+                          "startDate": "{/root.custom.Startdate}",
+                          "username": "\u0027-1\u0027"
+                        },
+                        "queryPath": "ActivityFeed/GetActivityFeed"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\tinstances \u003d [{\u0027data\u0027: system.util.jsonDecode(value.getValueAt(row, \u0027data\u0027)), \u0027view\u0027: value.getValueAt(row, \u0027view\u0027), \u0027replyData\u0027:system.util.jsonDecode( value.getValueAt(row, \u0027replies\u0027))} for row in range(value.getRowCount())]\n\treturn instances",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "query"
+                    }
+                  }
+                },
+                "props": {
+                  "direction": "column",
+                  "elementPosition": {
+                    "basis": "auto"
+                  },
+                  "elementStyle": {
+                    "marginTop": 5
+                  },
+                  "path": "ControlRoom/ActivityFeed/Embedded/ActivityFeedEntry",
+                  "useDefaultViewWidth": false
+                },
+                "type": "ia.display.flex-repeater"
+              },
+              {
+                "meta": {
+                  "name": "FlexRepeater_2"
+                },
+                "position": {
+                  "tabIndex": 4
+                },
+                "propConfig": {
+                  "props.instances": {
+                    "binding": {
+                      "config": {
+                        "parameters": {
+                          "activityType": "\u0027Comments\u0027",
+                          "commentStatus": "3",
+                          "endDate": "{/root.custom.Enddate}",
+                          "line": "{/root.custom.Line}",
+                          "startDate": "{/root.custom.Startdate}",
+                          "username": "\u0027-1\u0027"
+                        },
+                        "queryPath": "ActivityFeed/GetActivityFeed"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\tinstances \u003d [{\u0027data\u0027: system.util.jsonDecode(value.getValueAt(row, \u0027data\u0027)), \u0027view\u0027: value.getValueAt(row, \u0027view\u0027), \u0027replyData\u0027:system.util.jsonDecode( value.getValueAt(row, \u0027replies\u0027))} for row in range(value.getRowCount())]\n\treturn instances",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "query"
+                    }
+                  }
+                },
+                "props": {
+                  "direction": "column",
+                  "elementPosition": {
+                    "basis": "auto"
+                  },
+                  "elementStyle": {
+                    "marginTop": 5
+                  },
+                  "path": "ControlRoom/ActivityFeed/Embedded/ActivityFeedEntry",
+                  "useDefaultViewWidth": false
+                },
+                "type": "ia.display.flex-repeater"
+              },
+              {
+                "meta": {
+                  "name": "FlexRepeater_3"
+                },
+                "position": {
+                  "tabIndex": 1
+                },
+                "propConfig": {
+                  "props.instances": {
+                    "binding": {
+                      "config": {
+                        "parameters": {
+                          "activityType": "\u0027Comments\u0027",
+                          "commentStatus": "-1",
+                          "endDate": "{/root.custom.Enddate}",
+                          "line": "{/root.custom.Line}",
+                          "startDate": "{/root.custom.Startdate}",
+                          "username": "{session.props.auth.user.userName}"
+                        },
+                        "queryPath": "ActivityFeed/GetActivityFeed"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\tinstances \u003d [{\u0027data\u0027: system.util.jsonDecode(value.getValueAt(row, \u0027data\u0027)), \u0027view\u0027: value.getValueAt(row, \u0027view\u0027), \u0027replyData\u0027:system.util.jsonDecode( value.getValueAt(row, \u0027replies\u0027))} for row in range(value.getRowCount())]\n\treturn instances",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "query"
+                    }
+                  }
+                },
+                "props": {
+                  "direction": "column",
+                  "elementPosition": {
+                    "basis": "auto"
+                  },
+                  "elementStyle": {
+                    "marginTop": 5
+                  },
+                  "path": "ControlRoom/ActivityFeed/Embedded/ActivityFeedEntry",
+                  "useDefaultViewWidth": false
+                },
+                "type": "ia.display.flex-repeater"
+              }
+            ],
+            "meta": {
+              "name": "TabContainer"
+            },
+            "position": {
+              "tabIndex": 1
+            },
+            "props": {
+              "contentStyle": {
+                "backgroundColor": "--backgroundSecondary"
+              },
+              "menuStyle": {
+                "backgroundColor": "--color1"
+              },
+              "menuType": "modern",
+              "tabSize": {
+                "width": 150
+              },
+              "tabs": [
+                "Alles",
+                "Mijn opmerkingen",
+                "Open",
+                "Bezig",
+                "Klaar"
+              ]
+            },
+            "scripts": {
+              "customMethods": [],
+              "extensionFunctions": null,
+              "messageHandlers": [
+                {
+                  "messageType": "refreshComments",
+                  "pageScope": true,
+                  "script": "\t# implement your handler here\n\tself.getSibling(\"FlexRepeater\").refreshBinding(\u0027props.instances\u0027)\n\tself.getChild(\"FlexRepeater\").refreshBinding(\u0027props.instances\u0027)\n\tself.getChild(\"FlexRepeater_0\").refreshBinding(\u0027props.instances\u0027)\n\tself.getChild(\"FlexRepeater_1\").refreshBinding(\u0027props.instances\u0027)\n\tself.getChild(\"FlexRepeater_2\").refreshBinding(\u0027props.instances\u0027)\n\tself.getChild(\"FlexRepeater_3\").refreshBinding(\u0027props.instances\u0027)",
+                  "sessionScope": true,
+                  "viewScope": true
+                }
+              ]
+            },
+            "type": "ia.container.tab"
+          },
+          {
+            "meta": {
+              "name": "FlexRepeater_3"
+            },
+            "position": {
+              "tabIndex": 5
+            },
+            "propConfig": {
+              "props.instances": {
+                "binding": {
+                  "config": {
+                    "parameters": {
+                      "activityType": "\u0027Alarms\u0027",
+                      "commentStatus": "-1",
+                      "endDate": "{/root.custom.Enddate}",
+                      "line": "{/root.custom.Line}",
+                      "startDate": "{/root.custom.Startdate}",
+                      "username": "\u0027-1\u0027"
+                    },
+                    "queryPath": "ActivityFeed/GetActivityFeed"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\tinstances \u003d [{\u0027data\u0027: system.util.jsonDecode(value.getValueAt(row, \u0027data\u0027)), \u0027view\u0027: value.getValueAt(row, \u0027view\u0027), \u0027replyData\u0027: system.util.jsonDecode(value.getValueAt(row, \u0027replies\u0027))} for row in range(value.getRowCount())]\n\treturn instances",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "query"
+                }
+              }
+            },
+            "props": {
+              "direction": "column",
+              "elementPosition": {
+                "basis": "auto"
+              },
+              "elementStyle": {
+                "marginTop": 5
+              },
+              "path": "ControlRoom/ActivityFeed/Embedded/ActivityFeedEntry",
+              "useDefaultViewWidth": false
+            },
+            "type": "ia.display.flex-repeater"
+          }
+        ],
+        "meta": {
+          "name": "TabContainer"
+        },
+        "position": {
+          "grow": 1
+        },
+        "props": {
+          "contentStyle": {
+            "backgroundColor": "--backgroundSecondary"
+          },
+          "currentTabIndex": 1,
+          "menuType": "modern",
+          "tabSize": {
+            "width": 125
+          },
+          "tabs": [
+            "Alles",
+            "Opmerkingen",
+            "Kwaliteit",
+            "Voortgang",
+            "Instellingen",
+            "Alarmen"
+          ]
+        },
+        "type": "ia.container.tab"
+      }
+    ],
+    "custom": {
+      "Line": -1
+    },
+    "meta": {
+      "name": "root"
+    },
+    "propConfig": {
+      "custom.Enddate": {
+        "binding": {
+          "config": {
+            "expression": "now(0)"
+          },
+          "type": "expr"
+        }
+      },
+      "custom.Startdate": {
+        "binding": {
+          "config": {
+            "expression": "addMonths(now(0), -5)"
+          },
+          "type": "expr"
+        }
+      }
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "classes": "ATA/Background/Root"
+      }
+    },
+    "scripts": {
+      "customMethods": [],
+      "extensionFunctions": null,
+      "messageHandlers": [
+        {
+          "messageType": "ApplyFiltersAF",
+          "pageScope": true,
+          "script": "\tself.custom.Line \u003d payload[\u0027LineID\u0027]\n\tself.custom.Startdate \u003d payload[\u0027Startdate\u0027]\n\tself.custom.Enddate \u003d payload[\u0027Enddate\u0027]",
+          "sessionScope": false,
+          "viewScope": true
+        },
+        {
+          "messageType": "refreshActivityFeed",
+          "pageScope": true,
+          "script": "\t# implement your handler here\n\tself.getChild(\"TabContainer\").getChild(\"FlexRepeater\").refreshBinding(\u0027props.instances\u0027)\n\tself.getChild(\"TabContainer\").getChild(\"FlexRepeater_0\").refreshBinding(\u0027props.instances\u0027)\n\tself.getChild(\"TabContainer\").getChild(\"FlexRepeater_1\").refreshBinding(\u0027props.instances\u0027)\n\tself.getChild(\"TabContainer\").getChild(\"FlexRepeater_2\").refreshBinding(\u0027props.instances\u0027)\n\tsystem.perspective.sendMessage(\u0027refreshComments\u0027)",
+          "sessionScope": true,
+          "viewScope": true
+        }
+      ]
+    },
+    "type": "ia.container.flex"
+  }
+}

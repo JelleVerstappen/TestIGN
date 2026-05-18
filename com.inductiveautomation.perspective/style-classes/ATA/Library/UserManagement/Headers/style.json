@@ -1,0 +1,13 @@
+{
+  "base": {
+    "style": {
+      "backgroundColor": "--background",
+      "color": "--textComplementary",
+      "fontFamily": "Arial",
+      "fontSize": "20px",
+      "fontWeight": "lighter",
+      "textAlign": "start",
+      "textIndent": "6px"
+    }
+  }
+}

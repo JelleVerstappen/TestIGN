@@ -1,0 +1,909 @@
+{
+  "custom": {
+    "unit": "°C"
+  },
+  "params": {
+    "parameterName": "Massadruk",
+    "startPath": "[NLSTWDYK]Dyka/STW/EXT/E07/EXT/MEXT/Screen/ProcessValues/Zones/Zone01/Temperature"
+  },
+  "propConfig": {
+    "custom.unit": {
+      "binding": {
+        "config": {
+          "fallbackDelay": 2.5,
+          "mode": "indirect",
+          "references": {
+            "startPath": "{view.params.startPath}"
+          },
+          "tagPath": "{startPath}/MetaData/Unit"
+        },
+        "type": "tag"
+      },
+      "persistent": true
+    },
+    "params.parameterName": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.startPath": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 498
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Label"
+        },
+        "position": {
+          "basis": "32px"
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "view.params.parameterName"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "classes": "ATA/Components/Labels/TextLarge"
+          },
+          "textStyle": {
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "EmbeddedView"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "props.params.engUnits": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.unit"
+                      },
+                      "type": "property"
+                    }
+                  },
+                  "props.params.value": {
+                    "binding": {
+                      "config": {
+                        "fallbackDelay": 2.5,
+                        "mode": "indirect",
+                        "references": {
+                          "startPath": "{view.params.startPath}"
+                        },
+                        "tagPath": "{startPath}/MetaData/HighHigh"
+                      },
+                      "type": "tag"
+                    }
+                  }
+                },
+                "props": {
+                  "params": {
+                    "enabled": true,
+                    "format": "0,0.##",
+                    "key": "Hoog hoog alarm",
+                    "maxValue": 10000000,
+                    "minValue": 0,
+                    "placeholder": "",
+                    "rejected": "True",
+                    "unitVisable": true
+                  },
+                  "path": "Library/SharedTemplates/Input/Number",
+                  "useDefaultViewHeight": true
+                },
+                "type": "ia.display.view"
+              },
+              {
+                "meta": {
+                  "name": "EmbeddedView_0"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "props.params.engUnits": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.unit"
+                      },
+                      "type": "property"
+                    }
+                  },
+                  "props.params.value": {
+                    "binding": {
+                      "config": {
+                        "fallbackDelay": 2.5,
+                        "mode": "indirect",
+                        "references": {
+                          "startPath": "{view.params.startPath}"
+                        },
+                        "tagPath": "{startPath}/MetaData/High"
+                      },
+                      "type": "tag"
+                    }
+                  }
+                },
+                "props": {
+                  "params": {
+                    "enabled": true,
+                    "format": "0,0.##",
+                    "key": "Hoog waarschuwing",
+                    "maxValue": 10000000,
+                    "minValue": 0,
+                    "placeholder": "",
+                    "rejected": "True",
+                    "unitVisable": true
+                  },
+                  "path": "Library/SharedTemplates/Input/Number",
+                  "useDefaultViewHeight": true
+                },
+                "type": "ia.display.view"
+              },
+              {
+                "meta": {
+                  "name": "EmbeddedView_1"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "props.params.engUnits": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.unit"
+                      },
+                      "type": "property"
+                    }
+                  },
+                  "props.params.value": {
+                    "binding": {
+                      "config": {
+                        "fallbackDelay": 2.5,
+                        "mode": "indirect",
+                        "references": {
+                          "startPath": "{view.params.startPath}"
+                        },
+                        "tagPath": "{startPath}/ActualValue"
+                      },
+                      "type": "tag"
+                    }
+                  }
+                },
+                "props": {
+                  "params": {
+                    "enabled": true,
+                    "format": "0,0.##",
+                    "key": "Actuele waarde",
+                    "maxValue": 10000000,
+                    "minValue": 0,
+                    "placeholder": "",
+                    "rejected": false,
+                    "unitVisable": true
+                  },
+                  "path": "Library/SharedTemplates/Input/Number",
+                  "useDefaultViewHeight": true
+                },
+                "type": "ia.display.view"
+              },
+              {
+                "meta": {
+                  "name": "EmbeddedView_2"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "props.params.engUnits": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.unit"
+                      },
+                      "type": "property"
+                    }
+                  },
+                  "props.params.value": {
+                    "binding": {
+                      "config": {
+                        "fallbackDelay": 2.5,
+                        "mode": "indirect",
+                        "references": {
+                          "startPath": "{view.params.startPath}"
+                        },
+                        "tagPath": "{startPath}/Setpoint"
+                      },
+                      "type": "tag"
+                    }
+                  }
+                },
+                "props": {
+                  "params": {
+                    "enabled": true,
+                    "format": "0,0.##",
+                    "key": "Ingestelde waarde",
+                    "maxValue": 10000000,
+                    "minValue": 0,
+                    "placeholder": "",
+                    "rejected": "True",
+                    "unitVisable": true
+                  },
+                  "path": "Library/SharedTemplates/Input/Number",
+                  "useDefaultViewHeight": true
+                },
+                "type": "ia.display.view"
+              },
+              {
+                "meta": {
+                  "name": "EmbeddedView_4"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "props.params.engUnits": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.unit"
+                      },
+                      "type": "property"
+                    }
+                  },
+                  "props.params.value": {
+                    "binding": {
+                      "config": {
+                        "fallbackDelay": 2.5,
+                        "mode": "indirect",
+                        "references": {
+                          "startPath": "{view.params.startPath}"
+                        },
+                        "tagPath": "{startPath}/Metadata/Low"
+                      },
+                      "type": "tag"
+                    }
+                  }
+                },
+                "props": {
+                  "params": {
+                    "enabled": true,
+                    "format": "0,0.##",
+                    "key": "Laag waarschuwing",
+                    "maxValue": 10000000,
+                    "minValue": 0,
+                    "placeholder": "",
+                    "rejected": "True",
+                    "unitVisable": true
+                  },
+                  "path": "Library/SharedTemplates/Input/Number",
+                  "useDefaultViewHeight": true
+                },
+                "type": "ia.display.view"
+              },
+              {
+                "meta": {
+                  "name": "EmbeddedView_5"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "props.params.engUnits": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.unit"
+                      },
+                      "type": "property"
+                    }
+                  },
+                  "props.params.value": {
+                    "binding": {
+                      "config": {
+                        "fallbackDelay": 2.5,
+                        "mode": "indirect",
+                        "references": {
+                          "startPath": "{view.params.startPath}"
+                        },
+                        "tagPath": "{startPath}/Metadata/LowLow"
+                      },
+                      "type": "tag"
+                    }
+                  }
+                },
+                "props": {
+                  "params": {
+                    "enabled": true,
+                    "format": "0,0.##",
+                    "key": "Laag laag alarm",
+                    "maxValue": 10000000,
+                    "minValue": 0,
+                    "placeholder": "",
+                    "rejected": "True",
+                    "unitVisable": true
+                  },
+                  "path": "Library/SharedTemplates/Input/Number",
+                  "useDefaultViewHeight": true
+                },
+                "type": "ia.display.view"
+              }
+            ],
+            "meta": {
+              "name": "Left"
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "classes": "ATA/Library/Framework/Card/Card"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "meta": {
+              "name": "PowerChart"
+            },
+            "position": {
+              "basis": "90%",
+              "grow": 1
+            },
+            "propConfig": {
+              "custom.startPathBrowser": {
+                "binding": {
+                  "config": {
+                    "expression": "\u0027histprov:Tag Historian Dyka:/drv:NLSTWAPP11OT:NLSTWDYK:/tag:\u0027 + {this.custom.tagPath}"
+                  },
+                  "type": "expr"
+                }
+              },
+              "custom.tagPath": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.startPath"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\treturn value.split(\u0027]\u0027)[-1]",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "property"
+                }
+              },
+              "props.config.tagBrowserStartPath": {
+                "binding": {
+                  "config": {
+                    "expression": "{this.custom.startPathBrowser}"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.pens[0].data.source": {
+                "binding": {
+                  "config": {
+                    "expression": "replace({this.custom.startPathBrowser}, \u0027/Screen\u0027, \u0027\u0027) + \u0027/ActualValue\u0027"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.pens[1].data.source": {
+                "binding": {
+                  "config": {
+                    "expression": "replace({this.custom.startPathBrowser}, \u0027/Screen\u0027, \u0027\u0027) + \u0027/Metadata/HighHigh\u0027"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.pens[2].data.source": {
+                "binding": {
+                  "config": {
+                    "expression": "replace({this.custom.startPathBrowser}, \u0027/Screen\u0027, \u0027\u0027) + \u0027/Metadata/High\u0027"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.pens[3].data.source": {
+                "binding": {
+                  "config": {
+                    "expression": "replace({this.custom.startPathBrowser}, \u0027/Screen\u0027, \u0027\u0027) + \u0027/Metadata/LowLow\u0027"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.pens[4].data.source": {
+                "binding": {
+                  "config": {
+                    "expression": "replace({this.custom.startPathBrowser}, \u0027/Screen\u0027, \u0027\u0027) + \u0027/Metadata/Low\u0027"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.pens[5].data.source": {
+                "binding": {
+                  "config": {
+                    "expression": "replace({this.custom.startPathBrowser}, \u0027/Screen\u0027, \u0027\u0027) + \u0027/Setpoint\u0027"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "config": {
+                "measureOfTime": "minutes",
+                "rangeEndDate": {
+                  "$": [
+                    "ts",
+                    0,
+                    1772092399950
+                  ],
+                  "$ts": 1772092393935
+                },
+                "rangeStartDate": {
+                  "$": [
+                    "ts",
+                    0,
+                    1772092399950
+                  ],
+                  "$ts": 1772090599935
+                },
+                "unitOfTime": 30
+              },
+              "interaction": {
+                "chartZoomLevel": 1,
+                "mode": "xTrace",
+                "rangeZoomLevel": 1
+              },
+              "legend": {
+                "visible": true
+              },
+              "pens": [
+                {
+                  "axis": "",
+                  "data": {
+                    "aggregateMode": "default"
+                  },
+                  "display": {
+                    "breakLine": true,
+                    "interpolation": "curveLinear",
+                    "radius": 3,
+                    "styles": {
+                      "highlighted": {
+                        "fill": {
+                          "color": "#000000",
+                          "opacity": 1
+                        },
+                        "stroke": {
+                          "color": "#000000",
+                          "dashArray": 0,
+                          "opacity": 1,
+                          "width": 1
+                        }
+                      },
+                      "muted": {
+                        "fill": {
+                          "color": "#FC8D62",
+                          "opacity": 0.4
+                        },
+                        "stroke": {
+                          "color": "#FC8D62",
+                          "dashArray": 0,
+                          "opacity": 0.4,
+                          "width": 1
+                        }
+                      },
+                      "normal": {
+                        "fill": {
+                          "color": "#000000",
+                          "opacity": 0.8
+                        },
+                        "stroke": {
+                          "color": "#000000",
+                          "dashArray": 0,
+                          "opacity": 0.8,
+                          "width": 1
+                        }
+                      },
+                      "selected": {
+                        "fill": {
+                          "color": "#000000",
+                          "opacity": 1
+                        },
+                        "stroke": {
+                          "color": "#000000",
+                          "dashArray": 0,
+                          "opacity": 1,
+                          "width": 1
+                        }
+                      }
+                    },
+                    "type": "line"
+                  },
+                  "enabled": true,
+                  "name": "actual value",
+                  "plot": 0,
+                  "selectable": true,
+                  "visible": true
+                },
+                {
+                  "axis": "",
+                  "data": {
+                    "aggregateMode": "default"
+                  },
+                  "display": {
+                    "breakLine": true,
+                    "interpolation": "curveStep",
+                    "radius": 3,
+                    "styles": {
+                      "highlighted": {
+                        "fill": {
+                          "color": "#8DA0CB",
+                          "opacity": 1
+                        },
+                        "stroke": {
+                          "color": "#8DA0CB",
+                          "dashArray": 0,
+                          "opacity": 1,
+                          "width": 1
+                        }
+                      },
+                      "muted": {
+                        "fill": {
+                          "color": "#8DA0CB",
+                          "opacity": 0.4
+                        },
+                        "stroke": {
+                          "color": "#8DA0CB",
+                          "dashArray": 0,
+                          "opacity": 0.4,
+                          "width": 1
+                        }
+                      },
+                      "normal": {
+                        "fill": {
+                          "color": "var(--alarm)",
+                          "opacity": 0.8
+                        },
+                        "stroke": {
+                          "color": "var(--alarm)",
+                          "dashArray": 0,
+                          "opacity": 0.8,
+                          "width": 1
+                        }
+                      },
+                      "selected": {
+                        "fill": {
+                          "color": "#8DA0CB",
+                          "opacity": 1
+                        },
+                        "stroke": {
+                          "color": "#8DA0CB",
+                          "dashArray": 0,
+                          "opacity": 1,
+                          "width": 1
+                        }
+                      }
+                    },
+                    "type": "line"
+                  },
+                  "enabled": true,
+                  "name": "high high alarm",
+                  "plot": 0,
+                  "selectable": true,
+                  "visible": true
+                },
+                {
+                  "axis": "",
+                  "data": {
+                    "aggregateMode": "default"
+                  },
+                  "display": {
+                    "breakLine": true,
+                    "interpolation": "curveLinear",
+                    "radius": 3,
+                    "styles": {
+                      "highlighted": {
+                        "fill": {
+                          "color": "#E78AC3",
+                          "opacity": 1
+                        },
+                        "stroke": {
+                          "color": "#E78AC3",
+                          "dashArray": 0,
+                          "opacity": 1,
+                          "width": 1
+                        }
+                      },
+                      "muted": {
+                        "fill": {
+                          "color": "#E78AC3",
+                          "opacity": 0.4
+                        },
+                        "stroke": {
+                          "color": "#E78AC3",
+                          "dashArray": 0,
+                          "opacity": 0.4,
+                          "width": 1
+                        }
+                      },
+                      "normal": {
+                        "fill": {
+                          "color": "#E78AC3",
+                          "opacity": 0.8
+                        },
+                        "stroke": {
+                          "color": "var(--warning)",
+                          "dashArray": 0,
+                          "opacity": 0.8,
+                          "width": 1
+                        }
+                      },
+                      "selected": {
+                        "fill": {
+                          "color": "#E78AC3",
+                          "opacity": 1
+                        },
+                        "stroke": {
+                          "color": "#E78AC3",
+                          "dashArray": 0,
+                          "opacity": 1,
+                          "width": 1
+                        }
+                      }
+                    },
+                    "type": "line"
+                  },
+                  "enabled": true,
+                  "name": "high warning",
+                  "plot": 0,
+                  "selectable": true,
+                  "visible": true
+                },
+                {
+                  "axis": "",
+                  "data": {
+                    "aggregateMode": "default"
+                  },
+                  "display": {
+                    "breakLine": true,
+                    "interpolation": "curveLinear",
+                    "radius": 3,
+                    "styles": {
+                      "highlighted": {
+                        "fill": {
+                          "color": "#A6D854",
+                          "opacity": 1
+                        },
+                        "stroke": {
+                          "color": "#A6D854",
+                          "dashArray": 0,
+                          "opacity": 1,
+                          "width": 1
+                        }
+                      },
+                      "muted": {
+                        "fill": {
+                          "color": "#A6D854",
+                          "opacity": 0.4
+                        },
+                        "stroke": {
+                          "color": "#A6D854",
+                          "dashArray": 0,
+                          "opacity": 0.4,
+                          "width": 1
+                        }
+                      },
+                      "normal": {
+                        "fill": {
+                          "color": "var(--alarm)",
+                          "opacity": 0.8
+                        },
+                        "stroke": {
+                          "color": "var(--alarm)",
+                          "dashArray": 0,
+                          "opacity": 0.8,
+                          "width": 1
+                        }
+                      },
+                      "selected": {
+                        "fill": {
+                          "color": "#A6D854",
+                          "opacity": 1
+                        },
+                        "stroke": {
+                          "color": "#A6D854",
+                          "dashArray": 0,
+                          "opacity": 1,
+                          "width": 1
+                        }
+                      }
+                    },
+                    "type": "line"
+                  },
+                  "enabled": true,
+                  "name": "low low alarm",
+                  "plot": 0,
+                  "selectable": true,
+                  "visible": true
+                },
+                {
+                  "axis": "",
+                  "data": {
+                    "aggregateMode": "default"
+                  },
+                  "display": {
+                    "breakLine": true,
+                    "interpolation": "curveLinear",
+                    "radius": 3,
+                    "styles": {
+                      "highlighted": {
+                        "fill": {
+                          "color": "#FFD930",
+                          "opacity": 1
+                        },
+                        "stroke": {
+                          "color": "#FFD930",
+                          "dashArray": 0,
+                          "opacity": 1,
+                          "width": 1
+                        }
+                      },
+                      "muted": {
+                        "fill": {
+                          "color": "#FFD930",
+                          "opacity": 0.4
+                        },
+                        "stroke": {
+                          "color": "#FFD930",
+                          "dashArray": 0,
+                          "opacity": 0.4,
+                          "width": 1
+                        }
+                      },
+                      "normal": {
+                        "fill": {
+                          "color": "var(--warning)",
+                          "opacity": 0.8
+                        },
+                        "stroke": {
+                          "color": "var(--warning)",
+                          "dashArray": 0,
+                          "opacity": 0.8,
+                          "width": 1
+                        }
+                      },
+                      "selected": {
+                        "fill": {
+                          "color": "#FFD930",
+                          "opacity": 1
+                        },
+                        "stroke": {
+                          "color": "#FFD930",
+                          "dashArray": 0,
+                          "opacity": 1,
+                          "width": 1
+                        }
+                      }
+                    },
+                    "type": "line"
+                  },
+                  "enabled": true,
+                  "name": "low warning",
+                  "plot": 0,
+                  "selectable": true,
+                  "visible": true
+                },
+                {
+                  "axis": "",
+                  "data": {
+                    "aggregateMode": "default"
+                  },
+                  "display": {
+                    "breakLine": true,
+                    "interpolation": "curveLinear",
+                    "radius": 3,
+                    "styles": {
+                      "highlighted": {
+                        "fill": {
+                          "color": "#E5C494",
+                          "opacity": 1
+                        },
+                        "stroke": {
+                          "color": "#E5C494",
+                          "dashArray": 0,
+                          "opacity": 1,
+                          "width": 1
+                        }
+                      },
+                      "muted": {
+                        "fill": {
+                          "color": "#E5C494",
+                          "opacity": 0.4
+                        },
+                        "stroke": {
+                          "color": "#E5C494",
+                          "dashArray": 0,
+                          "opacity": 0.4,
+                          "width": 1
+                        }
+                      },
+                      "normal": {
+                        "fill": {
+                          "color": "var(--prim)",
+                          "opacity": 0.8
+                        },
+                        "stroke": {
+                          "color": "var(--prim)",
+                          "dashArray": 0,
+                          "opacity": 0.8,
+                          "width": 1
+                        }
+                      },
+                      "selected": {
+                        "fill": {
+                          "color": "#E5C494",
+                          "opacity": 1
+                        },
+                        "stroke": {
+                          "color": "#E5C494",
+                          "dashArray": 0,
+                          "opacity": 1,
+                          "width": 1
+                        }
+                      }
+                    },
+                    "type": "line"
+                  },
+                  "enabled": true,
+                  "name": "setpoint",
+                  "plot": 0,
+                  "selectable": true,
+                  "visible": true
+                }
+              ],
+              "style": {
+                "classes": "ATA/Library/Framework/Card/Card",
+                "height": "auto"
+              }
+            },
+            "type": "ia.chart.powerchart"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer"
+        },
+        "position": {
+          "basis": "368px",
+          "grow": 1
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "classes": "ATA/Background/Card"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

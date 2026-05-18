@@ -1,0 +1,1195 @@
+{
+  "custom": {},
+  "params": {
+    "Line": "E07"
+  },
+  "propConfig": {
+    "params.Line": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "width": 1133
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "meta": {
+                              "name": "PullBench"
+                            },
+                            "position": {
+                              "height": 0.995,
+                              "width": 0.995,
+                              "x": 0.002,
+                              "y": 0.002
+                            },
+                            "props": {
+                              "params": {
+                                "Line": "E07"
+                              },
+                              "path": "ControlRoom/Assets/HaulOff/Overview/Templates/PullBench"
+                            },
+                            "type": "ia.display.view"
+                          },
+                          {
+                            "children": [
+                              {
+                                "meta": {
+                                  "name": "EmbeddedView_1"
+                                },
+                                "position": {
+                                  "shrink": 0
+                                },
+                                "props": {
+                                  "params": {
+                                    "checkBoxLeft": true,
+                                    "checkIcon": "bootstrap-icons/check-square-fill",
+                                    "enabled": false,
+                                    "key": "Afschermdeuren gesloten",
+                                    "textPosition": "start",
+                                    "uncheckColor": "",
+                                    "uncheckIcon": "bootstrap-icons/square",
+                                    "value": false
+                                  },
+                                  "path": "Library/SharedTemplates/Input/Checkbox",
+                                  "style": {
+                                    "overflow": "hidden"
+                                  },
+                                  "useDefaultViewHeight": true
+                                },
+                                "type": "ia.display.view"
+                              },
+                              {
+                                "meta": {
+                                  "name": "EmbeddedView"
+                                },
+                                "position": {
+                                  "shrink": 0
+                                },
+                                "propConfig": {
+                                  "props.params.value": {
+                                    "binding": {
+                                      "config": {
+                                        "fallbackDelay": 2.5,
+                                        "mode": "indirect",
+                                        "references": {
+                                          "Line": "{view.params.Line}"
+                                        },
+                                        "tagPath": "[NLSTWDYK]Dyka/STW/EXT/{Line}/HAUL/HAUL/Screen/ProcessValues/Closed/ActualValue"
+                                      },
+                                      "type": "tag"
+                                    }
+                                  }
+                                },
+                                "props": {
+                                  "params": {
+                                    "checkBoxLeft": true,
+                                    "checkIcon": "bootstrap-icons/check-square-fill",
+                                    "enabled": false,
+                                    "key": "Trekbank gesloten",
+                                    "textPosition": "start",
+                                    "uncheckColor": "",
+                                    "uncheckIcon": "bootstrap-icons/square"
+                                  },
+                                  "path": "Library/SharedTemplates/Input/Checkbox",
+                                  "style": {
+                                    "overflow": "hidden"
+                                  },
+                                  "useDefaultViewHeight": true
+                                },
+                                "type": "ia.display.view"
+                              },
+                              {
+                                "meta": {
+                                  "name": "EmbeddedView_0"
+                                },
+                                "position": {
+                                  "shrink": 0
+                                },
+                                "props": {
+                                  "params": {
+                                    "checkBoxLeft": true,
+                                    "checkIcon": "bootstrap-icons/check-square-fill",
+                                    "enabled": false,
+                                    "key": "Aandrijving aan",
+                                    "textPosition": "start",
+                                    "uncheckColor": "",
+                                    "uncheckIcon": "bootstrap-icons/square",
+                                    "value": false
+                                  },
+                                  "path": "Library/SharedTemplates/Input/Checkbox",
+                                  "style": {
+                                    "overflow": "hidden"
+                                  },
+                                  "useDefaultViewHeight": true
+                                },
+                                "type": "ia.display.view"
+                              }
+                            ],
+                            "meta": {
+                              "name": "GeneralInfo"
+                            },
+                            "position": {
+                              "height": 0.4486,
+                              "width": 0.203,
+                              "x": 0.8284,
+                              "y": 0.0063
+                            },
+                            "props": {
+                              "direction": "column",
+                              "style": {
+                                "classes": "ATA/Background/CardSecondary"
+                              }
+                            },
+                            "type": "ia.container.flex"
+                          }
+                        ],
+                        "meta": {
+                          "name": "CoordinateContainer"
+                        },
+                        "position": {
+                          "grow": 1
+                        },
+                        "props": {
+                          "aspectRatio": "641:282",
+                          "mode": "percent",
+                          "style": {
+                            "overflow": "hidden"
+                          }
+                        },
+                        "type": "ia.container.coord"
+                      },
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "meta": {
+                                  "name": "FlexRepeater_0"
+                                },
+                                "position": {
+                                  "grow": 1
+                                },
+                                "propConfig": {
+                                  "props.instances[0].startPath": {
+                                    "binding": {
+                                      "config": {
+                                        "expression": "\"[NLSTWDYK]Dyka/STW/EXT/\"+{view.params.Line}+\"/HAUL/HAUL/Screen/ProcessValues/Pressure/Speed\""
+                                      },
+                                      "type": "expr"
+                                    }
+                                  }
+                                },
+                                "props": {
+                                  "elementPosition": {
+                                    "basis": "auto",
+                                    "grow": 0,
+                                    "shrink": 0
+                                  },
+                                  "instances": [
+                                    {
+                                      "ParamName": "Lijnsnelheid",
+                                      "instancePosition": {},
+                                      "instanceStyle": {
+                                        "classes": ""
+                                      }
+                                    }
+                                  ],
+                                  "justify": "space-around",
+                                  "path": "Library/SharedTemplates/ParameterData",
+                                  "style": {
+                                    "classes": "ATA/Background/CardSecondary"
+                                  },
+                                  "useDefaultViewHeight": false
+                                },
+                                "type": "ia.display.flex-repeater"
+                              },
+                              {
+                                "meta": {
+                                  "name": "FlexRepeater"
+                                },
+                                "position": {
+                                  "grow": 1
+                                },
+                                "propConfig": {
+                                  "props.instances[0].startPath": {
+                                    "binding": {
+                                      "config": {
+                                        "expression": "\"[NLSTWDYK]Dyka/STW/EXT/\"+{view.params.Line}+\"/HAUL/HAUL/Screen/ProcessValues/Closed\""
+                                      },
+                                      "type": "expr"
+                                    }
+                                  },
+                                  "props.instances[1].startPath": {
+                                    "binding": {
+                                      "config": {
+                                        "expression": "\"[NLSTWDYK]Dyka/STW/EXT/\"+{view.params.Line}+\"/HAUL/HAUL/Screen/ProcessValues/Pressure\""
+                                      },
+                                      "type": "expr"
+                                    }
+                                  },
+                                  "props.instances[2].startPath": {
+                                    "binding": {
+                                      "config": {
+                                        "expression": "\"[NLSTWDYK]Dyka/STW/EXT/\"+{view.params.Line}+\"/HAUL/HAUL/Screen/ProcessValues/Pressure/EnergyConsumption\""
+                                      },
+                                      "type": "expr"
+                                    }
+                                  }
+                                },
+                                "props": {
+                                  "elementPosition": {
+                                    "basis": "auto",
+                                    "grow": 0,
+                                    "shrink": 0
+                                  },
+                                  "instances": [
+                                    {
+                                      "ParamName": "Slip",
+                                      "instancePosition": {},
+                                      "instanceStyle": {
+                                        "classes": ""
+                                      }
+                                    },
+                                    {
+                                      "ParamName": "Druk op rupsen",
+                                      "instancePosition": {},
+                                      "instanceStyle": {
+                                        "classes": ""
+                                      }
+                                    },
+                                    {
+                                      "ParamName": "Stroom",
+                                      "instancePosition": {},
+                                      "instanceStyle": {
+                                        "classes": ""
+                                      }
+                                    }
+                                  ],
+                                  "justify": "space-around",
+                                  "path": "Library/SharedTemplates/ParameterData",
+                                  "style": {
+                                    "classes": "ATA/Background/CardSecondary"
+                                  },
+                                  "useDefaultViewHeight": false
+                                },
+                                "type": "ia.display.flex-repeater"
+                              }
+                            ],
+                            "meta": {
+                              "name": "Parameters"
+                            },
+                            "position": {
+                              "basis": "60%",
+                              "grow": 1
+                            },
+                            "type": "ia.container.flex"
+                          }
+                        ],
+                        "meta": {
+                          "name": "ParameterData"
+                        },
+                        "position": {
+                          "basis": "200px",
+                          "shrink": 0
+                        },
+                        "type": "ia.container.flex"
+                      }
+                    ],
+                    "meta": {
+                      "name": "PullBench"
+                    },
+                    "props": {
+                      "direction": "column"
+                    },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "meta": {
+                      "name": "PowerChart"
+                    },
+                    "position": {
+                      "tabIndex": 1
+                    },
+                    "propConfig": {
+                      "props.config.tagBrowserStartPath": {
+                        "binding": {
+                          "config": {
+                            "expression": "\u0027histprov:NLSTWDYK_DB_HIST:/drv:nlstwapp11ot:NLSTWDYK:/tag:DYKA/STW/EXT/\u0027+{view.params.Line}+\u0027/HAUL/HAUL/processvalues\u0027"
+                          },
+                          "type": "expr"
+                        }
+                      }
+                    },
+                    "props": {
+                      "config": {
+                        "measureOfTime": "minutes",
+                        "rangeEndDate": {
+                          "$": [
+                            "ts",
+                            0,
+                            1772092690285
+                          ],
+                          "$ts": 1772092684261
+                        },
+                        "rangeStartDate": {
+                          "$": [
+                            "ts",
+                            0,
+                            1772092690285
+                          ],
+                          "$ts": 1772090890261
+                        },
+                        "unitOfTime": 30,
+                        "visibility": {
+                          "showTagBrowser": true
+                        }
+                      },
+                      "interaction": {
+                        "chartZoomLevel": 1,
+                        "rangeZoomLevel": 1
+                      },
+                      "pens": [
+                        {
+                          "axis": "",
+                          "data": {
+                            "aggregateMode": "default",
+                            "source": "histprov:NLSTWDYK_DB_HIST:/drv:nlstwapp11ot:default:/tag:Extrusie/Line7/Extruder/massadruk/actual value"
+                          },
+                          "display": {
+                            "breakLine": true,
+                            "interpolation": "curveLinear",
+                            "radius": 3,
+                            "styles": {
+                              "highlighted": {
+                                "fill": {
+                                  "color": "#63BEA2",
+                                  "opacity": 1
+                                },
+                                "stroke": {
+                                  "color": "#63BEA2",
+                                  "dashArray": 0,
+                                  "opacity": 1,
+                                  "width": 1
+                                }
+                              },
+                              "muted": {
+                                "fill": {
+                                  "color": "#63BEA2",
+                                  "opacity": 0.4
+                                },
+                                "stroke": {
+                                  "color": "#63BEA2",
+                                  "dashArray": 0,
+                                  "opacity": 0.4,
+                                  "width": 1
+                                }
+                              },
+                              "normal": {
+                                "fill": {
+                                  "color": "#63BEA2",
+                                  "opacity": 0.8
+                                },
+                                "stroke": {
+                                  "color": "#63BEA2",
+                                  "dashArray": 0,
+                                  "opacity": 0.8,
+                                  "width": 1
+                                }
+                              },
+                              "selected": {
+                                "fill": {
+                                  "color": "#63BEA2",
+                                  "opacity": 1
+                                },
+                                "stroke": {
+                                  "color": "#63BEA2",
+                                  "dashArray": 0,
+                                  "opacity": 1,
+                                  "width": 1
+                                }
+                              }
+                            },
+                            "type": "line"
+                          },
+                          "enabled": true,
+                          "name": "actual value",
+                          "plot": 0,
+                          "selectable": true,
+                          "visible": true
+                        },
+                        {
+                          "axis": "",
+                          "data": {
+                            "aggregateMode": "default",
+                            "source": "histprov:NLSTWDYK_DB_HIST:/drv:nlstwapp11ot:default:/tag:Extrusie/Line7/Extruder/massadruk/high high alarm"
+                          },
+                          "display": {
+                            "breakLine": true,
+                            "interpolation": "curveLinear",
+                            "radius": 3,
+                            "styles": {
+                              "highlighted": {
+                                "fill": {
+                                  "color": "#FC8D62",
+                                  "opacity": 1
+                                },
+                                "stroke": {
+                                  "color": "#FC8D62",
+                                  "dashArray": 0,
+                                  "opacity": 1,
+                                  "width": 1
+                                }
+                              },
+                              "muted": {
+                                "fill": {
+                                  "color": "#FC8D62",
+                                  "opacity": 0.4
+                                },
+                                "stroke": {
+                                  "color": "#FC8D62",
+                                  "dashArray": 0,
+                                  "opacity": 0.4,
+                                  "width": 1
+                                }
+                              },
+                              "normal": {
+                                "fill": {
+                                  "color": "#FC8D62",
+                                  "opacity": 0.8
+                                },
+                                "stroke": {
+                                  "color": "#FC8D62",
+                                  "dashArray": 0,
+                                  "opacity": 0.8,
+                                  "width": 1
+                                }
+                              },
+                              "selected": {
+                                "fill": {
+                                  "color": "#FC8D62",
+                                  "opacity": 1
+                                },
+                                "stroke": {
+                                  "color": "#FC8D62",
+                                  "dashArray": 0,
+                                  "opacity": 1,
+                                  "width": 1
+                                }
+                              }
+                            },
+                            "type": "line"
+                          },
+                          "enabled": true,
+                          "name": "high high alarm",
+                          "plot": 0,
+                          "selectable": true,
+                          "visible": true
+                        },
+                        {
+                          "axis": "",
+                          "data": {
+                            "aggregateMode": "default",
+                            "source": "histprov:NLSTWDYK_DB_HIST:/drv:nlstwapp11ot:default:/tag:Extrusie/Line7/Extruder/massadruk/high warning"
+                          },
+                          "display": {
+                            "breakLine": true,
+                            "interpolation": "curveLinear",
+                            "radius": 3,
+                            "styles": {
+                              "highlighted": {
+                                "fill": {
+                                  "color": "#8DA0CB",
+                                  "opacity": 1
+                                },
+                                "stroke": {
+                                  "color": "#8DA0CB",
+                                  "dashArray": 0,
+                                  "opacity": 1,
+                                  "width": 1
+                                }
+                              },
+                              "muted": {
+                                "fill": {
+                                  "color": "#8DA0CB",
+                                  "opacity": 0.4
+                                },
+                                "stroke": {
+                                  "color": "#8DA0CB",
+                                  "dashArray": 0,
+                                  "opacity": 0.4,
+                                  "width": 1
+                                }
+                              },
+                              "normal": {
+                                "fill": {
+                                  "color": "#8DA0CB",
+                                  "opacity": 0.8
+                                },
+                                "stroke": {
+                                  "color": "#8DA0CB",
+                                  "dashArray": 0,
+                                  "opacity": 0.8,
+                                  "width": 1
+                                }
+                              },
+                              "selected": {
+                                "fill": {
+                                  "color": "#8DA0CB",
+                                  "opacity": 1
+                                },
+                                "stroke": {
+                                  "color": "#8DA0CB",
+                                  "dashArray": 0,
+                                  "opacity": 1,
+                                  "width": 1
+                                }
+                              }
+                            },
+                            "type": "line"
+                          },
+                          "enabled": true,
+                          "name": "high warning",
+                          "plot": 0,
+                          "selectable": true,
+                          "visible": true
+                        },
+                        {
+                          "axis": "",
+                          "data": {
+                            "aggregateMode": "default",
+                            "source": "histprov:NLSTWDYK_DB_HIST:/drv:nlstwapp11ot:default:/tag:Extrusie/Line7/Extruder/massadruk/low low alarm"
+                          },
+                          "display": {
+                            "breakLine": true,
+                            "interpolation": "curveLinear",
+                            "radius": 3,
+                            "styles": {
+                              "highlighted": {
+                                "fill": {
+                                  "color": "#E78AC3",
+                                  "opacity": 1
+                                },
+                                "stroke": {
+                                  "color": "#E78AC3",
+                                  "dashArray": 0,
+                                  "opacity": 1,
+                                  "width": 1
+                                }
+                              },
+                              "muted": {
+                                "fill": {
+                                  "color": "#E78AC3",
+                                  "opacity": 0.4
+                                },
+                                "stroke": {
+                                  "color": "#E78AC3",
+                                  "dashArray": 0,
+                                  "opacity": 0.4,
+                                  "width": 1
+                                }
+                              },
+                              "normal": {
+                                "fill": {
+                                  "color": "#E78AC3",
+                                  "opacity": 0.8
+                                },
+                                "stroke": {
+                                  "color": "#E78AC3",
+                                  "dashArray": 0,
+                                  "opacity": 0.8,
+                                  "width": 1
+                                }
+                              },
+                              "selected": {
+                                "fill": {
+                                  "color": "#E78AC3",
+                                  "opacity": 1
+                                },
+                                "stroke": {
+                                  "color": "#E78AC3",
+                                  "dashArray": 0,
+                                  "opacity": 1,
+                                  "width": 1
+                                }
+                              }
+                            },
+                            "type": "line"
+                          },
+                          "enabled": true,
+                          "name": "low low alarm",
+                          "plot": 0,
+                          "selectable": true,
+                          "visible": true
+                        },
+                        {
+                          "axis": "",
+                          "data": {
+                            "aggregateMode": "default",
+                            "source": "histprov:NLSTWDYK_DB_HIST:/drv:nlstwapp11ot:default:/tag:Extrusie/Line7/Extruder/massadruk/low warning"
+                          },
+                          "display": {
+                            "breakLine": true,
+                            "interpolation": "curveLinear",
+                            "radius": 3,
+                            "styles": {
+                              "highlighted": {
+                                "fill": {
+                                  "color": "#A6D854",
+                                  "opacity": 1
+                                },
+                                "stroke": {
+                                  "color": "#A6D854",
+                                  "dashArray": 0,
+                                  "opacity": 1,
+                                  "width": 1
+                                }
+                              },
+                              "muted": {
+                                "fill": {
+                                  "color": "#A6D854",
+                                  "opacity": 0.4
+                                },
+                                "stroke": {
+                                  "color": "#A6D854",
+                                  "dashArray": 0,
+                                  "opacity": 0.4,
+                                  "width": 1
+                                }
+                              },
+                              "normal": {
+                                "fill": {
+                                  "color": "#A6D854",
+                                  "opacity": 0.8
+                                },
+                                "stroke": {
+                                  "color": "#A6D854",
+                                  "dashArray": 0,
+                                  "opacity": 0.8,
+                                  "width": 1
+                                }
+                              },
+                              "selected": {
+                                "fill": {
+                                  "color": "#A6D854",
+                                  "opacity": 1
+                                },
+                                "stroke": {
+                                  "color": "#A6D854",
+                                  "dashArray": 0,
+                                  "opacity": 1,
+                                  "width": 1
+                                }
+                              }
+                            },
+                            "type": "line"
+                          },
+                          "enabled": true,
+                          "name": "low warning",
+                          "plot": 0,
+                          "selectable": true,
+                          "visible": true
+                        },
+                        {
+                          "axis": "",
+                          "data": {
+                            "aggregateMode": "default",
+                            "source": "histprov:NLSTWDYK_DB_HIST:/drv:nlstwapp11ot:default:/tag:Extrusie/Line7/Extruder/massadruk/setpoint"
+                          },
+                          "display": {
+                            "breakLine": true,
+                            "interpolation": "curveLinear",
+                            "radius": 3,
+                            "styles": {
+                              "highlighted": {
+                                "fill": {
+                                  "color": "#FFD930",
+                                  "opacity": 1
+                                },
+                                "stroke": {
+                                  "color": "#FFD930",
+                                  "dashArray": 0,
+                                  "opacity": 1,
+                                  "width": 1
+                                }
+                              },
+                              "muted": {
+                                "fill": {
+                                  "color": "#FFD930",
+                                  "opacity": 0.4
+                                },
+                                "stroke": {
+                                  "color": "#FFD930",
+                                  "dashArray": 0,
+                                  "opacity": 0.4,
+                                  "width": 1
+                                }
+                              },
+                              "normal": {
+                                "fill": {
+                                  "color": "#FFD930",
+                                  "opacity": 0.8
+                                },
+                                "stroke": {
+                                  "color": "#FFD930",
+                                  "dashArray": 0,
+                                  "opacity": 0.8,
+                                  "width": 1
+                                }
+                              },
+                              "selected": {
+                                "fill": {
+                                  "color": "#FFD930",
+                                  "opacity": 1
+                                },
+                                "stroke": {
+                                  "color": "#FFD930",
+                                  "dashArray": 0,
+                                  "opacity": 1,
+                                  "width": 1
+                                }
+                              }
+                            },
+                            "type": "line"
+                          },
+                          "enabled": true,
+                          "name": "setpoint",
+                          "plot": 0,
+                          "selectable": true,
+                          "visible": true
+                        }
+                      ]
+                    },
+                    "type": "ia.chart.powerchart"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "AlarmStatusTable"
+                        },
+                        "propConfig": {
+                          "props.filters.active.conditions.displayPath": {
+                            "binding": {
+                              "config": {
+                                "path": "parent.custom.filter"
+                              },
+                              "type": "property"
+                            }
+                          },
+                          "props.filters.shelved.conditions.displayPath": {
+                            "binding": {
+                              "config": {
+                                "path": "parent.custom.filter"
+                              },
+                              "type": "property"
+                            }
+                          }
+                        },
+                        "props": {
+                          "columns": {
+                            "active": {
+                              "name": {
+                                "enabled": false
+                              },
+                              "source": {
+                                "enabled": false
+                              },
+                              "state": {
+                                "enabled": false
+                              }
+                            }
+                          },
+                          "enableDetails": false,
+                          "filters": {
+                            "active": {
+                              "conditions": {},
+                              "priorities": {
+                                "critical": false,
+                                "high": false,
+                                "low": false,
+                                "medium": false
+                              },
+                              "states": {
+                                "activeAcked": false,
+                                "clearUnacked": false
+                              }
+                            },
+                            "shelved": {
+                              "conditions": {
+                                "provider": "",
+                                "source": ""
+                              }
+                            }
+                          },
+                          "pager": {
+                            "enabled": false,
+                            "initialOption": 100
+                          },
+                          "responsive": {
+                            "enabled": true
+                          },
+                          "rowStyles": {
+                            "activeAcked": {
+                              "priorities": {
+                                "high": {
+                                  "backgroundColor": "",
+                                  "classes": "ATA/AlarmRows/High/ActiveAcked"
+                                },
+                                "medium": {
+                                  "backgroundColor": "",
+                                  "classes": "ATA/AlarmRows/Medium/ActiveAcked",
+                                  "color": ""
+                                }
+                              }
+                            },
+                            "activeUnacked": {
+                              "priorities": {
+                                "high": {
+                                  "backgroundColor": "",
+                                  "classes": "ATA/AlarmRows/High/ActiveUnacked"
+                                },
+                                "medium": {
+                                  "backgroundColor": "",
+                                  "classes": "ATA/AlarmRows/Medium/ActiveUnacked",
+                                  "color": ""
+                                }
+                              }
+                            },
+                            "clearUnacked": {
+                              "priorities": {
+                                "high": {
+                                  "backgroundColor": "",
+                                  "classes": "ATA/AlarmRows/High/ClearedUnacked"
+                                },
+                                "medium": {
+                                  "backgroundColor": "",
+                                  "classes": "ATA/AlarmRows/Medium/ClearedUnacked",
+                                  "color": ""
+                                }
+                              }
+                            }
+                          },
+                          "toolbar": {
+                            "enableConfiguration": false,
+                            "enableFilter": false,
+                            "enableFilterResults": false,
+                            "enablePreFilters": false
+                          }
+                        },
+                        "type": "ia.display.alarmstatustable"
+                      },
+                      {
+                        "meta": {
+                          "name": "Dyka_TH"
+                        },
+                        "position": {
+                          "tabIndex": 1
+                        },
+                        "propConfig": {
+                          "props.filter.conditions.displayPath": {
+                            "binding": {
+                              "config": {
+                                "path": "parent.custom.filter"
+                              },
+                              "type": "property"
+                            }
+                          }
+                        },
+                        "props": {
+                          "columns": {
+                            "displayPath": {
+                              "enabled": true,
+                              "order": 1
+                            },
+                            "eventId": {
+                              "enabled": false
+                            },
+                            "eventTime": {
+                              "sort": "descending"
+                            },
+                            "name": {
+                              "enabled": true
+                            },
+                            "source": {
+                              "enabled": false
+                            }
+                          },
+                          "dateRange": {
+                            "realtime": {
+                              "interval": 24
+                            }
+                          },
+                          "enableDetails": false,
+                          "filter": {
+                            "conditions": {}
+                          },
+                          "name": "Dyka_TH",
+                          "pager": {
+                            "enabled": false,
+                            "initialOption": 100,
+                            "shelvedPage": 1
+                          },
+                          "rowStyles": {
+                            "acked": {
+                              "priorities": {
+                                "high": {
+                                  "backgroundColor": "",
+                                  "classes": "ATA/AlarmRows/High/ActiveAcked"
+                                },
+                                "medium": {
+                                  "backgroundColor": "",
+                                  "classes": "ATA/AlarmRows/Medium/ActiveAcked",
+                                  "color": ""
+                                }
+                              }
+                            },
+                            "active": {
+                              "priorities": {
+                                "high": {
+                                  "backgroundColor": "",
+                                  "classes": "ATA/AlarmRows/High/ActiveUnacked"
+                                },
+                                "medium": {
+                                  "backgroundColor": "",
+                                  "classes": "ATA/AlarmRows/Medium/ActiveUnacked",
+                                  "color": ""
+                                }
+                              }
+                            },
+                            "cleared": {
+                              "priorities": {
+                                "high": {
+                                  "backgroundColor": "",
+                                  "classes": "ATA/AlarmRows/High/ClearedUnacked"
+                                },
+                                "medium": {
+                                  "backgroundColor": "",
+                                  "classes": "ATA/AlarmRows/Medium/ClearedUnacked",
+                                  "color": ""
+                                }
+                              }
+                            }
+                          },
+                          "toolbar": {
+                            "enabled": false
+                          }
+                        },
+                        "type": "ia.display.alarmjournaltable"
+                      },
+                      {
+                        "meta": {
+                          "name": "Analysis"
+                        },
+                        "position": {
+                          "tabIndex": 2
+                        },
+                        "propConfig": {
+                          "props.params.filter": {
+                            "binding": {
+                              "config": {
+                                "path": "parent.custom.filter"
+                              },
+                              "type": "property"
+                            }
+                          }
+                        },
+                        "props": {
+                          "path": "Library/Alarms/Templates/Alarm Analysis"
+                        },
+                        "type": "ia.display.view"
+                      }
+                    ],
+                    "meta": {
+                      "name": "TabContainer_0"
+                    },
+                    "position": {
+                      "tabIndex": 2
+                    },
+                    "propConfig": {
+                      "custom.filter": {
+                        "binding": {
+                          "config": {
+                            "expression": "\"*Dyka/STW/EXT/\"+{view.params.Line}+\"/HAUL/HAUL/*\""
+                          },
+                          "type": "expr"
+                        }
+                      },
+                      "props.currentTabIndex": {
+                        "binding": {
+                          "config": {
+                            "expression": "0"
+                          },
+                          "type": "expr"
+                        }
+                      }
+                    },
+                    "props": {
+                      "contentStyle": {
+                        "backgroundColor": "--backgroundSecondary"
+                      },
+                      "menuStyle": {
+                        "backgroundColor": ""
+                      },
+                      "menuType": "modern",
+                      "tabSize": {
+                        "width": 120
+                      },
+                      "tabs": [
+                        {
+                          "disabled": false,
+                          "text": "Active"
+                        },
+                        {
+                          "disabled": false,
+                          "text": "History"
+                        },
+                        "Analyse"
+                      ]
+                    },
+                    "type": "ia.container.tab"
+                  }
+                ],
+                "meta": {
+                  "name": "TabContainer"
+                },
+                "position": {
+                  "basis": "300px",
+                  "grow": 1
+                },
+                "propConfig": {
+                  "props.currentTabIndex": {
+                    "binding": {
+                      "config": {
+                        "expression": "0"
+                      },
+                      "type": "expr"
+                    },
+                    "persistent": true
+                  },
+                  "props.tabs[0].viewParams.isActive": {
+                    "binding": {
+                      "config": {
+                        "expression": "{this.props.currentTabIndex} \u003d 0"
+                      },
+                      "type": "expr"
+                    },
+                    "persistent": true
+                  },
+                  "props.tabs[0].viewParams.tagPath": {
+                    "binding": {
+                      "config": {
+                        "expression": "\"[NLSTWDYK]Dyka/STW/EXT/\"+{view.params.Line}+\"/HAUL\""
+                      },
+                      "type": "expr"
+                    },
+                    "persistent": true
+                  }
+                },
+                "props": {
+                  "contentStyle": {
+                    "backgroundColor": "--backgroundSecondary"
+                  },
+                  "menuType": "modern",
+                  "tabSize": {
+                    "width": 120
+                  },
+                  "tabs": [
+                    {
+                      "disabled": false,
+                      "viewParams": {
+                        "isActive": true,
+                        "isDisabled": false,
+                        "selected": false,
+                        "tabText": "Trekbank",
+                        "tagPath": "[NLSTWDYK]Dyka/STW/EXT/E07/HAUL"
+                      },
+                      "viewPath": "Library/SharedTemplates/TabElement"
+                    },
+                    "Trending",
+                    "Alarmen"
+                  ]
+                },
+                "type": "ia.container.tab"
+              }
+            ],
+            "meta": {
+              "name": "FlexContainer_1"
+            },
+            "position": {
+              "basis": "200px",
+              "grow": 1
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "classes": "ATA/Background/CardSecondary"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "Content"
+        },
+        "position": {
+          "grow": 1
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "classes": "ATA/Background/Root"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "meta": {
+          "name": "AlarmBar"
+        },
+        "position": {
+          "basis": "65px",
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.params.line": {
+            "binding": {
+              "config": {
+                "path": "view.params.Line"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "filter": "",
+            "popupMarginRight": 1
+          },
+          "path": "Library/SharedDocked/Alarms/AlarmBar"
+        },
+        "type": "ia.display.view"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

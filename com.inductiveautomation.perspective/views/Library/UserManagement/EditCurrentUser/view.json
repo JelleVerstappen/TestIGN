@@ -1,0 +1,903 @@
+{
+  "custom": {
+    "editUser": null
+  },
+  "params": {
+    "mode": "edit",
+    "selectedUser": "joeri",
+    "userSource": "Ignition"
+  },
+  "propConfig": {
+    "custom.editUser": {
+      "binding": {
+        "config": {
+          "struct": {
+            "mode": "{view.params.mode}",
+            "selectedUser": "{view.params.selectedUser}"
+          },
+          "waitOnAll": true
+        },
+        "transforms": [
+          {
+            "code": "\tdef coalesce(value, fallback):\n\t\t\u0027\u0027\u0027\n\t\tFunction replaces None values with an empty string for input fields.\n\t\t\u0027\u0027\u0027\n\t\tif value is None:\n\t\t\treturn fallback\n\t\treturn value\n\t\n\t\u0027\u0027\u0027\n\tMAIN FUNCTION\n\t\u0027\u0027\u0027\n\tuserSource \u003d self.params.userSource\n\tselectedUser \u003d value[\"selectedUser\"]\n\tmode \u003d value[\"mode\"]\n\t\n\tif mode \u003d\u003d \"add\":\n\t\tusername \u003d None\n\telse:\n\t\tusername \u003d selectedUser\n\t\t\n\tuserObj \u003d system.user.getUser(userSource, username)\n\n\tif username \u003d\u003d None or username \u003d\u003d \"\" or userObj \u003d\u003d None:\n\t\tself.getChild(\"root\").custom.changePassword \u003d True\n\t\temptyDict \u003d {\n\t\t\t\u0027username\u0027:\t\t\"\",\n\t\t\t\u0027firstname\u0027:\t\"\",\n\t\t\t\u0027lastname\u0027:\t\t\"\",\n\t\t\t\u0027notes\u0027:\t\t\"\",\n\t\t\t\u0027badge\u0027:\t\t\"\",\n\t\t\t\u0027schedule\u0027:\t\t\"\",\n\t\t\t\u0027language\u0027:\t\t\"\",\n\t\t\t\u0027getId\u0027:\t\t\"\",\n\t\t\t\u0027getRoles\u0027:\t\t\"\",\n\t\t\t\u0027contactInformation\u0027:[],\n\t\t\t\u0027scheduleModifications\u0027:[],\n\t\t}\n\t\treturn emptyDict\n\telse:\n\t\tuserObj \u003d system.user.getUser(userSource, username)\n\t\tif userObj !\u003d None:\n\t\t\tuserDict \u003d {\n\t\t\t\t\u0027username\u0027:\t\tcoalesce(userObj.get(\u0027username\u0027), \"\"),\n\t\t\t\t\u0027firstname\u0027:\tcoalesce(userObj.get(\u0027firstname\u0027), \"\"),\n\t\t\t\t\u0027lastname\u0027:\t\tcoalesce(userObj.get(\u0027lastname\u0027), \"\"),\n\t\t\t\t\u0027notes\u0027:\t\tcoalesce(userObj.get(\u0027notes\u0027), \"\"),\n\t\t\t\t\u0027badge\u0027:\t\tcoalesce(userObj.get(\u0027badge\u0027), \"\"),\n\t\t\t\t\u0027schedule\u0027:\t\tcoalesce(userObj.get(\u0027schedule\u0027), \"\"),\n\t\t\t\t\u0027language\u0027:\t\tcoalesce(userObj.get(\u0027language\u0027), \"\"),\n\t\t\t\t\u0027getId\u0027:\t\tcoalesce(userObj.getId(), \"\"),\n\t\t\t\t\u0027getRoles\u0027:\t\tcoalesce(userObj.getRoles(), \"\"),\n\t\t\t\t\u0027contactInformation\u0027:[],\n\t\t\t\t\u0027scheduleModifications\u0027:[],\n\t\t\t\t\u0027getPath\u0027:userObj.getPath()\n\t\t\t}\n\t\t\t\n\t\t\t# Update ScheduleModifications to contain the returned values of .getScheduleAdjustment().\n\t\t\tscheduleAdjustments \u003d userObj.getScheduleAdjustments()\n\t\t\tfor schedule in scheduleAdjustments:\n\t\t\t\ttempSchedule \u003d {\u0027Start\u0027:schedule.getStart(), \u0027End\u0027:schedule.getEnd(), \u0027Note\u0027:schedule.getNote(), \u0027Available\u0027:schedule.isAvailable(), \u0027Remove\u0027:\u0027\u0027}\n\t\t\t\tuserDict[\u0027scheduleModifications\u0027].append(tempSchedule)\n\n\t\t\t# Update ContactInformation to contain the returned values of .getContactInfo()\n\t\t\tcontactInfo \u003d userObj.getContactInfo()\n\t\t\tfor contact in contactInfo:\n\t\t\t\ttempContact \u003d {\"Type\":contact.contactType, \"Value\":contact.value, \"Selected\":False, \"Delete\":\"\"}\n\t\t\t\tuserDict[\u0027contactInformation\u0027].append(tempContact)\n\t\t\treturn userDict",
+            "type": "script"
+          }
+        ],
+        "type": "expr-struct"
+      },
+      "persistent": true
+    },
+    "custom.error": {
+      "binding": {
+        "config": {
+          "expression": "if ({/root/User Properties and Roles/User Properties/User Properties Input/Username and Password/Username/Username Input/Icon.custom.errorMessage} +\r\n\t{/root/User Properties and Roles/User Properties/User Properties Input/Username and Password/Password/Password Input/Icon.custom.errorMessage} \u003d \"\", False, True)"
+        },
+        "type": "expr"
+      }
+    },
+    "params.mode": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.selectedUser": {
+      "binding": {
+        "config": {
+          "path": "session.props.auth.user.userName"
+        },
+        "type": "property"
+      },
+      "paramDirection": "inout",
+      "persistent": true
+    },
+    "params.userSource": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 760,
+      "width": 700
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Header"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "expression": "if({view.params.mode} \u003d \"add\", \"Users \u003e Add User\", \"Users \u003e Edit User\")"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "ATA/Library/UserManagement/Headers"
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Spacing"
+            },
+            "position": {
+              "basis": "20px",
+              "grow": 1,
+              "shrink": 0
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "events": {
+              "dom": {
+                "onClick": {
+                  "config": {
+                    "script": "\tfrom collections import namedtuple\n\t\t\n\t\n\tdef convertToUserObject(userSource, user, mode):\n\t\t\u0027\u0027\u0027\n\t\tFunction that converts the given object into a user object that can be sent to the Gateway.\n\t\t\u0027\u0027\u0027\n\t\t# Check if adding a new user else, get the user object from the Gateway.\n\t\tuserObject \u003d system.user.getUser(userSource, user[\u0027oldUsername\u0027])\n\t\t\n\t\tuserObject.set(\u0027username\u0027,     user[\u0027username\u0027])\n\t\tif user.has_key(\u0027password\u0027):\n\t\t\tuserObject.set(\u0027password\u0027, user[\u0027password\u0027])\n\t\t\n\t\treturn userObject\n\t\n\n\t\u0027\u0027\u0027\n\tIf there are no errors, adds/updates the user object on the Gateway and sends the user back to the User Management (home) view.\n\tIf an error is found, open popup with error message.\n\t\u0027\u0027\u0027\n\tif self.view.custom.error \u003d\u003d True:\n\t\tparams \u003d {\n\t\t\t\u0027username\u0027:\tself.parent.parent.getChild(\"User Properties and Roles\").getChild(\"User Properties\").getChild(\"User Properties Input\").getChild(\"Username and Password\").getChild(\"Username\").getChild(\"Username Input\").getChild(\"Icon\").custom.errorMessage,\n\t\t\t\u0027password\u0027:\tself.parent.parent.getChild(\"User Properties and Roles\").getChild(\"User Properties\").getChild(\"User Properties Input\").getChild(\"Username and Password\").getChild(\"Password\").getChild(\"Password Input\").getChild(\"Icon\").custom.errorMessage,\n\t\t\t\u0027mode\u0027:\t\t\u0027user\u0027\n\t\t\t}\n\t\t\t\n\t\t# Open up error message popup with a list of errors.\n\t\tsystem.perspective.openPopup(id\u003d\u0027UserManagement_SaveError\u0027, view\u003d\u0027Library/UserManagement/Views/Popups/Popup_SaveError\u0027, params\u003dparams, showCloseIcon\u003dFalse, draggable\u003dFalse)\n\t\t\n\telse:\n\t\tmode \u003d self.view.params.mode\n\t\tuserSource \u003d self.view.params.userSource\n\t\tchangePassword \u003d self.view.getChild(\"root\").custom.changePassword\n\t\t\n\t\t# Create an object from the values of input components.\n\t\tuser \u003d {\n\t\t\t\u0027oldUsername\u0027:\t\t\t\tself.view.custom.editUser.username,\n\t\t\t\u0027username\u0027:\t\t\t\t\tself.view.getChild(\"root\").custom.username\n\t\t\t}\n\t\t\t\t\n\t\t# If a new user or a user being edited has a password change, add the new password to the user object.\n\t\tif changePassword \u003d\u003d True:\n\t\t\tuser[\"password\"] \u003d self.view.getChild(\"root\").custom.password\n\t\t\n\t\t# Convert the \"user\" object to a user object for updating the Gateway.\n\t\tuserObject \u003d convertToUserObject(userSource, user, mode)\n\t\t\n\t\t# If a new user, add the user to the Gateway. Else, edit the user on the Gateway.\n\t\tsystem.user.editUser(userSource, userObject)\n\t\t\n\n\t\t\n\t\t# Clear the two password input fields.\n\t\tself.parent.parent.getChild(\"User Properties and Roles\").getChild(\"User Properties\").getChild(\"User Properties Input\").getChild(\"Username and Password\").getChild(\"Password\").getChild(\"Password Input\").getChild(\"PasswordField\").props.text \u003d \u0027\u0027\n\t\tself.parent.parent.getChild(\"User Properties and Roles\").getChild(\"User Properties\").getChild(\"User Properties Input\").getChild(\"Username and Password\").getChild(\"Password\").getChild(\"Check Password Input\").getChild(\"PasswordField\").props.text  \u003d \u0027\u0027\n\t\t\n\n\t\tsystem.perspective.sendMessage(\"alertMessage\",{\"text\":\"User is saved.\",\"bgColor\":\"--good\",\"color\":\"--text\"},scope\u003d\"session\")\n\t\t"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "Button"
+            },
+            "position": {
+              "basis": "50px",
+              "shrink": 0
+            },
+            "props": {
+              "image": {
+                "position": "center"
+              },
+              "style": {
+                "backgroundColor": "#E9E2E2",
+                "color": "#000000",
+                "marginBottom": "5px",
+                "marginLeft": "10px",
+                "marginRight": "5px",
+                "marginTop": "5px"
+              },
+              "text": "Save"
+            },
+            "type": "ia.input.button"
+          }
+        ],
+        "meta": {
+          "name": "Header"
+        },
+        "position": {
+          "basis": "40px",
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "ATA/Library/UserManagement/Headers",
+            "marginBottom": "10px",
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "User Properties Label"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "classes": "ATA/Library/UserManagement/SectionHeaders",
+                    "marginBottom": "0px"
+                  },
+                  "text": "User Properties"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "meta": {
+                              "name": "Username Label"
+                            },
+                            "position": {
+                              "shrink": 0
+                            },
+                            "props": {
+                              "style": {
+                                "classes": "ATA/Library/UserManagement/SectionHeaders",
+                                "marginBottom": "2px",
+                                "marginLeft": "5px"
+                              },
+                              "text": "Username"
+                            },
+                            "type": "ia.display.label"
+                          },
+                          {
+                            "children": [
+                              {
+                                "meta": {
+                                  "name": "Username TextField"
+                                },
+                                "position": {
+                                  "basis": "200px",
+                                  "grow": 1
+                                },
+                                "propConfig": {
+                                  "props.text": {
+                                    "binding": {
+                                      "config": {
+                                        "path": "view.params.mode"
+                                      },
+                                      "transforms": [
+                                        {
+                                          "fallback": "{view.custom.editUser.username}",
+                                          "inputType": "scalar",
+                                          "mappings": [
+                                            {
+                                              "input": "add",
+                                              "output": "\"\""
+                                            }
+                                          ],
+                                          "outputType": "expression",
+                                          "type": "map"
+                                        }
+                                      ],
+                                      "type": "property"
+                                    }
+                                  }
+                                },
+                                "props": {
+                                  "deferUpdates": false,
+                                  "enabled": false,
+                                  "rejectUpdatesWhileFocused": false,
+                                  "style": {
+                                    "classes": "ATA/Library/UserManagement/InputFont"
+                                  }
+                                },
+                                "type": "ia.input.text-field"
+                              },
+                              {
+                                "children": [
+                                  {
+                                    "meta": {
+                                      "name": "Label"
+                                    },
+                                    "position": {
+                                      "grow": 1,
+                                      "shrink": 0
+                                    },
+                                    "propConfig": {
+                                      "props.text": {
+                                        "binding": {
+                                          "config": {
+                                            "path": "parent.custom.errorMessage"
+                                          },
+                                          "type": "property"
+                                        }
+                                      }
+                                    },
+                                    "props": {
+                                      "style": {
+                                        "backgroundColor": "#F6F6F6",
+                                        "borderColor": "#BBBBBB",
+                                        "borderStyle": "solid",
+                                        "borderWidth": "1px",
+                                        "fontSize": "12px",
+                                        "marginLeft": "25px",
+                                        "marginTop": "-5px",
+                                        "padding": "4px",
+                                        "position": "absolute",
+                                        "visibility": "hidden",
+                                        "width": "120px"
+                                      }
+                                    },
+                                    "type": "ia.display.label"
+                                  },
+                                  {
+                                    "events": {
+                                      "dom": {
+                                        "onMouseOut": {
+                                          "config": {
+                                            "script": "\tself.getSibling(\"Label\").props.style.visibility \u003d \"hidden\""
+                                          },
+                                          "scope": "G",
+                                          "type": "script"
+                                        },
+                                        "onMouseOver": {
+                                          "config": {
+                                            "script": "\tif self.parent.custom.errorMessage !\u003d \"\":\n\t\tself.getSibling(\"Label\").props.style.visibility \u003d \"visible\""
+                                          },
+                                          "scope": "G",
+                                          "type": "script"
+                                        }
+                                      }
+                                    },
+                                    "meta": {
+                                      "name": "Icon"
+                                    },
+                                    "position": {
+                                      "basis": "22px",
+                                      "shrink": 0
+                                    },
+                                    "propConfig": {
+                                      "props.color": {
+                                        "binding": {
+                                          "config": {
+                                            "path": "parent.custom.errorMessage"
+                                          },
+                                          "transforms": [
+                                            {
+                                              "fallback": "#FF0000",
+                                              "inputType": "scalar",
+                                              "mappings": [
+                                                {
+                                                  "input": "",
+                                                  "output": "#228B22"
+                                                }
+                                              ],
+                                              "outputType": "scalar",
+                                              "type": "map"
+                                            }
+                                          ],
+                                          "type": "property"
+                                        }
+                                      },
+                                      "props.path": {
+                                        "binding": {
+                                          "config": {
+                                            "path": "parent.custom.errorMessage"
+                                          },
+                                          "transforms": [
+                                            {
+                                              "fallback": "material/error",
+                                              "inputType": "scalar",
+                                              "mappings": [
+                                                {
+                                                  "input": "",
+                                                  "output": "material/check_circle"
+                                                }
+                                              ],
+                                              "outputType": "scalar",
+                                              "type": "map"
+                                            }
+                                          ],
+                                          "type": "property"
+                                        }
+                                      }
+                                    },
+                                    "type": "ia.display.icon"
+                                  }
+                                ],
+                                "meta": {
+                                  "name": "Icon"
+                                },
+                                "position": {
+                                  "basis": "22px",
+                                  "shrink": 0
+                                },
+                                "propConfig": {
+                                  "custom.errorMessage": {
+                                    "binding": {
+                                      "config": {
+                                        "path": "../Username TextField.props.text"
+                                      },
+                                      "transforms": [
+                                        {
+                                          "code": "\tuserSource \u003d self.view.params.userSource\n\tusers \u003d system.user.getUsers(userSource)\n\tselectedUser \u003d self.view.params.selectedUser\n\t\n\t# Gather all the users into an array\n\tusernames \u003d []\n\tif users:\n\t\tfor user in users:\n\t\t\tusernames.append(user.get(\u0027username\u0027))\n\t\n\t# Check if the value in username textfield matches a username already on the gateway or is empty, then return False\n\t# as well create error message. Else, return True and clear the error messages.\n\tif users:\n\t\tif value in usernames:\n\t\t\tif selectedUser:\n\t\t\t\tif value \u003d\u003d selectedUser:\n\t\t\t\t\treturn \"\"\n\t\t\t\telse:\n\t\t\t\t\treturn \"Username already exists.\"\n\t\t\telif selectedUser \u003d\u003d \"\":\n\t\t\t\treturn \"Username already exists.\"\n\t\telif value \u003d\u003d \u0027\u0027:\n\t\t\treturn \"Username field cannot be empty.\"\n\t\telse:\n\t\t\treturn \"\"",
+                                          "type": "script"
+                                        }
+                                      ],
+                                      "type": "property"
+                                    }
+                                  }
+                                },
+                                "type": "ia.container.flex"
+                              }
+                            ],
+                            "meta": {
+                              "name": "Username Input"
+                            },
+                            "position": {
+                              "basis": "26px",
+                              "shrink": 0
+                            },
+                            "props": {
+                              "style": {
+                                "marginLeft": "5px",
+                                "marginRight": "5px"
+                              }
+                            },
+                            "type": "ia.container.flex"
+                          }
+                        ],
+                        "meta": {
+                          "name": "Username"
+                        },
+                        "position": {
+                          "basis": "150px",
+                          "grow": 1,
+                          "shrink": 0
+                        },
+                        "props": {
+                          "direction": "column",
+                          "style": {
+                            "marginTop": "8px"
+                          }
+                        },
+                        "type": "ia.container.flex"
+                      },
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "meta": {
+                                  "name": "Password Label"
+                                },
+                                "props": {
+                                  "style": {
+                                    "classes": "ATA/Library/UserManagement/SectionHeaders",
+                                    "marginLeft": "5px"
+                                  },
+                                  "text": "Password"
+                                },
+                                "type": "ia.display.label"
+                              },
+                              {
+                                "meta": {
+                                  "name": "Spacing"
+                                },
+                                "position": {
+                                  "grow": 1,
+                                  "shrink": 0
+                                },
+                                "type": "ia.display.label"
+                              },
+                              {
+                                "meta": {
+                                  "name": "Checkbox"
+                                },
+                                "position": {
+                                  "shrink": 0
+                                },
+                                "propConfig": {
+                                  "position.display": {
+                                    "binding": {
+                                      "config": {
+                                        "path": "view.params.mode"
+                                      },
+                                      "transforms": [
+                                        {
+                                          "fallback": true,
+                                          "inputType": "scalar",
+                                          "mappings": [
+                                            {
+                                              "input": "add",
+                                              "output": false
+                                            }
+                                          ],
+                                          "outputType": "scalar",
+                                          "type": "map"
+                                        }
+                                      ],
+                                      "type": "property"
+                                    }
+                                  },
+                                  "props.selected": {
+                                    "binding": {
+                                      "config": {
+                                        "path": "view.params.mode"
+                                      },
+                                      "transforms": [
+                                        {
+                                          "fallback": false,
+                                          "inputType": "scalar",
+                                          "mappings": [
+                                            {
+                                              "input": "add",
+                                              "output": true
+                                            }
+                                          ],
+                                          "outputType": "scalar",
+                                          "type": "map"
+                                        }
+                                      ],
+                                      "type": "property"
+                                    }
+                                  }
+                                },
+                                "props": {
+                                  "checkedIcon": {
+                                    "style": {
+                                      "width": "18px"
+                                    }
+                                  },
+                                  "style": {
+                                    "classes": "ATA/Library/UserManagement/SectionHeaders",
+                                    "height": "16px",
+                                    "marginRight": "7px"
+                                  },
+                                  "text": "Edit Password?",
+                                  "textPosition": "left",
+                                  "uncheckedIcon": {
+                                    "style": {
+                                      "width": "18px"
+                                    }
+                                  }
+                                },
+                                "type": "ia.input.checkbox"
+                              }
+                            ],
+                            "meta": {
+                              "name": "Password Label Check Box"
+                            },
+                            "position": {
+                              "basis": "18px",
+                              "shrink": 0
+                            },
+                            "props": {
+                              "style": {
+                                "marginBottom": "2px",
+                                "overflow": "visible"
+                              },
+                              "wrap": "wrap"
+                            },
+                            "type": "ia.container.flex"
+                          },
+                          {
+                            "children": [
+                              {
+                                "meta": {
+                                  "name": "PasswordField"
+                                },
+                                "position": {
+                                  "basis": "200px",
+                                  "grow": 1
+                                },
+                                "propConfig": {
+                                  "props.enabled": {
+                                    "binding": {
+                                      "config": {
+                                        "path": "/root.custom.changePassword"
+                                      },
+                                      "type": "property"
+                                    }
+                                  }
+                                },
+                                "props": {
+                                  "allowReveal": false
+                                },
+                                "type": "ia.input.password-field"
+                              },
+                              {
+                                "children": [
+                                  {
+                                    "events": {
+                                      "dom": {
+                                        "onMouseOut": {
+                                          "config": {
+                                            "script": "\tself.getSibling(\"Label\").props.style.visibility \u003d \"hidden\""
+                                          },
+                                          "scope": "G",
+                                          "type": "script"
+                                        },
+                                        "onMouseOver": {
+                                          "config": {
+                                            "script": "\tif self.parent.custom.errorMessage !\u003d \"\":\n\t\tself.getSibling(\"Label\").props.style.visibility \u003d \"visible\""
+                                          },
+                                          "scope": "G",
+                                          "type": "script"
+                                        }
+                                      }
+                                    },
+                                    "meta": {
+                                      "name": "Icon"
+                                    },
+                                    "position": {
+                                      "basis": "22px"
+                                    },
+                                    "propConfig": {
+                                      "meta.visible": {
+                                        "binding": {
+                                          "config": {
+                                            "struct": {
+                                              "changePassword": "{/root.custom.changePassword}",
+                                              "mode": "{view.params.mode}"
+                                            },
+                                            "waitOnAll": true
+                                          },
+                                          "transforms": [
+                                            {
+                                              "code": "\t# Icon will be visible if user is being added or a user is being edited and the change password checkbox is true.\n\tif value[\"mode\"] \u003d\u003d \"\" or (value[\"mode\"] !\u003d \"\" and value[\"changePassword\"] \u003d\u003d True):\n\t\treturn True\n\telse:\n\t\treturn False",
+                                              "type": "script"
+                                            }
+                                          ],
+                                          "type": "expr-struct"
+                                        }
+                                      },
+                                      "props.color": {
+                                        "binding": {
+                                          "config": {
+                                            "path": "parent.custom.errorMessage"
+                                          },
+                                          "transforms": [
+                                            {
+                                              "fallback": "#FF0000",
+                                              "inputType": "scalar",
+                                              "mappings": [
+                                                {
+                                                  "input": "",
+                                                  "output": "#228B22"
+                                                }
+                                              ],
+                                              "outputType": "scalar",
+                                              "type": "map"
+                                            }
+                                          ],
+                                          "type": "property"
+                                        }
+                                      },
+                                      "props.path": {
+                                        "binding": {
+                                          "config": {
+                                            "path": "parent.custom.errorMessage"
+                                          },
+                                          "transforms": [
+                                            {
+                                              "fallback": "material/error",
+                                              "inputType": "scalar",
+                                              "mappings": [
+                                                {
+                                                  "input": "",
+                                                  "output": "material/check_circle"
+                                                }
+                                              ],
+                                              "outputType": "scalar",
+                                              "type": "map"
+                                            }
+                                          ],
+                                          "type": "property"
+                                        }
+                                      }
+                                    },
+                                    "type": "ia.display.icon"
+                                  },
+                                  {
+                                    "meta": {
+                                      "name": "Label"
+                                    },
+                                    "position": {
+                                      "basis": "50px"
+                                    },
+                                    "propConfig": {
+                                      "props.text": {
+                                        "binding": {
+                                          "config": {
+                                            "path": "parent.custom.errorMessage"
+                                          },
+                                          "type": "property"
+                                        }
+                                      }
+                                    },
+                                    "props": {
+                                      "style": {
+                                        "backgroundColor": "#F6F6F6",
+                                        "borderColor": "#BBBBBB",
+                                        "borderStyle": "solid",
+                                        "borderWidth": "1px",
+                                        "fontSize": "12px",
+                                        "marginLeft": "25px",
+                                        "marginTop": "-6px",
+                                        "padding": "4px",
+                                        "position": "absolute",
+                                        "visibility": "hidden",
+                                        "width": "150px"
+                                      }
+                                    },
+                                    "type": "ia.display.label"
+                                  }
+                                ],
+                                "meta": {
+                                  "name": "Icon"
+                                },
+                                "position": {
+                                  "basis": "22px",
+                                  "shrink": 0
+                                },
+                                "propConfig": {
+                                  "custom.errorMessage": {
+                                    "binding": {
+                                      "config": {
+                                        "struct": {
+                                          "changePassword": "{/root.custom.changePassword}",
+                                          "password": "{../PasswordField.props.text}",
+                                          "passwordCheck": "{.../Check Password Input/PasswordField.props.text}"
+                                        },
+                                        "waitOnAll": true
+                                      },
+                                      "transforms": [
+                                        {
+                                          "code": "\tpassword \u003d value[\u0027password\u0027]\n\tpasswordCheck \u003d value[\u0027passwordCheck\u0027]\n\tchangePassword \u003d value[\u0027changePassword\u0027]\n\n\t# If editing user and change password checkbox set to false, ignore password field errors.\n\tif changePassword \u003d\u003d False:\n\t\treturn \"\"\n\t# If password and check password input fields do not match or either input fields are blank, return with an error message.\n\t# Error if password does not equal check or password fields are empty.\n\telif password !\u003d passwordCheck or password \u003d\u003d \u0027\u0027 or passwordCheck \u003d\u003d \u0027\u0027:\n\t\t\treturn \"Password fields do not match or are empty.\"\n\telse:\n\t\treturn \"\"",
+                                          "type": "script"
+                                        }
+                                      ],
+                                      "type": "expr-struct"
+                                    }
+                                  }
+                                },
+                                "type": "ia.container.flex"
+                              }
+                            ],
+                            "meta": {
+                              "name": "Password Input"
+                            },
+                            "position": {
+                              "basis": "26px"
+                            },
+                            "props": {
+                              "style": {
+                                "classes": "ATA/Library/UserManagement/InputFont",
+                                "height": "26px",
+                                "marginLeft": "5px",
+                                "marginRight": "5px",
+                                "overflow": "visible"
+                              }
+                            },
+                            "type": "ia.container.flex"
+                          },
+                          {
+                            "children": [
+                              {
+                                "meta": {
+                                  "name": "PasswordField"
+                                },
+                                "position": {
+                                  "basis": "200px",
+                                  "grow": 1
+                                },
+                                "propConfig": {
+                                  "props.enabled": {
+                                    "binding": {
+                                      "config": {
+                                        "path": "/root.custom.changePassword"
+                                      },
+                                      "type": "property"
+                                    }
+                                  }
+                                },
+                                "props": {
+                                  "allowReveal": false,
+                                  "placeholder": "Re-Enter Password"
+                                },
+                                "type": "ia.input.password-field"
+                              },
+                              {
+                                "meta": {
+                                  "name": "Label"
+                                },
+                                "position": {
+                                  "basis": "22px",
+                                  "shrink": 0
+                                },
+                                "type": "ia.display.label"
+                              }
+                            ],
+                            "meta": {
+                              "name": "Check Password Input"
+                            },
+                            "position": {
+                              "basis": "26px"
+                            },
+                            "props": {
+                              "style": {
+                                "classes": "ATA/Library/UserManagement/InputFont",
+                                "height": "26px",
+                                "marginLeft": "5px",
+                                "marginRight": "5px",
+                                "marginTop": "2px",
+                                "overflow": "visible"
+                              }
+                            },
+                            "type": "ia.container.flex"
+                          }
+                        ],
+                        "meta": {
+                          "name": "Password"
+                        },
+                        "position": {
+                          "basis": "150px",
+                          "grow": 1,
+                          "shrink": 0
+                        },
+                        "props": {
+                          "direction": "column",
+                          "style": {
+                            "marginTop": "8px",
+                            "overflow": "visible"
+                          }
+                        },
+                        "type": "ia.container.flex"
+                      }
+                    ],
+                    "meta": {
+                      "name": "Username and Password"
+                    },
+                    "position": {
+                      "shrink": 0
+                    },
+                    "props": {
+                      "style": {
+                        "overflow": "visible"
+                      },
+                      "wrap": "wrap"
+                    },
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "meta": {
+                  "name": "User Properties Input"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "direction": "column",
+                  "style": {
+                    "classes": "ATA/Library/UserManagement/InputFont"
+                  }
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "User Properties"
+            },
+            "position": {
+              "basis": "500px",
+              "grow": 1
+            },
+            "props": {
+              "direction": "column"
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "User Properties and Roles"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "marginLeft": "7px",
+            "marginRight": "7px"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "propConfig": {
+      "custom.changePassword": {
+        "binding": {
+          "config": {
+            "bidirectional": true,
+            "path": "./User Properties and Roles/User Properties/User Properties Input/Username and Password/Password/Password Label Check Box/Checkbox.props.selected"
+          },
+          "type": "property"
+        }
+      },
+      "custom.password": {
+        "binding": {
+          "config": {
+            "path": "./User Properties and Roles/User Properties/User Properties Input/Username and Password/Password/Password Input/PasswordField.props.text"
+          },
+          "type": "property"
+        }
+      },
+      "custom.username": {
+        "binding": {
+          "config": {
+            "path": "./User Properties and Roles/User Properties/User Properties Input/Username and Password/Username/Username Input/Username TextField.props.text"
+          },
+          "type": "property"
+        }
+      }
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "borderStyle": "none",
+        "borderWidth": "1px",
+        "classes": "ATA/Background/Root",
+        "minWidth": "320px"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

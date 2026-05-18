@@ -1,0 +1,412 @@
+{
+  "custom": {},
+  "params": {
+    "data": {
+      "Comment": "Okuma MU-S600V",
+      "CustomerName": "LIEM  NGUYEN",
+      "CustomerOrderCode": "A320   MILLING OKUMA",
+      "DowntimeReasonID": 27,
+      "EndDateOperation": 1719698400000,
+      "HasTracedMaterials": 0,
+      "IsInSetup": 1,
+      "IsReleased": 1,
+      "IsRunning": 0,
+      "IsRunningMachine": 0,
+      "IsTraced": 1,
+      "JobCode": 0,
+      "JobCodeFontColor": null,
+      "OrderCode": "Order Code",
+      "ProductCode": "",
+      "ProductName": "RACK 053",
+      "Qty": 51,
+      "ReadOnly": 0,
+      "Remark": "",
+      "RunButtonVisible": 1,
+      "RunMachineButtonVisible": 1,
+      "SetupButtonVisible": 1,
+      "Status1Code": null,
+      "Status1Name": null,
+      "Status2Code": "PrevOpCompleted",
+      "Status2Name": "1/52",
+      "Status3Code": "ActiveSetup",
+      "Status3Name": "Setup",
+      "Status4Code": null,
+      "Status4Name": null,
+      "UoM": "ST",
+      "WorkOrderCode": "S053L3701/MA"
+    },
+    "function": "new"
+  },
+  "propConfig": {
+    "params.data": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.function": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 809,
+      "width": 600
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Header"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "params": {
+            "closeDockID": "AlarmManagement",
+            "closeIcon": true,
+            "title": "alarm aanpassen"
+          },
+          "path": "Library/SharedTemplates/HeaderForDock",
+          "style": {
+            "textTransform": "capitalize"
+          },
+          "useDefaultViewHeight": true
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "KeyValuePair"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "props": {
+              "params": {
+                "key": "Lijn",
+                "margingRight": 45,
+                "value": "E07"
+              },
+              "path": "Library/SharedTemplates/KeyValuePairs/KeyValuePair",
+              "useDefaultViewHeight": true
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "String"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "props": {
+              "params": {
+                "enabled": true,
+                "key": "Beschrijving",
+                "margingRight": 45,
+                "placeholder": "Description of alarm",
+                "value": "Temperatuur extruderkop te hoog"
+              },
+              "path": "Library/SharedTemplates/Input/String",
+              "useDefaultViewHeight": true
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "String_0"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "props": {
+              "params": {
+                "enabled": true,
+                "key": "Niveau",
+                "marginRight": 45,
+                "options": [
+                  {
+                    "label": "Alarm",
+                    "value": "Alarm"
+                  },
+                  {
+                    "label": "Warning",
+                    "value": "Warning"
+                  },
+                  {
+                    "label": "Notification",
+                    "value": "Notification"
+                  }
+                ],
+                "placeholder": "Select alarm level",
+                "showClearIcon": true,
+                "value": "Alarm"
+              },
+              "path": "Library/SharedTemplates/Input/Dropdown",
+              "useDefaultViewHeight": true
+            },
+            "type": "ia.display.view"
+          }
+        ],
+        "meta": {
+          "name": "General"
+        },
+        "position": {
+          "basis": "200px",
+          "grow": 1
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "padding": 20,
+            "paddingBottom": 0,
+            "paddingRight": 0
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "id": "{/root/Header.props.params.closeDockID}",
+                    "type": "close"
+                  },
+                  "scope": "C",
+                  "type": "dock"
+                }
+              }
+            },
+            "meta": {
+              "name": "Button"
+            },
+            "position": {
+              "basis": "125px",
+              "shrink": 0
+            },
+            "props": {
+              "style": {
+                "classes": "ATA/Components/Buttons/Sec",
+                "marginLeft": "auto",
+                "marginRight": "16px"
+              },
+              "text": "Cancel"
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "script": "\t### Declare safety parameters\n\terrors \u003d []\n\tlogger \u003d system.util.getLogger(\u0027General\u0027)\n\t\n\t### Declare parameters\n\tfunction \u003d self.view.params.function\n\ttp \u003d ata.config.defaultTagProvider\n\tep \u003d ata.config.enterprise\n\t\n\t### Screen data\n\tdowntimeReasonID \u003d self.view.params.data.DowntimeReasonID\n\tindirectCodeID \u003d 2 ## Operator becomes idle when machine is in downtime\n\tcomment \u003d self.view.params.data.Remark\n\tcommentRequired \u003d self.parent.parent.getChild(\"General\").getChild(\"Dropdown\").custom.commentRequired\n\t\n\t### Check if all required fields are filled in\n\tif function not in [\u0027new\u0027,\u0027edit\u0027]:\n\t\terrors.append(system.util.translate(\"Something went wrong opening the screen, please try again.\"))\n\n\tif function \u003d\u003d \u0027edit\u0027 and ID \u003c 1:\n\t\terrors.append(system.util.translate(\"Something went wrong opening the screen, please try again.\"))\n\t\n\tif downtimeReasonID \u003c 0:\n\t\terrors.append(system.util.translate(\"Select an downtime reason.\"))\n\t\n\tif commentRequired \u003d\u003d 1:\n\t\tif len(comment.strip()) \u003d\u003d 0:\n\t\t\terrors.append(system.util.translate(\"You must provide an additional remark.\"))\n\t\t\t\t\t\n\t### Continue with code if error is false\n\tif not errors:\n\t\t### job control data\n\t\tjobCode \u003d self.view.params.data.JobCode\n\t\ttry:\n\t\t\tmanufacturingOrder, manufacturingOrderOperation \u003d aeroMES.workOrders.getOrderAndOperation(jobCode)\n\t\texcept:\n\t\t\tmanufacturingOrder, manufacturingOrderOperation \u003d \"0\",\"0\"\n\t\t\t\n\t\tplant \u003d self.session.custom.aeroMES.plantCode\n\t\tdepartment \u003d self.session.custom.aeroMES.department\n\t\tworkCenter \u003d self.session.custom.aeroMES.workcenter\n\t\toperatorCode \u003d self.session.custom.aeroMES.visual.userCode\n\t\tmachineCode \u003d self.session.custom.aeroMES.visual.machineCode\n\t\tlabel \u003d self.parent.parent.getChild(\"General\").getChild(\"Dropdown\").custom.label\n\t\tindirectCodeList \u003d label.split(\u0027-\u0027)\n\t\tindirectCode \u003d indirectCodeList[0].strip()\n\n\t\toperators \u003d aeroMES.operators.getLoggedInOperators(plant, department, workCenter)\n\t\t\n\t\t### Try the following code\n\t\ttry:\n\t\t\t### Creating or duplicating\n\t\t\tif function in [\u0027new\u0027]:\n\t\t\t\tnewWorkCenterState \u003d 3\n\t\t\t\tnewOperatorState \u003d 3\n\t\t\t\t\n\t\t\t\t### Update Visual\n\t\t\t\tpath \u003d \u0027JobControl (Visual)/JC_MachineStartIndirect\u0027\n\t\t\t\tparameters \u003d {\"machineCode\":machineCode,\"indirectCode\":indirectCode,\"userCode\":operatorCode, \u0027note\u0027:comment}\n\t\t\t\tsystem.db.runNamedQuery(path,parameters\u003dparameters)\n\t\t\t\t\n\t\t\t\t### End all timeframes\n\t\t\t\tquery \u003d \"Update WorkCenterStateHistory Set EndDate \u003d GETDATE() WHERE EndDate is null and WorkCenter \u003d ?\"\n\t\t\t\targs \u003d [workCenter]\n\t\t\t\tresult \u003d system.db.runPrepUpdate(query,args)\n\t\t\t\t\n\t\t\t\t### Insert the new (wo 0 op 0 because non active)\n\t\t\t\tquery \u003d \"Insert into WorkCenterStateHistory (ManufacturingOrder,ManufacturingOrderOperation,WorkCenter,WorkCenterStateID,StartDate,downtimeReasonID,comment) values (?,?,?,?,GETDATE(),?,?)\"\n\t\t\t\targs \u003d [0,0,workCenter,newWorkCenterState,downtimeReasonID,comment]\n\t\t\t\tresult \u003d system.db.runPrepUpdate(query,args,getKey\u003d1)\n\t\t\t\t\t\t\t\t\n\t\t\t\tfor operator in operators:\n\t\t\t\t\t### End the old frame of operators on this WC and insert indirect for the old operator(s)\n\t\t\t\t\tquery \u003d \"\"\"UPDATE OperatorStateHistory\n\t\t\t\t\t            SET EndDate \u003d GETDATE()\n\t\t\t\t\t            OUTPUT \n\t\t\t\t\t                0 as ManufacturingOrder\n\t\t\t\t\t            ,\t0 as ManufacturingOrderOperation\n\t\t\t\t\t            ,\tINSERTED.WorkCenter\n\t\t\t\t\t            ,\tINSERTED.Username\n\t\t\t\t\t            ,\t3 as OperatorStateID\n\t\t\t\t\t            ,   2 as IndirectCodeID\n\t\t\t\t\t            ,\tINSERTED.EndDate as StartDate\n\t\t\t\t\t            INTO OperatorStateHistory (ManufacturingOrder,ManufacturingOrderOperation,WorkCenter,Username,OperatorStateID,IndirectCodeID,StartDate)\n\t\t\t\t\t            WHERE EndDate is null and workCenter \u003d ?\"\"\"\n\t\t\t\t\targs \u003d [workCenter]\n\t\t\t\t\tresult \u003d system.db.runPrepUpdate(query,args)\n\t\t\t\t\t\n#\t\t\t\t\t### End the old frame\n#\t\t\t\t\tquery \u003d \"Update OperatorStateHistory Set EndDate \u003d GETDATE() WHERE EndDate is null and (Username \u003d ? or (manufacturingOrder \u003d ? or isnull(manufacturingOrder,\u00270\u0027) \u003d \u00270\u0027) and (manufacturingOrderOperation \u003d? or isnull(manufacturingOrderOperation,\u00270\u0027) \u003d \u00270\u0027))\"\n#\t\t\t\t\targs \u003d [operator,manufacturingOrder,manufacturingOrderOperation]\n#\t\t\t\t\tresult \u003d system.db.runPrepUpdate(query,args)\n#\t\t\t\t\t\n#\t\t\t\t\t### Insert the new\n#\t\t\t\t\tquery \u003d \"Insert into OperatorStateHistory (ManufacturingOrder,ManufacturingOrderOperation,WorkCenter,OperatorStateID,IndirectCodeID,StartDate,Username) values (?,?,?,?,?,GETDATE(),?)\"\n#\t\t\t\t\targs \u003d [0,0,workCenter,newOperatorState,indirectCodeID,operator]\n#\t\t\t\t\tresult \u003d system.db.runPrepUpdate(query,args,getKey\u003d1)\n\t\t\t\t\n\t\t\t\taeroMES.uns.writeCurrentState(plant, department, workCenter, newWorkCenterState, newOperatorState, indirectCodeID, downtimeReasonID)\n\t\t\t\t\n\t\t\t\taeroMES.uns.resetOrder(plant, department, workCenter)\n\t\t\t\t\n\t\t\t\t### forced to zero because downtime stops all active orders\n\t\t\t\tallowMultipleManufacturingOrders \u003d 0\n\t\t\t\taeroMES.uns.removeOrderFromActiveOrders(plant, department, workCenter, allowMultipleManufacturingOrders, manufacturingOrder, manufacturingOrderOperation)\n\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t### When something fails, continue with the exception, e\n\t\texcept Exception, e:\n\t\t\tlogger.info(str(e))\n\t\t\terrors.append(\"Error saving, please try again. \"+str(e))\n\t\t\t\n\t### if error is true show the error message.\n\tsessionID \u003d self.session.props.id\n\tif errors:\n\t\ttimeout \u003d 5\n\t\terrors \u003d ata.function.uniqueList(errors)\n\t\terrorStr \u003d \"\u003cbr\u003e\".join(errors)\n\t\tlogger.error(errorStr)\t\n\t\tscreenID\u003dself.parent.parent.getChild(\"Toast Handler\").custom.screenID\n\t\tata.toast.handler.toasts.toastNotification(message\u003dsystem.util.translate(\"Click open to see errors.\"), timeout\u003dtimeout, sendTo\u003dsessionID, backgroundColor\u003d\"--warning\", content\u003derrorStr,screenID\u003dscreenID)\n\telse:\n\t\t### Close the screen and refresh the overview\n\t\tsystem.perspective.sendMessage(\"refresh\", payload\u003d{}, scope\u003d\"session\")\n\t\tsystem.util.sendMessage(\"ignition-mes\", \"refreshAllSessions\",payload\u003d{\"sessionID\":sessionID,\"workCenter\":workCenter})\n\t\tsystem.perspective.closeDock(self.parent.parent.getChild(\"Header\").props.params.closeDockID)\t\t\n\t"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "Save"
+            },
+            "position": {
+              "basis": "125px",
+              "shrink": 0
+            },
+            "props": {
+              "style": {
+                "classes": "ATA/Components/Buttons/CTA"
+              },
+              "text": "Save"
+            },
+            "type": "ia.input.button"
+          }
+        ],
+        "meta": {
+          "name": "Footer"
+        },
+        "position": {
+          "basis": "55px",
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "backgroundColor": "--backgroundSecondary",
+            "padding": 10,
+            "paddingRight": 15
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "custom": {
+          "animation": {
+            "name": "",
+            "value": {}
+          },
+          "location": "bottom-left",
+          "messageType": "Library/Toast/Message/Basic"
+        },
+        "meta": {
+          "name": "Toast Handler"
+        },
+        "position": {
+          "grow": 1
+        },
+        "propConfig": {
+          "custom.animation.name": {
+            "onChange": {
+              "enabled": null,
+              "script": "\tself.setAnimation(currentValue.value)"
+            }
+          },
+          "custom.location": {
+            "onChange": {
+              "enabled": null,
+              "script": "\tself.setLocation(currentValue.value)"
+            }
+          },
+          "custom.messageType": {
+            "onChange": {
+              "enabled": null,
+              "script": "\tself.setViewPath(currentValue.value)"
+            }
+          },
+          "custom.screenID": {
+            "binding": {
+              "config": {
+                "expression": "now(0)"
+              },
+              "transforms": [
+                {
+                  "code": "\timport uuid \n\treturn str(uuid.uuid1())\n\t",
+                  "type": "script"
+                }
+              ],
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "alignItems": "center",
+          "direction": "column",
+          "elementPosition": {
+            "basis": "auto",
+            "grow": 0,
+            "shrink": 0
+          },
+          "elementStyle": {
+            "marginTop": "5px"
+          },
+          "justify": "center",
+          "loading": {
+            "order": "with-parent"
+          },
+          "path": "Library/Toast/Message/Basic",
+          "style": {
+            "bottom": 5,
+            "left": 5,
+            "overflow": "visible",
+            "position": "absolute",
+            "zIndex": -1
+          },
+          "useDefaultViewHeight": false,
+          "useDefaultViewWidth": false
+        },
+        "scripts": {
+          "customMethods": [
+            {
+              "name": "setLocation",
+              "params": [
+                "location"
+              ],
+              "script": "\t# Set props.style with the css properties from exchange.toast.util Locations class\n\tself.props.style \u003d ata.toast.handler.configure.getLocation(location)"
+            },
+            {
+              "name": "setViewPath",
+              "params": [
+                "path"
+              ],
+              "script": "\t# Set props.path with the viewPath for these toast messages\n\tself.props.path \u003d path"
+            },
+            {
+              "name": "configureToast",
+              "params": [
+                "toast"
+              ],
+              "script": "\t# Configures the incoming toast message\n\tif bool(dict(self.custom.animation.value)):\n\t\ttoast.update({\u0027instanceStyle\u0027: self.custom.animation.value[\u0027enter\u0027]})\n\treturn toast"
+            },
+            {
+              "name": "getToastIndex",
+              "params": [
+                "toastID"
+              ],
+              "script": "\t# Get the index of the toast from the instances if exists else None\n\t_index \u003d None\n\tfor index, toast in enumerate(self.props.instances):\n\t\tif toast[\u0027toastID\u0027] \u003d\u003d toastID:\n\t\t\t_index \u003d index\n\t\t\tbreak;\n\treturn _index"
+            },
+            {
+              "name": "setAnimation",
+              "params": [
+                "name"
+              ],
+              "script": "\t# Set instance[.].instanceStyle with the css animation\n\tself.custom.animation.value \u003d ata.toast.handler.configure.getAnimation(name)"
+            },
+            {
+              "name": "clearToasts",
+              "params": [],
+              "script": "\t# Clear out all toasts in the handler\n\tself.props.instances \u003d []"
+            },
+            {
+              "name": "removeToast",
+              "params": [
+                "index"
+              ],
+              "script": "\t# Removes the specific toast from the instances by index\n\ttry:\n\t\tdel self.props.instances[index]\n\texcept:\n\t\tsystem.perspective.print(\u0027Toast Handler could not clear toast, index ({}) does not exist.\u0027.format(index))"
+            }
+          ],
+          "extensionFunctions": null,
+          "messageHandlers": [
+            {
+              "messageType": "toast-add",
+              "pageScope": true,
+              "script": "\tscreenID \u003d payload.get(\u0027screenID\u0027,None)\n\tif screenID \u003d\u003d None or screenID \u003d\u003d self.custom.screenID:\n\t\t# Add payload (Message view params) to the flex repeater instance and set props.style zIndex\n\t\tself.props.style.zIndex \u003d 1\n\t\ttoast \u003d self.configureToast(payload)\n\t\ttry:\n\t\t\terrorMessage \u003d payload[\"content\"].split(\"\u003cbr\u003e\")\n\t\t\tself.setViewPath(\"Library/Toast/Message/Basic\")\n\t\t\tif len(errorMessage) \u003c\u003d 1 and len(errorMessage[0]) \u003c\u003d 45:\n\t\t\t    toast[\"message\"] \u003d payload[\"content\"]\n\t\t\t    toast[\"content\"] \u003d None\n\t\t\telse:\n\t\t\t    self.setViewPath(\"Library/Toast/Message/Expanding\")\n\t\texcept:\n\t\t\tpass\n\t\tself.props.instances.append(toast)",
+              "sessionScope": true,
+              "viewScope": false
+            },
+            {
+              "messageType": "toast-close",
+              "pageScope": true,
+              "script": "\tfrom ata.toast.handler import toasts\n\t# Check for the incoming toast id in the props.instances and get the index of the instance\n\tindex \u003d self.getToastIndex(payload.get(\u0027toastID\u0027))\n\t\n\t# If index exists either apply exit style or remove from instances\n\tif index !\u003d None:\n\t\tif bool(dict(self.custom.animation.value)):\n\t\t\ttoastID \u003d self.props.instances[index][\u0027toastID\u0027]\n\t\t\twaitTime \u003d int(self.custom.animation.value[\u0027exit\u0027][\u0027animation-duration\u0027].replace(\u0027s\u0027, \u0027\u0027))\n\t\t\ttoasts.toastClearOut(toastID, waitTime)\n\t\t\tself.props.instances[index][\u0027instanceStyle\u0027] \u003d self.custom.animation.value[\u0027exit\u0027]\n\t\telse:\n\t\t\tself.removeToast(index)\n\t\t\n\t# Reset the props.style zIndex to -1 (hidden behind everything else)\n\tif not bool(self.props.instances): \n\t\tself.props.style.zIndex \u003d -1",
+              "sessionScope": true,
+              "viewScope": false
+            },
+            {
+              "messageType": "toast-clear",
+              "pageScope": true,
+              "script": "\t# Check for the incoming toast id in the props.instances and get the index of the instance\n\tindex \u003d self.getToastIndex(payload.get(\u0027toastID\u0027))\n\t\n\t# Remove toast message from instances if exists\n\tif index !\u003d None:\n\t\tself.removeToast(index)",
+              "sessionScope": true,
+              "viewScope": false
+            }
+          ]
+        },
+        "type": "ia.display.flex-repeater"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "classes": "ATA/Background/RootDock"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

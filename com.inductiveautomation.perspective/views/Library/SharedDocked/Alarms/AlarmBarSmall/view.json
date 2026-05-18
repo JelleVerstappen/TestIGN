@@ -1,0 +1,317 @@
+{
+  "custom": {},
+  "params": {
+    "filter": "",
+    "popupMarginRight": 1
+  },
+  "propConfig": {
+    "params.filter": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.popupMarginRight": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 65,
+      "width": 1320
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Label"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0
+        },
+        "propConfig": {
+          "custom.IsAlarm": {
+            "binding": {
+              "config": {
+                "expression": "len({parent.custom.ActiveAlarms}) \u003e 0"
+              },
+              "type": "expr"
+            }
+          },
+          "props.text": {
+            "binding": {
+              "config": {
+                "expression": "len({parent.custom.ActiveAlarms})"
+              },
+              "transforms": [
+                {
+                  "code": "\tif value:\n\t\talarms \u003d self.parent.custom.ActiveAlarms\n\t\tpath \u003d alarms.getValueAt(0,\"Source\")\n\t\tdata \u003d path.split(\u0027:\u0027)\n\n\t\treturn str(value) + \" Alarm(s) active  -  Last alarm : \" + data[3]\n\telse:\n\t\treturn \"No alarms\"\t\n",
+                  "type": "script"
+                }
+              ],
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "color": "--textThr",
+            "textAlign": "center"
+          },
+          "textStyle": {
+            "fontSize": 13
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Icon"
+                },
+                "position": {
+                  "basis": "30px",
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "props.path": {
+                    "binding": {
+                      "config": {
+                        "fallbackDelay": 2.5,
+                        "mode": "direct",
+                        "tagPath": "[NLSTWDYK]Dyka/STW/EXT/Alarms/Count/Alarm"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\tif value \u003e 9:\n\t\trVal \u003d \"dyka/Alarm9orMore\"\n\tif value \u003e 0:\n\t\trVal \u003d \"dyka/Alarm\" + str(value)\n\telse:\n\t\trVal \u003d \"\"\n\treturn rVal",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "tag"
+                    }
+                  }
+                },
+                "props": {
+                  "color": "--textThr",
+                  "style": {
+                    "marginBottom": 2,
+                    "marginTop": 2
+                  }
+                },
+                "type": "ia.display.icon"
+              }
+            ],
+            "meta": {
+              "name": "Alarm"
+            },
+            "position": {
+              "basis": "50px",
+              "grow": 1,
+              "shrink": 0
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Icon"
+                },
+                "position": {
+                  "basis": "30px",
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "props.path": {
+                    "binding": {
+                      "config": {
+                        "fallbackDelay": 2.5,
+                        "mode": "direct",
+                        "tagPath": "[NLSTWDYK]Dyka/STW/EXT/Alarms/Count/Warning"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\tif value \u003e 9:\n\t\trVal \u003d \"dyka/Warning9orMore\"\n\tif value \u003e 0:\n\t\trVal \u003d \"dyka/Warning\" + str(value)\n\telse:\n\t\trVal \u003d \"\"\n\treturn rVal",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "tag"
+                    }
+                  }
+                },
+                "props": {
+                  "color": "--textThr",
+                  "style": {
+                    "marginBottom": 2,
+                    "marginTop": 2
+                  }
+                },
+                "type": "ia.display.icon"
+              }
+            ],
+            "meta": {
+              "name": "Warning"
+            },
+            "position": {
+              "basis": "50px",
+              "grow": 1,
+              "shrink": 0
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Icon"
+                },
+                "position": {
+                  "basis": "30px",
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "props.path": {
+                    "binding": {
+                      "config": {
+                        "fallbackDelay": 2.5,
+                        "mode": "direct",
+                        "tagPath": "[NLSTWDYK]Dyka/STW/EXT/Alarms/Count/Notification"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\tif value \u003e 9:\n\t\trVal \u003d \"dyka/Notification9orMore\"\n\tif value \u003e 0:\n\t\trVal \u003d \"dyka/Notification\" + str(value)\n\telse:\n\t\trVal \u003d \"\"\n\treturn rVal",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "tag"
+                    }
+                  }
+                },
+                "props": {
+                  "color": "--textThr",
+                  "style": {
+                    "marginBottom": 2,
+                    "marginTop": 2
+                  }
+                },
+                "type": "ia.display.icon"
+              }
+            ],
+            "meta": {
+              "name": "Notification"
+            },
+            "position": {
+              "basis": "50px",
+              "grow": 1,
+              "shrink": 0
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Icon"
+                },
+                "position": {
+                  "basis": "30px",
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "props.path": {
+                    "binding": {
+                      "config": {
+                        "fallbackDelay": 2.5,
+                        "mode": "direct",
+                        "tagPath": "[NLSTWDYK]Dyka/STW/EXT/Alarms/Count/Shelved"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\tif value \u003e 9:\n\t\trVal \u003d \"dyka/Notification9orMoreSchelved\"\n\tif value \u003e 0:\n\t\trVal \u003d \"dyka/Notfication\" + str(value) + \"Schelved\"\n\telse:\n\t\trVal \u003d \"\"\n\treturn rVal",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "tag"
+                    }
+                  }
+                },
+                "props": {
+                  "color": "--textThr",
+                  "style": {
+                    "marginBottom": 2,
+                    "marginTop": 2
+                  }
+                },
+                "type": "ia.display.icon"
+              }
+            ],
+            "meta": {
+              "name": "Shelved"
+            },
+            "position": {
+              "basis": "50px",
+              "grow": 1,
+              "shrink": 0
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer_0"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "justify": "space-between"
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "events": {
+      "dom": {
+        "onClick": {
+          "config": {
+            "script": "\tsystem.perspective.sendMessage(\"ToggleAlarmDisplay\",{})\n\tid \u003d \u0027alarm\u0027\n\tview \u003d \u0027Library/SharedDocked/Alarms/Alarms\u0027\n\tparams \u003d {\"filter\":self.view.params.filter}\n\tposition \u003d {\"bottom\":0,\"left\":1,\"right\":self.view.params.popupMarginRight}\n\tsystem.perspective.togglePopup(id,view,params,position\u003dposition,showCloseIcon\u003dFalse,draggable\u003dFalse)\n\t\n\t"
+          },
+          "scope": "G",
+          "type": "script"
+        }
+      }
+    },
+    "meta": {
+      "name": "root"
+    },
+    "propConfig": {
+      "custom.ActiveAlarms": {
+        "binding": {
+          "config": {
+            "struct": {
+              "Time": "now(1000)"
+            },
+            "waitOnAll": true
+          },
+          "transforms": [
+            {
+              "code": "\tfilter \u003d self.view.params.filter + \"*\"\n\treturn system.alarm.queryStatus(source \u003d [filter], state \u003d [\"ActiveUnacked\"]).getDataset()",
+              "type": "script"
+            }
+          ],
+          "type": "expr-struct"
+        }
+      }
+    },
+    "props": {
+      "style": {
+        "backgroundColor": "--prim",
+        "cursor": "pointer",
+        "overflow": "hidden"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

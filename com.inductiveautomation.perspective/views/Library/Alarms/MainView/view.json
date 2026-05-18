@@ -1,0 +1,180 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {},
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "AlarmStatusTable"
+            },
+            "props": {
+              "columns": {
+                "active": {
+                  "source": {
+                    "enabled": false
+                  }
+                }
+              },
+              "filters": {
+                "active": {
+                  "priorities": {
+                    "critical": false,
+                    "high": false,
+                    "low": false,
+                    "medium": false
+                  },
+                  "states": {
+                    "activeAcked": false,
+                    "clearUnacked": false
+                  }
+                }
+              },
+              "responsive": {
+                "enabled": true
+              },
+              "rowStyles": {
+                "activeAcked": {
+                  "priorities": {
+                    "high": {
+                      "backgroundColor": "",
+                      "classes": "ATA/AlarmRows/High/ActiveAcked"
+                    },
+                    "medium": {
+                      "backgroundColor": "",
+                      "classes": "ATA/AlarmRows/Medium/ActiveAcked",
+                      "color": ""
+                    }
+                  }
+                },
+                "activeUnacked": {
+                  "priorities": {
+                    "high": {
+                      "backgroundColor": "",
+                      "classes": "ATA/AlarmRows/High/ActiveUnacked"
+                    },
+                    "medium": {
+                      "backgroundColor": "",
+                      "classes": "ATA/AlarmRows/Medium/ActiveUnacked",
+                      "color": ""
+                    }
+                  }
+                },
+                "clearUnacked": {
+                  "priorities": {
+                    "high": {
+                      "backgroundColor": "",
+                      "classes": "ATA/AlarmRows/High/ClearedUnacked"
+                    },
+                    "medium": {
+                      "backgroundColor": "",
+                      "classes": "ATA/AlarmRows/Medium/ClearedUnacked",
+                      "color": ""
+                    }
+                  }
+                }
+              },
+              "selection": {
+                "active": {
+                  "mode": "single"
+                }
+              }
+            },
+            "type": "ia.display.alarmstatustable"
+          },
+          {
+            "meta": {
+              "name": "AlarmJournalTable"
+            },
+            "position": {
+              "tabIndex": 1
+            },
+            "props": {
+              "columns": {
+                "displayPath": {
+                  "enabled": true
+                },
+                "eventId": {
+                  "enabled": false
+                },
+                "name": {
+                  "enabled": true
+                },
+                "source": {
+                  "enabled": false
+                }
+              },
+              "name": "Alarm_Journal"
+            },
+            "type": "ia.display.alarmjournaltable"
+          },
+          {
+            "meta": {
+              "name": "Alarm Analysis"
+            },
+            "position": {
+              "tabIndex": 2
+            },
+            "props": {
+              "path": "Library/Alarms/Templates/Alarm Analysis"
+            },
+            "type": "ia.display.view"
+          }
+        ],
+        "meta": {
+          "name": "TabContainer"
+        },
+        "position": {
+          "basis": "300px",
+          "grow": 1
+        },
+        "propConfig": {
+          "props.tabs[1]": {
+            "binding": {
+              "config": {
+                "expression": "translate(\u0027History\u0027)"
+              },
+              "type": "expr"
+            }
+          },
+          "props.tabs[2]": {
+            "binding": {
+              "config": {
+                "expression": "translate(\u0027Analysis\u0027)"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "menuStyle": {
+            "backgroundColor": "--gray"
+          },
+          "menuType": "modern",
+          "style": {
+            "marginTop": "10px"
+          },
+          "tabs": [
+            "Real-time",
+            null,
+            null
+          ]
+        },
+        "type": "ia.container.tab"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "classes": "ATA/Background/Root",
+        "padding": "20px"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

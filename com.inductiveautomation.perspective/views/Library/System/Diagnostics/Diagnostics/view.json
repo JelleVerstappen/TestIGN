@@ -1,0 +1,188 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "height": 790,
+      "width": 1280
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "System"
+        },
+        "position": {
+          "basis": "280px",
+          "shrink": 0
+        },
+        "props": {
+          "params": {
+            "path": "Library/System/Diagnostics/Embedded/System",
+            "title": "System"
+          },
+          "path": "Library/Framework/Card/Card"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Session"
+        },
+        "position": {
+          "basis": "280px",
+          "shrink": 0
+        },
+        "props": {
+          "params": {
+            "path": "Library/System/Diagnostics/Embedded/Session",
+            "title": "Session"
+          },
+          "path": "Library/Framework/Card/Card"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Redundancy"
+        },
+        "position": {
+          "basis": "280px",
+          "display": false,
+          "shrink": 0
+        },
+        "props": {
+          "params": {
+            "path": "Library/System/Diagnostics/Embedded/Redundancy",
+            "title": "Redundancy"
+          },
+          "path": "Library/Framework/Card/Card"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "OPC Servers"
+        },
+        "position": {
+          "basis": "280px",
+          "display": false,
+          "shrink": 0
+        },
+        "props": {
+          "params": {
+            "path": "Library/System/Diagnostics/Embedded/OPC Servers",
+            "title": "OPC Servers"
+          },
+          "path": "Library/Framework/Card/Card"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "OPC Devices"
+        },
+        "position": {
+          "basis": "280px",
+          "display": false,
+          "shrink": 0
+        },
+        "props": {
+          "params": {
+            "path": "Library/System/Diagnostics/Embedded/OPC Devices",
+            "title": "OPC Devices"
+          },
+          "path": "Library/Framework/Card/Card"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Gateway Network Connections"
+        },
+        "position": {
+          "basis": "280px",
+          "display": false,
+          "shrink": 0
+        },
+        "props": {
+          "params": {
+            "path": "System/Diagnostics/Embedded/Gateway Network Connections",
+            "title": "Gateway Network Connections"
+          },
+          "path": "Library/Library/AlarmAnalysis/Card/Card"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Databases"
+        },
+        "position": {
+          "basis": "280px",
+          "shrink": 0
+        },
+        "props": {
+          "params": {
+            "path": "Library/System/Diagnostics/Embedded/Databases",
+            "title": "Databases"
+          },
+          "path": "Library/Framework/Card/Card"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "System Performance"
+        },
+        "position": {
+          "basis": "280px",
+          "shrink": 0
+        },
+        "props": {
+          "params": {
+            "path": "Library/System/Diagnostics/Embedded/System Performance",
+            "title": "System Performance"
+          },
+          "path": "Library/Framework/Card/Card",
+          "style": {
+            "overflow": "visible",
+            "overflowX": "visible",
+            "overflowY": "visible"
+          }
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Devices"
+        },
+        "position": {
+          "basis": "280px",
+          "display": false,
+          "shrink": 0
+        },
+        "props": {
+          "params": {
+            "path": "Library/System/Diagnostics/Embedded/Device",
+            "title": "Devices"
+          },
+          "path": "Library/Framework/Card/Card"
+        },
+        "type": "ia.display.view"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "alignContent": "flex-start",
+      "style": {
+        "classes": "ATA/Background/Root"
+      },
+      "wrap": "wrap"
+    },
+    "type": "ia.container.flex"
+  }
+}

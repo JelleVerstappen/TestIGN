@@ -1,0 +1,105 @@
+{
+  "custom": {},
+  "params": {
+    "list": [
+      {
+        "enabled": true,
+        "items": [],
+        "label": {
+          "icon": {
+            "path": ""
+          },
+          "text": "Home"
+        },
+        "navIcon": {
+          "color": "",
+          "path": ""
+        },
+        "resetOnClick": false,
+        "showHeader": true,
+        "style": {
+          "classes": ""
+        },
+        "target": "/",
+        "visible": true
+      },
+      {
+        "enabled": true,
+        "items": [],
+        "label": {
+          "icon": {
+            "path": ""
+          },
+          "text": "tesst"
+        },
+        "navIcon": {
+          "color": "",
+          "path": ""
+        },
+        "resetOnClick": false,
+        "showHeader": true,
+        "style": {
+          "classes": ""
+        },
+        "target": "/test",
+        "visible": true
+      }
+    ]
+  },
+  "propConfig": {
+    "params.list": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 0,
+      "width": 331
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "FlexRepeater"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.instances": {
+            "binding": {
+              "config": {
+                "path": "view.params.list"
+              },
+              "transforms": [
+                {
+                  "code": "\trl \u003d []\n\tfalse \u003d False\n\ttrue \u003d True\n\tnull \u003d None\n\tfor x in value:\n\t\trl.append({\n\t\t  \"instanceStyle\": {\n\t\t    \"classes\": \"\"\n\t\t  },\n\t\t  \"instancePosition\": {},\n\t\t  \"data\": x\n\t\t})\n\t\t\n\treturn rl",
+                  "type": "script"
+                }
+              ],
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "direction": "column",
+          "path": "Library/SharedDocked/Templates/NavItem",
+          "useDefaultViewWidth": false
+        },
+        "type": "ia.display.flex-repeater"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "classes": "ATA/Background/RootDock"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

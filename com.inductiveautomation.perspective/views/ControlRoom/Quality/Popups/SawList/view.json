@@ -1,0 +1,133 @@
+{
+  "custom": {},
+  "params": {
+    "article": "value",
+    "line": "value"
+  },
+  "propConfig": {
+    "params.article": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.line": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 400,
+      "width": 565
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Label"
+        },
+        "position": {
+          "basis": "45px"
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "expression": "\u0027Te zagen stukjes voor lijn \u0027 + {view.params.line} + \u0027 artikel \u0027 + {view.params.article}"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "classes": "ATA/Components/Labels/TextLarge"
+          },
+          "textStyle": {
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "FlexRepeater"
+        },
+        "position": {
+          "basis": "320px",
+          "grow": 1
+        },
+        "props": {
+          "alignContent": "flex-start",
+          "alignItems": "flex-start",
+          "direction": "column",
+          "instances": [
+            {
+              "amount": 20,
+              "instancePosition": {},
+              "instanceStyle": {
+                "classes": ""
+              },
+              "length": 55,
+              "unit": "cm"
+            },
+            {
+              "amount": 5,
+              "instancePosition": {},
+              "instanceStyle": {
+                "classes": ""
+              },
+              "length": 10,
+              "unit": "cm"
+            },
+            {
+              "amount": 4,
+              "instancePosition": {},
+              "instanceStyle": {
+                "classes": ""
+              },
+              "length": 25,
+              "unit": "cm"
+            },
+            {
+              "amount": 10,
+              "instancePosition": {},
+              "instanceStyle": {
+                "classes": ""
+              },
+              "length": 15,
+              "unit": "cm"
+            },
+            {
+              "amount": 1,
+              "instancePosition": {},
+              "instanceStyle": {
+                "classes": ""
+              },
+              "length": 27.5,
+              "unit": "cm"
+            }
+          ],
+          "path": "ControlRoom/Quality/Templates/SawListItem",
+          "style": {
+            "marginLeft": "auto",
+            "marginRight": "auto"
+          },
+          "wrap": "wrap"
+        },
+        "type": "ia.display.flex-repeater"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "backgroundColor": "--backgroundSecondary",
+        "classes": "ATA/Background/Root"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

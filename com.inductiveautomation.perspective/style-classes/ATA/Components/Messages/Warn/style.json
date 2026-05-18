@@ -1,0 +1,16 @@
+{
+  "base": {
+    "animation": {
+      "delay": "1s",
+      "timingFunction": "ease",
+      "keyframes": {
+        "0%": {
+          "color": "var(--warning)"
+        },
+        "100%": {
+          "color": "var(--error)"
+        }
+      }
+    }
+  }
+}

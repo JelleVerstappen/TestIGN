@@ -1,0 +1,191 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {},
+  "root": {
+    "children": [
+      {
+        "events": {
+          "component": {
+            "onActionPerformed": {
+              "config": {
+                "script": "\n\tfrom collections import OrderedDict\n\terrors \u003d OrderedDict()\n\terrors[\u0027Test11111111\u0027] \u003d None\n#\terrors[\u0027Test2\u0027] \u003d None\n#\terrors[\u0027Test3\u0027] \u003d None\n#\terrors[\u0027Test4\u0027] \u003d None\n\ttimeout \u003d 20\n\tif errors:        \n\t    errorStr \u003d \"\u003cbr\u003e\".join(errors)\n\t    ata.toast.handler.toasts.toastNotification(message\u003d\"Click open to see error(s).\", timeout\u003dtimeout, sendTo\u003dself.session.props.id, backgroundColor\u003d\"--warning\", content\u003derrorStr)\n\telse:\n\t    system.perspective.sendMessage(\"refresh\", payload\u003d{}, scope\u003d\"session\")"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "Button"
+        },
+        "position": {
+          "basis": "34px"
+        },
+        "props": {
+          "text": "Example"
+        },
+        "type": "ia.input.button"
+      },
+      {
+        "custom": {
+          "animation": {
+            "name": "",
+            "value": {}
+          },
+          "location": "bottom-left",
+          "messageType": "Library/Toast/Message/Basic"
+        },
+        "meta": {
+          "name": "Toast Handler"
+        },
+        "position": {
+          "grow": 1
+        },
+        "propConfig": {
+          "custom.animation.name": {
+            "onChange": {
+              "enabled": null,
+              "script": "\tself.setAnimation(currentValue.value)"
+            }
+          },
+          "custom.location": {
+            "onChange": {
+              "enabled": null,
+              "script": "\tself.setLocation(currentValue.value)"
+            }
+          },
+          "custom.messageType": {
+            "onChange": {
+              "enabled": null,
+              "script": "\tself.setViewPath(currentValue.value)"
+            }
+          },
+          "custom.screenID": {
+            "binding": {
+              "config": {
+                "expression": "now(0)"
+              },
+              "transforms": [
+                {
+                  "code": "\timport uuid \n\treturn str(uuid.uuid1())\n\t",
+                  "type": "script"
+                }
+              ],
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "alignItems": "center",
+          "direction": "column",
+          "elementPosition": {
+            "basis": "auto",
+            "grow": 0,
+            "shrink": 0
+          },
+          "elementStyle": {
+            "marginTop": "5px"
+          },
+          "justify": "center",
+          "loading": {
+            "order": "with-parent"
+          },
+          "path": "Library/Toast/Message/Basic",
+          "style": {
+            "bottom": 5,
+            "left": 5,
+            "overflow": "visible",
+            "position": "absolute",
+            "zIndex": -1
+          },
+          "useDefaultViewHeight": false,
+          "useDefaultViewWidth": false
+        },
+        "scripts": {
+          "customMethods": [
+            {
+              "name": "setLocation",
+              "params": [
+                "location"
+              ],
+              "script": "\t# Set props.style with the css properties from exchange.toast.util Locations class\n\tself.props.style \u003d ata.toast.handler.configure.getLocation(location)"
+            },
+            {
+              "name": "setViewPath",
+              "params": [
+                "path"
+              ],
+              "script": "\t# Set props.path with the viewPath for these toast messages\n\tself.props.path \u003d path"
+            },
+            {
+              "name": "configureToast",
+              "params": [
+                "toast"
+              ],
+              "script": "\t# Configures the incoming toast message\n\tif bool(dict(self.custom.animation.value)):\n\t\ttoast.update({\u0027instanceStyle\u0027: self.custom.animation.value[\u0027enter\u0027]})\n\treturn toast"
+            },
+            {
+              "name": "getToastIndex",
+              "params": [
+                "toastID"
+              ],
+              "script": "\t# Get the index of the toast from the instances if exists else None\n\t_index \u003d None\n\tfor index, toast in enumerate(self.props.instances):\n\t\tif toast[\u0027toastID\u0027] \u003d\u003d toastID:\n\t\t\t_index \u003d index\n\t\t\tbreak;\n\treturn _index"
+            },
+            {
+              "name": "setAnimation",
+              "params": [
+                "name"
+              ],
+              "script": "\t# Set instance[.].instanceStyle with the css animation\n\tself.custom.animation.value \u003d ata.toast.handler.configure.getAnimation(name)"
+            },
+            {
+              "name": "clearToasts",
+              "params": [],
+              "script": "\t# Clear out all toasts in the handler\n\tself.props.instances \u003d []"
+            },
+            {
+              "name": "removeToast",
+              "params": [
+                "index"
+              ],
+              "script": "\t# Removes the specific toast from the instances by index\n\ttry:\n\t\tdel self.props.instances[index]\n\texcept:\n\t\tsystem.perspective.print(\u0027Toast Handler could not clear toast, index ({}) does not exist.\u0027.format(index))"
+            }
+          ],
+          "extensionFunctions": null,
+          "messageHandlers": [
+            {
+              "messageType": "toast-add",
+              "pageScope": true,
+              "script": "\tscreenID \u003d payload.get(\u0027screenID\u0027,None)\n\tif screenID \u003d\u003d None or screenID \u003d\u003d self.custom.screenID:\n\t\t# Add payload (Message view params) to the flex repeater instance and set props.style zIndex\n\t\tself.props.style.zIndex \u003d 1\n\t\ttoast \u003d self.configureToast(payload)\n\t\ttry:\n\t\t\terrorMessage \u003d payload[\"content\"].split(\"\u003cbr\u003e\")\n\t\t\tself.setViewPath(\"Library/Toast/Message/Basic\")\n\t\t\tif len(errorMessage) \u003c\u003d 1 and len(errorMessage[0]) \u003c\u003d 75:\n\t\t\t    toast[\"message\"] \u003d payload[\"content\"]\n\t\t\t    toast[\"content\"] \u003d None\n\t\t\telse:\n\t\t\t    self.setViewPath(\"Library/Toast/Message/Expanding\")\n\t\texcept:\n\t\t\tpass\n\t\tself.props.instances.append(toast)",
+              "sessionScope": true,
+              "viewScope": false
+            },
+            {
+              "messageType": "toast-close",
+              "pageScope": true,
+              "script": "\tfrom ata.toast.handler import toasts\n\t# Check for the incoming toast id in the props.instances and get the index of the instance\n\tindex \u003d self.getToastIndex(payload.get(\u0027toastID\u0027))\n\t\n\t# If index exists either apply exit style or remove from instances\n\tif index !\u003d None:\n\t\tif bool(dict(self.custom.animation.value)):\n\t\t\ttoastID \u003d self.props.instances[index][\u0027toastID\u0027]\n\t\t\twaitTime \u003d int(self.custom.animation.value[\u0027exit\u0027][\u0027animation-duration\u0027].replace(\u0027s\u0027, \u0027\u0027))\n\t\t\ttoasts.toastClearOut(toastID, waitTime)\n\t\t\tself.props.instances[index][\u0027instanceStyle\u0027] \u003d self.custom.animation.value[\u0027exit\u0027]\n\t\telse:\n\t\t\tself.removeToast(index)\n\t\t\n\t# Reset the props.style zIndex to -1 (hidden behind everything else)\n\tif not bool(self.props.instances): \n\t\tself.props.style.zIndex \u003d -1",
+              "sessionScope": true,
+              "viewScope": false
+            },
+            {
+              "messageType": "toast-clear",
+              "pageScope": true,
+              "script": "\t# Check for the incoming toast id in the props.instances and get the index of the instance\n\tindex \u003d self.getToastIndex(payload.get(\u0027toastID\u0027))\n\t\n\t# Remove toast message from instances if exists\n\tif index !\u003d None:\n\t\tself.removeToast(index)",
+              "sessionScope": true,
+              "viewScope": false
+            }
+          ]
+        },
+        "type": "ia.display.flex-repeater"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

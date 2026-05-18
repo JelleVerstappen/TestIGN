@@ -1,0 +1,446 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "width": 1133
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "Silo"
+                    },
+                    "position": {
+                      "basis": "320px",
+                      "grow": 1
+                    },
+                    "propConfig": {
+                      "props.params.Value": {
+                        "binding": {
+                          "config": {
+                            "expression": "{[default]TestDeleteLater/SiloTag}"
+                          },
+                          "type": "expr"
+                        }
+                      }
+                    },
+                    "props": {
+                      "params": {
+                        "MaxValue": 100
+                      },
+                      "path": "ControlRoom/Assets/Silo/Overview/Templates/Silo",
+                      "style": {
+                        "marginBottom": "2%",
+                        "marginLeft": "25%",
+                        "marginRight": "25%",
+                        "marginTop": "2%"
+                      }
+                    },
+                    "type": "ia.display.view"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "EmbeddedView"
+                        },
+                        "props": {
+                          "params": {
+                            "checkBoxLeft": true,
+                            "checkIcon": "bootstrap-icons/check-square-fill",
+                            "enabled": false,
+                            "key": "Geen flow",
+                            "textPosition": "start",
+                            "uncheckColor": "",
+                            "uncheckIcon": "bootstrap-icons/square",
+                            "value": false
+                          },
+                          "path": "Library/SharedTemplates/Input/Checkbox",
+                          "useDefaultViewHeight": true
+                        },
+                        "type": "ia.display.view"
+                      },
+                      {
+                        "meta": {
+                          "name": "EmbeddedView_0"
+                        },
+                        "props": {
+                          "params": {
+                            "enabled": false,
+                            "engUnits": "",
+                            "format": "0,0.##",
+                            "key": "Artikelnummer",
+                            "maxValue": 10000000,
+                            "minValue": 0,
+                            "placeholder": "",
+                            "rejected": "True",
+                            "unitVisable": true,
+                            "value": null
+                          },
+                          "path": "Library/SharedTemplates/Input/Number",
+                          "useDefaultViewHeight": true
+                        },
+                        "type": "ia.display.view"
+                      },
+                      {
+                        "meta": {
+                          "name": "EmbeddedView_1"
+                        },
+                        "props": {
+                          "params": {
+                            "enabled": false,
+                            "engUnits": "Min",
+                            "format": "0,0.##",
+                            "key": "resterende tijd a.d.h.v inhoud",
+                            "maxValue": 10000000,
+                            "minValue": 0,
+                            "placeholder": "",
+                            "rejected": "True",
+                            "unitVisable": true,
+                            "value": null
+                          },
+                          "path": "Library/SharedTemplates/Input/Number",
+                          "useDefaultViewHeight": true
+                        },
+                        "type": "ia.display.view"
+                      },
+                      {
+                        "meta": {
+                          "name": "EmbeddedView_2"
+                        },
+                        "props": {
+                          "params": {
+                            "enabled": false,
+                            "engUnits": "L",
+                            "format": "0,0.##",
+                            "key": "niveau",
+                            "maxValue": 10000000,
+                            "minValue": 0,
+                            "placeholder": "",
+                            "rejected": "True",
+                            "unitVisable": true,
+                            "value": null
+                          },
+                          "path": "Library/SharedTemplates/Input/Number",
+                          "useDefaultViewHeight": true
+                        },
+                        "type": "ia.display.view"
+                      }
+                    ],
+                    "meta": {
+                      "name": "FlexContainer"
+                    },
+                    "position": {
+                      "basis": "250px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "direction": "column",
+                      "style": {
+                        "classes": "ATA/Background/CardSecondary"
+                      }
+                    },
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "meta": {
+                  "name": "FlexContainer_0"
+                },
+                "position": {
+                  "basis": "200px",
+                  "grow": 1
+                },
+                "props": {
+                  "style": {
+                    "backgroundColor": ""
+                  }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "TimeSeriesChart_0"
+                    },
+                    "position": {
+                      "basis": "225px",
+                      "grow": 1
+                    },
+                    "props": {
+                      "plots": [
+                        {
+                          "axes": [
+                            {
+                              "alignment": "left",
+                              "grid": {
+                                "color": "",
+                                "dashArray": 0,
+                                "opacity": 0.9,
+                                "style": {
+                                  "classes": ""
+                                },
+                                "visible": false
+                              },
+                              "label": {
+                                "font": {
+                                  "color": "",
+                                  "size": 10
+                                },
+                                "offset": 0,
+                                "style": {
+                                  "classes": ""
+                                },
+                                "text": "",
+                                "visible": true
+                              },
+                              "max": "",
+                              "min": "",
+                              "name": "Temp",
+                              "style": {
+                                "classes": ""
+                              },
+                              "tick": {
+                                "color": "",
+                                "count": "Auto",
+                                "label": {
+                                  "font": {
+                                    "color": "",
+                                    "size": 10
+                                  },
+                                  "format": "Auto",
+                                  "style": {
+                                    "classes": ""
+                                  }
+                                },
+                                "style": {
+                                  "classes": ""
+                                }
+                              },
+                              "width": 30
+                            }
+                          ],
+                          "markers": [],
+                          "relativeWeight": 1,
+                          "trends": [
+                            {
+                              "axis": "Temp",
+                              "baselines": [],
+                              "breakLine": true,
+                              "columns": [
+                                {
+                                  "color": "#000000",
+                                  "key": "Temperature",
+                                  "styles": {
+                                    "highlighted": {
+                                      "fill": {
+                                        "color": "",
+                                        "opacity": null
+                                      },
+                                      "stroke": {
+                                        "color": "",
+                                        "dashArray": null,
+                                        "opacity": null,
+                                        "width": null
+                                      }
+                                    },
+                                    "muted": {
+                                      "fill": {
+                                        "color": "",
+                                        "opacity": null
+                                      },
+                                      "stroke": {
+                                        "color": "",
+                                        "dashArray": null,
+                                        "opacity": null,
+                                        "width": null
+                                      }
+                                    },
+                                    "normal": {
+                                      "fill": {
+                                        "color": "",
+                                        "opacity": null
+                                      },
+                                      "stroke": {
+                                        "color": "",
+                                        "dashArray": null,
+                                        "opacity": null,
+                                        "width": null
+                                      }
+                                    },
+                                    "selected": {
+                                      "fill": {
+                                        "color": "",
+                                        "opacity": null
+                                      },
+                                      "stroke": {
+                                        "color": "",
+                                        "dashArray": null,
+                                        "opacity": null,
+                                        "width": null
+                                      }
+                                    }
+                                  }
+                                }
+                              ],
+                              "interpolation": "curveLinear",
+                              "radius": 2,
+                              "series": "Temperature",
+                              "stack": true,
+                              "type": "line",
+                              "visible": true
+                            }
+                          ]
+                        }
+                      ],
+                      "series": [
+                        {
+                          "data": [
+                            {
+                              "Temperature": 180,
+                              "time": 1560467421123
+                            },
+                            {
+                              "Temperature": 186,
+                              "time": 1560468432423
+                            },
+                            {
+                              "Temperature": 193,
+                              "time": 1560469433423
+                            },
+                            {
+                              "Temperature": 189,
+                              "time": 1560470434423
+                            },
+                            {
+                              "Temperature": 182,
+                              "time": 1560471435423
+                            },
+                            {
+                              "Temperature": 177,
+                              "time": 1560472436423
+                            },
+                            {
+                              "Temperature": 180,
+                              "time": 1560473437423
+                            },
+                            {
+                              "Temperature": 174,
+                              "time": 1560474438423
+                            },
+                            {
+                              "Temperature": 176,
+                              "time": 1560475439423
+                            },
+                            {
+                              "Temperature": 178,
+                              "time": 1560476445429
+                            }
+                          ],
+                          "name": "Lijn snelheid (m/s)"
+                        }
+                      ],
+                      "style": {
+                        "marginTop": "auto"
+                      },
+                      "timeRange": {
+                        "timeFormat": "HH:mm"
+                      },
+                      "title": {
+                        "font": {
+                          "color": "var(--text)"
+                        },
+                        "text": "Niveau",
+                        "visible": true
+                      },
+                      "xTrace": {
+                        "infoBox": {
+                          "timeFormat": "HH:mm"
+                        }
+                      }
+                    },
+                    "type": "ia.chart.timeseries"
+                  }
+                ],
+                "meta": {
+                  "name": "FlexContainer"
+                },
+                "position": {
+                  "basis": "265px",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "classes": "ATA/Background/CardSecondary"
+                  }
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "FlexContainer_1"
+            },
+            "position": {
+              "basis": "200px",
+              "grow": 1
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "backgroundColor": "--backgroundSecondary",
+                "classes": "ATA/Background/CardSecondary"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "Content"
+        },
+        "position": {
+          "basis": "200px",
+          "grow": 1
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "classes": "ATA/Background/Root"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "meta": {
+          "name": "AlarmBar"
+        },
+        "position": {
+          "basis": "55px",
+          "shrink": 0
+        },
+        "props": {
+          "params": {
+            "filter": "",
+            "popupMarginRight": 1
+          },
+          "path": "Library/SharedDocked/Alarms/AlarmBar"
+        },
+        "type": "ia.display.view"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

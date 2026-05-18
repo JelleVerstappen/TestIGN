@@ -1,0 +1,158 @@
+{
+  "custom": {},
+  "events": {
+    "system": {
+      "onStartup": {
+        "config": {
+          "script": "\tlineID \u003d self.view.params.lineID\n\t\n\tcheckRunningFlows \u003d \u0027\u0027\u0027select top(1) * from SPFlowLogging where lineID \u003d ? order by startdate desc\u0027\u0027\u0027\n\tcheckRunningFlowsArgs \u003d [lineID]\n\t\n\tcheckRunningFlow \u003d system.db.runPrepQuery(checkRunningFlows, checkRunningFlowsArgs, database \u003d \u0027NLSTWDYK_DB_PROD\u0027)\n\t\n\tif checkRunningFlow.getRowCount() \u003d\u003d 0:\n\t\treturn\n\tif checkRunningFlow.getValueAt(0, \u0027EndDate\u0027) is not None:\n\t\treturn\n\t\n\telse:\n\t\tarticleID \u003d checkRunningFlow.getValueAt(0, \u0027ArticleID\u0027)\n\t\tlineID \u003d checkRunningFlow.getValueAt(0, \u0027LineID\u0027)\n\t\tflowID \u003d checkRunningFlow.getValueAt(0, \u0027FlowID\u0027)\n\t\tprocedureID \u003d checkRunningFlow.getValueAt(0, \u0027ProcedureID\u0027)\n\t\t\n\t\tparams \u003d {\u0027ArticleID\u0027: articleID,\n\t\t\t\t\u0027LineID\u0027: lineID,\n\t\t\t\t\u0027flowID\u0027: flowID,\n\t\t\t\t\u0027procedureID\u0027: procedureID}\n\t\t\n\t\tsystem.perspective.navigate(view\u003d\u0027ControlRoom/StartupProcedure/Procedures\u0027, params \u003d params)"
+        },
+        "scope": "G",
+        "type": "script"
+      }
+    }
+  },
+  "params": {
+    "lineID": -1
+  },
+  "propConfig": {
+    "params.lineID": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {},
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Label"
+        },
+        "position": {
+          "basis": "32px"
+        },
+        "props": {
+          "style": {
+            "classes": "ATA/Components/Labels/TextLarge",
+            "textAlign": "center"
+          },
+          "text": "Kies hieronder de juiste lijn en artikel om de lijn op te starten"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "EmbeddedView"
+        },
+        "propConfig": {
+          "props.params.options": {
+            "binding": {
+              "config": {
+                "queryPath": "getLinesDropdown"
+              },
+              "type": "query"
+            }
+          },
+          "props.params.value": {
+            "binding": {
+              "config": {
+                "expression": "toInt({view.params.lineID})"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "enabled": true,
+            "key": "Lijn",
+            "marginRight": 0,
+            "multiSelect": false,
+            "placeholder": "Select...",
+            "showClearIcon": true
+          },
+          "path": "Library/SharedTemplates/Input/Dropdown",
+          "style": {
+            "width": "300px"
+          },
+          "useDefaultViewHeight": true
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "EmbeddedView_0"
+        },
+        "propConfig": {
+          "props.params.options": {
+            "binding": {
+              "config": {
+                "parameters": {
+                  "LineID": "{../EmbeddedView.props.params.value}"
+                },
+                "queryPath": "getArticlesDropdown"
+              },
+              "type": "query"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "enabled": true,
+            "key": "Artikel",
+            "marginRight": 0,
+            "multiSelect": false,
+            "placeholder": "Select...",
+            "showClearIcon": true,
+            "value": 1
+          },
+          "path": "Library/SharedTemplates/Input/Dropdown",
+          "style": {
+            "width": "300px"
+          },
+          "useDefaultViewHeight": true
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "events": {
+          "component": {
+            "onActionPerformed": {
+              "config": {
+                "script": "\tlineID \u003d self.getSibling(\"EmbeddedView\").props.params.value\n\tarticleID \u003d self.getSibling(\"EmbeddedView_0\").props.params.value\n\t\n\tgetProcedureQuery \u003d \u0027\u0027\u0027select \n\t\t\t\t\t\t\t\tProcedureID\n\t\t\t\t\t\t\tfrom\n\t\t\t\t\t\t\t\tSPProcedures\n\t\t\t\t\t\t\twhere\n\t\t\t\t\t\t\t\tLineID \u003d ?\n\t\t\t\t\t\t\t\tand\n\t\t\t\t\t\t\t\tArticleID \u003d ?\n\t\t\t\t\t\t\t\tand\n\t\t\t\t\t\t\t\tActive \u003d 1\u0027\u0027\u0027\n\tgetProcedureArgs \u003d [lineID, articleID]\n\tprocedureID \u003d system.db.runScalarPrepQuery(getProcedureQuery, getProcedureArgs, database \u003d \u0027NLSTWDYK_DB_PROD\u0027)\n\t\n\tmainSteps \u003d system.db.runNamedQuery(\u0027Control_Room\u0027, \u0027StartupProcedures/getMainSteps\u0027, parameters \u003d {\u0027ProcedureID\u0027: procedureID})\n\t\n\tinsertFlowQuery \u003d \u0027\u0027\u0027insert into \n\t\t\t\t\t\t\tSPFlowLogging\n\t\t\t\t\t\t\t(LineID,\n\t\t\t\t\t\t\tArticleID,\n\t\t\t\t\t\t\tProcedureID,\n\t\t\t\t\t\t\tStartDate)\n\t\t\t\t\t\tvalues\n\t\t\t\t\t\t\t(?,\n\t\t\t\t\t\t\t?,\n\t\t\t\t\t\t\t?,\n\t\t\t\t\t\t\t?)\u0027\u0027\u0027\n\tinsertArgs \u003d [lineID, articleID, procedureID, system.date.now()]\n\tflowID \u003d system.db.runPrepUpdate(insertFlowQuery, insertArgs, database \u003d \u0027NLSTWDYK_DB_PROD\u0027, getKey \u003d 1)\n\t\n\tfor row in range(mainSteps.getRowCount()):\n\t\tstepID \u003d mainSteps.getValueAt(row, \u0027StepID\u0027)\n\t\tdefaultStatus \u003d 1\n\t\tinsertQuery \u003d \u0027\u0027\u0027insert into\n\t\t\t\t\t\t\tSPStepLogging\n\t\t\t\t\t\t\t(FlowID,\n\t\t\t\t\t\t\tStepID,\n\t\t\t\t\t\t\tStatus)\n\t\t\t\t\t\tvalues\n\t\t\t\t\t\t\t(?,\n\t\t\t\t\t\t\t?,\n\t\t\t\t\t\t\t?)\u0027\u0027\u0027\n\t\tinsertArgs \u003d [flowID, stepID, defaultStatus]\n\t\tsystem.db.runPrepUpdate(insertQuery, insertArgs, database \u003d \u0027NLSTWDYK_DB_PROD\u0027)\n\t\t\n\t\tgetSubSteps \u003d \u0027\u0027\u0027select \n\t\t\t\t\t\t\tsubStepID\n\t\t\t\t\t\tfrom\n\t\t\t\t\t\t\tSPSubStepsConfig\n\t\t\t\t\t\twhere \n\t\t\t\t\t\t\tMainStepID \u003d ?\n\t\t\t\t\t\t\tand\n\t\t\t\t\t\t\tActive \u003d 1\u0027\u0027\u0027\n\t\tgetSubStepArgs \u003d [stepID]\n\t\tsubSteps \u003d system.db.runPrepQuery(getSubSteps, getSubStepArgs, database \u003d \u0027NLSTWDYK_DB_PROD\u0027)\n\t\t\n\t\tfor subStepRow in range(subSteps.getRowCount()):\n\t\t\tsubStepID \u003d subSteps.getValueAt(subStepRow, \u0027SubStepID\u0027)\n\t\t\tinsertSubStepsQuery \u003d \u0027\u0027\u0027insert into \n\t\t\t\t\t\t\t\t\tSPSubStepLogging\n\t\t\t\t\t\t\t\t\t(FlowID,\n\t\t\t\t\t\t\t\t\tSubStepID)\n\t\t\t\t\t\t\t\tvalues\n\t\t\t\t\t\t\t\t\t(?,\n\t\t\t\t\t\t\t\t\t?)\u0027\u0027\u0027\n\t\t\targs \u003d [flowID, subStepID]\n\t\t\tsystem.db.runPrepUpdate(insertSubStepsQuery, args, database \u003d \u0027NLSTWDYK_DB_PROD\u0027)\n\t\n\tsystem.perspective.navigate(view\u003d\u0027ControlRoom/StartupProcedure/Procedures\u0027, params \u003d {\u0027ArticleID\u0027: articleID, \u0027LineID\u0027: lineID, \u0027flowID\u0027: flowID, \u0027procedureID\u0027: procedureID})"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "Button"
+        },
+        "position": {
+          "basis": "40px"
+        },
+        "props": {
+          "style": {
+            "classes": "ATA/Components/Buttons/CTA",
+            "marginTop": 15,
+            "width": "80px"
+          },
+          "text": "Start"
+        },
+        "type": "ia.input.button"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "alignItems": "center",
+      "direction": "column",
+      "style": {
+        "backgroundColor": "--backgroundSecondary",
+        "classes": "ATA/Background/CardSecondary"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

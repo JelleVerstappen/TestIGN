@@ -1,0 +1,101 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {},
+  "root": {
+    "children": [
+      {
+        "events": {
+          "component": {
+            "onActionPerformed": {
+              "config": {
+                "script": "\tself.getSibling(\"FlexRepeater\").custom.color \u003d ata.function.randomColor()"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "Button"
+        },
+        "position": {
+          "basis": "80px"
+        },
+        "props": {
+          "primary": false,
+          "text": "Generate"
+        },
+        "type": "ia.input.button"
+      },
+      {
+        "meta": {
+          "name": "TextField"
+        },
+        "position": {
+          "basis": "30px"
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "path": "../FlexRepeater.custom.color"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "marginLeft": "auto",
+            "marginRight": "auto"
+          }
+        },
+        "type": "ia.input.text-field"
+      },
+      {
+        "custom": {
+          "color": "#44CE22"
+        },
+        "meta": {
+          "name": "FlexRepeater"
+        },
+        "position": {
+          "basis": "320px",
+          "grow": 1
+        },
+        "propConfig": {
+          "props.instances": {
+            "binding": {
+              "config": {
+                "expression": "{this.custom.color}"
+              },
+              "transforms": [
+                {
+                  "code": "\tinstances \u003d [{\u0027color\u0027:value}]\n\tfor i in range (8):\n\t\tinstances.append({\u0027color\u0027: ata.function.getColorVariationThree(value)})\n\treturn instances",
+                  "type": "script"
+                }
+              ],
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "direction": "column",
+          "path": "Library/Framework/Color Picker/Custom Color",
+          "useDefaultViewHeight": false,
+          "useDefaultViewWidth": false
+        },
+        "type": "ia.display.flex-repeater"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

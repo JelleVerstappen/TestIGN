@@ -1,0 +1,1015 @@
+{
+  "custom": {
+    "OEEData": {
+      "Availability": {
+        "Availability": 0.912679,
+        "Breakdown": {
+          "data": [
+            {
+              "description": "Description",
+              "stringValue": "10%",
+              "value": 10
+            }
+          ]
+        },
+        "Downtime": 5000,
+        "Target": 0.85
+      },
+      "Interval": {
+        "IntervalEnd": "2023-11-2 00:00:00",
+        "IntervalStart": "2023-11-1 00:00:00",
+        "TotalTimePassed": 57269
+      },
+      "OEE": 0.63880473,
+      "OEETarget": 0.7225,
+      "Performance": {
+        "Breakdown": {
+          "data": [
+            {
+              "description": "Description",
+              "stringValue": "10%",
+              "value": 10
+            }
+          ]
+        },
+        "Performance": 0.7,
+        "Target": 0.85
+      },
+      "Quality": {
+        "Breakdown": {
+          "data": [
+            {
+              "description": "Description",
+              "stringValue": "10%",
+              "value": 10
+            }
+          ]
+        },
+        "Quality": 1,
+        "Target": 1
+      }
+    },
+    "OEEHistoricData": {
+      "Availability": {
+        "Availability": 0.912679,
+        "Breakdown": {
+          "data": [
+            {
+              "description": "Description",
+              "stringValue": "10%",
+              "value": 10
+            }
+          ]
+        },
+        "Downtime": 5000,
+        "Target": 0.85
+      },
+      "Interval": {
+        "IntervalEnd": "2023-11-2 00:00:00",
+        "IntervalStart": "2023-11-1 00:00:00",
+        "TotalTimePassed": 57269
+      },
+      "OEE": 0.63880473,
+      "OEETarget": 0.7225,
+      "Performance": {
+        "Breakdown": {
+          "data": [
+            {
+              "description": "Description",
+              "stringValue": "10%",
+              "value": 10
+            }
+          ]
+        },
+        "Performance": 0.7,
+        "Target": 0.85
+      },
+      "Quality": {
+        "Breakdown": {
+          "data": [
+            {
+              "description": "Description",
+              "stringValue": "10%",
+              "value": 10
+            }
+          ]
+        },
+        "Quality": 1,
+        "Target": 1
+      }
+    },
+    "OEETagData": {}
+  },
+  "params": {
+    "intervalEnd": "2023-11-1 00:00:00",
+    "intervalStart": "2023-11-2 00:00:00",
+    "isLive": false,
+    "tagPath": ""
+  },
+  "propConfig": {
+    "custom.OEEData": {
+      "binding": {
+        "config": {
+          "expression": "if({view.params.isLive}\r\n\t,{view.custom.OEETagData}\r\n\t,{view.custom.OEEHistoricData}\r\n)"
+        },
+        "type": "expr"
+      },
+      "persistent": true
+    },
+    "custom.OEEHistoricData": {
+      "binding": {
+        "config": {
+          "struct": {
+            "intervalEnd": "{view.params.intervalEnd}",
+            "intervalStart": "{view.params.intervalStart}",
+            "isLive": "{view.params.isLive}"
+          },
+          "waitOnAll": true
+        },
+        "transforms": [
+          {
+            "code": "\tif value[\u0027isLive\u0027]:\n\t\treturn {}\n\t\t\n\telse:\n\t\tintervalStart \u003d value[\u0027intervalStart\u0027]\n\t\tintervalEnd \u003d value[\u0027intervalEnd\u0027]\n\t\tOEEData \u003d {\n\t\t\t\"Availability\": {\n\t\t\t\t\"Availability\": 0.912679,\n\t\t\t\t\"Downtime\": 5000,\n\t\t\t\t\"Target\": 0.85,\n\t\t\t\t\"Breakdown\": {\n\t\t\t\t\t\"data\": [\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\"description\": \"Description\",\n\t\t\t\t\t\t\"stringValue\": \"10%\",\n\t\t\t\t\t\t\"value\": 10\n\t\t\t\t\t\t}\n\t\t\t\t\t]\n\t\t\t\t}\n\t\t\t},\n\t\t\t\"Quality\": {\n\t\t\t\t\"Quality\": 1,\n\t\t\t\t\"Target\": 1,\n\t\t\t\t\"Breakdown\": {\n\t\t\t\t\t\"data\": [\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\"description\": \"Description\",\n\t\t\t\t\t\t\"stringValue\": \"10%\",\n\t\t\t\t\t\t\"value\": 10\n\t\t\t\t\t\t}\n\t\t\t\t\t]\n\t\t\t\t}\n\t\t\t},\n\t\t\t\"Performance\": {\n\t\t\t\t\"Performance\": 0.7,\n\t\t\t\t\"Target\": 0.85,\n\t\t\t\t\"Breakdown\": {\n\t\t\t\t\t\"data\": [\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\"description\": \"Description\",\n\t\t\t\t\t\t\"stringValue\": \"10%\",\n\t\t\t\t\t\t\"value\": 10\n\t\t\t\t\t\t}\n\t\t\t\t\t]\n\t\t\t\t}\n\t\t\t},\n\t\t\t\"OEE\": 0.63880473,\n\t\t\t\"OEETarget\": 0.7225,\n\t\t\t\"Interval\": {\n\t\t\t\"IntervalEnd\": intervalStart,\n\t\t\t\"IntervalStart\": intervalEnd,\n\t\t\t\"TotalTimePassed\": 57269\n\t\t\t}\n\t\t}\n\t\treturn OEEData",
+            "type": "script"
+          }
+        ],
+        "type": "expr-struct"
+      },
+      "persistent": true
+    },
+    "custom.OEETagData": {
+      "binding": {
+        "config": {
+          "fallbackDelay": 2.5,
+          "mode": "expression",
+          "tagPath": "if({view.params.isLive}\r\n\t,{view.params.tagPath}\r\n\t,\u0027\u0027\r\n)"
+        },
+        "transforms": [
+          {
+            "code": "\treturn value if quality.isGood() else {}",
+            "type": "script"
+          }
+        ],
+        "type": "tag"
+      },
+      "persistent": true
+    },
+    "params.intervalEnd": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.intervalStart": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.isLive": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.tagPath": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 788,
+      "width": 867
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "OEE Compare"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.params.actualOEE": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.OEEData.OEE"
+                  },
+                  "transforms": [
+                    {
+                      "expression": "{value} * 100",
+                      "type": "expression"
+                    }
+                  ],
+                  "type": "property"
+                }
+              },
+              "props.params.actualTarget": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.OEEData[\u0027OEETarget\u0027]"
+                  },
+                  "transforms": [
+                    {
+                      "expression": "{value} * 100",
+                      "type": "expression"
+                    }
+                  ],
+                  "type": "property"
+                }
+              },
+              "props.params.lastOEE": {
+                "binding": {
+                  "config": {
+                    "parameters": {
+                      "CurrentShiftResultID": "{view.custom.ShiftResultID}",
+                      "LineID": "{view.custom.lineID}"
+                    },
+                    "queryPath": "OEE/Lines/getPreviousShiftResults"
+                  },
+                  "enabled": false,
+                  "transforms": [
+                    {
+                      "code": "\treturn value.getValueAt(0, \"OEE\") if value is not None and value.getRowCount() \u003e 0 else 0",
+                      "type": "script"
+                    },
+                    {
+                      "expression": "try(toInt(numberFormat({value},\u0027##0\u0027)),numberFormat({value},\u0027##0\u0027))",
+                      "type": "expression"
+                    }
+                  ],
+                  "type": "query"
+                }
+              },
+              "props.params.lastTarget": {
+                "binding": {
+                  "config": {
+                    "expression": "lookup({view.custom.OEEData},{view.custom.lineID},0,\"LineID\",\"OEETarget\")"
+                  },
+                  "enabled": false,
+                  "type": "expr"
+                }
+              },
+              "props.params.weekOEE": {
+                "binding": {
+                  "config": {
+                    "expression": "lookup({view.custom.WeekOEEData},{view.custom.lineID},0,\"LineID\",\"OEE\")"
+                  },
+                  "enabled": false,
+                  "type": "expr"
+                }
+              },
+              "props.params.weekTarget": {
+                "binding": {
+                  "config": {
+                    "expression": "lookup({view.custom.WeekOEEData},{view.custom.lineID},0,\"LineID\",\"OEETarget\")"
+                  },
+                  "enabled": false,
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "lastOEE": 0,
+                "lastTarget": 0,
+                "weekOEE": 0,
+                "weekTarget": 0
+              },
+              "path": "Library/OEE/OEE Compare",
+              "useDefaultViewWidth": true
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "Availability"
+            },
+            "position": {
+              "basis": "300px",
+              "grow": 1,
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.params.breakdown": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.OEEData.Availability.Breakdown"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\treturn value.data if value is not None else []",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "property"
+                }
+              },
+              "props.params.target": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.OEEData.Availability.Target"
+                  },
+                  "transforms": [
+                    {
+                      "expression": "{value} * 100",
+                      "type": "expression"
+                    }
+                  ],
+                  "type": "property"
+                }
+              },
+              "props.params.value": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.OEEData.Availability.Availability"
+                  },
+                  "transforms": [
+                    {
+                      "expression": "{value} * 100",
+                      "type": "expression"
+                    }
+                  ],
+                  "type": "property"
+                }
+              },
+              "props.params.value1": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.OEEData.Interval.TotalTimePassed"
+                  },
+                  "transforms": [
+                    {
+                      "expression": "toStr(toInt(floor(({value} / 3600))))+\u0027h \u0027\r\n+ toStr(toInt((({value} / 3600) - floor({value} / 3600))*60))+\u0027m\u0027",
+                      "type": "expression"
+                    }
+                  ],
+                  "type": "property"
+                }
+              },
+              "props.params.value2": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.OEEData.Availability.Downtime"
+                  },
+                  "transforms": [
+                    {
+                      "expression": "toStr(toInt(floor(({value} / 3600))))+\u0027h \u0027\r\n+ toStr(toInt((({value} / 3600) - floor({value} / 3600))*60))+\u0027m\u0027",
+                      "type": "expression"
+                    }
+                  ],
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "name1": "Total Runtime",
+                "name2": "Total Downtime",
+                "subTitle": "Downtime Reasons",
+                "title": "Availability"
+              },
+              "path": "Library/OEE/OEE Factor Info",
+              "style": {
+                "marginLeft": "20px",
+                "marginRight": "10px"
+              }
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "Performance"
+            },
+            "position": {
+              "basis": "290px",
+              "grow": 1,
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.params.breakdown": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.OEEData.Performance.Breakdown"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\treturn value.data if value is not None else []",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "property"
+                }
+              },
+              "props.params.target": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.OEEData.Performance.Target"
+                  },
+                  "transforms": [
+                    {
+                      "expression": "{value} * 100",
+                      "type": "expression"
+                    }
+                  ],
+                  "type": "property"
+                }
+              },
+              "props.params.value": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.OEEData.Performance.Performance"
+                  },
+                  "transforms": [
+                    {
+                      "expression": "{value} * 100",
+                      "type": "expression"
+                    }
+                  ],
+                  "type": "property"
+                }
+              },
+              "props.params.value1": {
+                "binding": {
+                  "config": {
+                    "struct": {
+                      "lastModuleID": "{view.custom.lastModuleID}",
+                      "lineID": "{view.custom.lineID}",
+                      "refresh": "{[MES]EKK Eagle Simrax/Kerkrade/Triggers/Log Production Output}",
+                      "shiftStart": "{view.custom.shiftStart}"
+                    },
+                    "waitOnAll": true
+                  },
+                  "enabled": false,
+                  "transforms": [
+                    {
+                      "code": "\tlineID \u003d self.view.custom.lineID\n\tmoduleID \u003d self.view.custom.lastModuleID\n\tstartDate \u003d self.view.custom.shiftStart\n\taveragePerHour \u003d system.db.runNamedQuery(\"OEE/Lines/AverageProductPerHours\", {\"LineID\": lineID, \"LastModuleID\": moduleID, \"StartDate\": startDate})\n\treturn int(averagePerHour) if averagePerHour is not None else 0",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "expr-struct"
+                }
+              },
+              "props.params.value2": {
+                "binding": {
+                  "config": {
+                    "parameters": {
+                      "lineID": "{view.custom.lineID}",
+                      "startDate": "{view.custom.shiftStart}"
+                    },
+                    "polling": {
+                      "enabled": true,
+                      "rate": "{view.custom.pollingSeconds}*1000"
+                    },
+                    "queryPath": "OEE/Lines/getNumberOfPerformanceDowntimes"
+                  },
+                  "enabled": false,
+                  "overlayOptOut": true,
+                  "type": "query"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "name1": "Products per hour",
+                "name2": "Small performance downtimes",
+                "subTitle": "Products per hour",
+                "title": "Performance",
+                "value1": "",
+                "value2": ""
+              },
+              "path": "Library/OEE/OEE Factor Info",
+              "style": {
+                "marginRight": "10px"
+              }
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "Quality"
+            },
+            "position": {
+              "basis": "290px",
+              "grow": 1,
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.params.breakdown": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.OEEData.Quality.Breakdown"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\treturn value.data if value is not None else []",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "property"
+                }
+              },
+              "props.params.target": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.OEEData.Quality.Target"
+                  },
+                  "transforms": [
+                    {
+                      "expression": "{value} * 100",
+                      "type": "expression"
+                    }
+                  ],
+                  "type": "property"
+                }
+              },
+              "props.params.value": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.OEEData.Quality.Quality"
+                  },
+                  "transforms": [
+                    {
+                      "expression": "{value} * 100",
+                      "type": "expression"
+                    }
+                  ],
+                  "type": "property"
+                }
+              },
+              "props.params.value1": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "1": "{view.custom.tagPath}",
+                      "2": "{view.custom.lastModule}"
+                    },
+                    "tagPath": "{1}/{2}/General/OK"
+                  },
+                  "enabled": false,
+                  "type": "tag"
+                }
+              },
+              "props.params.value2": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "1": "{view.custom.tagPath}",
+                      "2": "{view.custom.lastModule}"
+                    },
+                    "tagPath": "{1}/{2}/Rejects/Total Reject Line"
+                  },
+                  "enabled": false,
+                  "type": "tag"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "name1": "Good products",
+                "name2": "Bad products",
+                "subTitle": "Reject reasons",
+                "title": "Quality",
+                "value1": "",
+                "value2": ""
+              },
+              "path": "Library/OEE/OEE Factor Info"
+            },
+            "type": "ia.display.view"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer Large"
+        },
+        "position": {
+          "size": "large"
+        },
+        "props": {
+          "style": {
+            "margin": "15px"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "OEE Compare"
+            },
+            "position": {
+              "grow": 1,
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.params.actualOEE": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.OEEData.OEE"
+                  },
+                  "transforms": [
+                    {
+                      "expression": "{value} * 100",
+                      "type": "expression"
+                    }
+                  ],
+                  "type": "property"
+                }
+              },
+              "props.params.actualTarget": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.OEEData[\u0027OEETarget\u0027]"
+                  },
+                  "transforms": [
+                    {
+                      "expression": "{value} * 100",
+                      "type": "expression"
+                    }
+                  ],
+                  "type": "property"
+                }
+              },
+              "props.params.lastOEE": {
+                "binding": {
+                  "config": {
+                    "parameters": {
+                      "CurrentShiftResultID": "{view.custom.ShiftResultID}",
+                      "LineID": "{view.custom.lineID}"
+                    },
+                    "queryPath": "OEE/Lines/getPreviousShiftResults"
+                  },
+                  "enabled": false,
+                  "transforms": [
+                    {
+                      "code": "\treturn value.getValueAt(0, \"OEE\") if value is not None and value.getRowCount() \u003e 0 else 0",
+                      "type": "script"
+                    },
+                    {
+                      "expression": "try(toInt(numberFormat({value},\u0027##0\u0027)),numberFormat({value},\u0027##0\u0027))",
+                      "type": "expression"
+                    }
+                  ],
+                  "type": "query"
+                }
+              },
+              "props.params.lastTarget": {
+                "binding": {
+                  "config": {
+                    "expression": "lookup({view.custom.OEEData},{view.custom.lineID},0,\"LineID\",\"OEETarget\")"
+                  },
+                  "enabled": false,
+                  "type": "expr"
+                }
+              },
+              "props.params.weekOEE": {
+                "binding": {
+                  "config": {
+                    "expression": "lookup({view.custom.WeekOEEData},{view.custom.lineID},0,\"LineID\",\"OEE\")"
+                  },
+                  "enabled": false,
+                  "type": "expr"
+                }
+              },
+              "props.params.weekTarget": {
+                "binding": {
+                  "config": {
+                    "expression": "lookup({view.custom.WeekOEEData},{view.custom.lineID},0,\"LineID\",\"OEETarget\")"
+                  },
+                  "enabled": false,
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "lastOEE": 0,
+                "lastTarget": 0,
+                "weekOEE": 0,
+                "weekTarget": 0
+              },
+              "path": "Library/OEE/OEE Compare",
+              "useDefaultViewWidth": true
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "Availability"
+            },
+            "position": {
+              "basis": "300px",
+              "grow": 1,
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.params.detailedData": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.OEEData.Availability.DetailedData"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\treturn value.data if value is not None else []",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "property"
+                }
+              },
+              "props.params.target": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.OEEData.Availability.Target"
+                  },
+                  "transforms": [
+                    {
+                      "expression": "{value} * 100",
+                      "type": "expression"
+                    }
+                  ],
+                  "type": "property"
+                }
+              },
+              "props.params.value": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.OEEData.Availability.Availability"
+                  },
+                  "transforms": [
+                    {
+                      "expression": "{value} * 100",
+                      "type": "expression"
+                    }
+                  ],
+                  "type": "property"
+                }
+              },
+              "props.params.value1": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.OEEData.Interval.TotalTimePassed"
+                  },
+                  "transforms": [
+                    {
+                      "expression": "toStr(toInt(floor(({value} / 3600))))+\u0027h \u0027\r\n+ toStr(toInt((({value} / 3600) - floor({value} / 3600))*60))+\u0027m\u0027",
+                      "type": "expression"
+                    }
+                  ],
+                  "type": "property"
+                }
+              },
+              "props.params.value2": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.OEEData.Availability.Downtime"
+                  },
+                  "transforms": [
+                    {
+                      "expression": "toStr(toInt(floor(({value} / 3600))))+\u0027h \u0027\r\n+ toStr(toInt((({value} / 3600) - floor({value} / 3600))*60))+\u0027m\u0027",
+                      "type": "expression"
+                    }
+                  ],
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "name1": "Total Runtime",
+                "name2": "Total Downtime",
+                "subTitle": "Downtime Reasons",
+                "title": "Availability"
+              },
+              "path": "Library/OEE/OEE Factor Info",
+              "useDefaultViewWidth": true
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "Performance"
+            },
+            "position": {
+              "basis": "290px",
+              "grow": 1,
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.params.detailedData": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.OEEData.Performance.DetailedData"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\treturn value.data if value is not None else []",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "property"
+                }
+              },
+              "props.params.target": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.OEEData.Performance.Target"
+                  },
+                  "transforms": [
+                    {
+                      "expression": "{value} * 100",
+                      "type": "expression"
+                    }
+                  ],
+                  "type": "property"
+                }
+              },
+              "props.params.value": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.OEEData.Performance.Performance"
+                  },
+                  "transforms": [
+                    {
+                      "expression": "{value} * 100",
+                      "type": "expression"
+                    }
+                  ],
+                  "type": "property"
+                }
+              },
+              "props.params.value1": {
+                "binding": {
+                  "config": {
+                    "struct": {
+                      "lastModuleID": "{view.custom.lastModuleID}",
+                      "lineID": "{view.custom.lineID}",
+                      "refresh": "{[MES]EKK Eagle Simrax/Kerkrade/Triggers/Log Production Output}",
+                      "shiftStart": "{view.custom.shiftStart}"
+                    },
+                    "waitOnAll": true
+                  },
+                  "enabled": false,
+                  "transforms": [
+                    {
+                      "code": "\tlineID \u003d self.view.custom.lineID\n\tmoduleID \u003d self.view.custom.lastModuleID\n\tstartDate \u003d self.view.custom.shiftStart\n\taveragePerHour \u003d system.db.runNamedQuery(\"OEE/Lines/AverageProductPerHours\", {\"LineID\": lineID, \"LastModuleID\": moduleID, \"StartDate\": startDate})\n\treturn int(averagePerHour) if averagePerHour is not None else 0",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "expr-struct"
+                }
+              },
+              "props.params.value2": {
+                "binding": {
+                  "config": {
+                    "parameters": {
+                      "lineID": "{view.custom.lineID}",
+                      "startDate": "{view.custom.shiftStart}"
+                    },
+                    "polling": {
+                      "enabled": true,
+                      "rate": "{view.custom.pollingSeconds}*1000"
+                    },
+                    "queryPath": "OEE/Lines/getNumberOfPerformanceDowntimes"
+                  },
+                  "enabled": false,
+                  "overlayOptOut": true,
+                  "type": "query"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "name1": "Products per hour",
+                "name2": "Small performance downtimes",
+                "subTitle": "Products per hour",
+                "title": "Performance",
+                "value1": "",
+                "value2": ""
+              },
+              "path": "Library/OEE/OEE Factor Info",
+              "style": {
+                "marginRight": "10px"
+              },
+              "useDefaultViewWidth": true
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "Quality"
+            },
+            "position": {
+              "basis": "290px",
+              "grow": 1,
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.params.detailedData": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.OEEData.Quality.DetailedData"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\treturn value.data if value is not None else []",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "property"
+                }
+              },
+              "props.params.target": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.OEEData.Quality.Target"
+                  },
+                  "transforms": [
+                    {
+                      "expression": "{value} * 100",
+                      "type": "expression"
+                    }
+                  ],
+                  "type": "property"
+                }
+              },
+              "props.params.value": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.OEEData.Quality.Quality"
+                  },
+                  "transforms": [
+                    {
+                      "expression": "{value} * 100",
+                      "type": "expression"
+                    }
+                  ],
+                  "type": "property"
+                }
+              },
+              "props.params.value1": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "1": "{view.custom.tagPath}",
+                      "2": "{view.custom.lastModule}"
+                    },
+                    "tagPath": "{1}/{2}/General/OK"
+                  },
+                  "enabled": false,
+                  "type": "tag"
+                }
+              },
+              "props.params.value2": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "1": "{view.custom.tagPath}",
+                      "2": "{view.custom.lastModule}"
+                    },
+                    "tagPath": "{1}/{2}/Rejects/Total Reject Line"
+                  },
+                  "enabled": false,
+                  "type": "tag"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "name1": "Good products",
+                "name2": "Bad products",
+                "subTitle": "Reject reasons",
+                "title": "Quality",
+                "value1": "",
+                "value2": ""
+              },
+              "path": "Library/OEE/OEE Factor Info",
+              "useDefaultViewWidth": true
+            },
+            "type": "ia.display.view"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer Small"
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "margin": "5px"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "type": "ia.container.breakpt"
+  }
+}

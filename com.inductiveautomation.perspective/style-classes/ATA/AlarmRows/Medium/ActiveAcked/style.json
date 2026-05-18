@@ -1,0 +1,8 @@
+{
+  "base": {
+    "style": {
+      "backgroundColor": "var(--warningDim)",
+      "color": "#000000"
+    }
+  }
+}

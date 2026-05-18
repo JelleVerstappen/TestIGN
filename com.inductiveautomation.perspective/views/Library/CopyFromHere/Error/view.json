@@ -1,0 +1,68 @@
+{
+  "custom": {},
+  "params": {
+    "Text": 1
+  },
+  "propConfig": {
+    "params.Text": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 40,
+      "width": 53
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "FlexContainer"
+        },
+        "position": {
+          "height": "100%",
+          "width": "100%"
+        },
+        "props": {
+          "style": {
+            "backgroundColor": "red",
+            "clip-path": "polygon(   50% 0%,   /* bovenpunt */   100% 50%, /* rechterpunt */   50% 100%, /* onderpunt */   0% 50%    /* linkerpunt */ )"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "meta": {
+          "name": "Label"
+        },
+        "position": {
+          "height": "100%",
+          "width": "100%"
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "view.params.Text"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "textStyle": {
+            "fontWeight": "bolder",
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "type": "ia.container.coord"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "base": {
+    "style": {
+      "backgroundColor": "var(--white)",
+      "borderColor": "var(--prim)",
+      "borderStyle": "solid",
+      "borderWidth": "0.2px",
+      "borderTopLeftRadius": "5px",
+      "borderTopRightRadius": "5px",
+      "borderBottomLeftRadius": "5px",
+      "borderBottomRightRadius": "5px",
+      "color": "var(--textSec)",
+      "fontFamily": "Roboto",
+      "fontWeight": "lighter"
+    }
+  },
+  "variants": [
+    {
+      "pseudo": "hover",
+      "style": {
+        "fontWeight": "normal"
+      }
+    }
+  ]
+}

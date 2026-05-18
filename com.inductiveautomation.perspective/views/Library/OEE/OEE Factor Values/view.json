@@ -1,0 +1,168 @@
+{
+  "custom": {},
+  "params": {
+    "description": "Diverter #2",
+    "stringValue": "12:13",
+    "target": 0,
+    "value": 70
+  },
+  "propConfig": {
+    "params.description": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.stringValue": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.target": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.value": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 32,
+      "width": 288
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Label"
+        },
+        "position": {
+          "basis": "58px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "view.params.description"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "alignVertical": "bottom",
+          "style": {
+            "classes": "Text/Default",
+            "paddingLeft": "5px"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Progress",
+          "tooltip": {
+            "enabled": true
+          }
+        },
+        "position": {
+          "basis": "18px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "propConfig": {
+          "meta.tooltip.text": {
+            "binding": {
+              "config": {
+                "expression": "toStr(toFloat(toInt(({this.props.value}/{this.props.max} * 1000)))/10)+\u0027%\u0027"
+              },
+              "type": "expr"
+            }
+          },
+          "props.bar.color": {
+            "binding": {
+              "config": {
+                "expression": "if({view.params.value} \u003c\u003d {view.params.target}, \"#F5BB0E\", \"#666666\")"
+              },
+              "type": "expr"
+            }
+          },
+          "props.value": {
+            "binding": {
+              "config": {
+                "path": "view.params.value"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "bar": {},
+          "style": {
+            "height": "21px",
+            "marginBottom": "1px",
+            "marginRight": "3px",
+            "marginTop": "auto"
+          },
+          "track": {
+            "style": {
+              "borderBottomLeftRadius": "0px",
+              "borderBottomRightRadius": "0px",
+              "borderStyle": "none",
+              "borderTopLeftRadius": "0px",
+              "borderTopRightRadius": "0px"
+            }
+          },
+          "valueDisplay": {
+            "format": "0.##%"
+          }
+        },
+        "type": "ia.display.progress"
+      },
+      {
+        "meta": {
+          "name": "Label_0"
+        },
+        "position": {
+          "basis": "65px"
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "view.params.stringValue"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "alignVertical": "bottom",
+          "style": {
+            "classes": "Text/Default",
+            "paddingRight": "5px",
+            "textAlign": "right"
+          }
+        },
+        "type": "ia.display.label"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "justify": "flex-end",
+      "style": {
+        "borderBottomColor": "--gray",
+        "borderBottomStyle": "solid",
+        "borderBottomWidth": 0.5,
+        "marginLeft": "10px",
+        "marginRight": "10px",
+        "minHeight": "32px"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

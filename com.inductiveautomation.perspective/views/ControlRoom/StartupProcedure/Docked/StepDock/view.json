@@ -1,0 +1,374 @@
+{
+  "custom": {},
+  "params": {
+    "name": "value",
+    "newEntry": true,
+    "procedureID": "value",
+    "seqNr": "value",
+    "stepID": 1
+  },
+  "propConfig": {
+    "params.name": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.newEntry": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.procedureID": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.seqNr": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.stepID": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "width": 600
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Header"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.params.title": {
+            "binding": {
+              "config": {
+                "expression": "if({view.params.newEntry} \u003d 1, \u0027Stap aanmaken\u0027,\t\u0027Stap aanpassen\u0027)"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "closeDockID": "StepsDock",
+            "closeIcon": true
+          },
+          "path": "Library/SharedTemplates/HeaderForDock",
+          "style": {
+            "textTransform": "capitalize"
+          },
+          "useDefaultViewHeight": true
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Name"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.params.value": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.name"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "enabled": true,
+                "key": "Naam",
+                "margingRight": 55,
+                "placeholder": ""
+              },
+              "path": "Library/SharedTemplates/Input/String",
+              "useDefaultViewHeight": true
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "SequenceNr"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.params.value": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.seqNr"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "enabled": true,
+                "engUnits": "",
+                "format": "0,0.##",
+                "key": "Volgorde",
+                "maxValue": 10000000,
+                "minValue": 0,
+                "placeholder": "",
+                "rejected": "True",
+                "unitVisable": true
+              },
+              "path": "Library/SharedTemplates/Input/Number",
+              "useDefaultViewHeight": true
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "basis": "32px",
+              "shrink": 0
+            },
+            "props": {
+              "style": {
+                "classes": "ATA/Components/Labels/TextLarge",
+                "marginTop": 10
+              },
+              "text": "Substappen"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "FlexRepeater"
+                },
+                "position": {
+                  "grow": 1,
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "custom.SubStepsData": {
+                    "binding": {
+                      "config": {
+                        "parameters": {
+                          "MainStepID": "{view.params.stepID}"
+                        },
+                        "queryPath": "StartupProcedures/getSubSteps"
+                      },
+                      "type": "query"
+                    }
+                  },
+                  "props.instances": {
+                    "binding": {
+                      "config": {
+                        "path": "this.custom.SubStepsData"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\tinstances \u003d []\n\tfor row in range(value.getRowCount()):\n\t\tsubStepID \u003d value.getValueAt(row, \u0027SubStepID\u0027)\n\t\tcheckType \u003d value.getValueAt(row, \u0027CheckTypeID\u0027)\n\t\tsubStepData \u003d system.util.jsonDecode(value.getValueAt(row, \u0027Data\u0027))\n\t\t\n\t\tinstance \u003d {\n\t\t\t\t\"Line\": \"E07\",\n  \t\t\t\t\"Mandatory\": subStepData.get(\u0027Mandatory\u0027),\n  \t\t\t\t\"Operand\": subStepData.get(\u0027Operand\u0027),\n  \t\t\t\t\"SubStepID\": subStepID,\n  \t\t\t\t\"TagPath\": subStepData.get(\u0027LinkedTag\u0027),\n  \t\t\t\t\"Text\": subStepData.get(\u0027Text\u0027),\n  \t\t\t\t\"Value\": subStepData.get(\u0027Value\u0027),\n  \t\t\t\t\"typeCheck\": checkType\n\t\t}\n\t\tinstances.append(instance)\n\t\n\treturn instances",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "direction": "column",
+                  "elementPosition": {
+                    "basis": "auto",
+                    "grow": 0,
+                    "shrink": 0
+                  },
+                  "elementStyle": {
+                    "classes": "ATA/Background/Card",
+                    "margin": 5
+                  },
+                  "path": "ControlRoom/StartupProcedure/Templates/defaultSettings",
+                  "useDefaultViewHeight": false,
+                  "useDefaultViewWidth": false
+                },
+                "scripts": {
+                  "customMethods": [],
+                  "extensionFunctions": null,
+                  "messageHandlers": [
+                    {
+                      "messageType": "deleteSubStep",
+                      "pageScope": true,
+                      "script": "\t# implement your handler here\n\tremovedInstanceIndex \u003d payload[\u0027index\u0027]\n\tinstances \u003d self.props.instances\n\t\n\tinstances.pop(removedInstanceIndex)",
+                      "sessionScope": true,
+                      "viewScope": true
+                    }
+                  ]
+                },
+                "type": "ia.display.flex-repeater"
+              },
+              {
+                "events": {
+                  "dom": {
+                    "onClick": {
+                      "config": {
+                        "script": "\temptyData \u003d {\n\t\t\t  \"Line\": \"E07\",\n\t\t\t  \"Operand\": None,\n\t\t\t  \"SubStepID\": None,\n\t\t\t  \"Value\": None,\n\t\t\t  \"Text\": \"\",\n\t\t\t  \"typeCheck\": None,\n\t\t\t  \"TagPath\": \"\",\n\t\t\t  \"Mandatory\": 1,\n\t\t\t  \"index\": len(self.getSibling(\"FlexRepeater\").props.instances)\n\t\t\t}\n\t\n\tself.getSibling(\"FlexRepeater\").props.instances.append(emptyData)"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "name": "Icon"
+                },
+                "position": {
+                  "basis": "28px",
+                  "shrink": 0
+                },
+                "props": {
+                  "path": "material/add",
+                  "style": {
+                    "marginTop": 5
+                  }
+                },
+                "type": "ia.display.icon"
+              }
+            ],
+            "meta": {
+              "name": "FlexContainer"
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "overflow": "scroll"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer"
+        },
+        "position": {
+          "grow": 1
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "padding": 10
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "id": "{/root/Header.props.params.closeDockID}",
+                    "type": "close"
+                  },
+                  "scope": "C",
+                  "type": "dock"
+                }
+              }
+            },
+            "meta": {
+              "name": "Button_5"
+            },
+            "position": {
+              "basis": "80px",
+              "shrink": 0
+            },
+            "props": {
+              "image": {
+                "icon": {
+                  "path": "material/cancel"
+                }
+              },
+              "style": {
+                "classes": "ATA/Components/Buttons/Sec",
+                "marginLeft": 15
+              },
+              "text": ""
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "script": "\tnewEntry \u003d bool(self.view.params.newEntry)\n\t\n\tname \u003d self.parent.parent.getChild(\"FlexContainer\").getChild(\"Name\").props.params.value\n\tseqNr \u003d self.parent.parent.getChild(\"FlexContainer\").getChild(\"SequenceNr\").props.params.value\n\tprocedureID \u003d self.view.params.procedureID\n\tusername \u003d self.session.props.auth.user.userName\n\tsubStepsRepeater \u003d self.parent.parent.getChild(\"FlexContainer\").getChild(\"FlexContainer\").getChild(\"FlexRepeater\").props.instances\n\t\n\t# Inserts for new step\n\tif newEntry \u003d\u003d True:\n\t\tinsertQuery \u003d \u0027\u0027\u0027insert into SPMainStepsConfig\n\t\t\t\t\t\t    \t(ProcedureID,\n\t\t\t\t\t\t    \tSequenceNumber,\n\t\t\t\t\t\t    \tName,\n\t\t\t\t\t\t    \tCreated,\n\t\t\t\t\t\t    \tCreatedBy)\n\t\t\t\t\t\t  values\n\t\t\t\t\t\t  \t\t(?,\n\t\t\t\t\t\t  \t\t?,\n\t\t\t\t\t\t  \t\t?,\n\t\t\t\t\t\t  \t\t?,\n\t\t\t\t\t\t  \t\t?)\u0027\u0027\u0027\n\t\tinsertArgs \u003d [procedureID, seqNr, name, system.date.now(), username]\n\t\tmainStepID \u003d system.db.runPrepUpdate(insertQuery, insertArgs, database \u003d \u0027NLSTWDYK_DB_PROD\u0027, getKey \u003d 1)\n\t\t\n\t\tfor subStep in subStepsRepeater:\n\t\t\tsystem.perspective.print(subStep)\n\t\t\tcheckType \u003d subStep.typeCheck\n\t\t\t\n\t\t\tDataMapping \u003d {\n\t\t\t\t1: {\n\t\t\t\t\t\"Text\": subStep.Text,\n\t\t\t\t\t\"Mandatory\": subStep.Mandatory\n\t\t\t\t\t},\n\t\t\t\t2: {\n\t\t\t\t\t\"Text\": subStep.Text,\n\t\t\t\t\t\"LinkedTag\": subStep.TagPath,\n\t\t\t\t\t\"Operand\": subStep.Operand,\n\t\t\t\t\t\"Value\": subStep.Value,\n\t\t\t\t\t\"Mandatory\": subStep.Mandatory\n\t\t\t\t\t},\n\t\t\t\t3: {\n\t\t\t\t\t\"Text\": subStep.Text,\n\t\t\t\t\t\"Operand\": subStep.Operand,\n\t\t\t\t\t\"Value\": subStep.Value,\n\t\t\t\t\t\"Mandatory\": subStep.Mandatory\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\tdata \u003d DataMapping[checkType]\n\t\t\tsubStepInsertQuery \u003d \u0027\u0027\u0027insert into \n\t\t\t\t\t\t\t\t\t\tSPSubStepsConfig\n\t\t\t\t\t\t\t\t\t(MainStepID, CheckTypeID, Data)\n\t\t\t\t\t\t\t\t\tvalues (?, ?, ?)\u0027\u0027\u0027\n\t\t\tsubStepInsertQueryArgs \u003d [mainStepID, checkType, system.util.jsonEncode(data)]\n\t\t\tsystem.db.runPrepUpdate(subStepInsertQuery, subStepInsertQueryArgs, database \u003d \u0027NLSTWDYK_DB_PROD\u0027)\n\t\n\t# Update existing main step\n\telse:\n\t\tmainStepID \u003d self.view.params.stepID\n\t\tupdateQuery \u003d \u0027\u0027\u0027update SPMainStepsConfig set\n\t\t\t\t\t\t\tName \u003d ?,\n\t\t\t\t\t\t\tSequenceNumber \u003d ?\n\t\t\t\t\t\twhere\n\t\t\t\t\t\t\tStepID \u003d ?\u0027\u0027\u0027\n\t\tupdateArgs \u003d [name, seqNr, mainStepID]\n\t\tsystem.db.runPrepUpdate(updateQuery, updateArgs, database \u003d \u0027NLSTWDYK_DB_PROD\u0027)\n\t\t\n\t\t# get original substepIDs\n\t\toriginalSubsteps \u003d self.parent.parent.getChild(\"FlexContainer\").getChild(\"FlexContainer\").getChild(\"FlexRepeater\").custom.SubStepsData\n\t\toriginalStepIDs \u003d []\n\t\tfor row in range(originalSubsteps.getRowCount()):\n\t\t\toriginalStepIDs.append(originalSubsteps.getValueAt(row, \u0027SubStepID\u0027))\n\t\t\n\t\tnewIDs \u003d []\n\t\t# Loop over new steps\n\t\tfor subStep in subStepsRepeater:\n\t\t\tcheckType \u003d subStep.typeCheck\n\t\t\tSubStepID \u003d subStep.SubStepID\n\t\t\tnewIDs.append(SubStepID)\n\t\t\t\n\t\t\tDataMapping \u003d {\n\t\t\t\t1: {\n\t\t\t\t\t\"Text\": subStep.Text,\n\t\t\t\t\t\"Mandatory\": subStep.Mandatory\n\t\t\t\t\t},\n\t\t\t\t2: {\n\t\t\t\t\t\"Text\": subStep.Text,\n\t\t\t\t\t\"LinkedTag\": subStep.TagPath,\n\t\t\t\t\t\"Operand\": subStep.Operand,\n\t\t\t\t\t\"Value\": subStep.Value,\n\t\t\t\t\t\"Mandatory\": subStep.Mandatory\n\t\t\t\t\t},\n\t\t\t\t3: {\n\t\t\t\t\t\"Text\": subStep.Text,\n\t\t\t\t\t\"Operand\": subStep.Operand,\n\t\t\t\t\t\"Value\": subStep.Value,\n\t\t\t\t\t\"Mandatory\": subStep.Mandatory\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\tdata \u003d DataMapping[checkType]\n\t\t\tsystem.perspective.print(subStep.SubStepID in originalStepIDs)\n\t\t\t# Update existing if ID already exists\n\t\t\tif subStep.SubStepID in originalStepIDs:\n\t\t\t\tupdateQuery \u003d \u0027\u0027\u0027update \n\t\t\t\t\t\t\t\t\tSPSubStepsConfig\n\t\t\t\t\t\t\t\tset \n\t\t\t\t\t\t\t\t\tcheckTypeID \u003d ?,\n\t\t\t\t\t\t\t\t\tdata \u003d ?\n\t\t\t\t\t\t\t\twhere\n\t\t\t\t\t\t\t\t\tSubStepID \u003d ?\u0027\u0027\u0027\n\t\t\t\tupdateArgs \u003d [checkType, system.util.jsonEncode(data), SubStepID]\n\t\t\t\tsystem.db.runPrepUpdate(updateQuery, updateArgs, database \u003d \u0027NLSTWDYK_DB_PROD\u0027)\n\t\t\t\n\t\t\t# Insert new if ID is unknown\n\t\t\telse:\n\t\t\t\tinsertQuery \u003d \u0027\u0027\u0027insert into\n\t\t\t\t\t\t\t\t\tSPSubStepsConfig\n\t\t\t\t\t\t\t\t\t(MainStepID, CheckTypeID, data)\n\t\t\t\t\t\t\t\t\tvalues (?, ?, ?)\u0027\u0027\u0027\n\t\t\t\tinsertArgs \u003d [mainStepID, checkType, system.util.jsonEncode(data)]\n\t\t\t\tnewSubStepID \u003d system.db.runPrepUpdate(insertQuery, insertArgs, database \u003d \u0027NLSTWDYK_DB_PROD\u0027, getKey\u003d1)\n\t\t\t\tnewIDs.append(newSubStepID)\n\t\t\n\t\t# Remove IDs that got deleted\n\t\tfor originalID in originalStepIDs:\n\t\t\tif originalID not in newIDs:\n\t\t\t\tdeleteQuery \u003d \u0027\u0027\u0027update \n\t\t\t\t\t\t\t\t\tSPSubStepsConfig\n\t\t\t\t\t\t\t\tset\n\t\t\t\t\t\t\t\t\tActive  \u003d 0\n\t\t\t\t\t\t\t\twhere\n\t\t\t\t\t\t\t\t\tSubStepID \u003d ?\u0027\u0027\u0027\n\t\t\t\tdeleteArgs \u003d [originalID]\n\t\t\t\tsystem.db.runPrepUpdate(deleteQuery, deleteArgs, database \u003d \u0027NLSTWDYK_DB_PROD\u0027)\n\t\n\tsystem.perspective.sendMessage(\u0027refreshSteps\u0027)\n\t\n\tself.parent.parent.getChild(\"FlexContainer\").getChild(\"Name\").props.params.value \u003d \u0027\u0027\n\tself.parent.parent.getChild(\"FlexContainer\").getChild(\"SequenceNr\").props.params.value \u003d \u0027\u0027\n\tself.parent.parent.getChild(\"FlexContainer\").getChild(\"FlexContainer\").getChild(\"FlexRepeater\").props.instances \u003d []\n\t\n\tsystem.perspective.closeDock(self.parent.parent.getChild(\"Header\").props.params.closeDockID)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "Button_1"
+            },
+            "position": {
+              "basis": "80px",
+              "shrink": 0
+            },
+            "props": {
+              "image": {
+                "icon": {
+                  "path": "material/save_alt"
+                }
+              },
+              "style": {
+                "classes": "ATA/Components/Buttons/CTA",
+                "marginLeft": 15
+              },
+              "text": ""
+            },
+            "type": "ia.input.button"
+          }
+        ],
+        "meta": {
+          "name": "Footer"
+        },
+        "position": {
+          "basis": "45px",
+          "shrink": 0
+        },
+        "props": {
+          "justify": "flex-end",
+          "style": {
+            "backgroundColor": "--backgroundSecondary",
+            "borderTopLeftRadius": 5,
+            "borderTopRightRadius": 5,
+            "padding": 7,
+            "zIndex": 1
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "backgroundColor": "#FFFFFF",
+        "opacity": 1
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

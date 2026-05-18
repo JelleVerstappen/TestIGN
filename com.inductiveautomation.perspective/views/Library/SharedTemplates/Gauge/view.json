@@ -1,0 +1,167 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "height": 110,
+      "width": 110
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "ActualValue"
+            },
+            "position": {
+              "height": "30%",
+              "width": "100%",
+              "x": "0%",
+              "y": "40%"
+            },
+            "props": {
+              "params": {
+                "Title": "Actual temp.",
+                "tagPath": "value"
+              },
+              "path": "Library/SharedTemplates/GaugeValue"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "Setpoint"
+            },
+            "position": {
+              "height": "30%",
+              "width": "100%",
+              "x": "0%",
+              "y": "65%"
+            },
+            "props": {
+              "params": {
+                "Title": "Setpoint",
+                "tagPath": "value"
+              },
+              "path": "Library/SharedTemplates/GaugeValue"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "Gauge_0"
+            },
+            "position": {
+              "height": 120,
+              "width": 144,
+              "x": -23.66,
+              "y": -33.84
+            },
+            "props": {
+              "backgroundColor": "",
+              "innerAxis": {
+                "data": "secondaryValue",
+                "maxValue": 200,
+                "minValue": 150,
+                "needle": {
+                  "origin": 90
+                },
+                "percentRadius": 100,
+                "ranges": [
+                  {
+                    "color": "#EBAC39",
+                    "end": 165,
+                    "start": 150,
+                    "width": 5
+                  },
+                  {
+                    "color": "#6DDE6A",
+                    "end": 185,
+                    "start": 165,
+                    "width": 5
+                  },
+                  {
+                    "color": "#EBAC39",
+                    "end": 200,
+                    "start": 185,
+                    "width": 5
+                  }
+                ],
+                "show": false,
+                "width": 1
+              },
+              "outerAxis": {
+                "data": "value",
+                "maxValue": 200,
+                "minValue": 125,
+                "needle": {
+                  "origin": 75,
+                  "reach": 90
+                },
+                "percentRadius": 100,
+                "ranges": [
+                  {
+                    "color": "#D4D1CC",
+                    "end": 165,
+                    "start": 125,
+                    "width": 10
+                  },
+                  {
+                    "color": "#D5EFD5",
+                    "end": 185,
+                    "start": 150,
+                    "width": 10
+                  },
+                  {
+                    "color": "#D4D1CC",
+                    "end": 200,
+                    "start": 185,
+                    "width": 10
+                  }
+                ],
+                "show": true,
+                "tickMarks": {
+                  "length": -10,
+                  "thickness": 2
+                },
+                "width": 1
+              },
+              "secondaryValue": 170,
+              "style": {
+                "fontSize": 0,
+                "strokeWidth": "0"
+              },
+              "value": 145
+            },
+            "type": "ia.chart.gauge"
+          }
+        ],
+        "meta": {
+          "name": "root"
+        },
+        "position": {
+          "grow": 1
+        },
+        "props": {
+          "style": {
+            "overflow": "hidden"
+          }
+        },
+        "type": "ia.container.coord"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "classes": "ATA/Background/CardSecondary",
+        "overflow": "hidden"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

@@ -1,0 +1,134 @@
+{
+  "custom": {},
+  "params": {
+    "key": "First name",
+    "margingRight": 45,
+    "params": "{}",
+    "url": "/jobcontrol",
+    "value": "Tyler"
+  },
+  "propConfig": {
+    "params.key": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.margingRight": {
+      "paramDirection": "inout",
+      "persistent": true
+    },
+    "params.params": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.url": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.value": {
+      "paramDirection": "inout",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 50,
+      "width": 454
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Label"
+        },
+        "position": {
+          "basis": "32px",
+          "grow": 1
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "view.params.key"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "classes": "ATA/Components/Labels/TextNormal"
+          },
+          "textStyle": {
+            "color": "--textComplementary"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_0"
+        },
+        "position": {
+          "basis": "32px",
+          "grow": 1
+        },
+        "propConfig": {
+          "props.style.marginRight": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "path": "view.params.margingRight"
+              },
+              "type": "property"
+            }
+          },
+          "props.text": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "path": "view.params.value"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "classes": "ATA/Components/Labels/TextNormal",
+            "marginBottom": 5,
+            "marginLeft": 5
+          },
+          "textStyle": {
+            "color": "#006DF7",
+            "textDecoration": "underline"
+          }
+        },
+        "type": "ia.display.label"
+      }
+    ],
+    "events": {
+      "dom": {
+        "onClick": {
+          "config": {
+            "script": "\turl \u003d self.view.params.url\n\tparams \u003d system.util.jsonDecode(self.view.params.params)\n\tsystem.perspective.navigate(page\u003durl, params\u003dparams)"
+          },
+          "scope": "G",
+          "type": "script"
+        }
+      }
+    },
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "backgroundColor": "#FFFFFF00",
+        "cursor": "pointer",
+        "paddingLeft": 5
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

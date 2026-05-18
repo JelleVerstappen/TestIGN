@@ -1,0 +1,169 @@
+{
+  "custom": {
+    "TrendChartMeta": {
+      "TrendChartIsPrivate": false,
+      "TrendChartName": ""
+    }
+  },
+  "params": {
+    "TrendChartID": 46
+  },
+  "propConfig": {
+    "custom.TrendChartMeta": {
+      "binding": {
+        "config": {
+          "parameters": {
+            "TrendChartID": "{view.params.TrendChartID}"
+          },
+          "queryPath": "TrendCharts/GetTrendChartMeta",
+          "returnFormat": "json"
+        },
+        "transforms": [
+          {
+            "code": "\treturnValue \u003d {\"TrendChartName\": \"\", \"TrendChartIsPrivate\": False}\n\t\n\tif len(value) \u003d\u003d 1:\n\t\treturnValue \u003d value[0]\n\t\t\n\treturn returnValue",
+            "type": "script"
+          }
+        ],
+        "type": "query"
+      },
+      "persistent": true
+    },
+    "params.TrendChartID": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 72,
+      "width": 500
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Label"
+        },
+        "position": {
+          "basis": "36px"
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "view.custom.TrendChartMeta"
+              },
+              "transforms": [
+                {
+                  "code": "\treturnStr \u003d \"Would you like to overwrite the \"\n\t\n\tif value[\"TrendChartIsPrivate\"]:\n\t\treturnStr +\u003d \"private \"\n\telse: \n\t\treturnStr +\u003d \"shared \"\n\t\t\n\treturnStr +\u003d \"trend chart \u0027\"+ value[\"TrendChartName\"] +\"\u0027?\"\n\t\n\treturn returnStr",
+                  "type": "script"
+                }
+              ],
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "fontSize": 14,
+            "fontWeight": 500,
+            "marginLeft": "9px"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "children": [
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "script": "\tpayloadParams \u003d {\"TrendChartID\": self.view.params.TrendChartID}\n\tsystem.perspective.sendMessage(\u0027TrendChartOverwriteConfirmed\u0027, payload \u003d payloadParams, scope \u003d \"session\")\n\tsystem.perspective.closePopup(\u0027TrendChartConfirmOverwrite\u0027)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "overwrite"
+            },
+            "position": {
+              "basis": "120px",
+              "shrink": 0
+            },
+            "props": {
+              "image": {
+                "icon": {
+                  "path": "material/check"
+                }
+              },
+              "primary": false,
+              "style": {
+                "margin": 2
+              },
+              "text": "Overwrite"
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "script": "\tsystem.perspective.closePopup(\u0027TrendChartConfirmOverwrite\u0027)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "cancel"
+            },
+            "position": {
+              "basis": "120px",
+              "shrink": 0
+            },
+            "props": {
+              "image": {
+                "icon": {
+                  "path": "material/cancel"
+                }
+              },
+              "primary": false,
+              "style": {
+                "margin": 2
+              },
+              "text": "Cancel"
+            },
+            "type": "ia.input.button"
+          }
+        ],
+        "custom": {
+          "TrendChart": "value"
+        },
+        "meta": {
+          "name": "FlexContainer"
+        },
+        "position": {
+          "basis": "36px",
+          "shrink": 0
+        },
+        "props": {
+          "justify": "center"
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

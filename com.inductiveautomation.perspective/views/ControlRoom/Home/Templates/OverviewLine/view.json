@@ -1,0 +1,430 @@
+{
+  "custom": {},
+  "params": {
+    "Line": ""
+  },
+  "propConfig": {
+    "params.Line": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "width": 60
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Header"
+        },
+        "position": {
+          "basis": "30px",
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.params.Color": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "indirect",
+                "references": {
+                  "Line": "{view.params.Line}"
+                },
+                "tagPath": "[NLSTWDYK]Dyka/STW/EXT/{Line}/Alarms/Count/IconPath"
+              },
+              "transforms": [
+                {
+                  "code": "\ttry:\n\t\tif \u0027Alarm\u0027 in value:\n\t\t\treturn \u0027--alarm\u0027\n\t\telif \u0027Warning\u0027 in value:\n\t\t\treturn \u0027--warning\u0027\n\t\treturn \u0027\u0027\n\texcept:\n\t\treturn \u0027\u0027",
+                  "type": "script"
+                }
+              ],
+              "type": "tag"
+            }
+          },
+          "props.params.Description": {
+            "binding": {
+              "config": {
+                "path": "view.params.Line"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "Target": "value"
+          },
+          "path": "ControlRoom/Home/Templates/OverviewLineLabel",
+          "style": {
+            "marginBottom": 10,
+            "marginTop": 5,
+            "width": "100%"
+          }
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Silo"
+            },
+            "propConfig": {
+              "props.params.Line": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.Line"
+                  },
+                  "type": "property"
+                },
+                "persistent": true
+              }
+            },
+            "props": {
+              "params": {
+                "Line": "",
+                "Nav": "MST"
+              },
+              "path": "ControlRoom/Home/Templates/OverviewButton",
+              "style": {
+                "height": "60px",
+                "marginBottom": 5,
+                "marginTop": 5,
+                "overflow": "visible"
+              }
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "RawMaterialTransport"
+            },
+            "propConfig": {
+              "props.params.Line": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.Line"
+                  },
+                  "type": "property"
+                },
+                "persistent": true
+              }
+            },
+            "props": {
+              "params": {
+                "Line": "",
+                "Nav": "MHL"
+              },
+              "path": "ControlRoom/Home/Templates/OverviewButton",
+              "style": {
+                "height": "60px",
+                "marginBottom": 5,
+                "marginTop": 5,
+                "overflow": "visible"
+              }
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "Extruder"
+            },
+            "propConfig": {
+              "props.params.Line": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.Line"
+                  },
+                  "type": "property"
+                },
+                "persistent": true
+              }
+            },
+            "props": {
+              "params": {
+                "Line": "",
+                "Nav": "EXT"
+              },
+              "path": "ControlRoom/Home/Templates/OverviewButton",
+              "style": {
+                "height": "60px",
+                "marginBottom": 5,
+                "marginTop": 5,
+                "overflow": "visible"
+              }
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "VacuumAndCooling"
+            },
+            "propConfig": {
+              "props.params.Line": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.Line"
+                  },
+                  "type": "property"
+                },
+                "persistent": true
+              }
+            },
+            "props": {
+              "params": {
+                "Line": "",
+                "Nav": "FOR/VAC"
+              },
+              "path": "ControlRoom/Home/Templates/OverviewButton",
+              "style": {
+                "height": "60px",
+                "marginBottom": 5,
+                "marginTop": 5,
+                "overflow": "visible"
+              }
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "PipeThicknessScanner"
+            },
+            "propConfig": {
+              "props.params.Line": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.Line"
+                  },
+                  "type": "property"
+                },
+                "persistent": true
+              }
+            },
+            "props": {
+              "params": {
+                "Line": "",
+                "Nav": "FOR/WTS"
+              },
+              "path": "ControlRoom/Home/Templates/OverviewButton",
+              "style": {
+                "height": "60px",
+                "marginBottom": 5,
+                "marginTop": 5,
+                "overflow": "visible"
+              }
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "Printer"
+            },
+            "propConfig": {
+              "props.params.Line": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.Line"
+                  },
+                  "type": "property"
+                },
+                "persistent": true
+              }
+            },
+            "props": {
+              "params": {
+                "Line": "",
+                "Nav": "PRN"
+              },
+              "path": "ControlRoom/Home/Templates/OverviewButton",
+              "style": {
+                "height": "60px",
+                "marginBottom": 5,
+                "marginTop": 5,
+                "overflow": "visible"
+              }
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "HaulOff"
+            },
+            "propConfig": {
+              "props.params.Line": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.Line"
+                  },
+                  "type": "property"
+                },
+                "persistent": true
+              }
+            },
+            "props": {
+              "params": {
+                "Line": "",
+                "Nav": "HAUL"
+              },
+              "path": "ControlRoom/Home/Templates/OverviewButton",
+              "style": {
+                "height": "60px",
+                "marginBottom": 5,
+                "marginTop": 5,
+                "overflow": "visible"
+              }
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "CuttingUnit"
+            },
+            "propConfig": {
+              "props.params.Line": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.Line"
+                  },
+                  "type": "property"
+                },
+                "persistent": true
+              }
+            },
+            "props": {
+              "params": {
+                "Line": "",
+                "Nav": "CUT"
+              },
+              "path": "ControlRoom/Home/Templates/OverviewButton",
+              "style": {
+                "height": "60px",
+                "marginBottom": 5,
+                "marginTop": 5,
+                "overflow": "visible"
+              }
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "FormingMachine"
+            },
+            "propConfig": {
+              "props.params.Line": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.Line"
+                  },
+                  "type": "property"
+                },
+                "persistent": true
+              }
+            },
+            "props": {
+              "params": {
+                "Line": "",
+                "Nav": "FOR"
+              },
+              "path": "ControlRoom/Home/Templates/OverviewButton",
+              "style": {
+                "height": "60px",
+                "marginBottom": 5,
+                "marginTop": 5,
+                "overflow": "visible"
+              }
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "PipeStacker"
+            },
+            "propConfig": {
+              "props.params.Line": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.Line"
+                  },
+                  "type": "property"
+                },
+                "persistent": true
+              }
+            },
+            "props": {
+              "params": {
+                "Line": "",
+                "Nav": "STC"
+              },
+              "path": "ControlRoom/Home/Templates/OverviewButton",
+              "style": {
+                "height": "60px",
+                "marginBottom": 5,
+                "marginTop": 5,
+                "overflow": "visible"
+              }
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "Quality"
+            },
+            "propConfig": {
+              "props.params.Line": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.Line"
+                  },
+                  "type": "property"
+                },
+                "persistent": true
+              }
+            },
+            "props": {
+              "params": {
+                "Line": "",
+                "Nav": "QUAL"
+              },
+              "path": "ControlRoom/Home/Templates/OverviewButton",
+              "style": {
+                "height": "60px",
+                "marginBottom": 5,
+                "marginTop": 5,
+                "overflow": "visible"
+              }
+            },
+            "type": "ia.display.view"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer"
+        },
+        "position": {
+          "basis": "200px",
+          "grow": 1
+        },
+        "props": {
+          "direction": "column",
+          "justify": "space-between",
+          "style": {
+            "paddingBottom": 13
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "overflow": "visible"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

@@ -1,0 +1,245 @@
+{
+  "custom": {},
+  "params": {
+    "commentID": "value",
+    "lineID": "value",
+    "status": "value"
+  },
+  "propConfig": {
+    "params.commentID": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.lineID": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.status": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "width": 600
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Header"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "params": {
+            "closeDockID": "ChangeCommentStatusDock",
+            "closeIcon": true,
+            "title": "Status aanpassen"
+          },
+          "path": "Library/SharedTemplates/HeaderForDock",
+          "style": {
+            "textTransform": "capitalize"
+          },
+          "useDefaultViewHeight": true
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Status"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.params.value": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.status"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "enabled": true,
+                "key": "Status",
+                "marginRight": 45,
+                "multiSelect": false,
+                "options": [
+                  {
+                    "label": "Open",
+                    "value": 1
+                  },
+                  {
+                    "label": "Bezig",
+                    "value": 2
+                  },
+                  {
+                    "label": "Klaar",
+                    "value": 3
+                  }
+                ],
+                "placeholder": "Select...",
+                "showClearIcon": true
+              },
+              "path": "Library/SharedTemplates/Input/Dropdown",
+              "useDefaultViewHeight": true
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "Opmerking"
+            },
+            "position": {
+              "basis": "300px",
+              "shrink": 0
+            },
+            "props": {
+              "params": {
+                "enabled": true,
+                "key": "Opmerking",
+                "marginRight": 45,
+                "placeholder": "Typ je opmerking hier in....",
+                "value": ""
+              },
+              "path": "Library/SharedTemplates/Input/String (TextArea)"
+            },
+            "type": "ia.display.view"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer"
+        },
+        "position": {
+          "basis": "200px",
+          "grow": 1
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "padding": "10px"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "id": "{/root/Header.props.params.closeDockID}",
+                    "type": "close"
+                  },
+                  "scope": "C",
+                  "type": "dock"
+                }
+              }
+            },
+            "meta": {
+              "name": "Button_5"
+            },
+            "position": {
+              "basis": "80px",
+              "shrink": 0
+            },
+            "props": {
+              "image": {
+                "icon": {
+                  "path": "material/cancel"
+                }
+              },
+              "style": {
+                "classes": "ATA/Components/Buttons/Sec",
+                "marginLeft": 15
+              },
+              "text": ""
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": [
+                  {
+                    "config": {
+                      "script": "\tcommentID \u003d self.view.params.commentID\n\tlineID \u003d self.view.params.lineID\n\treply \u003d self.parent.parent.getChild(\"FlexContainer\").getChild(\"Opmerking\").props.params.value\n\tnewStatus \u003d self.parent.parent.getChild(\"FlexContainer\").getChild(\"Status\").props.params.value\n\tcreatedBy \u003d self.session.props.auth.user.userName\n\tcurrentDate \u003d system.date.now()\n\t\n\tinsertQuery \u003d \u0027\u0027\u0027insert into AFComments \n\t\t\t\t\t\t(comment, lineID, parentCommentID, createdBy, creationdate)\n\t\t\t\t\tvalues\n\t\t\t\t\t\t(?, ?, ?, ?, ?)\u0027\u0027\u0027\n\tinsertArgs \u003d [reply, lineID, commentID, createdBy, currentDate]\n\tsystem.db.runPrepUpdate(insertQuery, insertArgs, database \u003d \u0027NLSTWDYK_DB_PROD\u0027)\n\t\n\tupdateQuery \u003d \u0027\u0027\u0027update AFComments\n\t\t\t\t\t\tset statusID \u003d ?\n\t\t\t\t\twhere \n\t\t\t\t\t\tcommentID \u003d ?\u0027\u0027\u0027\n\tupdateArgs \u003d [newStatus, commentID]\n\tsystem.db.runPrepUpdate(updateQuery, updateArgs, database \u003d \u0027NLSTWDYK_DB_PROD\u0027)\n\tsystem.perspective.sendMessage(\u0027refreshActivityFeed\u0027)\n\t\n\tself.parent.parent.getChild(\"FlexContainer\").getChild(\"Opmerking\").props.params.value \u003d \u0027\u0027\n\t\n\tsystem.perspective.closeDock(self.parent.parent.getChild(\"Header\").props.params.closeDockID)"
+                    },
+                    "scope": "G",
+                    "type": "script"
+                  },
+                  {
+                    "config": {
+                      "id": "{/root/Header.props.params.closeDockID}",
+                      "type": "close"
+                    },
+                    "enabled": false,
+                    "scope": "C",
+                    "type": "dock"
+                  }
+                ]
+              }
+            },
+            "meta": {
+              "name": "Button_1"
+            },
+            "position": {
+              "basis": "80px",
+              "shrink": 0
+            },
+            "props": {
+              "image": {
+                "icon": {
+                  "path": "material/save_alt"
+                }
+              },
+              "style": {
+                "classes": "ATA/Components/Buttons/CTA",
+                "marginLeft": 15
+              },
+              "text": ""
+            },
+            "type": "ia.input.button"
+          }
+        ],
+        "meta": {
+          "name": "Footer"
+        },
+        "position": {
+          "basis": "45px",
+          "shrink": 0
+        },
+        "props": {
+          "justify": "flex-end",
+          "style": {
+            "backgroundColor": "--backgroundSecondary",
+            "borderTopLeftRadius": 5,
+            "borderTopRightRadius": 5,
+            "padding": 7,
+            "zIndex": 1
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "backgroundColor": "#FFFFFF"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

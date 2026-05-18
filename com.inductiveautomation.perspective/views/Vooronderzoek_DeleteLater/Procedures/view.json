@@ -1,0 +1,496 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "width": 1089
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Label_13"
+        },
+        "position": {
+          "height": 70,
+          "width": 684,
+          "x": 357,
+          "y": 140
+        },
+        "props": {
+          "style": {
+            "backgroundColor": "#fff",
+            "borderBottomLeftRadius": 3,
+            "borderBottomRightRadius": 3,
+            "borderTopLeftRadius": 3,
+            "borderTopRightRadius": 3
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_32"
+        },
+        "position": {
+          "height": 20,
+          "width": 266,
+          "x": 366.73,
+          "y": 166.32
+        },
+        "props": {
+          "text": "Controleer gelering in ontgassing",
+          "textStyle": {
+            "fontSize": 15,
+            "fontWeight": "bold"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "EmbeddedView"
+        },
+        "position": {
+          "height": 800,
+          "width": 330
+        },
+        "props": {
+          "path": "ProcedureList",
+          "style": {
+            "borderBottomStyle": "none",
+            "borderLeftStyle": "none",
+            "borderRightColor": "#447BB3",
+            "borderRightStyle": "solid",
+            "borderRightWidth": 1,
+            "borderTopStyle": "none"
+          }
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Label_14"
+        },
+        "position": {
+          "height": 70,
+          "width": 684,
+          "x": 357,
+          "y": 221
+        },
+        "props": {
+          "style": {
+            "backgroundColor": "#fff",
+            "borderBottomLeftRadius": 3,
+            "borderBottomRightRadius": 3,
+            "borderTopLeftRadius": 3,
+            "borderTopRightRadius": 3
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_33"
+        },
+        "position": {
+          "height": 20,
+          "width": 223,
+          "x": 366.99,
+          "y": 245
+        },
+        "props": {
+          "text": "Zet ontgassing aan",
+          "textStyle": {
+            "fontSize": 15,
+            "fontWeight": "bold"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_34"
+        },
+        "position": {
+          "height": 20,
+          "width": 680,
+          "x": 365.98,
+          "y": 89
+        },
+        "props": {
+          "text": "Procedure: Voorbereiding trekstok",
+          "textStyle": {
+            "fontSize": 21,
+            "fontWeight": "bold",
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_15"
+        },
+        "position": {
+          "height": 7,
+          "width": 684,
+          "x": 358.99,
+          "y": 113
+        },
+        "props": {
+          "style": {
+            "borderBottomColor": "#447BB3",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": 1
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_16"
+        },
+        "position": {
+          "height": 70,
+          "width": 684,
+          "x": 357,
+          "y": 301
+        },
+        "props": {
+          "style": {
+            "backgroundColor": "#fff",
+            "borderBottomLeftRadius": 3,
+            "borderBottomRightRadius": 3,
+            "borderTopLeftRadius": 3,
+            "borderTopRightRadius": 3
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_35"
+        },
+        "position": {
+          "height": 20,
+          "width": 223,
+          "x": 366.73,
+          "y": 327.32
+        },
+        "props": {
+          "text": "Centreren van kop",
+          "textStyle": {
+            "fontSize": 15,
+            "fontWeight": "bold"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_17"
+        },
+        "position": {
+          "height": 70,
+          "width": 684,
+          "x": 358,
+          "y": 463
+        },
+        "props": {
+          "style": {
+            "backgroundColor": "#fff",
+            "borderBottomLeftRadius": 3,
+            "borderBottomRightRadius": 3,
+            "borderTopLeftRadius": 3,
+            "borderTopRightRadius": 3
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_18"
+        },
+        "position": {
+          "height": 70,
+          "width": 684,
+          "x": 358,
+          "y": 543
+        },
+        "props": {
+          "style": {
+            "backgroundColor": "#fff",
+            "borderBottomLeftRadius": 3,
+            "borderBottomRightRadius": 3,
+            "borderTopLeftRadius": 3,
+            "borderTopRightRadius": 3
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_19"
+        },
+        "position": {
+          "height": 70,
+          "width": 684,
+          "x": 358,
+          "y": 382
+        },
+        "props": {
+          "style": {
+            "backgroundColor": "#fff",
+            "borderBottomLeftRadius": 3,
+            "borderBottomRightRadius": 3,
+            "borderTopLeftRadius": 3,
+            "borderTopRightRadius": 3
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_40"
+        },
+        "position": {
+          "height": 20,
+          "width": 346,
+          "x": 367.73,
+          "y": 408.32
+        },
+        "props": {
+          "text": "Aanknopen touw/band aan trekstok",
+          "textStyle": {
+            "fontSize": 15,
+            "fontWeight": "bold"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_38"
+        },
+        "position": {
+          "height": 20,
+          "width": 244,
+          "x": 367.99,
+          "y": 487
+        },
+        "props": {
+          "text": "Tellerwiel van trekstok zetten",
+          "textStyle": {
+            "fontSize": 15,
+            "fontWeight": "bold"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_36"
+        },
+        "position": {
+          "height": 20,
+          "width": 223,
+          "x": 367.73,
+          "y": 569.32
+        },
+        "props": {
+          "text": "Sproeiers aan",
+          "textStyle": {
+            "fontSize": 15,
+            "fontWeight": "bold"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_20"
+        },
+        "position": {
+          "height": 70,
+          "width": 684,
+          "x": 359,
+          "y": 624
+        },
+        "props": {
+          "style": {
+            "backgroundColor": "#fff",
+            "borderBottomLeftRadius": 3,
+            "borderBottomRightRadius": 3,
+            "borderTopLeftRadius": 3,
+            "borderTopRightRadius": 3
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_42"
+        },
+        "position": {
+          "height": 20,
+          "width": 258,
+          "x": 368.73,
+          "y": 650.32
+        },
+        "props": {
+          "text": "Aanknopen van trekstok aan PVC",
+          "textStyle": {
+            "fontSize": 15,
+            "fontWeight": "bold"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "ToggleSwitch"
+        },
+        "position": {
+          "height": 36,
+          "width": 84,
+          "x": 954.33,
+          "y": 242.31
+        },
+        "props": {
+          "style": {
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.input.toggle-switch"
+      },
+      {
+        "meta": {
+          "name": "ToggleSwitch_0"
+        },
+        "position": {
+          "height": 36,
+          "width": 84,
+          "x": 954.33,
+          "y": 157.31
+        },
+        "props": {
+          "style": {
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.input.toggle-switch"
+      },
+      {
+        "meta": {
+          "name": "ToggleSwitch_1"
+        },
+        "position": {
+          "height": 36,
+          "width": 84,
+          "x": 954.33,
+          "y": 319.3021875
+        },
+        "props": {
+          "style": {
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.input.toggle-switch"
+      },
+      {
+        "meta": {
+          "name": "ToggleSwitch_2"
+        },
+        "position": {
+          "height": 36,
+          "width": 84,
+          "x": 954.33,
+          "y": 400.3047814941406
+        },
+        "props": {
+          "style": {
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.input.toggle-switch"
+      },
+      {
+        "meta": {
+          "name": "ToggleSwitch_3"
+        },
+        "position": {
+          "height": 36,
+          "width": 84,
+          "x": 953.33,
+          "y": 480.3047814941406
+        },
+        "props": {
+          "style": {
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.input.toggle-switch"
+      },
+      {
+        "meta": {
+          "name": "ToggleSwitch_4"
+        },
+        "position": {
+          "height": 36,
+          "width": 84,
+          "x": 954.33,
+          "y": 561.3073754882812
+        },
+        "props": {
+          "style": {
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.input.toggle-switch"
+      },
+      {
+        "meta": {
+          "name": "ToggleSwitch_5"
+        },
+        "position": {
+          "height": 36,
+          "width": 84,
+          "x": 954.33,
+          "y": 642.31
+        },
+        "props": {
+          "style": {
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.input.toggle-switch"
+      },
+      {
+        "meta": {
+          "name": "Label_37"
+        },
+        "position": {
+          "height": 20,
+          "width": 132,
+          "x": 913.98,
+          "y": 89
+        },
+        "props": {
+          "text": "3/7",
+          "textStyle": {
+            "fontSize": 21,
+            "fontWeight": "bold",
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "type": "ia.container.coord"
+  }
+}

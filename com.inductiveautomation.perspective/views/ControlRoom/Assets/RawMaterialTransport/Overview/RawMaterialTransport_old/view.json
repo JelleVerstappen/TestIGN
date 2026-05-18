@@ -1,0 +1,301 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "width": 1133
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "TransportV2"
+                    },
+                    "position": {
+                      "basis": "320px",
+                      "grow": 1
+                    },
+                    "props": {
+                      "path": "ControlRoom/Assets/RawMaterialTransport/Overview/Tempaltes/TransportV2",
+                      "style": {
+                        "paddingBottom": 10,
+                        "paddingLeft": 10,
+                        "paddingRight": 10,
+                        "paddingTop": 10
+                      }
+                    },
+                    "type": "ia.display.view"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "EmbeddedView"
+                        },
+                        "props": {
+                          "params": {
+                            "checkBoxLeft": true,
+                            "checkIcon": "bootstrap-icons/check-square-fill",
+                            "enabled": false,
+                            "key": "Buffervat hopperloader laagsensor",
+                            "textPosition": "start",
+                            "uncheckColor": "",
+                            "uncheckIcon": "bootstrap-icons/square",
+                            "value": false
+                          },
+                          "path": "Library/SharedTemplates/Input/Checkbox",
+                          "useDefaultViewHeight": true
+                        },
+                        "type": "ia.display.view"
+                      },
+                      {
+                        "meta": {
+                          "name": "EmbeddedView_0"
+                        },
+                        "props": {
+                          "params": {
+                            "enabled": false,
+                            "engUnits": "bar",
+                            "format": "0,0.##",
+                            "key": "Grondstof Vacuümpomp vacuum",
+                            "maxValue": 10000000,
+                            "minValue": 0,
+                            "placeholder": "",
+                            "rejected": "True",
+                            "unitVisable": true,
+                            "value": null
+                          },
+                          "path": "Library/SharedTemplates/Input/Number",
+                          "useDefaultViewHeight": true
+                        },
+                        "type": "ia.display.view"
+                      },
+                      {
+                        "meta": {
+                          "name": "EmbeddedView_1"
+                        },
+                        "props": {
+                          "params": {
+                            "enabled": false,
+                            "engUnits": "A",
+                            "format": "0,0.##",
+                            "key": "Grondstof Vacuümpomp stroom",
+                            "maxValue": 10000000,
+                            "minValue": 0,
+                            "placeholder": "",
+                            "rejected": "True",
+                            "unitVisable": true,
+                            "value": null
+                          },
+                          "path": "Library/SharedTemplates/Input/Number",
+                          "useDefaultViewHeight": true
+                        },
+                        "type": "ia.display.view"
+                      },
+                      {
+                        "meta": {
+                          "name": "EmbeddedView_2"
+                        },
+                        "props": {
+                          "params": {
+                            "enabled": false,
+                            "engUnits": "A",
+                            "format": "0,0.##",
+                            "key": "schroefmotor stroom",
+                            "maxValue": 10000000,
+                            "minValue": 0,
+                            "placeholder": "",
+                            "rejected": "True",
+                            "unitVisable": true,
+                            "value": null
+                          },
+                          "path": "Library/SharedTemplates/Input/Number",
+                          "useDefaultViewHeight": true
+                        },
+                        "type": "ia.display.view"
+                      }
+                    ],
+                    "meta": {
+                      "name": "FlexContainer"
+                    },
+                    "position": {
+                      "basis": "250px",
+                      "display": false,
+                      "shrink": 0
+                    },
+                    "props": {
+                      "direction": "column",
+                      "style": {
+                        "classes": "ATA/Background/CardSecondary"
+                      }
+                    },
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "meta": {
+                  "name": "FlexContainer_0"
+                },
+                "position": {
+                  "basis": "200px",
+                  "grow": 1
+                },
+                "props": {
+                  "style": {
+                    "backgroundColor": ""
+                  }
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "Top"
+            },
+            "position": {
+              "basis": "200px",
+              "grow": 1
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "backgroundColor": "--backgroundSecondary",
+                "classes": "ATA/Background/CardSecondary"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "FlexRepeater"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "props": {
+                  "instances": [
+                    {
+                      "Actual": 50,
+                      "High": 70,
+                      "HighHigh": 80,
+                      "Low": 37,
+                      "LowLow": 20,
+                      "ParamName": "Vacuumpomp vacuum",
+                      "Setpoint": 45,
+                      "instancePosition": {},
+                      "instanceStyle": {
+                        "classes": ""
+                      }
+                    },
+                    {
+                      "Actual": 50,
+                      "High": 70,
+                      "HighHigh": 80,
+                      "Low": 37,
+                      "LowLow": 20,
+                      "ParamName": "Vacuumpomp stroom",
+                      "Setpoint": 45,
+                      "instancePosition": {},
+                      "instanceStyle": {
+                        "classes": ""
+                      }
+                    },
+                    {
+                      "Actual": 50,
+                      "High": 70,
+                      "HighHigh": 80,
+                      "Low": 37,
+                      "LowLow": 20,
+                      "ParamName": "Schroefmotor stroom",
+                      "Setpoint": 45,
+                      "instancePosition": {},
+                      "instanceStyle": {
+                        "classes": ""
+                      }
+                    }
+                  ],
+                  "path": "Library/SharedTemplates/ParameterData",
+                  "style": {
+                    "classes": "ATA/Background/CardSecondary"
+                  },
+                  "useDefaultViewHeight": false,
+                  "useDefaultViewWidth": false
+                },
+                "type": "ia.display.flex-repeater"
+              },
+              {
+                "meta": {
+                  "name": "FlexRepeater_0"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "props": {
+                  "style": {
+                    "classes": "ATA/Background/CardSecondary"
+                  },
+                  "useDefaultViewHeight": false,
+                  "useDefaultViewWidth": false
+                },
+                "type": "ia.display.flex-repeater"
+              }
+            ],
+            "meta": {
+              "name": "Bottom"
+            },
+            "position": {
+              "basis": "200px",
+              "shrink": 0
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "Content"
+        },
+        "position": {
+          "basis": "200px",
+          "grow": 1
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "classes": "ATA/Background/Root"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "meta": {
+          "name": "AlarmBar"
+        },
+        "position": {
+          "basis": "65px",
+          "shrink": 0
+        },
+        "props": {
+          "params": {
+            "filter": "",
+            "popupMarginRight": 1
+          },
+          "path": "Library/SharedDocked/Alarms/AlarmBar"
+        },
+        "type": "ia.display.view"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

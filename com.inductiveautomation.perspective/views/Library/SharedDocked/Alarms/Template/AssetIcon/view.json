@@ -1,0 +1,60 @@
+{
+  "custom": {},
+  "params": {
+    "params": {
+      "NavigateTo": "value",
+      "Path": "value",
+      "insideColor": "--sec",
+      "outsideColor": "--sec",
+      "smallIcon": "value"
+    }
+  },
+  "propConfig": {
+    "params.params": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {},
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "AssetIconTemp"
+        },
+        "position": {
+          "basis": "320px",
+          "grow": 1
+        },
+        "propConfig": {
+          "props.params": {
+            "binding": {
+              "config": {
+                "path": "view.params.params"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "path": "Library/SharedDocked/Alarms/Template/AssetIconBackground",
+          "style": {
+            "overflow": "hidden",
+            "padding": "5px"
+          }
+        },
+        "type": "ia.display.view"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "overflow": "hidden"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

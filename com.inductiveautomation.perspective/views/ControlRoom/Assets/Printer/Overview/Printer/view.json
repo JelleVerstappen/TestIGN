@@ -1,0 +1,156 @@
+{
+  "custom": {},
+  "params": {
+    "Line": "E07"
+  },
+  "propConfig": {
+    "params.Line": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {},
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Icon"
+                },
+                "position": {
+                  "basis": "150px"
+                },
+                "props": {
+                  "path": "dyka/Printer",
+                  "style": {
+                    "marginLeft": "auto",
+                    "marginRight": "auto"
+                  }
+                },
+                "type": "ia.display.icon"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "EmbeddedView"
+                    },
+                    "props": {
+                      "params": {
+                        "checkBoxLeft": true,
+                        "checkIcon": "bootstrap-icons/check-square-fill",
+                        "enabled": true,
+                        "key": "Printer OK",
+                        "textPosition": "start",
+                        "uncheckColor": "",
+                        "uncheckIcon": "bootstrap-icons/square",
+                        "value": null
+                      },
+                      "path": "Library/SharedTemplates/Input/Checkbox",
+                      "useDefaultViewHeight": true
+                    },
+                    "type": "ia.display.view"
+                  },
+                  {
+                    "meta": {
+                      "name": "EmbeddedView_0"
+                    },
+                    "props": {
+                      "params": {
+                        "enabled": true,
+                        "engUnits": "",
+                        "format": "0,0.##",
+                        "key": "Printertekst OK",
+                        "maxValue": 10000000,
+                        "minValue": 0,
+                        "placeholder": "",
+                        "rejected": "True",
+                        "unitVisable": true,
+                        "value": null
+                      },
+                      "path": "Library/SharedTemplates/Input/Checkbox",
+                      "useDefaultViewHeight": true
+                    },
+                    "type": "ia.display.view"
+                  }
+                ],
+                "meta": {
+                  "name": "FlexContainer"
+                },
+                "position": {
+                  "basis": "250px",
+                  "shrink": 0
+                },
+                "props": {
+                  "direction": "column",
+                  "style": {
+                    "classes": "ATA/Background/CardSecondary"
+                  }
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "Top"
+            },
+            "position": {
+              "grow": 1
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "Content"
+        },
+        "position": {
+          "basis": "200px",
+          "grow": 1
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "backgroundColor": "--backgroundSecondary",
+            "classes": "ATA/Background/CardSecondary"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "meta": {
+          "name": "EmbeddedView"
+        },
+        "position": {
+          "basis": "65px"
+        },
+        "propConfig": {
+          "props.params.line": {
+            "binding": {
+              "config": {
+                "path": "view.params.Line"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "filter": "",
+            "popupMarginRight": 1
+          },
+          "path": "Library/SharedDocked/Alarms/AlarmBar"
+        },
+        "type": "ia.display.view"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

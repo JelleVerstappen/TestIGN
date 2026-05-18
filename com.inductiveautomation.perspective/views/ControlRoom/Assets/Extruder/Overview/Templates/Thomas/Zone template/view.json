@@ -1,0 +1,79 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "height": 108,
+      "width": 123
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Output_Template"
+        },
+        "position": {
+          "height": "30%",
+          "width": "100%",
+          "x": "0%",
+          "y": "40%"
+        },
+        "props": {
+          "path": "ControlRoom/Assets/Extruder/Overview/Templates/Thomas/View"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Output_Template_0"
+        },
+        "position": {
+          "height": "30%",
+          "width": "100%",
+          "x": "0%",
+          "y": "65%"
+        },
+        "props": {
+          "path": "ControlRoom/Assets/Extruder/Overview/Templates/Thomas/View"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "SimpleGauge"
+        },
+        "position": {
+          "height": "120%",
+          "width": "140%",
+          "x": "-20%",
+          "y": "-30%"
+        },
+        "props": {
+          "arc": {
+            "cornerRadius": 5,
+            "width": 10
+          },
+          "label": {
+            "units": "°C",
+            "visible": false
+          },
+          "maxValue": 200,
+          "minValue": 150,
+          "value": 175
+        },
+        "type": "ia.chart.simple-gauge"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "style": {
+        "classes": "ATA/Background/CardSecondary",
+        "overflow": "hidden"
+      }
+    },
+    "type": "ia.container.coord"
+  }
+}

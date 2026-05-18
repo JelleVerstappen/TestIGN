@@ -1,0 +1,179 @@
+{
+  "custom": {},
+  "params": {
+    "NavigateTo": "Silo",
+    "Path": "Dyka/Wanddiktescanner",
+    "insideColor": "--sec",
+    "outsideColor": "--sec",
+    "smallIcon": null
+  },
+  "propConfig": {
+    "params.NavigateTo": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.Path": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.insideColor": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.outsideColor": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.smallIcon": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {},
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Outside"
+        },
+        "position": {
+          "height": "90%",
+          "width": "90%",
+          "x": "5%",
+          "y": "5%"
+        },
+        "propConfig": {
+          "props.style.backgroundColor": {
+            "binding": {
+              "config": {
+                "path": "view.params.outsideColor"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "direction": "column",
+          "justify": "center",
+          "style": {
+            "clip-path": "polygon(\n  100% 50%, /* inkeping rechts midden */\n  90% 0%,   /* rechterboven hoek */\n  0% 0%,    /* linkerboven hoek */\n  10% 50%,  /* inkeping links midden */\n  0% 100%,  /* linkeronder hoek */\n  90% 100%  /* rechteronder hoek */\n)\n"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "meta": {
+          "name": "Inside"
+        },
+        "position": {
+          "height": "80%",
+          "width": "84%",
+          "x": "8%",
+          "y": "10%"
+        },
+        "propConfig": {
+          "props.style.backgroundColor": {
+            "binding": {
+              "config": {
+                "path": "view.params.insideColor"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "clip-path": "polygon(\n  100% 50%, /* inkeping rechts midden */\n  90% 0%,   /* rechterboven hoek */\n  0% 0%,    /* linkerboven hoek */\n  10% 50%,  /* inkeping links midden */\n  0% 100%,  /* linkeronder hoek */\n  90% 100%  /* rechteronder hoek */\n)\n"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "meta": {
+          "name": "Icon"
+        },
+        "position": {
+          "height": "84%",
+          "shrink": 0,
+          "width": "84%",
+          "x": "8%",
+          "y": "8%"
+        },
+        "propConfig": {
+          "props.path": {
+            "binding": {
+              "config": {
+                "path": "view.params.Path"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "color": "--textThr"
+        },
+        "type": "ia.display.icon"
+      },
+      {
+        "meta": {
+          "name": "SmallIcon"
+        },
+        "position": {
+          "height": "23px",
+          "shrink": 0,
+          "width": "23px",
+          "x": "8.5%",
+          "y": "1%"
+        },
+        "propConfig": {
+          "props.path": {
+            "binding": {
+              "config": {
+                "path": "view.params.smallIcon"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "type": "ia.display.icon"
+      }
+    ],
+    "events": {
+      "dom": {
+        "onClick": {
+          "config": {
+            "script": "\tif self.view.params.outsideColor !\u003d \u0027--disabled\u0027:\n\t\tsystem.perspective.navigate(dyka.config.navigate(self.view.params.NavigateTo))"
+          },
+          "scope": "G",
+          "type": "script"
+        }
+      }
+    },
+    "meta": {
+      "name": "root"
+    },
+    "propConfig": {
+      "props.style.classes": {
+        "binding": {
+          "config": {
+            "path": "view.params.color"
+          },
+          "transforms": [
+            {
+              "code": "\treturn \u0027form-icon-button\u0027 if value !\u003d \u0027--disabled\u0027 else {\n  \"marginRight\": \"5px\"\n}",
+              "type": "script"
+            }
+          ],
+          "type": "property"
+        }
+      }
+    },
+    "props": {
+      "style": {
+        "marginRight": "5px",
+        "overflow": "hidden"
+      }
+    },
+    "type": "ia.container.coord"
+  }
+}

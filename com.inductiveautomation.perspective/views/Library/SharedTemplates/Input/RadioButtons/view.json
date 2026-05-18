@@ -1,0 +1,89 @@
+{
+  "custom": {},
+  "params": {
+    "key": true,
+    "value": 0
+  },
+  "propConfig": {
+    "params.key": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.value": {
+      "binding": {
+        "config": {
+          "path": "/root/RadioGroup.props.value"
+        },
+        "type": "property"
+      },
+      "paramDirection": "inout",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 129,
+      "width": 164
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "RadioGroup"
+        },
+        "position": {
+          "basis": "168px",
+          "grow": 1
+        },
+        "props": {
+          "align": "start",
+          "orientation": "column",
+          "radioStyle": {
+            "maxHeight": "24px"
+          },
+          "radios": [
+            {
+              "selected": true,
+              "text": "Off",
+              "value": 0
+            },
+            {
+              "selected": false,
+              "text": "On",
+              "value": 1
+            },
+            {
+              "selected": false,
+              "text": "Blink slow",
+              "value": 2
+            },
+            {
+              "selected": false,
+              "text": "Blink normal",
+              "value": 4
+            },
+            {
+              "selected": false,
+              "text": "Blink fast",
+              "value": 8
+            }
+          ],
+          "value": 0
+        },
+        "type": "ia.input.radio-group"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "style": {
+        "backgroundColor": "#FFFFFF00",
+        "overflow": "hidden",
+        "paddingLeft": 5
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

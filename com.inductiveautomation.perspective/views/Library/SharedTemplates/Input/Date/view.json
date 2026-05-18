@@ -1,0 +1,265 @@
+{
+  "custom": {},
+  "params": {
+    "CancelIconVisable": true,
+    "enabled": true,
+    "format": "DD-MM-YYYY",
+    "key": "",
+    "value": {
+      "$": [
+        "ts",
+        0,
+        1701079600399
+      ],
+      "$ts": 1700694000000
+    }
+  },
+  "propConfig": {
+    "params.CancelIconVisable": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.enabled": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.format": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.key": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.value": {
+      "paramDirection": "inout",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 50,
+      "width": 454
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Label"
+        },
+        "position": {
+          "basis": "32px",
+          "grow": 1
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "view.params.key"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "classes": "ATA/Components/Labels/TextNormal"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "DateTimeInput"
+        },
+        "position": {
+          "basis": "32px",
+          "display": false,
+          "grow": 1
+        },
+        "propConfig": {
+          "props.format": {
+            "binding": {
+              "config": {
+                "path": "view.params.format"
+              },
+              "type": "property"
+            }
+          },
+          "props.pickerType": {
+            "binding": {
+              "config": {
+                "expression": "Case(\r\n\t{view.params.format},\r\n\t\"DD-MM-YYYY\", \"date\",\r\n\t\"HH:mm:ss\", \"time\",\r\n\t\"datetime\"\r\n)"
+              },
+              "type": "expr"
+            }
+          },
+          "props.value": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "path": "view.params.value"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "formattedValue": "23-11-2023",
+          "style": {
+            "classes": "ATA/Components/Labels/TextSmall",
+            "marginBottom": 5,
+            "marginLeft": 5,
+            "marginRight": 45
+          }
+        },
+        "type": "ia.input.date-time-input"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "DateTimeInput"
+            },
+            "position": {
+              "basis": "32px",
+              "grow": 1
+            },
+            "propConfig": {
+              "props.enabled": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.enabled"
+                  },
+                  "type": "property"
+                }
+              },
+              "props.format": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.format"
+                  },
+                  "type": "property"
+                }
+              },
+              "props.pickerType": {
+                "binding": {
+                  "config": {
+                    "expression": "Case(\r\n\t{view.params.format},\r\n\t\"DD-MM-YYYY\", \"date\",\r\n\t\"HH:mm:ss\", \"time\",\r\n\t\"datetime\"\r\n)"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.value": {
+                "binding": {
+                  "config": {
+                    "bidirectional": true,
+                    "path": "view.params.value"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "formattedValue": "23-11-2023",
+              "locale": "nl",
+              "placeholder": "Select Date",
+              "style": {
+                "classes": "ATA/Components/Labels/TextNormal",
+                "marginLeft": 5,
+                "marginRight": 5
+              }
+            },
+            "type": "ia.input.date-time-input"
+          },
+          {
+            "events": {
+              "dom": {
+                "onClick": {
+                  "config": {
+                    "script": "\tif self.meta.visible:\n\t\tself.parent.parent.getChild(\"DateTimeInput\").props.value \u003d None"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "Icon"
+            },
+            "position": {
+              "basis": "30px"
+            },
+            "propConfig": {
+              "meta.visible": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.CancelIconVisable"
+                  },
+                  "type": "property"
+                }
+              },
+              "position.display": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.CancelIconVisable"
+                  },
+                  "type": "property"
+                }
+              },
+              "props.style.color": {
+                "binding": {
+                  "config": {
+                    "path": ".../DateTimeInput.props.value"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\treturn \u0027#C0C0C000\u0027 if value is None else \u0027#000000\u0027",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "path": "material/close",
+              "style": {
+                "classes": "form-icon-button",
+                "marginRight": 5
+              }
+            },
+            "type": "ia.display.icon"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer"
+        },
+        "position": {
+          "basis": "37px",
+          "grow": 1
+        },
+        "props": {
+          "style": {
+            "marginBottom": 5,
+            "overflow": "hidden"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "backgroundColor": "#FFFFFF00",
+        "overflow": "hidden",
+        "paddingLeft": 5
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

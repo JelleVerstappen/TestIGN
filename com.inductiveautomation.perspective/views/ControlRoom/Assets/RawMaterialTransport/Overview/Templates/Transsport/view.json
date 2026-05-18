@@ -1,0 +1,212 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "height": 724,
+      "width": 1097
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "download (1)_0"
+        },
+        "position": {
+          "height": 1,
+          "width": 1
+        },
+        "props": {
+          "elements": [
+            {
+              "elements": [
+                {
+                  "elements": [
+                    {
+                      "d": "M0,0 L10,5 L0,10 z",
+                      "fill": {
+                        "paint": "#333"
+                      },
+                      "name": "path",
+                      "type": "path"
+                    }
+                  ],
+                  "id": "arrow",
+                  "markerHeight": "10",
+                  "markerWidth": "10",
+                  "name": "arrow",
+                  "orient": "auto",
+                  "refX": "8",
+                  "refY": "5",
+                  "type": "marker"
+                }
+              ],
+              "name": "defs",
+              "type": "defs"
+            },
+            {
+              "elements": [
+                {
+                  "fill": {
+                    "paint": "#ddd"
+                  },
+                  "height": "40",
+                  "name": "rect",
+                  "stroke": {
+                    "paint": "#555",
+                    "width": "3"
+                  },
+                  "type": "rect",
+                  "width": "320",
+                  "x": "50",
+                  "y": "120"
+                },
+                {
+                  "d": "M70,140 q20,-15 40,0 q20,15 40,0 q20,-15 40,0 q20,15 40,0",
+                  "fill": {
+                    "paint": "transparent"
+                  },
+                  "name": "path",
+                  "stroke": {
+                    "paint": "#888",
+                    "width": "2"
+                  },
+                  "type": "path"
+                }
+              ],
+              "id": "leiding",
+              "name": "leiding",
+              "type": "group"
+            },
+            {
+              "elements": [
+                {
+                  "fill": {
+                    "paint": "#bbb"
+                  },
+                  "height": "40",
+                  "name": "rect",
+                  "stroke": {
+                    "paint": "#555",
+                    "width": "3"
+                  },
+                  "type": "rect",
+                  "width": "20",
+                  "x": "370",
+                  "y": "120"
+                }
+              ],
+              "id": "flens",
+              "name": "flens",
+              "type": "group"
+            },
+            {
+              "name": "line",
+              "stroke": {
+                "paint": "#555",
+                "width": "3"
+              },
+              "type": "line",
+              "x1": "390",
+              "x2": "420",
+              "y1": "140",
+              "y2": "140"
+            },
+            {
+              "elements": [
+                {
+                  "fill": {
+                    "paint": "#ddd"
+                  },
+                  "height": "20",
+                  "name": "rect",
+                  "stroke": {
+                    "paint": "#555",
+                    "width": "3"
+                  },
+                  "type": "rect",
+                  "width": "100",
+                  "x": "420",
+                  "y": "110"
+                },
+                {
+                  "fill": {
+                    "paint": "#ddd"
+                  },
+                  "name": "polygon",
+                  "points": "420,130 520,130 540,220 400,220",
+                  "stroke": {
+                    "paint": "#555",
+                    "width": "3"
+                  },
+                  "type": "polygon"
+                },
+                {
+                  "name": "line",
+                  "stroke": {
+                    "dasharray": "5,5",
+                    "paint": "#555",
+                    "width": "2"
+                  },
+                  "type": "line",
+                  "x1": "530",
+                  "x2": "530",
+                  "y1": "130",
+                  "y2": "200"
+                }
+              ],
+              "id": "hopper",
+              "name": "hopper",
+              "type": "group"
+            }
+          ],
+          "viewBox": "0 0 600 300"
+        },
+        "type": "ia.shapes.svg"
+      },
+      {
+        "meta": {
+          "name": "EmbeddedView"
+        },
+        "position": {
+          "height": 0.0856,
+          "width": 0.0091,
+          "x": 0.6979,
+          "y": 0.1783
+        },
+        "props": {
+          "params": {
+            "enabled": false,
+            "engUnits": "bar",
+            "format": "0,0.##",
+            "key": "Vacuümpomp vacuum ",
+            "maxValue": 10000000,
+            "minValue": 0,
+            "placeholder": "",
+            "rejected": "True",
+            "unitVisable": true,
+            "value": 515
+          },
+          "path": "Library/SharedTemplates/Input/Number",
+          "style": {
+            "max-height": "50px",
+            "max-width": "250px",
+            "min-height": "50px",
+            "min-width": "150px"
+          },
+          "useDefaultViewHeight": true
+        },
+        "type": "ia.display.view"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "aspectRatio": "600:300",
+      "mode": "percent"
+    },
+    "type": "ia.container.coord"
+  }
+}

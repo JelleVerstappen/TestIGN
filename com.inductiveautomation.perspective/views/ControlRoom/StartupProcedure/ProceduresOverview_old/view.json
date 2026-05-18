@@ -1,0 +1,887 @@
+{
+  "custom": {},
+  "params": {},
+  "permissions": {
+    "securityLevels": [],
+    "type": "AnyOf"
+  },
+  "props": {
+    "defaultSize": {
+      "height": 917,
+      "width": 1705
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "script": "\tself.view.getChild(\"root\").delete()\n\tself.props.value \u003d 0"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "ButtonDelete"
+            },
+            "position": {
+              "basis": "80px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.enabled": {
+                "binding": {
+                  "config": {
+                    "path": ".../Table.props.selection.selectedRow"
+                  },
+                  "transforms": [
+                    {
+                      "expression": "if({value} !\u003d null ,true,false)",
+                      "type": "expression"
+                    }
+                  ],
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "confirm": {
+                "enabled": true,
+                "text": "Weet je het zeker?"
+              },
+              "readyState": {
+                "icon": {
+                  "path": "material/delete",
+                  "style": {
+                    "height": "24px",
+                    "width": "2rem"
+                  }
+                },
+                "style": {
+                  "classes": "ATA/Buttons/Sec"
+                },
+                "text": ""
+              },
+              "style": {
+                "classes": "ATA/Components/Buttons/Sec"
+              },
+              "writingState": {
+                "icon": {
+                  "path": "material/hourglass_empty",
+                  "style": {
+                    "height": "24px",
+                    "width": "2rem"
+                  }
+                },
+                "style": {
+                  "classes": "ATA/Buttons/Sec"
+                },
+                "text": "verwijderen.."
+              }
+            },
+            "type": "ia.input.oneshotbutton"
+          },
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "script": "\tsystem.perspective.navigate(view\u003d \u0027ControlRoom/StartupProcedure/ProcedureEdit\u0027)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "Button Modify"
+            },
+            "position": {
+              "basis": "80px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.enabled": {
+                "binding": {
+                  "config": {
+                    "path": ".../Table.props.selection.selectedRow"
+                  },
+                  "transforms": [
+                    {
+                      "expression": "if({value} !\u003d null ,true,false)",
+                      "type": "expression"
+                    }
+                  ],
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "image": {
+                "icon": {
+                  "path": "material/edit"
+                }
+              },
+              "style": {
+                "classes": "ATA/Components/Buttons/Prim",
+                "marginLeft": 20,
+                "marginRight": 20
+              },
+              "text": ""
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "script": "\tself.view.getChild(\"root\").new()"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "Button New"
+            },
+            "position": {
+              "basis": "80px",
+              "shrink": 0
+            },
+            "props": {
+              "image": {
+                "icon": {
+                  "path": "material/add"
+                }
+              },
+              "style": {
+                "classes": "ATA/Components/Buttons/CTA",
+                "marginRight": 20
+              },
+              "text": ""
+            },
+            "type": "ia.input.button"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer"
+        },
+        "position": {
+          "basis": "45px",
+          "shrink": 0
+        },
+        "props": {
+          "justify": "flex-end",
+          "style": {
+            "padding": 7
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "events": {
+          "component": {
+            "onRowDoubleClick": {
+              "config": {
+                "script": "\tself.parent.edit()"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "Table"
+        },
+        "position": {
+          "basis": "400px",
+          "grow": 1
+        },
+        "props": {
+          "cells": {
+            "style": {
+              "height": "50px"
+            }
+          },
+          "columns": [
+            {
+              "align": "center",
+              "boolean": "checkbox",
+              "dateFormat": "MM/DD/YYYY",
+              "editable": false,
+              "field": "Lijn",
+              "filter": {
+                "boolean": {
+                  "condition": ""
+                },
+                "date": {
+                  "condition": "",
+                  "value": ""
+                },
+                "enabled": false,
+                "number": {
+                  "condition": "",
+                  "value": ""
+                },
+                "string": {
+                  "condition": "",
+                  "value": ""
+                },
+                "visible": "on-hover"
+              },
+              "footer": {
+                "align": "center",
+                "justify": "left",
+                "style": {
+                  "classes": ""
+                },
+                "title": ""
+              },
+              "header": {
+                "align": "center",
+                "justify": "left",
+                "style": {
+                  "classes": ""
+                },
+                "title": ""
+              },
+              "justify": "auto",
+              "nullFormat": {
+                "includeNullStrings": false,
+                "nullFormatValue": "",
+                "strict": false
+              },
+              "number": "value",
+              "numberFormat": "0,0.##",
+              "progressBar": {
+                "bar": {
+                  "color": "",
+                  "style": {
+                    "classes": ""
+                  }
+                },
+                "max": 100,
+                "min": 0,
+                "track": {
+                  "color": "",
+                  "style": {
+                    "classes": ""
+                  }
+                },
+                "value": {
+                  "enabled": true,
+                  "format": "0,0.##",
+                  "justify": "center",
+                  "style": {
+                    "classes": ""
+                  }
+                }
+              },
+              "render": "auto",
+              "resizable": true,
+              "sort": "none",
+              "sortable": true,
+              "strictWidth": false,
+              "style": {
+                "classes": ""
+              },
+              "toggleSwitch": {
+                "color": {
+                  "selected": "",
+                  "unselected": ""
+                }
+              },
+              "viewParams": {},
+              "viewPath": "",
+              "visible": true,
+              "width": ""
+            },
+            {
+              "align": "center",
+              "boolean": "checkbox",
+              "dateFormat": "MM/DD/YYYY",
+              "editable": false,
+              "field": "Artikel",
+              "filter": {
+                "boolean": {
+                  "condition": ""
+                },
+                "date": {
+                  "condition": "",
+                  "value": ""
+                },
+                "enabled": false,
+                "number": {
+                  "condition": "",
+                  "value": ""
+                },
+                "string": {
+                  "condition": "",
+                  "value": ""
+                },
+                "visible": "on-hover"
+              },
+              "footer": {
+                "align": "center",
+                "justify": "left",
+                "style": {
+                  "classes": ""
+                },
+                "title": ""
+              },
+              "header": {
+                "align": "center",
+                "justify": "left",
+                "style": {
+                  "classes": ""
+                },
+                "title": ""
+              },
+              "justify": "auto",
+              "nullFormat": {
+                "includeNullStrings": false,
+                "nullFormatValue": "",
+                "strict": false
+              },
+              "number": "value",
+              "numberFormat": "0,0.##",
+              "progressBar": {
+                "bar": {
+                  "color": "",
+                  "style": {
+                    "classes": ""
+                  }
+                },
+                "max": 100,
+                "min": 0,
+                "track": {
+                  "color": "",
+                  "style": {
+                    "classes": ""
+                  }
+                },
+                "value": {
+                  "enabled": true,
+                  "format": "0,0.##",
+                  "justify": "center",
+                  "style": {
+                    "classes": ""
+                  }
+                }
+              },
+              "render": "auto",
+              "resizable": true,
+              "sort": "none",
+              "sortable": true,
+              "strictWidth": false,
+              "style": {
+                "classes": ""
+              },
+              "toggleSwitch": {
+                "color": {
+                  "selected": "",
+                  "unselected": ""
+                }
+              },
+              "viewParams": {},
+              "viewPath": "",
+              "visible": true,
+              "width": ""
+            },
+            {
+              "align": "center",
+              "boolean": "checkbox",
+              "dateFormat": "MM/DD/YYYY",
+              "editable": false,
+              "field": "Aangepast",
+              "filter": {
+                "boolean": {
+                  "condition": ""
+                },
+                "date": {
+                  "condition": "",
+                  "value": ""
+                },
+                "enabled": false,
+                "number": {
+                  "condition": "",
+                  "value": ""
+                },
+                "string": {
+                  "condition": "",
+                  "value": ""
+                },
+                "visible": "on-hover"
+              },
+              "footer": {
+                "align": "center",
+                "justify": "left",
+                "style": {
+                  "classes": ""
+                },
+                "title": ""
+              },
+              "header": {
+                "align": "center",
+                "justify": "left",
+                "style": {
+                  "classes": ""
+                },
+                "title": ""
+              },
+              "justify": "auto",
+              "nullFormat": {
+                "includeNullStrings": false,
+                "nullFormatValue": "",
+                "strict": false
+              },
+              "number": "value",
+              "numberFormat": "0,0.##",
+              "progressBar": {
+                "bar": {
+                  "color": "",
+                  "style": {
+                    "classes": ""
+                  }
+                },
+                "max": 100,
+                "min": 0,
+                "track": {
+                  "color": "",
+                  "style": {
+                    "classes": ""
+                  }
+                },
+                "value": {
+                  "enabled": true,
+                  "format": "0,0.##",
+                  "justify": "center",
+                  "style": {
+                    "classes": ""
+                  }
+                }
+              },
+              "render": "auto",
+              "resizable": true,
+              "sort": "none",
+              "sortable": true,
+              "strictWidth": false,
+              "style": {
+                "classes": ""
+              },
+              "toggleSwitch": {
+                "color": {
+                  "selected": "",
+                  "unselected": ""
+                }
+              },
+              "viewParams": {},
+              "viewPath": "",
+              "visible": true,
+              "width": ""
+            },
+            {
+              "align": "center",
+              "boolean": "checkbox",
+              "dateFormat": "MM/DD/YYYY",
+              "editable": false,
+              "field": "AangepastDoor",
+              "filter": {
+                "boolean": {
+                  "condition": ""
+                },
+                "date": {
+                  "condition": "",
+                  "value": ""
+                },
+                "enabled": false,
+                "number": {
+                  "condition": "",
+                  "value": ""
+                },
+                "string": {
+                  "condition": "",
+                  "value": ""
+                },
+                "visible": "on-hover"
+              },
+              "footer": {
+                "align": "center",
+                "justify": "left",
+                "style": {
+                  "classes": ""
+                },
+                "title": ""
+              },
+              "header": {
+                "align": "center",
+                "justify": "left",
+                "style": {
+                  "classes": ""
+                },
+                "title": "Aangepast door"
+              },
+              "justify": "auto",
+              "nullFormat": {
+                "includeNullStrings": false,
+                "nullFormatValue": "",
+                "strict": false
+              },
+              "number": "value",
+              "numberFormat": "0,0.##",
+              "progressBar": {
+                "bar": {
+                  "color": "",
+                  "style": {
+                    "classes": ""
+                  }
+                },
+                "max": 100,
+                "min": 0,
+                "track": {
+                  "color": "",
+                  "style": {
+                    "classes": ""
+                  }
+                },
+                "value": {
+                  "enabled": true,
+                  "format": "0,0.##",
+                  "justify": "center",
+                  "style": {
+                    "classes": ""
+                  }
+                }
+              },
+              "render": "auto",
+              "resizable": true,
+              "sort": "none",
+              "sortable": true,
+              "strictWidth": false,
+              "style": {
+                "classes": ""
+              },
+              "toggleSwitch": {
+                "color": {
+                  "selected": "",
+                  "unselected": ""
+                }
+              },
+              "viewParams": {},
+              "viewPath": "",
+              "visible": true,
+              "width": ""
+            }
+          ],
+          "data": [
+            {
+              "Aangepast": "2025-05-15",
+              "AangepastDoor": "jansen.p",
+              "Artikel": "ART-1001",
+              "Lijn": "Lijn 1",
+              "Tool": "Schroevendraaier",
+              "Type": "Wisseltool procedure",
+              "Versie": "v1.0"
+            },
+            {
+              "Aangepast": "2025-05-18",
+              "AangepastDoor": "deboer.k",
+              "Artikel": "ART-1002",
+              "Lijn": "Lijn 2",
+              "Tool": "Lasmachine",
+              "Type": "Opstart procedure",
+              "Versie": "v1.1"
+            },
+            {
+              "Aangepast": "2025-05-20",
+              "AangepastDoor": "smits.l",
+              "Artikel": "ART-1003",
+              "Lijn": "Lijn 3",
+              "Tool": "Inspectiecamera",
+              "Type": "Faal procedure",
+              "Versie": "v2.0"
+            },
+            {
+              "Aangepast": "2025-05-19",
+              "AangepastDoor": "vermeer.a",
+              "Artikel": "ART-1004",
+              "Lijn": "Lijn 4",
+              "Tool": "Kalibratiekit",
+              "Type": "Opstart procedure",
+              "Versie": "v1.2"
+            },
+            {
+              "Aangepast": "2025-05-17",
+              "AangepastDoor": "bakker.s",
+              "Artikel": "ART-1005",
+              "Lijn": "Lijn 5",
+              "Tool": "Meetlint",
+              "Type": "Afkoel procedure",
+              "Versie": "v1.3"
+            },
+            {
+              "Aangepast": "2025-05-16",
+              "AangepastDoor": "visser.m",
+              "Artikel": "ART-1006",
+              "Lijn": "Lijn 6",
+              "Tool": "Oliepomp",
+              "Type": "Onderhoud procedure",
+              "Versie": "v2.1"
+            },
+            {
+              "Aangepast": "2025-05-21",
+              "AangepastDoor": "kuiper.f",
+              "Artikel": "ART-1007",
+              "Lijn": "Lijn 7",
+              "Tool": "Resetmodule",
+              "Type": "Reset procedure",
+              "Versie": "v1.0"
+            },
+            {
+              "Aangepast": "2025-05-12",
+              "AangepastDoor": "peeters.h",
+              "Artikel": "ART-1008",
+              "Lijn": "Lijn 8",
+              "Tool": "Noodstopknop",
+              "Type": "Veiligheids procedure",
+              "Versie": "v1.5"
+            },
+            {
+              "Aangepast": "2025-05-13",
+              "AangepastDoor": "meijer.t",
+              "Artikel": "ART-1009",
+              "Lijn": "Lijn 9",
+              "Tool": "Bedieningspaneel",
+              "Type": "Start procedure",
+              "Versie": "v2.2"
+            },
+            {
+              "Aangepast": "2025-05-14",
+              "AangepastDoor": "vos.r",
+              "Artikel": "ART-1010",
+              "Lijn": "Lijn 10",
+              "Tool": "Multimeter",
+              "Type": "Controle procedure",
+              "Versie": "v1.4"
+            }
+          ],
+          "filter": {
+            "enabled": true
+          },
+          "pager": {
+            "bottom": false
+          },
+          "style": {
+            "borderStyle": "none"
+          }
+        },
+        "scripts": {
+          "customMethods": [],
+          "extensionFunctions": null,
+          "messageHandlers": [
+            {
+              "messageType": "RefreshUnits",
+              "pageScope": true,
+              "script": "\tself.refreshBinding(\u0027props.data\u0027)",
+              "sessionScope": true,
+              "viewScope": true
+            }
+          ]
+        },
+        "type": "ia.display.table"
+      },
+      {
+        "custom": {
+          "animation": {
+            "name": "",
+            "value": {}
+          },
+          "location": "bottom-left",
+          "messageType": "Library/Toast/Message/Basic"
+        },
+        "meta": {
+          "name": "Toast Handler"
+        },
+        "position": {
+          "grow": 1
+        },
+        "propConfig": {
+          "custom.animation.name": {
+            "onChange": {
+              "enabled": null,
+              "script": "\tself.setAnimation(currentValue.value)"
+            }
+          },
+          "custom.location": {
+            "onChange": {
+              "enabled": null,
+              "script": "\tself.setLocation(currentValue.value)"
+            }
+          },
+          "custom.messageType": {
+            "onChange": {
+              "enabled": null,
+              "script": "\tself.setViewPath(currentValue.value)"
+            }
+          },
+          "custom.screenID": {
+            "binding": {
+              "config": {
+                "expression": "now(0)"
+              },
+              "transforms": [
+                {
+                  "code": "\timport uuid \n\treturn str(uuid.uuid1())\n\t",
+                  "type": "script"
+                }
+              ],
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "alignItems": "center",
+          "direction": "column",
+          "elementPosition": {
+            "basis": "auto",
+            "grow": 0,
+            "shrink": 0
+          },
+          "elementStyle": {
+            "marginTop": "5px"
+          },
+          "justify": "center",
+          "loading": {
+            "order": "with-parent"
+          },
+          "path": "Library/Toast/Message/Basic",
+          "style": {
+            "bottom": 5,
+            "left": 5,
+            "overflow": "visible",
+            "position": "absolute",
+            "zIndex": -1
+          },
+          "useDefaultViewHeight": false,
+          "useDefaultViewWidth": false
+        },
+        "scripts": {
+          "customMethods": [
+            {
+              "name": "setLocation",
+              "params": [
+                "location"
+              ],
+              "script": "\t# Set props.style with the css properties from exchange.toast.util Locations class\n\tself.props.style \u003d ata.toast.handler.configure.getLocation(location)"
+            },
+            {
+              "name": "setViewPath",
+              "params": [
+                "path"
+              ],
+              "script": "\t# Set props.path with the viewPath for these toast messages\n\tself.props.path \u003d path"
+            },
+            {
+              "name": "configureToast",
+              "params": [
+                "toast"
+              ],
+              "script": "\t# Configures the incoming toast message\n\tif bool(dict(self.custom.animation.value)):\n\t\ttoast.update({\u0027instanceStyle\u0027: self.custom.animation.value[\u0027enter\u0027]})\n\treturn toast"
+            },
+            {
+              "name": "getToastIndex",
+              "params": [
+                "toastID"
+              ],
+              "script": "\t# Get the index of the toast from the instances if exists else None\n\t_index \u003d None\n\tfor index, toast in enumerate(self.props.instances):\n\t\tif toast[\u0027toastID\u0027] \u003d\u003d toastID:\n\t\t\t_index \u003d index\n\t\t\tbreak;\n\treturn _index"
+            },
+            {
+              "name": "setAnimation",
+              "params": [
+                "name"
+              ],
+              "script": "\t# Set instance[.].instanceStyle with the css animation\n\tself.custom.animation.value \u003d ata.toast.handler.configure.getAnimation(name)"
+            },
+            {
+              "name": "clearToasts",
+              "params": [],
+              "script": "\t# Clear out all toasts in the handler\n\tself.props.instances \u003d []"
+            },
+            {
+              "name": "removeToast",
+              "params": [
+                "index"
+              ],
+              "script": "\t# Removes the specific toast from the instances by index\n\ttry:\n\t\tdel self.props.instances[index]\n\texcept:\n\t\tsystem.perspective.print(\u0027Toast Handler could not clear toast, index ({}) does not exist.\u0027.format(index))"
+            }
+          ],
+          "extensionFunctions": null,
+          "messageHandlers": [
+            {
+              "messageType": "toast-add",
+              "pageScope": true,
+              "script": "\tscreenID \u003d payload.get(\u0027screenID\u0027,None)\n\tif screenID \u003d\u003d None or screenID \u003d\u003d self.custom.screenID:\n\t\t# Add payload (Message view params) to the flex repeater instance and set props.style zIndex\n\t\tself.props.style.zIndex \u003d 1\n\t\ttoast \u003d self.configureToast(payload)\n\t\ttry:\n\t\t\terrorMessage \u003d payload[\"content\"].split(\"\u003cbr\u003e\")\n\t\t\tself.setViewPath(\"Library/Toast/Message/Basic\")\n\t\t\tif len(errorMessage) \u003c\u003d 1 and len(errorMessage[0]) \u003c\u003d 75:\n\t\t\t    toast[\"message\"] \u003d payload[\"content\"]\n\t\t\t    toast[\"content\"] \u003d None\n\t\t\telse:\n\t\t\t    self.setViewPath(\"Library/Toast/Message/Expanding\")\n\t\texcept:\n\t\t\tpass\n\t\tself.props.instances.append(toast)",
+              "sessionScope": true,
+              "viewScope": false
+            },
+            {
+              "messageType": "toast-close",
+              "pageScope": true,
+              "script": "\tfrom ata.toast.handler import toasts\n\t# Check for the incoming toast id in the props.instances and get the index of the instance\n\tindex \u003d self.getToastIndex(payload.get(\u0027toastID\u0027))\n\t\n\t# If index exists either apply exit style or remove from instances\n\tif index !\u003d None:\n\t\tif bool(dict(self.custom.animation.value)):\n\t\t\ttoastID \u003d self.props.instances[index][\u0027toastID\u0027]\n\t\t\twaitTime \u003d int(self.custom.animation.value[\u0027exit\u0027][\u0027animation-duration\u0027].replace(\u0027s\u0027, \u0027\u0027))\n\t\t\ttoasts.toastClearOut(toastID, waitTime)\n\t\t\tself.props.instances[index][\u0027instanceStyle\u0027] \u003d self.custom.animation.value[\u0027exit\u0027]\n\t\telse:\n\t\t\tself.removeToast(index)\n\t\t\n\t# Reset the props.style zIndex to -1 (hidden behind everything else)\n\tif not bool(self.props.instances): \n\t\tself.props.style.zIndex \u003d -1",
+              "sessionScope": true,
+              "viewScope": false
+            },
+            {
+              "messageType": "toast-clear",
+              "pageScope": true,
+              "script": "\t# Check for the incoming toast id in the props.instances and get the index of the instance\n\tindex \u003d self.getToastIndex(payload.get(\u0027toastID\u0027))\n\t\n\t# Remove toast message from instances if exists\n\tif index !\u003d None:\n\t\tself.removeToast(index)",
+              "sessionScope": true,
+              "viewScope": false
+            }
+          ]
+        },
+        "type": "ia.display.flex-repeater"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "classes": "ATA/Background/Root",
+        "margin": 5
+      }
+    },
+    "scripts": {
+      "customMethods": [
+        {
+          "name": "new",
+          "params": [],
+          "script": "\tData \u003d {\u0027UnitID\u0027:int(-1),\u0027Description\u0027:\u0027\u0027 \n\t}\n\tFunction \u003d 0\n\t\n\tsystem.perspective.openDock(\u0027Units\u0027,params \u003d {\u0027Data\u0027:Data,\u0027Function\u0027:Function})"
+        },
+        {
+          "name": "edit",
+          "params": [],
+          "script": "\tData \u003d self.getChild(\"Table\").props.selection.data[0]\n\tFunction \u003d 1\n\t\n\tsystem.perspective.openDock(\u0027Units\u0027,params \u003d {\u0027Data\u0027:Data,\u0027Function\u0027:Function})"
+        },
+        {
+          "name": "delete",
+          "params": [],
+          "script": "\timport traceback\n\timport java.lang.Exception\n\timport sys.exc_info\n\tfrom java.lang import Throwable\n\timport java.io.IOException\n\t \n\t### Declare safety parameters\n\terrors \u003d []\n\tlogger \u003d system.util.getLogger(\u0027Units\u0027)\n\t \n\t#parameters\n\tmodifiedBy \u003d self.session.props.auth.user.userName if self.session.props.auth.authenticated else \"Unknown\"\n\ttableName \u003d \"Units\"\n\tdata \u003d self.getChild(\"Table\").props.selection.data[0]\n\tUnitID \u003d data.UnitID\n\tif UnitID\t \u003c 1:\n\t\terrors.append(system.util.translate(\"bewerken niet mogelijk, ID is lager dan 1. Probeer het opnieuw.\"))\n\t\t\n\telse:\n\t\tquery \u003d \"\"\"select count(*)\tfrom Parameters where UnitID \u003d ? and Active \u003d 1\"\"\"\n\t\tresult \u003d system.db.runScalarPrepQuery(query, args\u003d[UnitID])\n\t\tif result is not None and result !\u003d 0:\n\t\t\terrors.append(system.util.translate(\"Deze eenheid wordt nog gebruikt in {aantal} actieve parameters.\".format(aantal\u003dresult)))\n\t\t\n\t\t\n\tif not errors:\n\t\t### Try the following code\n\t\ttry:\n\t\t\tquery \u003d \"\"\"update Units \n\t\t\tset Active \u003d 0 \n\t\t\t, Modified \u003d getdate()\n\t\t\t,ModifiedBy \u003d ?\n\t\t\twhere UnitID \u003d ?\"\"\"\n\t\t\targs \u003d [modifiedBy,UnitID]\n\t\t\tresult \u003d system.db.runPrepUpdate(query, args)\n\t\n\t\t\t\t\n    ### When something fails, continue with the exception, e\n\t\texcept (Exception, Throwable, java.lang.Exception), e:\n\t\t\texType, ex, tb \u003d sys.exc_info()\n\t\t\tlogger.error(\"Exception on line %d: %s, %s\" % (traceback.tb_lineno(tb), exType, ex))\n\t\t\terrors.append(\"Error bij het opslaan, probeer nog eens. \"+str(e))\n\t\t        \n\t# if error is true show the error message.\n\tif errors:\n\t\ttimeout \u003d 20\n\t\terrors \u003d ata.function.uniqueList(errors)\n\t\terrorStr \u003d \"\u003cbr\u003e\".join(errors)\n\t\tlogger.error(errorStr)\t\n\t\tscreenID\u003dself.getChild(\"Toast Handler\").custom.screenID\n\t\tata.toast.handler.toasts.toastNotification(message\u003d\"Open voor foutmeldingen.\", timeout\u003dtimeout, sendTo\u003dself.session.props.id, backgroundColor\u003d\"--warning\", content\u003derrorStr,screenID\u003dscreenID)\n\telse:\n\t\t### Close the screen and refresh the overview\n\t\tsystem.perspective.sendMessage(\"RefreshUnits\", payload\u003d{}, scope\u003d\"session\")\n\t\t\t\t\t\n\t\t\t\t\t"
+        }
+      ],
+      "extensionFunctions": null,
+      "messageHandlers": []
+    },
+    "type": "ia.container.flex"
+  }
+}

@@ -1,0 +1,646 @@
+{
+  "custom": {},
+  "params": {
+    "data": {
+      "assetID": null,
+      "defaultHigh": null,
+      "defaultHighHigh": null,
+      "defaultLow": null,
+      "defaultLowLow": null,
+      "defaultSetpoint": null,
+      "lineID": null,
+      "parameterID": null,
+      "parameterName": null,
+      "tagPath": null,
+      "unit": null
+    }
+  },
+  "propConfig": {
+    "params.data": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "width": 600
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Header"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "params": {
+            "closeDockID": "ParameterDock",
+            "closeIcon": true,
+            "title": "Parameter toevoegen"
+          },
+          "path": "Library/SharedTemplates/HeaderForDock",
+          "style": {
+            "textTransform": "capitalize"
+          },
+          "useDefaultViewHeight": true
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "ParamName"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.params.value": {
+                "binding": {
+                  "config": {
+                    "expression": "if(isnull({view.params.data.parameterName}), \u0027\u0027, {view.params.data.parameterName})"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "enabled": true,
+                "key": "Parameter naam",
+                "margingRight": 45,
+                "placeholder": "Typ hier..."
+              },
+              "path": "Library/SharedTemplates/Input/String",
+              "useDefaultViewHeight": true
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "Line"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "custom.selectedText": {
+                "binding": {
+                  "config": {
+                    "expression": "lookup({this.props.params.options}, {this.props.params.value}, \u0027\u0027, \u0027value\u0027, \u0027label\u0027)"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.params.options": {
+                "binding": {
+                  "config": {
+                    "queryPath": "getLinesDropdown"
+                  },
+                  "type": "query"
+                }
+              },
+              "props.params.value": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.data.lineID"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "enabled": true,
+                "key": "Lijn",
+                "marginRight": 45,
+                "multiSelect": false,
+                "placeholder": "Select...",
+                "showClearIcon": true
+              },
+              "path": "Library/SharedTemplates/Input/Dropdown",
+              "useDefaultViewHeight": true
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "Asset"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "custom.AssetName": {
+                "binding": {
+                  "config": {
+                    "expression": "lookup({this.props.params.options}, {this.props.params.value}, \u0027\u0027, \u0027value\u0027, \u0027AssetName\u0027)"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.params.options": {
+                "binding": {
+                  "config": {
+                    "parameters": {
+                      "lineID": "{../Line.props.params.value}"
+                    },
+                    "queryPath": "Article/Parameters/GetAssets"
+                  },
+                  "type": "query"
+                }
+              },
+              "props.params.value": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.data.assetID"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "enabled": true,
+                "key": "Lijn onderdeel",
+                "marginRight": 45,
+                "multiSelect": false,
+                "placeholder": "Select...",
+                "showClearIcon": true
+              },
+              "path": "Library/SharedTemplates/Input/Dropdown",
+              "useDefaultViewHeight": true
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "Unit"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.params.options": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "direct",
+                    "tagPath": "[NLSTWDYK]Extrusie/UnitsDataset"
+                  },
+                  "type": "tag"
+                }
+              },
+              "props.params.value": {
+                "binding": {
+                  "config": {
+                    "expression": "if(isnull({view.params.data.unit}), \u0027\u0027, {view.params.data.unit})"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "enabled": true,
+                "key": "Eenheid",
+                "marginRight": 45,
+                "multiSelect": false,
+                "placeholder": "Selecteer eenheid...",
+                "showClearIcon": true
+              },
+              "path": "Library/SharedTemplates/Input/Dropdown",
+              "useDefaultViewHeight": true
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "DefaultHighHigh"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.params.engUnits": {
+                "binding": {
+                  "config": {
+                    "path": "../Unit.props.params.value"
+                  },
+                  "type": "property"
+                }
+              },
+              "props.params.value": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.data.defaultHighHigh"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "enabled": true,
+                "format": "0,0.##",
+                "key": "Standaard hoog hoog",
+                "maxValue": 10000000,
+                "minValue": 0,
+                "placeholder": "Typ hier...",
+                "rejected": "True",
+                "unitVisable": true
+              },
+              "path": "Library/SharedTemplates/Input/Number",
+              "useDefaultViewHeight": true
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "DefaultHigh"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.params.engUnits": {
+                "binding": {
+                  "config": {
+                    "path": "../Unit.props.params.value"
+                  },
+                  "type": "property"
+                }
+              },
+              "props.params.value": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.data.defaultHigh"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "enabled": true,
+                "format": "0,0.##",
+                "key": "Standaard hoog",
+                "maxValue": 10000000,
+                "minValue": 0,
+                "placeholder": "Typ hier...",
+                "rejected": "True",
+                "unitVisable": true
+              },
+              "path": "Library/SharedTemplates/Input/Number",
+              "useDefaultViewHeight": true
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "DefaultSetpoint"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.params.engUnits": {
+                "binding": {
+                  "config": {
+                    "path": "../Unit.props.params.value"
+                  },
+                  "type": "property"
+                }
+              },
+              "props.params.value": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.data.defaultSetpoint"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "enabled": true,
+                "format": "0,0.##",
+                "key": "Standaard ingestelde waarde",
+                "maxValue": 10000000,
+                "minValue": 0,
+                "placeholder": "Typ hier...",
+                "rejected": "True",
+                "unitVisable": true
+              },
+              "path": "Library/SharedTemplates/Input/Number",
+              "useDefaultViewHeight": true
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "DefaultLow"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.params.engUnits": {
+                "binding": {
+                  "config": {
+                    "path": "../Unit.props.params.value"
+                  },
+                  "type": "property"
+                }
+              },
+              "props.params.value": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.data.defaultLow"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "enabled": true,
+                "format": "0,0.##",
+                "key": "Standaard laag",
+                "maxValue": 10000000,
+                "minValue": 0,
+                "placeholder": "Typ hier...",
+                "rejected": "True",
+                "unitVisable": true
+              },
+              "path": "Library/SharedTemplates/Input/Number",
+              "useDefaultViewHeight": true
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "DefaultLowLow"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.params.engUnits": {
+                "binding": {
+                  "config": {
+                    "path": "../Unit.props.params.value"
+                  },
+                  "type": "property"
+                }
+              },
+              "props.params.value": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.data.defaultLowLow"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "enabled": true,
+                "format": "0,0.##",
+                "key": "Standaard laag laag",
+                "maxValue": 10000000,
+                "minValue": 0,
+                "placeholder": "Typ hier...",
+                "rejected": "True",
+                "unitVisable": true
+              },
+              "path": "Library/SharedTemplates/Input/Number",
+              "useDefaultViewHeight": true
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "CurrentTagPath"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.params.value": {
+                "binding": {
+                  "config": {
+                    "expression": "if(isnull({view.params.data.tagPath}) \u003d True, \u0027\u0027, {view.params.data.tagPath})"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "enabled": true,
+                "engUnits": "",
+                "format": "0,0.##",
+                "key": "Tag pad",
+                "maxValue": 10000000,
+                "minValue": 0,
+                "placeholder": "Typ hier...",
+                "rejected": "True",
+                "unitVisable": false
+              },
+              "path": "Library/SharedTemplates/Input/String",
+              "useDefaultViewHeight": true
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "events": {
+              "component": {
+                "onNodeDoubleClick": {
+                  "config": {
+                    "script": "\tselectedPath \u003d event.path\n\tselectedPathNoProvider \u003d selectedPath.split(\u0027]\u0027)[-1]\n\t\n\tself.getSibling(\"CurrentTagPath\").props.params.value \u003d selectedPathNoProvider"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "TagBrowseTree"
+            },
+            "position": {
+              "basis": "400px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.root.path": {
+                "binding": {
+                  "config": {
+                    "path": "../Asset.custom.AssetName"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\tline \u003d self.getSibling(\"Line\").custom.selectedText\n\tassetPath \u003d dyka.config.assetPath(value)\n\treturn \"[NLSTWDYK]Dyka/STW/EXT/\"+line+\"/\"+assetPath+\"/ProcessValues\"",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "property"
+                }
+              },
+              "props.selection.values[0]": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.data.tagPath"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "filter": {
+                "enabled": true
+              },
+              "root": {},
+              "selection": {
+                "mode": "single"
+              },
+              "style": {
+                "classes": "ATA/Background/Card",
+                "marginTop": 5
+              }
+            },
+            "type": "ia.display.tag-browse-tree"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer"
+        },
+        "position": {
+          "basis": "200px",
+          "grow": 1
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "padding": "10px"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "id": "{/root/Header.props.params.closeDockID}",
+                    "type": "close"
+                  },
+                  "scope": "C",
+                  "type": "dock"
+                }
+              }
+            },
+            "meta": {
+              "name": "Button_5"
+            },
+            "position": {
+              "basis": "80px",
+              "shrink": 0
+            },
+            "props": {
+              "image": {
+                "icon": {
+                  "path": "material/cancel"
+                }
+              },
+              "style": {
+                "classes": "ATA/Components/Buttons/Sec",
+                "marginLeft": 15
+              },
+              "text": ""
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "script": "\tselectedParameterID \u003d self.view.params.data.parameterID\n\tparamName \u003d self.parent.parent.getChild(\"FlexContainer\").getChild(\"ParamName\").props.params.value\n\tassetID \u003d self.parent.parent.getChild(\"FlexContainer\").getChild(\"Asset\").props.params.value\n\tunit \u003d self.parent.parent.getChild(\"FlexContainer\").getChild(\"Unit\").props.params.value\n\tdefaultValue \u003d self.parent.parent.getChild(\"FlexContainer\").getChild(\"DefaultSetpoint\").props.params.value\n\tdefaultLowLow \u003d self.parent.parent.getChild(\"FlexContainer\").getChild(\"DefaultLowLow\").props.params.value\n\tdefaultLow \u003d self.parent.parent.getChild(\"FlexContainer\").getChild(\"DefaultLow\").props.params.value\n\tdefaultHigh \u003d self.parent.parent.getChild(\"FlexContainer\").getChild(\"DefaultHigh\").props.params.value\n\tdefaultHighHigh \u003d self.parent.parent.getChild(\"FlexContainer\").getChild(\"DefaultHighHigh\").props.params.value\n\ttagPath \u003d self.parent.parent.getChild(\"FlexContainer\").getChild(\"CurrentTagPath\").props.params.value\n\tusername \u003d self.session.props.auth.user.userName\n\t\n\tif selectedParameterID is None:\n\t\t# insert new entry\n\t\tinsertQuery \u003d \u0027\u0027\u0027INSERT INTO [dbo].[ProcessParameters]\n\t\t\t\t\t\t\t([AssetID]\n\t\t\t\t\t\t\t,[Description]\n\t\t\t\t\t\t\t,[DefaultValue]\n\t\t\t\t\t\t\t,[DefaultHigh]\n\t\t\t\t\t\t\t,[DefaultLow]\n\t\t\t\t\t\t\t,[DefaultHighHigh]\n\t\t\t\t\t\t\t,[DefaultLowLow]\n\t\t\t\t\t\t\t,[Unit]\n\t\t\t\t\t\t\t,[ModifiedBy]\n\t\t\t\t\t\t\t,[TagPath]\n\t\t\t\t\t\t\t,[Created])\n\t\t\t\t\t\tVALUES\n\t\t\t\t\t\t\t(?\n\t\t\t\t\t\t\t,?\n\t\t\t\t\t\t\t,?\n\t\t\t\t\t\t\t,?\n\t\t\t\t\t\t\t,?\n\t\t\t\t\t\t\t,?\n\t\t\t\t\t\t\t,?\n\t\t\t\t\t\t\t,?\n\t\t\t\t\t\t\t,?\n\t\t\t\t\t\t\t,?\n\t\t\t\t\t\t\t,getdate())\u0027\u0027\u0027\n\t\tinsertArgs \u003d [assetID, paramName, defaultValue, defaultHigh, defaultLow, defaultHighHigh, defaultLowLow, unit, username, tagPath]\n\t\tsystem.db.runPrepUpdate(insertQuery, insertArgs, database \u003d \u0027NLSTWDYK_DB_PROD\u0027)\n\t\t\n\t\t\n\telse:\n\t\t#update existing\n\t\tupdateQuery \u003d \u0027\u0027\u0027\n\t\t\t\t\tupdate processParameters\n\t\t\t\t\tset\n\t\t\t\t\t\tDescription \u003d ?,\n\t\t\t\t\t\tAssetID \u003d ?,\n\t\t\t\t\t\tDefaultValue \u003d ?,\n\t\t\t\t\t\tDefaultHigh \u003d ?,\n\t\t\t\t\t\tDefaultLow \u003d ?,\n\t\t\t\t\t\tDefaultHighHigh \u003d ?,\n\t\t\t\t\t\tDefaultLowLow \u003d ?,\n\t\t\t\t\t\tUnit \u003d ?,\n\t\t\t\t\t\tModifiedBy \u003d ?,\n\t\t\t\t\t\tTagPath \u003d ?,\n\t\t\t\t\t\tModified \u003d getdate()\n\t\t\t\t\twhere\n\t\t\t\t\t\tProcessParameterID \u003d ?\n\t\t\t\t\t\t\u0027\u0027\u0027\n\t\tupdateArgs \u003d [paramName, assetID, defaultValue, defaultHigh, defaultLow, defaultHighHigh, defaultLowLow, unit, username, tagPath, selectedParameterID]\n\t\tsystem.db.runPrepUpdate(updateQuery, updateArgs, database \u003d \u0027NLSTWDYK_DB_PROD\u0027)\n\t\n\tsystem.perspective.sendMessage(\u0027refreshParameters\u0027)\n\tself.view.getChild(\"root\").resetInput()\n\tsystem.perspective.closeDock(self.parent.parent.getChild(\"Header\").props.params.closeDockID)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "Button_1"
+            },
+            "position": {
+              "basis": "80px",
+              "shrink": 0
+            },
+            "props": {
+              "image": {
+                "icon": {
+                  "path": "material/save_alt"
+                }
+              },
+              "style": {
+                "classes": "ATA/Components/Buttons/CTA",
+                "marginLeft": 15
+              },
+              "text": ""
+            },
+            "type": "ia.input.button"
+          }
+        ],
+        "meta": {
+          "name": "Footer"
+        },
+        "position": {
+          "basis": "45px",
+          "shrink": 0
+        },
+        "props": {
+          "justify": "flex-end",
+          "style": {
+            "backgroundColor": "--backgroundSecondary",
+            "borderTopLeftRadius": 5,
+            "borderTopRightRadius": 5,
+            "padding": 7,
+            "zIndex": 1
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "classes": "ATA/Background/RootDock"
+      }
+    },
+    "scripts": {
+      "customMethods": [
+        {
+          "name": "resetInput",
+          "params": [],
+          "script": "\t# implement your method here\n\treturn\n\tself.getChild(\"FlexContainer\").getChild(\"ParamName\").props.params.value \u003d \u0027\u0027\n\tself.getChild(\"FlexContainer\").getChild(\"Line\").props.params.value \u003d None\n\tself.getChild(\"FlexContainer\").getChild(\"Asset\").props.params.value \u003d None\n\tself.getChild(\"FlexContainer\").getChild(\"Unit\").props.params.value \u003d \u0027\u0027\n\tself.getChild(\"FlexContainer\").getChild(\"DefaultSetpoint\").props.params.value \u003d None\n\tself.getChild(\"FlexContainer\").getChild(\"DefaultLowLow\").props.params.value \u003d None\n\tself.getChild(\"FlexContainer\").getChild(\"DefaultLow\").props.params.value \u003d None\n\tself.getChild(\"FlexContainer\").getChild(\"DefaultHigh\").props.params.value \u003d None\n\tself.getChild(\"FlexContainer\").getChild(\"DefaultHighHigh\").props.params.value \u003d None"
+        }
+      ],
+      "extensionFunctions": null,
+      "messageHandlers": []
+    },
+    "type": "ia.container.flex"
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "custom": {},
+  "params": {
+    "bgColor": "#ffffff",
+    "color": "#000000",
+    "text": ""
+  },
+  "propConfig": {
+    "params.bgColor": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.color": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.text": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 32,
+      "width": 672
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Markdown"
+        },
+        "position": {
+          "basis": "200px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.source": {
+            "binding": {
+              "config": {
+                "path": "view.params.text"
+              },
+              "type": "property"
+            }
+          },
+          "props.style.backgroundColor": {
+            "binding": {
+              "config": {
+                "path": "view.params.bgColor"
+              },
+              "type": "property"
+            }
+          },
+          "props.style.color": {
+            "binding": {
+              "config": {
+                "path": "view.params.color"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "markdown": {
+            "escapeHtml": false
+          },
+          "style": {
+            "textAlign": "center"
+          }
+        },
+        "scripts": {
+          "customMethods": [],
+          "extensionFunctions": null,
+          "messageHandlers": [
+            {
+              "messageType": "alertMessage",
+              "pageScope": true,
+              "script": "\t# implement your handler here\n\tself.props.source \u003d payload[\"text\"]\n\tself.props.style.backgroundColor \u003d payload[\"bgColor\"]\n\tself.props.style.color \u003d payload[\"color\"]\n\t\n\timport time\n\t\n\t\n\tsystem.perspective.openDock(\"alertMessage\")\n\ttime.sleep(4)\n\tsystem.perspective.closeDock(\"alertMessage\")",
+              "sessionScope": true,
+              "viewScope": true
+            }
+          ]
+        },
+        "type": "ia.display.markdown"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "type": "ia.container.flex"
+  }
+}

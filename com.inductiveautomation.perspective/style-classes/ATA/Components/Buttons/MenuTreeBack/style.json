@@ -1,0 +1,27 @@
+{
+  "base": {
+    "style": {
+      "backgroundColor": "var(--neutral-30)",
+      "color": "color: var(--icon)",
+      "cursor": "pointer",
+      "fontSize": "0.875rem",
+      "fontWeight": "500",
+      "lineHeight": "2rem",
+      "textTransform": "uppercase"
+    }
+  },
+  "variants": [
+    {
+      "pseudo": "active",
+      "style": {
+        "backgroundColor": "var(--neutral-40)"
+      }
+    },
+    {
+      "pseudo": "hover",
+      "style": {
+        "backgroundColor": "var(--neutral-20)"
+      }
+    }
+  ]
+}

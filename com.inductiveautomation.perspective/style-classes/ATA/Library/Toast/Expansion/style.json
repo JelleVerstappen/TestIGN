@@ -1,0 +1,22 @@
+{
+  "base": {
+    "style": {
+      "backgroundColor": "var(--background)",
+      "borderColor": "var(--neutral-100)",
+      "borderStyle": "solid",
+      "borderWidth": "1px",
+      "borderTopLeftRadius": "4px",
+      "borderTopRightRadius": "4px",
+      "borderBottomLeftRadius": "4px",
+      "borderBottomRightRadius": "4px",
+      "color": "var(--neutral-100)",
+      "fontSize": "16px",
+      "fontWeight": "500",
+      "lineHeight": "30px",
+      "margin": "2px",
+      "overflow": "visible",
+      "padding": "2px",
+      "textAlign": "left"
+    }
+  }
+}

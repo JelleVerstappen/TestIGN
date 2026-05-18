@@ -1,0 +1,156 @@
+{
+  "custom": {
+    "visible": true
+  },
+  "params": {
+    "navigationDataTagPath": "[default]system/Navigation/Navigation data"
+  },
+  "propConfig": {
+    "custom.visible": {
+      "persistent": true
+    },
+    "params.navigationDataTagPath": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 600,
+      "width": 305
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "download"
+            },
+            "position": {
+              "basis": "65px",
+              "shrink": 0
+            },
+            "props": {
+              "fit": {
+                "height": 50,
+                "mode": "contain"
+              },
+              "source": "/system/images/download.jpg",
+              "style": {
+                "height": "45px"
+              }
+            },
+            "type": "ia.display.image"
+          },
+          {
+            "events": {
+              "dom": {
+                "onClick": {
+                  "config": {
+                    "script": "\tif not self.view.custom.visible:\n\t\tdockConfig \u003d {\n\t\t   \u0027content\u0027: \u0027cover\u0027,\n\t\t   \u0027modal\u0027: True,\n\t\t   #\u0027anchor\u0027: \u0027fixed\u0027,\n\t\t   \u0027size\u0027: self.page.props.dimensions.viewport.height\n\t\t}\n\t\tsystem.perspective.alterDock(\u0027mainMenu\u0027, dockConfig)\n\t\tself.view.getChild(\"root\").props.style.overflow \u003d \u0027visible\u0027\n\t\tself.view.custom.visible \u003d True\n\t\n\telse:\n\t\tdockConfig \u003d {\n\t\t   \u0027content\u0027: \u0027push\u0027,\n\t\t   \u0027modal\u0027: False,\n\t\t   \u0027size\u0027: 44,\n\t\t}\n\t\tsystem.perspective.alterDock(\u0027mainMenu\u0027, dockConfig)\n\t\tself.view.getChild(\"root\").props.style.overflow \u003d \u0027hidden\u0027\n\t\tself.view.custom.visible \u003d False"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "Icon"
+            },
+            "position": {
+              "basis": "30px"
+            },
+            "props": {
+              "path": "material/menu",
+              "style": {
+                "cursor": "pointer",
+                "marginLeft": "auto"
+              }
+            },
+            "type": "ia.display.icon"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer"
+        },
+        "position": {
+          "basis": "44px",
+          "shrink": 0
+        },
+        "props": {
+          "alignItems": "center",
+          "style": {
+            "backgroundColor": "#FFF",
+            "overflow": "hidden"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "meta": {
+          "name": "MenuTree"
+        },
+        "position": {
+          "basis": "0px",
+          "grow": 1
+        },
+        "propConfig": {
+          "props.items": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "indirect",
+                "references": {
+                  "navigationDataTagPath": "{view.params.navigationDataTagPath}"
+                },
+                "tagPath": "{navigationDataTagPath}"
+              },
+              "transforms": [
+                {
+                  "code": "\tnavigationStructure \u003d ata.perspective.getNavigationStructure(value, userRoles \u003d self.session.props.auth.user.roles, isMobile \u003d True)\n\treturn ata.perspective.generateMenuTreeItems(navigationStructure)",
+                  "type": "script"
+                }
+              ],
+              "type": "tag"
+            }
+          }
+        },
+        "props": {
+          "backActionStyle": {
+            "backgroundColor": "#FFF"
+          },
+          "headerStyle": {
+            "backgroundColor": "#FFF"
+          },
+          "itemStyle": {
+            "backgroundColor": "#FFF",
+            "fontSize": 18,
+            "fontSmooth": "always",
+            "letterSpacing": "0%"
+          },
+          "style": {
+            "backgroundColor": "#FFFFFF"
+          }
+        },
+        "type": "ia.navigation.menutree"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "classes": "ATA/Background/RootDock",
+        "overflow": "visible",
+        "paddingBottom": 0,
+        "paddingLeft": 5,
+        "paddingRight": 5,
+        "paddingTop": 0
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

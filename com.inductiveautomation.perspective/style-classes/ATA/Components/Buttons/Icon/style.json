@@ -1,0 +1,22 @@
+{
+  "base": {
+    "style": {
+      "backgroundColor": "#FFFFFF00",
+      "borderColor": "#FFFFFF00",
+      "borderStyle": "none",
+      "borderWidth": "0px",
+      "color": "var(--text)",
+      "fontSize": "11px",
+      "fontWeight": "lighter"
+    }
+  },
+  "variants": [
+    {
+      "pseudo": "hover",
+      "style": {
+        "borderStyle": "none",
+        "fontWeight": "normal"
+      }
+    }
+  ]
+}

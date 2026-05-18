@@ -1,0 +1,818 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "width": 1133
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "Saw"
+                        },
+                        "position": {
+                          "basis": "350px",
+                          "grow": 1
+                        },
+                        "props": {
+                          "path": "ControlRoom/Assets/CuttingUnit/Overview/Templates/Saw",
+                          "style": {
+                            "paddingBottom": 50
+                          }
+                        },
+                        "type": "ia.display.view"
+                      },
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "meta": {
+                                  "name": "FlexRepeater"
+                                },
+                                "position": {
+                                  "grow": 1
+                                },
+                                "props": {
+                                  "instances": [
+                                    {
+                                      "Actual": 50,
+                                      "High": 70,
+                                      "HighHigh": 80,
+                                      "Low": 37,
+                                      "LowLow": 20,
+                                      "ParamName": "Temperatuur mes",
+                                      "Setpoint": 45,
+                                      "instancePosition": {},
+                                      "instanceStyle": {
+                                        "classes": ""
+                                      }
+                                    },
+                                    {
+                                      "Actual": 50,
+                                      "High": 70,
+                                      "HighHigh": 80,
+                                      "Low": 37,
+                                      "LowLow": 20,
+                                      "ParamName": "Drukkracht klemming",
+                                      "Setpoint": 45,
+                                      "instancePosition": {},
+                                      "instanceStyle": {
+                                        "classes": ""
+                                      }
+                                    },
+                                    {
+                                      "Actual": 50,
+                                      "High": 70,
+                                      "HighHigh": 80,
+                                      "Low": 37,
+                                      "LowLow": 20,
+                                      "ParamName": "Lengte",
+                                      "Setpoint": 45,
+                                      "instancePosition": {},
+                                      "instanceStyle": {
+                                        "classes": ""
+                                      }
+                                    },
+                                    {
+                                      "Actual": 50,
+                                      "High": 70,
+                                      "HighHigh": 80,
+                                      "Low": 37,
+                                      "LowLow": 20,
+                                      "ParamName": "Correctie",
+                                      "Setpoint": 45,
+                                      "instancePosition": {},
+                                      "instanceStyle": {
+                                        "classes": ""
+                                      }
+                                    },
+                                    {
+                                      "Actual": 50,
+                                      "High": 70,
+                                      "HighHigh": 80,
+                                      "Low": 37,
+                                      "LowLow": 20,
+                                      "ParamName": "Lijnsnelheid",
+                                      "Setpoint": 45,
+                                      "instancePosition": {},
+                                      "instanceStyle": {
+                                        "classes": ""
+                                      }
+                                    }
+                                  ],
+                                  "justify": "center",
+                                  "path": "Library/SharedTemplates/ParameterData",
+                                  "style": {
+                                    "classes": "ATA/Background/CardSecondary"
+                                  },
+                                  "useDefaultViewHeight": false,
+                                  "useDefaultViewWidth": false
+                                },
+                                "type": "ia.display.flex-repeater"
+                              }
+                            ],
+                            "meta": {
+                              "name": "Parameters"
+                            },
+                            "position": {
+                              "basis": "75%"
+                            },
+                            "type": "ia.container.flex"
+                          },
+                          {
+                            "children": [
+                              {
+                                "meta": {
+                                  "name": "EmbeddedView"
+                                },
+                                "position": {
+                                  "basis": "25%"
+                                },
+                                "props": {
+                                  "params": {
+                                    "checkBoxLeft": true,
+                                    "checkIcon": "bootstrap-icons/check-square-fill",
+                                    "enabled": false,
+                                    "key": "Eindsensor bediend",
+                                    "textPosition": "start",
+                                    "uncheckColor": "",
+                                    "uncheckIcon": "bootstrap-icons/square",
+                                    "value": false
+                                  },
+                                  "path": "Library/SharedTemplates/Input/Checkbox",
+                                  "style": {
+                                    "overflow": "hidden"
+                                  },
+                                  "useDefaultViewHeight": true
+                                },
+                                "type": "ia.display.view"
+                              },
+                              {
+                                "meta": {
+                                  "name": "EmbeddedView_1"
+                                },
+                                "position": {
+                                  "basis": "25%"
+                                },
+                                "props": {
+                                  "params": {
+                                    "checkBoxLeft": true,
+                                    "checkIcon": "bootstrap-icons/check-square-fill",
+                                    "enabled": false,
+                                    "key": "Mes gesneden",
+                                    "textPosition": "start",
+                                    "uncheckColor": "",
+                                    "uncheckIcon": "bootstrap-icons/square",
+                                    "value": false
+                                  },
+                                  "path": "Library/SharedTemplates/Input/Checkbox",
+                                  "style": {
+                                    "overflow": "hidden"
+                                  },
+                                  "useDefaultViewHeight": true
+                                },
+                                "type": "ia.display.view"
+                              },
+                              {
+                                "meta": {
+                                  "name": "EmbeddedView_2"
+                                },
+                                "position": {
+                                  "basis": "25%"
+                                },
+                                "props": {
+                                  "params": {
+                                    "checkBoxLeft": true,
+                                    "checkIcon": "bootstrap-icons/check-square-fill",
+                                    "enabled": false,
+                                    "key": "Afkortunit aan/uit",
+                                    "textPosition": "start",
+                                    "uncheckColor": "",
+                                    "uncheckIcon": "bootstrap-icons/square",
+                                    "value": false
+                                  },
+                                  "path": "Library/SharedTemplates/Input/Toggelswitch",
+                                  "style": {
+                                    "overflow": "hidden"
+                                  },
+                                  "useDefaultViewHeight": true
+                                },
+                                "type": "ia.display.view"
+                              },
+                              {
+                                "meta": {
+                                  "name": "EmbeddedView_3"
+                                },
+                                "position": {
+                                  "basis": "25%"
+                                },
+                                "props": {
+                                  "params": {
+                                    "checkBoxLeft": true,
+                                    "checkIcon": "bootstrap-icons/check-square-fill",
+                                    "enabled": false,
+                                    "key": "Mes verwarming aan/uit",
+                                    "textPosition": "start",
+                                    "uncheckColor": "",
+                                    "uncheckIcon": "bootstrap-icons/square",
+                                    "value": false
+                                  },
+                                  "path": "Library/SharedTemplates/Input/Toggelswitch",
+                                  "style": {
+                                    "overflow": "hidden"
+                                  },
+                                  "useDefaultViewHeight": true
+                                },
+                                "type": "ia.display.view"
+                              }
+                            ],
+                            "meta": {
+                              "name": "GeneralInfo"
+                            },
+                            "position": {
+                              "basis": "25%",
+                              "grow": 1
+                            },
+                            "props": {
+                              "direction": "column"
+                            },
+                            "type": "ia.container.flex"
+                          }
+                        ],
+                        "meta": {
+                          "name": "ParameterData"
+                        },
+                        "position": {
+                          "basis": "200px",
+                          "shrink": 0
+                        },
+                        "type": "ia.container.flex"
+                      }
+                    ],
+                    "meta": {
+                      "name": "CuttingUnit"
+                    },
+                    "props": {
+                      "direction": "column"
+                    },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "PowerChart"
+                        },
+                        "props": {
+                          "config": {
+                            "measureOfTime": "minutes",
+                            "rangeEndDate": {
+                              "$": [
+                                "ts",
+                                0,
+                                1763041301533
+                              ],
+                              "$ts": 1763041295507
+                            },
+                            "rangeStartDate": {
+                              "$": [
+                                "ts",
+                                0,
+                                1763041301533
+                              ],
+                              "$ts": 1763039501507
+                            },
+                            "tagBrowserStartPath": "histprov:NLSTWDYK_DB_HIST:/drv:nlstwapp11ot:default:/tag:Extrusie/Line7/Extruder",
+                            "unitOfTime": 30,
+                            "visibility": {
+                              "showTagBrowser": true
+                            }
+                          },
+                          "interaction": {
+                            "chartZoomLevel": 1,
+                            "rangeZoomLevel": 1
+                          },
+                          "pens": [
+                            {
+                              "axis": "",
+                              "data": {
+                                "aggregateMode": "default",
+                                "source": "histprov:NLSTWDYK_DB_HIST:/drv:nlstwapp11ot:default:/tag:Extrusie/Line7/Extruder/massadruk/actual value"
+                              },
+                              "display": {
+                                "breakLine": true,
+                                "interpolation": "curveLinear",
+                                "radius": 3,
+                                "styles": {
+                                  "highlighted": {
+                                    "fill": {
+                                      "color": "#63BEA2",
+                                      "opacity": 1
+                                    },
+                                    "stroke": {
+                                      "color": "#63BEA2",
+                                      "dashArray": 0,
+                                      "opacity": 1,
+                                      "width": 1
+                                    }
+                                  },
+                                  "muted": {
+                                    "fill": {
+                                      "color": "#63BEA2",
+                                      "opacity": 0.4
+                                    },
+                                    "stroke": {
+                                      "color": "#63BEA2",
+                                      "dashArray": 0,
+                                      "opacity": 0.4,
+                                      "width": 1
+                                    }
+                                  },
+                                  "normal": {
+                                    "fill": {
+                                      "color": "#63BEA2",
+                                      "opacity": 0.8
+                                    },
+                                    "stroke": {
+                                      "color": "#63BEA2",
+                                      "dashArray": 0,
+                                      "opacity": 0.8,
+                                      "width": 1
+                                    }
+                                  },
+                                  "selected": {
+                                    "fill": {
+                                      "color": "#63BEA2",
+                                      "opacity": 1
+                                    },
+                                    "stroke": {
+                                      "color": "#63BEA2",
+                                      "dashArray": 0,
+                                      "opacity": 1,
+                                      "width": 1
+                                    }
+                                  }
+                                },
+                                "type": "line"
+                              },
+                              "enabled": true,
+                              "name": "actual value",
+                              "plot": 0,
+                              "selectable": true,
+                              "visible": true
+                            },
+                            {
+                              "axis": "",
+                              "data": {
+                                "aggregateMode": "default",
+                                "source": "histprov:NLSTWDYK_DB_HIST:/drv:nlstwapp11ot:default:/tag:Extrusie/Line7/Extruder/massadruk/high high alarm"
+                              },
+                              "display": {
+                                "breakLine": true,
+                                "interpolation": "curveLinear",
+                                "radius": 3,
+                                "styles": {
+                                  "highlighted": {
+                                    "fill": {
+                                      "color": "#FC8D62",
+                                      "opacity": 1
+                                    },
+                                    "stroke": {
+                                      "color": "#FC8D62",
+                                      "dashArray": 0,
+                                      "opacity": 1,
+                                      "width": 1
+                                    }
+                                  },
+                                  "muted": {
+                                    "fill": {
+                                      "color": "#FC8D62",
+                                      "opacity": 0.4
+                                    },
+                                    "stroke": {
+                                      "color": "#FC8D62",
+                                      "dashArray": 0,
+                                      "opacity": 0.4,
+                                      "width": 1
+                                    }
+                                  },
+                                  "normal": {
+                                    "fill": {
+                                      "color": "#FC8D62",
+                                      "opacity": 0.8
+                                    },
+                                    "stroke": {
+                                      "color": "#FC8D62",
+                                      "dashArray": 0,
+                                      "opacity": 0.8,
+                                      "width": 1
+                                    }
+                                  },
+                                  "selected": {
+                                    "fill": {
+                                      "color": "#FC8D62",
+                                      "opacity": 1
+                                    },
+                                    "stroke": {
+                                      "color": "#FC8D62",
+                                      "dashArray": 0,
+                                      "opacity": 1,
+                                      "width": 1
+                                    }
+                                  }
+                                },
+                                "type": "line"
+                              },
+                              "enabled": true,
+                              "name": "high high alarm",
+                              "plot": 0,
+                              "selectable": true,
+                              "visible": true
+                            },
+                            {
+                              "axis": "",
+                              "data": {
+                                "aggregateMode": "default",
+                                "source": "histprov:NLSTWDYK_DB_HIST:/drv:nlstwapp11ot:default:/tag:Extrusie/Line7/Extruder/massadruk/high warning"
+                              },
+                              "display": {
+                                "breakLine": true,
+                                "interpolation": "curveLinear",
+                                "radius": 3,
+                                "styles": {
+                                  "highlighted": {
+                                    "fill": {
+                                      "color": "#8DA0CB",
+                                      "opacity": 1
+                                    },
+                                    "stroke": {
+                                      "color": "#8DA0CB",
+                                      "dashArray": 0,
+                                      "opacity": 1,
+                                      "width": 1
+                                    }
+                                  },
+                                  "muted": {
+                                    "fill": {
+                                      "color": "#8DA0CB",
+                                      "opacity": 0.4
+                                    },
+                                    "stroke": {
+                                      "color": "#8DA0CB",
+                                      "dashArray": 0,
+                                      "opacity": 0.4,
+                                      "width": 1
+                                    }
+                                  },
+                                  "normal": {
+                                    "fill": {
+                                      "color": "#8DA0CB",
+                                      "opacity": 0.8
+                                    },
+                                    "stroke": {
+                                      "color": "#8DA0CB",
+                                      "dashArray": 0,
+                                      "opacity": 0.8,
+                                      "width": 1
+                                    }
+                                  },
+                                  "selected": {
+                                    "fill": {
+                                      "color": "#8DA0CB",
+                                      "opacity": 1
+                                    },
+                                    "stroke": {
+                                      "color": "#8DA0CB",
+                                      "dashArray": 0,
+                                      "opacity": 1,
+                                      "width": 1
+                                    }
+                                  }
+                                },
+                                "type": "line"
+                              },
+                              "enabled": true,
+                              "name": "high warning",
+                              "plot": 0,
+                              "selectable": true,
+                              "visible": true
+                            },
+                            {
+                              "axis": "",
+                              "data": {
+                                "aggregateMode": "default",
+                                "source": "histprov:NLSTWDYK_DB_HIST:/drv:nlstwapp11ot:default:/tag:Extrusie/Line7/Extruder/massadruk/low low alarm"
+                              },
+                              "display": {
+                                "breakLine": true,
+                                "interpolation": "curveLinear",
+                                "radius": 3,
+                                "styles": {
+                                  "highlighted": {
+                                    "fill": {
+                                      "color": "#E78AC3",
+                                      "opacity": 1
+                                    },
+                                    "stroke": {
+                                      "color": "#E78AC3",
+                                      "dashArray": 0,
+                                      "opacity": 1,
+                                      "width": 1
+                                    }
+                                  },
+                                  "muted": {
+                                    "fill": {
+                                      "color": "#E78AC3",
+                                      "opacity": 0.4
+                                    },
+                                    "stroke": {
+                                      "color": "#E78AC3",
+                                      "dashArray": 0,
+                                      "opacity": 0.4,
+                                      "width": 1
+                                    }
+                                  },
+                                  "normal": {
+                                    "fill": {
+                                      "color": "#E78AC3",
+                                      "opacity": 0.8
+                                    },
+                                    "stroke": {
+                                      "color": "#E78AC3",
+                                      "dashArray": 0,
+                                      "opacity": 0.8,
+                                      "width": 1
+                                    }
+                                  },
+                                  "selected": {
+                                    "fill": {
+                                      "color": "#E78AC3",
+                                      "opacity": 1
+                                    },
+                                    "stroke": {
+                                      "color": "#E78AC3",
+                                      "dashArray": 0,
+                                      "opacity": 1,
+                                      "width": 1
+                                    }
+                                  }
+                                },
+                                "type": "line"
+                              },
+                              "enabled": true,
+                              "name": "low low alarm",
+                              "plot": 0,
+                              "selectable": true,
+                              "visible": true
+                            },
+                            {
+                              "axis": "",
+                              "data": {
+                                "aggregateMode": "default",
+                                "source": "histprov:NLSTWDYK_DB_HIST:/drv:nlstwapp11ot:default:/tag:Extrusie/Line7/Extruder/massadruk/low warning"
+                              },
+                              "display": {
+                                "breakLine": true,
+                                "interpolation": "curveLinear",
+                                "radius": 3,
+                                "styles": {
+                                  "highlighted": {
+                                    "fill": {
+                                      "color": "#A6D854",
+                                      "opacity": 1
+                                    },
+                                    "stroke": {
+                                      "color": "#A6D854",
+                                      "dashArray": 0,
+                                      "opacity": 1,
+                                      "width": 1
+                                    }
+                                  },
+                                  "muted": {
+                                    "fill": {
+                                      "color": "#A6D854",
+                                      "opacity": 0.4
+                                    },
+                                    "stroke": {
+                                      "color": "#A6D854",
+                                      "dashArray": 0,
+                                      "opacity": 0.4,
+                                      "width": 1
+                                    }
+                                  },
+                                  "normal": {
+                                    "fill": {
+                                      "color": "#A6D854",
+                                      "opacity": 0.8
+                                    },
+                                    "stroke": {
+                                      "color": "#A6D854",
+                                      "dashArray": 0,
+                                      "opacity": 0.8,
+                                      "width": 1
+                                    }
+                                  },
+                                  "selected": {
+                                    "fill": {
+                                      "color": "#A6D854",
+                                      "opacity": 1
+                                    },
+                                    "stroke": {
+                                      "color": "#A6D854",
+                                      "dashArray": 0,
+                                      "opacity": 1,
+                                      "width": 1
+                                    }
+                                  }
+                                },
+                                "type": "line"
+                              },
+                              "enabled": true,
+                              "name": "low warning",
+                              "plot": 0,
+                              "selectable": true,
+                              "visible": true
+                            },
+                            {
+                              "axis": "",
+                              "data": {
+                                "aggregateMode": "default",
+                                "source": "histprov:NLSTWDYK_DB_HIST:/drv:nlstwapp11ot:default:/tag:Extrusie/Line7/Extruder/massadruk/setpoint"
+                              },
+                              "display": {
+                                "breakLine": true,
+                                "interpolation": "curveLinear",
+                                "radius": 3,
+                                "styles": {
+                                  "highlighted": {
+                                    "fill": {
+                                      "color": "#FFD930",
+                                      "opacity": 1
+                                    },
+                                    "stroke": {
+                                      "color": "#FFD930",
+                                      "dashArray": 0,
+                                      "opacity": 1,
+                                      "width": 1
+                                    }
+                                  },
+                                  "muted": {
+                                    "fill": {
+                                      "color": "#FFD930",
+                                      "opacity": 0.4
+                                    },
+                                    "stroke": {
+                                      "color": "#FFD930",
+                                      "dashArray": 0,
+                                      "opacity": 0.4,
+                                      "width": 1
+                                    }
+                                  },
+                                  "normal": {
+                                    "fill": {
+                                      "color": "#FFD930",
+                                      "opacity": 0.8
+                                    },
+                                    "stroke": {
+                                      "color": "#FFD930",
+                                      "dashArray": 0,
+                                      "opacity": 0.8,
+                                      "width": 1
+                                    }
+                                  },
+                                  "selected": {
+                                    "fill": {
+                                      "color": "#FFD930",
+                                      "opacity": 1
+                                    },
+                                    "stroke": {
+                                      "color": "#FFD930",
+                                      "dashArray": 0,
+                                      "opacity": 1,
+                                      "width": 1
+                                    }
+                                  }
+                                },
+                                "type": "line"
+                              },
+                              "enabled": true,
+                              "name": "setpoint",
+                              "plot": 0,
+                              "selectable": true,
+                              "visible": true
+                            }
+                          ]
+                        },
+                        "type": "ia.chart.powerchart"
+                      }
+                    ],
+                    "meta": {
+                      "name": "Trending"
+                    },
+                    "position": {
+                      "tabIndex": 1
+                    },
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "meta": {
+                  "name": "TabContainer"
+                },
+                "position": {
+                  "basis": "300px",
+                  "grow": 1
+                },
+                "propConfig": {
+                  "props.currentTabIndex": {
+                    "binding": {
+                      "config": {
+                        "expression": "0"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "contentStyle": {
+                    "backgroundColor": "--backgroundSecondary"
+                  },
+                  "menuStyle": {
+                    "backgroundColor": ""
+                  },
+                  "menuType": "modern",
+                  "style": {
+                    "classes": "ATA/Background/CardSecondary"
+                  },
+                  "tabs": [
+                    "Afkortunit",
+                    "Trending"
+                  ]
+                },
+                "type": "ia.container.tab"
+              }
+            ],
+            "meta": {
+              "name": "FlexContainer_1"
+            },
+            "position": {
+              "basis": "200px",
+              "grow": 1
+            },
+            "props": {
+              "direction": "column"
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "Content"
+        },
+        "position": {
+          "grow": 1
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "classes": "ATA/Background/Root"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "meta": {
+          "name": "AlarmBar"
+        },
+        "position": {
+          "basis": "65px",
+          "shrink": 0
+        },
+        "props": {
+          "params": {
+            "filter": "",
+            "popupMarginRight": 1
+          },
+          "path": "Library/SharedDocked/Alarms/AlarmBar"
+        },
+        "type": "ia.display.view"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

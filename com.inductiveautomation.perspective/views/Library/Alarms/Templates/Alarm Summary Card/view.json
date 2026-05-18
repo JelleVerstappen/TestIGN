@@ -1,0 +1,544 @@
+{
+  "custom": {},
+  "params": {
+    "Priority": "Priority",
+    "acknowledgeTime": 0,
+    "active": 0,
+    "clearTime": 0,
+    "cleared": 0,
+    "total": 0,
+    "totalTime": 0,
+    "unacknowledged": "0"
+  },
+  "propConfig": {
+    "params.Priority": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.ack": {
+      "paramDirection": "input"
+    },
+    "params.acknowledgeTime": {
+      "paramDirection": "input"
+    },
+    "params.active": {
+      "paramDirection": "input"
+    },
+    "params.activeTimestamp": {
+      "paramDirection": "input"
+    },
+    "params.clearTime": {
+      "paramDirection": "input"
+    },
+    "params.cleared": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.daytank": {
+      "paramDirection": "input"
+    },
+    "params.humidity": {
+      "paramDirection": "input"
+    },
+    "params.id": {
+      "paramDirection": "input"
+    },
+    "params.priorityOrdinal": {
+      "paramDirection": "input"
+    },
+    "params.state": {
+      "paramDirection": "input"
+    },
+    "params.t_stamp": {
+      "paramDirection": "input"
+    },
+    "params.tank1": {
+      "paramDirection": "input"
+    },
+    "params.tank2": {
+      "paramDirection": "input"
+    },
+    "params.temp": {
+      "paramDirection": "input"
+    },
+    "params.total": {
+      "paramDirection": "input"
+    },
+    "params.totalTime": {
+      "paramDirection": "input"
+    },
+    "params.unacknowledged": {
+      "paramDirection": "input"
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 261,
+      "width": 372
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "hasDelegate": true,
+          "name": "Label"
+        },
+        "position": {
+          "basis": "20px",
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "view.params.Priority"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "classes": "Library/AlarmAnalysis/Card/Title"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "hasDelegate": true,
+              "name": "Label"
+            },
+            "position": {
+              "basis": "125px",
+              "shrink": 0
+            },
+            "props": {
+              "style": {
+                "classes": "Library/AlarmAnalysis/Card/Label"
+              },
+              "text": "Total Alarms"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "hasDelegate": true,
+              "name": "Value"
+            },
+            "position": {
+              "grow": 1
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.total"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "Library/AlarmAnalysis/Card/Bold_Text"
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "TotalAlarms"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "Library/AlarmAnalysis/Card/Item Library/AlarmAnalysis/Card/Item_Border"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "hasDelegate": true,
+              "name": "Label"
+            },
+            "position": {
+              "basis": "125px",
+              "shrink": 0
+            },
+            "props": {
+              "style": {
+                "classes": "Library/AlarmAnalysis/Card/Label"
+              },
+              "text": "Total Alarms Active"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "hasDelegate": true,
+              "name": "Value"
+            },
+            "position": {
+              "grow": 1,
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.active"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "Library/AlarmAnalysis/Card/Bold_Text"
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "ActiveAlarms"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "Library/AlarmAnalysis/Card/Item Library/AlarmAnalysis/Card/Item_Border"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "hasDelegate": true,
+              "name": "Label"
+            },
+            "position": {
+              "basis": "125px",
+              "shrink": 0
+            },
+            "props": {
+              "style": {
+                "classes": "Library/AlarmAnalysis/Card/Label"
+              },
+              "text": "Total Unacknowledged"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "hasDelegate": true,
+              "name": "Value"
+            },
+            "position": {
+              "grow": 1,
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.unacknowledged"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "Library/AlarmAnalysis/Card/Bold_Text"
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "UnackAlarms"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "Library/AlarmAnalysis/Card/Item Library/AlarmAnalysis/Card/Item_Border"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "hasDelegate": true,
+              "name": "Label"
+            },
+            "position": {
+              "basis": "125px",
+              "shrink": 0
+            },
+            "props": {
+              "style": {
+                "classes": "Library/AlarmAnalysis/Card/Label"
+              },
+              "text": "Total Alarms Cleared"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "hasDelegate": true,
+              "name": "Value"
+            },
+            "position": {
+              "grow": 1,
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.cleared"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "Library/AlarmAnalysis/Card/Bold_Text"
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "ClearedAlarms"
+        },
+        "props": {
+          "style": {
+            "classes": "Library/AlarmAnalysis/Card/Item Library/AlarmAnalysis/Card/Item_Border"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "hasDelegate": true,
+              "name": "Label"
+            },
+            "position": {
+              "basis": "125px",
+              "shrink": 0
+            },
+            "props": {
+              "style": {
+                "classes": "Library/AlarmAnalysis/Card/Label"
+              },
+              "text": "Total Duration"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "hasDelegate": true,
+              "name": "Value"
+            },
+            "position": {
+              "grow": 1,
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "expression": "numberFormat(floor({view.params.totalTime} / 3600), \"00\") + \":\" +\r\nnumberFormat(floor(({view.params.totalTime} % 3600) / 60), \"00\") + \":\" + \r\nnumberFormat((({view.params.totalTime} % 3600) % 60), \"00\")"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\treturn value if value else \"00:00:00\"",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "Library/AlarmAnalysis/Card/Bold_Text"
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "TotalDuration"
+        },
+        "props": {
+          "style": {
+            "classes": "Library/AlarmAnalysis/Card/Item Library/AlarmAnalysis/Card/Item_Border"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "hasDelegate": true,
+              "name": "Label"
+            },
+            "position": {
+              "basis": "125px",
+              "shrink": 0
+            },
+            "props": {
+              "style": {
+                "classes": "Library/AlarmAnalysis/Card/Label"
+              },
+              "text": "Avg Time to Ack"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "hasDelegate": true,
+              "name": "Value"
+            },
+            "position": {
+              "grow": 1,
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "expression": "numberFormat(floor({view.params.acknowledgeTime} / 3600), \"00\") + \":\" +\r\nnumberFormat(floor(({view.params.acknowledgeTime} % 3600) / 60), \"00\") + \":\" + \r\nnumberFormat((({view.params.acknowledgeTime} % 3600) % 60), \"00\")"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\treturn value if value else \"00:00:00\"",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "Library/AlarmAnalysis/Card/Bold_Text"
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "AvgTimeToAck"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "Library/AlarmAnalysis/Card/Item Library/AlarmAnalysis/Card/Item_Border"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "hasDelegate": true,
+              "name": "Label"
+            },
+            "position": {
+              "basis": "125px",
+              "shrink": 0
+            },
+            "props": {
+              "style": {
+                "classes": "Library/AlarmAnalysis/Card/Label"
+              },
+              "text": "Avg Time to Clear"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "hasDelegate": true,
+              "name": "Value"
+            },
+            "position": {
+              "grow": 1,
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "expression": "numberFormat(floor({view.params.clearTime} / 3600), \"00\") + \":\" +\r\nnumberFormat(floor(({view.params.clearTime} % 3600) / 60), \"00\") + \":\" + \r\nnumberFormat((({view.params.clearTime} % 3600) % 60), \"00\")"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\treturn value if value else \"00:00:00\"",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "Library/AlarmAnalysis/Card/Bold_Text"
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "AvgTimeToClear"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "Library/AlarmAnalysis/Card/Item Library/AlarmAnalysis/Card/Item_Border"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "classes": "Library/AlarmAnalysis/Card/Card"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

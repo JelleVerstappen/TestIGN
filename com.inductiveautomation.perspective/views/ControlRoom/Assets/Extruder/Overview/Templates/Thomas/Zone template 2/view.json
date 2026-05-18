@@ -1,0 +1,93 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "height": 104,
+      "width": 103
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Output_Template"
+        },
+        "position": {
+          "height": "50%",
+          "width": "100%",
+          "x": "-10%",
+          "y": "0%"
+        },
+        "props": {
+          "path": "ControlRoom/Assets/Extruder/Overview/Templates/Thomas/View",
+          "style": {
+            "overflow": "hidden"
+          }
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Output_Template_0"
+        },
+        "position": {
+          "height": "50%",
+          "width": "100%",
+          "x": "-10%",
+          "y": "50%"
+        },
+        "props": {
+          "path": "ControlRoom/Assets/Extruder/Overview/Templates/Thomas/View"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "MovingAnalogIndicator"
+        },
+        "position": {
+          "height": "100%",
+          "width": "35%",
+          "x": "75%"
+        },
+        "props": {
+          "defaultRangeColor": "#D5EFD5",
+          "desiredHigh": 65,
+          "desiredLow": 40,
+          "highAlarm": 185,
+          "highHighAlarm": 195,
+          "highInterlock": null,
+          "indicatorColor": "#797CBE",
+          "level1AlarmColor": "#DD2222",
+          "level2AlarmColor": "#F8CE2E",
+          "lowAlarm": 165,
+          "lowInterlock": null,
+          "lowLowAlarm": 155,
+          "maxValue": 200,
+          "minValue": 150,
+          "processValue": 175,
+          "sectionOutline": {
+            "width": 1
+          },
+          "setpointColor": "#537FDD",
+          "setpointValue": 180,
+          "style": {
+            "overflow": "hidden"
+          }
+        },
+        "type": "ia.display.moving-analog-indicator"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "style": {
+        "classes": "ATA/Background/CardSecondary",
+        "overflow": "hidden"
+      }
+    },
+    "type": "ia.container.coord"
+  }
+}

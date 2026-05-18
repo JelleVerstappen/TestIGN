@@ -1,0 +1,151 @@
+{
+  "custom": {},
+  "params": {
+    "config": [],
+    "data": [],
+    "filterEnabled": false,
+    "header": true,
+    "pager": true,
+    "rowsPerPage": 10
+  },
+  "propConfig": {
+    "params.config": {
+      "paramDirection": "input"
+    },
+    "params.data": {
+      "paramDirection": "input"
+    },
+    "params.filterEnabled": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.header": {
+      "paramDirection": "input"
+    },
+    "params.page": {
+      "paramDirection": "input"
+    },
+    "params.pager": {
+      "paramDirection": "input"
+    },
+    "params.r": {
+      "paramDirection": "input"
+    },
+    "params.rows": {
+      "paramDirection": "input"
+    },
+    "params.rowsPe": {
+      "paramDirection": "input"
+    },
+    "params.rowsPer": {
+      "paramDirection": "input"
+    },
+    "params.rowsPerP": {
+      "paramDirection": "input"
+    },
+    "params.rowsPerPag": {
+      "paramDirection": "input"
+    },
+    "params.rowsPerPage": {
+      "paramDirection": "input"
+    },
+    "params.rowsPerp": {
+      "paramDirection": "input"
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "width": 1657
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Table"
+        },
+        "position": {
+          "basis": "300px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.columns": {
+            "binding": {
+              "config": {
+                "path": "view.params.config"
+              },
+              "transforms": [
+                {
+                  "code": "\tretObj \u003d []\n\ttry:\n\t\tfor i in range(len(value)):\n\t\t\trowDict \u003d {\n\t\t\t\t\"field\": value[i][\"column\"],\n\t\t\t\t\"render\": \"view\" if len(value[i][\"viewPath\"]) else (value[i][\u0027render\u0027] if \u0027render\u0027 in value[i] else \"auto\"),\n\t\t\t\t\"align\": \"auto\" if len(value[i][\"viewPath\"]) else value[i][\"align\"],\n\t\t\t\t\"resizable\": True,\n\t\t\t\t\"sortable\": True,\n\t\t\t\t\"viewPath\": value[i][\"viewPath\"],\n\t\t\t\t\"numberFormat\": \"0,0.##\",\n\t\t\t\t\"dateFormat\": \"MM/DD/YYYY\",\n\t\t\t\t#\"width\": value[i][\"width\"],\n\t\t\t\t\"style\": {\n\t\t\t\t\t\"classes\": \"\"\n\t\t\t\t},\n\t\t\t\t\"header\": {\n\t\t\t\t\t\"title\": value[i][\"title\"],\n\t\t\t\t\t\"align\": value[i][\"align\"],\n\t\t\t\t\t\"style\": {\n\t\t\t\t\t\t\"classes\": \"\"\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\ttry:\n\t\t\t\trowDict[\"width\"] \u003d value[i][\"width\"];\n\t\t\texcept:\n\t\t\t\tpass\n\t\t\t\t\n\t\t\tretObj.append(rowDict)\n\texcept:\n\t\tpass\n\treturn retObj",
+                  "type": "script"
+                }
+              ],
+              "type": "property"
+            }
+          },
+          "props.data": {
+            "binding": {
+              "config": {
+                "path": "view.params.data"
+              },
+              "transforms": [
+                {
+                  "code": "\tif len(value) \u003e 0:\n\t\treturn value\n\ttry:\n\t\temptyRow \u003d {}\n\t\tfor i in range(len(self.view.params.config)):\n\t\t\temptyRow[self.view.params.config[i][\u0027title\u0027]] \u003d \u0027\u0027 \n\t\treturn [emptyRow]\n\texcept:\n\t\treturn [{\"Table\":\"\"}]",
+                  "type": "script"
+                }
+              ],
+              "type": "property"
+            }
+          },
+          "props.filter.enabled": {
+            "binding": {
+              "config": {
+                "path": "view.params.filterEnabled"
+              },
+              "type": "property"
+            }
+          },
+          "props.pager.bottom": {
+            "binding": {
+              "config": {
+                "path": "view.params.pager"
+              },
+              "type": "property"
+            }
+          },
+          "props.pager.initialOption": {
+            "binding": {
+              "config": {
+                "path": "view.params.rowsPerPage"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "filter": {},
+          "minRowHeight": 40,
+          "pager": {},
+          "selection": {
+            "enableRowSelection": false,
+            "selectedColumn": "priority",
+            "selectedRow": 3
+          },
+          "style": {
+            "maxWidth": "100vw",
+            "width": "100%"
+          }
+        },
+        "type": "ia.display.table"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

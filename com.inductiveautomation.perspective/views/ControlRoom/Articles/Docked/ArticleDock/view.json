@@ -1,0 +1,444 @@
+{
+  "custom": {},
+  "params": {
+    "data": {
+      "ArticleDescription": null,
+      "ArticleID": null,
+      "ArticleNumber": null,
+      "LineID": null,
+      "NodeID": null,
+      "TubeGroup": "value"
+    },
+    "edit": 0
+  },
+  "propConfig": {
+    "params.data": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.edit": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "width": 600
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Header"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "params": {
+            "closeDockID": "ArticleDock",
+            "closeIcon": true,
+            "title": "Artikel toevoegen"
+          },
+          "path": "Library/SharedTemplates/HeaderForDock",
+          "style": {
+            "textTransform": "capitalize"
+          },
+          "useDefaultViewHeight": true
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "ArticleNumber"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.params.value": {
+                "binding": {
+                  "config": {
+                    "expression": "if(isnull({view.params.data.ArticleNumber}), \u0027\u0027, {view.params.data.ArticleNumber})"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "enabled": true,
+                "key": "Artikel nummer",
+                "margingRight": 45,
+                "placeholder": "Typ hier..."
+              },
+              "path": "Library/SharedTemplates/Input/String",
+              "useDefaultViewHeight": true
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "ArticleDescription"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.params.value": {
+                "binding": {
+                  "config": {
+                    "expression": "if(isnull({view.params.data.ArticleDescription}), \u0027\u0027, {view.params.data.ArticleDescription})"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "enabled": true,
+                "key": "Artikel beschrijving",
+                "margingRight": 45,
+                "placeholder": "Typ hier..."
+              },
+              "path": "Library/SharedTemplates/Input/String",
+              "useDefaultViewHeight": true
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "Lijn"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.params.options": {
+                "binding": {
+                  "config": {
+                    "queryPath": "getLinesDropdown"
+                  },
+                  "type": "query"
+                }
+              },
+              "props.params.value": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.data.LineID"
+                  },
+                  "type": "property"
+                },
+                "onChange": {
+                  "enabled": null,
+                  "script": "\tself.getSibling(\"Tree\").refreshBinding(\u0027props.items\u0027)"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "enabled": true,
+                "key": "Lijn",
+                "marginRight": 45,
+                "multiSelect": false,
+                "placeholder": "Selecteer lijn...",
+                "showClearIcon": true
+              },
+              "path": "Library/SharedTemplates/Input/Dropdown",
+              "useDefaultViewHeight": true
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "SawListGroup"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.params.options": {
+                "binding": {
+                  "config": {
+                    "queryPath": "getTubeGroups"
+                  },
+                  "type": "query"
+                }
+              },
+              "props.params.value": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.data.TubeGroup"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "enabled": true,
+                "key": "Zaaglijst groep",
+                "marginRight": 45,
+                "multiSelect": false,
+                "placeholder": "Selecteer groep...",
+                "showClearIcon": true
+              },
+              "path": "Library/SharedTemplates/Input/Dropdown",
+              "useDefaultViewHeight": true
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "basis": "32px"
+            },
+            "props": {
+              "style": {
+                "classes": "ATA/Components/Labels/TextNormal",
+                "marginTop": 10
+              },
+              "text": "Gelinkt niveau",
+              "textStyle": {
+                "paddingLeft": 5
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "events": {
+              "component": {
+                "onItemClicked": {
+                  "config": {
+                    "script": "\tselectionData \u003d self.props.selectionData[0].value\n\t\n\tselectionJSON \u003d {\n\t\t\t  \"NodeID\": selectionData.get(\u0027NodeID\u0027),\n\t\t\t  \"ParameterValueID\": selectionData.get(\u0027ParameterValueID\u0027),\n\t\t\t  \"HighAlarm\": selectionData.get(\u0027HighAlarm\u0027),\n\t\t\t  \"HighWarning\": selectionData.get(\u0027HighWarning\u0027),\n\t\t\t  \"ParamValue\": selectionData.get(\u0027ParamValue\u0027),\n\t\t\t  \"LowAlarm\": selectionData.get(\u0027LowAlarm\u0027),\n\t\t\t  \"LowWarning\": selectionData.get(\u0027LowWarning\u0027),\n\t\t\t  \"ParameterID\": selectionData.get(\u0027ParameterID\u0027),\n\t\t\t  \"ParamName\": selectionData.get(\u0027ParamName\u0027),\n\t\t\t  \"FolderParentID\" : selectionData.get(\u0027ParentID\u0027)\n\t\t\t}\n\t\n\tself.view.getChild(\"root\").custom.selectedTreeData \u003d selectionJSON"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "Tree"
+            },
+            "propConfig": {
+              "custom.isFolder": {
+                "binding": {
+                  "config": {
+                    "path": "this.props.selectionData"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\tif value \u003d\u003d []:\n\t\treturn None\n\telse:\n\t\tif value[0].value.get(\u0027ParameterID\u0027) is not None:\n\t\t\treturn False\n\t\treturn True",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "property"
+                }
+              },
+              "props.items": {
+                "binding": {
+                  "config": {
+                    "queryPath": "Article/ArticleManagement/GetTreeArticles",
+                    "returnFormat": "json"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\tdata \u003d value\n\timport json\n\t\t# Stap 2: Bouw een dictionary van alle nodes\n\tnodes \u003d {}\n\tlineID \u003d self.getSibling(\"Lijn\").props.params.value\n\tfor row in data:\n\t\tif lineID is not None and lineID !\u003d row[\u0027lineID\u0027]:\n\t\t\tcontinue\n\t\tnodeID \u003d row[\"RecipeElementID\"]\n\t\tparentID \u003d row[\"ParentID\"]\n\t\tparams \u003d []\n\t\tif row[\"ParametersJSON\"]:\n\t\t\t\n\t\t\tparams \u003d json.loads(row[\"ParametersJSON\"])\n\t\t\n\t\t# Elke node: basisstructuur\n\t\tnodes[nodeID] \u003d {\n\t\t\t\"expanded\": False,\n\t\t\t\"data\": {\"NodeID\": nodeID, \"ParentID\": parentID},\n\t\t\t\"label\": row[\"Description\"],\n\t\t\t\"items\": [],  # kinderen komen hier\n\t\t\t\"params\": params\n\t\t}\n\n\t# Stap 3: Bouw de boomstructuur d.m.v. parent-child relatie\n\troot_nodes \u003d []\n\tfor row in data:\n\t\tif lineID is not None and lineID !\u003d row[\u0027lineID\u0027]:\n\t\t\tcontinue\n\t\tnodeID \u003d row[\"RecipeElementID\"]\n\t\tparentID \u003d row[\"ParentID\"]\n\t\tnode \u003d nodes[nodeID]\n\t\t\n\t\tarticleNumber \u003d row[\u0027ArticleNumber\u0027] \n\t\t\n\t\tif articleNumber is not None:\n\t\t\tnode[\"items\"].append({\n\t\t\t\t\"expanded\": False,\n\t\t\t\t\"data\": {\n\t\t\t\t\t\"articleID\": row[\"ArticleID\"],\n\t\t\t\t\t\"NodeID\": nodeID,\n\t\t\t\t},\n\t\t\t\t\"label\": \u0027Artikel \u0027 + str(articleNumber),\n\t\t\t\t\"icon\": {\"path\": \"bootstrap-icons/card-list\"},\n\t\t\t\t\"items\": []\n\t\t\t})\n\t\t\n\t\t# Parameters toevoegen als child items\n\t\tfor p in node[\"params\"]:\n\t\t\tnode[\"items\"].append({\n\t\t\t\t\"expanded\": False,\n\t\t\t\t\"data\": {\n\t\t\t\t\t\"ParamValue\": p[\"Value\"],\n\t\t\t\t\t\"ParamName\": p[\"Description\"],\n\t\t\t\t\t\"HighAlarm\": p[\"HighAlarm\"],\n\t\t\t\t\t\"HighWarning\": p[\"HighWarning\"],\n\t\t\t\t\t\"LowWarning\": p[\"LowWarning\"],\n\t\t\t\t\t\"LowAlarm\": p[\"LowAlarm\"],\n\t\t\t\t\t\"NodeID\": nodeID,\n\t\t\t\t\t\"ParameterID\": p[\"ProcessParameterID\"],\n\t\t\t\t\t\"ParameterValueID\": p[\"ProcessParameterValueID\"]\n\t\t\t\t},\n\t\t\t\t\"label\": \"%s \u003d %s %s\" % (p[\"Description\"], p[\"Value\"], p[\u0027Unit\u0027]),\n\t\t\t\t\"icon\": {\"path\": \"material/stop\"},\n\t\t\t\t\"items\": []\n\t\t\t})\n\n\t\t# Verwijder tijdelijke params\n\t\tdel node[\"params\"]\n\n\t\tif parentID is None:\n\t\t\troot_nodes.append(node)\n\t\telse:\n\t\t\tnodes[parentID][\"items\"].append(node)\n\t\n\tselectionPath \u003d self.props.selection[0]\n\tselectionList \u003d selectionPath.split(\u0027/\u0027)\n\t\n\tfirstLoop \u003d True\n\tif len(selectionList) \u003e 0 and selectionPath !\u003d \u0027\u0027:\n\t\tfor selected in selectionList:\n\t\t\tif firstLoop \u003d\u003d True:\n\t\t\t\troot_nodes[int(selected)][\u0027expanded\u0027] \u003d True\n\t\t\t\tLoopedData \u003d root_nodes[int(selected)][\u0027items\u0027]\n\t\t\t\n\t\t\telse:\n\t\t\t\ttry:\n\t\t\t\t\tLoopedData \u003d LoopedData[int(selected)]\n\t\t\t\texcept:\n\t\t\t\t\ttry:\n\t\t\t\t\t\tLoopedData \u003d LoopedData[0]\n\t\t\t\t\texcept:\n\t\t\t\t\t\tcontinue\n\t\t\t\tLoopedData[\u0027expanded\u0027] \u003d True\n\t\t\t\tLoopedData \u003d LoopedData[\u0027items\u0027]\n\t\t\t\t\n\t\t\tfirstLoop \u003d False\n\t\n\t# Stap 4: Return de boom \n\treturn root_nodes",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "query"
+                }
+              }
+            },
+            "props": {
+              "appearance": {
+                "defaultNodeIcons": {
+                  "collapsed": {
+                    "path": "material/folder"
+                  },
+                  "empty": {
+                    "path": "material/create_new_folder"
+                  },
+                  "expanded": {
+                    "path": "material/folder_open"
+                  }
+                },
+                "expandIcons": {
+                  "collapsed": {
+                    "path": "material/arrow_right"
+                  },
+                  "expanded": {
+                    "path": "material/arrow_drop_down"
+                  }
+                }
+              },
+              "selection": [
+                "0"
+              ],
+              "selectionData": [
+                {
+                  "itemPath": "0",
+                  "value": {
+                    "NodeID": 1,
+                    "ParentID": null
+                  }
+                }
+              ],
+              "style": {
+                "classes": "ATA/Background/CardSecondary",
+                "marginTop": 0
+              }
+            },
+            "type": "ia.display.tree"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer"
+        },
+        "position": {
+          "basis": "200px",
+          "grow": 1
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "padding": "10px"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "id": "{/root/Header.props.params.closeDockID}",
+                    "type": "close"
+                  },
+                  "scope": "C",
+                  "type": "dock"
+                }
+              }
+            },
+            "meta": {
+              "name": "Button_5"
+            },
+            "position": {
+              "basis": "80px",
+              "shrink": 0
+            },
+            "props": {
+              "image": {
+                "icon": {
+                  "path": "material/cancel"
+                }
+              },
+              "style": {
+                "classes": "ATA/Components/Buttons/Sec",
+                "marginLeft": 15
+              },
+              "text": ""
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "script": "\tedit \u003d int(self.view.params.edit)\n\t\n\tarticleNumber \u003d self.parent.parent.getChild(\"FlexContainer\").getChild(\"ArticleNumber\").props.params.value\n\tarticleDescription \u003d self.parent.parent.getChild(\"FlexContainer\").getChild(\"ArticleDescription\").props.params.value\n\tlinkedNodeID \u003d self.view.getChild(\"root\").custom.selectedTreeData.NodeID\n\tlineID \u003d self.parent.parent.getChild(\"FlexContainer\").getChild(\"Lijn\").props.params.value\n\ttubeGroup \u003d self.parent.parent.getChild(\"FlexContainer\").getChild(\"SawListGroup\").props.params.value\n\tarticleID \u003d self.view.params.data.ArticleID\n\t\n\tif edit \u003d\u003d False:\n\t\tinsertQuery \u003d \u0027\u0027\u0027insert into Articles\n\t\t\t\t\t\t\t(ArticleNumber,\n\t\t\t\t\t\t\tArticleDescription,\n\t\t\t\t\t\t\tLinkedNodeID,\n\t\t\t\t\t\t\tLineID,\n\t\t\t\t\t\t\tSawListID)\n\t\t\t\t\t\tvalues\n\t\t\t\t\t\t\t(?,\n\t\t\t\t\t\t\t?,\n\t\t\t\t\t\t\t?,\n\t\t\t\t\t\t\t?,\n\t\t\t\t\t\t\t?)\n\t\t\t\t\t\t\u0027\u0027\u0027\n\t\tinsertArgs \u003d [articleNumber, articleDescription, linkedNodeID, lineID, tubeGroup]\n\t\tsystem.db.runPrepUpdate(insertQuery, insertArgs, database \u003d \u0027NLSTWDYK_DB_PROD\u0027)\n\t\t\n\telse:\n\t\tupdateQuery \u003d \u0027\u0027\u0027update Articles\n\t\t\t\t\t\tset\n\t\t\t\t\t\t\tArticleNumber \u003d ?,\n\t\t\t\t\t\t\tArticleDescription \u003d ?,\n\t\t\t\t\t\t\tLinkedNodeID \u003d ?,\n\t\t\t\t\t\t\tLineID \u003d ?,\n\t\t\t\t\t\t\tSawListID \u003d ?\n\t\t\t\t\t\twhere\n\t\t\t\t\t\t\tArticleID \u003d ?\n\t\t\t\t\t\u0027\u0027\u0027\n\t\tupdateArgs \u003d [articleNumber, articleDescription, linkedNodeID, lineID, tubeGroup, articleID]\n\t\tsystem.db.runPrepUpdate(updateQuery, updateArgs, database \u003d \u0027NLSTWDYK_DB_PROD\u0027)\n\t\t\n\tsystem.perspective.sendMessage(\u0027refreshArticles\u0027)\n\tsystem.perspective.sendMessage(\u0027refreshArticleInfo\u0027)\n\tsystem.perspective.sendMessage(\u0027refreshArticleManagement\u0027)\n\tself.view.getChild(\"root\").resetInput()\n\t\n\tsystem.perspective.closeDock(\u0027ArticleDock\u0027)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "Button_1"
+            },
+            "position": {
+              "basis": "80px",
+              "shrink": 0
+            },
+            "props": {
+              "image": {
+                "icon": {
+                  "path": "material/save_alt"
+                }
+              },
+              "style": {
+                "classes": "ATA/Components/Buttons/CTA",
+                "marginLeft": 15
+              },
+              "text": ""
+            },
+            "type": "ia.input.button"
+          }
+        ],
+        "meta": {
+          "name": "Footer"
+        },
+        "position": {
+          "basis": "45px",
+          "shrink": 0
+        },
+        "props": {
+          "justify": "flex-end",
+          "style": {
+            "backgroundColor": "--backgroundSecondary",
+            "borderTopLeftRadius": 5,
+            "borderTopRightRadius": 5,
+            "padding": 7,
+            "zIndex": 1
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "propConfig": {
+      "custom.selectedTreeData": {
+        "binding": {
+          "config": {
+            "path": ""
+          },
+          "transforms": [
+            {
+              "code": "\tjson \u003d {\n\t\t  \"ParameterValueID\": None,\n\t\t  \"HighAlarm\": None,\n\t\t  \"HighWarning\": None,\n\t\t  \"NodeID\": None,\n\t\t  \"ParamValue\": None,\n\t\t  \"LowAlarm\": None,\n\t\t  \"LowWarning\": None,\n\t\t  \"ParameterID\": None,\n\t\t  \"ParamName\": None\n\t\t}\n\t\n\treturn json",
+              "type": "script"
+            }
+          ],
+          "type": "property"
+        }
+      }
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "classes": "ATA/Background/RootDock"
+      }
+    },
+    "scripts": {
+      "customMethods": [
+        {
+          "name": "resetInput",
+          "params": [],
+          "script": "\t# implement your method here\n\tself.getChild(\"FlexContainer\").getChild(\"ArticleNumber\").props.params.value \u003d \u0027\u0027\n\tself.getChild(\"FlexContainer\").getChild(\"ArticleDescription\").props.params.value \u003d \u0027\u0027\n\tself.getChild(\"FlexContainer\").getChild(\"Lijn\").props.params.value \u003d None\n\tself.getChild(\"FlexContainer\").getChild(\"Tree\").props.selection[0] \u003d \u0027\u0027"
+        }
+      ],
+      "extensionFunctions": null,
+      "messageHandlers": []
+    },
+    "type": "ia.container.flex"
+  }
+}

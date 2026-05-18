@@ -1,0 +1,61 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {},
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Label"
+        },
+        "position": {
+          "basis": "32px",
+          "grow": 10,
+          "shrink": 10
+        },
+        "props": {
+          "style": {
+            "textAlign": "center"
+          },
+          "text": "Actual temp.",
+          "textStyle": {
+            "fontSize": 12,
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_1"
+        },
+        "position": {
+          "basis": "32px",
+          "grow": 10,
+          "shrink": 10
+        },
+        "props": {
+          "style": {
+            "textAlign": "center"
+          },
+          "text": "145 °C",
+          "textStyle": {
+            "fontSize": 12,
+            "fontWeight": "bold"
+          }
+        },
+        "type": "ia.display.label"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "overflow": "hidden"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

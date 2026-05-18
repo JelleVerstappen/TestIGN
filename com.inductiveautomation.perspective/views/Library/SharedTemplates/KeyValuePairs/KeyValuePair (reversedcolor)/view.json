@@ -1,0 +1,112 @@
+{
+  "custom": {},
+  "params": {
+    "key": "First name",
+    "margingRight": 45,
+    "value": "Tyler"
+  },
+  "propConfig": {
+    "params.key": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.margingRight": {
+      "paramDirection": "inout",
+      "persistent": true
+    },
+    "params.value": {
+      "paramDirection": "inout",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 50,
+      "width": 454
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Label"
+        },
+        "position": {
+          "basis": "32px",
+          "grow": 1
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "view.params.key"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "classes": "ATA/Components/Labels/TextNormal"
+          },
+          "textStyle": {
+            "color": ""
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_0"
+        },
+        "position": {
+          "basis": "32px",
+          "grow": 1
+        },
+        "propConfig": {
+          "props.style.marginRight": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "path": "view.params.margingRight"
+              },
+              "type": "property"
+            }
+          },
+          "props.text": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "path": "view.params.value"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "classes": "ATA/Components/Labels/TextNormal",
+            "marginBottom": 5,
+            "marginLeft": 5
+          },
+          "textStyle": {
+            "color": "--textComplementary"
+          }
+        },
+        "type": "ia.display.label"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "backgroundColor": "#FFFFFF00",
+        "overflow": "hidden",
+        "paddingLeft": 5
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

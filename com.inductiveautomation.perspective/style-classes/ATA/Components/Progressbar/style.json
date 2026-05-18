@@ -1,0 +1,11 @@
+{
+  "base": {
+    "style": {
+      "borderStyle": "none",
+      "color": "var(--textThr)",
+      "fontFamily": "Roboto",
+      "fontSize": "18px",
+      "fontWeight": "lighter"
+    }
+  }
+}

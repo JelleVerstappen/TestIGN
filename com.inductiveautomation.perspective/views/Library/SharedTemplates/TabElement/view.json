@@ -1,0 +1,169 @@
+{
+  "custom": {
+    "iconPath": ""
+  },
+  "params": {
+    "isActive": true,
+    "isDisabled": true,
+    "tabText": "value",
+    "tagPath": "[NLSTWDYK]Dyka/STW/EXT/E07/Assets/HAUL"
+  },
+  "propConfig": {
+    "custom.iconPath": {
+      "binding": {
+        "config": {
+          "fallbackDelay": 2.5,
+          "mode": "indirect",
+          "references": {
+            "tagPath": "{view.params.tagPath}"
+          },
+          "tagPath": "{tagPath}/Alarms/Count/IconPath"
+        },
+        "type": "tag"
+      },
+      "persistent": true
+    },
+    "params.isActive": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.isDisabled": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.tabText": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.tagPath": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 36,
+      "width": 200
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Icon"
+            },
+            "position": {
+              "basis": "35px"
+            },
+            "propConfig": {
+              "position.display": {
+                "binding": {
+                  "config": {
+                    "expression": "len(toStr({view.custom.iconPath})) !\u003d 0"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.path": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.iconPath"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "type": "ia.display.icon"
+          },
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "basis": "32px",
+              "grow": 1
+            },
+            "propConfig": {
+              "props.style.color": {
+                "binding": {
+                  "config": {
+                    "expression": "if({view.params.isDisabled} \u003d True, \u0027#999999\u0027, \u0027\u0027)"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.style.fontWeight": {
+                "binding": {
+                  "config": {
+                    "expression": "if({view.params.isActive}, \u0027bold\u0027, \u0027normal\u0027)"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.tabText"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "ATA/Components/Labels/TextNormal",
+                "textAlign": "center"
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer"
+        },
+        "position": {
+          "basis": "28px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "fontWeight": "",
+            "padding": 3
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "meta": {
+          "name": "Label"
+        },
+        "position": {
+          "basis": "4px",
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.style.backgroundColor": {
+            "binding": {
+              "config": {
+                "expression": "//if({view.params.isActive} \u0026\u0026 {view.custom.hasAlarm}, \u0027--alarm\u0027,\r\n//\tif({view.params.isActive} \u0026\u0026 {view.custom.hasWarning}, \u0027--warning\u0027,\r\n//\tif({view.params.isActive}, \u0027--prim\u0027, \u0027\u0027)))\r\nif(\r\n\t{view.params.isActive} \u003d True,\r\n\tcase(\r\n\t\tTrue, \r\n\t\tlen({view.custom.iconPath}) \u003d 0, \u0027--prim\u0027,\r\n\t\tsubString({view.custom.iconPath}, 5, 6) \u003d \"A\", \u0027--alarm\u0027,\r\n\t\tsubString({view.custom.iconPath}, 5, 6) \u003d \"W\", \u0027--warning\u0027,\r\n\t\t\u0027--prim\u0027\r\n\t),\r\n\t\u0027\u0027\r\n)"
+              },
+              "overlayOptOut": true,
+              "type": "expr"
+            }
+          }
+        },
+        "type": "ia.display.label"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

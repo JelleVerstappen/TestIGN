@@ -1,0 +1,209 @@
+{
+  "custom": {},
+  "params": {
+    "navigationDataTagPath": "[default]system/Navigation/Navigation data"
+  },
+  "propConfig": {
+    "params.navigationDataTagPath": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 68,
+      "width": 1280
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "download"
+        },
+        "position": {
+          "basis": "100px",
+          "shrink": 0
+        },
+        "props": {
+          "fit": {
+            "height": 50,
+            "mode": "contain"
+          },
+          "source": "/system/images/download.jpg",
+          "style": {
+            "height": "70px",
+            "marginRight": 16
+          }
+        },
+        "type": "ia.display.image"
+      },
+      {
+        "children": [
+          {
+            "events": {
+              "dom": {
+                "onClick": {
+                  "config": {
+                    "id": "workCenterSelection",
+                    "type": "toggle"
+                  },
+                  "scope": "C",
+                  "type": "dock"
+                }
+              }
+            },
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "expression": "{page.props.title}"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "ATA/Components/Labels/Title",
+                "cursor": "pointer",
+                "marginBottom": "auto",
+                "marginTop": "auto",
+                "paddingLeft": 130
+              },
+              "textStyle": {
+                "textAlign": "center"
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "HorizontalMenu"
+            },
+            "position": {
+              "basis": "38px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "custom.location": {
+                "binding": {
+                  "config": {
+                    "path": "page.props.path"
+                  },
+                  "type": "property"
+                },
+                "onChange": {
+                  "enabled": null,
+                  "script": "\titems \u003d self.props.items\n\tfirst \u003d 0 \n\tsecond \u003d 0\n\tthird \u003d 0 \n\tlast \u003d 0\n\tend \u003d False\n\tif items:\n\t\tfor x in items:\n\t\t\tif end:\n\t\t\t\tbreak\n\t\t\tif currentValue.value \u003d\u003d x[\u0027target\u0027]:\n\t\t\t\tsecond \u003d 0\n\t\t\t\tthird \u003d 0\n\t\t\t\tlast \u003d 0\n\t\t\t\tend \u003d True\n\n\t\t\tfirst +\u003d 1\n\t\t\t\n\t\t\tsecond \u003d 0\n\t\t\tif x[\u0027items\u0027]:\n\n\t\t\t\tfor z in x[\u0027items\u0027]:\n\t\t\t\t\tif end:\n\t\t\t\t\t\tbreak\n\n\t\t\t\t\tif currentValue.value \u003d\u003d z[\u0027target\u0027]:\n\t\t\t\t\t\tthird \u003d 0\n\t\t\t\t\t\tlast \u003d 0\t\t\n\t\t\t\t\t\tend \u003d True\n\t\t\t\t\t\n\t\t\t\t\tsecond +\u003d 1\n\t\t\t\t\tthird \u003d 0\n\t\t\t\t\tif z[\u0027items\u0027]:\n\n\t\t\t\t\t\tfor i in z[\u0027items\u0027]:\n\t\t\t\t\t\t\tif end:\n\t\t\t\t\t\t\t\tbreak\n\t\t\t\t\t\t\tif currentValue.value \u003d\u003d i[\u0027target\u0027]:\n\t\t\t\t\t\t\t\tlast \u003d 0\n\t\t\t\t\t\t\t\tend \u003d True\n\n\t\t\t\t\t\t\tthird +\u003d 1\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\tlast \u003d 0\n\t\t\t\t\t\t\tif i[\u0027items\u0027]:\n\n\t\t\t\t\t\t\t\tfor w in i[\u0027items\u0027]:\n\t\t\t\t\t\t\t\t\tif end:\n\t\t\t\t\t\t\t\t\t\tbreak\n\t\t\t\t\t\t\t\t\tif currentValue.value \u003d\u003d w[\u0027target\u0027]:\n\t\t\t\t\t\t\t\t\t\tend \u003d True\n\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\tlast +\u003d 1\n\t\t\n\t\tif end \u003d\u003d False:\n\t\t\tfirst \u003d 0 \n\t\t\tsecond \u003d 0\n\t\t\tthird \u003d 0 \n\t\t\tlast \u003d 0\n\t\t\tend \u003d False\n\t\t\tif items:\n\t\t\t\tfor x in items:\n\t\t\t\t\tif end:\n\t\t\t\t\t\tbreak\n\t\t\t\t\tif currentValue.value.split(\u0027/\u0027)[1] \u003d\u003d x[\u0027target\u0027].split(\u0027/\u0027)[1]:\n\t\t\t\t\t\tsecond \u003d 0\n\t\t\t\t\t\tthird \u003d 0\n\t\t\t\t\t\tlast \u003d 0\n\t\t\t\t\t\tend \u003d True\n\t\t\n\t\t\t\t\tfirst +\u003d 1\n\t\t\t\t\t\n\t\t\t\t\tsecond \u003d 0\n\t\t\n\n\t\t\n\t\tif self.custom.old is not None:\n\t\t\tfirstOld, secondOld, thirdOld, lastOld \u003d self.custom.old\n\t\t\t\n\t\t\tif lastOld !\u003d 0:\n\t\t\t\tself.props.items[firstOld-1].items[secondOld-1].items[thirdOld-1].items[lastOld-1].style.classes \u003d \u0027\u0027\n\t\t\tif thirdOld !\u003d 0:\n\t\t\t\tself.props.items[firstOld-1].items[secondOld-1].items[thirdOld-1].style.classes \u003d \u0027\u0027\n\t\t\tif secondOld !\u003d 0:\n\t\t\t\tself.props.items[firstOld-1].items[secondOld-1].style.classes \u003d \u0027\u0027\n\t\t\tif firstOld !\u003d 0:\n\t\t\t\tself.props.items[firstOld-1].style.classes \u003d \u0027\u0027\t\t\t\n\t\t\t\t\t\n\t\tif end \u003d\u003d True:\n\t\t\tif last !\u003d 0:\n\t\t\t\tself.props.items[first-1].items[second-1].items[third-1].items[last-1].style.classes \u003d \u0027horizontal-menu-border-selected\u0027\n\t\t\tif third !\u003d 0:\n\t\t\t\tself.props.items[first-1].items[second-1].items[third-1].style.classes \u003d \u0027horizontal-menu-border-selected\u0027\n\t\t\tif second !\u003d 0:\n\t\t\t\tself.props.items[first-1].items[second-1].style.classes \u003d \u0027horizontal-menu-border-selected\u0027\n\t\t\tif first !\u003d 0:\n\t\t\t\tself.props.items[first-1].style.classes \u003d \u0027horizontal-menu-border-selected\u0027\t\n\t\t\t\t\t\t\t\n\t\t\tself.custom.old \u003d first, second, third, last\n\n\t\t\t\n\n\t\t\t\n\n\t\t"
+                }
+              },
+              "custom.old": {
+                "binding": {
+                  "config": {
+                    "expression": "Null "
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.items": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "navigationDataTagPath": "{view.params.navigationDataTagPath}"
+                    },
+                    "tagPath": "{navigationDataTagPath}"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\tnavigationStructure \u003d ata.perspective.getNavigationStructure(value, userRoles \u003d self.session.props.auth.user.roles)\n\treturn ata.perspective.generateHorizontalMenuItems(navigationStructure)",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "tag"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "paddingBottom": 3
+              }
+            },
+            "type": "ia.navigation.horizontalmenu"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer"
+        },
+        "position": {
+          "basis": "200px",
+          "grow": 1
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "overflow": "hidden"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "meta": {
+          "name": "Profile Picture"
+        },
+        "position": {
+          "basis": "246px",
+          "shrink": 0
+        },
+        "props": {
+          "params": {
+            "login": true
+          },
+          "path": "Library/UserManagement/Profile Picture",
+          "useDefaultViewHeight": true
+        },
+        "type": "ia.display.view"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "propConfig": {
+      "custom.security": {
+        "binding": {
+          "config": {
+            "path": "page.props.path"
+          },
+          "transforms": [
+            {
+              "code": "\ttry:\n\t\tif \"it/security\" not in self.page.props.path:\n\t\t\tpath \u003d \"Security/getPageRights\"\t\t\n\t\t\tparameters \u003d {\"userSource\":self.session.props.auth.idp,\"username\":self.session.props.auth.user.userName,\"url\":self.page.props.path}\n\t\t\tdata \u003d system.db.runNamedQuery(path,parameters\u003dparameters)\n\t\t\tif len(data):\n\t\t\t\tsecurityData \u003d data[0]\n\t\t\t\tself.session.custom.security \u003d securityData\n\t\t\t\tif securityData[\u0027ReadAllowed\u0027] \u003d\u003d False:\n\t\t\t\t\tsystem.perspective.navigate(\"/\")\n\t\t\telse:\n\t\t\t\tself.session.custom.security \u003d {\n\t\t\t\t    \"navigation_path\": \"/\",\n\t\t\t\t    \"CreateAllowed\": False,\n\t\t\t\t    \"ReadAllowed\": False,\n\t\t\t\t    \"UpdateAllowed\": False,\n\t\t\t\t    \"DeleteAllowed\": False\n\t\t\t\t  }\n\t\t\t\tsystem.perspective.navigate(\"/\")\n\t\t\treturn True\n\t\telse:\n\t\t\treturn True\n\t\t\n\texcept:\n\t\treturn False\n\t\t\t\n\t",
+              "type": "script"
+            }
+          ],
+          "type": "property"
+        }
+      }
+    },
+    "props": {
+      "alignItems": "center",
+      "justify": "space-between",
+      "style": {
+        "backgroundColor": "--white",
+        "overflow": "hidden",
+        "paddingBottom": 0,
+        "paddingLeft": 16,
+        "paddingRight": 16,
+        "paddingTop": 0
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

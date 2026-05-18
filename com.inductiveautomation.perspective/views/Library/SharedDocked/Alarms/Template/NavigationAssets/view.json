@@ -1,0 +1,404 @@
+{
+  "custom": {},
+  "params": {
+    "line": ""
+  },
+  "propConfig": {
+    "params.line": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 98,
+      "width": 1883
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Silo"
+        },
+        "position": {
+          "basis": "0px",
+          "grow": 1
+        },
+        "propConfig": {
+          "props.params.Line": {
+            "binding": {
+              "config": {
+                "path": "view.params.line"
+              },
+              "type": "property"
+            },
+            "persistent": true
+          }
+        },
+        "props": {
+          "params": {
+            "Asset": "Silo",
+            "Enabled": true,
+            "Line": ""
+          },
+          "path": "Library/SharedDocked/Alarms/Template/AssetIconBackground",
+          "style": {
+            "overflow": "visible",
+            "padding": "5px"
+          }
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "RawMaterialTransport"
+        },
+        "position": {
+          "basis": "0px",
+          "grow": 1
+        },
+        "propConfig": {
+          "props.params.Line": {
+            "binding": {
+              "config": {
+                "path": "view.params.line"
+              },
+              "type": "property"
+            },
+            "persistent": true
+          }
+        },
+        "props": {
+          "params": {
+            "Asset": "RawMaterialTransport",
+            "Enabled": true,
+            "Line": ""
+          },
+          "path": "Library/SharedDocked/Alarms/Template/AssetIconBackground",
+          "style": {
+            "marginLeft": "-2.7%",
+            "overflow": "visible",
+            "padding": "5px"
+          }
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Extruder"
+        },
+        "position": {
+          "basis": "0px",
+          "grow": 1
+        },
+        "propConfig": {
+          "props.params.Line": {
+            "binding": {
+              "config": {
+                "path": "view.params.line"
+              },
+              "type": "property"
+            },
+            "persistent": true
+          }
+        },
+        "props": {
+          "params": {
+            "Asset": "Extruder",
+            "Enabled": true,
+            "Line": ""
+          },
+          "path": "Library/SharedDocked/Alarms/Template/AssetIconBackground",
+          "style": {
+            "marginLeft": "-2.7%",
+            "overflow": "visible",
+            "padding": "5px"
+          }
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "VacuumAndCooling"
+        },
+        "position": {
+          "basis": "0px",
+          "grow": 1
+        },
+        "propConfig": {
+          "props.params.Line": {
+            "binding": {
+              "config": {
+                "path": "view.params.line"
+              },
+              "type": "property"
+            },
+            "persistent": true
+          }
+        },
+        "props": {
+          "params": {
+            "Asset": "VacuumAndCooling",
+            "Enabled": true,
+            "Line": ""
+          },
+          "path": "Library/SharedDocked/Alarms/Template/AssetIconBackground",
+          "style": {
+            "marginLeft": "-2.7%",
+            "overflow": "visible",
+            "padding": "5px"
+          }
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "PipeThicknessScanner"
+        },
+        "position": {
+          "basis": "0px",
+          "grow": 1
+        },
+        "propConfig": {
+          "props.params.Line": {
+            "binding": {
+              "config": {
+                "path": "view.params.line"
+              },
+              "type": "property"
+            },
+            "persistent": true
+          }
+        },
+        "props": {
+          "params": {
+            "Asset": "PipeThicknessScanner",
+            "Enabled": false,
+            "Line": ""
+          },
+          "path": "Library/SharedDocked/Alarms/Template/AssetIconBackground",
+          "style": {
+            "marginLeft": "-2.7%",
+            "overflow": "visible",
+            "padding": "5px"
+          }
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Printer"
+        },
+        "position": {
+          "basis": "0px",
+          "grow": 1
+        },
+        "propConfig": {
+          "props.params.Line": {
+            "binding": {
+              "config": {
+                "path": "view.params.line"
+              },
+              "type": "property"
+            },
+            "persistent": true
+          }
+        },
+        "props": {
+          "params": {
+            "Asset": "Printer",
+            "Enabled": true,
+            "Line": ""
+          },
+          "path": "Library/SharedDocked/Alarms/Template/AssetIconBackground",
+          "style": {
+            "marginLeft": "-2.7%",
+            "overflow": "visible",
+            "padding": "5px"
+          }
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "PullBench"
+        },
+        "position": {
+          "basis": "0px",
+          "grow": 1
+        },
+        "propConfig": {
+          "props.params.Line": {
+            "binding": {
+              "config": {
+                "path": "view.params.line"
+              },
+              "type": "property"
+            },
+            "persistent": true
+          }
+        },
+        "props": {
+          "params": {
+            "Asset": "HaulOff",
+            "Enabled": true,
+            "Line": ""
+          },
+          "path": "Library/SharedDocked/Alarms/Template/AssetIconBackground",
+          "style": {
+            "marginLeft": "-2.7%",
+            "overflow": "visible",
+            "padding": "5px"
+          }
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "CuttingUnit"
+        },
+        "position": {
+          "basis": "0px",
+          "grow": 1
+        },
+        "propConfig": {
+          "props.params.Line": {
+            "binding": {
+              "config": {
+                "path": "view.params.line"
+              },
+              "type": "property"
+            },
+            "persistent": true
+          }
+        },
+        "props": {
+          "params": {
+            "Asset": "CuttingUnit",
+            "Enabled": true,
+            "Line": ""
+          },
+          "path": "Library/SharedDocked/Alarms/Template/AssetIconBackground",
+          "style": {
+            "marginLeft": "-2.7%",
+            "overflow": "visible",
+            "padding": "5px"
+          }
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "FormingMachine"
+        },
+        "position": {
+          "basis": "0px",
+          "grow": 1
+        },
+        "propConfig": {
+          "props.params.Line": {
+            "binding": {
+              "config": {
+                "path": "view.params.line"
+              },
+              "type": "property"
+            },
+            "persistent": true
+          }
+        },
+        "props": {
+          "params": {
+            "Asset": "FormingMachine",
+            "Enabled": false,
+            "Line": ""
+          },
+          "path": "Library/SharedDocked/Alarms/Template/AssetIconBackground",
+          "style": {
+            "marginLeft": "-2.7%",
+            "overflow": "visible",
+            "padding": "5px"
+          }
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "PipeStacker"
+        },
+        "position": {
+          "basis": "0px",
+          "grow": 1
+        },
+        "propConfig": {
+          "props.params.Line": {
+            "binding": {
+              "config": {
+                "path": "view.params.line"
+              },
+              "type": "property"
+            },
+            "persistent": true
+          }
+        },
+        "props": {
+          "params": {
+            "Asset": "Tubes",
+            "Enabled": false,
+            "Line": ""
+          },
+          "path": "Library/SharedDocked/Alarms/Template/AssetIconBackground",
+          "style": {
+            "marginLeft": "-2.7%",
+            "overflow": "visible",
+            "padding": "5px"
+          }
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Quality"
+        },
+        "position": {
+          "basis": "0px",
+          "grow": 1
+        },
+        "propConfig": {
+          "props.params.Line": {
+            "binding": {
+              "config": {
+                "path": "view.params.line"
+              },
+              "type": "property"
+            },
+            "persistent": true
+          }
+        },
+        "props": {
+          "params": {
+            "Asset": "Quality",
+            "Enabled": true,
+            "Line": ""
+          },
+          "path": "Library/SharedDocked/Alarms/Template/AssetIconBackground",
+          "style": {
+            "marginLeft": "-2.7%",
+            "overflow": "visible",
+            "padding": "5px"
+          }
+        },
+        "type": "ia.display.view"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "style": {
+        "overflow": "hidden"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

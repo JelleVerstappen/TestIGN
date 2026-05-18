@@ -1,0 +1,560 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "height": 906,
+      "width": 1095
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Label_13"
+        },
+        "position": {
+          "height": 70,
+          "width": 684,
+          "x": 357,
+          "y": 60
+        },
+        "props": {
+          "style": {
+            "backgroundColor": "#fff",
+            "borderBottomLeftRadius": 3,
+            "borderBottomRightRadius": 3,
+            "borderTopLeftRadius": 3,
+            "borderTopRightRadius": 3
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_32"
+        },
+        "position": {
+          "height": 20,
+          "width": 266,
+          "x": 366.73,
+          "y": 86.32
+        },
+        "props": {
+          "text": "Controleer gelering in ontgassing",
+          "textStyle": {
+            "fontSize": 15,
+            "fontWeight": "bold"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "EmbeddedView"
+        },
+        "position": {
+          "height": 800,
+          "width": 330
+        },
+        "props": {
+          "path": "ControlRoom/StartupProcedure/Templates/ProcedureList",
+          "style": {
+            "borderBottomStyle": "none",
+            "borderLeftStyle": "none",
+            "borderRightColor": "#447BB3",
+            "borderRightStyle": "solid",
+            "borderRightWidth": 1,
+            "borderTopStyle": "none"
+          }
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Label_14"
+        },
+        "position": {
+          "height": 70,
+          "width": 684,
+          "x": 357,
+          "y": 141
+        },
+        "propConfig": {
+          "props.style.borderColor": {
+            "binding": {
+              "config": {
+                "path": "../NumericEntryField.props.value"
+              },
+              "transforms": [
+                {
+                  "code": "\treturn \u0027#49e048\u0027 if value \u003e\u003d 200 else \u0027\u0027",
+                  "type": "script"
+                }
+              ],
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "backgroundColor": "#fff",
+            "borderBottomLeftRadius": 3,
+            "borderBottomRightRadius": 3,
+            "borderStyle": "solid",
+            "borderTopLeftRadius": 3,
+            "borderTopRightRadius": 3,
+            "borderWidth": 2
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_33"
+        },
+        "position": {
+          "height": 20,
+          "width": 350,
+          "x": 366.99,
+          "y": 165
+        },
+        "props": {
+          "text": "Oven temperatuur minimaal 200 (Vanuit PLC)",
+          "textStyle": {
+            "fontSize": 15,
+            "fontWeight": "bold"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_34"
+        },
+        "position": {
+          "height": 20,
+          "width": 680,
+          "x": 365.98,
+          "y": 19
+        },
+        "props": {
+          "text": "Procedure: Voorbereiding trekstok",
+          "textStyle": {
+            "fontSize": 21,
+            "fontWeight": "bold",
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_15"
+        },
+        "position": {
+          "height": 7,
+          "width": 684,
+          "x": 358.99,
+          "y": 43
+        },
+        "props": {
+          "style": {
+            "borderBottomColor": "#447BB3",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": 1
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_17"
+        },
+        "position": {
+          "height": 70,
+          "width": 684,
+          "x": 358,
+          "y": 313
+        },
+        "props": {
+          "style": {
+            "backgroundColor": "#fff",
+            "borderBottomLeftRadius": 3,
+            "borderBottomRightRadius": 3,
+            "borderTopLeftRadius": 3,
+            "borderTopRightRadius": 3
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_19"
+        },
+        "position": {
+          "height": 70,
+          "width": 684,
+          "x": 358,
+          "y": 232
+        },
+        "props": {
+          "style": {
+            "backgroundColor": "#fff",
+            "borderBottomLeftRadius": 3,
+            "borderBottomRightRadius": 3,
+            "borderTopLeftRadius": 3,
+            "borderTopRightRadius": 3
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_40"
+        },
+        "position": {
+          "height": 20,
+          "width": 346,
+          "x": 367.73,
+          "y": 258.32
+        },
+        "props": {
+          "text": "Aanknopen touw/band aan trekstok",
+          "textStyle": {
+            "fontSize": 15,
+            "fontWeight": "bold"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_38"
+        },
+        "position": {
+          "height": 20,
+          "width": 244,
+          "x": 367.99,
+          "y": 337
+        },
+        "props": {
+          "text": "Tellerwiel van trekstok zetten",
+          "textStyle": {
+            "fontSize": 15,
+            "fontWeight": "bold"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_20"
+        },
+        "position": {
+          "height": 70,
+          "width": 684,
+          "x": 359,
+          "y": 404
+        },
+        "props": {
+          "style": {
+            "backgroundColor": "#fff",
+            "borderBottomLeftRadius": 3,
+            "borderBottomRightRadius": 3,
+            "borderTopLeftRadius": 3,
+            "borderTopRightRadius": 3
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_42"
+        },
+        "position": {
+          "height": 20,
+          "width": 258,
+          "x": 368.73,
+          "y": 430.32
+        },
+        "props": {
+          "text": "Aanknopen van trekstok aan PVC",
+          "textStyle": {
+            "fontSize": 15,
+            "fontWeight": "bold"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "ToggleSwitch_0"
+        },
+        "position": {
+          "height": 36,
+          "width": 84,
+          "x": 954.3,
+          "y": 77.31
+        },
+        "props": {
+          "selected": true,
+          "style": {
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.input.toggle-switch"
+      },
+      {
+        "meta": {
+          "name": "ToggleSwitch_2"
+        },
+        "position": {
+          "height": 36,
+          "width": 84,
+          "x": 954.33,
+          "y": 250.3
+        },
+        "props": {
+          "selected": true,
+          "style": {
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.input.toggle-switch"
+      },
+      {
+        "meta": {
+          "name": "ToggleSwitch_3"
+        },
+        "position": {
+          "height": 36,
+          "width": 84,
+          "x": 953.33,
+          "y": 330.305
+        },
+        "props": {
+          "style": {
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.input.toggle-switch"
+      },
+      {
+        "meta": {
+          "name": "ToggleSwitch_5"
+        },
+        "position": {
+          "height": 36,
+          "width": 84,
+          "x": 954.33,
+          "y": 422.31
+        },
+        "props": {
+          "style": {
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.input.toggle-switch"
+      },
+      {
+        "meta": {
+          "name": "Label_37"
+        },
+        "position": {
+          "height": 20,
+          "width": 132,
+          "x": 913.98,
+          "y": 19
+        },
+        "props": {
+          "text": "3/7",
+          "textStyle": {
+            "fontSize": 21,
+            "fontWeight": "bold",
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "events": {
+          "component": {
+            "onActionPerformed": {
+              "config": {
+                "script": "\tself.view.getChild(\"root\").new()"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "Button_4"
+        },
+        "position": {
+          "height": 40,
+          "shrink": 0,
+          "width": 150.23,
+          "x": 872.05,
+          "y": 680.004
+        },
+        "props": {
+          "style": {
+            "classes": "ATA/Components/Buttons/CTA",
+            "height": "38px",
+            "marginLeft": "8px",
+            "marginRight": "30px",
+            "paddingBottom": "auto",
+            "paddingTop": "auto"
+          },
+          "text": "Volgende"
+        },
+        "type": "ia.input.button"
+      },
+      {
+        "meta": {
+          "name": "NumericEntryField"
+        },
+        "position": {
+          "height": 32,
+          "width": 76,
+          "x": 958.3,
+          "y": 159
+        },
+        "propConfig": {
+          "custom.timer": {
+            "binding": {
+              "config": {
+                "expression": "now(1000)"
+              },
+              "transforms": [
+                {
+                  "code": "\tself.props.value+\u003d1 \n\treturn value",
+                  "type": "script"
+                }
+              ],
+              "type": "expr"
+            }
+          },
+          "props.value": {
+            "binding": {
+              "config": {
+                "expression": "now(0)"
+              },
+              "transforms": [
+                {
+                  "code": "\treturn 180",
+                  "type": "script"
+                }
+              ],
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "enabled": false,
+          "spinner": {
+            "enabled": false
+          }
+        },
+        "type": "ia.input.numeric-entry-field"
+      },
+      {
+        "events": {
+          "component": {
+            "onActionPerformed": {
+              "config": {
+                "script": "\tself.view.getChild(\"root\").cancel()"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "Button_2"
+        },
+        "position": {
+          "height": 40,
+          "shrink": 0,
+          "width": 150.23,
+          "x": 341.979,
+          "y": 680.004
+        },
+        "props": {
+          "style": {
+            "classes": "ATA/Components/Buttons/Sec",
+            "height": "38px",
+            "marginLeft": "auto",
+            "marginRight": "8px",
+            "paddingBottom": "auto",
+            "paddingTop": "auto"
+          },
+          "text": "Terug"
+        },
+        "type": "ia.input.button"
+      },
+      {
+        "meta": {
+          "name": "Label_21"
+        },
+        "position": {
+          "height": 74,
+          "width": 684,
+          "x": 359,
+          "y": 486
+        },
+        "props": {
+          "style": {
+            "backgroundColor": "#fff",
+            "borderBottomLeftRadius": 3,
+            "borderBottomRightRadius": 3,
+            "borderTopLeftRadius": 3,
+            "borderTopRightRadius": 3
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_43"
+        },
+        "position": {
+          "height": 20,
+          "width": 258,
+          "x": 368.73,
+          "y": 512.3199999999999
+        },
+        "props": {
+          "text": "Opmerking",
+          "textStyle": {
+            "fontSize": 15,
+            "fontWeight": "bold"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "TextArea"
+        },
+        "position": {
+          "height": 68,
+          "width": 183,
+          "x": 854.312,
+          "y": 488
+        },
+        "props": {
+          "placeholder": "Opmerkingen",
+          "text": "test opmerking"
+        },
+        "type": "ia.input.text-area"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "type": "ia.container.coord"
+  }
+}

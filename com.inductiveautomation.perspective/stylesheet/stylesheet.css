@@ -1,0 +1,382 @@
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~VAR~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+:root {
+	--cta: #95C030; /* green*/
+	--prim: #017DC3; /* dark blue*/
+	--sec: #5EB0F1; /* light blue*/
+	--thr: #e9e9e9; /* light blue*/
+	
+	--text: #404040; /*text zwart*/
+	--textSec:#007DC3; /*Secondary text light blue*/
+	--textThr: #FFFFFF; /*text white*/
+
+	--textComplementary: #847F7F; /*Grijze text*/
+	
+	--alarm: #FF0000; /*red*/
+	--alarmFade: #FF6C6C; /*Brighter*/
+	--alarmDim: #900000; /*Darker*/
+	
+	--warning: #FCF55F; /* orange/yellow*/
+	--warningFade: #FABE75; /*Brighter*/
+	--warningDim: #CCC304; /*Darker*/
+	
+	--notification: #0000FF;/* blue*/
+	--good: #FFFFFF;  /*white start screen*/
+	--running: #00FF00;  /* green*/
+	
+	--color1: #FFFFFF;
+	--color2: #B5B2B2;
+	--color3: #3D3D3D;
+	--color4: #ADD8E6;
+	
+	--background: #FFFFFF;
+	--backgroundSecondary:#F3F7FA;
+	--backgroundThird: #017DC3;
+	--complementary: #0073AB;
+	--corporateIdentity1: #017DC3;
+	--corporateIdentity2: #FF0000;
+	--selected: #BFBF26;
+	
+	/*      Disabled style components     */
+	--input--disabled: #d3d3d3;
+	/*      Disabled style     */
+	--disabled: #d3d3d3;
+
+
+/*Alarmtorens	*/
+/*Rood 	Erkende alarm*/
+/*Rood knipperen	Niet erkend alarm*/
+/*Geel	Erkende waarschuwing*/
+/*Geel knipperen	Niet erkend waarschuwing*/
+/*Blauw	Opstarten*/
+/*Blauw knipperen	Interventie tijdens productie (aandacht nodig maar geen fout)*/
+/*Groen	Draait productie*/
+/*Groen knipperen (Niet gebruiken)	*/
+/*	*/
+/*Startscherm	*/
+/*Geen vakje	Niet verbonden*/
+/*Wit	Niks aan de hand*/
+/*Geel (cijfers voor het aantal alarmen)	Waarschuwing*/
+/*Rood (cijfers voor het aantal alarmen)	Alarm (ook uitval PLC)*/
+
+}
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Scrollbar~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--color1);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--thr);
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--sec);
+}
+
+
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Table~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/* border */
+.ia_tableComponent{
+	border : None;
+/*	box-shadow: rgba(100, 100, 111, 0.2) 0px 6px 22px 0px;*/
+}
+
+/* Content */
+.ia_table__headContainer, .ia_table__head, .ia_table__body{
+	background-color: var(--backgroundSecondary);
+	color: var(--text);
+	font-weight: lighter;
+	font-size: 12px;
+	box-shadow: None;
+}
+
+/* Singel cell */
+.ia_table__cell{
+	padding-left: 10px;
+}
+
+
+/* Header */
+.ia_table__head__header__cell {
+	border-bottom: 1px solid var(--corporateIdentity2);
+	font-weight: bold;
+	font-size: 14px;
+	background-color: var(--background);
+	color: var(--corporateIdentity1);
+	padding-left: 0px;
+}
+
+/* Pager */
+.ia_pager, .pager-container .pager {
+	background-color: var(--color1);
+	border : None;
+}
+
+.ia_container--secondary {
+    background-color: var(--color1);
+}
+
+/* Selected table column */
+.ia_tableComponent__selection--root{
+	border: 1px var(--prim) solid;
+}
+
+.ia_tableComponent__filterContainer{
+	background-color: #a1dfed;
+	padding-right: 35%;
+}
+
+.table-container, .tableFilter {
+	background-color: var(--background);
+	border: None;
+}
+.filterCommon input {
+	background-color: #FFF;
+}
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Popup~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+.ia_popup {
+    background-color: var(--color1);
+    box-shadow: var(--boxShadow5);
+    border: None;
+    border-radius: 5px;
+}
+
+.ia_popup__header {
+    background-color: var(--color1);
+    color: var(--corporateIdentity1);
+    font-size: 0.875rem;
+    font-weight: bold;
+    border: None;
+    border-radius: 5px;
+}
+
+.close-icon:hover{
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 3px lightgrey);
+}
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Navigation accordion component~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+.ia_accordionComponent {
+    border: None;
+    background-color: var(--color1);
+}
+
+.ia_accordionComponent--disabled {
+    color: var(--label--disabled);
+    background-color: var(--input--disabled);
+    cursor: not-allowed;
+}
+
+.ia_accordionComponent__body {
+    border-bottom: var(--containerBorder);
+    margin: 0px;
+}
+
+
+.ia_accordionComponent__header {
+    background-color: var(--color1);
+    cursor: pointer;
+}
+
+.ia_accordionComponent__header:hover {
+	color: var(--prim);
+	background-color: #E1F4FC65;
+}
+
+.ia_accordionComponent__emptyRow {
+	background-color: var(--color1);
+}
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Navigation Horizontal menu component~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/* General style of the whole component */
+.ia_horizontalMenuComponent {
+	border-style: none;
+	background-color: #FFFFFF;	
+	
+}
+
+/* The style of an item in the the top bar when hovering*/
+.ia_horizontalMenuComponent__item:hover {
+	color: var(--prim);
+}
+
+/* The style of an item in the top bar */
+.ia_horizontalMenuComponent__item {
+/*	border-style: none;*/
+	background-color: #FFFFFF;
+}
+
+/* Behavior of the item when hovering and enabled */
+.ia_horizontalMenuComponent__item:not(.ia_horizontalMenuComponent__item--active):not(.ia_horizontalMenuComponent__item--disabled):hover {
+    filter: brightness(1);
+}
+
+/* General style of 'dropdown' */
+.ia_horizontalMenuComponent__modal {    
+	border-radius: 10px;
+	border-style: none;
+	padding: 5px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	background-color: #FFFFFF;
+}
+
+/* Don't show modal when clicking 'dropdown' */
+.horizontal-menu-root-modal {
+	background-color: transparent !important;
+	border-style: none;
+}
+
+/*Behavior of the 'dropdown' item when hovering and enabled */
+.ia_horizontalMenuComponent__modal .ia_horizontalMenuComponent__item:not(.ia_horizontalMenuComponent__item--active):not(.ia_horizontalMenuComponent__item--disabled):hover {
+	background-color: #E1F4FC65 !important;
+
+}
+
+/*border radius hover of 'dropdown' items */
+.ia_horizontalMenuComponent__modal .ia_horizontalMenuComponent__item {
+	border-radius: 10px;
+	border-style: none;
+}
+
+/*Menu gradient select color*/
+.psc-horizontal-menu-border-selected {
+  border-bottom: 3px solid ;
+  border-image-slice: 0 1 1 0;
+  border-image-source: linear-gradient(90deg,rgba(12, 16, 51, 0) 0%, var(--corporateIdentity1) 40%, var(--corporateIdentity1) 60%, rgba(12, 16, 51, 0) 100%);
+  border-right: 0;
+  border-top: 0;
+  padding-top: 3px;
+	color: var(--corporateIdentity1);
+	padding-left: auto ;
+}
+
+
+.ia_horizontalMenuComponent__item__leftItem--active{
+	border-left: 3px solid transparent;
+}
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Icon ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*To an icon add in the style the value classes and use 'form-icon-button' as value.*/
+.psc-form-icon-button{
+    margin-right: 5px;
+    color: var(--white);
+    cursor: pointer;
+    fill: var(--white);
+    transition: transform 0.2s
+}
+
+.psc-form-icon-button:hover{
+    transform: scale(1.1);
+    color: var(--white);
+    filter: drop-shadow(0 0 3px lightgrey);
+    fill: var(--white);
+    cursor: pointer;
+}
+/*~~~~~~~~~~~ checkbox ~~~~~~~~~~~~~*/
+.ia_checkbox .ia_checkbox__checkedIcon--disabled, .ia_checkbox .ia_checkbox__uncheckedIcon--disabled, .ia_checkbox .ia_checkbox__indeterminateIcon--disabled {
+    color: var(--text);
+}
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ tab container modern ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+.ia_tabContainerComponent__content {
+    border-left: None;
+    border-right: None;
+    border-bottom: None;
+}
+
+.ia_tabContainerComponent__tab--modern {
+    color: var(--corporateIdentity3);
+/*    border-bottom: var(--containerBorder);*/
+    border-bottom: none;
+    box-shadow: none;
+    transition: box-shadow 0.2s linear;
+    font-size: 0.875rem;
+}
+
+.ia_tabContainerComponent__tabMenuRight--modern {
+    border-bottom: none; /*var(--containerBorder);*/
+}
+
+.ia_tabContainerComponent__tab--modern--active {
+    font-weight: 500;
+/*    color: var(--neutral-90);*/
+    color: var(--corporateIdentity1);
+    font-weight: bold;
+
+    /* Provides the effect of a bottom border without increasing the height of block */
+    box-shadow: inset 0 -3px var(--corporateIdentity1);
+}
+
+.ia_tabContainerComponent__tab--modern--disabled {
+    color: var(--neutral-60);
+    opacity: 0.6
+}
+
+.ia_tabContainerComponent__tab--modern:not(.ia_tabContainerComponent__tab--modern--active,
+.ia_tabContainerComponent__tab--modern--disabled):hover {
+    filter: brightness(0.8);
+}
+
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Toast ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/* Toast Notification CSS animations */
+@keyframes slide-in-right-enter {
+	from {transform: translateX(125%);}
+	to {transform: translateX(0%);}
+}
+
+@keyframes slide-in-right-exit {
+	from {transform: translateX(0%);}
+	to {transform: translateX(125%);}
+}
+
+@keyframes slide-in-left-enter {
+	from {transform: translateX(-125%);}
+	to {transform: translateX(0%);}
+}
+
+@keyframes slide-in-left-exit {
+	from {transform: translateX(0%);}
+	to {transform: translateX(-125%);}
+}
+
+@keyframes slide-in-top-enter {
+	from {transform: translateY(-125%);}
+	to {transform: translateY(0%);}
+}
+
+@keyframes slide-in-top-exit {
+	from {transform: translateY(0%);}
+	to {transform: translateY(-125%);}
+}
+
+@keyframes slide-in-bottom-enter {
+	from {transform: translateY(125%);}
+	to {transform: translateY(0%);}
+}
+
+@keyframes slide-in-bottom-exit {
+	from {transform: translateY(0%);}
+	to {transform: translateY(125%);}
+}
+
+@keyframes fade-in {
+	from {opacity: 0;}
+	to {opacity: 1;}
+}
+
+@keyframes fade-out {
+	from {opacity: 1;}
+	to {opacity: 0;}
+}

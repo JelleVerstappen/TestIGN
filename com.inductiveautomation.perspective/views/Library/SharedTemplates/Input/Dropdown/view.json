@@ -1,0 +1,179 @@
+{
+  "custom": {},
+  "params": {
+    "enabled": true,
+    "key": "value",
+    "marginRight": 45,
+    "multiSelect": false,
+    "options": [
+      {
+        "label": "optie 1",
+        "value": "test4"
+      }
+    ],
+    "placeholder": "Select...",
+    "showClearIcon": true,
+    "value": null
+  },
+  "propConfig": {
+    "params.enabled": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.key": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.marginRight": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.multiSelect": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.options": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.placeholder": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.showClearIcon": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.value": {
+      "paramDirection": "inout",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 52,
+      "width": 454
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Label"
+        },
+        "position": {
+          "basis": "32px",
+          "grow": 1
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "view.params.key"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "classes": "ATA/Components/Labels/TextNormal"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Dropdown"
+        },
+        "position": {
+          "basis": "36px",
+          "grow": 1
+        },
+        "propConfig": {
+          "props.enabled": {
+            "binding": {
+              "config": {
+                "path": "view.params.enabled"
+              },
+              "type": "property"
+            }
+          },
+          "props.multiSelect": {
+            "binding": {
+              "config": {
+                "path": "view.params.multiSelect"
+              },
+              "type": "property"
+            }
+          },
+          "props.options": {
+            "binding": {
+              "config": {
+                "path": "view.params.options"
+              },
+              "type": "property"
+            }
+          },
+          "props.placeholder.text": {
+            "binding": {
+              "config": {
+                "path": "view.params.placeholder"
+              },
+              "type": "property"
+            }
+          },
+          "props.showClearIcon": {
+            "binding": {
+              "config": {
+                "path": "view.params.showClearIcon"
+              },
+              "type": "property"
+            }
+          },
+          "props.style.marginRight": {
+            "binding": {
+              "config": {
+                "path": "view.params.marginRight"
+              },
+              "type": "property"
+            }
+          },
+          "props.value": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "path": "view.params.value"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "dropdownOptionStyle": {
+            "classes": "ATA/Components/Dropdown"
+          },
+          "placeholder": {},
+          "style": {
+            "classes": "ATA/Components/DropdownOptionStyle",
+            "marginBottom": 5,
+            "marginLeft": 5
+          }
+        },
+        "type": "ia.input.dropdown"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "backgroundColor": "#FFFFFF00",
+        "overflow": "hidden",
+        "paddingLeft": 5
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

@@ -1,0 +1,186 @@
+{
+  "custom": {},
+  "params": {
+    "startPath": "[NLSTWDYK]Dyka/STW/EXT/E07/Assets/VAC/Screen/ProcessValues/VacuumZones/Zone01",
+    "zoneNr": "value"
+  },
+  "propConfig": {
+    "params.startPath": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.zoneNr": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 253,
+      "width": 227
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "grow": 1
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "expression": "\u0027Vacuum zone \u0027 + {view.params.zoneNr}"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "fontWeight": "bold"
+              },
+              "textStyle": {
+                "classes": "ATA/Components/Labels/TextLarge",
+                "textAlign": "center"
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer"
+        },
+        "position": {
+          "basis": "32px",
+          "shrink": 0
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "meta": {
+          "name": "Label_1"
+        },
+        "position": {
+          "basis": "20px",
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "ATA/Components/Labels/TextNormal"
+          },
+          "text": "Status",
+          "textStyle": {
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Icon"
+        },
+        "position": {
+          "basis": "15px",
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.color": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "indirect",
+                "references": {
+                  "startPath": "{view.params.startPath}"
+                },
+                "tagPath": "{startPath}/VacuumOn/ActualValue"
+              },
+              "transforms": [
+                {
+                  "fallback": "--color2",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": 1,
+                      "output": "--selected"
+                    },
+                    {
+                      "input": 0,
+                      "output": "--color2"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "tag"
+            }
+          }
+        },
+        "props": {
+          "path": "bootstrap-icons/circle-fill"
+        },
+        "type": "ia.display.icon"
+      },
+      {
+        "meta": {
+          "name": "FlexRepeater"
+        },
+        "position": {
+          "basis": "196px"
+        },
+        "propConfig": {
+          "props.instances[0].startPath": {
+            "binding": {
+              "config": {
+                "expression": "\"[NLSTWDYK]Dyka/STW/EXT/E07/Assets/VAC/Screen/ProcessValues/VacuumZones/Zone\"+{view.params.zoneNr}+\"/Vacuum\""
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "alignContent": "center",
+          "alignItems": "center",
+          "direction": "column",
+          "elementPosition": {
+            "basis": "auto"
+          },
+          "instances": [
+            {
+              "ParamName": "Vacuum",
+              "instancePosition": {},
+              "instanceStyle": {
+                "classes": ""
+              }
+            }
+          ],
+          "justify": "center",
+          "path": "Library/SharedTemplates/ParameterData",
+          "style": {
+            "overflow": "hidden"
+          },
+          "useDefaultViewHeight": false
+        },
+        "type": "ia.display.flex-repeater"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "classes": "ATA/Background/CardSecondary",
+        "paddingLeft": 5,
+        "paddingRight": 5
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

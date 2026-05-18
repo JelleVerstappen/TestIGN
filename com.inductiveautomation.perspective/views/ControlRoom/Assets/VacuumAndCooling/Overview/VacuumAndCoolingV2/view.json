@@ -1,0 +1,1632 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {},
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "vacuum en koeling"
+                        },
+                        "position": {
+                          "grow": 1
+                        },
+                        "props": {
+                          "elements": [
+                            {
+                              "name": "defs",
+                              "type": "defs"
+                            },
+                            {
+                              "fill": {
+                                "paint": "var(--backgroundSecondary)"
+                              },
+                              "height": "100%",
+                              "name": "rect",
+                              "type": "rect",
+                              "width": "100%",
+                              "x": "0",
+                              "y": "0"
+                            },
+                            {
+                              "elements": [
+                                {
+                                  "elements": [
+                                    {
+                                      "elements": [
+                                        {
+                                          "elements": [
+                                            {
+                                              "elements": [
+                                                {
+                                                  "fill": {
+                                                    "paint": "#ffffff"
+                                                  },
+                                                  "height": "180",
+                                                  "name": "rect",
+                                                  "stroke": {
+                                                    "paint": "#36454f"
+                                                  },
+                                                  "type": "rect",
+                                                  "width": "520",
+                                                  "x": "0",
+                                                  "y": "0"
+                                                }
+                                              ],
+                                              "name": "group",
+                                              "type": "group"
+                                            }
+                                          ],
+                                          "name": "group",
+                                          "type": "group"
+                                        },
+                                        {
+                                          "elements": [
+                                            {
+                                              "elements": [
+                                                {
+                                                  "fill": {
+                                                    "paint": "#f5f5f5"
+                                                  },
+                                                  "height": "90",
+                                                  "name": "rect",
+                                                  "stroke": {
+                                                    "paint": "#666666"
+                                                  },
+                                                  "type": "rect",
+                                                  "width": "480",
+                                                  "x": "21",
+                                                  "y": "20"
+                                                }
+                                              ],
+                                              "name": "group",
+                                              "type": "group"
+                                            }
+                                          ],
+                                          "name": "group",
+                                          "type": "group"
+                                        },
+                                        {
+                                          "elements": [
+                                            {
+                                              "elements": [
+                                                {
+                                                  "fill": {
+                                                    "paint": "#ffffff"
+                                                  },
+                                                  "height": "20",
+                                                  "name": "rect",
+                                                  "stroke": {
+                                                    "paint": "#000000"
+                                                  },
+                                                  "type": "rect",
+                                                  "width": "520",
+                                                  "x": "0",
+                                                  "y": "160"
+                                                }
+                                              ],
+                                              "name": "group",
+                                              "type": "group"
+                                            }
+                                          ],
+                                          "name": "group",
+                                          "type": "group"
+                                        },
+                                        {
+                                          "elements": [
+                                            {
+                                              "elements": [
+                                                {
+                                                  "fill": {
+                                                    "paint": "#ffffff"
+                                                  },
+                                                  "height": "30",
+                                                  "name": "rect",
+                                                  "stroke": {
+                                                    "paint": "#000000"
+                                                  },
+                                                  "type": "rect",
+                                                  "width": "478",
+                                                  "x": "22",
+                                                  "y": "50"
+                                                }
+                                              ],
+                                              "name": "group",
+                                              "type": "group"
+                                            }
+                                          ],
+                                          "name": "group",
+                                          "type": "group"
+                                        },
+                                        {
+                                          "elements": [
+                                            {
+                                              "elements": [
+                                                {
+                                                  "fill": {
+                                                    "paint": "#ffffff"
+                                                  },
+                                                  "height": "30",
+                                                  "name": "rect",
+                                                  "stroke": {
+                                                    "paint": "#000000"
+                                                  },
+                                                  "type": "rect",
+                                                  "width": "120",
+                                                  "x": "520",
+                                                  "y": "50"
+                                                }
+                                              ],
+                                              "name": "group",
+                                              "type": "group"
+                                            }
+                                          ],
+                                          "name": "group",
+                                          "type": "group"
+                                        },
+                                        {
+                                          "elements": [
+                                            {
+                                              "elements": [
+                                                {
+                                                  "fill": {
+                                                    "paint": "#71797e"
+                                                  },
+                                                  "height": "20",
+                                                  "name": "rect",
+                                                  "stroke": {
+                                                    "paint": "#36454f"
+                                                  },
+                                                  "transform": "rotate(-90,100,64.5)",
+                                                  "type": "rect",
+                                                  "width": "89",
+                                                  "x": "55.5",
+                                                  "y": "54.5"
+                                                }
+                                              ],
+                                              "name": "group",
+                                              "type": "group"
+                                            }
+                                          ],
+                                          "name": "group",
+                                          "type": "group"
+                                        },
+                                        {
+                                          "elements": [
+                                            {
+                                              "elements": [
+                                                {
+                                                  "fill": {
+                                                    "paint": "#71797e"
+                                                  },
+                                                  "height": "20",
+                                                  "name": "rect",
+                                                  "stroke": {
+                                                    "paint": "#36454f"
+                                                  },
+                                                  "transform": "rotate(-90,160,65.25)",
+                                                  "type": "rect",
+                                                  "width": "88.5",
+                                                  "x": "115.75",
+                                                  "y": "55.25"
+                                                }
+                                              ],
+                                              "name": "group",
+                                              "type": "group"
+                                            }
+                                          ],
+                                          "name": "group",
+                                          "type": "group"
+                                        },
+                                        {
+                                          "elements": [
+                                            {
+                                              "elements": [
+                                                {
+                                                  "fill": {
+                                                    "paint": "#71797e"
+                                                  },
+                                                  "height": "20",
+                                                  "name": "rect",
+                                                  "stroke": {
+                                                    "paint": "#36454f"
+                                                  },
+                                                  "transform": "rotate(-90,220.01,65.07)",
+                                                  "type": "rect",
+                                                  "width": "88.13",
+                                                  "x": "175.94",
+                                                  "y": "55.07"
+                                                }
+                                              ],
+                                              "name": "group",
+                                              "type": "group"
+                                            }
+                                          ],
+                                          "name": "group",
+                                          "type": "group"
+                                        },
+                                        {
+                                          "elements": [
+                                            {
+                                              "elements": [
+                                                {
+                                                  "fill": {
+                                                    "paint": "#71797e"
+                                                  },
+                                                  "height": "20",
+                                                  "name": "rect",
+                                                  "stroke": {
+                                                    "paint": "#36454f"
+                                                  },
+                                                  "transform": "rotate(-90,280.01,65.13)",
+                                                  "type": "rect",
+                                                  "width": "88.25",
+                                                  "x": "235.88",
+                                                  "y": "55.13"
+                                                }
+                                              ],
+                                              "name": "group",
+                                              "type": "group"
+                                            }
+                                          ],
+                                          "name": "group",
+                                          "type": "group"
+                                        },
+                                        {
+                                          "elements": [
+                                            {
+                                              "elements": [
+                                                {
+                                                  "fill": {
+                                                    "paint": "#71797e"
+                                                  },
+                                                  "height": "88",
+                                                  "name": "rect",
+                                                  "stroke": {
+                                                    "paint": "#36454f"
+                                                  },
+                                                  "type": "rect",
+                                                  "width": "40",
+                                                  "x": "380",
+                                                  "y": "21"
+                                                }
+                                              ],
+                                              "name": "group",
+                                              "type": "group"
+                                            }
+                                          ],
+                                          "name": "group",
+                                          "type": "group"
+                                        },
+                                        {
+                                          "elements": [
+                                            {
+                                              "elements": [
+                                                {
+                                                  "fill": {
+                                                    "paint": "#71797e"
+                                                  },
+                                                  "height": "88",
+                                                  "name": "rect",
+                                                  "stroke": {
+                                                    "paint": "#36454f"
+                                                  },
+                                                  "type": "rect",
+                                                  "width": "40",
+                                                  "x": "420",
+                                                  "y": "21"
+                                                }
+                                              ],
+                                              "name": "group",
+                                              "type": "group"
+                                            }
+                                          ],
+                                          "name": "group",
+                                          "type": "group"
+                                        },
+                                        {
+                                          "elements": [
+                                            {
+                                              "elements": [
+                                                {
+                                                  "fill": {
+                                                    "paint": "#71797e"
+                                                  },
+                                                  "height": "88",
+                                                  "name": "rect",
+                                                  "stroke": {
+                                                    "paint": "#36454f"
+                                                  },
+                                                  "type": "rect",
+                                                  "width": "40",
+                                                  "x": "460",
+                                                  "y": "21"
+                                                }
+                                              ],
+                                              "name": "group",
+                                              "type": "group"
+                                            }
+                                          ],
+                                          "name": "group",
+                                          "type": "group"
+                                        },
+                                        {
+                                          "elements": [
+                                            {
+                                              "elements": [
+                                                {
+                                                  "fill": {
+                                                    "paint": "#71797e"
+                                                  },
+                                                  "height": "20",
+                                                  "name": "rect",
+                                                  "stroke": {
+                                                    "paint": "#36454f"
+                                                  },
+                                                  "transform": "rotate(-90,40,64.5)",
+                                                  "type": "rect",
+                                                  "width": "89",
+                                                  "x": "-4.5",
+                                                  "y": "54.5"
+                                                }
+                                              ],
+                                              "name": "group",
+                                              "type": "group"
+                                            }
+                                          ],
+                                          "name": "group",
+                                          "type": "group"
+                                        },
+                                        {
+                                          "elements": [
+                                            {
+                                              "elements": [
+                                                {
+                                                  "fill": {
+                                                    "paint": "#71797e"
+                                                  },
+                                                  "height": "20",
+                                                  "name": "rect",
+                                                  "stroke": {
+                                                    "paint": "#36454f"
+                                                  },
+                                                  "transform": "rotate(-90,340.01,65.13)",
+                                                  "type": "rect",
+                                                  "width": "88.25",
+                                                  "x": "295.88",
+                                                  "y": "55.13"
+                                                }
+                                              ],
+                                              "name": "group",
+                                              "type": "group"
+                                            }
+                                          ],
+                                          "name": "group",
+                                          "type": "group"
+                                        }
+                                      ],
+                                      "name": "group",
+                                      "type": "group"
+                                    }
+                                  ],
+                                  "name": "group",
+                                  "type": "group"
+                                }
+                              ],
+                              "name": "group",
+                              "type": "group"
+                            }
+                          ],
+                          "style": {
+                            "background": " #ffffff",
+                            "backgroundColor": "--backgroundSecondary",
+                            "colorScheme": " light dark",
+                            "margin": 5,
+                            "marginLeft": "auto",
+                            "marginRight": "auto",
+                            "maxWidth": "600px"
+                          },
+                          "viewBox": "-0.5 -0.5 641 182"
+                        },
+                        "type": "ia.shapes.svg"
+                      }
+                    ],
+                    "meta": {
+                      "name": "FlexContainer_0"
+                    },
+                    "position": {
+                      "basis": "300px",
+                      "grow": 1
+                    },
+                    "props": {
+                      "direction": "column"
+                    },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "EmbeddedView"
+                        },
+                        "props": {
+                          "params": {
+                            "enabled": false,
+                            "engUnits": "",
+                            "format": "0,0.##",
+                            "key": "Water temperatuur",
+                            "maxValue": 10000000,
+                            "minValue": 0,
+                            "placeholder": "",
+                            "rejected": "True",
+                            "unitVisable": true,
+                            "value": null
+                          },
+                          "path": "Library/SharedTemplates/Input/Number",
+                          "useDefaultViewHeight": true
+                        },
+                        "type": "ia.display.view"
+                      },
+                      {
+                        "meta": {
+                          "name": "EmbeddedView_0"
+                        },
+                        "props": {
+                          "params": {
+                            "enabled": false,
+                            "engUnits": "",
+                            "format": "0,0.##",
+                            "key": "Water druk",
+                            "maxValue": 10000000,
+                            "minValue": 0,
+                            "placeholder": "",
+                            "rejected": "True",
+                            "unitVisable": true,
+                            "value": null
+                          },
+                          "path": "Library/SharedTemplates/Input/Number",
+                          "useDefaultViewHeight": true
+                        },
+                        "type": "ia.display.view"
+                      },
+                      {
+                        "meta": {
+                          "name": "EmbeddedView_1"
+                        },
+                        "props": {
+                          "params": {
+                            "enabled": false,
+                            "engUnits": "",
+                            "format": "0,0.##",
+                            "key": "Niveau water",
+                            "maxValue": 10000000,
+                            "minValue": 0,
+                            "placeholder": "",
+                            "rejected": "True",
+                            "unitVisable": true,
+                            "value": null
+                          },
+                          "path": "Library/SharedTemplates/Input/Number",
+                          "useDefaultViewHeight": true
+                        },
+                        "type": "ia.display.view"
+                      },
+                      {
+                        "meta": {
+                          "name": "EmbeddedView_2"
+                        },
+                        "props": {
+                          "params": {
+                            "enabled": false,
+                            "engUnits": "",
+                            "format": "0,0.##",
+                            "key": "Afstand kop-kalibrering",
+                            "maxValue": 10000000,
+                            "minValue": 0,
+                            "placeholder": "",
+                            "rejected": "True",
+                            "unitVisable": true,
+                            "value": null
+                          },
+                          "path": "Library/SharedTemplates/Input/Number",
+                          "useDefaultViewHeight": true
+                        },
+                        "type": "ia.display.view"
+                      },
+                      {
+                        "meta": {
+                          "name": "EmbeddedView_3"
+                        },
+                        "props": {
+                          "params": {
+                            "enabled": false,
+                            "engUnits": "",
+                            "format": "0,0.##",
+                            "key": "Stroom vacuümpomp 1",
+                            "maxValue": 10000000,
+                            "minValue": 0,
+                            "placeholder": "",
+                            "rejected": "True",
+                            "unitVisable": true,
+                            "value": null
+                          },
+                          "path": "Library/SharedTemplates/Input/Number",
+                          "useDefaultViewHeight": true
+                        },
+                        "type": "ia.display.view"
+                      },
+                      {
+                        "meta": {
+                          "name": "EmbeddedView_5"
+                        },
+                        "props": {
+                          "params": {
+                            "enabled": false,
+                            "engUnits": "",
+                            "format": "0,0.##",
+                            "key": "Stroom vacuümpomp 2",
+                            "maxValue": 10000000,
+                            "minValue": 0,
+                            "placeholder": "",
+                            "rejected": "True",
+                            "unitVisable": true,
+                            "value": null
+                          },
+                          "path": "Library/SharedTemplates/Input/Number",
+                          "useDefaultViewHeight": true
+                        },
+                        "type": "ia.display.view"
+                      },
+                      {
+                        "meta": {
+                          "name": "EmbeddedView_4"
+                        },
+                        "props": {
+                          "params": {
+                            "enabled": false,
+                            "engUnits": "",
+                            "format": "0,0.##",
+                            "key": "Trillingsmeter",
+                            "maxValue": 10000000,
+                            "minValue": 0,
+                            "placeholder": "",
+                            "rejected": "True",
+                            "unitVisable": true,
+                            "value": null
+                          },
+                          "path": "Library/SharedTemplates/Input/Number",
+                          "useDefaultViewHeight": true
+                        },
+                        "type": "ia.display.view"
+                      }
+                    ],
+                    "meta": {
+                      "name": "FlexContainer"
+                    },
+                    "position": {
+                      "basis": "250px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "direction": "column",
+                      "style": {
+                        "classes": "ATA/Background/CardSecondary"
+                      }
+                    },
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "meta": {
+                  "name": "Top"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "FlexRepeater"
+                    },
+                    "position": {
+                      "grow": 1,
+                      "shrink": 0
+                    },
+                    "props": {
+                      "alignContent": "space-around",
+                      "direction": "row-reverse",
+                      "elementPosition": {
+                        "basis": "auto",
+                        "grow": 0
+                      },
+                      "instances": [
+                        {
+                          "instancePosition": {},
+                          "instanceStyle": {
+                            "classes": ""
+                          },
+                          "running": true,
+                          "valueName": "Druk",
+                          "valueUnit": "mbar",
+                          "zone": "Vacuum zone 1"
+                        },
+                        {
+                          "color": "--color2",
+                          "instancePosition": {},
+                          "instanceStyle": {
+                            "classes": ""
+                          },
+                          "valueName": "Druk",
+                          "valueUnit": "mbar",
+                          "zone": "Vacuum zone 2"
+                        },
+                        {
+                          "color": "value",
+                          "instancePosition": {},
+                          "instanceStyle": {
+                            "classes": ""
+                          },
+                          "valueName": "Druk",
+                          "valueUnit": "mbar",
+                          "zone": "Vacuum zone 3"
+                        },
+                        {
+                          "instancePosition": {},
+                          "instanceStyle": {
+                            "classes": ""
+                          },
+                          "running": true,
+                          "valueName": "Druk",
+                          "valueUnit": "mbar",
+                          "zone": "Vacuum zone 4"
+                        },
+                        {
+                          "instancePosition": {},
+                          "instanceStyle": {
+                            "classes": ""
+                          },
+                          "running": true,
+                          "valueName": "Druk",
+                          "valueUnit": "mbar",
+                          "zone": "Vacuum zone 5"
+                        }
+                      ],
+                      "justify": "space-around",
+                      "path": "ControlRoom/Assets/VacuumAndCooling/Overview/Templates/Zone",
+                      "useDefaultViewHeight": false
+                    },
+                    "type": "ia.display.flex-repeater"
+                  }
+                ],
+                "meta": {
+                  "name": "FlexContainer"
+                },
+                "position": {
+                  "basis": "200px",
+                  "shrink": 0
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "Content"
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "backgroundColor": "--backgroundSecondary",
+                "classes": "ATA/Background/Root"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "vacuum en koeling"
+                        },
+                        "position": {
+                          "grow": 1
+                        },
+                        "props": {
+                          "elements": [
+                            {
+                              "name": "defs",
+                              "type": "defs"
+                            },
+                            {
+                              "fill": {
+                                "paint": "var(--backgroundSecondary)"
+                              },
+                              "height": "100%",
+                              "name": "rect",
+                              "type": "rect",
+                              "width": "100%",
+                              "x": "0",
+                              "y": "0"
+                            },
+                            {
+                              "elements": [
+                                {
+                                  "elements": [
+                                    {
+                                      "elements": [
+                                        {
+                                          "elements": [
+                                            {
+                                              "elements": [
+                                                {
+                                                  "fill": {
+                                                    "paint": "#ffffff"
+                                                  },
+                                                  "height": "180",
+                                                  "name": "rect",
+                                                  "stroke": {
+                                                    "paint": "#36454f"
+                                                  },
+                                                  "type": "rect",
+                                                  "width": "520",
+                                                  "x": "0",
+                                                  "y": "0"
+                                                }
+                                              ],
+                                              "name": "group",
+                                              "type": "group"
+                                            }
+                                          ],
+                                          "name": "group",
+                                          "type": "group"
+                                        },
+                                        {
+                                          "elements": [
+                                            {
+                                              "elements": [
+                                                {
+                                                  "fill": {
+                                                    "paint": "#f5f5f5"
+                                                  },
+                                                  "height": "90",
+                                                  "name": "rect",
+                                                  "stroke": {
+                                                    "paint": "#666666"
+                                                  },
+                                                  "type": "rect",
+                                                  "width": "480",
+                                                  "x": "21",
+                                                  "y": "20"
+                                                }
+                                              ],
+                                              "name": "group",
+                                              "type": "group"
+                                            }
+                                          ],
+                                          "name": "group",
+                                          "type": "group"
+                                        },
+                                        {
+                                          "elements": [
+                                            {
+                                              "elements": [
+                                                {
+                                                  "fill": {
+                                                    "paint": "#ffffff"
+                                                  },
+                                                  "height": "20",
+                                                  "name": "rect",
+                                                  "stroke": {
+                                                    "paint": "#000000"
+                                                  },
+                                                  "type": "rect",
+                                                  "width": "520",
+                                                  "x": "0",
+                                                  "y": "160"
+                                                }
+                                              ],
+                                              "name": "group",
+                                              "type": "group"
+                                            }
+                                          ],
+                                          "name": "group",
+                                          "type": "group"
+                                        },
+                                        {
+                                          "elements": [
+                                            {
+                                              "elements": [
+                                                {
+                                                  "fill": {
+                                                    "paint": "#ffffff"
+                                                  },
+                                                  "height": "30",
+                                                  "name": "rect",
+                                                  "stroke": {
+                                                    "paint": "#000000"
+                                                  },
+                                                  "type": "rect",
+                                                  "width": "478",
+                                                  "x": "22",
+                                                  "y": "50"
+                                                }
+                                              ],
+                                              "name": "group",
+                                              "type": "group"
+                                            }
+                                          ],
+                                          "name": "group",
+                                          "type": "group"
+                                        },
+                                        {
+                                          "elements": [
+                                            {
+                                              "elements": [
+                                                {
+                                                  "fill": {
+                                                    "paint": "#ffffff"
+                                                  },
+                                                  "height": "30",
+                                                  "name": "rect",
+                                                  "stroke": {
+                                                    "paint": "#000000"
+                                                  },
+                                                  "type": "rect",
+                                                  "width": "120",
+                                                  "x": "520",
+                                                  "y": "50"
+                                                }
+                                              ],
+                                              "name": "group",
+                                              "type": "group"
+                                            }
+                                          ],
+                                          "name": "group",
+                                          "type": "group"
+                                        },
+                                        {
+                                          "elements": [
+                                            {
+                                              "elements": [
+                                                {
+                                                  "fill": {
+                                                    "paint": "#71797e"
+                                                  },
+                                                  "height": "20",
+                                                  "name": "rect",
+                                                  "stroke": {
+                                                    "paint": "#36454f"
+                                                  },
+                                                  "transform": "rotate(-90,100,64.5)",
+                                                  "type": "rect",
+                                                  "width": "89",
+                                                  "x": "55.5",
+                                                  "y": "54.5"
+                                                }
+                                              ],
+                                              "name": "group",
+                                              "type": "group"
+                                            }
+                                          ],
+                                          "name": "group",
+                                          "type": "group"
+                                        },
+                                        {
+                                          "elements": [
+                                            {
+                                              "elements": [
+                                                {
+                                                  "fill": {
+                                                    "paint": "#71797e"
+                                                  },
+                                                  "height": "20",
+                                                  "name": "rect",
+                                                  "stroke": {
+                                                    "paint": "#36454f"
+                                                  },
+                                                  "transform": "rotate(-90,160,65.25)",
+                                                  "type": "rect",
+                                                  "width": "88.5",
+                                                  "x": "115.75",
+                                                  "y": "55.25"
+                                                }
+                                              ],
+                                              "name": "group",
+                                              "type": "group"
+                                            }
+                                          ],
+                                          "name": "group",
+                                          "type": "group"
+                                        },
+                                        {
+                                          "elements": [
+                                            {
+                                              "elements": [
+                                                {
+                                                  "fill": {
+                                                    "paint": "#71797e"
+                                                  },
+                                                  "height": "20",
+                                                  "name": "rect",
+                                                  "stroke": {
+                                                    "paint": "#36454f"
+                                                  },
+                                                  "transform": "rotate(-90,220.01,65.07)",
+                                                  "type": "rect",
+                                                  "width": "88.13",
+                                                  "x": "175.94",
+                                                  "y": "55.07"
+                                                }
+                                              ],
+                                              "name": "group",
+                                              "type": "group"
+                                            }
+                                          ],
+                                          "name": "group",
+                                          "type": "group"
+                                        },
+                                        {
+                                          "elements": [
+                                            {
+                                              "elements": [
+                                                {
+                                                  "fill": {
+                                                    "paint": "#71797e"
+                                                  },
+                                                  "height": "20",
+                                                  "name": "rect",
+                                                  "stroke": {
+                                                    "paint": "#36454f"
+                                                  },
+                                                  "transform": "rotate(-90,280.01,65.13)",
+                                                  "type": "rect",
+                                                  "width": "88.25",
+                                                  "x": "235.88",
+                                                  "y": "55.13"
+                                                }
+                                              ],
+                                              "name": "group",
+                                              "type": "group"
+                                            }
+                                          ],
+                                          "name": "group",
+                                          "type": "group"
+                                        },
+                                        {
+                                          "elements": [
+                                            {
+                                              "elements": [
+                                                {
+                                                  "fill": {
+                                                    "paint": "#71797e"
+                                                  },
+                                                  "height": "88",
+                                                  "name": "rect",
+                                                  "stroke": {
+                                                    "paint": "#36454f"
+                                                  },
+                                                  "type": "rect",
+                                                  "width": "40",
+                                                  "x": "380",
+                                                  "y": "21"
+                                                }
+                                              ],
+                                              "name": "group",
+                                              "type": "group"
+                                            }
+                                          ],
+                                          "name": "group",
+                                          "type": "group"
+                                        },
+                                        {
+                                          "elements": [
+                                            {
+                                              "elements": [
+                                                {
+                                                  "fill": {
+                                                    "paint": "#71797e"
+                                                  },
+                                                  "height": "88",
+                                                  "name": "rect",
+                                                  "stroke": {
+                                                    "paint": "#36454f"
+                                                  },
+                                                  "type": "rect",
+                                                  "width": "40",
+                                                  "x": "420",
+                                                  "y": "21"
+                                                }
+                                              ],
+                                              "name": "group",
+                                              "type": "group"
+                                            }
+                                          ],
+                                          "name": "group",
+                                          "type": "group"
+                                        },
+                                        {
+                                          "elements": [
+                                            {
+                                              "elements": [
+                                                {
+                                                  "fill": {
+                                                    "paint": "#71797e"
+                                                  },
+                                                  "height": "88",
+                                                  "name": "rect",
+                                                  "stroke": {
+                                                    "paint": "#36454f"
+                                                  },
+                                                  "type": "rect",
+                                                  "width": "40",
+                                                  "x": "460",
+                                                  "y": "21"
+                                                }
+                                              ],
+                                              "name": "group",
+                                              "type": "group"
+                                            }
+                                          ],
+                                          "name": "group",
+                                          "type": "group"
+                                        },
+                                        {
+                                          "elements": [
+                                            {
+                                              "elements": [
+                                                {
+                                                  "fill": {
+                                                    "paint": "#71797e"
+                                                  },
+                                                  "height": "20",
+                                                  "name": "rect",
+                                                  "stroke": {
+                                                    "paint": "#36454f"
+                                                  },
+                                                  "transform": "rotate(-90,40,64.5)",
+                                                  "type": "rect",
+                                                  "width": "89",
+                                                  "x": "-4.5",
+                                                  "y": "54.5"
+                                                }
+                                              ],
+                                              "name": "group",
+                                              "type": "group"
+                                            }
+                                          ],
+                                          "name": "group",
+                                          "type": "group"
+                                        },
+                                        {
+                                          "elements": [
+                                            {
+                                              "elements": [
+                                                {
+                                                  "fill": {
+                                                    "paint": "#71797e"
+                                                  },
+                                                  "height": "20",
+                                                  "name": "rect",
+                                                  "stroke": {
+                                                    "paint": "#36454f"
+                                                  },
+                                                  "transform": "rotate(-90,340.01,65.13)",
+                                                  "type": "rect",
+                                                  "width": "88.25",
+                                                  "x": "295.88",
+                                                  "y": "55.13"
+                                                }
+                                              ],
+                                              "name": "group",
+                                              "type": "group"
+                                            }
+                                          ],
+                                          "name": "group",
+                                          "type": "group"
+                                        }
+                                      ],
+                                      "name": "group",
+                                      "type": "group"
+                                    }
+                                  ],
+                                  "name": "group",
+                                  "type": "group"
+                                }
+                              ],
+                              "name": "group",
+                              "type": "group"
+                            }
+                          ],
+                          "style": {
+                            "background": " #ffffff",
+                            "backgroundColor": "--backgroundSecondary",
+                            "colorScheme": " light dark",
+                            "margin": 5,
+                            "marginLeft": "auto",
+                            "marginRight": "auto",
+                            "maxWidth": "600px"
+                          },
+                          "viewBox": "-0.5 -0.5 641 182"
+                        },
+                        "type": "ia.shapes.svg"
+                      }
+                    ],
+                    "meta": {
+                      "name": "FlexContainer_0"
+                    },
+                    "position": {
+                      "basis": "300px",
+                      "grow": 1
+                    },
+                    "props": {
+                      "direction": "column"
+                    },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "EmbeddedView"
+                        },
+                        "props": {
+                          "params": {
+                            "enabled": false,
+                            "engUnits": "",
+                            "format": "0,0.##",
+                            "key": "Water temperatuur",
+                            "maxValue": 10000000,
+                            "minValue": 0,
+                            "placeholder": "",
+                            "rejected": "True",
+                            "unitVisable": true,
+                            "value": null
+                          },
+                          "path": "Library/SharedTemplates/Input/Number",
+                          "useDefaultViewHeight": true
+                        },
+                        "type": "ia.display.view"
+                      },
+                      {
+                        "meta": {
+                          "name": "EmbeddedView_0"
+                        },
+                        "props": {
+                          "params": {
+                            "enabled": false,
+                            "engUnits": "",
+                            "format": "0,0.##",
+                            "key": "Water druk",
+                            "maxValue": 10000000,
+                            "minValue": 0,
+                            "placeholder": "",
+                            "rejected": "True",
+                            "unitVisable": true,
+                            "value": null
+                          },
+                          "path": "Library/SharedTemplates/Input/Number",
+                          "useDefaultViewHeight": true
+                        },
+                        "type": "ia.display.view"
+                      },
+                      {
+                        "meta": {
+                          "name": "EmbeddedView_1"
+                        },
+                        "props": {
+                          "params": {
+                            "enabled": false,
+                            "engUnits": "",
+                            "format": "0,0.##",
+                            "key": "Niveau water",
+                            "maxValue": 10000000,
+                            "minValue": 0,
+                            "placeholder": "",
+                            "rejected": "True",
+                            "unitVisable": true,
+                            "value": null
+                          },
+                          "path": "Library/SharedTemplates/Input/Number",
+                          "useDefaultViewHeight": true
+                        },
+                        "type": "ia.display.view"
+                      },
+                      {
+                        "meta": {
+                          "name": "EmbeddedView_2"
+                        },
+                        "props": {
+                          "params": {
+                            "enabled": false,
+                            "engUnits": "",
+                            "format": "0,0.##",
+                            "key": "Afstand kop-kalibrering",
+                            "maxValue": 10000000,
+                            "minValue": 0,
+                            "placeholder": "",
+                            "rejected": "True",
+                            "unitVisable": true,
+                            "value": null
+                          },
+                          "path": "Library/SharedTemplates/Input/Number",
+                          "useDefaultViewHeight": true
+                        },
+                        "type": "ia.display.view"
+                      },
+                      {
+                        "meta": {
+                          "name": "EmbeddedView_3"
+                        },
+                        "props": {
+                          "params": {
+                            "enabled": false,
+                            "engUnits": "",
+                            "format": "0,0.##",
+                            "key": "Stroom vacuümpomp 1",
+                            "maxValue": 10000000,
+                            "minValue": 0,
+                            "placeholder": "",
+                            "rejected": "True",
+                            "unitVisable": true,
+                            "value": null
+                          },
+                          "path": "Library/SharedTemplates/Input/Number",
+                          "useDefaultViewHeight": true
+                        },
+                        "type": "ia.display.view"
+                      },
+                      {
+                        "meta": {
+                          "name": "EmbeddedView_5"
+                        },
+                        "props": {
+                          "params": {
+                            "enabled": false,
+                            "engUnits": "",
+                            "format": "0,0.##",
+                            "key": "Stroom vacuümpomp 2",
+                            "maxValue": 10000000,
+                            "minValue": 0,
+                            "placeholder": "",
+                            "rejected": "True",
+                            "unitVisable": true,
+                            "value": null
+                          },
+                          "path": "Library/SharedTemplates/Input/Number",
+                          "useDefaultViewHeight": true
+                        },
+                        "type": "ia.display.view"
+                      },
+                      {
+                        "meta": {
+                          "name": "EmbeddedView_4"
+                        },
+                        "props": {
+                          "params": {
+                            "enabled": false,
+                            "engUnits": "",
+                            "format": "0,0.##",
+                            "key": "Trillingsmeter",
+                            "maxValue": 10000000,
+                            "minValue": 0,
+                            "placeholder": "",
+                            "rejected": "True",
+                            "unitVisable": true,
+                            "value": null
+                          },
+                          "path": "Library/SharedTemplates/Input/Number",
+                          "useDefaultViewHeight": true
+                        },
+                        "type": "ia.display.view"
+                      }
+                    ],
+                    "meta": {
+                      "name": "FlexContainer"
+                    },
+                    "position": {
+                      "basis": "250px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "direction": "column",
+                      "style": {
+                        "classes": "ATA/Background/CardSecondary"
+                      }
+                    },
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "meta": {
+                  "name": "Top"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "FlexRepeater"
+                    },
+                    "position": {
+                      "grow": 1,
+                      "shrink": 0
+                    },
+                    "props": {
+                      "alignContent": "space-around",
+                      "direction": "row-reverse",
+                      "elementPosition": {
+                        "basis": "auto",
+                        "grow": 0
+                      },
+                      "instances": [
+                        {
+                          "instancePosition": {},
+                          "instanceStyle": {
+                            "classes": ""
+                          },
+                          "running": true,
+                          "valueName": "Druk",
+                          "valueUnit": "mbar",
+                          "zone": "Vacuum zone 6"
+                        },
+                        {
+                          "color": "--color2",
+                          "instancePosition": {},
+                          "instanceStyle": {
+                            "classes": ""
+                          },
+                          "valueName": "Druk",
+                          "valueUnit": "mbar",
+                          "zone": "Vacuum zone 7"
+                        },
+                        {
+                          "color": "value",
+                          "instancePosition": {},
+                          "instanceStyle": {
+                            "classes": ""
+                          },
+                          "valueName": "Druk",
+                          "valueUnit": "mbar",
+                          "zone": "Vacuum zone 8"
+                        },
+                        {
+                          "instancePosition": {},
+                          "instanceStyle": {
+                            "classes": ""
+                          },
+                          "running": true,
+                          "valueName": "Druk",
+                          "valueUnit": "mbar",
+                          "zone": "Vacuum zone 9"
+                        },
+                        {
+                          "instancePosition": {},
+                          "instanceStyle": {
+                            "classes": ""
+                          },
+                          "running": true,
+                          "valueName": "Druk",
+                          "valueUnit": "mbar",
+                          "zone": "Vacuum zone 10"
+                        }
+                      ],
+                      "justify": "space-around",
+                      "path": "ControlRoom/Assets/VacuumAndCooling/Overview/Templates/Zone",
+                      "useDefaultViewHeight": false
+                    },
+                    "type": "ia.display.flex-repeater"
+                  }
+                ],
+                "meta": {
+                  "name": "FlexContainer"
+                },
+                "position": {
+                  "basis": "200px",
+                  "shrink": 0
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "Content_0"
+            },
+            "position": {
+              "tabIndex": 1
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "backgroundColor": "--backgroundSecondary",
+                "classes": "ATA/Background/Root"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "meta": {
+              "name": "PowerChart"
+            },
+            "position": {
+              "tabIndex": 2
+            },
+            "props": {
+              "config": {
+                "measureOfTime": "minutes",
+                "rangeEndDate": {
+                  "$": [
+                    "ts",
+                    0,
+                    1761137587356
+                  ],
+                  "$ts": 1761137581333
+                },
+                "rangeStartDate": {
+                  "$": [
+                    "ts",
+                    0,
+                    1761137587356
+                  ],
+                  "$ts": 1761135787333
+                },
+                "tagBrowserStartPath": "histprov:NLSTWDYK_DB_HIST",
+                "unitOfTime": 30,
+                "visibility": {
+                  "showTagBrowser": true
+                }
+              },
+              "interaction": {
+                "chartZoomLevel": 1,
+                "rangeZoomLevel": 1
+              },
+              "pens": [
+                {
+                  "axis": "",
+                  "data": {
+                    "aggregateMode": "default",
+                    "source": "histprov:NLSTWDYK_DB_HIST:/drv:nlstwapp11ot:default:/tag:testdeletelater/silotag"
+                  },
+                  "display": {
+                    "breakLine": true,
+                    "interpolation": "curveLinear",
+                    "radius": 3,
+                    "styles": {
+                      "highlighted": {
+                        "fill": {
+                          "color": "#63BEA2",
+                          "opacity": 1
+                        },
+                        "stroke": {
+                          "color": "#63BEA2",
+                          "dashArray": 0,
+                          "opacity": 1,
+                          "width": 1
+                        }
+                      },
+                      "muted": {
+                        "fill": {
+                          "color": "#63BEA2",
+                          "opacity": 0.4
+                        },
+                        "stroke": {
+                          "color": "#63BEA2",
+                          "dashArray": 0,
+                          "opacity": 0.4,
+                          "width": 1
+                        }
+                      },
+                      "normal": {
+                        "fill": {
+                          "color": "#63BEA2",
+                          "opacity": 0.8
+                        },
+                        "stroke": {
+                          "color": "#63BEA2",
+                          "dashArray": 0,
+                          "opacity": 0.8,
+                          "width": 1
+                        }
+                      },
+                      "selected": {
+                        "fill": {
+                          "color": "#63BEA2",
+                          "opacity": 1
+                        },
+                        "stroke": {
+                          "color": "#63BEA2",
+                          "dashArray": 0,
+                          "opacity": 1,
+                          "width": 1
+                        }
+                      }
+                    },
+                    "type": "line"
+                  },
+                  "enabled": true,
+                  "name": "silotag",
+                  "plot": 0,
+                  "selectable": true,
+                  "visible": true
+                }
+              ]
+            },
+            "type": "ia.chart.powerchart"
+          }
+        ],
+        "meta": {
+          "name": "TabContainer"
+        },
+        "position": {
+          "basis": "300px",
+          "grow": 1
+        },
+        "propConfig": {
+          "props.currentTabIndex": {
+            "binding": {
+              "config": {
+                "expression": "0"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "contentStyle": {
+            "classes": "--backgroundSecondary"
+          },
+          "menuType": "modern",
+          "style": {
+            "classes": "ATA/Background/CardSecondary"
+          },
+          "tabs": [
+            "Zone 1-5",
+            "Zone 6-10",
+            "Trending",
+            {}
+          ]
+        },
+        "type": "ia.container.tab"
+      },
+      {
+        "meta": {
+          "name": "EmbeddedView"
+        },
+        "position": {
+          "basis": "55px"
+        },
+        "props": {
+          "params": {
+            "filter": "",
+            "popupMarginRight": 1
+          },
+          "path": "Library/SharedDocked/Alarms/AlarmBar"
+        },
+        "type": "ia.display.view"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "classes": "ATA/Background/Root"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

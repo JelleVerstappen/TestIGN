@@ -1,0 +1,2737 @@
+{
+  "custom": {},
+  "params": {
+    "filter": "*TestDeleteLater/SiloTag*"
+  },
+  "propConfig": {
+    "params.filter": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 895,
+      "width": 862
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "hasDelegate": true,
+                  "name": "Label"
+                },
+                "position": {
+                  "basis": "16px"
+                },
+                "props": {
+                  "style": {
+                    "classes": "ATA/Library/AlarmAnalysis/Label"
+                  },
+                  "text": "Start Date"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "Date"
+                },
+                "position": {
+                  "basis": "36px",
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "custom.dateStr": {
+                    "binding": {
+                      "config": {
+                        "path": "this.props.value"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\tfrom java.util import Date\n\treturn system.date.format(Date(value), \"yyyy-MM-dd HH:mm:ss\")",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  },
+                  "props.format": {
+                    "binding": {
+                      "config": {
+                        "path": "session.custom.language.datepicker.datetimeShort"
+                      },
+                      "enabled": false,
+                      "type": "property"
+                    }
+                  },
+                  "props.value": {
+                    "binding": {
+                      "config": {
+                        "expression": "toDate(dateFormat(dateArithmetic(now(0), -2, \u0027days\u0027), \"yyyy-MM-dd 00:00:00\"))"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.getTime()",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "format": "ll",
+                  "formattedValue": "Feb 21, 2026",
+                  "formattedValues": {
+                    "date": "09/14/2019",
+                    "datetime": "09/14/2019 00:00",
+                    "time": "00:00"
+                  },
+                  "style": {
+                    "height": "36px"
+                  }
+                },
+                "type": "ia.input.date-time-input"
+              }
+            ],
+            "meta": {
+              "name": "Start Date"
+            },
+            "position": {
+              "basis": "135px",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "marginRight": "10px",
+                "overflow": "visible"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "hasDelegate": true,
+                  "name": "Label"
+                },
+                "position": {
+                  "basis": "16px"
+                },
+                "props": {
+                  "style": {
+                    "classes": "ATA/Library/AlarmAnalysis/Label"
+                  },
+                  "text": "End Date"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "Date"
+                },
+                "position": {
+                  "basis": "36px",
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "custom.dateStr": {
+                    "binding": {
+                      "config": {
+                        "path": "this.props.value"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\tfrom java.util import Date\n\treturn system.date.format(Date(value), \"yyyy-MM-dd HH:mm:ss\")",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  },
+                  "props.format": {
+                    "binding": {
+                      "config": {
+                        "path": "session.custom.language.datepicker.datetimeShort"
+                      },
+                      "enabled": false,
+                      "type": "property"
+                    }
+                  },
+                  "props.value": {
+                    "binding": {
+                      "config": {
+                        "expression": "toDate(dateFormat(now(0), \"yyyy-MM-dd 23:59:59\"))"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value.getTime()",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "format": "ll",
+                  "formattedValue": "Feb 23, 2026",
+                  "formattedValues": {
+                    "date": "09/16/2019",
+                    "datetime": "09/16/2019 23:59",
+                    "time": "23:59"
+                  },
+                  "style": {
+                    "height": "36px"
+                  }
+                },
+                "type": "ia.input.date-time-input"
+              }
+            ],
+            "meta": {
+              "name": "End Date"
+            },
+            "position": {
+              "basis": "135px",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "marginRight": "10px",
+                "overflow": "visible"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "hasDelegate": true,
+                  "name": "Label"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "classes": "ATA/Library/AlarmAnalysis/Label"
+                  },
+                  "text": "Top"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "Numeric"
+                },
+                "position": {
+                  "basis": "36px",
+                  "shrink": 0
+                },
+                "props": {
+                  "align": "Center",
+                  "format": "0,0",
+                  "inputBounds": {
+                    "minimum": 1
+                  },
+                  "style": {
+                    "borderRadius": "4px",
+                    "height": "36px"
+                  },
+                  "tooltip": "Return the top number of alarms",
+                  "value": 10
+                },
+                "type": "ia.input.numeric-entry-field"
+              }
+            ],
+            "meta": {
+              "name": "Top"
+            },
+            "position": {
+              "basis": "50px",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "overflow": "visible"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "events": {
+                  "dom": {
+                    "onClick": {
+                      "config": {
+                        "script": "\tself.parent.parent.parent.refreshBinding(\"custom.alarmSummary\")\n\tself.parent.parent.parent.refreshBinding(\"custom.mostFrequent\")\n\tself.parent.parent.parent.refreshBinding(\"custom.longestDuration\")\n\tself.parent.parent.parent.refreshBinding(\"custom.alarmFrequency\")\n\tself.parent.parent.parent.refreshBinding(\"custom.alarmDuration\")\n\tself.parent.parent.parent.refreshBinding(\"custom.alarmByHour\")"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "name": "Icon"
+                },
+                "position": {
+                  "basis": "30px",
+                  "shrink": 0
+                },
+                "props": {
+                  "color": "#000000A3",
+                  "path": "material/refresh",
+                  "style": {
+                    "classes": "",
+                    "cursor": "pointer",
+                    "marginTop": "16px"
+                  }
+                },
+                "type": "ia.display.icon"
+              }
+            ],
+            "meta": {
+              "name": "Refresh"
+            },
+            "position": {
+              "basis": "30px",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "column",
+              "justify": "center",
+              "style": {
+                "margin": "0px 0px 0px 10px",
+                "overflow": "visible"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "Filters"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "marginBottom": "8px",
+            "overflow": "visible"
+          },
+          "wrap": "wrap"
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "Icon"
+                    },
+                    "position": {
+                      "basis": "32px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "path": "material/alarm",
+                      "style": {
+                        "classes": "ATA/Library/AlarmAnalysis/Card/Title"
+                      }
+                    },
+                    "type": "ia.display.icon"
+                  },
+                  {
+                    "meta": {
+                      "hasDelegate": true,
+                      "name": "Label"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "ATA/Library/AlarmAnalysis/Card/Title",
+                        "paddingLeft": "0px"
+                      },
+                      "text": "Alarm KPIs"
+                    },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "meta": {
+                  "name": "Title"
+                },
+                "position": {
+                  "basis": "24px",
+                  "shrink": 0
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "hasDelegate": true,
+                      "name": "Label"
+                    },
+                    "position": {
+                      "basis": "125px",
+                      "grow": 1,
+                      "shrink": 0
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "ATA/Library/AlarmAnalysis/Card/Label"
+                      },
+                      "text": "Total Alarms"
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": {
+                      "hasDelegate": true,
+                      "name": "Value"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": {
+                          "config": {
+                            "expression": "numberFormat(\r\n\tsum({/root.custom.alarmSummary}, \"total\"),\r\n\t\"###0\")"
+                          },
+                          "transforms": [
+                            {
+                              "code": "\treturn value if value else 0",
+                              "type": "script"
+                            }
+                          ],
+                          "type": "expr"
+                        }
+                      }
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "ATA/Library/AlarmAnalysis/Card/Bold_Text"
+                      }
+                    },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "meta": {
+                  "name": "Total Alarms"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "classes": "ATA/Library/AlarmAnalysis/Card/Item Library/AlarmAnalysis/Card/Item_Border",
+                    "overflow": "visible"
+                  }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "hasDelegate": true,
+                      "name": "Label"
+                    },
+                    "position": {
+                      "basis": "125px",
+                      "grow": 1,
+                      "shrink": 0
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "ATA/Library/AlarmAnalysis/Card/Label"
+                      },
+                      "text": "Total Duration"
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": {
+                      "hasDelegate": true,
+                      "name": "Value"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": {
+                          "config": {
+                            "expression": "numberFormat(floor(sum({/root.custom.alarmSummary}, \"totalTime\") / 3600), \"00\") + \":\" +\r\nnumberFormat(floor((sum({/root.custom.alarmSummary}, \"totalTime\") % 3600) / 60), \"00\") + \":\" + \r\nnumberFormat(((sum({/root.custom.alarmSummary}, \"totalTime\") % 3600) % 60), \"00\") "
+                          },
+                          "transforms": [
+                            {
+                              "code": "\treturn value if value else \"00:00:00\"",
+                              "type": "script"
+                            }
+                          ],
+                          "type": "expr"
+                        }
+                      }
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "ATA/Library/AlarmAnalysis/Card/Bold_Text"
+                      }
+                    },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "meta": {
+                  "name": "Total Duration"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "classes": "ATA/Library/AlarmAnalysis/Card/Item Library/AlarmAnalysis/Card/Item_Border",
+                    "overflow": "visible"
+                  }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "hasDelegate": true,
+                      "name": "Label"
+                    },
+                    "position": {
+                      "basis": "125px",
+                      "grow": 1,
+                      "shrink": 0
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "ATA/Library/AlarmAnalysis/Card/Label"
+                      },
+                      "text": "Total Unacknowledged"
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": {
+                      "hasDelegate": true,
+                      "name": "Value"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": {
+                          "config": {
+                            "expression": "numberFormat(\r\n\tsum({/root.custom.alarmSummary}, \"unacknowledged\"),\r\n\t\"###0\")"
+                          },
+                          "transforms": [
+                            {
+                              "code": "\treturn value if value else 0",
+                              "type": "script"
+                            }
+                          ],
+                          "type": "expr"
+                        }
+                      }
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "ATA/Library/AlarmAnalysis/Card/Bold_Text"
+                      }
+                    },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "meta": {
+                  "name": "Total Unacknowledged"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "classes": "ATA/Library/AlarmAnalysis/Card/Item Library/AlarmAnalysis/Card/Item_Border",
+                    "overflow": "visible"
+                  }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "hasDelegate": true,
+                      "name": "Label"
+                    },
+                    "position": {
+                      "basis": "125px",
+                      "grow": 1
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "ATA/Library/AlarmAnalysis/Card/Label"
+                      },
+                      "text": "Avg Time to Ack"
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": {
+                      "hasDelegate": true,
+                      "name": "Value"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": {
+                          "config": {
+                            "expression": "numberFormat(floor(sum({/root.custom.alarmSummary}, \"acknowledgeTime\") / 3600), \"00\") + \":\" +\r\nnumberFormat(floor((sum({/root.custom.alarmSummary}, \"acknowledgeTime\") % 3600) / 60), \"00\") + \":\" + \r\nnumberFormat(((sum({/root.custom.alarmSummary}, \"acknowledgeTime\") % 3600) % 60), \"00\") "
+                          },
+                          "transforms": [
+                            {
+                              "code": "\treturn value if value else \"00:00:00\"",
+                              "type": "script"
+                            }
+                          ],
+                          "type": "expr"
+                        }
+                      }
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "ATA/Library/AlarmAnalysis/Card/Bold_Text"
+                      }
+                    },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "meta": {
+                  "name": "Avg Time to Ack"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "classes": "ATA/Library/AlarmAnalysis/Card/Item Library/AlarmAnalysis/Card/Item_Border",
+                    "overflow": "visible"
+                  }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "hasDelegate": true,
+                      "name": "Label"
+                    },
+                    "position": {
+                      "basis": "125px",
+                      "grow": 1,
+                      "shrink": 0
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "ATA/Library/AlarmAnalysis/Card/Label"
+                      },
+                      "text": "Avg Time to Clear"
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": {
+                      "hasDelegate": true,
+                      "name": "Value"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": {
+                          "config": {
+                            "expression": "numberFormat(floor(sum({/root.custom.alarmSummary}, \"clearTime\") / 3600), \"00\") + \":\" +\r\nnumberFormat(floor((sum({/root.custom.alarmSummary}, \"clearTime\") % 3600) / 60), \"00\") + \":\" + \r\nnumberFormat(((sum({/root.custom.alarmSummary}, \"clearTime\") % 3600) % 60), \"00\") "
+                          },
+                          "transforms": [
+                            {
+                              "code": "\treturn value if value else \"00:00:00\"",
+                              "type": "script"
+                            }
+                          ],
+                          "type": "expr"
+                        }
+                      }
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "ATA/Library/AlarmAnalysis/Card/Bold_Text"
+                      }
+                    },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "meta": {
+                  "name": "Avg Time to Clear"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "classes": "ATA/Library/AlarmAnalysis/Card/Item Library/AlarmAnalysis/Card/Item_Border",
+                    "overflow": "visible"
+                  }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "hasDelegate": true,
+                      "name": "Label"
+                    },
+                    "position": {
+                      "basis": "125px",
+                      "grow": 1,
+                      "shrink": 0
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "ATA/Library/AlarmAnalysis/Card/Label"
+                      },
+                      "text": "Most Frequent"
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": {
+                      "hasDelegate": true,
+                      "name": "Value"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": {
+                          "config": {
+                            "expression": "try(toDataset({/root.custom.mostFrequent})[\"displaypath\"], \"\") + \" - \" +\r\n\r\nnumberFormat(\r\n\ttoInt(try(toDataset({/root.custom.mostFrequent})[\"total\"], 0)),\r\n\t\"###0\") + \r\n\r\n\" (\" + \r\n\t\r\nnumberFormat(\r\n\ttry(toInt(try(toDataset({/root.custom.mostFrequent})[\"total\"], 0)) / toInt(sum({/root.custom.alarmSummary}, \"total\")), 0),\r\n\t\"##0.#%\") + \r\n\r\n\")\""
+                          },
+                          "transforms": [
+                            {
+                              "code": "\treturn value if value else \"\"",
+                              "type": "script"
+                            }
+                          ],
+                          "type": "expr"
+                        }
+                      }
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "ATA/Library/AlarmAnalysis/Card/Bold_Text"
+                      }
+                    },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "meta": {
+                  "name": "Most Frequent Alarm"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "classes": "ATA/Library/AlarmAnalysis/Card/Item Library/AlarmAnalysis/Card/Item_Border",
+                    "overflow": "visible"
+                  }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "hasDelegate": true,
+                      "name": "Label"
+                    },
+                    "position": {
+                      "basis": "125px",
+                      "grow": 1,
+                      "shrink": 0
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "ATA/Library/AlarmAnalysis/Card/Label"
+                      },
+                      "text": "Longest Duration"
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": {
+                      "hasDelegate": true,
+                      "name": "Value"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": {
+                          "config": {
+                            "expression": "try(toDataset({/root.custom.longestDuration})[\"displaypath\"], \"\") + \" - \" +\r\n\r\nnumberFormat(\r\n\ttoInt(try(toDataset({/root.custom.longestDuration})[\"total\"], 0)),\r\n\t\"###0\") + \r\n\r\n\" (\" + \r\n\t\r\nnumberFormat(\r\n\ttry(toInt(try(toDataset({/root.custom.longestDuration})[\"total\"], 0)) / toInt(sum({/root.custom.alarmSummary}, \"totalTime\")), 0),\r\n\t\"##0.#%\") + \r\n\r\n\")\""
+                          },
+                          "transforms": [
+                            {
+                              "code": "\treturn value if value else \"\"",
+                              "type": "script"
+                            }
+                          ],
+                          "type": "expr"
+                        }
+                      }
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "ATA/Library/AlarmAnalysis/Card/Bold_Text"
+                      }
+                    },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "meta": {
+                  "name": "Longest Duration Alarm"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "classes": "ATA/Library/AlarmAnalysis/Card/Item",
+                    "overflow": "visible"
+                  }
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "Alarm KPI"
+            },
+            "position": {
+              "basis": "auto",
+              "breakpoints": [
+                {
+                  "colIndex": 0,
+                  "name": "sm",
+                  "order": 2,
+                  "rowIndex": 0,
+                  "span": 12
+                },
+                {
+                  "colIndex": 0,
+                  "name": "md",
+                  "order": 1,
+                  "rowIndex": 0,
+                  "span": 6
+                },
+                {
+                  "colIndex": 0,
+                  "name": "lg",
+                  "order": 1,
+                  "rowIndex": 0,
+                  "span": 6
+                }
+              ],
+              "grow": 0,
+              "height": "auto",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "classes": "ATA/Library/AlarmAnalysis/Card/Card",
+                "overflow": "visible"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "Icon"
+                    },
+                    "position": {
+                      "basis": "32px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "path": "material/add_alarm",
+                      "style": {
+                        "classes": "ATA/Library/AlarmAnalysis/Card/Title"
+                      }
+                    },
+                    "type": "ia.display.icon"
+                  },
+                  {
+                    "meta": {
+                      "hasDelegate": true,
+                      "name": "Label"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "ATA/Library/AlarmAnalysis/Card/Title",
+                        "paddingLeft": "0px"
+                      },
+                      "text": "Alarm Frequency"
+                    },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "meta": {
+                  "name": "Title"
+                },
+                "position": {
+                  "basis": "24px",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "overflow": "visible"
+                  }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "meta": {
+                  "name": "PieChart"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "propConfig": {
+                  "props.data": {
+                    "binding": {
+                      "config": {
+                        "path": "/root.custom.alarmFrequency"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value if value else [{\u0027cnt\u0027:1,\u0027displaypath\u0027:\u0027Loading...\u0027}]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "colors": [
+                    "#003F69",
+                    "#9ED23E",
+                    "#F68F1E",
+                    "#F06240",
+                    "#FFC800",
+                    "#808080",
+                    "#994499"
+                  ],
+                  "cutoutRadius": 60,
+                  "showLabels": false,
+                  "showLegend": false,
+                  "style": {
+                    "fontSize": "10px",
+                    "height": "180px"
+                  }
+                },
+                "type": "ia.chart.pie"
+              }
+            ],
+            "meta": {
+              "name": "Alarm Frequency"
+            },
+            "position": {
+              "breakpoints": [
+                {
+                  "colIndex": 0,
+                  "name": "sm",
+                  "order": 1,
+                  "rowIndex": 2,
+                  "span": 12
+                },
+                {
+                  "colIndex": 0,
+                  "name": "md",
+                  "order": 1,
+                  "rowIndex": 1,
+                  "span": 6
+                },
+                {
+                  "colIndex": 0,
+                  "name": "lg",
+                  "order": 1,
+                  "rowIndex": 1,
+                  "span": 6
+                }
+              ],
+              "height": 240
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "classes": "ATA/Library/AlarmAnalysis/Card/Card",
+                "overflow": "visible"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "Icon"
+                    },
+                    "position": {
+                      "basis": "32px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "path": "material/timelapse",
+                      "style": {
+                        "classes": "ATA/Library/AlarmAnalysis/Card/Title"
+                      }
+                    },
+                    "type": "ia.display.icon"
+                  },
+                  {
+                    "meta": {
+                      "hasDelegate": true,
+                      "name": "Label"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "ATA/Library/AlarmAnalysis/Card/Title",
+                        "paddingLeft": "0px"
+                      },
+                      "text": "Alarm Duration"
+                    },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "meta": {
+                  "name": "Title"
+                },
+                "position": {
+                  "basis": "24px",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "overflow": "visible"
+                  }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "meta": {
+                  "name": "PieChart"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "propConfig": {
+                  "props.data": {
+                    "binding": {
+                      "config": {
+                        "path": "/root.custom.alarmDuration"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value if value else [{\u0027duration\u0027:1,\u0027displaypath\u0027:\u0027Loading...\u0027}]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "colors": [
+                    "#003F69",
+                    "#9ED23E",
+                    "#F68F1E",
+                    "#F06240",
+                    "#FFC800",
+                    "#808080",
+                    "#994499"
+                  ],
+                  "cutoutRadius": 60,
+                  "showLabels": false,
+                  "showLegend": false,
+                  "style": {
+                    "fontSize": "10px",
+                    "height": "180px"
+                  }
+                },
+                "type": "ia.chart.pie"
+              }
+            ],
+            "meta": {
+              "name": "Alarm Duration"
+            },
+            "position": {
+              "breakpoints": [
+                {
+                  "colIndex": 0,
+                  "name": "sm",
+                  "order": 1,
+                  "rowIndex": 3,
+                  "span": 12
+                },
+                {
+                  "colIndex": 6,
+                  "name": "md",
+                  "order": 2,
+                  "rowIndex": 1,
+                  "span": 6
+                },
+                {
+                  "colIndex": 6,
+                  "name": "lg",
+                  "order": 2,
+                  "rowIndex": 1,
+                  "span": 6
+                }
+              ],
+              "height": 240
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "classes": "ATA/Library/AlarmAnalysis/Card/Card",
+                "overflow": "visible"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "Icon"
+                    },
+                    "position": {
+                      "basis": "32px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "path": "material/show_chart",
+                      "style": {
+                        "classes": "ATA/Library/AlarmAnalysis/Card/Title"
+                      }
+                    },
+                    "type": "ia.display.icon"
+                  },
+                  {
+                    "meta": {
+                      "hasDelegate": true,
+                      "name": "Label"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "ATA/Library/AlarmAnalysis/Card/Title",
+                        "paddingLeft": "0px"
+                      },
+                      "text": "Alarms By Hour"
+                    },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "meta": {
+                  "name": "Title"
+                },
+                "position": {
+                  "basis": "24px",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "overflow": "visible"
+                  }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "meta": {
+                  "name": "XYChart"
+                },
+                "position": {
+                  "basis": "375px"
+                },
+                "propConfig": {
+                  "props.dataSources.series": {
+                    "binding": {
+                      "config": {
+                        "path": "/root.custom.alarmByHour"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn value if value else [{\u0027duration\u0027: 0, \u0027total\u0027: 0, \u0027label\u0027:i} for i in range(0, 24)]",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "background": {
+                    "color": "#FAFAFA",
+                    "render": "color"
+                  },
+                  "cursor": {
+                    "series": "total"
+                  },
+                  "dataSources": {},
+                  "series": [
+                    {
+                      "candlestick": {
+                        "appearance": {
+                          "deriveFieldsFromData": {
+                            "fill": {
+                              "color": "",
+                              "opacity": ""
+                            },
+                            "stroke": {
+                              "color": "",
+                              "opacity": "",
+                              "width": ""
+                            }
+                          },
+                          "fill": "",
+                          "heatRules": {
+                            "dataField": "",
+                            "enabled": false,
+                            "max": "",
+                            "min": ""
+                          },
+                          "opacity": 1,
+                          "stacked": false,
+                          "stroke": {
+                            "color": "",
+                            "opacity": 1,
+                            "width": 1
+                          }
+                        },
+                        "high": "",
+                        "low": "",
+                        "open": ""
+                      },
+                      "column": {
+                        "appearance": {
+                          "deriveFieldsFromData": {
+                            "fill": {
+                              "color": "",
+                              "opacity": ""
+                            },
+                            "stroke": {
+                              "color": "",
+                              "opacity": "",
+                              "width": ""
+                            }
+                          },
+                          "fill": "#003F69",
+                          "heatRules": {
+                            "dataField": "",
+                            "enabled": false,
+                            "max": "",
+                            "min": ""
+                          },
+                          "height": null,
+                          "opacity": 1,
+                          "stacked": false,
+                          "stroke": {
+                            "color": "",
+                            "opacity": 1,
+                            "width": 1
+                          },
+                          "width": null
+                        },
+                        "open": {
+                          "x": "",
+                          "y": ""
+                        }
+                      },
+                      "data": {
+                        "source": "series",
+                        "x": "label",
+                        "y": "total"
+                      },
+                      "defaultState": {
+                        "visible": true
+                      },
+                      "hiddenInLegend": true,
+                      "label": {
+                        "text": "# of Alarms"
+                      },
+                      "line": {
+                        "appearance": {
+                          "bullet": {
+                            "color": "",
+                            "enabled": true,
+                            "height": 10,
+                            "horizontalCenter": "middle",
+                            "opacity": 1,
+                            "render": "circle",
+                            "rotation": 0,
+                            "verticalCenter": "middle",
+                            "width": 10
+                          },
+                          "bullets": [
+                            {
+                              "deriveFieldsFromData": {
+                                "fill": {
+                                  "color": "",
+                                  "opacity": ""
+                                },
+                                "rotation": "",
+                                "stroke": {
+                                  "color": "",
+                                  "opacity": "",
+                                  "width": ""
+                                }
+                              },
+                              "enabled": true,
+                              "fill": {
+                                "color": "",
+                                "opacity": 1
+                              },
+                              "heatRules": {
+                                "dataField": "",
+                                "enabled": false,
+                                "max": 100,
+                                "min": 2
+                              },
+                              "height": 10,
+                              "label": {
+                                "position": {
+                                  "dx": 0,
+                                  "dy": 0
+                                },
+                                "text": "{value}"
+                              },
+                              "render": "circle",
+                              "rotation": 0,
+                              "stroke": {
+                                "color": "",
+                                "opacity": 1,
+                                "width": 1
+                              },
+                              "tooltip": {
+                                "background": {
+                                  "color": "",
+                                  "opacity": 1
+                                },
+                                "cornerRadius": 3,
+                                "enabled": true,
+                                "pointerLength": 4,
+                                "text": "{name}: [bold]{valueY}[/]"
+                              },
+                              "width": 10
+                            }
+                          ],
+                          "connect": true,
+                          "fill": {
+                            "color": "",
+                            "opacity": 0
+                          },
+                          "minDistance": 0.5,
+                          "stroke": {
+                            "color": "",
+                            "dashArray": "",
+                            "opacity": 1,
+                            "width": 3
+                          },
+                          "tensionX": 1,
+                          "tensionY": 1
+                        },
+                        "open": {
+                          "x": "",
+                          "y": ""
+                        }
+                      },
+                      "name": "total",
+                      "render": "column",
+                      "stepLine": {
+                        "appearance": {
+                          "bullet": {
+                            "color": "",
+                            "enabled": true,
+                            "height": 10,
+                            "horizontalCenter": "middle",
+                            "opacity": 1,
+                            "render": "circle",
+                            "rotation": 0,
+                            "verticalCenter": "middle",
+                            "width": 10
+                          },
+                          "bullets": [
+                            {
+                              "deriveFieldsFromData": {
+                                "fill": {
+                                  "color": "",
+                                  "opacity": ""
+                                },
+                                "rotation": "",
+                                "stroke": {
+                                  "color": "",
+                                  "opacity": "",
+                                  "width": ""
+                                }
+                              },
+                              "enabled": true,
+                              "fill": {
+                                "color": "",
+                                "opacity": 1
+                              },
+                              "heatRules": {
+                                "dataField": "",
+                                "enabled": false,
+                                "max": 100,
+                                "min": 2
+                              },
+                              "height": 10,
+                              "label": {
+                                "position": {
+                                  "dx": 0,
+                                  "dy": 0
+                                },
+                                "text": "{value}"
+                              },
+                              "render": "circle",
+                              "rotation": 0,
+                              "stroke": {
+                                "color": "",
+                                "opacity": 1,
+                                "width": 1
+                              },
+                              "tooltip": {
+                                "background": {
+                                  "color": "",
+                                  "opacity": 1
+                                },
+                                "cornerRadius": 3,
+                                "enabled": true,
+                                "pointerLength": 4,
+                                "text": "{name}: [bold]{valueY}[/]"
+                              },
+                              "width": 10
+                            }
+                          ],
+                          "connect": true,
+                          "fill": {
+                            "color": "",
+                            "opacity": 0
+                          },
+                          "minDistance": 0.5,
+                          "stroke": {
+                            "color": "",
+                            "dashArray": "",
+                            "opacity": 1,
+                            "width": 3
+                          },
+                          "tensionX": 1,
+                          "tensionY": 1
+                        },
+                        "open": {
+                          "x": "",
+                          "y": ""
+                        }
+                      },
+                      "tooltip": {
+                        "background": {
+                          "color": "",
+                          "opacity": 1
+                        },
+                        "cornerRadius": 3,
+                        "enabled": true,
+                        "format": "{name}: [bold]{valueY.value}[/]",
+                        "pointerLength": 4,
+                        "text": "{name}: [bold]{valueY}[/]"
+                      },
+                      "visible": true,
+                      "xAxis": "hour",
+                      "yAxis": "numAlarms",
+                      "zIndex": 0
+                    },
+                    {
+                      "candlestick": {
+                        "appearance": {
+                          "fill": "",
+                          "opacity": 1,
+                          "stacked": false
+                        },
+                        "high": "",
+                        "low": "",
+                        "open": ""
+                      },
+                      "column": {
+                        "appearance": {
+                          "fill": "#9ED23E",
+                          "opacity": 1,
+                          "stacked": false
+                        }
+                      },
+                      "data": {
+                        "source": "series",
+                        "x": "label",
+                        "y": "duration"
+                      },
+                      "defaultState": {
+                        "visible": true
+                      },
+                      "hiddenInLegend": true,
+                      "label": {
+                        "text": "Duration (sec)"
+                      },
+                      "line": {
+                        "appearance": {
+                          "bullet": {
+                            "color": "",
+                            "enabled": true,
+                            "height": 10,
+                            "horizontalCenter": "middle",
+                            "opacity": 1,
+                            "render": "circle",
+                            "rotation": 0,
+                            "verticalCenter": "middle",
+                            "width": 10
+                          },
+                          "connect": true,
+                          "minDistance": 0.5,
+                          "stroke": {
+                            "color": "",
+                            "dashArray": "",
+                            "opacity": 1,
+                            "width": 3
+                          },
+                          "tensionX": 1,
+                          "tensionY": 1
+                        }
+                      },
+                      "name": "duration",
+                      "render": "column",
+                      "stepLine": {
+                        "appearance": {
+                          "bullet": {
+                            "color": "",
+                            "enabled": true,
+                            "height": 10,
+                            "horizontalCenter": "middle",
+                            "opacity": 1,
+                            "render": "circle",
+                            "rotation": 0,
+                            "verticalCenter": "middle",
+                            "width": 10
+                          },
+                          "connect": true,
+                          "minDistance": 0.5,
+                          "stroke": {
+                            "color": "",
+                            "dashArray": "",
+                            "opacity": 1,
+                            "width": 3
+                          },
+                          "tensionX": 1,
+                          "tensionY": 1
+                        }
+                      },
+                      "tooltip": {
+                        "background": {
+                          "color": "",
+                          "opacity": 1
+                        },
+                        "cornerRadius": 3,
+                        "enabled": true,
+                        "format": "{name}: [bold]{valueY.value}[/]",
+                        "pointerLength": 4,
+                        "text": "{name}: [bold]{valueY}[/]"
+                      },
+                      "visible": true,
+                      "xAxis": "hour",
+                      "yAxis": "duration",
+                      "zIndex": 0
+                    }
+                  ],
+                  "style": {
+                    "padding": "5px"
+                  },
+                  "xAxes": [
+                    {
+                      "appearance": {
+                        "font": {
+                          "size": "",
+                          "weight": "normal"
+                        },
+                        "grid": {
+                          "color": "#E6EAEE",
+                          "dashArray": "",
+                          "minDistance": null,
+                          "opacity": 1,
+                          "position": 0.5
+                        },
+                        "inside": false,
+                        "labels": {
+                          "color": "#2E2E2E",
+                          "horizontalCenter": "middle",
+                          "opacity": 1,
+                          "rotation": 0,
+                          "verticalCenter": "middle",
+                          "wrap": true
+                        },
+                        "opposite": false
+                      },
+                      "category": {
+                        "break": {
+                          "enabled": false,
+                          "endCategory": "",
+                          "size": 0.05,
+                          "startCategory": ""
+                        }
+                      },
+                      "date": {
+                        "baseInterval": {
+                          "count": 1,
+                          "enabled": false,
+                          "skipEmptyPeriods": false,
+                          "timeUnit": "hour"
+                        },
+                        "break": {
+                          "enabled": false,
+                          "endDate": "",
+                          "size": 0.05,
+                          "startDate": ""
+                        },
+                        "format": "M/d/yyyy HH:mm:ss",
+                        "inputFormat": "yyyy-MM-dd kk:mm:ss",
+                        "range": {
+                          "max": "",
+                          "min": "",
+                          "useStrict": false
+                        }
+                      },
+                      "inversed": false,
+                      "label": {
+                        "color": "",
+                        "enabled": true,
+                        "text": "Hour"
+                      },
+                      "name": "hour",
+                      "render": "category",
+                      "tooltip": {
+                        "background": {
+                          "color": "",
+                          "opacity": 1
+                        },
+                        "cornerRadius": 3,
+                        "enabled": true,
+                        "format": "",
+                        "pointerLength": 4,
+                        "text": ""
+                      },
+                      "value": {
+                        "break": {
+                          "enabled": false,
+                          "endValue": 100,
+                          "size": 0.05,
+                          "startValue": 0
+                        },
+                        "format": "#,###.##",
+                        "logarithmic": false,
+                        "range": {
+                          "max": "",
+                          "min": "",
+                          "useStrict": false
+                        }
+                      },
+                      "visible": true
+                    }
+                  ],
+                  "yAxes": [
+                    {
+                      "appearance": {
+                        "font": {
+                          "size": "",
+                          "weight": "normal"
+                        },
+                        "grid": {
+                          "color": "#E6EAEE",
+                          "dashArray": "",
+                          "minDistance": null,
+                          "opacity": 1,
+                          "position": 0.5
+                        },
+                        "inside": false,
+                        "labels": {
+                          "color": "#2E2E2E",
+                          "horizontalCenter": "middle",
+                          "opacity": 1,
+                          "rotation": 0,
+                          "verticalCenter": "middle",
+                          "wrap": true
+                        },
+                        "opposite": false
+                      },
+                      "category": {
+                        "break": {
+                          "enabled": false,
+                          "endCategory": "",
+                          "size": 0.05,
+                          "startCategory": ""
+                        }
+                      },
+                      "date": {
+                        "baseInterval": {
+                          "count": 1,
+                          "enabled": false,
+                          "skipEmptyPeriods": false,
+                          "timeUnit": "hour"
+                        },
+                        "break": {
+                          "enabled": false,
+                          "endDate": "",
+                          "size": 0.05,
+                          "startDate": ""
+                        },
+                        "format": "M/d/yyyy HH:mm:ss",
+                        "inputFormat": "yyyy-MM-dd kk:mm:ss",
+                        "range": {
+                          "max": "",
+                          "min": "",
+                          "useStrict": false
+                        }
+                      },
+                      "inversed": false,
+                      "label": {
+                        "color": "",
+                        "enabled": true,
+                        "text": "# of Alarms"
+                      },
+                      "name": "numAlarms",
+                      "render": "value",
+                      "tooltip": {
+                        "background": {
+                          "color": "",
+                          "opacity": 1
+                        },
+                        "cornerRadius": 3,
+                        "enabled": true,
+                        "format": "",
+                        "pointerLength": 4,
+                        "text": ""
+                      },
+                      "value": {
+                        "break": {
+                          "enabled": false,
+                          "endValue": 100,
+                          "size": 0.05,
+                          "startValue": 0
+                        },
+                        "format": "#,###.##",
+                        "logarithmic": false,
+                        "range": {
+                          "max": "",
+                          "min": "",
+                          "useStrict": false
+                        }
+                      },
+                      "visible": true
+                    },
+                    {
+                      "appearance": {
+                        "font": {
+                          "size": "",
+                          "weight": "normal"
+                        },
+                        "grid": {
+                          "color": "#E6EAEE",
+                          "dashArray": "",
+                          "opacity": 1
+                        },
+                        "inside": false,
+                        "labels": {
+                          "color": "#2E2E2E",
+                          "opacity": 1
+                        },
+                        "opposite": true
+                      },
+                      "category": {
+                        "break": {
+                          "enabled": false,
+                          "endCategory": "",
+                          "size": 0.05,
+                          "startCategory": ""
+                        }
+                      },
+                      "date": {
+                        "baseInterval": {
+                          "count": 1,
+                          "enabled": false,
+                          "skipEmptyPeriods": false,
+                          "timeUnit": "hour"
+                        },
+                        "break": {
+                          "enabled": false,
+                          "endDate": "",
+                          "size": 0.05,
+                          "startDate": ""
+                        },
+                        "format": "M/d/yyyy HH:mm:ss",
+                        "range": {
+                          "max": "",
+                          "min": "",
+                          "useStrict": false
+                        }
+                      },
+                      "label": {
+                        "color": "",
+                        "enabled": true,
+                        "text": "Duration (sec)"
+                      },
+                      "name": "duration",
+                      "render": "value",
+                      "tooltip": {
+                        "background": {
+                          "color": "",
+                          "opacity": 1
+                        },
+                        "cornerRadius": 3,
+                        "enabled": true,
+                        "format": "",
+                        "pointerLength": 4
+                      },
+                      "value": {
+                        "break": {
+                          "enabled": false,
+                          "endValue": 100,
+                          "size": 0.05,
+                          "startValue": 0
+                        },
+                        "format": "#,###.##",
+                        "logarithmic": false,
+                        "range": {
+                          "max": "",
+                          "min": "",
+                          "useStrict": false
+                        }
+                      },
+                      "visible": true
+                    }
+                  ]
+                },
+                "type": "ia.chart.xy"
+              }
+            ],
+            "meta": {
+              "name": "Alarm By Hour"
+            },
+            "position": {
+              "breakpoints": [
+                {
+                  "colIndex": 0,
+                  "name": "sm",
+                  "order": 1,
+                  "rowIndex": 1,
+                  "span": 12
+                },
+                {
+                  "colIndex": 6,
+                  "name": "md",
+                  "order": 2,
+                  "rowIndex": 0,
+                  "span": 6
+                },
+                {
+                  "colIndex": 6,
+                  "name": "lg",
+                  "order": 2,
+                  "rowIndex": 0,
+                  "span": 6
+                }
+              ],
+              "height": 240
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "classes": "ATA/Library/AlarmAnalysis/Card/Card",
+                "overflow": "visible"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "Column Container"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "breakpoints": [
+            {
+              "minWidth": 0,
+              "name": "sm"
+            },
+            {
+              "minWidth": 600,
+              "name": "md"
+            },
+            {
+              "minWidth": 996,
+              "name": "lg"
+            }
+          ],
+          "style": {
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.container.column"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Icon"
+                },
+                "position": {
+                  "basis": "32px",
+                  "shrink": 0
+                },
+                "props": {
+                  "path": "material/view_list",
+                  "style": {
+                    "classes": "ATA/Library/AlarmAnalysis/Card/Title"
+                  }
+                },
+                "type": "ia.display.icon"
+              },
+              {
+                "meta": {
+                  "hasDelegate": true,
+                  "name": "Label"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "props": {
+                  "style": {
+                    "classes": "ATA/Library/AlarmAnalysis/Card/Title",
+                    "paddingLeft": "0px"
+                  },
+                  "text": "Alarms Summary"
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "Title"
+            },
+            "position": {
+              "basis": "24px",
+              "shrink": 0
+            },
+            "props": {
+              "style": {
+                "overflow": "visible"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Table"
+                },
+                "position": {
+                  "size": "large"
+                },
+                "propConfig": {
+                  "props.columns[0].header.title": {
+                    "binding": {
+                      "config": {
+                        "expression": "translate(\u0027Priority\u0027)"
+                      },
+                      "type": "expr"
+                    }
+                  },
+                  "props.columns[1].header.title": {
+                    "binding": {
+                      "config": {
+                        "expression": "translate(\u0027Total Alarms\u0027)"
+                      },
+                      "type": "expr"
+                    }
+                  },
+                  "props.columns[2].header.title": {
+                    "binding": {
+                      "config": {
+                        "expression": "translate(\u0027Total Alarms Active\u0027)"
+                      },
+                      "type": "expr"
+                    }
+                  },
+                  "props.columns[3].header.title": {
+                    "binding": {
+                      "config": {
+                        "expression": "translate(\u0027Total Alarms Unacknowledged\u0027)"
+                      },
+                      "type": "expr"
+                    }
+                  },
+                  "props.columns[4].header.title": {
+                    "binding": {
+                      "config": {
+                        "expression": "translate(\u0027Total Alarms Cleared\u0027)"
+                      },
+                      "type": "expr"
+                    }
+                  },
+                  "props.columns[5].header.title": {
+                    "binding": {
+                      "config": {
+                        "expression": "translate(\u0027Average Time to Clear\u0027)"
+                      },
+                      "type": "expr"
+                    }
+                  },
+                  "props.columns[6].header.title": {
+                    "binding": {
+                      "config": {
+                        "expression": "translate(\u0027Average Time to Acknowledge\u0027)"
+                      },
+                      "type": "expr"
+                    }
+                  },
+                  "props.columns[7].header.title": {
+                    "binding": {
+                      "config": {
+                        "expression": "translate(\u0027Total Duration\u0027)"
+                      },
+                      "type": "expr"
+                    }
+                  },
+                  "props.data": {
+                    "binding": {
+                      "config": {
+                        "parameters": {
+                          "endDate": "{..../Filters/End Date/Date.custom.dateStr}",
+                          "filter": "{view.params.filter}",
+                          "startDate": "{..../Filters/Start Date/Date.custom.dateStr}"
+                        },
+                        "queryPath": "Alarms/AlarmSummaryTable",
+                        "returnFormat": "json"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\tpriorities \u003d [\"Diagnostic\", \"Low\", \"Medium\", \"High\", \"Critical\"]\n\trows \u003d []\n\t\n\tfor priority in priorities:\n\t\tnewRow \u003d None\n\t\tfor row in value:\n\t\t\tif priority \u003d\u003d row[\"Priority\"]:\n\t\t\t\tnewRow \u003d row\n\t\tif newRow \u003d\u003d None:\n\t\t\tnewRow \u003d ({\"Priority\":priority, \"total\":0, \"active\":0, \"unacknowledged\":0, \"cleared\":0, \"acknowledgeTime\":0, \"clearTime\":0, \"totalTime\":0})\n\t\trows.append(newRow)\n\treturn rows",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "query"
+                    }
+                  }
+                },
+                "props": {
+                  "columns": [
+                    {
+                      "align": "center",
+                      "boolean": "checkbox",
+                      "dateFormat": "MM/DD/YYYY",
+                      "editable": false,
+                      "field": "Priority",
+                      "footer": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": ""
+                      },
+                      "header": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        }
+                      },
+                      "justify": "auto",
+                      "number": "value",
+                      "numberFormat": "$ (0,0.00)",
+                      "progressBar": {
+                        "bar": {
+                          "color": "#62A3F6",
+                          "linecap": "round",
+                          "width": 5
+                        },
+                        "max": 100,
+                        "track": {
+                          "color": "#DADADA",
+                          "linecap": "round",
+                          "width": 2
+                        },
+                        "value": {
+                          "color": "#7D7D7D",
+                          "show": true
+                        }
+                      },
+                      "render": "auto",
+                      "resizable": true,
+                      "sortable": true,
+                      "strictWidth": false,
+                      "style": {
+                        "classes": ""
+                      },
+                      "toggleSwitch": {
+                        "color": {
+                          "selected": "#2196F3",
+                          "unselected": "#FFFFFF"
+                        }
+                      },
+                      "viewParams": {},
+                      "viewPath": "",
+                      "width": ""
+                    },
+                    {
+                      "align": "center",
+                      "boolean": "checkbox",
+                      "dateFormat": "MM/DD/YYYY",
+                      "editable": false,
+                      "field": "total",
+                      "footer": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": ""
+                      },
+                      "header": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        }
+                      },
+                      "justify": "auto",
+                      "number": "value",
+                      "numberFormat": "0,0.##",
+                      "progressBar": {
+                        "bar": {
+                          "color": "#62A3F6",
+                          "linecap": "round",
+                          "width": 5
+                        },
+                        "max": 100,
+                        "track": {
+                          "color": "#DADADA",
+                          "linecap": "round",
+                          "width": 2
+                        },
+                        "value": {
+                          "color": "#7D7D7D",
+                          "show": true
+                        }
+                      },
+                      "render": "auto",
+                      "resizable": true,
+                      "sortable": true,
+                      "strictWidth": false,
+                      "style": {
+                        "classes": ""
+                      },
+                      "toggleSwitch": {
+                        "color": {
+                          "selected": "#2196F3",
+                          "unselected": "#FFFFFF"
+                        }
+                      },
+                      "viewParams": {},
+                      "viewPath": "",
+                      "width": ""
+                    },
+                    {
+                      "align": "center",
+                      "boolean": "checkbox",
+                      "dateFormat": "MM/DD/YYYY",
+                      "editable": false,
+                      "field": "active",
+                      "footer": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": ""
+                      },
+                      "header": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        }
+                      },
+                      "justify": "auto",
+                      "number": "value",
+                      "numberFormat": "0,0.##",
+                      "progressBar": {
+                        "bar": {
+                          "color": "#62A3F6",
+                          "linecap": "round",
+                          "width": 5
+                        },
+                        "max": 100,
+                        "track": {
+                          "color": "#DADADA",
+                          "linecap": "round",
+                          "width": 2
+                        },
+                        "value": {
+                          "color": "#7D7D7D",
+                          "show": true
+                        }
+                      },
+                      "render": "auto",
+                      "resizable": true,
+                      "sortable": true,
+                      "strictWidth": false,
+                      "style": {
+                        "classes": ""
+                      },
+                      "toggleSwitch": {
+                        "color": {
+                          "selected": "#2196F3",
+                          "unselected": "#FFFFFF"
+                        }
+                      },
+                      "viewParams": {},
+                      "viewPath": "",
+                      "width": ""
+                    },
+                    {
+                      "align": "center",
+                      "boolean": "checkbox",
+                      "dateFormat": "MM/DD/YYYY",
+                      "editable": false,
+                      "field": "unacknowledged",
+                      "footer": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": ""
+                      },
+                      "header": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        }
+                      },
+                      "justify": "auto",
+                      "number": "value",
+                      "numberFormat": "0,0.##",
+                      "progressBar": {
+                        "bar": {
+                          "color": "#62A3F6",
+                          "linecap": "round",
+                          "width": 5
+                        },
+                        "max": 100,
+                        "track": {
+                          "color": "#DADADA",
+                          "linecap": "round",
+                          "width": 2
+                        },
+                        "value": {
+                          "color": "#7D7D7D",
+                          "show": true
+                        }
+                      },
+                      "render": "auto",
+                      "resizable": true,
+                      "sortable": true,
+                      "strictWidth": false,
+                      "style": {
+                        "classes": ""
+                      },
+                      "toggleSwitch": {
+                        "color": {
+                          "selected": "#2196F3",
+                          "unselected": "#FFFFFF"
+                        }
+                      },
+                      "viewParams": {},
+                      "viewPath": "",
+                      "width": ""
+                    },
+                    {
+                      "align": "center",
+                      "boolean": "checkbox",
+                      "dateFormat": "MM/DD/YYYY",
+                      "editable": false,
+                      "field": "cleared",
+                      "footer": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": ""
+                      },
+                      "header": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        }
+                      },
+                      "justify": "auto",
+                      "number": "value",
+                      "numberFormat": "0,0.##",
+                      "progressBar": {
+                        "bar": {
+                          "color": "#62A3F6",
+                          "linecap": "round",
+                          "width": 5
+                        },
+                        "max": 100,
+                        "track": {
+                          "color": "#DADADA",
+                          "linecap": "round",
+                          "width": 2
+                        },
+                        "value": {
+                          "color": "#7D7D7D",
+                          "show": true
+                        }
+                      },
+                      "render": "auto",
+                      "resizable": true,
+                      "sortable": true,
+                      "strictWidth": false,
+                      "style": {
+                        "classes": ""
+                      },
+                      "toggleSwitch": {
+                        "color": {
+                          "selected": "#2196F3",
+                          "unselected": "#FFFFFF"
+                        }
+                      },
+                      "viewParams": {},
+                      "viewPath": "",
+                      "width": ""
+                    },
+                    {
+                      "align": "center",
+                      "boolean": "checkbox",
+                      "dateFormat": "MM/DD/YYYY",
+                      "editable": false,
+                      "field": "clearTime",
+                      "footer": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": ""
+                      },
+                      "header": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        }
+                      },
+                      "justify": "auto",
+                      "number": "value",
+                      "numberFormat": "00:00:00",
+                      "progressBar": {
+                        "bar": {
+                          "color": "#62A3F6",
+                          "linecap": "round",
+                          "width": 5
+                        },
+                        "max": 100,
+                        "track": {
+                          "color": "#DADADA",
+                          "linecap": "round",
+                          "width": 2
+                        },
+                        "value": {
+                          "color": "#7D7D7D",
+                          "show": true
+                        }
+                      },
+                      "render": "auto",
+                      "resizable": true,
+                      "sortable": true,
+                      "strictWidth": false,
+                      "style": {
+                        "classes": ""
+                      },
+                      "toggleSwitch": {
+                        "color": {
+                          "selected": "#2196F3",
+                          "unselected": "#FFFFFF"
+                        }
+                      },
+                      "viewParams": {},
+                      "viewPath": "",
+                      "width": ""
+                    },
+                    {
+                      "align": "center",
+                      "boolean": "checkbox",
+                      "dateFormat": "MM/DD/YYYY",
+                      "editable": false,
+                      "field": "acknowledgeTime",
+                      "footer": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": ""
+                      },
+                      "header": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        }
+                      },
+                      "justify": "auto",
+                      "number": "value",
+                      "numberFormat": "00:00:00",
+                      "progressBar": {
+                        "bar": {
+                          "color": "#62A3F6",
+                          "linecap": "round",
+                          "width": 5
+                        },
+                        "max": 100,
+                        "track": {
+                          "color": "#DADADA",
+                          "linecap": "round",
+                          "width": 2
+                        },
+                        "value": {
+                          "color": "#7D7D7D",
+                          "show": true
+                        }
+                      },
+                      "render": "auto",
+                      "resizable": true,
+                      "sortable": true,
+                      "strictWidth": false,
+                      "style": {
+                        "classes": ""
+                      },
+                      "toggleSwitch": {
+                        "color": {
+                          "selected": "#2196F3",
+                          "unselected": "#FFFFFF"
+                        }
+                      },
+                      "viewParams": {},
+                      "viewPath": "",
+                      "width": ""
+                    },
+                    {
+                      "align": "center",
+                      "boolean": "checkbox",
+                      "dateFormat": "h:mm:ss a",
+                      "editable": false,
+                      "field": "totalTime",
+                      "footer": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": ""
+                      },
+                      "header": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        }
+                      },
+                      "justify": "auto",
+                      "number": "value",
+                      "numberFormat": "00:00:00",
+                      "progressBar": {
+                        "bar": {
+                          "color": "#62A3F6",
+                          "linecap": "round",
+                          "width": 5
+                        },
+                        "max": 100,
+                        "track": {
+                          "color": "#DADADA",
+                          "linecap": "round",
+                          "width": 2
+                        },
+                        "value": {
+                          "color": "#7D7D7D",
+                          "show": true
+                        }
+                      },
+                      "render": "number",
+                      "resizable": true,
+                      "sortable": true,
+                      "strictWidth": false,
+                      "style": {
+                        "classes": ""
+                      },
+                      "toggleSwitch": {
+                        "color": {
+                          "selected": "#2196F3",
+                          "unselected": "#FFFFFF"
+                        }
+                      },
+                      "viewParams": {},
+                      "viewPath": "",
+                      "width": ""
+                    }
+                  ],
+                  "pager": {
+                    "bottom": false
+                  },
+                  "style": {
+                    "minHeight": "250px"
+                  }
+                },
+                "type": "ia.display.table"
+              },
+              {
+                "meta": {
+                  "name": "EmbeddedView"
+                },
+                "propConfig": {
+                  "props.params.data": {
+                    "binding": {
+                      "config": {
+                        "parameters": {
+                          "endDate": "dateFormat({..../Filters/End Date/Date.props.value}, \"yyyy-MM-dd HH:mm:ss\")",
+                          "startDate": "dateFormat({..../Filters/Start Date/Date.props.value}, \"yyyy-MM-dd HH:mm:ss\")"
+                        },
+                        "queryPath": "Alarms/Alarm Summary Table",
+                        "returnFormat": "json"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\tpriorities \u003d [\"Diagnostic\", \"Low\", \"Medium\", \"High\", \"Critical\"]\n\trows \u003d []\n\t\n\tfor priority in priorities:\n\t\tnewRow \u003d None\n\t\tfor row in value:\n\t\t\tif priority \u003d\u003d row[\"Priority\"]:\n\t\t\t\tnewRow \u003d row\n\t\tif newRow \u003d\u003d None:\n\t\t\tnewRow \u003d ({\"Priority\":priority, \"total\":0, \"active\":0, \"unacknowledged\":0, \"cleared\":0, \"acknowledgeTime\":0, \"clearTime\":0, \"totalTime\":0})\n\t\trows.append(newRow)\n\treturn rows",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "query"
+                    }
+                  }
+                },
+                "props": {
+                  "params": {
+                    "viewPath": "Library/Alarms/Templates/Alarm Summary Card"
+                  },
+                  "path": "Library/Library/AlarmAnalysis/Table Card Layout/Table"
+                },
+                "type": "ia.display.view"
+              }
+            ],
+            "meta": {
+              "name": "BreakpointContainer"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "type": "ia.container.breakpt"
+          }
+        ],
+        "meta": {
+          "name": "Alarm Summary"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "classes": "ATA/Library/AlarmAnalysis/Card/Card",
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "propConfig": {
+      "custom.alarmByHour": {
+        "binding": {
+          "config": {
+            "parameters": {
+              "endDate": "{./Filters/End Date/Date.custom.dateStr}",
+              "filter": "{view.params.filter}",
+              "startDate": "{./Filters/Start Date/Date.custom.dateStr}"
+            },
+            "queryPath": "Alarms/AlarmsByHour",
+            "returnFormat": "json"
+          },
+          "type": "query"
+        }
+      },
+      "custom.alarmDuration": {
+        "binding": {
+          "config": {
+            "parameters": {
+              "endDate": "{./Filters/End Date/Date.custom.dateStr}",
+              "filter": "{view.params.filter}",
+              "limit": "{./Filters/Top/Numeric.props.value}",
+              "startDate": "{./Filters/Start Date/Date.custom.dateStr}"
+            },
+            "queryPath": "Alarms/AlarmsDuration",
+            "returnFormat": "json"
+          },
+          "transforms": [
+            {
+              "code": "#\tlist \u003d []\n#\tfor x in value:\n#\t\tpath \u003d x[\u0027displaypath\u0027]\n#\t\tpath \u003d path[functions.findNeedle(path,\u0027/\u0027,2)+1:len(path)]\n#\t\tduration \u003d x[\u0027duration\u0027]\n#\t\tobj \u003d {\n#\t\t  \"displaypath\": path,\n#\t\t  \"duration\": duration\n#\t\t}\n#\t\tlist.append(obj)\n#\treturn list\n\t return value",
+              "type": "script"
+            }
+          ],
+          "type": "query"
+        }
+      },
+      "custom.alarmFrequency": {
+        "binding": {
+          "config": {
+            "parameters": {
+              "endDate": "{./Filters/End Date/Date.custom.dateStr}",
+              "filter": "{view.params.filter}",
+              "limit": "{./Filters/Top/Numeric.props.value}",
+              "startDate": "{./Filters/Start Date/Date.custom.dateStr}"
+            },
+            "queryPath": "Alarms/AlarmsFrequency",
+            "returnFormat": "json"
+          },
+          "type": "query"
+        }
+      },
+      "custom.alarmSummary": {
+        "binding": {
+          "config": {
+            "parameters": {
+              "endDate": "{./Filters/End Date/Date.custom.dateStr}",
+              "filter": "{view.params.filter}",
+              "startDate": "{./Filters/Start Date/Date.custom.dateStr}"
+            },
+            "queryPath": "Alarms/AlarmSummary",
+            "returnFormat": "dataset"
+          },
+          "type": "query"
+        }
+      },
+      "custom.longestDuration": {
+        "binding": {
+          "config": {
+            "parameters": {
+              "endDate": "{./Filters/End Date/Date.custom.dateStr}",
+              "filter": "{view.params.filter}",
+              "startDate": "{./Filters/Start Date/Date.custom.dateStr}"
+            },
+            "queryPath": "Alarms/LongestDurationAlarm",
+            "returnFormat": "dataset"
+          },
+          "type": "query"
+        }
+      },
+      "custom.mostFrequent": {
+        "binding": {
+          "config": {
+            "parameters": {
+              "endDate": "{./Filters/End Date/Date.custom.dateStr}",
+              "filter": "{view.params.filter}",
+              "startDate": "{./Filters/Start Date/Date.custom.dateStr}"
+            },
+            "queryPath": "Alarms/MostFrequentAlarm",
+            "returnFormat": "dataset"
+          },
+          "type": "query"
+        }
+      }
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "backgroundColor": "--gray",
+        "paddingLeft": "5px",
+        "paddingRight": "5px",
+        "paddingTop": "5px"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

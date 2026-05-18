@@ -1,0 +1,1374 @@
+{
+  "custom": {},
+  "params": {
+    "startPath": "[NLSTWDYK]Dyka/STW/EXT/E07/Assets/MEXT"
+  },
+  "propConfig": {
+    "params.startPath": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "width": 1600
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "custom": {
+          "visible": {
+            "Silo1": true,
+            "Silo2": false,
+            "Silo3": false,
+            "Silo4": false,
+            "Silo5": false
+          }
+        },
+        "meta": {
+          "name": "Extruder"
+        },
+        "position": {
+          "height": 1,
+          "width": 1,
+          "y": -0.0181
+        },
+        "propConfig": {
+          "props.elements[1].elements[10].fill.paint": {
+            "binding": {
+              "config": {
+                "path": "this.custom.visible.Silo2"
+              },
+              "transforms": [
+                {
+                  "code": "\treturn \u0027#e6d0de\u0027 if value else \u0027transparent\u0027",
+                  "type": "script"
+                }
+              ],
+              "type": "property"
+            }
+          },
+          "props.elements[1].elements[11].fill.paint": {
+            "binding": {
+              "config": {
+                "path": "this.custom.visible.Silo1"
+              },
+              "transforms": [
+                {
+                  "code": "\treturn \u0027#e6d0de\u0027 if value else \u0027transparent\u0027",
+                  "type": "script"
+                }
+              ],
+              "type": "property"
+            }
+          },
+          "props.elements[1].elements[12].fill.paint": {
+            "binding": {
+              "config": {
+                "path": "this.custom.visible.Silo1"
+              },
+              "transforms": [
+                {
+                  "code": "\treturn \u0027#e6d0de\u0027 if value else \u0027transparent\u0027",
+                  "type": "script"
+                }
+              ],
+              "type": "property"
+            }
+          },
+          "props.elements[1].elements[13].fill.paint": {
+            "binding": {
+              "config": {
+                "path": "this.custom.visible.Silo5"
+              },
+              "transforms": [
+                {
+                  "code": "\treturn \u0027#e6d0de\u0027 if value else \u0027transparent\u0027",
+                  "type": "script"
+                }
+              ],
+              "type": "property"
+            }
+          },
+          "props.elements[1].elements[14].fill.paint": {
+            "binding": {
+              "config": {
+                "path": "this.custom.visible.Silo5"
+              },
+              "transforms": [
+                {
+                  "code": "\treturn \u0027#e6d0de\u0027 if value else \u0027transparent\u0027",
+                  "type": "script"
+                }
+              ],
+              "type": "property"
+            }
+          },
+          "props.elements[1].elements[15].fill.paint": {
+            "binding": {
+              "config": {
+                "path": "this.custom.visible.Silo4"
+              },
+              "transforms": [
+                {
+                  "code": "\treturn \u0027#e6d0de\u0027 if value else \u0027transparent\u0027",
+                  "type": "script"
+                }
+              ],
+              "type": "property"
+            }
+          },
+          "props.elements[1].elements[17].fill.paint": {
+            "binding": {
+              "config": {
+                "path": "this.custom.visible.Silo2"
+              },
+              "transforms": [
+                {
+                  "code": "\treturn \u0027#e6d0de\u0027 if value \u003d\u003d True else \u0027transparent\u0027",
+                  "type": "script"
+                }
+              ],
+              "type": "property"
+            }
+          },
+          "props.elements[1].elements[9].fill.paint": {
+            "binding": {
+              "config": {
+                "path": "this.custom.visible.Silo1"
+              },
+              "transforms": [
+                {
+                  "code": "\treturn \u0027#e6d0de\u0027 if value else \u0027transparent\u0027",
+                  "type": "script"
+                }
+              ],
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "elements": [
+            {
+              "name": "defs",
+              "type": "defs"
+            },
+            {
+              "elements": [
+                {
+                  "fill": {
+                    "paint": "transparent"
+                  },
+                  "height": 275,
+                  "name": "rect",
+                  "stroke": {
+                    "paint": "transparent"
+                  },
+                  "type": "rect",
+                  "width": 734,
+                  "x": "0",
+                  "y": "0"
+                },
+                {
+                  "fill": {
+                    "paint": "#000000"
+                  },
+                  "height": "151",
+                  "name": "rect",
+                  "opacity": "0.25",
+                  "stroke": {
+                    "paint": "transparent"
+                  },
+                  "transform": "translate(2,3)",
+                  "type": "rect",
+                  "width": "390",
+                  "x": "336",
+                  "y": "115"
+                },
+                {
+                  "fill": {
+                    "paint": "rgb(255, 255, 255)"
+                  },
+                  "height": "151",
+                  "name": "rect",
+                  "stroke": {
+                    "paint": "transparent"
+                  },
+                  "type": "rect",
+                  "width": 390,
+                  "x": "336",
+                  "y": "115"
+                },
+                {
+                  "fill": {
+                    "paint": "#e6e6e6"
+                  },
+                  "height": "78.88",
+                  "name": "rect",
+                  "stroke": {
+                    "paint": "transparent"
+                  },
+                  "transform": "rotate(90,666.43,190.43)",
+                  "type": "rect",
+                  "width": "151.03",
+                  "x": "590.92",
+                  "y": "150.99"
+                },
+                {
+                  "fill": {
+                    "paint": "#e6d0de"
+                  },
+                  "height": "18.63",
+                  "name": "rect",
+                  "stroke": {
+                    "paint": "transparent"
+                  },
+                  "transform": "rotate(360deg)",
+                  "type": "rect",
+                  "width": 645,
+                  "x": 11,
+                  "y": "133"
+                },
+                {
+                  "fill": {
+                    "paint": "#e6d0de"
+                  },
+                  "height": "11",
+                  "name": "rect",
+                  "stroke": {
+                    "paint": "transparent"
+                  },
+                  "transform": "rotate(-90,619.5,109.5)",
+                  "type": "rect",
+                  "width": "51",
+                  "x": "594",
+                  "y": "104"
+                },
+                {
+                  "fill": {
+                    "paint": "#e6e6e6"
+                  },
+                  "height": "2",
+                  "name": "rect",
+                  "stroke": {
+                    "paint": "transparent"
+                  },
+                  "transform": "rotate(90,725.04,190.94)",
+                  "type": "rect",
+                  "width": "150.2",
+                  "x": "649.94",
+                  "y": "189.94"
+                },
+                {
+                  "fill": {
+                    "paint": "#e6e6e6"
+                  },
+                  "height": "2",
+                  "name": "rect",
+                  "stroke": {
+                    "paint": "transparent"
+                  },
+                  "transform": "rotate(-180,714.5,116)",
+                  "type": "rect",
+                  "width": "23",
+                  "x": "703",
+                  "y": "115"
+                },
+                {
+                  "fill": {
+                    "paint": "#e6e6e6"
+                  },
+                  "height": "2",
+                  "name": "rect",
+                  "stroke": {
+                    "paint": "transparent"
+                  },
+                  "transform": "rotate(-180,714.5,265)",
+                  "type": "rect",
+                  "width": "23",
+                  "x": "703",
+                  "y": "264"
+                },
+                {
+                  "fill": {},
+                  "height": 5,
+                  "name": "rect",
+                  "stroke": {
+                    "paint": "transparent"
+                  },
+                  "type": "rect",
+                  "width": "53",
+                  "x": "511",
+                  "y": "84"
+                },
+                {
+                  "fill": {},
+                  "height": "5",
+                  "name": "rect",
+                  "stroke": {
+                    "paint": "transparent"
+                  },
+                  "transform": "rotate(90,513.5,68.5)",
+                  "type": "rect",
+                  "width": "41",
+                  "x": "493",
+                  "y": "66"
+                },
+                {
+                  "fill": {},
+                  "height": "5",
+                  "name": "rect",
+                  "stroke": {
+                    "paint": "transparent"
+                  },
+                  "type": "rect",
+                  "width": "53",
+                  "x": "458",
+                  "y": "84"
+                },
+                {
+                  "fill": {},
+                  "height": "5",
+                  "name": "rect",
+                  "stroke": {
+                    "paint": "transparent"
+                  },
+                  "transform": "rotate(90,460.5,68.5)",
+                  "type": "rect",
+                  "width": "41",
+                  "x": "440",
+                  "y": "66"
+                },
+                {
+                  "fill": {},
+                  "height": 5,
+                  "name": "rect",
+                  "stroke": {
+                    "paint": "transparent"
+                  },
+                  "type": "rect",
+                  "width": "53",
+                  "x": "622",
+                  "y": "84"
+                },
+                {
+                  "fill": {},
+                  "height": "5",
+                  "name": "rect",
+                  "stroke": {
+                    "paint": "transparent"
+                  },
+                  "transform": "rotate(90,672.5,68.5)",
+                  "type": "rect",
+                  "width": "41",
+                  "x": "652",
+                  "y": "66"
+                },
+                {
+                  "fill": {},
+                  "height": "5",
+                  "name": "rect",
+                  "stroke": {
+                    "paint": "transparent"
+                  },
+                  "transform": "rotate(90,619.5,68.5)",
+                  "type": "rect",
+                  "width": "41",
+                  "x": "599",
+                  "y": "66"
+                },
+                {
+                  "fill": {
+                    "paint": "#e6d0de"
+                  },
+                  "height": "5",
+                  "name": "rect",
+                  "stroke": {
+                    "paint": "transparent"
+                  },
+                  "type": "rect",
+                  "width": "53",
+                  "x": "564",
+                  "y": "84"
+                },
+                {
+                  "fill": {},
+                  "height": "5",
+                  "name": "rect",
+                  "stroke": {
+                    "paint": "transparent"
+                  },
+                  "transform": "rotate(90,566.5,68.5)",
+                  "type": "rect",
+                  "width": "41",
+                  "x": "546",
+                  "y": "66"
+                },
+                {
+                  "fill": {
+                    "paint": "#e6d0de"
+                  },
+                  "height": "18.63",
+                  "name": "rect",
+                  "stroke": {
+                    "paint": "transparent"
+                  },
+                  "type": "rect",
+                  "width": "50.74",
+                  "x": "655",
+                  "y": "133"
+                },
+                {
+                  "fill": {
+                    "paint": "#e6d0de"
+                  },
+                  "height": "18.63",
+                  "name": "rect",
+                  "stroke": {
+                    "paint": "transparent"
+                  },
+                  "type": "rect",
+                  "width": "50.74",
+                  "x": "655",
+                  "y": "230.75"
+                }
+              ],
+              "name": "group",
+              "type": "group"
+            }
+          ],
+          "style": {
+            "backgroundColor": "transparent"
+          },
+          "viewBox": "-0.5 -0.5 735 277"
+        },
+        "type": "ia.shapes.svg"
+      },
+      {
+        "meta": {
+          "name": "TempZone08"
+        },
+        "position": {
+          "height": 0.2,
+          "width": 0.055,
+          "x": 0.1656,
+          "y": 0.3783
+        },
+        "propConfig": {
+          "meta.visible": {
+            "binding": {
+              "config": {
+                "expression": "isGood(tag({this.props.params.startPath}+\u0027/Screen/ProcessValues/Zones/Zone\u0027+{this.props.params.zoneNr}+\u0027/Temperature/ActualValue\u0027))"
+              },
+              "type": "expr"
+            }
+          },
+          "props.params.startPath": {
+            "binding": {
+              "config": {
+                "expression": "{view.params.startPath} + \u0027/Screen/ProcessValues/Zones/Zone\u0027 + {this.props.params.zoneNr}"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "blowerVisible": true,
+            "colorBorder": "--alarm",
+            "unit": "°C",
+            "zoneNr": "08"
+          },
+          "path": "ControlRoom/Assets/Extruder/Overview/Templates/ExtruderPart_Zone_Simple",
+          "style": {
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "TempZone09"
+        },
+        "position": {
+          "height": 0.2,
+          "width": 0.055,
+          "x": 0.0899,
+          "y": 0.3783
+        },
+        "propConfig": {
+          "meta.visible": {
+            "binding": {
+              "config": {
+                "expression": "isGood(tag({this.props.params.startPath}+\u0027/Temperature/ActualValue\u0027))"
+              },
+              "type": "expr"
+            }
+          },
+          "props.params.startPath": {
+            "binding": {
+              "config": {
+                "expression": "{view.params.startPath} + \u0027/Screen/ProcessValues/Zones/Zone\u0027 + {this.props.params.zoneNr}"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "blowerVisible": true,
+            "colorBorder": "--running",
+            "unit": "°C",
+            "zoneNr": "09"
+          },
+          "path": "ControlRoom/Assets/Extruder/Overview/Templates/ExtruderPart_Zone_Simple",
+          "style": {
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "TempZone10"
+        },
+        "position": {
+          "height": 0.2,
+          "width": 0.055,
+          "x": 0.0143,
+          "y": 0.3781
+        },
+        "propConfig": {
+          "meta.visible": {
+            "binding": {
+              "config": {
+                "expression": "isGood(tag({this.props.params.startPath}+\u0027/Temperature/ActualValue\u0027))"
+              },
+              "type": "expr"
+            }
+          },
+          "props.params.startPath": {
+            "binding": {
+              "config": {
+                "expression": "{view.params.startPath} + \u0027/Screen/ProcessValues/Zones/Zone\u0027 + {this.props.params.zoneNr}"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "blowerVisible": true,
+            "colorBorder": "--running",
+            "unit": "°C",
+            "zoneNr": 10
+          },
+          "path": "ControlRoom/Assets/Extruder/Overview/Templates/ExtruderPart_Zone_Simple",
+          "style": {
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Vacuum"
+        },
+        "position": {
+          "height": 0.2,
+          "width": 0.055,
+          "x": 0.468,
+          "y": 0.3786
+        },
+        "propConfig": {
+          "props.params.value": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "indirect",
+                "references": {
+                  "startPath": "{view.params.startPath}"
+                },
+                "tagPath": "{startPath}/ProcessValues/Vacuum/ActualValue"
+              },
+              "type": "tag"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "blowerVisible": true,
+            "colorBorder": "--running",
+            "text1": "Vacuum",
+            "text2": "%"
+          },
+          "path": "ControlRoom/Assets/Extruder/Overview/Templates/ExtruderPart",
+          "style": {
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "TempZone01"
+        },
+        "position": {
+          "height": 0.2,
+          "width": 0.055,
+          "x": 0.7706,
+          "y": 0.3786
+        },
+        "propConfig": {
+          "meta.visible": {
+            "binding": {
+              "config": {
+                "expression": "isGood(tag({this.props.params.startPath}+\u0027/Temperature/ActualValue\u0027))"
+              },
+              "type": "expr"
+            }
+          },
+          "props.params.startPath": {
+            "binding": {
+              "config": {
+                "expression": "{view.params.startPath} + \u0027/Screen/ProcessValues/Zones/Zone\u0027 + {this.props.params.zoneNr}"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "blowerVisible": true,
+            "colorBorder": "--running",
+            "unit": "°C",
+            "zoneNr": "01"
+          },
+          "path": "ControlRoom/Assets/Extruder/Overview/Templates/ExtruderPart_Zone_Simple",
+          "style": {
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "TempZone07"
+        },
+        "position": {
+          "height": 0.2,
+          "width": 0.055,
+          "x": 0.2412,
+          "y": 0.3783
+        },
+        "propConfig": {
+          "meta.visible": {
+            "binding": {
+              "config": {
+                "expression": "isGood(tag({this.props.params.startPath}+\u0027/Temperature/ActualValue\u0027))"
+              },
+              "type": "expr"
+            }
+          },
+          "props.params.startPath": {
+            "binding": {
+              "config": {
+                "expression": "{view.params.startPath} + \u0027/Screen/ProcessValues/Zones/Zone\u0027 + {this.props.params.zoneNr}"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "blowerVisible": true,
+            "colorBorder": "--running",
+            "unit": "°C",
+            "zoneNr": "07"
+          },
+          "path": "ControlRoom/Assets/Extruder/Overview/Templates/ExtruderPart_Zone_Simple",
+          "style": {
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "TempZone04"
+        },
+        "position": {
+          "height": 0.2,
+          "width": 0.055,
+          "x": 0.5436,
+          "y": 0.3786
+        },
+        "propConfig": {
+          "meta.visible": {
+            "binding": {
+              "config": {
+                "expression": "isGood(tag({this.props.params.startPath}+\u0027/Temperature/ActualValue\u0027))"
+              },
+              "type": "expr"
+            }
+          },
+          "props.params.startPath": {
+            "binding": {
+              "config": {
+                "expression": "{view.params.startPath} + \u0027/Screen/ProcessValues/Zones/Zone\u0027 + {this.props.params.zoneNr}"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "blowerVisible": true,
+            "colorBorder": "--running",
+            "unit": "°C",
+            "zoneNr": "04"
+          },
+          "path": "ControlRoom/Assets/Extruder/Overview/Templates/ExtruderPart_Zone_Simple",
+          "style": {
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "TempZone06"
+        },
+        "position": {
+          "height": 0.2,
+          "width": 0.055,
+          "x": 0.3168,
+          "y": 0.3783
+        },
+        "propConfig": {
+          "meta.visible": {
+            "binding": {
+              "config": {
+                "expression": "isGood(tag({this.props.params.startPath}+\u0027/Temperature/ActualValue\u0027))"
+              },
+              "type": "expr"
+            }
+          },
+          "props.params.startPath": {
+            "binding": {
+              "config": {
+                "expression": "{view.params.startPath} + \u0027/Screen/ProcessValues/Zones/Zone\u0027 + {this.props.params.zoneNr}"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "blowerVisible": true,
+            "colorBorder": "--running",
+            "unit": "°C",
+            "zoneNr": "06"
+          },
+          "path": "ControlRoom/Assets/Extruder/Overview/Templates/ExtruderPart_Zone_Simple",
+          "style": {
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "TempZone05"
+        },
+        "position": {
+          "height": 0.2,
+          "width": 0.055,
+          "x": 0.3924,
+          "y": 0.3783
+        },
+        "propConfig": {
+          "meta.visible": {
+            "binding": {
+              "config": {
+                "expression": "isGood(tag({this.props.params.startPath}+\u0027/Temperature/ActualValue\u0027))"
+              },
+              "type": "expr"
+            }
+          },
+          "props.params.startPath": {
+            "binding": {
+              "config": {
+                "expression": "{view.params.startPath} + \u0027/Screen/ProcessValues/Zones/Zone\u0027 + {this.props.params.zoneNr}"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "blowerVisible": true,
+            "colorBorder": "--running",
+            "unit": "°C",
+            "zoneNr": "05"
+          },
+          "path": "ControlRoom/Assets/Extruder/Overview/Templates/ExtruderPart_Zone_Simple",
+          "style": {
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "TempZone02"
+        },
+        "position": {
+          "height": 0.2,
+          "width": 0.055,
+          "x": 0.6949,
+          "y": 0.3783
+        },
+        "propConfig": {
+          "meta.visible": {
+            "binding": {
+              "config": {
+                "expression": "isGood(tag({this.props.params.startPath}+\u0027/Temperature/ActualValue\u0027))"
+              },
+              "type": "expr"
+            }
+          },
+          "props.params.startPath": {
+            "binding": {
+              "config": {
+                "expression": "{view.params.startPath} + \u0027/Screen/ProcessValues/Zones/Zone\u0027 + {this.props.params.zoneNr}"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "blowerVisible": true,
+            "colorBorder": "--running",
+            "unit": "°C",
+            "zoneNr": "02"
+          },
+          "path": "ControlRoom/Assets/Extruder/Overview/Templates/ExtruderPart_Zone_Simple",
+          "style": {
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "TempZone03"
+        },
+        "position": {
+          "height": 0.2,
+          "width": 0.055,
+          "x": 0.6193,
+          "y": 0.3783
+        },
+        "propConfig": {
+          "meta.visible": {
+            "binding": {
+              "config": {
+                "expression": "isGood(tag({this.props.params.startPath}+\u0027/Temperature/ActualValue\u0027))"
+              },
+              "type": "expr"
+            }
+          },
+          "props.params.startPath": {
+            "binding": {
+              "config": {
+                "expression": "{view.params.startPath} + \u0027/Screen/ProcessValues/Zones/Zone\u0027 + {this.props.params.zoneNr}"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "blowerVisible": true,
+            "colorBorder": "--warning",
+            "unit": "°C",
+            "zoneNr": "03"
+          },
+          "path": "ControlRoom/Assets/Extruder/Overview/Templates/ExtruderPart_Zone_Simple",
+          "style": {
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Speed"
+        },
+        "position": {
+          "height": 0.2,
+          "width": 0.055,
+          "x": 0.8687,
+          "y": 0.3786
+        },
+        "propConfig": {
+          "props.params.value": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "indirect",
+                "references": {
+                  "startPath": "{view.params.startPath}"
+                },
+                "tagPath": "{startPath}/Screen/ProcessValues/Speed/ActualValue"
+              },
+              "type": "tag"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "blowerVisible": true,
+            "colorBorder": "--running",
+            "text1": "Toerental",
+            "text2": "rpm"
+          },
+          "path": "ControlRoom/Assets/Extruder/Overview/Templates/ExtruderPart",
+          "style": {
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Load"
+        },
+        "position": {
+          "height": 0.2,
+          "width": 0.055,
+          "x": 0.8687,
+          "y": 0.6957
+        },
+        "propConfig": {
+          "props.params.value": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "indirect",
+                "references": {
+                  "startPath": "{view.params.startPath}"
+                },
+                "tagPath": "{startPath}/ProcessValues/Load/ActualValue"
+              },
+              "type": "tag"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "blowerVisible": true,
+            "colorBorder": "--running",
+            "text1": "Belasting",
+            "text2": "%"
+          },
+          "path": "ControlRoom/Assets/Extruder/Overview/Templates/ExtruderPart",
+          "style": {
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Feeder01"
+        },
+        "position": {
+          "height": 0.2036,
+          "width": 0.075,
+          "x": 0.878,
+          "y": 0.0107
+        },
+        "propConfig": {
+          "meta.visible": {
+            "binding": {
+              "config": {
+                "path": "../Extruder.custom.visible.Silo5"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "actualTemp": 180,
+            "blowerVisible": true,
+            "colorBorder": "--error",
+            "setpointTemp": 80,
+            "text1": "Silo 5",
+            "text2": "Grondstof D"
+          },
+          "path": "ControlRoom/Assets/Extruder/Overview/Templates/ExtruderPart_Hopper"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Feeder02"
+        },
+        "position": {
+          "height": 0.2036,
+          "width": 0.075,
+          "x": 0.8062,
+          "y": 0.0107
+        },
+        "propConfig": {
+          "meta.visible": {
+            "binding": {
+              "config": {
+                "path": "../Extruder.custom.visible.Silo4"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "actualTemp": 180,
+            "blowerVisible": false,
+            "colorBorder": "--error",
+            "setpointTemp": 80,
+            "text1": "value",
+            "text2": "Grondstof C"
+          },
+          "path": "ControlRoom/Assets/Extruder/Overview/Templates/ExtruderPart_Hopper"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Feeder03"
+        },
+        "position": {
+          "height": 0.2036,
+          "width": 0.075,
+          "x": 0.7343,
+          "y": 0.0107
+        },
+        "propConfig": {
+          "meta.visible": {
+            "binding": {
+              "config": {
+                "path": "../Extruder.custom.visible.Silo3"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "actualTemp": 180,
+            "blowerVisible": false,
+            "colorBorder": "--error",
+            "setpointTemp": 80,
+            "text1": "Silo 3",
+            "text2": "Grondstof B"
+          },
+          "path": "ControlRoom/Assets/Extruder/Overview/Templates/ExtruderPart_Hopper"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Feeder04"
+        },
+        "position": {
+          "height": 0.2036,
+          "width": 0.075,
+          "x": 0.6617,
+          "y": 0.0107
+        },
+        "propConfig": {
+          "meta.visible": {
+            "binding": {
+              "config": {
+                "path": "../Extruder.custom.visible.Silo2"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "actualTemp": 180,
+            "blowerVisible": false,
+            "colorBorder": "--error",
+            "setpointTemp": 80,
+            "text1": "Silo 2",
+            "text2": "Grondstof A"
+          },
+          "path": "ControlRoom/Assets/Extruder/Overview/Templates/ExtruderPart_Hopper"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Feeder05"
+        },
+        "position": {
+          "height": 0.2036,
+          "width": 0.075,
+          "x": 0.5898,
+          "y": 0.0107
+        },
+        "propConfig": {
+          "meta.visible": {
+            "binding": {
+              "config": {
+                "path": "../Extruder.custom.visible.Silo1"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "actualTemp": 180,
+            "blowerVisible": false,
+            "colorBorder": "--error",
+            "setpointTemp": 80,
+            "text1": "Silo 1",
+            "text2": "Grondstof A"
+          },
+          "path": "ControlRoom/Assets/Extruder/Overview/Templates/ExtruderPart_Hopper"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "ThroughputFeeder1"
+        },
+        "position": {
+          "height": 0.0362,
+          "width": 0.0375,
+          "x": 0.6083,
+          "y": 0.255
+        },
+        "propConfig": {
+          "meta.visible": {
+            "binding": {
+              "config": {
+                "path": "../Extruder.custom.visible.Silo1"
+              },
+              "type": "property"
+            }
+          },
+          "props.value": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "indirect",
+                "references": {
+                  "startPath": "{view.params.startPath}"
+                },
+                "tagPath": "{startPath}/Screen/ProcessValues/Feeders/Feeder01/Throughput/ActualValue"
+              },
+              "type": "tag"
+            }
+          }
+        },
+        "props": {
+          "align": "center",
+          "enabled": false,
+          "style": {
+            "classes": "ATA/Components/Labels/TextSmall"
+          }
+        },
+        "type": "ia.input.numeric-entry-field"
+      },
+      {
+        "meta": {
+          "name": "ThroughputFeeder2"
+        },
+        "position": {
+          "height": 0.0362,
+          "width": 0.0375,
+          "x": 0.6811,
+          "y": 0.255
+        },
+        "propConfig": {
+          "meta.visible": {
+            "binding": {
+              "config": {
+                "path": "../Extruder.custom.visible.Silo2"
+              },
+              "type": "property"
+            }
+          },
+          "props.value": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "indirect",
+                "references": {
+                  "startPath": "{view.params.startPath}"
+                },
+                "tagPath": "{startPath}/Screen/ProcessValues/Feeders/Feeder02/Throughput/ActualValue"
+              },
+              "type": "tag"
+            }
+          }
+        },
+        "props": {
+          "align": "center",
+          "enabled": false,
+          "style": {
+            "classes": "ATA/Components/Labels/TextSmall"
+          }
+        },
+        "type": "ia.input.numeric-entry-field"
+      },
+      {
+        "meta": {
+          "name": "ThroughputFeeder3"
+        },
+        "position": {
+          "height": 0.0362,
+          "width": 0.0375,
+          "x": 0.7535,
+          "y": 0.255
+        },
+        "propConfig": {
+          "meta.visible": {
+            "binding": {
+              "config": {
+                "path": "../Extruder.custom.visible.Silo3"
+              },
+              "type": "property"
+            }
+          },
+          "props.value": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "indirect",
+                "references": {
+                  "startPath": "{view.params.startPath}"
+                },
+                "tagPath": "{startPath}/Screen/ProcessValues/Feeders/Feeder03/Throughput/ActualValue"
+              },
+              "type": "tag"
+            }
+          }
+        },
+        "props": {
+          "align": "center",
+          "enabled": false,
+          "style": {
+            "classes": "ATA/Components/Labels/TextSmall"
+          }
+        },
+        "type": "ia.input.numeric-entry-field"
+      },
+      {
+        "meta": {
+          "name": "ThroughputFeeder4"
+        },
+        "position": {
+          "height": 0.0362,
+          "width": 0.0375,
+          "x": 0.8255,
+          "y": 0.255
+        },
+        "propConfig": {
+          "meta.visible": {
+            "binding": {
+              "config": {
+                "path": "../Extruder.custom.visible.Silo4"
+              },
+              "type": "property"
+            }
+          },
+          "props.value": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "indirect",
+                "references": {
+                  "startPath": "{view.params.startPath}"
+                },
+                "tagPath": "{startPath}/Screen/ProcessValues/Feeders/Feeder04/Throughput/ActualValue"
+              },
+              "type": "tag"
+            }
+          }
+        },
+        "props": {
+          "align": "center",
+          "enabled": false,
+          "style": {
+            "classes": "ATA/Components/Labels/TextSmall"
+          }
+        },
+        "type": "ia.input.numeric-entry-field"
+      },
+      {
+        "meta": {
+          "name": "ThroughputFeeder5"
+        },
+        "position": {
+          "height": 0.0362,
+          "width": 0.0375,
+          "x": 0.8977,
+          "y": 0.255
+        },
+        "propConfig": {
+          "meta.visible": {
+            "binding": {
+              "config": {
+                "path": "../Extruder.custom.visible.Silo5"
+              },
+              "type": "property"
+            }
+          },
+          "props.value": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "indirect",
+                "references": {
+                  "startPath": "{view.params.startPath}"
+                },
+                "tagPath": "{startPath}/Screen/ProcessValues/Feeders/Feeder05/Throughput/ActualValue"
+              },
+              "type": "tag"
+            }
+          }
+        },
+        "props": {
+          "align": "center",
+          "enabled": false,
+          "style": {
+            "classes": "ATA/Components/Labels/TextSmall"
+          }
+        },
+        "type": "ia.input.numeric-entry-field"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "position": {
+      "x": 0.0362,
+      "y": 0.0015
+    },
+    "props": {
+      "aspectRatio": "668:277",
+      "mode": "percent"
+    },
+    "type": "ia.container.coord"
+  }
+}

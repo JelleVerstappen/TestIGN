@@ -1,0 +1,21 @@
+{
+  "base": {
+    "style": {
+      "backgroundClip": "padding-box",
+      "backgroundColor": "var(--background)",
+      "borderColor": "var(--backgroundSecondary)",
+      "borderStyle": "solid",
+      "borderWidth": "1px",
+      "borderTopLeftRadius": "10px",
+      "borderTopRightRadius": "10px",
+      "borderBottomLeftRadius": "10px",
+      "borderBottomRightRadius": "10px",
+      "boxShadow": "0 0 6px rgba(0, 0, 0, 0.2)",
+      "marginBottom": "5px",
+      "marginLeft": "5px",
+      "marginRight": "5px",
+      "marginTop": "5px",
+      "overflow": "hidden"
+    }
+  }
+}

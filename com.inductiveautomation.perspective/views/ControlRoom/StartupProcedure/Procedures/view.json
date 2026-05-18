@@ -1,0 +1,529 @@
+{
+  "custom": {
+    "selectedStep": 19,
+    "selectedStepData": {
+      "ArticleID": 1,
+      "Completed": null,
+      "CompletedBy": "AT",
+      "LineID": 1,
+      "Name": "Test3",
+      "Started": 1770729453000,
+      "Status": "Bezig",
+      "StepID": 19
+    },
+    "selectedStepIndex": 1
+  },
+  "events": {
+    "system": {
+      "onStartup": {
+        "config": {
+          "script": "\tflowID \u003d self.params.flowID\n\t\n\t# Select first step that\u0027s not yet completed\n\tfirstStepQuery \u003d \u0027\u0027\u0027select top(1)\n\t\t\t\t\t\t\tSPStepLogging.stepID\n\t\t\t\t\t\tfrom\n\t\t\t\t\t\t\tSPStepLogging\n\t\t\t\t\t\tleft join\n\t\t\t\t\t\t\tSPMainStepsConfig\n\t\t\t\t\t\ton\n\t\t\t\t\t\t\tSPStepLogging.StepID \u003d SPMainStepsConfig.StepID\n\t\t\t\t\t\twhere\n\t\t\t\t\t\t\tFlowID \u003d ?\n\t\t\t\t\t\t\tand\n\t\t\t\t\t\t\tCompleted is null\n\t\t\t\t\t\torder by sequenceNumber\u0027\u0027\u0027\n\tfirstStepArgs \u003d [flowID]\n\t\n\tfirstStep \u003d system.db.runScalarPrepQuery(firstStepQuery, firstStepArgs, database \u003d \u0027NLSTWDYK_DB_PROD\u0027)\n\tsystem.perspective.sendMessage(\u0027selectStep\u0027, {\u0027StepID\u0027: firstStep})"
+        },
+        "scope": "G",
+        "type": "script"
+      }
+    }
+  },
+  "params": {
+    "ArticleID": 1,
+    "LineID": 1,
+    "flowID": 10,
+    "procedureID": 2
+  },
+  "propConfig": {
+    "custom.selectedStep": {
+      "persistent": true
+    },
+    "custom.selectedStepData": {
+      "binding": {
+        "config": {
+          "struct": {
+            "mainSteps": "{/root/Overview.custom.StepsData}",
+            "selectedStepID": "{view.custom.selectedStep}"
+          },
+          "waitOnAll": true
+        },
+        "transforms": [
+          {
+            "code": "\tselectedStepID \u003d value[\u0027selectedStepID\u0027]\n\tmainSteps \u003d value[\u0027mainSteps\u0027]\n\t\n\tfor step in mainSteps:\n\t\tif step[\u0027StepID\u0027] \u003d\u003d selectedStepID:\n\t\t\treturn step",
+            "type": "script"
+          }
+        ],
+        "type": "expr-struct"
+      },
+      "persistent": true
+    },
+    "custom.selectedStepIndex": {
+      "persistent": true
+    },
+    "params.ArticleID": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.LineID": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.flowID": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.procedureID": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {},
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Label"
+                },
+                "position": {
+                  "basis": "50px"
+                },
+                "props": {
+                  "style": {
+                    "classes": "ATA/Components/Labels/TextLarge"
+                  },
+                  "text": "Opstart procedure checklijst",
+                  "textStyle": {
+                    "textAlign": "center"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "Label_0"
+                },
+                "position": {
+                  "basis": "32px"
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "view.params.LineID"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn \u0027Lijn \u0027 + system.db.runScalarPrepQuery(\u0027select description from lines where lineID \u003d ?\u0027, [value], database \u003d \u0027NLSTWDYK_DB_PROD\u0027)",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "ATA/Components/Labels/TextLarge"
+                  },
+                  "textStyle": {
+                    "textAlign": "center"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "Progress"
+                },
+                "position": {
+                  "basis": "20px"
+                },
+                "propConfig": {
+                  "props.value": {
+                    "binding": {
+                      "config": {
+                        "parameters": {
+                          "flowID": "{view.params.flowID}"
+                        },
+                        "queryPath": "StartupProcedures/getFlowProgress",
+                        "returnFormat": "scalar"
+                      },
+                      "type": "query"
+                    }
+                  }
+                },
+                "props": {
+                  "bar": {
+                    "color": "#8EDE8E"
+                  },
+                  "style": {
+                    "marginTop": 25
+                  },
+                  "valueDisplay": {
+                    "enabled": true,
+                    "format": "0.##%",
+                    "style": {
+                      "fontWeight": "bold"
+                    }
+                  }
+                },
+                "type": "ia.display.progress"
+              }
+            ],
+            "meta": {
+              "name": "FlexContainer"
+            },
+            "position": {
+              "basis": "130px",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "column"
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "meta": {
+              "name": "FlexRepeater"
+            },
+            "position": {
+              "basis": "320px",
+              "grow": 1
+            },
+            "propConfig": {
+              "props.instances": {
+                "binding": {
+                  "config": {
+                    "path": "parent.custom.StepsData"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\tinstances \u003d []\n\t\n\tfor row in value:\n\t\tif row[\u0027Started\u0027] is not None:\n\t\t\tstartTimeDT \u003d system.date.fromMillis(row[\u0027Started\u0027])\n\t\t\tstartTimeFormatted \u003d system.date.format(startTimeDT, \u0027dd/MM/YYYY HH:mm:ss\u0027)\n\t\telse:\n\t\t\tstartTimeFormatted \u003d None\n\t\t\n\t\tif row[\u0027Completed\u0027] is not None:\n\t\t\tendTimeDT \u003d system.date.fromMillis(row[\u0027Completed\u0027] if row[\u0027Completed\u0027] is not None else 0)\n\t\t\tendTimeFormatted \u003d system.date.format(endTimeDT, \u0027dd/MM/YYYY HH:mm:ss\u0027)\n\t\telse:\n\t\t\tendTimeFormatted \u003d None\n\t\t\n\t\tinstance \u003d {\n\t\t\t  \"name\": row[\u0027Name\u0027],\n\t\t\t  \"endTime\": endTimeFormatted,\n\t\t\t  \"user\": row[\u0027CompletedBy\u0027],\n\t\t\t  \"status\": row[\u0027Status\u0027],\n\t\t\t  \"startTime\": startTimeFormatted,\n\t\t\t  \"stepID\": row[\u0027StepID\u0027],\n\t\t\t  \"flowID\": self.view.params.flowID\n#\t\t\t  \"selected\": None\n\t\t\t}\n\t\tinstances.append(instance)\n\treturn instances",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "direction": "column",
+              "elementPosition": {
+                "basis": "auto",
+                "grow": 0
+              },
+              "path": "ControlRoom/StartupProcedure/Templates/Steps",
+              "style": {
+                "borderTopColor": "#00ACAC",
+                "borderTopStyle": "solid",
+                "borderTopWidth": 1,
+                "marginTop": 5
+              },
+              "useDefaultViewHeight": false,
+              "useDefaultViewWidth": false
+            },
+            "type": "ia.display.flex-repeater"
+          }
+        ],
+        "meta": {
+          "name": "Overview"
+        },
+        "position": {
+          "basis": "350px"
+        },
+        "propConfig": {
+          "custom.StepsData": {
+            "binding": {
+              "config": {
+                "parameters": {
+                  "ProcedureID": "{view.params.procedureID}"
+                },
+                "queryPath": "StartupProcedures/getMainStepsLoggingFromProcedure",
+                "returnFormat": "json"
+              },
+              "type": "query"
+            }
+          }
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "classes": "ATA/Background/CardSecondary",
+            "padding": 5
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Label"
+                },
+                "position": {
+                  "basis": "50px",
+                  "grow": 1
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.selectedStepData.Name"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "ATA/Components/Labels/TextLarge",
+                    "fontWeight": "bold",
+                    "textAlign": "center"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "Label_0"
+                },
+                "position": {
+                  "basis": "80px",
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": ".../FlexRepeater.props.instances"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\tcount \u003d 0\n\ttotal \u003d len(value)\n\t\n\tfor instance in value:\n\t\tif instance[\u0027completed\u0027] \u003d\u003d True:\n\t\t\tcount +\u003d  1\n\t\n\treturn str(count) +\u0027 / \u0027 + str(total)",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "ATA/Components/Labels/TextLarge",
+                    "textAlign": "center"
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "FlexContainer"
+            },
+            "position": {
+              "basis": "40px"
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "meta": {
+              "name": "FlexRepeater"
+            },
+            "propConfig": {
+              "props.instances": {
+                "binding": {
+                  "config": {
+                    "parameters": {
+                      "FlowID": "{view.params.flowID}",
+                      "MainStepID": "{view.custom.selectedStep}"
+                    },
+                    "queryPath": "StartupProcedures/getSubSteps"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\tinstances \u003d []\n\tflowID \u003d self.view.params.flowID\n\t\n\tfor row in range(value.getRowCount()):\n\t\trowData \u003d  system.util.jsonDecode(value.getValueAt(row, \u0027Data\u0027))\n\t\t\n\t\tinstance \u003d {\u0027name\u0027: rowData[\u0027Text\u0027],\n\t\t\t\t\t\u0027checkType\u0027: value.getValueAt(row, \u0027CheckTypeID\u0027),\n\t\t\t\t\t\u0027checkValue\u0027: rowData.get(\u0027Value\u0027),\n\t\t\t\t\t\u0027operand\u0027: rowData.get(\u0027Operand\u0027),\n\t\t\t\t\t\u0027tagPath\u0027: rowData.get(\u0027LinkedTag\u0027),\n\t\t\t\t\t\u0027flowID\u0027: flowID,\n\t\t\t\t\t\u0027subStepID\u0027: value.getValueAt(row, \u0027SubStepID\u0027),\n\t\t\t\t\t\u0027completed\u0027: value.getValueAt(row,\u0027Completed\u0027)}\n\t\tinstances.append(instance)\n\t\n\treturn instances",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "query"
+                }
+              }
+            },
+            "props": {
+              "direction": "column",
+              "path": "ControlRoom/StartupProcedure/Templates/SubStep",
+              "style": {
+                "borderTopColor": "#00ACAC",
+                "borderTopStyle": "solid",
+                "borderTopWidth": 1
+              },
+              "useDefaultViewWidth": false
+            },
+            "type": "ia.display.flex-repeater"
+          },
+          {
+            "meta": {
+              "name": "EmbeddedView"
+            },
+            "props": {
+              "params": {
+                "enabled": true,
+                "key": "Opmerking",
+                "marginRight": 7,
+                "placeholder": "",
+                "value": ""
+              },
+              "path": "Library/SharedTemplates/Input/String (TextArea)",
+              "style": {
+                "classes": "ATA/Background/CardSecondary",
+                "marginTop": "auto"
+              },
+              "useDefaultViewHeight": true
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "children": [
+              {
+                "events": {
+                  "component": {
+                    "onActionPerformed": {
+                      "config": {
+                        "script": "\tselectedStepIndex \u003d self.view.custom.selectedStepIndex\n\tpreviousStepID \u003d self.parent.parent.parent.getChild(\"Overview\").getChild(\"FlexRepeater\").props.instances[selectedStepIndex-1].stepID\n\t\n\tsystem.perspective.sendMessage(\u0027selectStep\u0027, {\u0027StepID\u0027: previousStepID})"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "name": "Button"
+                },
+                "position": {
+                  "basis": "80px"
+                },
+                "propConfig": {
+                  "meta.visible": {
+                    "binding": {
+                      "config": {
+                        "expression": "{view.custom.selectedStepIndex} !\u003d 0"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "primary": false,
+                  "style": {
+                    "classes": "ATA/Components/Buttons/Sec"
+                  },
+                  "text": "Terug"
+                },
+                "type": "ia.input.button"
+              },
+              {
+                "events": {
+                  "component": {
+                    "onActionPerformed": {
+                      "config": {
+                        "script": "\tflowID \u003d self.view.params.flowID\n\tselectedStepID \u003d self.view.custom.selectedStep\n\tselectedStepIndex \u003d self.view.custom.selectedStepIndex\n\tcompletedStatus \u003d 3\n\t\n\tupdateQuery \u003d \u0027\u0027\u0027update \n\t\t\t\t\t\tSPStepLogging\n\t\t\t\t\tset\n\t\t\t\t\t\tcompleted \u003d getdate(),\n\t\t\t\t\t\tstatus \u003d ?\n\t\t\t\t\twhere\n\t\t\t\t\t\tFlowID \u003d ? and\n\t\t\t\t\t\tStepID \u003d ?\u0027\u0027\u0027\n\tupdateArgs \u003d [completedStatus, flowID, selectedStepID]\n\tsystem.db.runPrepUpdate(updateQuery, updateArgs, database \u003d \u0027NLSTWDYK_DB_PROD\u0027)\n\t\n\tsystem.perspective.sendMessage(\u0027refreshStepsFlex\u0027)\n\t\n\tlineID \u003d self.view.params.LineID\n\tarticleID \u003d self.view.params.ArticleID\n\tprogressType \u003d \u0027Opstart\u0027\n\tcreatedBy \u003d self.session.props.auth.user.userName\n\tprogressStatus \u003d self.view.custom.selectedStepData.Name\n\tcomment \u003d self.parent.parent.getChild(\"EmbeddedView\").props.params.value\n\tcreationDate \u003d system.date.now()\n\t\n\tarticleNumber \u003d system.db.runScalarPrepQuery(\u0027select ArticleNumber from Articles where ArticleID \u003d ?\u0027, [articleID], database \u003d \u0027NLSTWDYK_DB_PROD\u0027)\n\t\n\tAFType \u003d \u0027ProgressUpdate\u0027\n\tAFData \u003d  {\t\u0027LineID\u0027: lineID,\n\t\t\t\t\u0027ProgressType\u0027: progressType,\n\t\t\t\t\u0027ProgressStatus\u0027: progressStatus,\n\t\t\t\t\u0027Comment\u0027: comment,\n\t\t\t\t\u0027Article\u0027: articleNumber,\n\t\t\t\t\u0027Datetime\u0027: creationDate,\n\t\t\t\t\u0027CreatedBy\u0027: createdBy}\n\tdyka.activityFeed.addEntry(AFType, AFData)\n\t\n\tif selectedStepIndex + 1 \u003e\u003d len(self.parent.parent.parent.getChild(\"Overview\").getChild(\"FlexRepeater\").props.instances):\n\t\tcompleteFlowQuery \u003d \u0027\u0027\u0027\tUpdate\n\t\t\t\t\t\t\t\t\tSPFlowLogging\n\t\t\t\t\t\t\t\tset\n\t\t\t\t\t\t\t\t\tEnddate \u003d getdate()\n\t\t\t\t\t\t\t\twhere\n\t\t\t\t\t\t\t\t\tFlowID \u003d ?\u0027\u0027\u0027\n\t\tcompleteFlowArgs \u003d [flowID]\n\t\tsystem.db.runPrepUpdate(completeFlowQuery, completeFlowArgs, database \u003d \u0027NLSTWDYK_DB_PROD\u0027)\n\t\t\n\t\tsystem.perspective.navigate(\u0027/\u0027)\n\t\treturn\n\t\n\tselectNewStepID \u003d self.parent.parent.parent.getChild(\"Overview\").getChild(\"FlexRepeater\").props.instances[selectedStepIndex + 1].stepID\n\tsystem.perspective.sendMessage(\u0027selectStep\u0027, payload \u003d {\u0027StepID\u0027: selectNewStepID})\n\t\n\tself.parent.parent.parent.getChild(\"Overview\").getChild(\"FlexContainer\").getChild(\"Progress\").refreshBinding(\u0027props.value\u0027)\n\tself.parent.parent.getChild(\"EmbeddedView\").props.params.value \u003d \u0027\u0027"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "name": "Button_0"
+                },
+                "position": {
+                  "basis": "80px"
+                },
+                "propConfig": {
+                  "props.enabled": {
+                    "binding": {
+                      "config": {
+                        "path": ".../FlexContainer/Label_0.props.text"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\ttextTopRight \u003d value\n\t\n\tcompletedSteps \u003d textTopRight.split(\u0027 / \u0027)[0]\n\ttotalSteps \u003d textTopRight.split(\u0027 / \u0027)[-1]\n\t\n\tif completedSteps \u003d\u003d totalSteps:\n\t\treturn True\n\telse:\n\t\treturn False",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "ATA/Components/Buttons/CTA"
+                  },
+                  "text": "Volgende"
+                },
+                "type": "ia.input.button"
+              }
+            ],
+            "meta": {
+              "name": "FlexContainer_0"
+            },
+            "position": {
+              "basis": "45px"
+            },
+            "props": {
+              "justify": "space-around"
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "Main"
+        },
+        "position": {
+          "basis": "200px",
+          "grow": 1
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "classes": "ATA/Background/CardSecondary",
+            "marginLeft": 5,
+            "padding": 5
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "style": {
+        "backgroundColor": "--backgroundSecondary",
+        "classes": "ATA/Background/Root"
+      }
+    },
+    "scripts": {
+      "customMethods": [],
+      "extensionFunctions": null,
+      "messageHandlers": [
+        {
+          "messageType": "selectStep",
+          "pageScope": true,
+          "script": "\t# implement your handler here\n\tself.view.custom.selectedStep \u003d payload[\u0027StepID\u0027]\n\t\n\tinstances \u003d self.getChild(\"Overview\").getChild(\"FlexRepeater\").props.instances\n\tfor index in range(len(instances)):\n\t\tif instances[index].stepID \u003d\u003d payload[\u0027StepID\u0027]:\n\t\t\tself.view.custom.selectedStepIndex \u003d index\n\t\t\tself.getChild(\"Overview\").getChild(\"FlexRepeater\").props.instances[index].selected \u003d True\n\t\t\tbreak",
+          "sessionScope": true,
+          "viewScope": true
+        },
+        {
+          "messageType": "refreshStepsFlex",
+          "pageScope": true,
+          "script": "\t# implement your handler here\n#\tpass\n\tself.getChild(\"Overview\").refreshBinding(\u0027custom.StepsData\u0027)",
+          "sessionScope": true,
+          "viewScope": true
+        }
+      ]
+    },
+    "type": "ia.container.flex"
+  }
+}

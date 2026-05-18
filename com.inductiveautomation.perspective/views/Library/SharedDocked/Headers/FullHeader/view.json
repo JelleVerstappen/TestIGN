@@ -1,0 +1,596 @@
+{
+  "custom": {},
+  "params": {
+    "navigationDataTagPath": "[default]system/Navigation/Navigation data",
+    "selectedLine": null
+  },
+  "propConfig": {
+    "params.navigationDataTagPath": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.selectedLine": {
+      "binding": {
+        "config": {
+          "path": "page.props.path"
+        },
+        "transforms": [
+          {
+            "code": "\treturn None if \"Assets\" not in value else value.split(\"/\")[-1]",
+            "type": "script"
+          }
+        ],
+        "type": "property"
+      },
+      "paramDirection": "inout",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 80,
+      "width": 1280
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "events": {
+          "dom": {
+            "onClick": {
+              "config": {
+                "script": "\n\tsystem.perspective.toggleDock(\u0027SideNav\u0027)"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "Icon"
+        },
+        "position": {
+          "basis": "35px",
+          "shrink": 0
+        },
+        "props": {
+          "color": "--textThr",
+          "path": "material/menu",
+          "style": {
+            "classes": "form-icon-button"
+          }
+        },
+        "type": "ia.display.icon"
+      },
+      {
+        "events": {
+          "dom": {
+            "onClick": {
+              "config": {
+                "script": "\tsystem.perspective.navigate(\u0027/\u0027)"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "DykaLogo"
+        },
+        "position": {
+          "basis": "100px",
+          "shrink": 0
+        },
+        "props": {
+          "fit": {
+            "mode": "contain"
+          },
+          "source": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAUEBQkFBQkUDQsNFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBT/wAARCAAmALQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD1f9kn9mzwZ8Zfh/qOreJILua8t9TktUaC6ZF8sRRMOBx1Y17f/wAMH/Cr/n11H/wOasH/AIJ6f8kf1s4z/wATuQY/7Yw16V+078UNa+EnwsuPEGhrbm/juoYQLqMum1mwcgEH9a+vxuMx0sxnhqNVr3rLU+Ay7A5dDKaeKxFFO0bs5P8A4YP+FecfZNS/8DmpB+wl8Kgf+PTUwfa/cfyr5tP7fHxOXjytD+n2N/8A45QP2+vidkZh0JgOdrWkgB9s+ZXrvK+Ik9K3/kx5X9rcNNXdH8D3/Wv2APh3e2zixvdY0u4wQkkdwsoDdshkJP0yK4Gx/Yt8L+EvEQ03xneX95pN7IF0/W7OYQLHIesMyHcFLH7r5wxwDhioPpX7K/7UN38cL3UtD1uxgstas4hcpJagiK4iJCkhSSVKkgYJ6HNepfHLw3F4k+EXi+xn5V9OmlRucpIil0YY9GVT+FeHPH5nhK/1TEVXq7b/AHM9yGXZVjcN9cw1FaK/r3TPJX/YE+GYViJdbbsQLxAce3yCvjv9oD4G6p8EPGUtjdiS60W6Yvp+pFSElXB+RuwkUZyO4ya+uv2Qv2mj8StNTwp4luVHiezjxBcykA38Q6HP/PRQMkdSPm9ce3fFb4XaN8XPCF3oGsxkxy/PDcR4EtvIOkiE9CD/AIV20M2x2VY1UsfJyWz66d0ceIybL83wDq4CKjLpbv1TPyHVSxAIJFfTf7L37JI+LGlzeIPFf2ux8Osnl2KW7eXJcEH74yDiNeR0+YnPamfCP9jjXtX+LV7pHiy2e38O6JKrXN0qsseoLnMaRE/wkY3EdPmB5Ir9BtLsLXRdPt7Kyt0tLO3jEUUUa7VRAOAB2xXs57xAoQVDAy1erfkeHw9w26k3Xx0fdWyfV9z5vvf2EvhZpVnPd3l7q9tbwoZJJZL1FRFHUsSnAFTJ+wT8MLuOOWO41ry3UMrC9XnuMZjrxX9r/wDaZfxpqFz4K8M3Z/sC3k2X91C3/H64P3VIP+rQjB9Wx2Br700cEaVZDgDyUHyj2FfNYqtmmDo06tSs0530v00PqcHRynHV6lKlQTULa+d2flv+0z8MNJ+E3xTm8PaGZzYraRTj7TJvfc+c8gAY49K8vtLWa9uobe2illuJXEcccKFndicAKB1NfVf7Yvwk8a+MfjdcajoPhXVNWsXsLeITWtvvjZhuyu7GPY5PGa9k/Zi/ZRsfhdaW3iHxLDDf+LpI8qHAkjsQRwqZ/jA4Le5A4r7WOe0sJl1OrOXPUa2v18z4OfD9bGZnUoU48lNPe2lv1OB+DX7Blhf+FY774gSX1rqlz866fYzBRap2VmIO4nqRjg10fjT9jn4M+AfD11rOu6tq2nafbj5pJb1BuPZVHl5Zj2A5Ne7fFz4u6B8HfCs+ra3dKGwRb2aMPPun/uov9ew57V+a3xo+OviH42a2brV5zb6bBIxstMhYiKAf3v8AaYgkFjz6DFfO5b/aucVvaSquFNv+kj6XNVk+S0FQ9ip1LaevdnJeL7nQZ9fum8OWV1ZaOCFt476USzMv95iMcnrjHA4PNN8H+FtR8aeKNL0LSYxLqGoTrDCD90EnlicHhQCSfRTWOMMrbt3Q/livuT9gv4NGysLz4gataFLi6Bt9MEi9IuPMlGf7xAAPop9a+5zPGf2Xg227vZd7nwOU4GWbY5U7WT1fax1lp+wF8OhbRLPca28wUeZJ9rUBiBg4Gz1ouv2A/hvJbSpDda0kpQhWNyp2nHXGwV658cvipb/B74b6p4ikVJrqMCKzt2YDzpmOFX6dz7KfSpPg38T7L4u/D/S/EFm8YmniC3MMfWCcAb0I9iQR7EetfkzzDNfZfWlUfLex+xLLso9r9WdNc1r/AKH5V+OPCWoeBPFeq+H9TRkvdPnaJzjAcDgPz1DLtI/3s1g19w/t9/B9bjT7P4gabABNblbTUyo+9GTiJ/wY7Sf9oelfD3YHsa/Xcox0cfhI1E9dn6n4tnOXSy3GSoPbdegUUUV7dmeHZn6E/wDBPTj4Qa5nj/idyf8AomGt39u45/Z/vcHI+32pz/wOsL/gnqCPhDrgPB/tuQ/+QYa9r+MHwp034y+DJvDep3V1aWkk8cxltSokBQ5AGQRj8K/D8XWjh86nWnsppn77gqFTEZBCjT3cGj8i25cnk/WndSM45r7/AB/wTu8Ebv8AkYtez/vw/wDxunN/wTv8ElTnxDr5yCPvQ/8Axuv0D/WvLLXu/uPzn/VDNXZcq+88f/4J8KW+M2rOBlBosgLAcf66LH8j+VfdXxJ/5J/4mzwP7NuOf+2bVx3wV/Z68L/A6O8fQ0up728wLi9v3Dyso6KCAAF74p/7SvjO28F/BXxZdyyok8tjJawIzAF5JB5YC+pG7OB2Br89zHFxzPM/aUVo2rH6TluEllOUulXetmflXo2p3mh39jf2NxLaXto6ywzwvtdHUggj3BHf05r9LP2ZP2jLT41eH2s71obTxZYL/pdrHkLMOgmjz/Ce47H8K/MxsHkY5JPPv/k/nXt37F7EftFeG13Ff3V2CNxz/qJODjqPrX6Jn+XU8Xg5VJ6Sgrp/LY/MeHc0rYPGxpQ1jN2a+e5+nDKcsxHoenI4/Wvjr9sn9pw6XFd+APC13i8lGzVb63bmBT1gQjo5zyf4enWvsaZ1Mbc5xnivxq8WSST+J9ckkYySNfTlmZtxJ8w85/CviOGMBTx+JcqmvIr+p+g8WZhWwGGjCi7Oba9EZvOVDDBznGcjPQn/APX15r9n9IH/ABKbL/rin8q/GAOZGye1fs/o7A6TZHP/ACyT+Qr1+MbKFDtr+h4fA+rrp76fmzJ1b4heGfD9+NP1TxDpdhfEK32a6vI4pMMfl+VmB57etbZJk2ujqyEZGO/41+bv7dMf/F/7odYxptsG5OCCGyPy7V0X7NP7Yt14EW28NeM5pNQ8P8R2+oyEtNZjoA5P3oh09V+gyPElw7VqYKGLw7vdJtf5Hvx4opwzGeDxEeVJ2T6fMg/bH+DHj2y8VXXi++vLjxNoL8JdKmDYJniJo14VQcfOOvfmvmDJAII7f/qr9mre507xNo6SwSW+pabdxfK6FXimjYfiCpFfGP7Rn7FLad9q8SfDy33QDMlzoMa8qOpa3x/6LPf7pHSveyPP6UUsHi1y267ff2Pm8/4bnNvGYR89+n+XkfNPwb+F998WviFpnh21DQxzMJLu4Az5MA5dvy4Ge5A71+smiaTaeHtFtNM0+3FtZWcCQwwoOERRgAeuMfjXgH7F/wAFX+GngOTW9Xsnttf1oiWSKWPbJbQj7kZzyCfvsOxOO1er/FX4y+F/g5p1pe+Jbx7aK7lMMKwxGV3IG4naOcDjn3HrXg59mEszxao0NYw0S7+Z9Jw9l8MpwbxGI0c9/LyPnL9sD4afFH4veL7Ww0Tw29x4Z0tM28y3UKGedx88hVmBwMBR+PrT/wBkP4d/FP4QeK73T9e8NTW/hfUwzyS/a4ZBbzjJVwquThhlTgddua9AX9uf4U99Svv/AAXyf4Urftz/AApIx/ad8B1ydPk/wq+fMnglgfq/u+jMfZ5V9eePeJ97tdHuHiLQbHxNoV9pOoQi4sLuJoZo2GdysMH8ea/JT4r/AA7vfhb461bw7eh3NrJmC4cYFxA3KSD1yMZx0ORX6jfC/wCMHhf4xaRPqHhq9a6igk8uWOVDFJGSMglTyARkg968P/bp+Do8XeCYfGWnwFtU0RSLkAf6y0J+Yn/cPzew3elHD2Nll2N+rVlZS09GVxLgIZpg1i8PrKGvquqPz8CqQOcUVG8ojIGeCMgEdKK/Y/aSerZ+IODvoz3b4GftU6t8CfC91odjoVnqcdzePeGWed0ILRxrjAB/u16Qf+Ci/iQDJ8IaZj/r6k/woor5ueU4GvVnUq0k3fzPqqOcY/D0YU6VVpW8hp/4KN+Iv+hQ0z/wJf8AwpD/AMFHfEKjP/CH6b+Fy/8AhRRS/sPLf+fK/H/M1/t7M/8An+/w/wAivf8A/BRHxdc2kn2Twxo9rKV+SWSSWTafoCufzrwb4n/GDxZ8XLq3uvE2pfa0g/497aJFjhiJ6sFA4PbJJ4oortweV4LD1ealSSZ52MzXG4qHJWqto4bk5Ge1dl8J/iRdfCbx3YeKLSziv57RZQsErlFbchTkjnjdn8KKK9KrCNWnOnNXTR5FCcqVWE4OzTPoZv8Agon4jkVlPhLThxjIu5M/+g18p6ldveX93cSKEe4leUqpJALMWxk/WiivKy7B4fCSk6EOW6PWzTHYnFxiq83KzKsXQkgMBzg9/avrSx/4KG+Ibe0ihTwlpzpEqpua6kBOMDOMe9FFGZYShilT9tHmsRluOxODlP2E3G54J8Y/ivc/GjxtJ4mu7GLTp3to7YwwsWXCZ5yfrXDRqXkUDGSQBn17UUV6WHhGlSp04KyR5mIqzrVp1Kju31PYvgl+054q+B0c9jZLFq+jSgyDTryRgkbZwXRhkqSeoHB69a9Z/wCHi/iPB/4o/TP/AALk/wAKKK8qvlGArVZTqUk2/U9/C51mFCjGnTrNJeg0/wDBRjxDtC/8IdpgXvi7k4HtxXhfxv8Ajhq/x08Q22q6nbx2EdrD5EVpA5dFOdxbnudwH0FFFXhcrwWGq+0o00mZ47Ncbi6PJXqto85ByaFYocjrRRXuN2aa7nzqWjPSvgd8cdZ+BfiS91TS7aG/guovIuLOd2VZMHKNkdCOn0r2m/8A+ChWvajZT21z4M0ua3lRkkje6kKupGCCNvQjiiivAxOWYOvUdWpTTlffU+jw2Z4yhh1Sp1Go9j5Wu2jur25mtYVsraSQvFbg7xGh5Vcnk4GB+FFFFe/TpQUUkj5+c3KTbP/Z",
+          "style": {
+            "classes": "form-icon-button",
+            "marginBottom": "auto",
+            "marginLeft": 5,
+            "marginTop": "auto",
+            "paddingTop": 3
+          }
+        },
+        "type": "ia.display.image"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Label"
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "fallbackDelay": 2.5,
+                        "mode": "indirect",
+                        "references": {
+                          "selectedLine": "{view.params.selectedLine}"
+                        },
+                        "tagPath": "[NLSTWDYK]Dyka/STW/EXT/{selectedLine}/MESData/LineStatus"
+                      },
+                      "type": "tag"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "ATA/Components/Labels/TextSmall",
+                    "color": "--textThr"
+                  },
+                  "textStyle": {
+                    "textAlign": "right"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "Icon"
+                },
+                "position": {
+                  "basis": "30px",
+                  "display": false
+                },
+                "props": {
+                  "color": "white",
+                  "path": "material/play_arrow"
+                },
+                "type": "ia.display.icon"
+              }
+            ],
+            "meta": {
+              "name": "FlexContainer"
+            },
+            "position": {
+              "basis": "20px",
+              "grow": 1
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "meta": {
+              "name": "Label_1"
+            },
+            "position": {
+              "basis": "20px",
+              "grow": 1
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "selectedLine": "{view.params.selectedLine}"
+                    },
+                    "tagPath": "[NLSTWDYK]Dyka/STW/EXT/{selectedLine}/MESData/CurrentOrderData/Product"
+                  },
+                  "type": "tag"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "ATA/Components/Labels/TextSmall",
+                "color": "--textThr"
+              },
+              "textStyle": {
+                "textAlign": "left"
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer"
+        },
+        "position": {
+          "basis": "120px",
+          "shrink": 0
+        },
+        "propConfig": {
+          "meta.visible": {
+            "binding": {
+              "config": {
+                "path": "view.params.selectedLine"
+              },
+              "transforms": [
+                {
+                  "code": "\treturn True if str(value).strip() not in [\"\", \"None\"] else False",
+                  "type": "script"
+                }
+              ],
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "marginLeft": 25
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "meta": {
+          "name": "Label_0"
+        },
+        "position": {
+          "basis": "300px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "struct": {
+                  "selectedLine": "{view.params.selectedLine}",
+                  "title": "{page.props.title}"
+                },
+                "waitOnAll": true
+              },
+              "transforms": [
+                {
+                  "code": "\tpath \u003d self.page.props.path\n\t\n\tif value.title \u003d\u003d \u0027Control_Room\u0027:\n\t\treturn \u0027Title\u0027\n\telif \"Assets\" in path:\n\t\treturn \"Lijn %s - %s\" % (value.selectedLine, value.title)\n\telse:\n\t\treturn value.title",
+                  "type": "script"
+                }
+              ],
+              "type": "expr-struct"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "classes": "ATA/Components/Labels/Title",
+            "color": "--textThr"
+          },
+          "textStyle": {
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Label"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "fallbackDelay": 2.5,
+                        "mode": "indirect",
+                        "references": {
+                          "selectedLine": "{view.params.selectedLine}"
+                        },
+                        "tagPath": "[NLSTWDYK]Dyka/STW/EXT/{selectedLine}/MESData/CurrentOrderData/OrderNumber"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn \u0027Order: \u0027 + str(value)",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "tag"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "ATA/Components/Labels/TextSmall",
+                    "color": "--textThr"
+                  },
+                  "textStyle": {
+                    "textAlign": "left"
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "FlexContainer"
+            },
+            "position": {
+              "basis": "20px",
+              "grow": 1
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "meta": {
+              "name": "Label_1"
+            },
+            "position": {
+              "basis": "20px",
+              "grow": 1
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "expression": "\u0027XX\u0027 + \u0027 / \u0027 + tag(\u0027[NLSTWDYK]Dyka/STW/EXT/\u0027 + {view.params.selectedLine} +\u0027/MESData/CurrentOrderData/RequiredAmount\u0027)"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "ATA/Components/Labels/TextSmall",
+                "color": "--textThr"
+              },
+              "textStyle": {
+                "textAlign": "left"
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer_1"
+        },
+        "position": {
+          "basis": "120px",
+          "shrink": 0
+        },
+        "propConfig": {
+          "meta.visible": {
+            "binding": {
+              "config": {
+                "path": "view.params.selectedLine"
+              },
+              "transforms": [
+                {
+                  "code": "\treturn True if str(value).strip() not in [\"\", \"None\"] else False",
+                  "type": "script"
+                }
+              ],
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "marginLeft": 25
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "Icon"
+                    },
+                    "position": {
+                      "basis": "20px"
+                    },
+                    "props": {
+                      "color": "--textThr",
+                      "path": "material/person"
+                    },
+                    "type": "ia.display.icon"
+                  },
+                  {
+                    "meta": {
+                      "name": "Label_0"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": {
+                          "config": {
+                            "path": "session.props.auth.user.userName"
+                          },
+                          "type": "property"
+                        }
+                      }
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "ATA/Components/Labels/TextSmall",
+                        "color": "--textThr",
+                        "marginLeft": 5
+                      }
+                    },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "meta": {
+                  "name": "FlexContainer_1"
+                },
+                "position": {
+                  "basis": "15px",
+                  "grow": 1,
+                  "shrink": 0
+                },
+                "props": {
+                  "alignItems": "center",
+                  "style": {
+                    "marginBottom": 1,
+                    "overflow": "visible"
+                  }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "Icon"
+                    },
+                    "position": {
+                      "basis": "20px"
+                    },
+                    "props": {
+                      "color": "--textThr",
+                      "path": "material/access_time"
+                    },
+                    "type": "ia.display.icon"
+                  },
+                  {
+                    "meta": {
+                      "name": "Label_0"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": {
+                          "config": {
+                            "expression": "now()"
+                          },
+                          "transforms": [
+                            {
+                              "code": "\treturn system.date.format(value,\u0027dd-MM-YYYY HH:mm\u0027)",
+                              "type": "script"
+                            }
+                          ],
+                          "type": "expr"
+                        }
+                      }
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "ATA/Components/Labels/TextSmall",
+                        "color": "--textThr",
+                        "marginLeft": 5
+                      }
+                    },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "meta": {
+                  "name": "FlexContainer_2"
+                },
+                "position": {
+                  "basis": "15px",
+                  "grow": 1,
+                  "shrink": 0
+                },
+                "props": {
+                  "alignItems": "center",
+                  "style": {
+                    "marginTop": 1,
+                    "overflow": "visible"
+                  }
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "FlexContainer_0"
+            },
+            "position": {
+              "basis": "160px",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "overflow": "visible"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "events": {
+              "dom": {
+                "onClick": {
+                  "config": {},
+                  "scope": "C",
+                  "type": "logout"
+                }
+              }
+            },
+            "meta": {
+              "name": "Icon"
+            },
+            "position": {
+              "basis": "35px",
+              "shrink": 0
+            },
+            "props": {
+              "color": "--textThr",
+              "path": "material/login",
+              "style": {
+                "classes": "form-icon-button",
+                "marginRIght": 5
+              }
+            },
+            "type": "ia.display.icon"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer_0"
+        },
+        "position": {
+          "basis": "195px",
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "marginLeft": "auto",
+            "overflow": "hidden"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "propConfig": {
+      "custom.security": {
+        "binding": {
+          "config": {
+            "path": "page.props.path"
+          },
+          "transforms": [
+            {
+              "code": "\ttry:\n\t\tif \"it/security\" not in self.page.props.path:\n\t\t\tpath \u003d \"Security/getPageRights\"\t\t\n\t\t\tparameters \u003d {\"userSource\":self.session.props.auth.idp,\"username\":self.session.props.auth.user.userName,\"url\":self.page.props.path}\n\t\t\tdata \u003d system.db.runNamedQuery(path,parameters\u003dparameters)\n\t\t\tif len(data):\n\t\t\t\tsecurityData \u003d data[0]\n\t\t\t\tself.session.custom.security \u003d securityData\n\t\t\t\tif securityData[\u0027ReadAllowed\u0027] \u003d\u003d False:\n\t\t\t\t\tsystem.perspective.navigate(\"/\")\n\t\t\telse:\n\t\t\t\tself.session.custom.security \u003d {\n\t\t\t\t    \"navigation_path\": \"/\",\n\t\t\t\t    \"CreateAllowed\": False,\n\t\t\t\t    \"ReadAllowed\": False,\n\t\t\t\t    \"UpdateAllowed\": False,\n\t\t\t\t    \"DeleteAllowed\": False\n\t\t\t\t  }\n\t\t\t\tsystem.perspective.navigate(\"/\")\n\t\t\treturn True\n\t\telse:\n\t\t\treturn True\n\t\t\n\texcept:\n\t\treturn False\n\t\t\t\n\t",
+              "type": "script"
+            }
+          ],
+          "type": "property"
+        }
+      }
+    },
+    "props": {
+      "style": {
+        "backgroundColor": "var(--prim)",
+        "overflow": "hidden",
+        "paddingBottom": 2,
+        "paddingLeft": 5,
+        "paddingRight": 8,
+        "paddingTop": 2
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

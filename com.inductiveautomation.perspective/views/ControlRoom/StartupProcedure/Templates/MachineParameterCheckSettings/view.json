@@ -1,0 +1,209 @@
+{
+  "custom": {},
+  "params": {
+    "line": "E07",
+    "operand": "value",
+    "tagPath": "",
+    "value": "value"
+  },
+  "propConfig": {
+    "params.line": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.operand": {
+      "paramDirection": "inout",
+      "persistent": true
+    },
+    "params.tagPath": {
+      "paramDirection": "inout",
+      "persistent": true
+    },
+    "params.value": {
+      "paramDirection": "inout",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 400,
+      "width": 400
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "TagPath"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.params.value": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "path": "view.params.tagPath"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "enabled": true,
+            "key": "Tag pad",
+            "margingRight": 5,
+            "placeholder": ""
+          },
+          "path": "Library/SharedTemplates/Input/String",
+          "useDefaultViewHeight": true
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "children": [
+          {
+            "events": {
+              "component": {
+                "onNodeDoubleClick": {
+                  "config": {
+                    "script": "\tselectedPath \u003d event.path\n\t\n\tself.parent.parent.getChild(\"TagPath\").props.params.value \u003d selectedPath"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "TagBrowseTree"
+            },
+            "position": {
+              "grow": 1
+            },
+            "propConfig": {
+              "props.root.path": {
+                "binding": {
+                  "config": {
+                    "expression": "\u0027[NLSTWDYK]Dyka/STW/EXT/\u0027+{view.params.line}"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "filter": {
+                "enabled": true
+              },
+              "root": {},
+              "selection": {
+                "mode": "single",
+                "values": [
+                  "[NLSTWDYK]Dyka/STW/EXT/E07/EXT/MEXT/ProcessValues/Dies/Zone01/Temperature"
+                ]
+              }
+            },
+            "type": "ia.display.tag-browse-tree"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer"
+        },
+        "position": {
+          "basis": "250px"
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "marginLeft": 5,
+            "marginRight": 5
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "meta": {
+          "name": "Operand"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.params.options": {
+            "binding": {
+              "config": {
+                "queryPath": "StartupProcedures/getOperands"
+              },
+              "type": "query"
+            }
+          },
+          "props.params.value": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "path": "view.params.operand"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "enabled": true,
+            "key": "Vergelijking",
+            "marginRight": 5,
+            "multiSelect": false,
+            "placeholder": "Select...",
+            "showClearIcon": true
+          },
+          "path": "Library/SharedTemplates/Input/Dropdown",
+          "useDefaultViewHeight": true
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Value"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.params.value": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "path": "view.params.value"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "enabled": true,
+            "engUnits": "",
+            "format": "0,0.##",
+            "key": "Waarde",
+            "maxValue": 10000000,
+            "minValue": 0,
+            "placeholder": "",
+            "rejected": "True",
+            "unitVisable": false
+          },
+          "path": "Library/SharedTemplates/Input/Number",
+          "useDefaultViewHeight": true
+        },
+        "type": "ia.display.view"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

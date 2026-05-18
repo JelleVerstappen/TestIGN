@@ -1,0 +1,423 @@
+{
+  "custom": {},
+  "params": {
+    "OEETagPath": "[default]Enterprise/Site/Area/Demo Line",
+    "actualOEE": 0,
+    "actualTarget": 0,
+    "lastOEE": 0,
+    "lastTarget": 0,
+    "weekOEE": 0,
+    "weekTarget": 0
+  },
+  "propConfig": {
+    "params.OEETagPath": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.actualOEE": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.actualTarget": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.lastOEE": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.lastTarget": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.name1": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.name2": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.showAlarmBar": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.subTitle": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.tableDataSet": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.tagPath": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.target": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.titel": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.title": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.value": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.value1": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.value2": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.weekOEE": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.weekTarget": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 546,
+      "width": 290
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Label"
+        },
+        "position": {
+          "basis": "36px",
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "borderBottom": "solid 1px var(--gray)",
+            "fontSize": 24,
+            "paddingLeft": "5px"
+          },
+          "text": "OEE Compare"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Actual"
+            },
+            "position": {
+              "height": 215,
+              "width": 240,
+              "x": 25,
+              "y": 1
+            },
+            "propConfig": {
+              "props.arc.color": {
+                "binding": {
+                  "config": {
+                    "expression": "if({view.params.actualOEE} \u003c\u003d {view.params.actualTarget}, \"#F5BB0E\", \"#666666\")\r\n"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.value": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.actualOEE"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "arc": {
+                "width": 5
+              },
+              "endAngle": 270,
+              "label": {
+                "maxDecimal": 1,
+                "units": "%"
+              },
+              "startAngle": -90,
+              "style": {
+                "classes": []
+              }
+            },
+            "type": "ia.chart.simple-gauge"
+          },
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "height": 24,
+              "rotate": {
+                "anchor": "100% 50%"
+              },
+              "width": 90,
+              "x": 100,
+              "y": 5
+            },
+            "props": {
+              "style": {
+                "color": "#666666",
+                "fontWeight": "normal",
+                "textAlign": "center"
+              },
+              "text": "Actual"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "SimpleGauge_0"
+            },
+            "position": {
+              "height": 150,
+              "width": 220,
+              "x": -47,
+              "y": 173
+            },
+            "propConfig": {
+              "props.arc.color": {
+                "binding": {
+                  "config": {
+                    "expression": "if({view.params.lastOEE} \u003c\u003d {view.params.lastTarget}, \"#F5BB0E\", \"#666666\")"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.value": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.lastOEE"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "arc": {
+                "width": 5
+              },
+              "endAngle": 270,
+              "label": {
+                "maxDecimal": 1,
+                "size": 18,
+                "units": "%"
+              },
+              "startAngle": -90,
+              "style": {
+                "classes": []
+              }
+            },
+            "type": "ia.chart.simple-gauge"
+          },
+          {
+            "meta": {
+              "name": "SimpleGauge_1"
+            },
+            "position": {
+              "height": 150,
+              "width": 220,
+              "x": 117,
+              "y": 173
+            },
+            "propConfig": {
+              "props.arc.color": {
+                "binding": {
+                  "config": {
+                    "expression": "if({view.params.weekOEE} \u003c\u003d {view.params.weekTarget}, \"#F5BB0E\", \"#666666\")"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.value": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.weekOEE"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "arc": {
+                "width": 4
+              },
+              "endAngle": 270,
+              "label": {
+                "maxDecimal": 1,
+                "size": 20,
+                "units": "%"
+              },
+              "startAngle": -90,
+              "style": {
+                "classes": []
+              }
+            },
+            "type": "ia.chart.simple-gauge"
+          },
+          {
+            "meta": {
+              "name": "Label_1"
+            },
+            "position": {
+              "height": 16,
+              "rotate": {
+                "anchor": "100% 50%"
+              },
+              "width": 54,
+              "x": 199,
+              "y": 181
+            },
+            "props": {
+              "style": {
+                "color": "--darkGray",
+                "fontWeight": "normal",
+                "textAlign": "center"
+              },
+              "text": "Week"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Label_2"
+            },
+            "position": {
+              "height": 16,
+              "rotate": {
+                "anchor": "100% 50%"
+              },
+              "width": 100,
+              "x": 14,
+              "y": 181
+            },
+            "props": {
+              "style": {
+                "color": "#666666",
+                "fontWeight": "normal",
+                "textAlign": "center"
+              },
+              "text": "Last shift"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Label_0"
+            },
+            "position": {
+              "height": 24,
+              "rotate": {
+                "anchor": "100% 50%"
+              },
+              "width": 90,
+              "x": 100,
+              "y": 110
+            },
+            "props": {
+              "style": {
+                "color": "--neutral",
+                "fontWeight": "bold",
+                "textAlign": "center"
+              },
+              "text": "OEE"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Label_3"
+            },
+            "position": {
+              "height": 16,
+              "rotate": {
+                "anchor": "100% 50%"
+              },
+              "width": 100,
+              "x": 14,
+              "y": 251
+            },
+            "props": {
+              "style": {
+                "color": "--neutral",
+                "fontWeight": "bold",
+                "textAlign": "center"
+              },
+              "text": "OEE"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Label_4"
+            },
+            "position": {
+              "height": 16,
+              "rotate": {
+                "anchor": "100% 50%"
+              },
+              "width": 54,
+              "x": 199,
+              "y": 251
+            },
+            "props": {
+              "style": {
+                "color": "--neutral",
+                "fontWeight": "bolder",
+                "textAlign": "center"
+              },
+              "text": "OEE"
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "root"
+        },
+        "props": {
+          "style": {
+            "backgroundColor": "--white",
+            "marginBottom": "auto",
+            "marginTop": "60px",
+            "overflow": "hidden"
+          }
+        },
+        "type": "ia.container.coord"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "justify": "space-between",
+      "style": {
+        "backgroundColor": "--white",
+        "boxShadow": "0px 4px 4px rgba(0, 0, 0, 0.25)",
+        "marginBottom": "5px",
+        "marginLeft": "5px",
+        "marginRight": "5px",
+        "overflow": "hidden",
+        "padding": "5px"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

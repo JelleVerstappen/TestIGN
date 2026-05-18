@@ -1,0 +1,176 @@
+{
+  "custom": {
+    "navigationDataTagPath": "[default]Navigation/Navigation data"
+  },
+  "events": {
+    "system": {
+      "onStartup": {
+        "config": {
+          "script": "\tlogger \u003d system.util.getLogger(\"Navigation\")\n\tclass NavigationItem():\n\t\tdef __init__(self, navigationItemId, label, material_icon\u003dNone, navigation_path\u003dNone,\n\t                 parent_navigation_item_id\u003dNone,parent_sub_navigation_item_id\u003dNone,parent_sub_sub_navigation_item_id\u003dNone, include_on_mobile\u003dNone):\n\t\t\tself.id \u003d navigationItemId\n\t\t\tself.label \u003d label\n\t\t\tself.material_icon \u003d material_icon\n\t\t\tself.navigation_path \u003d navigation_path\n\t\t\tself.navigation_item_children \u003d []\n\t\t\tself.navigation_item_sub_children \u003d []\n\t\t\tself.navigation_item_sub_sub_children \u003d []\n\t\t\tself.parent_navigation_item_id \u003d parent_navigation_item_id\n\t\t\tself.parent_sub_navigation_item_id \u003d parent_sub_navigation_item_id\n\t\t\tself.parent_sub_sub_navigation_item_id \u003d parent_sub_sub_navigation_item_id\n\t\t\tself.include_on_mobile \u003d include_on_mobile\n\t\t\tself.required_roles \u003d []\n\t        \n\t\n\t\tdef addNavigationItemChild(self, child):\n\t\t\tself.navigation_item_children.append(child)\n\t\t\n\t\tdef addNavigationItemSubChild(self, sub_child):\n\t\t\tself.navigation_item_sub_children.append(sub_child)\n\t\t\n\t\tdef addNavigationItemSubSubChild(self, sub_sub_child):\n\t\t\tself.navigation_item_sub_sub_children.append(sub_sub_child)\n\n\t\tdef addRequiredRole(self, role):\n\t\t\tself.required_roles.append(role)\n\t\n\t\t@classmethod\n\t\tdef getNavigationItems(cls):\n\t\t\ttagData \u003d system.tag.readBlocking([\"[default]Navigation/Navigation data\"])\n\t\t\tdata \u003d system.dataset.sort(tagData[0].value,\"id\")\n\t\t\tdata \u003d system.dataset.toPyDataSet(data)\n\t\t\tparents, children, sub_children, sub_sub_children \u003d [], [], [], []\n\t\t\tfor row in data:\n\t\t\t\tid \u003d row[\u0027id\u0027]\n\t\t\t\tlabel \u003d row[\u0027label\u0027]\n\t\t\t\tmaterial_icon \u003d row[\u0027material_icon\u0027]\n\t\t\t\tnavigation_path \u003d row[\u0027navigation_path\u0027]\n\t\t\t\tparent_navigation_item_id \u003d row[\u0027parent_navigation_item_id\u0027]\n\t\t\t\tparent_sub_navigation_item_id \u003d row[\u0027parent_sub_navigation_item_id\u0027]\n\t\t\t\tparent_sub_sub_navigation_item_id \u003d row[\u0027parent_sub_sub_navigation_item_id\u0027]\n\t\t\t\trequired_roles \u003d row[\u0027required_roles\u0027]\n\t\t\t\tinclude_on_mobile \u003d row[\u0027include_on_mobile\u0027]\n\n\t\t\t\tnavItem \u003d NavigationItem(id, label, material_icon, navigation_path, parent_navigation_item_id, parent_sub_navigation_item_id, parent_sub_sub_navigation_item_id, include_on_mobile)\n\t\t\t\tmobile \u003d self.session.custom.mobile\n\t\t\t\tif required_roles is not None:\n\t\t\t\t\tfor role in required_roles.split(\u0027,\u0027):\n\t\t\t\t\t\tnavItem.addRequiredRole(role.strip())\n#\t\t\t\tif (True in [True if role in navItem.required_roles else False for role in ([] if self.session.props.auth.user.roles \u003d\u003d None else self.session.props.auth.user.roles)]) and (not mobile or include_on_mobile) and (\u0027Ontslag\u0027 not in ([] if self.session.props.auth.user.roles \u003d\u003d None else self.session.props.auth.user.roles)):\n\t\t\t\tif 1\u003d\u003d1:\n\t\t\t\t\tif label !\u003d \"\":\n\t\t\t\t\t\tif parent_navigation_item_id is None and parent_sub_navigation_item_id is None and parent_sub_sub_navigation_item_id is None:\n\t\t\t\t\t\t\tparents.append(navItem)\n\t\t\t\t\t\telif parent_navigation_item_id is not None and parent_sub_navigation_item_id is None and parent_sub_sub_navigation_item_id is None:\n\t\t\t\t\t\t\tchildren.append(navItem)\n\t\t\t\t\t\telif parent_navigation_item_id is None and parent_sub_navigation_item_id is not None and parent_sub_sub_navigation_item_id is None:\n\t\t\t\t\t\t\tsub_children.append(navItem)\n\t\t\t\t\t\telif parent_navigation_item_id is None and parent_sub_navigation_item_id is None and parent_sub_sub_navigation_item_id is not None:\n\t\t\t\t\t\t\tsub_sub_children.append(navItem)\n\t\t\n\t\t\tfor sub_sub_child in sub_sub_children:\n\t\t\t\tsub_child \u003d next((x for x in sub_children if x.id \u003d\u003d sub_sub_child.parent_sub_sub_navigation_item_id), None)\n\t\t\t\ttry:\n\t\t\t\t\tsub_child.addNavigationItemSubSubChild(sub_sub_child)\n\t\t\t\texcept:\n\t\t\t\t\tlogger.error(\"Creating navigation failed because id: {}. Make sure the folder with this id has all roles that are used for the pages in this folder.\".format(sub_sub_child.parent_sub_sub_navigation_item_id))\n\t\t\t\t\n\t\t\tfor sub_child in sub_children:\n\t\t\t\tchild \u003d next((x for x in children if x.id \u003d\u003d sub_child.parent_sub_navigation_item_id), None)\n\t\t\t\ttry:\n\t\t\t\t\tchild.addNavigationItemSubChild(sub_child)\n\t\t\t\texcept:\n\t\t\t\t\tlogger.error(\"Creating navigation failed because id: {}. Make sure the folder with this id has all roles that are used for the pages in this folder.\".format(sub_child.parent_sub_navigation_item_id))\n\n\t\t\tfor child in children:\n\t\t\t\tparent \u003d next((x for x in parents if x.id \u003d\u003d child.parent_navigation_item_id), None)\n\t\t\t\ttry:\n\t\t\t\t\tparent.addNavigationItemChild(child)\n\t\t\t\texcept:\n\t\t\t\t\tlogger.error(\"Creating navigation failed because id: {}. Make sure the folder with this id has all roles that are used for the pages in this folder.\".format(child.parent_navigation_item_id))\n\t\t\t\t\t\n\t\t\treturn parents\n\t\n\t\n\tdef createNavigationDict(navigationItem):\n\t\tdefaultBody \u003d {\n\t\t\t\t\t\t      \"viewPath\": \"Library/SharedDocked/Templates/NavItems\",\n\t\t\t\t\t\t      \"viewParams\": {},\n\t\t\t\t\t\t      \"useDefaultViewWidth\": False,\n\t\t\t\t\t\t      \"useDefaultViewHeight\": False,\n\t\t\t\t\t\t      \"height\": \"auto\",\n\t\t\t\t\t\t      \"style\": {\n\t\t\t\t\t\t        \"classes\": \"\",\n\t\t\t\t\t\t        \"margin\": 0\n\t\t\t\t\t\t      }\n\t\t\t\t\t\t    }\n\t\t\t    \n\t\tnavigationDict \u003d {\"expanded\": False, \u0027body\u0027:defaultBody}\n\t\tnavigationDict[\u0027target\u0027] \u003d navigationItem.navigation_path\n\t\tnavigationDict[\u0027body\u0027][\u0027viewParams\u0027] \u003d {\"list\":[]}\n\t\tnavigationDict[\u0027header\u0027] \u003d {\n\t\t\t    \t\t\t\t      \"toggle\": {\n\t\t\t    \t\t\t\t        \"enabled\": True,\n\t\t\t    \t\t\t\t        \"expandedIcon\": {\n\t\t\t    \t\t\t\t          \"path\": \"material/expand_less\",\n\t\t\t    \t\t\t\t          \"color\": \"\",\n\t\t\t    \t\t\t\t          \"style\": {\n\t\t\t    \t\t\t\t            \"classes\": \"\"\n\t\t\t    \t\t\t\t          }\n\t\t\t    \t\t\t\t        },\n\t\t\t    \t\t\t\t        \"collapsedIcon\": {\n\t\t\t    \t\t\t\t          \"path\": \"material/expand_more\",\n\t\t\t    \t\t\t\t          \"color\": \"\",\n\t\t\t    \t\t\t\t          \"style\": {\n\t\t\t    \t\t\t\t            \"classes\": \"\"\n\t\t\t    \t\t\t\t          }\n\t\t\t    \t\t\t\t        }\n\t\t\t    \t\t\t\t      },\n\t\t\t    \t\t\t\t      \"content\": {\n\t\t\t    \t\t\t\t        \"type\": \"text\",\n\t\t\t    \t\t\t\t        \"text\":  navigationItem.label,\n\t\t\t    \t\t\t\t        \"useDefaultViewWidth\": False,\n\t\t\t    \t\t\t\t        \"useDefaultViewHeight\": False,\n\t\t\t    \t\t\t\t        \"viewPath\": \"\",\n\t\t\t    \t\t\t\t        \"viewParams\": {},\n\t\t\t    \t\t\t\t        \"style\": {\n\t\t\t    \t\t\t\t          \"classes\": \"\",\n\t\t\t    \t\t\t\t          \"textAlign\": \"left\"\n\t\t\t    \t\t\t\t        }\n\t\t\t    \t\t\t\t      },\n\t\t\t    \t\t\t\t      \"height\": \"40px\",\n\t\t\t    \t\t\t\t      \"reverse\": True,\n\t\t\t    \t\t\t\t      \"style\": {\n\t\t\t    \t\t\t\t        \"classes\": \"\"\n\t\t\t    \t\t\t\t      }\n\t\t\t    \t\t\t\t    }\t\n\t\tfor subSubChildNavItem in navigationItem.navigation_item_sub_sub_children:\n\t\t\tnavigationDict[\u0027body\u0027][\u0027viewParams\u0027][\u0027list\u0027].append(createNavigationDict(subSubChildNavItem))\n\t\tfor subChildNavItem in navigationItem.navigation_item_sub_children:\n\t\t\tnavigationDict[\u0027body\u0027][\u0027viewParams\u0027][\u0027list\u0027].append(createNavigationDict(subChildNavItem))\n\t\tfor childNavItem in navigationItem.navigation_item_children:\n\t\t\tnavigationDict[\u0027body\u0027][\u0027viewParams\u0027][\u0027list\u0027].append(createNavigationDict(childNavItem))\n   \t\n\t\treturn navigationDict\n\t\n\t\n\tdef createNavigationList(navigationItems):\n\t    output \u003d []\t   \n\t    for navigationItem in navigationItems:\t        \n\t            output.append(createNavigationDict(navigationItem))\n\t    return output\n\t\n\tself.getChild(\"root\").getChild(\"Accordion\").props.items \u003d createNavigationList(NavigationItem.getNavigationItems())"
+        },
+        "enabled": false,
+        "scope": "G",
+        "type": "script"
+      }
+    }
+  },
+  "params": {
+    "Page": "/"
+  },
+  "propConfig": {
+    "custom.navigationDataTagPath": {
+      "persistent": true
+    },
+    "params.Page": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 814,
+      "width": 646
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "custom": {
+          "backup": {
+            "backgroundColor": "#FFFFFF",
+            "borderBottomColor": "--prim",
+            "borderBottomLeftRadius": 3,
+            "borderBottomRightRadius": 5,
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": "0px",
+            "borderLeftColor": "--prim",
+            "borderLeftStyle": "solid",
+            "borderLeftWidth": "0px",
+            "borderRightColor": "--prim",
+            "borderRightStyle": "solid",
+            "borderRightWidth": "0px",
+            "borderTopColor": "--prim",
+            "borderTopLeftRadius": 3,
+            "borderTopRightRadius": 5,
+            "borderTopStyle": "solid",
+            "borderTopWidth": "0px",
+            "classes": "ATA/Background/CardSecondary",
+            "color": "--textSec",
+            "fontSize": 15,
+            "fontWeight": "bolder",
+            "height": 45,
+            "marginTop": 1
+          },
+          "disabledStyle": {
+            "backgroundClip": "padding-box",
+            "backgroundColor": "var(--disabled)",
+            "borderBottomLeftRadius": "0px",
+            "borderBottomRightRadius": "10px",
+            "borderColor": "var(--backgroundSecondary)",
+            "borderStyle": "solid",
+            "borderTopLeftRadius": "0px",
+            "borderTopRightRadius": "10px",
+            "borderWidth": "1px",
+            "boxShadow": "0 0 3px rgba(0, 0, 0, 0.2)",
+            "color": "--textSec",
+            "fontSize": 15,
+            "fontWeight": "bolder",
+            "height": "45px",
+            "marginBottom": "4px",
+            "marginTop": "4px",
+            "overflow": "hidden"
+          },
+          "style": {
+            "backgroundClip": "padding-box",
+            "backgroundColor": "var(--background)",
+            "borderBottomLeftRadius": "0px",
+            "borderBottomRightRadius": "10px",
+            "borderColor": "var(--backgroundSecondary)",
+            "borderStyle": "solid",
+            "borderTopLeftRadius": "0px",
+            "borderTopRightRadius": "10px",
+            "borderWidth": "1px",
+            "boxShadow": "0 0 3px rgba(0, 0, 0, 0.2)",
+            "color": "--textSec",
+            "fontSize": 15,
+            "fontWeight": "bolder",
+            "height": "45px",
+            "marginBottom": "4px",
+            "marginTop": "4px",
+            "overflow": "hidden"
+          }
+        },
+        "meta": {
+          "name": "MenuTree"
+        },
+        "position": {
+          "basis": "60%",
+          "grow": 1,
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.items": {
+            "binding": {
+              "config": {
+                "struct": {
+                  "disabledStyle": "{this.custom.disabledStyle}",
+                  "style": "{this.custom.style}"
+                },
+                "waitOnAll": true
+              },
+              "transforms": [
+                {
+                  "code": "\ttrue \u003d True\n\tfalse \u003d False\n\tnull \u003d None\n\timport random\n\t\n\tstyle \u003d value[\u0027style\u0027]\n\tdisabledStyle \u003d value[\u0027disabledStyle\u0027]\n\t\n\textra \u003d [\n  {\n    \"target\": \"/\",\n    \"items\": [],\n    \"navIcon\": {\n      \"path\": \"\",\n      \"color\": \"\"\n    },\n    \"label\": {\n      \"text\": \"Startscherm\",\n      \"icon\": {\n        \"path\": \"material/home\",\n        \"color\": \"--textSec\"\n      }\n    },\n    \"visible\": true,\n    \"enabled\": true,\n    \"showHeader\": true,\n    \"resetOnClick\": false,\n    \"backActionText\": \"\",\n    \"style\": {\n      \"backgroundClip\": \"padding-box\",\n      \"backgroundColor\": \"var(--background)\",\n      \"borderStyle\": \"solid\",\n      \"color\": \"--textSec\",\n      \"fontSize\": 15,\n      \"fontWeight\": \"bolder\",\n      \"marginBottom\": \"4px\",\n      \"marginTop\": \"4px\",\n      \"overflow\": \"hidden\",\n      \"borderBottomLeftRadius\": \"0px\",\n      \"borderBottomRightRadius\": \"10px\",\n      \"borderColor\": \"var(--backgroundSecondary)\",\n      \"borderTopLeftRadius\": \"0px\",\n      \"borderTopRightRadius\": \"10px\",\n      \"borderWidth\": \"1px\",\n      \"boxShadow\": \"0 0 3px rgba(0, 0, 0, 0.2)\",\n      \"height\": \"45px\"\n    }\n  },\n  {\n    \"target\": \"/ControlRoom/ActivityFeed/ActivityFeed\",\n    \"items\": [],\n    \"navIcon\": {\n      \"path\": \"\",\n      \"color\": \"\"\n    },\n    \"label\": {\n      \"text\": \"Activiteitenoverzicht\",\n      \"icon\": {\n        \"path\": \"material/feedback\",\n        \"color\": \"--textSec\"\n      }\n    },\n    \"visible\": true,\n    \"enabled\": true,\n    \"showHeader\": true,\n    \"resetOnClick\": false,\n    \"backActionText\": \"\",\n    \"style\": {\n      \"backgroundClip\": \"padding-box\",\n      \"backgroundColor\": \"var(--background)\",\n      \"borderStyle\": \"solid\",\n      \"color\": \"--textSec\",\n      \"fontSize\": 15,\n      \"fontWeight\": \"bolder\",\n      \"marginBottom\": \"4px\",\n      \"marginTop\": \"4px\",\n      \"overflow\": \"hidden\",\n      \"borderBottomLeftRadius\": \"0px\",\n      \"borderBottomRightRadius\": \"10px\",\n      \"borderColor\": \"var(--backgroundSecondary)\",\n      \"borderTopLeftRadius\": \"0px\",\n      \"borderTopRightRadius\": \"10px\",\n      \"borderWidth\": \"1px\",\n      \"boxShadow\": \"0 0 3px rgba(0, 0, 0, 0.2)\",\n      \"height\": \"45px\"\n    }\n  },\n  {\n    \"target\": \"\",\n    \"items\": [\n      {\n        \"target\": \"/ControlRoom/Articles/Management/ArticleManagement\",\n        \"items\": [],\n        \"navIcon\": {\n          \"path\": \"\",\n          \"color\": \"\"\n        },\n        \"label\": {\n          \"text\": \"Artikelen\",\n          \"icon\": {\n            \"path\": \"bootstrap-icons/box-seam\",\n            \"color\": \"--textSec\"\n          }\n        },\n        \"visible\": true,\n        \"enabled\": true,\n        \"showHeader\": true,\n        \"resetOnClick\": false,\n        \"backActionText\": \"\",\n        \"style\": {\n          \"backgroundClip\": \"padding-box\",\n          \"backgroundColor\": \"var(--background)\",\n          \"borderStyle\": \"solid\",\n          \"color\": \"--textSec\",\n          \"fontSize\": 15,\n          \"fontWeight\": \"bolder\",\n          \"marginBottom\": \"4px\",\n          \"marginTop\": \"4px\",\n          \"overflow\": \"hidden\",\n          \"borderBottomLeftRadius\": \"0px\",\n          \"borderBottomRightRadius\": \"10px\",\n          \"borderColor\": \"var(--backgroundSecondary)\",\n          \"borderTopLeftRadius\": \"0px\",\n          \"borderTopRightRadius\": \"10px\",\n          \"borderWidth\": \"1px\",\n          \"boxShadow\": \"0 0 3px rgba(0, 0, 0, 0.2)\",\n          \"height\": \"45px\"\n        }\n      },\n      {\n        \"target\": \"/ControlRoom/Alarms/AlarmManagement\",\n        \"items\": [],\n        \"navIcon\": {\n          \"path\": \"\",\n          \"color\": \"\"\n        },\n        \"label\": {\n          \"text\": \"Alarmen\",\n          \"icon\": {\n            \"path\": \"material/warning\",\n            \"color\": \"--textSec\"\n          }\n        },\n        \"visible\": true,\n        \"enabled\": true,\n        \"showHeader\": true,\n        \"resetOnClick\": false,\n        \"backActionText\": \"\",\n        \"style\": {\n          \"backgroundClip\": \"padding-box\",\n          \"backgroundColor\": \"var(--background)\",\n          \"borderStyle\": \"solid\",\n          \"color\": \"--textSec\",\n          \"fontSize\": 15,\n          \"fontWeight\": \"bolder\",\n          \"marginBottom\": \"4px\",\n          \"marginTop\": \"4px\",\n          \"overflow\": \"hidden\",\n          \"borderBottomLeftRadius\": \"0px\",\n          \"borderBottomRightRadius\": \"10px\",\n          \"borderColor\": \"var(--backgroundSecondary)\",\n          \"borderTopLeftRadius\": \"0px\",\n          \"borderTopRightRadius\": \"10px\",\n          \"borderWidth\": \"1px\",\n          \"boxShadow\": \"0 0 3px rgba(0, 0, 0, 0.2)\",\n          \"height\": \"45px\"\n        }\n      }\n    ],\n    \"navIcon\": {\n      \"path\": \"\",\n      \"color\": \"\"\n    },\n    \"label\": {\n      \"text\": \"Instellingen\",\n      \"icon\": {\n        \"path\": \"material/settings\",\n        \"color\": \"--textSec\"\n      }\n    },\n    \"visible\": true,\n    \"enabled\": true,\n    \"showHeader\": true,\n    \"resetOnClick\": false,\n    \"backActionText\": \"\",\n    \"style\": {\n      \"backgroundClip\": \"padding-box\",\n      \"backgroundColor\": \"var(--background)\",\n      \"borderStyle\": \"solid\",\n      \"color\": \"--textSec\",\n      \"fontSize\": 15,\n      \"fontWeight\": \"bolder\",\n      \"marginBottom\": \"4px\",\n      \"marginTop\": \"4px\",\n      \"overflow\": \"hidden\",\n      \"borderBottomLeftRadius\": \"0px\",\n      \"borderBottomRightRadius\": \"10px\",\n      \"borderColor\": \"var(--backgroundSecondary)\",\n      \"borderTopLeftRadius\": \"0px\",\n      \"borderTopRightRadius\": \"10px\",\n      \"borderWidth\": \"1px\",\n      \"boxShadow\": \"0 0 3px rgba(0, 0, 0, 0.2)\",\n      \"height\": \"45px\"\n    }\n  }\n]\n\trl \u003d []\n\tfor x in range(25):\n\t\tnr \u003d str(x+1)\n\t\tif len(nr) \u003d\u003d 1:\n\t\t\tnr \u003d \u00270\u0027+nr\n\t\trr \u003d random.randint(3, 9)\n\t\tif rr in [1,2]:\n\t\t\tcolor \u003d \u0027--alarm\u0027\n\t\t\tcolor2 \u003d \u0027--transparent\u0027\n\t\t\tcolor3 \u003d \u0027warning\u0027\n\t\telif rr in [5,6]:\n\t\t\tcolor \u003d \u0027--warning\u0027\n\t\t\tcolor2 \u003d \u0027--alarm\u0027\n\t\t\tcolor3 \u003d \u0027transparent\u0027\n\t\telse:\n\t\t\tcolor \u003d \u0027transparent\u0027\n\t\t\tcolor2 \u003d \u0027--alarm\u0027\n\t\t\tcolor3 \u003d \u0027--warning\u0027\n\t\trl.append({\n  \"target\": \"\",\n  \"items\": extra+\n  \t[\n    {\n      \"target\": dyka.config.navigate(\u0027Silo\u0027),\n      \"items\": [],\n      \"navIcon\": {\n\t  \"path\": \"dyka/Alarm1\"\n\t},\n      \"label\": {\n        \"text\": \"Silo\",\n        \"icon\": {\n  \"path\": \"dyka/Silo\",\n  \"color\": \"--textSec\"\n}\n      },\n      \"visible\": true,\n      \"enabled\": true,\n      \"showHeader\": true,\n      \"resetOnClick\": false,\n      \"backActionText\": \"\",\n      \"style\": style\n    },\n    {\n      \"target\": dyka.config.navigate(\u0027RawMaterialTransport\u0027),\n      \"items\": [],\n      \"navIcon\": {\n\t  \"path\": \"dyka/Alarm9orMore\"\n\t},\n      \"label\": {\n        \"text\": \"Grondstof transport\",\n        \"icon\": {\n  \"path\": \"dyka/RawMaterialTranssport\",\n  \"color\": \"--textSec\"\n}\n      },\n      \"visible\": true,\n      \"enabled\": true,\n      \"showHeader\": true,\n      \"resetOnClick\": false,\n      \"backActionText\": \"\",\n      \"style\": style\n    },\n    {\n      \"target\": dyka.config.navigate(\u0027Extruder\u0027),\n      \"items\": [],\n      \"navIcon\": {\n\t  \"path\": \"\",\n\t},\n      \"label\": {\n        \"text\": \"Extruder\",\n        \"icon\": {\n  \"path\": \"dyka/Extruder\",\n  \"color\": \"--textSec\"\n}\n      },\n      \"visible\": true,\n      \"enabled\": true,\n      \"showHeader\": true,\n      \"resetOnClick\": false,\n      \"backActionText\": \"\",\n      \"style\": style\n    },\n    {\n      \"target\": dyka.config.navigate(\u0027VacuumAndCooling\u0027),\n      \"items\": [],\n      \"navIcon\": {\n\t  \"path\": \"\"\n\t},\n      \"label\": {\n        \"text\": \"Vacuum + koeling\",\n        \"icon\": {\n  \"path\": \"dyka/VacuumAndCooling\",\n  \"color\": \"--textSec\"\n}\n      },\n      \"visible\": true,\n      \"enabled\": true,\n      \"showHeader\": true,\n      \"resetOnClick\": false,\n      \"backActionText\": \"\",\n      \"style\": style\n    },\n    {\n      \"target\": \"\",\n      \"items\": [],\n      \"navIcon\": {\n\t  \"path\": \"\",\n\t  \"color\": color3\n\t},\n      \"label\": {\n        \"text\": \"Wanddiktescanner\",\n        \"icon\": {\n  \"path\": \"dyka/TubeThicknessScanner\",\n  \"color\": \"--textSec\"\n}\n      },\n      \"visible\": true,\n      \"enabled\": true,\n      \"showHeader\": true,\n      \"resetOnClick\": false,\n      \"backActionText\": \"\",\n      \"style\": disabledStyle\n    },\n    {\n      \"target\": dyka.config.navigate(\u0027Printer\u0027),\n      \"items\": [],\n      \"navIcon\": {\n\t  \"path\": \"\"\n\t},\n      \"label\": {\n        \"text\": \"Printer\",\n        \"icon\": {\n  \"path\": \"dyka/Printer\",\n  \"color\": \"--textSec\"\n}\n      },\n      \"visible\": true,\n      \"enabled\": true,\n      \"showHeader\": true,\n      \"resetOnClick\": false,\n      \"backActionText\": \"\",\n      \"style\": style\n    },\n    {\n      \"target\": dyka.config.navigate(\u0027HaulOff\u0027),\n      \"items\": [],\n      \"navIcon\": {\n\t  \"path\": \"dyka/Warning3\"\n\t},\n      \"label\": {\n        \"text\": \"Trekbank\",\n        \"icon\": {\n  \"path\": \"dyka/PullBench\",\n  \"color\": \"--textSec\"\n}\n      },\n      \"visible\": true,\n      \"enabled\": true,\n      \"showHeader\": true,\n      \"resetOnClick\": false,\n      \"backActionText\": \"\",\n      \"style\": style\n    },\n    {\n      \"target\": dyka.config.navigate(\u0027CuttingUnit\u0027),\n      \"items\": [],\n      \"navIcon\": {\n\t  \"path\": \"dyka/Warning7\"\n\t},\n      \"label\": {\n        \"text\": \"Afkortunit\",\n        \"icon\": {\n  \"path\": \"dyka/Saw\",\n  \"color\": \"--textSec\"\n}\n      },\n      \"visible\": true,\n      \"enabled\": true,\n      \"showHeader\": true,\n      \"resetOnClick\": false,\n      \"backActionText\": \"\",\n      \"style\": style\n    },\n    {\n      \"target\": \"\",\n      \"items\": [],\n      \"navIcon\": {\n\t  \"path\": \"\",\n\t  \"color\": color2\n\t},\n      \"label\": {\n        \"text\": \"Trompbank\",\n        \"icon\": {\n  \"path\": \"dyka/FormingMachine\",\n  \"color\": \"--textSec\"\n}\n      },\n      \"visible\": true,\n      \"enabled\": true,\n      \"showHeader\": true,\n      \"resetOnClick\": false,\n      \"backActionText\": \"\",\n      \"style\": disabledStyle\n    },\n    {\n      \"target\": \"\",\n      \"items\": [],\n      \"navIcon\": {\n\t  \"path\": \"\",\n\t  \"color\": color\n\t},\n      \"label\": {\n        \"text\": \"Aflegger\",\n        \"icon\": {\n  \"path\": \"dyka/Tubes\",\n  \"color\": \"--textSec\"\n}\n      },\n      \"visible\": true,\n      \"enabled\": true,\n      \"showHeader\": true,\n      \"resetOnClick\": false,\n      \"backActionText\": \"\",\n       \"style\": disabledStyle\n    },\n    {\n      \"target\": \"/Controlroom/Quality/Quality\",\n      \"items\": [],\n      \"navIcon\": {\n\t  \"path\": \"\"\n\t},\n      \"label\": {\n        \"text\": \"Kwaliteit\",\n        \"icon\": {\n  \"path\": \"dyka/Quality\",\n  \"color\": \"--textSec\"\n}\n      },\n      \"visible\": true,\n      \"enabled\": true,\n      \"showHeader\": true,\n      \"resetOnClick\": false,\n      \"backActionText\": \"\",\n      \"style\": style\n    }\n  ],\n  \"navIcon\": {\n\n    \"path\": \"dyka/Warning9orMore\" if x in [2,3] else \u0027dyka/Alarm3\u0027 if x \u003d\u003d 4 else \u0027dyka/Notification2\u0027 if x \u003d\u003d 7 else \u0027\u0027\n  },\n  \"label\": {\n    \"text\": \"Lijn \"+nr,\n    \"icon\": {\n  \"path\": \"dyka/Line\",\n  \"color\": \"--textSec\"\n}\n  },\n  \"visible\": true,\n  \"enabled\": true,\n  \"showHeader\": true,\n  \"resetOnClick\": false,\n  \"backActionText\": \"\",\n  \"style\": style\n})\n\n\treturn extra+rl",
+                  "type": "script"
+                }
+              ],
+              "type": "expr-struct"
+            }
+          }
+        },
+        "props": {
+          "backActionStyle": {
+            "borderColor": "var(--backgroundSecondary)",
+            "borderStyle": "solid",
+            "color": "--textSec",
+            "height": "45px"
+          },
+          "headerStyle": {
+            "borderColor": "var(--backgroundSecondary)",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "color": "--textSec",
+            "fontSize": 16,
+            "fontWeight": "bolder",
+            "height": "45px",
+            "marginTop": "4px",
+            "overflow": "hidden"
+          },
+          "itemStyle": {
+            "marginLeft": -5
+          },
+          "style": {
+            "backgroundColor": "--backgroundSecondary",
+            "marginBottom": 20
+          }
+        },
+        "type": "ia.navigation.menutree"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "justify": "space-between",
+      "style": {
+        "backgroundColor": "--backgroundSecondary",
+        "classes": "ATA/Background/RootDock",
+        "overflow": "visible",
+        "paddingBottom": 0,
+        "paddingTop": 0
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "base": {
+    "style": {
+      "color": "var(--prim)",
+      "fontSize": "21px",
+      "fontWeight": "bolder"
+    }
+  }
+}

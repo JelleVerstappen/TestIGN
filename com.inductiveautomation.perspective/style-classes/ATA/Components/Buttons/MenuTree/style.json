@@ -1,0 +1,31 @@
+{
+  "base": {
+    "style": {
+      "backgroundClip": "padding-box",
+      "backgroundColor": "var(--background)",
+      "borderColor": "var(--backgroundSecondary)",
+      "borderStyle": "solid",
+      "borderWidth": "1px",
+      "borderTopLeftRadius": "0px",
+      "borderTopRightRadius": "10px",
+      "borderBottomLeftRadius": "0px",
+      "borderBottomRightRadius": "10px",
+      "boxShadow": "0 0 3px rgba(0, 0, 0, 0.2)",
+      "color": "var(--textSec)",
+      "fontSize": "15px",
+      "fontWeight": "bolder",
+      "marginBottom": "2px",
+      "marginRight": "4px",
+      "marginTop": "2px",
+      "overflow": "hidden"
+    }
+  },
+  "variants": [
+    {
+      "pseudo": "disabled",
+      "style": {
+        "backgroundColor": "var(--disabled)"
+      }
+    }
+  ]
+}

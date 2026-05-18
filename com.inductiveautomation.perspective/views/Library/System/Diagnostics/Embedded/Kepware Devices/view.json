@@ -1,0 +1,68 @@
+{
+  "custom": {},
+  "params": {
+    "startPath": "[MES]EKK Eagle Simrax/Kerkrade/System information/PLC\u0027s/Assembly hall 2"
+  },
+  "propConfig": {
+    "params.startPath": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "width": 280
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "FlexRepeater"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.instances": {
+            "binding": {
+              "config": {
+                "struct": {
+                  "startPath": "{view.params.startPath}",
+                  "time": "now(60000)"
+                },
+                "waitOnAll": true
+              },
+              "transforms": [
+                {
+                  "code": "\tstartPath \u003d self.view.params.startPath\n\tresults \u003d system.tag.browse(startPath,{\"typeId\":\"System/Kepware\", \"tagType\":\"UdtInstance\"}).getResults()\n\t##### Create empty list\n\tinstances \u003d []\n\t#### Loop through all the tags\n\tfor row in results:\n\t\tinstances.append({\"name\":row[\u0027name\u0027],\"path\":row[\u0027fullPath\u0027]})\n\treturn instances",
+                  "type": "script"
+                }
+              ],
+              "type": "expr-struct"
+            }
+          }
+        },
+        "props": {
+          "direction": "column",
+          "elementPosition": {
+            "basis": "auto",
+            "grow": 0,
+            "shrink": 0
+          },
+          "path": "Library/System/Diagnostics/Embedded/Kepware Device",
+          "useDefaultViewHeight": false,
+          "useDefaultViewWidth": false
+        },
+        "type": "ia.display.flex-repeater"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

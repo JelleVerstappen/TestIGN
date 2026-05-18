@@ -1,0 +1,712 @@
+{
+  "custom": {},
+  "params": {
+    "data": {
+      "Article": "None",
+      "ArticleDescription": "None",
+      "LineID": "None",
+      "ProductionDate": "value",
+      "TimeOnTube": "00:00:00",
+      "testResults": {
+        "Diameter": {
+          "EngUnit": "mm",
+          "HighLimit": 9999999,
+          "LowLimit": 1,
+          "Measured": 0,
+          "ResultGood": 1,
+          "Standard": null
+        },
+        "Height": {
+          "EngUnit": "mm",
+          "HighLimit": 9999999,
+          "LowLimit": 0,
+          "Measured": 100000000,
+          "ResultGood": "0",
+          "Standard": null
+        },
+        "HitsOK": {
+          "EngUnit": null,
+          "HighLimit": 1,
+          "LowLimit": 1,
+          "Measured": 0,
+          "ResultGood": null,
+          "Standard": 1
+        },
+        "MaxWallThickness": {
+          "EngUnit": "mm",
+          "HighLimit": 9999999,
+          "LowLimit": 0,
+          "Measured": 0,
+          "ResultGood": null,
+          "Standard": null
+        },
+        "MinWallThickness": {
+          "EngUnit": "mm",
+          "HighLimit": 9999999,
+          "LowLimit": 0,
+          "Measured": 0,
+          "ResultGood": 1,
+          "Standard": null
+        },
+        "PrintOK": {
+          "EngUnit": null,
+          "HighLimit": 1,
+          "LowLimit": 1,
+          "Measured": null,
+          "ResultGood": null,
+          "Standard": 1
+        },
+        "Shrink": {
+          "EngUnit": "%",
+          "HighLimit": 9999999,
+          "LowLimit": 0,
+          "Measured": null,
+          "ResultGood": null,
+          "Standard": null
+        }
+      }
+    },
+    "edit": true,
+    "newEntry": true,
+    "qualityID": 9474
+  },
+  "propConfig": {
+    "params.data": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.edit": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.newEntry": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.qualityID": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "width": 600
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Header"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.params.title": {
+            "binding": {
+              "config": {
+                "expression": "if({view.params.newEntry} \u003d 1, \u0027Stuk aanmelden\u0027,\r\n\tif({view.params.edit} \u003d 0, \u0027Details bekijken\u0027,\r\n\t\u0027Inspectie aanpassen\u0027))"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "closeDockID": "QualityDock",
+            "closeIcon": true
+          },
+          "path": "Library/SharedTemplates/HeaderForDock",
+          "style": {
+            "textTransform": "capitalize"
+          },
+          "useDefaultViewHeight": true
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Line"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.params.enabled": {
+                "binding": {
+                  "config": {
+                    "expression": "toBoolean({view.params.newEntry})"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.params.options": {
+                "binding": {
+                  "config": {
+                    "queryPath": "getLinesDropdown"
+                  },
+                  "type": "query"
+                }
+              },
+              "props.params.value": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.data.LineID"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "key": "Lijn",
+                "marginRight": 5,
+                "multiSelect": false,
+                "placeholder": "",
+                "showClearIcon": true
+              },
+              "path": "Library/SharedTemplates/Input/Dropdown",
+              "useDefaultViewHeight": true
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "Article"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.params.enabled": {
+                "binding": {
+                  "config": {
+                    "expression": "toBoolean({view.params.newEntry})"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.params.options": {
+                "binding": {
+                  "config": {
+                    "parameters": {
+                      "LineID": "{../Line.props.params.value}"
+                    },
+                    "queryPath": "getArticlesDropdown"
+                  },
+                  "type": "query"
+                }
+              },
+              "props.params.value": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.data.Article"
+                  },
+                  "type": "property"
+                },
+                "onChange": {
+                  "enabled": null,
+                  "script": "\tif previousValue is not None and previousValue.value !\u003d currentValue.value and origin !\u003d \u0027Binding\u0027:\n\t\tarticleDescription \u003d system.db.runScalarPrepQuery(\u0027select articleDescription from articles where articleID \u003d ?\u0027, [currentValue.value], database \u003d \u0027NLSTWDYK_DB_PROD\u0027)\n\t\tself.getSibling(\"ArticleDescription\").props.params.value \u003d articleDescription if articleDescription is not None else \u0027\u0027"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "key": "Artikel nummer",
+                "marginRight": 5,
+                "multiSelect": false,
+                "placeholder": "",
+                "showClearIcon": true
+              },
+              "path": "Library/SharedTemplates/Input/Dropdown",
+              "useDefaultViewHeight": true
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "ArticleDescription"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.params.value": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.data.ArticleDescription"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "enabled": false,
+                "key": "Artikel beschrijving",
+                "margingRight": 5,
+                "placeholder": ""
+              },
+              "path": "Library/SharedTemplates/Input/String",
+              "useDefaultViewHeight": true
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "ProductionDate"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.params.CancelIconVisable": {
+                "binding": {
+                  "config": {
+                    "expression": "!{view.params.edit}"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.params.enabled": {
+                "binding": {
+                  "config": {
+                    "expression": "toBoolean({view.params.newEntry})"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.params.value": {
+                "binding": {
+                  "config": {
+                    "expression": "if({view.params.edit}, {view.params.data.ProductionDate}, midnight(now(0)))"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "format": "DD-MM-YYYY",
+                "key": "Productie datum"
+              },
+              "path": "Library/SharedTemplates/Input/Date",
+              "useDefaultViewHeight": true
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "TimeOnTube"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.params.enabled": {
+                "binding": {
+                  "config": {
+                    "expression": "toBoolean({view.params.newEntry})"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.params.value": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.data.TimeOnTube"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "format": "hh:mm:ss",
+                "key": "Tijd op buis",
+                "showFormat": true,
+                "showSeconds": false
+              },
+              "path": "Library/SharedTemplates/Input/Time",
+              "style": {
+                "marginBottom": 10
+              },
+              "useDefaultViewHeight": true
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "VisualOK"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "position.display": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.data.testResults"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\treturn \u0027VisualOK\u0027 in value.keys() and not self.view.params.newEntry",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "property"
+                }
+              },
+              "props.params.enabled": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.edit"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\treturn bool(value)",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "property"
+                }
+              },
+              "props.params.value": {
+                "binding": {
+                  "config": {
+                    "expression": "toBoolean({view.params.data.testResults.VisualOK.Measured})"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "checkBoxLeft": true,
+                "checkIcon": "bootstrap-icons/check-square-fill",
+                "key": "Visueel OK",
+                "textPosition": "start",
+                "uncheckColor": "#FF0000",
+                "uncheckIcon": "bootstrap-icons/x-square-fill"
+              },
+              "path": "Library/SharedTemplates/Input/Checkbox",
+              "useDefaultViewHeight": true
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "PrintOK"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "position.display": {
+                "binding": {
+                  "config": {
+                    "expression": "!{view.params.newEntry}"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.params.enabled": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.edit"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\treturn bool(value)",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "property"
+                }
+              },
+              "props.params.value": {
+                "binding": {
+                  "config": {
+                    "expression": "toBoolean({view.params.data.testResults.PrintOK.Measured})"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "allowTriState": true,
+                "checkBoxLeft": true,
+                "checkIcon": "bootstrap-icons/check-square-fill",
+                "key": "Bedrukking OK",
+                "textPosition": "start",
+                "uncheckColor": "#FF0000",
+                "uncheckIcon": "bootstrap-icons/x-square-fill"
+              },
+              "path": "Library/SharedTemplates/Input/Checkbox",
+              "useDefaultViewHeight": true
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "HitsOK"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "position.display": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.data.testResults"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\treturn \u0027HitsOK\u0027 in value.keys() and not self.view.params.newEntry",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "property"
+                }
+              },
+              "props.params.enabled": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.edit"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\treturn bool(value)",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "property"
+                }
+              },
+              "props.params.value": {
+                "binding": {
+                  "config": {
+                    "expression": "toBoolean({view.params.data.testResults.HitsOK.Measured})"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "allowTriState": true,
+                "checkBoxLeft": true,
+                "checkIcon": "bootstrap-icons/check-square-fill",
+                "key": "Slagproef OK",
+                "textPosition": "start",
+                "uncheckColor": "#FF0000",
+                "uncheckIcon": "bootstrap-icons/x-square-fill"
+              },
+              "path": "Library/SharedTemplates/Input/Checkbox",
+              "useDefaultViewHeight": true
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "FlexRepeater"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "position.display": {
+                "binding": {
+                  "config": {
+                    "expression": "!{view.params.newEntry}"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.instances": {
+                "binding": {
+                  "config": {
+                    "struct": {
+                      "key": "{view.params.edit}",
+                      "testResults": "{view.params.data.testResults}"
+                    },
+                    "waitOnAll": true
+                  },
+                  "transforms": [
+                    {
+                      "code": "\ttestResults \u003d value[\u0027testResults\u0027]\n\tinstances \u003d []\n\t\n\tfor testResult in sorted(testResults.keys()):\n\t\tif testResult in [\u0027PrintOK\u0027, \u0027VisualOK\u0027, \u0027HitsOK\u0027]:\n\t\t\tcontinue\n\t\tinstance \u003d {\n  \t\t\t\"enabled\": bool(self.view.params.edit),\n  \t\t\t\"engUnits\": \"\",\n  \t\t\t\"format\": \"0,0.####\",\n  \t\t\t\"key\": \"value\",\n  \t\t\t\"maxValue\": 100000000,\n  \t\t\t\"minValue\": 0,\n  \t\t\t\"placeholder\": \"\",\n  \t\t\t\"unitVisable\": True,\n  \t\t\t\"value\": \"\",\n  \t\t\t\"rejected\": False,\n  \t\t\t\"highLimit\": 0,\n  \t\t\t\"lowLimit\": 0\n\t\t}\n\t\ttestResultData \u003d testResults[testResult]\n\t\tmeasured \u003d testResultData[\u0027Measured\u0027]\n\t\tresultGood \u003d int(testResultData[\u0027ResultGood\u0027]) if testResultData[\u0027ResultGood\u0027] is not None else testResultData[\u0027ResultGood\u0027]\n\t\tlowLimit \u003d testResultData[\u0027LowLimit\u0027]\n\t\thighLimit \u003d testResultData[\u0027HighLimit\u0027]\n\t\tengUnit \u003d testResultData.get(\u0027EngUnit\u0027, \"\")\n\t\t\n\t\tinstance[\u0027value\u0027] \u003d measured\n\t\tinstance[\u0027lowLimit\u0027] \u003d lowLimit\n\t\tinstance[\u0027highLimit\u0027] \u003d highLimit\n\t\tinstance[\u0027testName\u0027] \u003d testResult\n\t\tinstance[\u0027engUnits\u0027] \u003d engUnit\n\t\ttestName \u003d dyka.quality.testNameMapping[testResult]\n\t\t\n\t\tif resultGood is None or resultGood \u003d\u003d True:\n\t\t\tinstance[\u0027key\u0027] \u003d testName\n\t\telse:\n\t\t\tinstance[\u0027key\u0027] \u003d testName + \u0027 (min. \u0027 + str(lowLimit) + \u0027 max. \u0027 + str(highLimit) + \u0027)\u0027\n\t\t\tinstance[\u0027rejected\u0027] \u003d True\n\t\tinstances.append(instance)\n\treturn instances",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "expr-struct"
+                }
+              }
+            },
+            "props": {
+              "direction": "column",
+              "elementPosition": {
+                "basis": "auto",
+                "grow": 0,
+                "shrink": 0
+              },
+              "path": "Library/SharedTemplates/Input/Number",
+              "style": {
+                "marginTop": 10,
+                "overflow": "visible"
+              },
+              "useDefaultViewWidth": false
+            },
+            "type": "ia.display.flex-repeater"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer"
+        },
+        "position": {
+          "grow": 1
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "overflow": "scroll",
+            "padding": 10
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "id": "{/root/Header.props.params.closeDockID}",
+                    "type": "close"
+                  },
+                  "scope": "C",
+                  "type": "dock"
+                }
+              }
+            },
+            "meta": {
+              "name": "Button_5"
+            },
+            "position": {
+              "basis": "80px",
+              "shrink": 0
+            },
+            "props": {
+              "image": {
+                "icon": {
+                  "path": "material/cancel"
+                }
+              },
+              "style": {
+                "classes": "ATA/Components/Buttons/Sec",
+                "marginLeft": 15
+              },
+              "text": ""
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "script": "\tnewEntry \u003d bool(self.view.params.newEntry)\n\t\n\tLineID \u003d self.parent.parent.getChild(\"FlexContainer\").getChild(\"Line\").props.params.value\n\tArticleID \u003d self.parent.parent.getChild(\"FlexContainer\").getChild(\"Article\").props.params.value\n\tArticleDescription  \u003d self.parent.parent.getChild(\"FlexContainer\").getChild(\"ArticleDescription\").props.params.value\n\tTimeOnTube \u003d self.parent.parent.getChild(\"FlexContainer\").getChild(\"TimeOnTube\").props.params.value\n\tusername \u003d self.session.props.auth.user.userName\n\t# TO DO: deterimine assigned operator on line from BMS\n\tassignedOperator \u003d \u0027Operator A\u0027\n\tproductionDate \u003d self.parent.parent.getChild(\"FlexContainer\").getChild(\"ProductionDate\").props.params.value\n\t\n\tgetEmptyResultsJSONQuery \u003d \u0027select Checks from QAArticleSpecs where ArticleID \u003d ?\u0027\n\temptyResults \u003d system.util.jsonDecode(system.db.runScalarPrepQuery(getEmptyResultsJSONQuery, args\u003d[ArticleID], database \u003d \u0027NLSTWDYK_DB_PROD\u0027))\n\temptyResultsJSON \u003d system.util.jsonEncode(emptyResults)\n\t\n\tif emptyResultsJSON is None:\n\t\temptyResultsJSON \u003d system.util.jsonEncode({\n\t\t\t\"Diameter\": {\n\t\t\t\t\"Measured\": 0,\n\t\t\t\t\"ResultGood\": None,\n\t\t\t\t\"LowLimit\": 0,\n\t\t\t\t\"Standard\": None,\n\t\t\t\t\"HighLimit\": 9999999,\n\t\t\t\t\"EngUnit\":\"mm\"\n\t\t\t},\n\t\t\t\"MinWallThickness\": {\n\t\t\t\t\"Measured\": 0,\n\t\t\t\t\"ResultGood\": None,\n\t\t\t\t\"LowLimit\": 0,\n\t\t\t\t\"Standard\": None,\n\t\t\t\t\"HighLimit\": 9999999,\n\t\t\t\t\"EngUnit\":\"mm\"\n\t\t\t},\n\t\t\t\"MaxWallThickness\": {\n\t\t\t\t\"Measured\": 0,\n\t\t\t\t\"ResultGood\": None,\n\t\t\t\t\"LowLimit\": 0,\n\t\t\t\t\"Standard\": None,\n\t\t\t\t\"HighLimit\": 9999999,\n\t\t\t\t\"EngUnit\":\"mm\"\n\t\t\t},\n\t\t\t\"Shrink\": {\n\t\t\t\t\"Measured\": 0,\n\t\t\t\t\"ResultGood\": None,\n\t\t\t\t\"LowLimit\": 0,\n\t\t\t\t\"Standard\": None,\n\t\t\t\t\"HighLimit\": 9999999,\n\t\t\t\t\"EngUnit\":\"%\"\n\t\t\t},\n\t\t\t\"HitsOK\": {\n\t\t\t\t\"Measured\": 0,\n\t\t\t\t\"ResultGood\": None,\n\t\t\t\t\"LowLimit\": 1,\n\t\t\t\t\"Standard\": 1,\n\t\t\t\t\"HighLimit\": 1,\n\t\t\t\t\"EngUnit\":None\n\t\t\t},\n\t\t\t\"Height\": {\n\t\t\t\t\"Measured\": 0,\n\t\t\t\t\"ResultGood\": None,\n\t\t\t\t\"LowLimit\": 0,\n\t\t\t\t\"Standard\": None,\n\t\t\t\t\"HighLimit\": 9999999,\n\t\t\t\t\"EngUnit\":\"mm\"\n\t\t\t},\n\t\t\t\"PrintOK\": {\n\t\t\t\t\"Measured\": 0,\n\t\t\t\t\"ResultGood\": None,\n\t\t\t\t\"LowLimit\": 1,\n\t\t\t\t\"Standard\": 1,\n\t\t\t\t\"HighLimit\": 1,\n\t\t\t\t\"EngUnit\":None\n\t\t\t}\n\t\t})\n\t# Create\n\tif newEntry \u003d\u003d True:\n\t\tinsertQuery \u003d \u0027\u0027\u0027INSERT INTO [dbo].[QACheckData]\n\t\t\t\t\t\t\t([Datetime]\n\t\t\t\t\t\t\t,[LineID]\n\t\t\t\t\t\t\t,[ArticleID]\n\t\t\t\t\t\t\t,[ArticleDescription]\n\t\t\t\t\t\t\t,[TimeOnTube]\n\t\t\t\t\t\t\t,[Results]\n\t\t\t\t\t\t\t,[Approved]\n\t\t\t\t\t\t\t,[Inspector]\n\t\t\t\t\t\t\t,[Operator]\n\t\t\t\t\t\t\t,[ProductionDate])\n\t\t\t\t\t\tVALUES\n\t\t\t\t\t\t\t(getdate(),\n\t\t\t\t\t\t\t?,\n\t\t\t\t\t\t\t?,\n\t\t\t\t\t\t\t?,\n\t\t\t\t\t\t\t?,\n\t\t\t\t\t\t\t?,\n\t\t\t\t\t\t\t?,\n\t\t\t\t\t\t\t?,\n\t\t\t\t\t\t\t?,\n\t\t\t\t\t\t\t?)\n\t\t\t\t\t\t\u0027\u0027\u0027\n\t\targs \u003d [LineID, ArticleID, ArticleDescription, TimeOnTube, emptyResultsJSON, None, username, assignedOperator, productionDate]\n\t\tsystem.db.runPrepUpdate(insertQuery, args, database \u003d \u0027NLSTWDYK_DB_PROD\u0027)\n\t\n\t# Edit\n\tif newEntry \u003d\u003d False:\n\t\tqualityID \u003d self.view.params.qualityID\n\t\tflexRepeaterInstances \u003d self.parent.parent.getChild(\"FlexContainer\").getChild(\"FlexRepeater\").props.instances\n\t\tupdateQuery \u003d \u0027\u0027\u0027DECLARE @updates NVARCHAR(MAX) \u003d ?\n\t\t\t\t\t\t\n\t\t\t\t\t\tDECLARE @newJson NVARCHAR(MAX);\n\t\t\t\t\t\t\n\t\t\t\t\t\tSELECT @newJson \u003d results\n\t\t\t\t\t\tFROM QACheckData\n\t\t\t\t\t\tWHERE QualityRecordID \u003d ?;\n\t\t\t\t\t\t\u0027\u0027\u0027\n\t\t\n\t\tupdatesJSON \u003d {}\n\t\t#Add PrintOK, Visual, HitsOK bools if theyre selected\n\t\tboolsList \u003d [\u0027PrintOK\u0027, \u0027VisualOK\u0027, \u0027HitsOK\u0027]\n\t\t\n\t\tapproved \u003d True\n\t\trejectReason \u003d \u0027\u0027\n\t\t# Loop over bool embedded views to create dynamic query\n\t\tfor boolCheck in boolsList:\n\t\t\tif boolCheck not in emptyResultsJSON:\n\t\t\t\tcontinue\n\t\t\ttry:\n\t\t\t\tboolValue \u003d int(self.parent.parent.getChild(\"FlexContainer\").getChild(boolCheck).props.params.value)\n\t\t\texcept:\n\t\t\t\tboolValue \u003d None\n\t\t\t\tapproved \u003d None\n\t\t\t# Determine approved\n\t\t\tif boolValue \u003d\u003d False:\n\t\t\t\tapproved \u003d False\n\t\t\t\trejectReason +\u003d system.util.translate(boolCheck, self.session.props.locale) + \u0027 niet OK.\u0027\n\t\t\tif boolValue is not None:\n\t\t\t\tupdatesJSON[boolCheck] \u003d {\"Measured\": boolValue, \u0027ResultGood\u0027: boolValue, \u0027EngUnit\u0027: None}\n\t\t\t\tupdateQuery +\u003d \"SET @newJson \u003d JSON_MODIFY(@newJson, \u0027$.\" + boolCheck + \".Measured\u0027,  cast(JSON_VALUE(@updates, \u0027$.\" + boolCheck +\".Measured\u0027) as int));\"\n\t\t\t\tupdateQuery +\u003d \"SET @newJson \u003d JSON_MODIFY(@newJson, \u0027$.\" + boolCheck + \".ResultGood\u0027,  cast(JSON_VALUE(@updates, \u0027$.\" + boolCheck +\".ResultGood\u0027) as int));\"\n\t\t\t\tupdateQuery +\u003d \"SET @newJson \u003d JSON_MODIFY(@newJson, \u0027$.\" + boolCheck + \".EngUnit\u0027, cast(JSON_VALUE(@updates, \u0027$.\" + boolCheck +\".ResultGood\u0027) as nvarchar(10)));\"\n\t\t\n\t\t# Loop over flex repeater instances to create dynamic query\n\t\tfor instance in flexRepeaterInstances:\n#\t\t\tinstanceName \u003d instance.key.split(\u0027 (min\u0027)[0]\n\t\t\tinstanceName \u003d instance.testName\n\t\t\ttry:\n\t\t\t\tvalue \u003d float(instance.value)\n\t\t\texcept:\n\t\t\t\tvalue \u003d None\n\t\t\tminValue \u003d float(instance.lowLimit)\n\t\t\tmaxValue \u003d float(instance.highLimit)\n\t\t\t\n\t\t\tif value is not None:\n\t\t\t\tresultGood \u003d 1 if (value \u003e\u003d minValue and value \u003c\u003d maxValue) else 0\n\t\t\t\tengUnit \u003d emptyResults[instanceName][\"EngUnit\"]\n\t\t\t\t# Determine approved\n\t\t\t\tupdatesJSON[instanceName] \u003d {\"Measured\": value, \u0027ResultGood\u0027: resultGood, \"EngUnit\": engUnit}\n\t\t\t\tupdateQuery +\u003d \"SET @newJson \u003d JSON_MODIFY(@newJson, \u0027$.\" + instanceName + \".Measured\u0027,  cast(JSON_VALUE(@updates, \u0027$.\" + instanceName +\".Measured\u0027) as float));\"\n\t\t\t\tupdateQuery +\u003d \"SET @newJson \u003d JSON_MODIFY(@newJson, \u0027$.\" + instanceName + \".ResultGood\u0027,  cast(JSON_VALUE(@updates, \u0027$.\" + instanceName +\".ResultGood\u0027) as int));\"\n\t\t\t\tupdateQuery +\u003d \"SET @newJson \u003d JSON_MODIFY(@newJson, \u0027$.\" + instanceName + \".EngUnit\u0027,  cast(JSON_VALUE(@updates, \u0027$.\" + instanceName +\".EngUnit\u0027) as nvarchar(10)));\"\n\t\t\t\t\n\t\t\t\tif resultGood \u003d\u003d 0:\n\t\t\t\t\tapproved \u003d False\n\t\t\t\t\trejectReason +\u003d system.util.translate(instanceName, self.session.props.locale) + \u0027 niet OK. \u0027\n\t\t\telif value is None and approved !\u003d False:\n\t\t\t\tapproved \u003d None\n\t\t\t\n\t\tupdateQuery +\u003d \u0027\u0027\u0027UPDATE QACheckData\n\t\t\t\t\t\tSET Results \u003d @newJson,\n\t\t\t\t\t\t\tApproved \u003d ?\n\t\t\t\t\t\tWHERE QualityRecordID \u003d ?;\u0027\u0027\u0027\n\t\tupdateArgs \u003d [system.util.jsonEncode(updatesJSON), qualityID, approved, qualityID]\n\t\tsystem.db.runPrepUpdate(updateQuery, updateArgs, database \u003d \u0027NLSTWDYK_DB_PROD\u0027)\n\t\n\t\tsystem.perspective.print(rejectReason)\n\t\t\n\t\tif len(rejectReason) \u003e 0 and approved \u003d\u003d False:\n\t\t\tarticleNumber \u003d system.db.runScalarPrepQuery(\u0027select articleNumber from articles where articleID \u003d ?\u0027, [ArticleID], database \u003d \u0027NLSTWDYK_DB_PROD\u0027)\n\t\t\tdyka.activityFeed.addEntry(\u0027QualityRemark\u0027, {\u0027LineID\u0027: LineID,\u0027Comment\u0027: rejectReason,\u0027Article\u0027: articleNumber,\u0027Datetime\u0027: system.date.now(),\u0027CreatedBy\u0027: username})\n\tsystem.perspective.sendMessage(\u0027refreshQuality\u0027)\n\tsystem.perspective.closeDock(self.parent.parent.getChild(\"Header\").props.params.closeDockID)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "Button_1"
+            },
+            "position": {
+              "basis": "80px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "position.display": {
+                "binding": {
+                  "config": {
+                    "expression": "toBoolean({view.params.edit}) || toBoolean({view.params.newEntry})"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.enabled": {
+                "binding": {
+                  "config": {
+                    "expression": "(!isnull({.../FlexContainer/Line.props.params.value}) \u0026\u0026 {.../FlexContainer/Line.props.params.value} !\u003d \u0027\u0027)\r\n\t\u0026\u0026\r\n (!isnull({.../FlexContainer/Article.props.params.value}) \u0026\u0026 {.../FlexContainer/Article.props.params.value} !\u003d \u0027\u0027)\r\n \t\u0026\u0026\r\n (!isnull({.../FlexContainer/TimeOnTube.props.params.value}) \u0026\u0026 {.../FlexContainer/TimeOnTube.props.params.value} !\u003d \u0027\u0027)"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "image": {
+                "icon": {
+                  "path": "material/save_alt"
+                }
+              },
+              "style": {
+                "classes": "ATA/Components/Buttons/CTA",
+                "marginLeft": 15
+              },
+              "text": ""
+            },
+            "type": "ia.input.button"
+          }
+        ],
+        "meta": {
+          "name": "Footer"
+        },
+        "position": {
+          "basis": "45px",
+          "shrink": 0
+        },
+        "props": {
+          "justify": "flex-end",
+          "style": {
+            "backgroundColor": "--backgroundSecondary",
+            "borderTopLeftRadius": 5,
+            "borderTopRightRadius": 5,
+            "padding": 7,
+            "zIndex": 1
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "backgroundColor": "#FFFFFF",
+        "opacity": 1
+      }
+    },
+    "scripts": {
+      "customMethods": [
+        {
+          "name": "resetInput",
+          "params": [],
+          "script": "\tself.getChild(\"FlexContainer\").getChild(\"Line\").props.params.value \u003d None\n\tself.getChild(\"FlexContainer\").getChild(\"Article\").props.params.value \u003d None\n\tself.getChild(\"FlexContainer\").getChild(\"TimeOnTube\").props.params.value \u003d \u0027\u0027"
+        }
+      ],
+      "extensionFunctions": null,
+      "messageHandlers": []
+    },
+    "type": "ia.container.flex"
+  }
+}

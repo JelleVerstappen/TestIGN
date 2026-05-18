@@ -1,0 +1,22 @@
+{
+  "base": {
+    "style": {
+      "backgroundColor": "#FFFFFF",
+      "borderColor": "var(--sec)",
+      "borderStyle": "solid",
+      "borderWidth": "0.2px",
+      "color": "var(--text)",
+      "fontFamily": "Roboto",
+      "fontWeight": "lighter"
+    }
+  },
+  "variants": [
+    {
+      "pseudo": "hover",
+      "style": {
+        "borderStyle": "none",
+        "fontWeight": "normal"
+      }
+    }
+  ]
+}

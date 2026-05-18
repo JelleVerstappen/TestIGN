@@ -1,0 +1,185 @@
+{
+  "custom": {},
+  "params": {
+    "cardViewPath": "",
+    "config": [],
+    "data": [],
+    "filterEnabled": false,
+    "header": true,
+    "pager": true,
+    "rowsPerPage": 25,
+    "tableMinHeight": 0
+  },
+  "propConfig": {
+    "params.aqwerda": {
+      "paramDirection": "input"
+    },
+    "params.cardViewPath": {
+      "paramDirection": "input"
+    },
+    "params.config": {
+      "paramDirection": "input"
+    },
+    "params.data": {
+      "paramDirection": "input"
+    },
+    "params.filter": {
+      "paramDirection": "input"
+    },
+    "params.filterEnabled": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.head": {
+      "paramDirection": "input"
+    },
+    "params.header": {
+      "paramDirection": "input"
+    },
+    "params.pager": {
+      "paramDirection": "input"
+    },
+    "params.row": {
+      "paramDirection": "input"
+    },
+    "params.rows": {
+      "paramDirection": "input"
+    },
+    "params.rowsPer": {
+      "paramDirection": "input"
+    },
+    "params.rowsPerPag": {
+      "paramDirection": "input"
+    },
+    "params.rowsPerPage": {
+      "paramDirection": "input"
+    },
+    "params.tableMinHeight": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 857,
+      "width": 928
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Table"
+        },
+        "position": {
+          "size": "large"
+        },
+        "propConfig": {
+          "props.params.config": {
+            "binding": {
+              "config": {
+                "path": "view.params.config"
+              },
+              "type": "property"
+            }
+          },
+          "props.params.data": {
+            "binding": {
+              "config": {
+                "path": "view.params.data"
+              },
+              "type": "property"
+            }
+          },
+          "props.params.filterEnabled": {
+            "binding": {
+              "config": {
+                "path": "view.params.filterEnabled"
+              },
+              "type": "property"
+            }
+          },
+          "props.params.header": {
+            "binding": {
+              "config": {
+                "path": "view.params.header"
+              },
+              "type": "property"
+            }
+          },
+          "props.params.pager": {
+            "binding": {
+              "config": {
+                "path": "view.params.pager"
+              },
+              "type": "property"
+            }
+          },
+          "props.params.rowsPerPage": {
+            "binding": {
+              "config": {
+                "path": "view.params.rowsPerPage"
+              },
+              "type": "property"
+            }
+          },
+          "props.style.minHeight": {
+            "binding": {
+              "config": {
+                "path": "view.params.tableMinHeight"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "path": "Library/Library/AlarmAnalysis/Table Card Layout/Table"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Cards"
+        },
+        "propConfig": {
+          "props.params.data": {
+            "binding": {
+              "config": {
+                "path": "view.params.data"
+              },
+              "type": "property"
+            }
+          },
+          "props.params.viewPath": {
+            "binding": {
+              "config": {
+                "path": "view.params.cardViewPath"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "path": "Library/Library/AlarmAnalysis/Table Card Layout/Cards",
+          "style": {
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.display.view"
+      }
+    ],
+    "custom": {
+      "filterEnabled": false
+    },
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "breakpoint": 650,
+      "style": {
+        "overflow": "visible"
+      }
+    },
+    "type": "ia.container.breakpt"
+  }
+}

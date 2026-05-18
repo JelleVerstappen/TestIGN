@@ -1,0 +1,427 @@
+{
+  "custom": {},
+  "params": {
+    "filter": "",
+    "line": "",
+    "popupMarginRight": 1
+  },
+  "propConfig": {
+    "params.filter": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.line": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.popupMarginRight": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 65,
+      "width": 1320
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "events": {
+          "component": {
+            "onActionPerformed": {
+              "config": {
+                "script": "\tid \u003d \u0027ProcessList\u0027\n\tview \u003d \u0027ControlRoom/Articles/ProcessList/ProcessList\u0027\n\tparams \u003d {\"filter\":self.view.params.filter}\n\tposition \u003d {\"bottom\":0,\"left\":1,\"right\":self.view.params.popupMarginRight}\n\tsystem.perspective.togglePopup(id,view,params,position\u003dposition,showCloseIcon\u003dFalse,draggable\u003dFalse)\n\t\n\t"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "ProcessList"
+        },
+        "position": {
+          "basis": "80px",
+          "shrink": 0
+        },
+        "props": {
+          "image": {
+            "icon": {
+              "path": "material/featured_play_list"
+            }
+          },
+          "style": {
+            "backgroundColor": "--sec",
+            "borderStyle": "none",
+            "classes": "ATA/Components/Buttons/Thr",
+            "marginBottom": 5,
+            "marginLeft": 5,
+            "marginTop": 5
+          },
+          "text": ""
+        },
+        "type": "ia.input.button"
+      },
+      {
+        "meta": {
+          "name": "NavigationAssets"
+        },
+        "position": {
+          "basis": "320px",
+          "grow": 1
+        },
+        "propConfig": {
+          "props.params.line": {
+            "binding": {
+              "config": {
+                "path": "view.params.line"
+              },
+              "type": "property"
+            },
+            "persistent": true
+          }
+        },
+        "props": {
+          "params": {
+            "line": ""
+          },
+          "path": "Library/SharedDocked/Alarms/Template/NavigationAssets",
+          "style": {
+            "overflow": "hidden"
+          }
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "LastAlarm"
+            },
+            "position": {
+              "basis": "30px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "custom.IsAlarm": {
+                "binding": {
+                  "config": {
+                    "expression": "len({parent.custom.ActiveAlarms}) \u003e 0"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "expression": "len({parent.custom.ActiveAlarms})"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\tif value:\n\t\talarms \u003d self.parent.custom.ActiveAlarms\n\t\tpath \u003d alarms.getValueAt(0,\"Source\")\n\t\tdata \u003d path.split(\u0027:\u0027)\n\n\t\treturn \"Last alarm : \" + data[3]\n\telse:\n\t\treturn \"No alarms\"\t\n",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "color": "--textThr",
+                "textAlign": "left"
+              },
+              "textStyle": {
+                "fontSize": 13
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "Icon"
+                    },
+                    "position": {
+                      "basis": "30px",
+                      "shrink": 0
+                    },
+                    "propConfig": {
+                      "props.path": {
+                        "binding": {
+                          "config": {
+                            "fallbackDelay": 2.5,
+                            "mode": "indirect",
+                            "references": {
+                              "line": "{view.params.line}"
+                            },
+                            "tagPath": "[NLSTWDYK]Dyka/STW/EXT/{line}/Alarms/Count/Alarm"
+                          },
+                          "transforms": [
+                            {
+                              "code": "\tif value \u003e 9:\n\t\trVal \u003d \"dyka/Alarm9orMore\"\n\tif value \u003e 0:\n\t\trVal \u003d \"dyka/Alarm\" + str(value)\n\telse:\n\t\trVal \u003d \"\"\n\treturn rVal",
+                              "type": "script"
+                            }
+                          ],
+                          "type": "tag"
+                        },
+                        "persistent": true
+                      }
+                    },
+                    "props": {
+                      "color": "--textThr",
+                      "path": "dyka/Alarm2",
+                      "style": {
+                        "marginBottom": 2,
+                        "marginTop": 2
+                      }
+                    },
+                    "type": "ia.display.icon"
+                  }
+                ],
+                "meta": {
+                  "name": "Alarm"
+                },
+                "position": {
+                  "basis": "50px",
+                  "grow": 1,
+                  "shrink": 0
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "Icon"
+                    },
+                    "position": {
+                      "basis": "30px",
+                      "shrink": 0
+                    },
+                    "propConfig": {
+                      "props.path": {
+                        "binding": {
+                          "config": {
+                            "fallbackDelay": 2.5,
+                            "mode": "indirect",
+                            "references": {
+                              "line": "{view.params.line}"
+                            },
+                            "tagPath": "[NLSTWDYK]Dyka/STW/EXT/{line}/Alarms/Count/Warning"
+                          },
+                          "transforms": [
+                            {
+                              "code": "\tif value \u003e 9:\n\t\trVal \u003d \"dyka/Warning9orMore\"\n\tif value \u003e 0:\n\t\trVal \u003d \"dyka/Warning\" + str(value)\n\telse:\n\t\trVal \u003d \"\"\n\treturn rVal",
+                              "type": "script"
+                            }
+                          ],
+                          "type": "tag"
+                        },
+                        "persistent": true
+                      }
+                    },
+                    "props": {
+                      "color": "--textThr",
+                      "path": "dyka/Warning4",
+                      "style": {
+                        "marginBottom": 2,
+                        "marginTop": 2
+                      }
+                    },
+                    "type": "ia.display.icon"
+                  }
+                ],
+                "meta": {
+                  "name": "Warning"
+                },
+                "position": {
+                  "basis": "50px",
+                  "grow": 1,
+                  "shrink": 0
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "Icon"
+                    },
+                    "position": {
+                      "basis": "30px",
+                      "shrink": 0
+                    },
+                    "propConfig": {
+                      "props.path": {
+                        "binding": {
+                          "config": {
+                            "fallbackDelay": 2.5,
+                            "mode": "indirect",
+                            "references": {
+                              "line": "{view.params.line}"
+                            },
+                            "tagPath": "[NLSTWDYK]Dyka/STW/EXT/{line}/Alarms/Count/Notification"
+                          },
+                          "transforms": [
+                            {
+                              "code": "\tif value \u003e 9:\n\t\trVal \u003d \"dyka/Notification9orMore\"\n\tif value \u003e 0:\n\t\trVal \u003d \"dyka/Notification\" + str(value)\n\telse:\n\t\trVal \u003d \"\"\n\treturn rVal",
+                              "type": "script"
+                            }
+                          ],
+                          "type": "tag"
+                        },
+                        "persistent": true
+                      }
+                    },
+                    "props": {
+                      "color": "--textThr",
+                      "path": "dyka/Notification1",
+                      "style": {
+                        "marginBottom": 2,
+                        "marginTop": 2
+                      }
+                    },
+                    "type": "ia.display.icon"
+                  }
+                ],
+                "meta": {
+                  "name": "Notification"
+                },
+                "position": {
+                  "basis": "50px",
+                  "grow": 1,
+                  "shrink": 0
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "Icon"
+                    },
+                    "position": {
+                      "basis": "30px",
+                      "shrink": 0
+                    },
+                    "propConfig": {
+                      "props.path": {
+                        "binding": {
+                          "config": {
+                            "fallbackDelay": 2.5,
+                            "mode": "indirect",
+                            "references": {
+                              "line": "{view.params.line}"
+                            },
+                            "tagPath": "[NLSTWDYK]Dyka/STW/EXT/{line}/Alarms/Count/Shelved"
+                          },
+                          "transforms": [
+                            {
+                              "code": "\tif value \u003e 9:\n\t\trVal \u003d \"dyka/Notification9orMoreSchelved\"\n\tif value \u003e 0:\n\t\trVal \u003d \"dyka/Notification\" + str(value) + \"Schelved\"\n\telse:\n\t\trVal \u003d \"\"\n\treturn rVal",
+                              "type": "script"
+                            }
+                          ],
+                          "type": "tag"
+                        },
+                        "persistent": true
+                      }
+                    },
+                    "props": {
+                      "color": "--textThr",
+                      "style": {
+                        "marginBottom": 2,
+                        "marginTop": 2
+                      }
+                    },
+                    "type": "ia.display.icon"
+                  }
+                ],
+                "meta": {
+                  "name": "Shelved"
+                },
+                "position": {
+                  "basis": "50px",
+                  "grow": 1,
+                  "shrink": 0
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "Icons"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "props": {
+              "justify": "space-between"
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "events": {
+          "dom": {
+            "onClick": {
+              "config": {
+                "script": "\tsystem.perspective.sendMessage(\"ToggleAlarmDisplay\",{})\n\tid \u003d \u0027alarm\u0027\n\tview \u003d \u0027Library/SharedDocked/Alarms/Alarms\u0027\n\tparams \u003d {\"filter\":self.view.params.filter}\n\tposition \u003d {\"bottom\":0,\"left\":1,\"right\":self.view.params.popupMarginRight}\n\tsystem.perspective.togglePopup(id,view,params,position\u003dposition,showCloseIcon\u003dFalse,draggable\u003dFalse)\n\t\n\t"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "AlarmStatus"
+        },
+        "position": {
+          "basis": "250px",
+          "shrink": 0
+        },
+        "propConfig": {
+          "custom.ActiveAlarms": {
+            "binding": {
+              "config": {
+                "struct": {
+                  "Time": "now(1000)"
+                },
+                "waitOnAll": true
+              },
+              "transforms": [
+                {
+                  "code": "\tfilter \u003d self.view.params.filter + \"*\"\n\treturn system.alarm.queryStatus(source \u003d [filter], state \u003d [\"ActiveUnacked\"]).getDataset()",
+                  "type": "script"
+                }
+              ],
+              "type": "expr-struct"
+            }
+          }
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "marginLeft": "auto",
+            "overflow": "hidden"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "style": {
+        "backgroundColor": "--prim",
+        "cursor": "pointer",
+        "overflow": "hidden"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

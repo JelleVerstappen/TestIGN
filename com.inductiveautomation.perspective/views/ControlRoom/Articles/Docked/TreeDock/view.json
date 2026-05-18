@@ -1,0 +1,255 @@
+{
+  "custom": {},
+  "params": {
+    "function": "add",
+    "levelName": "value",
+    "selectedNodeID": "value",
+    "upperLevelName": "value"
+  },
+  "propConfig": {
+    "params.function": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.levelName": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.selectedNodeID": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.upperLevelName": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "width": 600
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Header"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.params.title": {
+            "binding": {
+              "config": {
+                "expression": "if({view.params.function} \u003d \u0027add\u0027, \u0027Niveau Toevoegen\u0027, \u0027Niveau Wijzigen\u0027)"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "closeDockID": "EditTreeDock",
+            "closeIcon": true
+          },
+          "path": "Library/SharedTemplates/HeaderForDock",
+          "style": {
+            "textTransform": "capitalize"
+          },
+          "useDefaultViewHeight": true
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Bovenliggend niveau"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "position.display": {
+                "binding": {
+                  "config": {
+                    "expression": "{view.params.function} \u003d \u0027add\u0027"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.params.value": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.upperLevelName"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "engUnits": "",
+                "key": "Bovenliggend niveau",
+                "margingRight": 45
+              },
+              "path": "Library/SharedTemplates/KeyValuePairs/KeyValuePair",
+              "useDefaultViewHeight": true
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "NiveauBeschrijving"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.params.key": {
+                "binding": {
+                  "config": {
+                    "expression": "if({view.params.function} \u003d \u0027add\u0027, \u0027Nieuw niveau beschrijving\u0027, \u0027Niveau beschrijving\u0027)"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.params.value": {
+                "binding": {
+                  "config": {
+                    "expression": "if(isnull({view.params.levelName}), \u0027\u0027, {view.params.levelName})"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "enabled": true,
+                "margingRight": 45,
+                "placeholder": "Typ hier..."
+              },
+              "path": "Library/SharedTemplates/Input/String",
+              "useDefaultViewHeight": true
+            },
+            "type": "ia.display.view"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer"
+        },
+        "position": {
+          "basis": "200px",
+          "grow": 1
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "padding": "10px"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "id": "{/root/Header.props.params.closeDockID}",
+                    "type": "close"
+                  },
+                  "scope": "C",
+                  "type": "dock"
+                }
+              }
+            },
+            "meta": {
+              "name": "Button_5"
+            },
+            "position": {
+              "basis": "80px",
+              "shrink": 0
+            },
+            "props": {
+              "image": {
+                "icon": {
+                  "path": "material/cancel"
+                }
+              },
+              "style": {
+                "classes": "ATA/Components/Buttons/Sec",
+                "marginLeft": 15
+              },
+              "text": ""
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "script": "\tselectedLevel \u003d self.view.params.selectedNodeID\n\tinputLevelName \u003d self.parent.parent.getChild(\"FlexContainer\").getChild(\"NiveauBeschrijving\").props.params.value\n\tusername \u003d self.session.props.auth.user.userName\n\tfunction \u003d self.view.params.function\n\t\n\tif function \u003d\u003d \u0027add\u0027:\n\t\tinsertQuery \u003d \u0027\u0027\u0027\n\t\t\t\t\tinsert into\n\t\t\t\t\t\tRecipeElements\n\t\t\t\t\t(\n\t\t\t\t      [Description]\n\t\t\t\t      ,[ModifiedBy]\n\t\t\t\t      ,[Created]\n\t\t\t\t      ,[ParentID])\n\t\t\t      values\n\t\t\t      \t(?,\n\t\t\t      \t?,\n\t\t\t      \tgetdate(),\n\t\t\t      \t?)\n\t\t\t\t\t\u0027\u0027\u0027\n\t\tinsertArgs \u003d [inputLevelName, username, selectedLevel]\n\t\tsystem.db.runPrepUpdate(insertQuery, insertArgs, database \u003d \u0027NLSTWDYK_DB_PROD\u0027)\n\t\n\tif function \u003d\u003d \u0027edit\u0027:\n\t\tupdateQuery \u003d \u0027\u0027\u0027\n\t\t\t\t\tupdate \n\t\t\t\t\t\tRecipeElements\n\t\t\t\t\tset \n\t\t\t\t\t\tdescription \u003d ?,\n\t\t\t\t\t\tmodified \u003d getdate(),\n\t\t\t\t\t\tmodifiedBy \u003d ?\n\t\t\t\t\twhere \n\t\t\t\t\t\tRecipeElementID \u003d ?\n\t\t\t\t\t\u0027\u0027\u0027\n\t\tupdateArgs \u003d [inputLevelName, username, selectedLevel]\n\t\tsystem.db.runPrepUpdate(updateQuery, updateArgs, database \u003d \u0027NLSTWDYK_DB_PROD\u0027)\n\t\n\tsystem.perspective.sendMessage(\u0027refreshArticleManagement\u0027)\n\tsystem.perspective.closeDock(self.parent.parent.getChild(\"Header\").props.params.closeDockID)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "Button_1"
+            },
+            "position": {
+              "basis": "80px",
+              "shrink": 0
+            },
+            "props": {
+              "image": {
+                "icon": {
+                  "path": "material/save_alt"
+                }
+              },
+              "style": {
+                "classes": "ATA/Components/Buttons/CTA",
+                "marginLeft": 15
+              },
+              "text": ""
+            },
+            "type": "ia.input.button"
+          }
+        ],
+        "meta": {
+          "name": "Footer"
+        },
+        "position": {
+          "basis": "45px",
+          "shrink": 0
+        },
+        "props": {
+          "justify": "flex-end",
+          "style": {
+            "backgroundColor": "--backgroundSecondary",
+            "borderTopLeftRadius": 5,
+            "borderTopRightRadius": 5,
+            "padding": 7,
+            "zIndex": 1
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "classes": "ATA/Background/RootDock"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

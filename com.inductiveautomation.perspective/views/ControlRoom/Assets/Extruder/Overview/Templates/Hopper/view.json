@@ -1,0 +1,513 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "height": 349,
+      "width": 410
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "hopper"
+        },
+        "position": {
+          "height": "100%",
+          "width": "100%"
+        },
+        "props": {
+          "elements": [
+            {
+              "elements": [
+                {
+                  "gradientTransform": "translate(-1020.3883,364.52633)",
+                  "gradientUnits": "userSpaceOnUse",
+                  "href": "#linearGradient3190-7-6",
+                  "id": "linearGradient4194-5",
+                  "name": "linearGradient4194-5",
+                  "type": "linearGradient",
+                  "x1": "264.60434",
+                  "x2": "606.73865",
+                  "y1": "1253.1357",
+                  "y2": "1253.1357"
+                },
+                {
+                  "elements": [
+                    {
+                      "id": "stop3192-1-0",
+                      "name": "stop3192-1-0",
+                      "offset": "0",
+                      "stopColor": "#000000",
+                      "stopOpacity": "0.69999999",
+                      "style": {
+                        "stopColor": "#000000",
+                        "stopOpacity": "0.69999999"
+                      },
+                      "type": "stop"
+                    },
+                    {
+                      "id": "stop3968-7-8",
+                      "name": "stop3968-7-8",
+                      "offset": "0.5",
+                      "stopColor": "#000000",
+                      "stopOpacity": "0",
+                      "style": {
+                        "stopColor": "#000000",
+                        "stopOpacity": "0"
+                      },
+                      "type": "stop"
+                    },
+                    {
+                      "id": "stop3194-7-2",
+                      "name": "stop3194-7-2",
+                      "offset": "1",
+                      "stopColor": "#000000",
+                      "stopOpacity": "0.69999999",
+                      "style": {
+                        "stopColor": "#000000",
+                        "stopOpacity": "0.69999999"
+                      },
+                      "type": "stop"
+                    }
+                  ],
+                  "id": "linearGradient3190-7-6",
+                  "name": "linearGradient3190-7-6",
+                  "type": "linearGradient"
+                },
+                {
+                  "gradientTransform": "translate(-204.85123,322.36279)",
+                  "gradientUnits": "userSpaceOnUse",
+                  "href": "#linearGradient3112-53",
+                  "id": "linearGradient4287-0",
+                  "name": "linearGradient4287-0",
+                  "type": "linearGradient",
+                  "x1": "-538.33643",
+                  "x2": "-393.82895",
+                  "y1": "1435.1569",
+                  "y2": "1363.6969"
+                },
+                {
+                  "elements": [
+                    {
+                      "id": "stop3114-0",
+                      "name": "stop3114-0",
+                      "offset": "0",
+                      "stopColor": "#000000",
+                      "stopOpacity": "0.69999999",
+                      "style": {
+                        "stopColor": "#000000",
+                        "stopOpacity": "0.69999999"
+                      },
+                      "type": "stop"
+                    },
+                    {
+                      "id": "stop3116-38",
+                      "name": "stop3116-38",
+                      "offset": "1",
+                      "stopColor": "#000000",
+                      "stopOpacity": "0",
+                      "style": {
+                        "stopColor": "#000000",
+                        "stopOpacity": "0"
+                      },
+                      "type": "stop"
+                    }
+                  ],
+                  "id": "linearGradient3112-53",
+                  "name": "linearGradient3112-53",
+                  "type": "linearGradient"
+                },
+                {
+                  "gradientTransform": "matrix(-1,0,0,1,-964.51021,322.36335)",
+                  "gradientUnits": "userSpaceOnUse",
+                  "href": "#linearGradient3112-56-9",
+                  "id": "linearGradient4289-5",
+                  "name": "linearGradient4289-5",
+                  "type": "linearGradient",
+                  "x1": "-538.33643",
+                  "x2": "-393.82895",
+                  "y1": "1435.1569",
+                  "y2": "1363.6969"
+                },
+                {
+                  "elements": [
+                    {
+                      "id": "stop3114-5-7",
+                      "name": "stop3114-5-7",
+                      "offset": "0",
+                      "stopColor": "#000000",
+                      "stopOpacity": "0.69999999",
+                      "style": {
+                        "stopColor": "#000000",
+                        "stopOpacity": "0.69999999"
+                      },
+                      "type": "stop"
+                    },
+                    {
+                      "id": "stop3116-3-1",
+                      "name": "stop3116-3-1",
+                      "offset": "1",
+                      "stopColor": "#000000",
+                      "stopOpacity": "0",
+                      "style": {
+                        "stopColor": "#000000",
+                        "stopOpacity": "0"
+                      },
+                      "type": "stop"
+                    }
+                  ],
+                  "id": "linearGradient3112-56-9",
+                  "name": "linearGradient3112-56-9",
+                  "type": "linearGradient"
+                },
+                {
+                  "gradientTransform": "matrix(0.98953547,0,0,1.0004769,-4.8725623,10.396321)",
+                  "gradientUnits": "userSpaceOnUse",
+                  "href": "#linearGradient3190-7-6",
+                  "id": "linearGradient4639",
+                  "name": "linearGradient4639",
+                  "type": "linearGradient",
+                  "x1": "-757.4762",
+                  "x2": "-414.47623",
+                  "y1": "1457.3885",
+                  "y2": "1457.3885"
+                },
+                {
+                  "elements": [
+                    {
+                      "id": "stop4777",
+                      "name": "stop4777",
+                      "offset": "0",
+                      "stopColor": "#000000",
+                      "stopOpacity": "0.69999999",
+                      "style": {
+                        "stopColor": "#000000",
+                        "stopOpacity": "0.69999999"
+                      },
+                      "type": "stop"
+                    },
+                    {
+                      "id": "stop4779",
+                      "name": "stop4779",
+                      "offset": "0.5",
+                      "stopColor": "#000000",
+                      "stopOpacity": "0",
+                      "style": {
+                        "stopColor": "#000000",
+                        "stopOpacity": "0"
+                      },
+                      "type": "stop"
+                    },
+                    {
+                      "id": "stop4781",
+                      "name": "stop4781",
+                      "offset": "1",
+                      "stopColor": "#000000",
+                      "stopOpacity": "0.69999999",
+                      "style": {
+                        "stopColor": "#000000",
+                        "stopOpacity": "0.69999999"
+                      },
+                      "type": "stop"
+                    }
+                  ],
+                  "id": "linearGradient4775",
+                  "name": "linearGradient4775",
+                  "type": "linearGradient"
+                },
+                {
+                  "gradientTransform": "translate(-1020.3883,364.52633)",
+                  "gradientUnits": "userSpaceOnUse",
+                  "href": "#linearGradient3190-7-6",
+                  "id": "linearGradient3025",
+                  "name": "linearGradient3025",
+                  "type": "linearGradient",
+                  "x1": "264.60434",
+                  "x2": "606.73865",
+                  "y1": "1253.1357",
+                  "y2": "1253.1357"
+                },
+                {
+                  "gradientTransform": "translate(-204.85123,322.36279)",
+                  "gradientUnits": "userSpaceOnUse",
+                  "href": "#linearGradient3112-53",
+                  "id": "linearGradient3027",
+                  "name": "linearGradient3027",
+                  "type": "linearGradient",
+                  "x1": "-538.33643",
+                  "x2": "-393.82895",
+                  "y1": "1435.1569",
+                  "y2": "1363.6969"
+                },
+                {
+                  "gradientTransform": "matrix(-1,0,0,1,-964.51021,322.36335)",
+                  "gradientUnits": "userSpaceOnUse",
+                  "href": "#linearGradient3112-56-9",
+                  "id": "linearGradient3029",
+                  "name": "linearGradient3029",
+                  "type": "linearGradient",
+                  "x1": "-538.33643",
+                  "x2": "-393.82895",
+                  "y1": "1435.1569",
+                  "y2": "1363.6969"
+                },
+                {
+                  "gradientTransform": "matrix(0.98953547,0,0,1.0004769,-4.8725623,10.396321)",
+                  "gradientUnits": "userSpaceOnUse",
+                  "href": "#linearGradient3190-7-6",
+                  "id": "linearGradient3031",
+                  "name": "linearGradient3031",
+                  "type": "linearGradient",
+                  "x1": "-757.4762",
+                  "x2": "-414.47623",
+                  "y1": "1457.3885",
+                  "y2": "1457.3885"
+                },
+                {
+                  "gradientTransform": "translate(-1020.3883,364.52633)",
+                  "gradientUnits": "userSpaceOnUse",
+                  "href": "#linearGradient3190-7-6",
+                  "id": "linearGradient3047",
+                  "name": "linearGradient3047",
+                  "type": "linearGradient",
+                  "x1": "264.60434",
+                  "x2": "606.73865",
+                  "y1": "1253.1357",
+                  "y2": "1253.1357"
+                },
+                {
+                  "gradientTransform": "translate(-204.85123,322.36279)",
+                  "gradientUnits": "userSpaceOnUse",
+                  "href": "#linearGradient3112-53",
+                  "id": "linearGradient3049",
+                  "name": "linearGradient3049",
+                  "type": "linearGradient",
+                  "x1": "-538.33643",
+                  "x2": "-393.82895",
+                  "y1": "1435.1569",
+                  "y2": "1363.6969"
+                },
+                {
+                  "gradientTransform": "matrix(-1,0,0,1,-964.51021,322.36335)",
+                  "gradientUnits": "userSpaceOnUse",
+                  "href": "#linearGradient3112-56-9",
+                  "id": "linearGradient3051",
+                  "name": "linearGradient3051",
+                  "type": "linearGradient",
+                  "x1": "-538.33643",
+                  "x2": "-393.82895",
+                  "y1": "1435.1569",
+                  "y2": "1363.6969"
+                },
+                {
+                  "gradientTransform": "matrix(0.98953547,0,0,1.0004769,-4.8725623,10.396321)",
+                  "gradientUnits": "userSpaceOnUse",
+                  "href": "#linearGradient3190-7-6",
+                  "id": "linearGradient3053",
+                  "name": "linearGradient3053",
+                  "type": "linearGradient",
+                  "x1": "-757.4762",
+                  "x2": "-414.47623",
+                  "y1": "1457.3885",
+                  "y2": "1457.3885"
+                }
+              ],
+              "id": "defs4731",
+              "name": "defs4731",
+              "type": "defs"
+            },
+            {
+              "elements": [
+                {
+                  "elements": [
+                    {
+                      "elements": [
+                        {
+                          "fill": {
+                            "opacity": "1",
+                            "paint": "#f2f2f2"
+                          },
+                          "height": "275.50372",
+                          "id": "rect4037-0-5-2-3-2",
+                          "name": "rect4037-0-5-2-3-2",
+                          "stroke": {
+                            "dasharray": "none",
+                            "dashoffset": "0",
+                            "miterlimit": "4",
+                            "opacity": "1",
+                            "paint": "#000000",
+                            "width": "0.72887111"
+                          },
+                          "type": "rect",
+                          "width": "341.40546",
+                          "x": "-1183.5481",
+                          "y": "1607.7693"
+                        },
+                        {
+                          "elements": [
+                            {
+                              "d": "m -1183.1738,1883.7538 148.9988,192.0002 21.501,0 0,-192.0002 z",
+                              "fill": {
+                                "opacity": "1",
+                                "paint": "#f2f2f2"
+                              },
+                              "id": "path42-5-8-85-5-1",
+                              "name": "path42-5-8-85-5-1",
+                              "stroke": {
+                                "paint": "transparent"
+                              },
+                              "type": "path"
+                            },
+                            {
+                              "d": "m -842.15906,1883.7543 -148.99879,192.0002 -21.50095,0 0,-192.0002 z",
+                              "fill": {
+                                "opacity": "1",
+                                "paint": "#f2f2f2"
+                              },
+                              "id": "path42-5-8-85-1-1-11",
+                              "name": "path42-5-8-85-1-1-11",
+                              "stroke": {
+                                "paint": "transparent"
+                              },
+                              "type": "path"
+                            }
+                          ],
+                          "fill": {
+                            "paint": "#f2f2f2"
+                          },
+                          "id": "g4462-1",
+                          "name": "g4462-1",
+                          "type": "group"
+                        },
+                        {
+                          "d": "m -844.1296,1606.8437 -21.76978,-21.01 -294.88162,0 -20.7802,21.01 z",
+                          "fill": {
+                            "opacity": "1",
+                            "paint": "#f2f2f2"
+                          },
+                          "id": "path42-5-3-9-8-9",
+                          "name": "path42-5-3-9-8-9",
+                          "stroke": {
+                            "paint": "#000000",
+                            "width": "1.98998237"
+                          },
+                          "type": "path"
+                        }
+                      ],
+                      "fill": {
+                        "paint": "#f2f2f2"
+                      },
+                      "id": "g4466-8",
+                      "name": "g4466-8",
+                      "transform": "matrix(0.27947546,0,0,0.27947546,637.35114,-22.018027)",
+                      "type": "group"
+                    },
+                    {
+                      "elements": [
+                        {
+                          "fill": {
+                            "opacity": "1",
+                            "url": "url(#linearGradient3047)"
+                          },
+                          "height": "275.50372",
+                          "id": "rect4037-0-5-2-6",
+                          "name": "rect4037-0-5-2-6",
+                          "stroke": {
+                            "dasharray": "none",
+                            "dashoffset": "0",
+                            "miterlimit": "4",
+                            "opacity": "1",
+                            "paint": "#000000",
+                            "width": "0.72887111"
+                          },
+                          "type": "rect",
+                          "width": "341.40546",
+                          "x": "-755.41956",
+                          "y": "1479.9103"
+                        },
+                        {
+                          "elements": [
+                            {
+                              "d": "m -755.18809,1755.8948 148.99879,192.0002 21.501,0 0,-192.0002 z",
+                              "fill": {
+                                "opacity": "1",
+                                "url": "url(#linearGradient3049)"
+                              },
+                              "id": "path42-5-8-85-6",
+                              "name": "path42-5-8-85-6",
+                              "stroke": {
+                                "paint": "transparent"
+                              },
+                              "type": "path"
+                            },
+                            {
+                              "d": "m -414.17337,1755.8953 -148.99879,192.0002 -21.501,0 0,-192.0002 z",
+                              "fill": {
+                                "opacity": "1",
+                                "url": "url(#linearGradient3051)"
+                              },
+                              "id": "path42-5-8-85-1-2",
+                              "name": "path42-5-8-85-1-2",
+                              "stroke": {
+                                "paint": "transparent"
+                              },
+                              "type": "path"
+                            }
+                          ],
+                          "id": "g4283-1",
+                          "name": "g4283-1",
+                          "transform": "translate(0.14290421,0)",
+                          "type": "group"
+                        },
+                        {
+                          "d": "m -416.00101,1478.9847 -21.76978,-21.01 -294.88157,0 -20.78024,21.01 z",
+                          "fill": {
+                            "opacity": "1",
+                            "url": "url(#linearGradient3053)"
+                          },
+                          "id": "path42-5-3-9-9",
+                          "name": "path42-5-3-9-9",
+                          "stroke": {
+                            "paint": "#000000",
+                            "width": "1.98998237"
+                          },
+                          "type": "path"
+                        }
+                      ],
+                      "id": "g4342-9",
+                      "name": "g4342-9",
+                      "transform": "matrix(0.27947546,0,0,0.27947546,517.69971,13.715582)",
+                      "type": "group"
+                    }
+                  ],
+                  "id": "g3033",
+                  "name": "g3033",
+                  "type": "group"
+                }
+              ],
+              "id": "layer1",
+              "name": "layer1",
+              "transform": "translate(-306.46866,-420.90259)",
+              "type": "group"
+            }
+          ],
+          "viewBox": "0 0 95 135"
+        },
+        "type": "ia.shapes.svg"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "aspectRatio": "95:135",
+      "mode": "percent",
+      "style": {
+        "overflow": "hidden"
+      }
+    },
+    "type": "ia.container.coord"
+  }
+}

@@ -1,0 +1,163 @@
+{
+  "custom": {
+    "backgroundColor": "--color1",
+    "iconColor": "#000",
+    "oldBody": {
+      "height": "auto",
+      "style": {
+        "classes": "",
+        "margin": 0
+      },
+      "useDefaultViewHeight": false,
+      "useDefaultViewWidth": false,
+      "viewParams": {
+        "list": []
+      },
+      "viewPath": "Library/SharedDocked/Templates/NavItems"
+    },
+    "textColor": "--text"
+  },
+  "params": {
+    "data": {
+      "enabled": true,
+      "items": [],
+      "label": {
+        "icon": {
+          "path": ""
+        },
+        "text": "Home"
+      },
+      "navIcon": {
+        "color": "",
+        "path": ""
+      },
+      "resetOnClick": false,
+      "showHeader": true,
+      "style": {
+        "classes": ""
+      },
+      "target": "/",
+      "visible": true
+    }
+  },
+  "propConfig": {
+    "custom.backgroundColor": {
+      "persistent": true
+    },
+    "custom.iconColor": {
+      "persistent": true
+    },
+    "custom.oldBody": {
+      "persistent": true
+    },
+    "custom.textColor": {
+      "persistent": true
+    },
+    "params.data": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 28
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Label"
+        },
+        "position": {
+          "basis": "32px",
+          "grow": 1
+        },
+        "propConfig": {
+          "props.style.color": {
+            "binding": {
+              "config": {
+                "path": "view.custom.textColor"
+              },
+              "type": "property"
+            }
+          },
+          "props.style.fontWeight": {
+            "binding": {
+              "config": {
+                "expression": "if({page.props.path} \u003d {view.params.data.target},\"500\",\"\")"
+              },
+              "type": "expr"
+            }
+          },
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "view.params.data.label.text"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "classes": "ATA/Components/Labels/TextSmall",
+            "paddingLeft": "5px"
+          }
+        },
+        "type": "ia.display.label"
+      }
+    ],
+    "events": {
+      "dom": {
+        "onClick": {
+          "config": {
+            "page": "{view.params.data.target}"
+          },
+          "scope": "C",
+          "type": "nav"
+        },
+        "onMouseEnter": {
+          "config": {
+            "script": "\tself.view.custom.backgroundColor \u003d \"#E1F4FC65\"\n\tself.view.custom.textColor \u003d \"--prim\"\n\tself.view.custom.iconColor \u003d \u0027--prim\u0027"
+          },
+          "scope": "G",
+          "type": "script"
+        },
+        "onMouseLeave": {
+          "config": {
+            "script": "\tself.view.custom.backgroundColor \u003d \"--color1\"\n\tself.view.custom.textColor \u003d \"--text\"\n\tself.view.custom.iconColor \u003d \u0027#000\u0027"
+          },
+          "scope": "G",
+          "type": "script"
+        }
+      }
+    },
+    "meta": {
+      "name": "root"
+    },
+    "propConfig": {
+      "props.style.backgroundColor": {
+        "binding": {
+          "config": {
+            "path": "view.custom.backgroundColor"
+          },
+          "type": "property"
+        }
+      }
+    },
+    "props": {
+      "style": {
+        "borderBottomColor": "--color2",
+        "borderBottomStyle": "solid",
+        "borderBottomWidth": 1,
+        "classes": "ATA/Background/RootDock",
+        "cursor": "pointer",
+        "marginLeft": "2px",
+        "marginRight": "2px",
+        "paddingLeft": "5px"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

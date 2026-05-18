@@ -1,0 +1,303 @@
+{
+  "custom": {},
+  "params": {
+    "line": "E07"
+  },
+  "propConfig": {
+    "params.line": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 98,
+      "width": 1883
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Silo"
+        },
+        "position": {
+          "basis": "0px",
+          "grow": 1
+        },
+        "props": {
+          "params": {
+            "params": {
+              "NavigateTo": "Silo",
+              "Path": "dyka/Silo",
+              "insideColor": "--sec",
+              "outsideColor": "--sec",
+              "smallIcon": "dyka/Alarm2"
+            }
+          },
+          "path": "Library/SharedDocked/Alarms/Template/AssetIcon"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "RawMaterialTransport"
+        },
+        "position": {
+          "basis": "0px",
+          "grow": 1
+        },
+        "props": {
+          "params": {
+            "params": {
+              "NavigateTo": "RawMaterialTransport",
+              "Path": "dyka/RawMaterialTranssport",
+              "insideColor": "--sec",
+              "outsideColor": "--sec",
+              "smallIcon": "value"
+            }
+          },
+          "path": "Library/SharedDocked/Alarms/Template/AssetIcon",
+          "style": {
+            "marginLeft": "-2.7%"
+          }
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Extruder"
+        },
+        "position": {
+          "basis": "0px",
+          "grow": 1
+        },
+        "props": {
+          "params": {
+            "params": {
+              "NavigateTo": "Extruder",
+              "Path": "dyka/Extruder",
+              "insideColor": "--prim",
+              "outsideColor": "white",
+              "smallIcon": "value"
+            }
+          },
+          "path": "Library/SharedDocked/Alarms/Template/AssetIcon",
+          "style": {
+            "marginLeft": "-2.7%"
+          }
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "VacuumAndCooling"
+        },
+        "position": {
+          "basis": "0px",
+          "grow": 1
+        },
+        "props": {
+          "params": {
+            "params": {
+              "NavigateTo": "VacuumAndCooling",
+              "Path": "dyka/VacuumAndCooling",
+              "insideColor": "--sec",
+              "outsideColor": "--sec",
+              "smallIcon": "dyka/Warning3"
+            }
+          },
+          "path": "Library/SharedDocked/Alarms/Template/AssetIcon",
+          "style": {
+            "marginLeft": "-2.7%"
+          }
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "PipeThicknessScanner"
+        },
+        "position": {
+          "basis": "0px",
+          "grow": 1
+        },
+        "props": {
+          "params": {
+            "params": {
+              "NavigateTo": "PipeThicknessScanner",
+              "Path": "dyka/TubeThicknessScanner",
+              "insideColor": "--disabled",
+              "outsideColor": "--disabled",
+              "smallIcon": null
+            }
+          },
+          "path": "Library/SharedDocked/Alarms/Template/AssetIcon",
+          "style": {
+            "marginLeft": "-2.7%"
+          }
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Printer"
+        },
+        "position": {
+          "basis": "0px",
+          "grow": 1
+        },
+        "props": {
+          "params": {
+            "params": {
+              "NavigateTo": "Printer",
+              "Path": "dyka/Printer",
+              "insideColor": "--sec",
+              "outsideColor": "--sec",
+              "smallIcon": "value"
+            }
+          },
+          "path": "Library/SharedDocked/Alarms/Template/AssetIcon",
+          "style": {
+            "marginLeft": "-2.7%"
+          }
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "PullBench"
+        },
+        "position": {
+          "basis": "0px",
+          "grow": 1
+        },
+        "props": {
+          "params": {
+            "params": {
+              "NavigateTo": "PullBench",
+              "Path": "dyka/PullBench",
+              "insideColor": "--sec",
+              "outsideColor": "--sec",
+              "smallIcon": "value"
+            }
+          },
+          "path": "Library/SharedDocked/Alarms/Template/AssetIcon",
+          "style": {
+            "marginLeft": "-2.7%"
+          }
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "CuttingUnit"
+        },
+        "position": {
+          "basis": "0px",
+          "grow": 1
+        },
+        "props": {
+          "params": {
+            "params": {
+              "NavigateTo": "CuttingUnit",
+              "Path": "dyka/Saw",
+              "insideColor": "--sec",
+              "outsideColor": "--sec",
+              "smallIcon": "value"
+            }
+          },
+          "path": "Library/SharedDocked/Alarms/Template/AssetIcon",
+          "style": {
+            "marginLeft": "-2.7%"
+          }
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "FormingMachine"
+        },
+        "position": {
+          "basis": "0px",
+          "grow": 1
+        },
+        "props": {
+          "params": {
+            "params": {
+              "NavigateTo": "FormingMachine",
+              "Path": "dyka/FormingMachine",
+              "insideColor": "--disabled",
+              "outsideColor": "--disabled",
+              "smallIcon": "value"
+            }
+          },
+          "path": "Library/SharedDocked/Alarms/Template/AssetIcon",
+          "style": {
+            "marginLeft": "-2.7%"
+          }
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "PipeStacker"
+        },
+        "position": {
+          "basis": "0px",
+          "grow": 1
+        },
+        "props": {
+          "params": {
+            "params": {
+              "NavigateTo": "PipeStacker",
+              "Path": "dyka/Tubes",
+              "insideColor": "--disabled",
+              "outsideColor": "--disabled",
+              "smallIcon": "value"
+            }
+          },
+          "path": "Library/SharedDocked/Alarms/Template/AssetIcon",
+          "style": {
+            "marginLeft": "-2.7%"
+          }
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Quality"
+        },
+        "position": {
+          "basis": "0px",
+          "grow": 1
+        },
+        "props": {
+          "params": {
+            "params": {
+              "NavigateTo": "Quality",
+              "Path": "dyka/Quality",
+              "insideColor": "--sec",
+              "outsideColor": "--sec",
+              "smallIcon": "dyka/Alarm9orMore"
+            }
+          },
+          "path": "Library/SharedDocked/Alarms/Template/AssetIcon",
+          "style": {
+            "marginLeft": "-2.7%"
+          }
+        },
+        "type": "ia.display.view"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "style": {
+        "overflow": "hidden"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

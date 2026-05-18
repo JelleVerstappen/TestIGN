@@ -1,0 +1,199 @@
+{
+  "custom": {},
+  "params": {
+    "actualTemp": 180,
+    "setpointTemp": 80,
+    "zoneNr": "value"
+  },
+  "propConfig": {
+    "params.actualTemp": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.setpointTemp": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.zoneNr": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 105,
+      "width": 95
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Label"
+        },
+        "position": {
+          "basis": "25px",
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "expression": "\u0027Zone \u0027 + {view.params.zoneNr}"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "classes": "ATA/Components/Labels/TextNormal"
+          },
+          "textStyle": {
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_3"
+        },
+        "position": {
+          "basis": "15px",
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "ATA/Components/Labels/TextSmall",
+            "marginTop": 2
+          },
+          "text": "Temp setpoint",
+          "textStyle": {
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_1"
+        },
+        "position": {
+          "basis": "15px",
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "expression": "{view.params.setpointTemp} + \u0027 °C\u0027"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "classes": "ATA/Components/Labels/TextSmall"
+          },
+          "textStyle": {
+            "fontWeight": "bold",
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_0"
+        },
+        "position": {
+          "basis": "15px",
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "ATA/Components/Labels/TextSmall",
+            "marginTop": 5
+          },
+          "text": "Act. temp",
+          "textStyle": {
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_2"
+        },
+        "position": {
+          "basis": "15px",
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "expression": "{view.params.actualTemp} + \u0027 °C\u0027"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "classes": "ATA/Components/Labels/TextSmall"
+          },
+          "textStyle": {
+            "fontWeight": "bold",
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_4"
+        },
+        "position": {
+          "basis": "7px",
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.style.backgroundColor": {
+            "binding": {
+              "config": {
+                "expression": "if({view.params.actualTemp} \u003e\u003d {view.params.setpointTemp} + 10,\r\n\t\u0027var(--alarm)\u0027,\r\n\tif({view.params.actualTemp} \u003e\u003d {view.params.setpointTemp} + 5,\r\n\t\u0027var(--warning)\u0027,\r\n\t\u0027transparent\u0027))"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "classes": "ATA/Components/Labels/TextNormal",
+            "marginTop": "auto"
+          },
+          "textStyle": {
+            "fontWeight": "bold",
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "classes": "ATA/Background/CardSecondary",
+        "margin": 0
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

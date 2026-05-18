@@ -1,0 +1,45 @@
+{
+  "scope": "DG",
+  "version": 2,
+  "restricted": false,
+  "overridable": true,
+  "files": [
+    "query.sql"
+  ],
+  "attributes": {
+    "useMaxReturnSize": false,
+    "autoBatchEnabled": false,
+    "fallbackValue": "",
+    "maxReturnSize": 100,
+    "cacheUnit": "SEC",
+    "type": "Query",
+    "enabled": true,
+    "cacheAmount": 1,
+    "cacheEnabled": false,
+    "database": "NLSTWDYK_DB_PROD",
+    "fallbackEnabled": false,
+    "lastModificationSignature": "3a93b6da08cdecf1305ab7c6b0c1cc2dfdb6cb91680241130ad2f6e268a5492b",
+    "permissions": [
+      {
+        "zone": "",
+        "role": ""
+      }
+    ],
+    "lastModification": {
+      "actor": "AT",
+      "timestamp": "2026-01-09T12:39:19Z"
+    },
+    "parameters": [
+      {
+        "type": "Parameter",
+        "identifier": "assetID",
+        "sqlType": 3
+      },
+      {
+        "type": "Parameter",
+        "identifier": "lineID",
+        "sqlType": 3
+      }
+    ]
+  }
+}

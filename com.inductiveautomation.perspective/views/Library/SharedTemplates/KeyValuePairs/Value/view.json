@@ -1,0 +1,95 @@
+{
+  "custom": {},
+  "params": {
+    "gray": false,
+    "margingRight": 45,
+    "value": "Tyler"
+  },
+  "propConfig": {
+    "params.gray": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.margingRight": {
+      "paramDirection": "inout",
+      "persistent": true
+    },
+    "params.value": {
+      "paramDirection": "inout",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 30,
+      "width": 454
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Label_0"
+        },
+        "position": {
+          "basis": "32px",
+          "grow": 1
+        },
+        "propConfig": {
+          "props.style.marginRight": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "path": "view.params.margingRight"
+              },
+              "type": "property"
+            }
+          },
+          "props.text": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "path": "view.params.value"
+              },
+              "type": "property"
+            }
+          },
+          "props.textStyle.color": {
+            "binding": {
+              "config": {
+                "path": "view.params.gray"
+              },
+              "transforms": [
+                {
+                  "code": "\treturn \u0027--textComplementary\u0027 if value else \u0027\u0027",
+                  "type": "script"
+                }
+              ],
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "classes": "ATA/Components/Labels/TextNormal",
+            "marginBottom": 5,
+            "marginLeft": 5
+          }
+        },
+        "type": "ia.display.label"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "backgroundColor": "#FFFFFF00",
+        "overflow": "hidden",
+        "paddingLeft": 5
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

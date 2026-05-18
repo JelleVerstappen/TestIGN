@@ -1,0 +1,500 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "height": 443,
+      "width": 618
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label_0"
+            },
+            "position": {
+              "basis": "32px",
+              "grow": 1
+            },
+            "props": {
+              "text": "Temp 1",
+              "textStyle": {
+                "fontSize": 11
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Label_1"
+            },
+            "position": {
+              "basis": "32px",
+              "grow": 1
+            },
+            "props": {
+              "text": 10,
+              "textStyle": {
+                "fontSize": 11
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer"
+        },
+        "position": {
+          "basis": "50px"
+        },
+        "props": {
+          "style": {
+            "classes": "ATA/Background/Card",
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label_0"
+            },
+            "position": {
+              "basis": "32px",
+              "grow": 1
+            },
+            "props": {
+              "text": "Temp 2",
+              "textStyle": {
+                "fontSize": 11
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Label_1"
+            },
+            "position": {
+              "basis": "32px",
+              "grow": 1
+            },
+            "props": {
+              "text": 11,
+              "textStyle": {
+                "fontSize": 11
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer_0"
+        },
+        "position": {
+          "basis": "50px"
+        },
+        "props": {
+          "style": {
+            "classes": "ATA/Background/Card",
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label_0"
+            },
+            "position": {
+              "basis": "32px",
+              "grow": 1
+            },
+            "props": {
+              "text": "Temp 3",
+              "textStyle": {
+                "fontSize": 11
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Label_1"
+            },
+            "position": {
+              "basis": "32px",
+              "grow": 1
+            },
+            "props": {
+              "text": 7,
+              "textStyle": {
+                "fontSize": 11
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer_1"
+        },
+        "position": {
+          "basis": "50px"
+        },
+        "props": {
+          "style": {
+            "classes": "ATA/Background/Card",
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label_0"
+            },
+            "position": {
+              "basis": "32px",
+              "grow": 1
+            },
+            "props": {
+              "text": "Temp 4",
+              "textStyle": {
+                "fontSize": 11
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Label_1"
+            },
+            "position": {
+              "basis": "32px",
+              "grow": 1
+            },
+            "props": {
+              "text": 7,
+              "textStyle": {
+                "fontSize": 11
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer_2"
+        },
+        "position": {
+          "basis": "50px"
+        },
+        "props": {
+          "style": {
+            "classes": "ATA/Background/Card",
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Label_0"
+                },
+                "position": {
+                  "basis": "80%",
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "Running",
+                  "textStyle": {
+                    "fontSize": 11
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "FlexContainer"
+                },
+                "position": {
+                  "basis": "200px"
+                },
+                "props": {
+                  "style": {
+                    "backgroundColor": "--running"
+                  }
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "FlexContainer"
+            },
+            "position": {
+              "basis": "100px"
+            },
+            "props": {
+              "style": {
+                "overflow": "visible"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer_6"
+        },
+        "position": {
+          "basis": "50px"
+        },
+        "props": {
+          "style": {
+            "classes": "ATA/Background/Card",
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label_0"
+            },
+            "position": {
+              "basis": "32px",
+              "grow": 1
+            },
+            "props": {
+              "text": "Snelheid 1",
+              "textStyle": {
+                "fontSize": 11
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Label_1"
+            },
+            "position": {
+              "basis": "32px",
+              "grow": 1
+            },
+            "props": {
+              "text": 345,
+              "textStyle": {
+                "fontSize": 11
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer_3"
+        },
+        "position": {
+          "basis": "50px"
+        },
+        "props": {
+          "style": {
+            "classes": "ATA/Background/Card",
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label_0"
+            },
+            "position": {
+              "basis": "32px",
+              "grow": 1
+            },
+            "props": {
+              "text": "Snelheid 2",
+              "textStyle": {
+                "fontSize": 11
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Label_1"
+            },
+            "position": {
+              "basis": "32px",
+              "grow": 1
+            },
+            "props": {
+              "text": 123,
+              "textStyle": {
+                "fontSize": 11
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer_4"
+        },
+        "position": {
+          "basis": "50px"
+        },
+        "props": {
+          "style": {
+            "classes": "ATA/Background/Card",
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label_0"
+            },
+            "position": {
+              "basis": "32px",
+              "grow": 1
+            },
+            "props": {
+              "text": "Snelheid 3",
+              "textStyle": {
+                "fontSize": 11
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Label_1"
+            },
+            "position": {
+              "basis": "32px",
+              "grow": 1
+            },
+            "props": {
+              "text": 645,
+              "textStyle": {
+                "fontSize": 11
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer_5"
+        },
+        "position": {
+          "basis": "50px"
+        },
+        "props": {
+          "style": {
+            "classes": "ATA/Background/Card",
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "script": "\tsystem.perspective.sendMessage(\u0027ClosePopup\u0027, payload\u003d{\u0027ID\u0027:\u0027\u0027})"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "Button"
+            },
+            "position": {
+              "basis": "34px",
+              "grow": 1,
+              "shrink": 0
+            },
+            "props": {
+              "style": {
+                "classes": "ATA/Components/Buttons/Prim",
+                "margin": 5
+              },
+              "text": "Close"
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "script": "\tsystem.perspective.openPopup(\u0027NewWindowPopup\u0027, \u0027ControlRoom/Home/Popups/NewWindowPopup\u0027)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "Button_0"
+            },
+            "position": {
+              "basis": "34px",
+              "grow": 1,
+              "shrink": 0
+            },
+            "props": {
+              "style": {
+                "classes": "ATA/Components/Buttons/CTA",
+                "margin": 5
+              },
+              "text": "Open"
+            },
+            "type": "ia.input.button"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer_7"
+        },
+        "position": {
+          "basis": "125px"
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "classes": "ATA/Background/Root",
+        "overflow": "visible"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

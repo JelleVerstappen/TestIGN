@@ -1,0 +1,1274 @@
+{
+  "custom": {},
+  "params": {
+    "data": [
+      {
+        "WorkCenter": "ASSEMBLY",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "ASSEMBLY",
+        "value": false
+      },
+      {
+        "WorkCenter": "ASSPKG",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "ASSPKG",
+        "value": false
+      },
+      {
+        "WorkCenter": "B00006-0",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "B00006-0",
+        "value": false
+      },
+      {
+        "WorkCenter": "B00007-0",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "B00007-0",
+        "value": false
+      },
+      {
+        "WorkCenter": "B00009-0",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "B00009-0",
+        "value": false
+      },
+      {
+        "WorkCenter": "B00025-0",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "B00025-0",
+        "value": false
+      },
+      {
+        "WorkCenter": "B00026-0",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "B00026-0",
+        "value": false
+      },
+      {
+        "WorkCenter": "B00165-0",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "B00165-0",
+        "value": false
+      },
+      {
+        "WorkCenter": "B00282-0",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "B00282-0",
+        "value": false
+      },
+      {
+        "WorkCenter": "B00443-0",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "B00443-0",
+        "value": false
+      },
+      {
+        "WorkCenter": "B00492-0",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "B00492-0",
+        "value": false
+      },
+      {
+        "WorkCenter": "B00602-0",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "B00602-0",
+        "value": false
+      },
+      {
+        "WorkCenter": "B00608-0",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "B00608-0",
+        "value": false
+      },
+      {
+        "WorkCenter": "B00692-0",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "B00692-0",
+        "value": false
+      },
+      {
+        "WorkCenter": "B00707-0",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "B00707-0",
+        "value": false
+      },
+      {
+        "WorkCenter": "B00708-0",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "B00708-0",
+        "value": false
+      },
+      {
+        "WorkCenter": "B00709-0",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "B00709-0",
+        "value": false
+      },
+      {
+        "WorkCenter": "B00782-0",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "B00782-0",
+        "value": false
+      },
+      {
+        "WorkCenter": "B00932-0",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "B00932-0",
+        "value": false
+      },
+      {
+        "WorkCenter": "B00943-0",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "B00943-0",
+        "value": false
+      },
+      {
+        "WorkCenter": "B00944-0",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "B00944-0",
+        "value": false
+      },
+      {
+        "WorkCenter": "B00952-0",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "B00952-0",
+        "value": false
+      },
+      {
+        "WorkCenter": "B00953-1",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "B00953-1",
+        "value": false
+      },
+      {
+        "WorkCenter": "B00956-1",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "B00956-1",
+        "value": false
+      },
+      {
+        "WorkCenter": "B00956-2",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "B00956-2",
+        "value": false
+      },
+      {
+        "WorkCenter": "B00961-0",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "B00961-0",
+        "value": false
+      },
+      {
+        "WorkCenter": "B05001-0",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "B05001-0",
+        "value": false
+      },
+      {
+        "WorkCenter": "B05001-1",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "B05001-1",
+        "value": false
+      },
+      {
+        "WorkCenter": "B05001-3",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "B05001-3",
+        "value": false
+      },
+      {
+        "WorkCenter": "B05001-4",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "B05001-4",
+        "value": false
+      },
+      {
+        "WorkCenter": "B05004-0",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "B05004-0",
+        "value": false
+      },
+      {
+        "WorkCenter": "B05006-0",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "B05006-0",
+        "value": false
+      },
+      {
+        "WorkCenter": "B05007-0",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "B05007-0",
+        "value": false
+      },
+      {
+        "WorkCenter": "DEMO1",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "DEMO1",
+        "value": false
+      },
+      {
+        "WorkCenter": "DEMO1_2",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "DEMO1_2",
+        "value": false
+      },
+      {
+        "WorkCenter": "DEMO2",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "DEMO2",
+        "value": false
+      },
+      {
+        "WorkCenter": "DEMO2_2",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "DEMO2_2",
+        "value": false
+      },
+      {
+        "WorkCenter": "DEMO25",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "DEMO25",
+        "value": false
+      },
+      {
+        "WorkCenter": "DRILING",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "DRILING",
+        "value": false
+      },
+      {
+        "WorkCenter": "FINICLN",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "FINICLN",
+        "value": false
+      },
+      {
+        "WorkCenter": "H00279-0",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "H00279-0",
+        "value": false
+      },
+      {
+        "WorkCenter": "H00279-1",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "H00279-1",
+        "value": false
+      },
+      {
+        "WorkCenter": "M0007",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "M0007",
+        "value": false
+      },
+      {
+        "WorkCenter": "M0025",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "M0025",
+        "value": false
+      },
+      {
+        "WorkCenter": "M0282",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "M0282",
+        "value": false
+      },
+      {
+        "WorkCenter": "M0443",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "M0443",
+        "value": false
+      },
+      {
+        "WorkCenter": "M0492",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "M0492",
+        "value": false
+      },
+      {
+        "WorkCenter": "M0602",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "M0602",
+        "value": false
+      },
+      {
+        "WorkCenter": "M0608",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "M0608",
+        "value": false
+      },
+      {
+        "WorkCenter": "M0707",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "M0707",
+        "value": false
+      },
+      {
+        "WorkCenter": "M0708",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "M0708",
+        "value": false
+      },
+      {
+        "WorkCenter": "M0709",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "M0709",
+        "value": false
+      },
+      {
+        "WorkCenter": "M0782",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "M0782",
+        "value": false
+      },
+      {
+        "WorkCenter": "M0932",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "M0932",
+        "value": false
+      },
+      {
+        "WorkCenter": "M0943",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "M0943",
+        "value": false
+      },
+      {
+        "WorkCenter": "M0944",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "M0944",
+        "value": false
+      },
+      {
+        "WorkCenter": "M0952",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "M0952",
+        "value": false
+      },
+      {
+        "WorkCenter": "M0956A",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "M0956A",
+        "value": false
+      },
+      {
+        "WorkCenter": "M0956B",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "M0956B",
+        "value": false
+      },
+      {
+        "WorkCenter": "OVEN",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "OVEN",
+        "value": false
+      },
+      {
+        "WorkCenter": "P00279-0",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "P00279-0",
+        "value": false
+      },
+      {
+        "WorkCenter": "P00279-1",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "P00279-1",
+        "value": false
+      },
+      {
+        "WorkCenter": "P00280-0",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "P00280-0",
+        "value": false
+      },
+      {
+        "WorkCenter": "P00280-1",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "P00280-1",
+        "value": false
+      },
+      {
+        "WorkCenter": "PACK01",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "PACK01",
+        "value": false
+      },
+      {
+        "WorkCenter": "S00007-0",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "S00007-0",
+        "value": false
+      },
+      {
+        "WorkCenter": "S00013-0",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "S00013-0",
+        "value": false
+      },
+      {
+        "WorkCenter": "T00943-0",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "T00943-0",
+        "value": false
+      },
+      {
+        "WorkCenter": "T05001-0",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "T05001-0",
+        "value": false
+      },
+      {
+        "WorkCenter": "TECHNIC",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "TECHNIC",
+        "value": false
+      },
+      {
+        "WorkCenter": "TURNING1",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "TURNING1",
+        "value": false
+      },
+      {
+        "WorkCenter": "TURNING2",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "TURNING2",
+        "value": false
+      },
+      {
+        "WorkCenter": "W00009-0",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "W00009-0",
+        "value": false
+      },
+      {
+        "WorkCenter": "W00025-0",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "W00025-0",
+        "value": false
+      },
+      {
+        "WorkCenter": "W00165-0",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "W00165-0",
+        "value": false
+      },
+      {
+        "WorkCenter": "W00279-0",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "W00279-0",
+        "value": false
+      },
+      {
+        "WorkCenter": "W00280-0",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "W00280-0",
+        "value": false
+      },
+      {
+        "WorkCenter": "W00282-0",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "W00282-0",
+        "value": false
+      },
+      {
+        "WorkCenter": "W00285-0",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "W00285-0",
+        "value": false
+      },
+      {
+        "WorkCenter": "W00443-0",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "W00443-0",
+        "value": false
+      },
+      {
+        "WorkCenter": "W00489-0",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "W00489-0",
+        "value": false
+      },
+      {
+        "WorkCenter": "W00491-0",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "W00491-0",
+        "value": false
+      },
+      {
+        "WorkCenter": "W00492-0",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "W00492-0",
+        "value": false
+      },
+      {
+        "WorkCenter": "W00495-0",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "W00495-0",
+        "value": false
+      },
+      {
+        "WorkCenter": "W00498-0",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "W00498-0",
+        "value": false
+      },
+      {
+        "WorkCenter": "W00602-0",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "W00602-0",
+        "value": false
+      },
+      {
+        "WorkCenter": "W00608-0",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "W00608-0",
+        "value": false
+      },
+      {
+        "WorkCenter": "W00708-0",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "W00708-0",
+        "value": false
+      },
+      {
+        "WorkCenter": "W00709-0",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "W00709-0",
+        "value": false
+      },
+      {
+        "WorkCenter": "W00782-0",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "W00782-0",
+        "value": false
+      },
+      {
+        "WorkCenter": "W00932-0",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "W00932-0",
+        "value": false
+      },
+      {
+        "WorkCenter": "W00943-0",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "W00943-0",
+        "value": false
+      },
+      {
+        "WorkCenter": "W00944-0",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "W00944-0",
+        "value": false
+      },
+      {
+        "WorkCenter": "W00952-0",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "W00952-0",
+        "value": false
+      },
+      {
+        "WorkCenter": "W00953-0",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "W00953-0",
+        "value": false
+      },
+      {
+        "WorkCenter": "W00956-1",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "W00956-1",
+        "value": false
+      },
+      {
+        "WorkCenter": "W00956-2",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "W00956-2",
+        "value": false
+      },
+      {
+        "WorkCenter": "W00999-0",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "W00999-0",
+        "value": false
+      },
+      {
+        "WorkCenter": "W05001-0",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "W05001-0",
+        "value": false
+      },
+      {
+        "WorkCenter": "W05006-0",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "W05006-0",
+        "value": false
+      },
+      {
+        "WorkCenter": "W05007-0",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "W05007-0",
+        "value": false
+      },
+      {
+        "WorkCenter": "W11006-0",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "W11006-0",
+        "value": false
+      },
+      {
+        "WorkCenter": "W11007-0",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "W11007-0",
+        "value": false
+      },
+      {
+        "WorkCenter": "W11026-0",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "W11026-0",
+        "value": false
+      },
+      {
+        "WorkCenter": "W11707-0",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "W11707-0",
+        "value": false
+      },
+      {
+        "WorkCenter": "W15004-0",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "W15004-0",
+        "value": false
+      },
+      {
+        "WorkCenter": "WC001",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "WC001",
+        "value": false
+      },
+      {
+        "WorkCenter": "WC004",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "WC004",
+        "value": false
+      },
+      {
+        "WorkCenter": "WC006",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "WC006",
+        "value": false
+      },
+      {
+        "WorkCenter": "WC007",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "WC007",
+        "value": false
+      },
+      {
+        "WorkCenter": "WORK",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "WORK",
+        "value": false
+      },
+      {
+        "WorkCenter": "ZGRIND1",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "ZGRIND1",
+        "value": false
+      },
+      {
+        "WorkCenter": "ZGRINDX1",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "ZGRINDX1",
+        "value": false
+      },
+      {
+        "WorkCenter": "ZMILL1",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "ZMILL1",
+        "value": false
+      },
+      {
+        "WorkCenter": "ZMILL2",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "ZMILL2",
+        "value": false
+      },
+      {
+        "WorkCenter": "ZMILL2A",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "ZMILL2A",
+        "value": false
+      },
+      {
+        "WorkCenter": "ZMILL2B",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "ZMILL2B",
+        "value": false
+      },
+      {
+        "WorkCenter": "ZMILLX2",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "ZMILLX2",
+        "value": false
+      },
+      {
+        "WorkCenter": "ZPAINT1",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "ZPAINT1",
+        "value": false
+      },
+      {
+        "WorkCenter": "ZPAINTX1",
+        "instancePosition": {},
+        "instanceStyle": {
+          "classes": ""
+        },
+        "key": "ZPAINTX1",
+        "value": false
+      }
+    ],
+    "templateBasis": "350px",
+    "title": "Info",
+    "titleGray": true
+  },
+  "propConfig": {
+    "params.data": {
+      "paramDirection": "inout",
+      "persistent": true
+    },
+    "params.templateBasis": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.title": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.titleGray": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "width": 770
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.title"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "backgroundColor": "#FFFFFF00",
+                "classes": "ATA/Components/Labels/TextNormall",
+                "color": "var(--prim)",
+                "marginLeft": 5,
+                "marginRight": 30,
+                "overflow": "hidden",
+                "paddingLeft": 5
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "TextField"
+            },
+            "position": {
+              "basis": "50%"
+            },
+            "props": {
+              "deferUpdates": false,
+              "placeholder": "Filter",
+              "rejectUpdatesWhileFocused": false,
+              "style": {
+                "marginLeft": "auto",
+                "marginRight": 10
+              }
+            },
+            "type": "ia.input.text-field"
+          }
+        ],
+        "meta": {
+          "name": "Title"
+        },
+        "position": {
+          "basis": "32px",
+          "shrink": 0
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "meta": {
+          "name": "Repeater"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0
+        },
+        "propConfig": {
+          "custom.ID": {
+            "binding": {
+              "config": {
+                "expression": "now(0)"
+              },
+              "transforms": [
+                {
+                  "code": "\timport uuid \n\treturn str(uuid.uuid1())",
+                  "type": "script"
+                }
+              ],
+              "type": "expr"
+            }
+          },
+          "custom.data": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "path": "view.params.data"
+              },
+              "type": "property"
+            }
+          },
+          "props.elementPosition.basis": {
+            "binding": {
+              "config": {
+                "path": "view.params.templateBasis"
+              },
+              "type": "property"
+            }
+          },
+          "props.instances": {
+            "binding": {
+              "config": {
+                "struct": {
+                  "data": "{this.custom.data}",
+                  "filter": "{../Title/TextField.props.text}"
+                },
+                "waitOnAll": true
+              },
+              "transforms": [
+                {
+                  "code": "\tdata \u003d value[\u0027data\u0027]\n\tfir \u003d value[\u0027filter\u0027]\n\trl \u003d []\n\tz \u003d 0\n\tID \u003d self.custom.ID\n\tif data is not None and data !\u003d []:\n\t\tfor x in data:\n\t\t\tx \u003d dict(x)\n\t\t\tx.update({\u0027rowNum\u0027:z})\n\t\t\tx.update({\u0027ID\u0027:ID})\n\t\t\tif fir is None or fir \u003d\u003d \u0027\u0027:\n\t\t\t\trl.append(x)\n\t\t\telif str(fir).lower() in str(x[\u0027key\u0027]).lower():\n\t\t\t\trl.append(x)\n\t\t\tz+\u003d1\n\treturn rl",
+                  "type": "script"
+                }
+              ],
+              "type": "expr-struct"
+            }
+          }
+        },
+        "props": {
+          "alignContent": "flex-start",
+          "elementPosition": {
+            "grow": 0,
+            "shrink": 0
+          },
+          "path": "SharedTemplates/ReapeaterWithFilter/Row",
+          "useDefaultViewWidth": false,
+          "wrap": "wrap"
+        },
+        "type": "ia.display.flex-repeater"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "paddingBottom": 5,
+        "paddingLeft": 2,
+        "paddingRight": 2,
+        "paddingTop": 5
+      }
+    },
+    "scripts": {
+      "customMethods": [],
+      "extensionFunctions": null,
+      "messageHandlers": [
+        {
+          "messageType": "TemplateWithFilter",
+          "pageScope": true,
+          "script": "\tif payload[\u0027ID\u0027] \u003d\u003d self.getChild(\"Repeater\").custom.ID:\n\t\tself.getChild(\"Repeater\").custom.data[payload[\u0027rowNum\u0027]].value \u003d payload[\u0027value\u0027]",
+          "sessionScope": false,
+          "viewScope": false
+        }
+      ]
+    },
+    "type": "ia.container.flex"
+  }
+}

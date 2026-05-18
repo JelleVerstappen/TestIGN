@@ -1,0 +1,258 @@
+{
+  "custom": {},
+  "params": {
+    "articleID": "value",
+    "lineID": "value",
+    "newEntry": 1,
+    "procedureID": "value"
+  },
+  "propConfig": {
+    "params.articleID": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.lineID": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.newEntry": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.procedureID": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "width": 600
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Header"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.params.title": {
+            "binding": {
+              "config": {
+                "expression": "if({view.params.newEntry} \u003d 1, \u0027Procedure aanmaken\u0027,\r\n\t\u0027Procedure aanpassen\u0027)"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "closeDockID": "ProcedureDock",
+            "closeIcon": true
+          },
+          "path": "Library/SharedTemplates/HeaderForDock",
+          "style": {
+            "textTransform": "capitalize"
+          },
+          "useDefaultViewHeight": true
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Line"
+            },
+            "propConfig": {
+              "props.params.options": {
+                "binding": {
+                  "config": {
+                    "queryPath": "getLinesDropdown"
+                  },
+                  "type": "query"
+                }
+              },
+              "props.params.value": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.lineID"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "enabled": true,
+                "key": "Lijn",
+                "marginRight": 45,
+                "multiSelect": false,
+                "placeholder": "Select...",
+                "showClearIcon": true
+              },
+              "path": "Library/SharedTemplates/Input/Dropdown",
+              "useDefaultViewHeight": true
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "Article"
+            },
+            "propConfig": {
+              "props.params.options": {
+                "binding": {
+                  "config": {
+                    "parameters": {
+                      "LineID": "{../Line.props.params.value}"
+                    },
+                    "queryPath": "getArticlesDropdown"
+                  },
+                  "type": "query"
+                }
+              },
+              "props.params.value": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.articleID"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "enabled": true,
+                "key": "Artikel",
+                "marginRight": 45,
+                "multiSelect": false,
+                "placeholder": "Select...",
+                "showClearIcon": true
+              },
+              "path": "Library/SharedTemplates/Input/Dropdown",
+              "useDefaultViewHeight": true
+            },
+            "type": "ia.display.view"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer"
+        },
+        "position": {
+          "grow": 1
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "overflow": "scroll",
+            "padding": 10
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "id": "{/root/Header.props.params.closeDockID}",
+                    "type": "close"
+                  },
+                  "scope": "C",
+                  "type": "dock"
+                }
+              }
+            },
+            "meta": {
+              "name": "Button_5"
+            },
+            "position": {
+              "basis": "80px",
+              "shrink": 0
+            },
+            "props": {
+              "image": {
+                "icon": {
+                  "path": "material/cancel"
+                }
+              },
+              "style": {
+                "classes": "ATA/Components/Buttons/Sec",
+                "marginLeft": 15
+              },
+              "text": ""
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "script": "\tnewEntry \u003d bool(self.view.params.newEntry)\n\t\n\tlineID \u003d self.parent.parent.getChild(\"FlexContainer\").getChild(\"Line\").props.params.value\n\tarticleID \u003d self.parent.parent.getChild(\"FlexContainer\").getChild(\"Article\").props.params.value\n\tusername \u003d self.session.props.auth.user.userName\n\t\n\tif newEntry \u003d\u003d True:\n\t\tinsertQuery \u003d \u0027\u0027\u0027insert into SPProcedures\n\t\t\t\t\t\t\t(\n\t\t\t\t\t\t\tLineID,\n\t\t\t\t\t\t\tArticleID,\n\t\t\t\t\t\t\tCreated,\n\t\t\t\t\t\t\tCreatedBy)\n\t\t\t\t\t\tvalues\n\t\t\t\t\t\t\t(\n\t\t\t\t\t\t\t?,\n\t\t\t\t\t\t\t?,\n\t\t\t\t\t\t\t?,\n\t\t\t\t\t\t\t?)\u0027\u0027\u0027\n\t\tinsertArgs \u003d [lineID, articleID, system.date.now(), username]\n\t\tsystem.db.runPrepUpdate(insertQuery, insertArgs, database \u003d \u0027NLSTWDYK_DB_PROD\u0027)\n\telse:\n\t\tprocedureID \u003d self.view.params.procedureID\n\t\t\n\t\tupdateQuery \u003d \u0027\u0027\u0027update\n\t\t\t\t\t\t\tSPProcedures\n\t\t\t\t\t\tset\n\t\t\t\t\t\t\tLineID \u003d ?,\n\t\t\t\t\t\t\tArticleID \u003d ?,\n\t\t\t\t\t\t\tModified \u003d ?,\n\t\t\t\t\t\t\tModifiedBy \u003d ?\n\t\t\t\t\t\twhere\n\t\t\t\t\t\t\tProcedureID \u003d ?\u0027\u0027\u0027\n\t\t\n\t\tupdateArgs \u003d [lineID, articleID, system.date.now(), username, procedureID]\n\t\tsystem.db.runPrepUpdate(updateQuery, updateArgs, database \u003d \u0027NLSTWDYK_DB_PROD\u0027)\n\t\n\tsystem.perspective.sendMessage(\u0027refreshProcedures\u0027)\n\tsystem.perspective.closeDock(self.parent.parent.getChild(\"Header\").props.params.closeDockID)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "Button_1"
+            },
+            "position": {
+              "basis": "80px",
+              "shrink": 0
+            },
+            "props": {
+              "image": {
+                "icon": {
+                  "path": "material/save_alt"
+                }
+              },
+              "style": {
+                "classes": "ATA/Components/Buttons/CTA",
+                "marginLeft": 15
+              },
+              "text": ""
+            },
+            "type": "ia.input.button"
+          }
+        ],
+        "meta": {
+          "name": "Footer"
+        },
+        "position": {
+          "basis": "45px",
+          "shrink": 0
+        },
+        "props": {
+          "justify": "flex-end",
+          "style": {
+            "backgroundColor": "--backgroundSecondary",
+            "borderTopLeftRadius": 5,
+            "borderTopRightRadius": 5,
+            "padding": 7,
+            "zIndex": 1
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "backgroundColor": "#FFFFFF"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

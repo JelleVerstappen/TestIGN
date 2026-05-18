@@ -1,0 +1,126 @@
+{
+  "custom": {},
+  "params": {
+    "backPath": "",
+    "menuButtons": [
+      {
+        "alarmPath": "[NLSTWDYK]Dyka/STW/EXT/E07/Assets/SIL/Alarms/Count/IconPath",
+        "menuPath": "",
+        "navIcon": "dyka/Silo",
+        "navPath": "/ControlRoom/Assets/RawMaterialTransport/Overview/RawMaterialTransport/E07",
+        "text": "Silo"
+      },
+      {
+        "alarmPath": "[NLSTWDYK]Dyka/STW/EXT/E07/Assets/RAW/Alarms/Count/IconPath",
+        "menuPath": "",
+        "navIcon": "dyka/RawMaterialTranssport",
+        "navPath": "/ControlRoom/Assets/RawMaterialTransport/Overview/RawMaterialTransport/E07",
+        "text": "Grondstoftransport"
+      }
+    ]
+  },
+  "propConfig": {
+    "params.backPath": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.menuButtons": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "width": 275
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Icon"
+            },
+            "position": {
+              "basis": "25px"
+            },
+            "props": {
+              "color": "--icon",
+              "path": "material/chevron_left",
+              "style": {
+                "marginRight": "auto"
+              }
+            },
+            "type": "ia.display.icon"
+          }
+        ],
+        "events": {
+          "dom": {
+            "onClick": {
+              "config": {
+                "script": "##### Navigate back to screen (if needed)\n#\t# Declare variables\n\tmenu \u003d self.view.params.backPath\n\t\n#\t# Menu tree\n\tif menu is not None:\n\t\tsystem.perspective.sendMessage(messageType \u003d \"alterMenu\", payload \u003d {\"menu\": menu}, scope \u003d \"page\")\n\telse:\n\t\tpass"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "FlexContainer"
+        },
+        "position": {
+          "basis": "45px"
+        },
+        "propConfig": {
+          "position.display": {
+            "binding": {
+              "config": {
+                "expression": "len(toStr({view.params.backPath})) !\u003d 0"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "classes": "ATA/Components/Buttons/MenuTreeBack"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "meta": {
+          "name": "FlexRepeater"
+        },
+        "position": {
+          "basis": "320px",
+          "grow": 1
+        },
+        "propConfig": {
+          "props.instances": {
+            "binding": {
+              "config": {
+                "path": "view.params.menuButtons"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "direction": "column",
+          "path": "Library/SharedDocked/Templates/MenuTreeButton",
+          "useDefaultViewWidth": false
+        },
+        "type": "ia.display.flex-repeater"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

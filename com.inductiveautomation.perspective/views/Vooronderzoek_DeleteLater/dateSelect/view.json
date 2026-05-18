@@ -1,0 +1,196 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "width": 270
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Label"
+        },
+        "position": {
+          "height": 66,
+          "width": 110,
+          "x": 18.993057250976562,
+          "y": -0.019092559814453125
+        },
+        "props": {
+          "text": "Filters",
+          "textStyle": {
+            "fontSize": 25
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_0"
+        },
+        "position": {
+          "height": 32,
+          "width": 109,
+          "x": 24,
+          "y": 49.96182518920899
+        },
+        "props": {
+          "text": "Startdate",
+          "textStyle": {
+            "fontSize": 13
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "DateTimeInput"
+        },
+        "position": {
+          "height": 32,
+          "width": 228,
+          "x": 20,
+          "y": 81.98
+        },
+        "props": {
+          "format": "DD-MM-YYYY hh:mm:ss",
+          "formattedValue": "15-05-2024 12:00:00",
+          "value": {
+            "$": [
+              "ts",
+              0,
+              1717062420306
+            ],
+            "$ts": 1715724000000
+          }
+        },
+        "type": "ia.input.date-time-input"
+      },
+      {
+        "meta": {
+          "name": "DateTimeInput_0"
+        },
+        "position": {
+          "height": 32,
+          "width": 229,
+          "x": 18.99,
+          "y": 152.9
+        },
+        "props": {
+          "format": "DD-MM-YYYY hh:mm:ss",
+          "formattedValue": "31-05-2024 12:00:00",
+          "value": {
+            "$": [
+              "ts",
+              0,
+              1717062522410
+            ],
+            "$ts": 1717106400000
+          }
+        },
+        "type": "ia.input.date-time-input"
+      },
+      {
+        "meta": {
+          "name": "Label_1"
+        },
+        "position": {
+          "height": 32,
+          "width": 109,
+          "x": 23.9861,
+          "y": 120.929
+        },
+        "props": {
+          "text": "Enddate",
+          "textStyle": {
+            "fontSize": 13
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_2"
+        },
+        "position": {
+          "height": 32,
+          "width": 109,
+          "x": 22.99,
+          "y": 192.93
+        },
+        "props": {
+          "text": "Lijn",
+          "textStyle": {
+            "fontSize": 13
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Dropdown"
+        },
+        "position": {
+          "height": 36,
+          "width": 230,
+          "x": 18.98,
+          "y": 222.8
+        },
+        "props": {
+          "options": [
+            {
+              "label": "E21",
+              "value": 0
+            }
+          ],
+          "value": 0
+        },
+        "type": "ia.input.dropdown"
+      },
+      {
+        "meta": {
+          "name": "Dropdown_0"
+        },
+        "position": {
+          "height": 36,
+          "width": 230,
+          "x": 18.98,
+          "y": 295.8
+        },
+        "props": {
+          "options": [
+            {
+              "label": "E21",
+              "value": 0
+            }
+          ]
+        },
+        "type": "ia.input.dropdown"
+      },
+      {
+        "meta": {
+          "name": "Label_3"
+        },
+        "position": {
+          "height": 32,
+          "width": 109,
+          "x": 22.99,
+          "y": 265.93
+        },
+        "props": {
+          "text": "Type",
+          "textStyle": {
+            "fontSize": 13
+          }
+        },
+        "type": "ia.display.label"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "type": "ia.container.coord"
+  }
+}

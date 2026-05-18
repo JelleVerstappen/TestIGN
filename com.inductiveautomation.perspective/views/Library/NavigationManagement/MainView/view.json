@@ -1,0 +1,657 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {},
+  "root": {
+    "children": [
+      {
+        "custom": {
+          "selectedPath": [
+            0
+          ]
+        },
+        "events": {
+          "component": {
+            "onItemClicked": {
+              "config": {
+                "script": "\tself.getSibling(\"FlexContainer\").custom.eventLabel \u003d event.label\n\tself.getSibling(\"FlexContainer\").custom.eventTarget \u003d event.target\n#\tself.getSibling(\"FlexContainer\").refreshBinding(\u0027custom.eventData\u0027)\n\tself.custom.selectedPath \u003d event.path"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "MenuTree"
+        },
+        "position": {
+          "basis": "250px"
+        },
+        "propConfig": {
+          "custom.navStructure": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "[default]Navigation/Navigation data"
+              },
+              "transforms": [
+                {
+                  "code": "\treturn ata.perspective.getNavigationStructure(navigationDataset \u003d value, showAll \u003d True)",
+                  "type": "script"
+                }
+              ],
+              "type": "tag"
+            }
+          },
+          "custom.selectedId": {
+            "binding": {
+              "config": {
+                "struct": {
+                  "navStructure": "{this.custom.navStructure}",
+                  "selectedPath": "{this.custom.selectedPath}"
+                },
+                "waitOnAll": true
+              },
+              "transforms": [
+                {
+                  "code": "\tstringPaths \u003d [\u0027[\u0027+str(pathInt)+\u0027]\u0027 for pathInt in value[\u0027selectedPath\u0027]]\n\tjsonPath \u003d \u0027[\"children\"]\u0027.join(stringPaths)\n\t\n\tchild \u003d None\n\tpythonExecString \u003d \"child \u003d value[\u0027navStructure\u0027]\"+jsonPath+\u0027[\"id\"]\u0027\n\texec(pythonExecString)\n\treturn child",
+                  "type": "script"
+                }
+              ],
+              "type": "expr-struct"
+            },
+            "onChange": {
+              "enabled": null,
+              "script": "\tself.getSibling(\"FlexContainer\").refreshBinding(\u0027custom.eventData\u0027)"
+            }
+          },
+          "props.items": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "[UNS]Navigation/Navigation data"
+              },
+              "transforms": [
+                {
+                  "code": "\treturn ata.perspective.generateMenuTreeItems(self.custom.navStructure)",
+                  "type": "script"
+                }
+              ],
+              "type": "tag"
+            }
+          }
+        },
+        "type": "ia.navigation.menutree"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "basis": "50px"
+            },
+            "props": {
+              "text": "Edit navigation dataset"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Label"
+                },
+                "position": {
+                  "basis": "150px"
+                },
+                "props": {
+                  "text": "ID:"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "NumericEntryField"
+                },
+                "position": {
+                  "basis": "300px"
+                },
+                "propConfig": {
+                  "props.value": {
+                    "binding": {
+                      "config": {
+                        "path": "..../FlexContainer.custom.eventData.ID"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "type": "ia.input.numeric-entry-field"
+              }
+            ],
+            "meta": {
+              "name": "FlexID"
+            },
+            "position": {
+              "basis": "40px"
+            },
+            "props": {
+              "style": {
+                "marginBottom": 5
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Label"
+                },
+                "position": {
+                  "basis": "150px"
+                },
+                "props": {
+                  "text": "Label: "
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "TextField"
+                },
+                "position": {
+                  "basis": "300px"
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "..../FlexContainer.custom.eventData.Label"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "type": "ia.input.text-field"
+              }
+            ],
+            "meta": {
+              "name": "FlexLabel"
+            },
+            "position": {
+              "basis": "40px"
+            },
+            "props": {
+              "style": {
+                "marginBottom": 5
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Label"
+                },
+                "position": {
+                  "basis": "150px"
+                },
+                "props": {
+                  "text": "Icon:"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "TextField"
+                },
+                "position": {
+                  "basis": "300px"
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "..../FlexContainer.custom.eventData.Icon"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "type": "ia.input.text-field"
+              }
+            ],
+            "meta": {
+              "name": "FlexIcon"
+            },
+            "position": {
+              "basis": "40px"
+            },
+            "props": {
+              "style": {
+                "marginBottom": 5
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Label"
+                },
+                "position": {
+                  "basis": "150px"
+                },
+                "props": {
+                  "text": "Target path:"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "TextField"
+                },
+                "position": {
+                  "basis": "300px"
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "..../FlexContainer.custom.eventTarget"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "type": "ia.input.text-field"
+              }
+            ],
+            "meta": {
+              "name": "FlexPath"
+            },
+            "position": {
+              "basis": "40px"
+            },
+            "props": {
+              "style": {
+                "marginBottom": 5
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Label"
+                },
+                "position": {
+                  "basis": "150px"
+                },
+                "props": {
+                  "text": "Parent ID:"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "Dropdown"
+                },
+                "position": {
+                  "basis": "300px"
+                },
+                "propConfig": {
+                  "props.options": {
+                    "binding": {
+                      "config": {
+                        "fallbackDelay": 2.5,
+                        "mode": "direct",
+                        "tagPath": "[default]Navigation/Navigation data"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\toptions \u003d []\n\tfirstOption \u003d {\u0027label\u0027: \u0027No parent\u0027, \u0027value\u0027: None}\n\toptions.append(firstOption)\n\tfor row in range(value.getRowCount()):\n\t\toption \u003d {\u0027label\u0027: None, \u0027value\u0027: None}\n\t\tID \u003d value.getValueAt(row, \u0027id\u0027)\n\t\tlabel \u003d value.getValueAt(row, \u0027label\u0027)\n\t\toption[\u0027label\u0027] \u003d str(ID) +\u0027 - \u0027+label\n\t\toption[\u0027value\u0027] \u003d ID\n\t\toptions.append(option)\n\treturn options",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "tag"
+                    }
+                  },
+                  "props.value": {
+                    "binding": {
+                      "config": {
+                        "path": "..../FlexContainer.custom.eventData.ParentID"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "type": "ia.input.dropdown"
+              }
+            ],
+            "meta": {
+              "name": "FlexParent"
+            },
+            "position": {
+              "basis": "40px"
+            },
+            "props": {
+              "style": {
+                "marginBottom": 5
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Label"
+                },
+                "position": {
+                  "basis": "150px"
+                },
+                "props": {
+                  "text": "Roles:"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "TextField"
+                },
+                "position": {
+                  "basis": "300px"
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "..../FlexContainer.custom.eventData.Roles"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "type": "ia.input.text-field"
+              }
+            ],
+            "meta": {
+              "name": "FlexRoles"
+            },
+            "position": {
+              "basis": "40px"
+            },
+            "props": {
+              "style": {
+                "marginBottom": 5
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Label"
+                },
+                "position": {
+                  "basis": "150px"
+                },
+                "props": {
+                  "text": "Exclude mobile:"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "Checkbox"
+                },
+                "position": {
+                  "basis": "56px"
+                },
+                "propConfig": {
+                  "props.selected": {
+                    "binding": {
+                      "config": {
+                        "path": "..../FlexContainer.custom.eventData.ExcludeMobile"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "text": ""
+                },
+                "type": "ia.input.checkbox"
+              }
+            ],
+            "meta": {
+              "name": "FlexMobile"
+            },
+            "position": {
+              "basis": "40px"
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "events": {
+                  "component": {
+                    "onActionPerformed": {
+                      "config": {
+                        "script": "\tcurrentDataset \u003d system.tag.readBlocking(\u0027[default]Navigation/Navigation data\u0027)[0].value\n\t\n\tID \u003d self.parent.parent.getChild(\"FlexID\").getChild(\"NumericEntryField\").props.value\n\tLabel \u003d self.parent.parent.getChild(\"FlexLabel\").getChild(\"TextField\").props.text\n\tIcon \u003d self.parent.parent.getChild(\"FlexIcon\").getChild(\"TextField\").props.text\n\tPath \u003d self.parent.parent.getChild(\"FlexPath\").getChild(\"TextField\").props.text\n\tParentID \u003d self.parent.parent.getChild(\"FlexParent\").getChild(\"Dropdown\").props.value\n\tRoles \u003d self.parent.parent.getChild(\"FlexRoles\").getChild(\"TextField\").props.text\n\tExcludeMobile \u003d self.parent.parent.getChild(\"FlexMobile\").getChild(\"Checkbox\").props.selected\n\t\n\tnewRow \u003d [ID, Label, Icon, Path, ParentID, Roles, ExcludeMobile]\n\tnewDataset \u003d system.dataset.addRow(currentDataset, newRow)\n\t\n#\t# Check if ID doesn\u0027t exist yet\n\tfor row in range(currentDataset.getRowCount()):\n\t\tif currentDataset.getValueAt(row, \u0027ID\u0027) \u003d\u003d ID:\n\t\t\tself.parent.parent.getChild(\"FlexContainer_0\").getChild(\"Label\").props.text \u003d \u0027Deze ID bestaat al, probeer een ander ID\u0027\n\t\t\treturn\n\t\n\tif ID \u003d\u003d ParentID:\n\t\tself.parent.parent.getChild(\"FlexContainer_0\").getChild(\"Label\").props.text \u003d \u0027Elementen kunnen geen child van zichzelf zijn\u0027\n\t\treturn\n\tself.parent.parent.getChild(\"FlexContainer_0\").getChild(\"Label\").props.text \u003d \u0027\u0027\n\tsystem.tag.writeBlocking(\u0027[default]Navigation/Navigation data\u0027, newDataset)\n\tself.parent.parent.parent.getChild(\"MenuTree\").refreshBinding(\u0027props.items\u0027)"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "name": "Button_1"
+                },
+                "position": {
+                  "basis": "70px"
+                },
+                "props": {
+                  "text": "Add"
+                },
+                "type": "ia.input.button"
+              },
+              {
+                "events": {
+                  "component": {
+                    "onActionPerformed": {
+                      "config": {
+                        "script": "\tcurrentDataset \u003d system.tag.readBlocking(\u0027[default]Navigation/Navigation data\u0027)[0].value\n\t\n\toldID \u003d self.parent.parent.parent.getChild(\"FlexContainer\").custom.eventData.ID\n\t\n\tnewID \u003d self.parent.parent.getChild(\"FlexID\").getChild(\"NumericEntryField\").props.value\n\tnewLabel \u003d self.parent.parent.getChild(\"FlexLabel\").getChild(\"TextField\").props.text\n\tnewIcon \u003d self.parent.parent.getChild(\"FlexIcon\").getChild(\"TextField\").props.text\n\tnewPath \u003d self.parent.parent.getChild(\"FlexPath\").getChild(\"TextField\").props.text\n\tnewParentID \u003d self.parent.parent.getChild(\"FlexParent\").getChild(\"Dropdown\").props.value\n\tnewRoles \u003d self.parent.parent.getChild(\"FlexRoles\").getChild(\"TextField\").props.text\n\tnewExcludeMobile \u003d self.parent.parent.getChild(\"FlexMobile\").getChild(\"Checkbox\").props.selected\n\t\n\tnewRowData \u003d {\u0027id\u0027: newID, \u0027label\u0027: newLabel, \u0027material_icon\u0027: newIcon, \u0027navigation_Path\u0027: newPath,\n\t\t\t\u0027parent_navigation_item_id\u0027: newParentID, \u0027required_roles\u0027: newRoles, \u0027exclude_on_mobile\u0027: newExcludeMobile}\n\t\n#\t# Get row index\n\trowIndex \u003d -1\n\tfor row in range(currentDataset.getRowCount()):\n\t\tif currentDataset.getValueAt(row, \u0027ID\u0027) \u003d\u003d oldID:\n\t\t\trowIndex \u003d row\n\t\t\tbreak\n\t\tif currentDataset.getValueAt(row, \u0027ID\u0027) \u003d\u003d newID:\n\t\t\tself.parent.parent.getChild(\"FlexContainer_0\").getChild(\"Label\").props.text \u003d \u0027Deze ID bestaat al, probeer een ander ID\u0027\n\t\t\treturn\n\t\n\tif rowIndex \u003d\u003d -1:\n\t\tself.parent.parent.getChild(\"FlexContainer_0\").getChild(\"Label\").props.text \u003d \u0027Geselecteerde item in de menu tree is niet gevonden\u0027\n\t\treturn\n\telif newID \u003d\u003d newParentID:\n\t\tself.parent.parent.getChild(\"FlexContainer_0\").getChild(\"Label\").props.text \u003d \u0027Elementen kunnen geen child van zichzelf zijn\u0027\n\t\treturn\n\telse:\n\t\tself.parent.parent.getChild(\"FlexContainer_0\").getChild(\"Label\").props.text \u003d \u0027\u0027\n\t\n\tsystem.perspective.print(rowIndex)\n\tsystem.perspective.print(newRowData)\n\tnewDataset \u003d system.dataset.updateRow(currentDataset, rowIndex, newRowData)\n\tsystem.tag.writeBlocking(\u0027[default]Navigation/Navigation data\u0027, newDataset)\n\tself.parent.parent.parent.getChild(\"MenuTree\").refreshBinding(\u0027props.items\u0027)"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "name": "Button"
+                },
+                "position": {
+                  "basis": "70px"
+                },
+                "props": {
+                  "style": {
+                    "marginLeft": 15
+                  },
+                  "text": "Edit"
+                },
+                "type": "ia.input.button"
+              },
+              {
+                "events": {
+                  "component": {
+                    "onActionPerformed": {
+                      "config": {
+                        "script": "\tcurrentDataset \u003d system.tag.readBlocking(\u0027[default]Navigation/Navigation data\u0027)[0].value\n\t\n\tID \u003d self.parent.parent.parent.getChild(\"FlexContainer\").custom.eventData.ID\n\t\n\trowIndex \u003d -1\n\tfor row in range(currentDataset.getRowCount()):\n\t\tif currentDataset.getValueAt(row, \u0027ID\u0027) \u003d\u003d ID:\n\t\t\trowIndex \u003d row\n\t\n\tif rowIndex \u003d\u003d -1:\n\t\tself.parent.parent.getChild(\"FlexContainer_0\").getChild(\"Label\").props.text \u003d \u0027Geselecteerde item in de menu tree is niet gevonden\u0027\n\t\treturn\n\t\n\tnewDataset \u003d system.dataset.deleteRow(currentDataset, rowIndex)\n\tsystem.tag.writeBlocking(\u0027[default]Navigation/Navigation data\u0027, newDataset)\n\tself.parent.parent.parent.getChild(\"MenuTree\").refreshBinding(\u0027props.items\u0027)"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "name": "Button_0"
+                },
+                "position": {
+                  "basis": "70px"
+                },
+                "props": {
+                  "primary": false,
+                  "style": {
+                    "marginLeft": 15
+                  },
+                  "text": "Delete"
+                },
+                "type": "ia.input.button"
+              },
+              {
+                "events": {
+                  "component": {
+                    "onActionPerformed": {
+                      "config": {
+                        "script": "\t\n\tself.parent.parent.getChild(\"FlexID\").getChild(\"NumericEntryField\").props.value \u003d 0\n\tself.parent.parent.getChild(\"FlexLabel\").getChild(\"TextField\").props.text \u003d \u0027\u0027\n\tself.parent.parent.getChild(\"FlexIcon\").getChild(\"TextField\").props.text \u003d \u0027\u0027\n\tself.parent.parent.getChild(\"FlexPath\").getChild(\"TextField\").props.text \u003d \u0027\u0027\n\tself.parent.parent.getChild(\"FlexParent\").getChild(\"Dropdown\").props.value \u003d -1\n\tself.parent.parent.getChild(\"FlexRoles\").getChild(\"TextField\").props.text \u003d \u0027\u0027\n\tself.parent.parent.getChild(\"FlexMobile\").getChild(\"Checkbox\").props.selected \u003d 0\n\tself.parent.parent.parent.getChild(\"MenuTree\").refreshBinding(\u0027props.items\u0027)"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "name": "Button_2"
+                },
+                "position": {
+                  "basis": "70px"
+                },
+                "props": {
+                  "primary": false,
+                  "style": {
+                    "marginLeft": 15
+                  },
+                  "text": "Clear"
+                },
+                "type": "ia.input.button"
+              }
+            ],
+            "meta": {
+              "name": "FlexContainer"
+            },
+            "position": {
+              "basis": "40px"
+            },
+            "props": {
+              "style": {
+                "marginBottom": 10,
+                "marginTop": 40
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Label"
+                },
+                "position": {
+                  "basis": "233px",
+                  "grow": 1
+                },
+                "props": {
+                  "style": {
+                    "classes": "ATA/Components/Labels/TextLarge",
+                    "color": "#FF4747"
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "FlexContainer_0"
+            },
+            "position": {
+              "basis": "40px"
+            },
+            "props": {
+              "style": {
+                "marginBottom": 10,
+                "marginTop": 40
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "custom": {
+          "eventLabel": "System",
+          "eventTarget": "/"
+        },
+        "meta": {
+          "name": "FlexContainer"
+        },
+        "position": {
+          "basis": "200px",
+          "grow": 1
+        },
+        "propConfig": {
+          "custom.eventData": {
+            "binding": {
+              "config": {
+                "path": "this.custom.eventLabel"
+              },
+              "transforms": [
+                {
+                  "code": "\t\tselectedID \u003d self.getSibling(\"MenuTree\").custom.selectedId\n\t\t\n\t\tdataset \u003d system.tag.readBlocking([\u0027[default]Navigation/Navigation data\u0027])[0].value\n\t\tfor row in range(dataset.getRowCount()):\n\t\t\trowData \u003d {}\n\t\t\tdatasetID \u003d dataset.getValueAt(row, \u0027Id\u0027)\n\t\t\tif datasetID \u003d\u003d selectedID:\n\t\t\t\trowData[\u0027ID\u0027] \u003d dataset.getValueAt(row, \u0027Id\u0027)\n\t\t\t\trowData[\u0027Label\u0027] \u003d dataset.getValueAt(row, \u0027label\u0027)\n\t\t\t\trowData[\u0027Icon\u0027] \u003d dataset.getValueAt(row, \u0027Material_icon\u0027)\n\t\t\t\trowData[\u0027Path\u0027] \u003d dataset.getValueAt(row, \u0027navigation_path\u0027)\n\t\t\t\trowData[\u0027ParentID\u0027] \u003d dataset.getValueAt(row, \u0027parent_navigation_item_id\u0027)\n\t\t\t\trowData[\u0027Roles\u0027] \u003d dataset.getValueAt(row, \u0027required_roles\u0027)\n\t\t\t\trowData[\u0027ExcludeMobile\u0027] \u003d dataset.getValueAt(row, \u0027exclude_on_mobile\u0027)\n\t\t\t\tbreak\n\t\t\telse:\n\t\t\t\trowData[\u0027ID\u0027] \u003d 0\n\t\t\t\trowData[\u0027Label\u0027] \u003d \u0027\u0027\n\t\t\t\trowData[\u0027Icon\u0027] \u003d \u0027\u0027\n\t\t\t\trowData[\u0027Path\u0027] \u003d \u0027\u0027\n\t\t\t\trowData[\u0027ParentID\u0027] \u003d 0\n\t\t\t\trowData[\u0027Roles\u0027] \u003d \u0027\u0027\n\t\t\t\trowData[\u0027ExcludeMobile\u0027] \u003d False\n\t\treturn rowData",
+                  "type": "script"
+                }
+              ],
+              "type": "property"
+            }
+          },
+          "custom.eventLabel": {
+            "onChange": {
+              "enabled": null,
+              "script": "\tself.refreshBinding(\u0027custom.eventData\u0027)"
+            }
+          },
+          "custom.eventTarget": {
+            "onChange": {
+              "enabled": null,
+              "script": "\tself.refreshBinding(\u0027custom.eventData\u0027)"
+            }
+          }
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "paddingLeft": 10
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "style": {
+        "classes": "ATA/Background/Root"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}
