@@ -1401,7 +1401,7 @@
           "contentStyle": {
             "backgroundColor": "--backgroundSecondary"
           },
-          "currentTabIndex": 2,
+          "currentTabIndex": 1,
           "menuStyle": {
             "backgroundColor": ""
           },
@@ -1424,9 +1424,7 @@
               },
               "viewPath": "Library/SharedTemplates/TabElement"
             },
-            "Buffer naar extruder",
-            "Trending",
-            "Alarmen"
+            "Buffer naar extruder"
           ]
         },
         "type": "ia.container.tab"
