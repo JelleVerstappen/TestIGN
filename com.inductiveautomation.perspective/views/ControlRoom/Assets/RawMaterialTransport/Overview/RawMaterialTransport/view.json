@@ -1401,7 +1401,6 @@
           "contentStyle": {
             "backgroundColor": "--backgroundSecondary"
           },
-          "currentTabIndex": 1,
           "menuStyle": {
             "backgroundColor": ""
           },
@@ -1416,15 +1415,14 @@
             {
               "disabled": false,
               "viewParams": {
-                "isActive": false,
+                "isActive": true,
                 "isDisabled": false,
                 "selected": false,
                 "tabText": "Silo 1",
                 "tagPath": "[NLSTWDYK]Dyka/STW/EXT/E07/MAT/MHL/RAW"
               },
               "viewPath": "Library/SharedTemplates/TabElement"
-            },
-            "Buffer naar extruder"
+            }
           ]
         },
         "type": "ia.container.tab"
